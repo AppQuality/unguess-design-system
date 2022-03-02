@@ -2,9 +2,7 @@ import { Button as ZendeskButton, IButtonProps } from '@zendeskgarden/react-butt
 import styled from 'styled-components';
 
 const DressBerryButton = styled(ZendeskButton)`
-    padding: 0.5rem 1rem;
-    background-color: magenta;
-    color: white;
+    padding: 0.5rem 2rem;
 `;
 
 
