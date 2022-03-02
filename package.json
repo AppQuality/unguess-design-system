@@ -2,6 +2,7 @@
   "name": "@appquality/unguess-design-system",
   "version": "0.1.2",
   "description": "",
+  "author": "Luca Cannarozzo (@cannarocks)",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "repository": {
