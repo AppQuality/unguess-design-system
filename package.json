@@ -9,11 +9,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "yarn run clean && rollup -c",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "clean": "rimraf build"
+    "storybook": "start-storybook -p 6006 -s public",
+    "clean": "rimraf build",
+    "release": "npx auto shipit --base-branch=master",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
