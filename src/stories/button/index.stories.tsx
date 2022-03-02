@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/react";
+import { ComponentMeta, Story } from "@storybook/react";
 import { IButtonProps } from "@zendeskgarden/react-buttons";
 import { Button } from ".";
 
@@ -8,11 +8,6 @@ interface IArgs extends IButtonProps {
   isStartIconRotated?: boolean;
   isEndIconRotated?: boolean;
 }
-
-export default {
-  title: "Button",
-  component: Button,
-} as Meta;
 
 const defaultArgs: IArgs = {
   isBasic: false,
@@ -39,3 +34,9 @@ Primary.args = {
   children: "button",
   onClick: () => alert("clicked!"),
 };
+
+
+export default {
+  title: "Button",
+  component: Button,
+} as ComponentMeta<typeof Button>;

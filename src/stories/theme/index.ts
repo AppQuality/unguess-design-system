@@ -7,20 +7,9 @@ const theme = {
     primaryHue: "pink",
     foreground: "red",
   },
-  fontWeights: {
-    thin: 400,
-    extralight: 400,
-    light: 400,
-    regular: 400,
-    medium: 500,
-    semibold: 700,
-    bold: 700,
-    extrabold: 700,
-    black: 700,
-  },
   fonts: {
     ...DEFAULT_THEME.fonts,
-    system: '"Poppins", sans-serif, Helvetica',
+    system: '"Poppins",sans-serif,Helvetica,Arial,sans-serif',
   },
 };
 
