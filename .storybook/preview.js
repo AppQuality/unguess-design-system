@@ -4,7 +4,7 @@ import theme from '../src/stories/theme';
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       {console.log(theme)}
       <Story />
     </ThemeProvider>
