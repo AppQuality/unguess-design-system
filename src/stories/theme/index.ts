@@ -1,6 +1,6 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 
-const theme = {
+export const theme = {
   ...DEFAULT_THEME,
   colors: {
     ...DEFAULT_THEME.colors,
@@ -12,5 +12,3 @@ const theme = {
     system: '"Poppins",sans-serif,Helvetica,Arial,sans-serif',
   },
 };
-
-export default theme;
