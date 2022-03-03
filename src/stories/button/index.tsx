@@ -1,9 +1,15 @@
-import { Button as ZendeskButton, IButtonProps } from '@zendeskgarden/react-buttons'; 
-import styled from 'styled-components';
+import { Button as ZendeskButton } from "@zendeskgarden/react-buttons";
+import styled from "styled-components";
+import { paddingDefault } from "./_shared";
+import { ButtonArgs } from "./_types";
 
-const DressBerryButton = styled(ZendeskButton)`
-    padding: 0.5rem 2rem;
+const UgButton = styled(ZendeskButton)`
+  ${paddingDefault}
 `;
 
+const Button = (props: ButtonArgs) => <UgButton {...props} />;
 
-export const Button = (props: IButtonProps) => <DressBerryButton {...props} />;
+Button.StartIcon = UgButton.StartIcon;
+Button.EndIcon = UgButton.EndIcon;
+
+export { Button };
