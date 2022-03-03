@@ -1,3 +1,6 @@
+import { theme } from '.';
+
+//Components
 export * from './stories/button';
 
 
