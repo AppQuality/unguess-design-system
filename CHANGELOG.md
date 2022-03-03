@@ -1,3 +1,15 @@
+# v0.3.2 (Thu Mar 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- chore: add .npmignore ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v0.3.1 (Thu Mar 03 2022)
 
 #### ⚠️ Pushed to `master`
