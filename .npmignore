@@ -1,1 +1,6 @@
 .env
+.storybook
+public
+src
+storybook-static
+tsconfig.json
