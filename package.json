@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "dependencies": {
     "@zendeskgarden/react-buttons": "^8.48.2",
     "@zendeskgarden/react-chrome": "^8.48.2",
