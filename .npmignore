@@ -4,3 +4,4 @@ public
 src
 storybook-static
 tsconfig.json
+rollup.config.js

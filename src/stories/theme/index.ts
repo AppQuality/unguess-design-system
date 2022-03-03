@@ -4,7 +4,7 @@ const theme = {
   ...DEFAULT_THEME,
   colors: {
     ...DEFAULT_THEME.colors,
-    primaryHue: "pink",
+    primaryHue: "green",
     foreground: "red",
   },
   fonts: {
