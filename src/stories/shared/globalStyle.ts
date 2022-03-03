@@ -8,4 +8,4 @@ body {
     -moz-osx-font-smoothing: grayscale;
   }`;
 
-export default GlobalStyle;
+export { GlobalStyle };
