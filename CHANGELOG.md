@@ -1,3 +1,15 @@
+# v0.2.0 (Thu Mar 03 2022)
+
+#### 🚀 Enhancement
+
+- Cup 422 setup theme [#1](https://github.com/AppQuality/unguess-design-system/pull/1) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v0.2.0 (Wed Mar 02 2022)
 
 #### 🚀 Enhancement
