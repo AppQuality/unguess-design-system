@@ -1,5 +1,17 @@
 # v0.3.5 (Thu Mar 03 2022)
 
+#### ⚠️ Pushed to `master`
+
+- fix wrong globalStyleExport ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.3.5 (Thu Mar 03 2022)
+
 
 
 ---
