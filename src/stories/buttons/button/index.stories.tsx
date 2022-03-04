@@ -9,6 +9,8 @@ const defaultArgs: ButtonArgs = {
   variant: "isBasic",
   isPill: false,
   size: "medium",
+  children: "button",
+  onClick: () => alert("clicked!"),
 };
 
 const Template: Story<ButtonArgs> = ({
@@ -40,26 +42,20 @@ export const Basic = Template.bind({});
 Basic.args = {
   ...defaultArgs,
   variant: "isBasic",
-  children: "button",
-  onClick: () => alert("clicked!"),
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
   ...defaultArgs,
   variant: "isPrimary",
-  children: "button",
-  onClick: () => alert("clicked!"),
 };
 
 export const Media = Template.bind({});
 Media.args = {
   ...defaultArgs,
   variant: "isDefault",
-  children: "button",
   hasStartIcon: true,
   hasEndIcon: false,
-  onClick: () => alert("clicked!"),
 };
 
 export default {
