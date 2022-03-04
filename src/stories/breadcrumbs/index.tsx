@@ -8,6 +8,6 @@ import { BreadcrumbProps } from './_types';
     - To show the user where they are in a nested navigation
     - To provide a quick way to navigate to ancestor pages
  */
-const Breadcrumb = (props: BreadcrumbProps) => <ZendeskBreadcrumb />;
+const Breadcrumb = (props: BreadcrumbProps) => <ZendeskBreadcrumb {...props}/>;
 
 export { Breadcrumb };

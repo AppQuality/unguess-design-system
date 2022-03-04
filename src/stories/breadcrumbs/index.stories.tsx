@@ -6,32 +6,32 @@ import { Span } from "@zendeskgarden/react-typography"; //TODO: replace with ung
 import { BreadcrumbProps } from "./_types";
 
 
-const Template: Story<BreadcrumbProps> = ({ items, currentItem, ...args }) => {
+const Template: Story<BreadcrumbProps> = ({ children, defaultValue, ...args }) => {
   return (
     <Breadcrumb {...args}>
-      {items.map((item) => (
+      {children.map((item) => (
         <Anchor {...item} />
       ))}
-      <Span>{currentItem}</Span>
+      <Span>{defaultValue}</Span>
     </Breadcrumb>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  items: [
+  children: [
     {
       ...Basic.args,
-      children: "Item 1",
+      children: "Home",
       onClick: () => {}
     },
     {
       ...Basic.args,
-      children: "Item 2",
+      children: "Dashboards",
       onClick: () => {}
     },
   ],
-  currentItem: "Current Item",
+  defaultValue: "Functional Dashboard",
 };
 
 
