@@ -4,6 +4,7 @@
   "dependencies": {
     "@zendeskgarden/react-buttons": "^8.48.2",
     "@zendeskgarden/react-chrome": "^8.48.2",
+    "@zendeskgarden/react-dropdowns": "^8.49.0",
     "@zendeskgarden/react-tooltips": "^8.49.0",
     "@zendeskgarden/svg-icons": "^6.31.1"
   },

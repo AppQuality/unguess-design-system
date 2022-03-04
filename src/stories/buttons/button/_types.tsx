@@ -13,6 +13,14 @@ export interface ButtonArgs extends IButtonProps {
   hasEndIcon?: boolean;
   isStartIconRotated?: boolean;
   isEndIconRotated?: boolean;
+  /** Applies danger styling */
+  isDanger?: boolean;
+  /** Specifies the buton size */
+  size?: 'small' | 'medium' | 'large';
+  /** Stretches the button fill to its container width */
+  isStretched?: boolean;
+  /** Applies neutral button styling */
+  isNeutral?: boolean;
   /**
    Definine the button variations, possible values are: {isDefault},
    {isBasic},{isPrimary}, {isLink}
