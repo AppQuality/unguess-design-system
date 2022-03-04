@@ -62,9 +62,9 @@ WithIcon.args = {
   hasStartIcon: true,
   hasEndIcon: false,
 };
-console.log("WithIcon", WithIcon)
 
-const defaultStoryMeta: ComponentMeta<typeof Button> = {
+export default {
+  title: "Atoms/Buttons/Button",
   component: Button,
   subcomponents: {
     "Button.StartIcon": Button.StartIcon,
@@ -85,13 +85,8 @@ const defaultStoryMeta: ComponentMeta<typeof Button> = {
     },
     onClick: {
       table: {
-        category: 'Events',
+        category: "Events",
       },
-    }
+    },
   },
-}
-
-export default {
-  ...defaultStoryMeta,
-  title: "Atoms/Buttons/Button",
-};
+} as ComponentMeta<typeof Button>;
