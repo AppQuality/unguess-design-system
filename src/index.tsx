@@ -1,7 +1,7 @@
 import { GlobalStyle } from './stories/shared/globalStyle';
 
 //Components
-export * from './stories/button';
+export * from './stories/buttons/button';
 
 
 // Theme settings

@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
 import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 import { Button } from ".";
-import { getButtonVariant } from "./_shared";
+import { getButtonVariant } from "../utils/useButtonVariant";
 import { ButtonArgs } from "./_types";
 
 const defaultArgs: ButtonArgs = {
@@ -63,7 +63,7 @@ Media.args = {
 };
 
 export default {
-  title: "Button",
+  title: "Buttons/Button",
   component: Button,
   subcomponents: {
     "Button.StartIcon": Button.StartIcon,
