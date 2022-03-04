@@ -1,3 +1,19 @@
+# v1.0.0 (Fri Mar 04 2022)
+
+#### 💥 Breaking Change
+
+- Cup 427 ds buttons [#2](https://github.com/AppQuality/unguess-design-system/pull/2) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- update .npmignore ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v0.3.5 (Thu Mar 03 2022)
 
 #### ⚠️ Pushed to `master`
