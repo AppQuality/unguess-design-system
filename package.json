@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "dependencies": {
     "@zendeskgarden/react-breadcrumbs": "^8.49.0",
     "@zendeskgarden/react-buttons": "^8.48.2",
