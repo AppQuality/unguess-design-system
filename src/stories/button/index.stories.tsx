@@ -1,9 +1,9 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/123-fill.svg";
+import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
+import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 import { Button } from ".";
 import { getButtonVariant } from "./_shared";
 import { ButtonArgs } from "./_types";
-
 
 const defaultArgs: ButtonArgs = {
   variant: "isBasic",
@@ -11,18 +11,27 @@ const defaultArgs: ButtonArgs = {
   size: "medium",
 };
 
-const Template: Story<ButtonArgs> = (args) => {
-  const variant = getButtonVariant(args);
-  return <Button {...args} {...variant} />;
-};
-
-const IconTemplate: Story<ButtonArgs> = (args) => {
+const Template: Story<ButtonArgs> = ({
+  hasStartIcon,
+  hasEndIcon,
+  isStartIconRotated,
+  isEndIconRotated,
+  ...args
+}) => {
   const variant = getButtonVariant(args);
   return (
     <Button {...args} {...variant}>
-      <Button.StartIcon>
-        <LeafIcon/>
-      </Button.StartIcon>
+      {hasStartIcon && (
+        <Button.StartIcon isRotated={isStartIconRotated}>
+          <LeafIcon />
+        </Button.StartIcon>
+      )}
+      {args.children}
+      {hasEndIcon && (
+        <Button.EndIcon isRotated={isEndIconRotated}>
+          <ChevronIcon />
+        </Button.EndIcon>
+      )}
     </Button>
   );
 };
@@ -31,7 +40,6 @@ export const Basic = Template.bind({});
 Basic.args = {
   ...defaultArgs,
   variant: "isBasic",
-  isBasic: true,
   children: "button",
   onClick: () => alert("clicked!"),
 };
@@ -44,17 +52,23 @@ Primary.args = {
   onClick: () => alert("clicked!"),
 };
 
-export const Media = IconTemplate.bind({});
+export const Media = Template.bind({});
 Media.args = {
   ...defaultArgs,
   variant: "isDefault",
-  children: 'button',
+  children: "button",
+  hasStartIcon: true,
+  hasEndIcon: false,
   onClick: () => alert("clicked!"),
 };
 
 export default {
   title: "Button",
   component: Button,
+  subcomponents: {
+    "Button.StartIcon": Button.StartIcon,
+    "Button.EndIcon": Button.EndIcon,
+  },
   argTypes: {
     variant: {
       control: {

@@ -2,7 +2,7 @@ import { css } from "styled-components";
 import { ButtonArgs } from "./_types";
 
 const paddingDefault = css`
-  padding: 0.5rem 2rem;
+  padding: 0.714rem 1.071rem;
 `;
 
 const getButtonVariant = (args: ButtonArgs) => {
