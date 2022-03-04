@@ -1,7 +1,7 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { ButtonGroup } from ".";
 import { Button } from "../button";
-import { Basic } from "../button/index.stories";
+import { Default, Basic } from "../button/index.stories";
 import { ButtonGroupArgs } from "./_types";
 
 interface ButtonGroupProps extends ButtonGroupArgs {
@@ -11,7 +11,7 @@ interface ButtonGroupProps extends ButtonGroupArgs {
 const defaultArgs: ButtonGroupProps = {
   items: [],
   onSelect: (e) => {
-    console.log("Item selected!", e);
+    console.log("Item selected:", e);
   },
 };
 
@@ -26,6 +26,9 @@ const Template: Story<ButtonGroupProps> = ({ items, ...args }) => {
 };
 
 export const TwoItems = Template.bind({});
+
+console.log("Basic args:", Basic.args);
+
 TwoItems.args = {
   ...defaultArgs,
   items: [
@@ -37,6 +40,25 @@ TwoItems.args = {
     },
     {
       ...Basic.args,
+      children: "Item 2",
+      value: "item-2",
+      onClick: () => {}
+    },
+  ]
+};
+
+export const WithBorders = Template.bind({});
+WithBorders.args = {
+  ...defaultArgs,
+  items: [
+    {
+      ...Default.args,
+      children: "Item 1",
+      value: "item-1",
+      onClick: () => {}
+    },
+    {
+      ...Default.args,
       children: "Item 2",
       value: "item-2",
       onClick: () => {}
@@ -76,5 +98,6 @@ RoundedItems.args = {
 
 export default {
   title: "Atoms/Buttons/ButtonGroup",
-  component: ButtonGroup,
+  component: ButtonGroup
+
 } as ComponentMeta<typeof ButtonGroup>;

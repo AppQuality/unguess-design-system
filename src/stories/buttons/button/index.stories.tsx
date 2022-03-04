@@ -6,7 +6,7 @@ import { getButtonVariant } from "../utils/useButtonVariant";
 import { ButtonArgs } from "./_types";
 
 const defaultArgs: ButtonArgs = {
-  variant: "isBasic",
+  variant: "isDefault",
   isPill: false,
   size: "medium",
   children: "button",
@@ -38,9 +38,15 @@ const Template: Story<ButtonArgs> = ({
   );
 };
 
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+};
+
 export const Basic = Template.bind({});
 Basic.args = {
   ...defaultArgs,
+  isBasic: true,
   variant: "isBasic",
 };
 
@@ -53,7 +59,6 @@ Primary.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   ...defaultArgs,
-  variant: "isDefault",
   hasStartIcon: true,
   hasEndIcon: false,
 };
