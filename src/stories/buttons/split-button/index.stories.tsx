@@ -7,8 +7,6 @@ import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/chev
 import { SplitButton } from ".";
 import { SplitButtonArgs } from "./_types";
 
-const defaultArgs: SplitButtonArgs = {};
-
 const Template: Story<SplitButtonArgs> = (args) => {
   const [rotated, setRotated] = useState<boolean>();
   return (
