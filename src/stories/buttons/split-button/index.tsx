@@ -2,14 +2,11 @@ import { SplitButton as ZendeskSplitButton } from "@zendeskgarden/react-buttons"
 import { SplitButtonArgs } from "./_types";
 
 /**
-Icon buttons (like Buttons) let users take action. 
-They are used for repeated or persistent actions on a page and lack visible labels to simplify the UI.
-<br>
-Do this: <b>Include a Tooltip to help any users who may be unfamiliar with the icon.</b>
+A Split button is a hybrid between a Dropdown Menu and a Button. It lets users choose from parallel actions and take action on their choice.
 <hr>
-Used for this
- - To simplify the appearance of repeated or persistent actions on a page 
- - To enable action in a toolbar
+Used for this:
+- To let users select from multiple parallel actions. Actions are parallel when each represents a path forward for the user and none cancel the action.
+- To reduce visual complexity when there are multiple actions a user can take
 **/
 const SplitButton = (props: SplitButtonArgs) => (
   <ZendeskSplitButton {...props} />

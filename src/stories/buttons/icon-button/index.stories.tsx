@@ -1,5 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Tooltip } from "@zendeskgarden/react-tooltips";
+import { Tooltip } from "@zendeskgarden/react-tooltips";  //TODO: replace with unguess component
 import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
 import { IconButton } from ".";
 import { IconButtonArgs } from "./_types";

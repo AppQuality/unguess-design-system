@@ -3812,6 +3812,13 @@
     "@zendeskgarden/container-utilities" "^0.7.1"
     react-uid "^2.2.0"
 
+"@zendeskgarden/container-breadcrumb@^0.4.6":
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-breadcrumb/-/container-breadcrumb-0.4.10.tgz#a70b165cb2519b546ecc10fb8ff3da48e9cfd51c"
+  integrity sha512-5rs0X+BspNQASuIri70andh2HkAvSl4WcePA4XLwnD6wsp4JXupygopUWXp0OpPbSOWjiUYmX6idwszvRPTJWQ==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
 "@zendeskgarden/container-buttongroup@^0.3.8":
   version "0.3.16"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-buttongroup/-/container-buttongroup-0.3.16.tgz#e4b20d4d80008cfd7348ee4620623dcc922fd4b2"
@@ -3843,6 +3850,16 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^0.7.1"
 
+"@zendeskgarden/container-scrollregion@^0.1.0":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-scrollregion/-/container-scrollregion-0.1.3.tgz#500f66a7a4c1706c7d06aba5a027e9ff62dadedb"
+  integrity sha512-s2MpjfHhSV0+u0fK8/26pFwfaMOtTd1lNV0GzeNfKjWfTOyOUu+gHATuRINBFTOPww3hIxS0ij7z0Ck0AOdkKw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    lodash.debounce "^4.0.8"
+    prop-types "^15.7.2"
+    react-merge-refs "^1.1.0"
+
 "@zendeskgarden/container-selection@^1.3.16", "@zendeskgarden/container-selection@^1.3.8":
   version "1.3.16"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-1.3.16.tgz#e5838f271eefee2bef3772fe626fa9d407453edd"
@@ -3867,6 +3884,15 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@reach/auto-id" "^0.16.0"
+
+"@zendeskgarden/react-breadcrumbs@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-breadcrumbs/-/react-breadcrumbs-8.49.0.tgz#dcea59fae597e936f1a4a2fb4efd1f2a738a90a2"
+  integrity sha512-LrCx5eQCQ0eCqr5887WMR4J+fH/ge/ArUWYACGnLGXwUAcmtTK9M3yQSRGshHI+p0L4+3BNOQr/JSleCdul3Mg==
+  dependencies:
+    "@zendeskgarden/container-breadcrumb" "^0.4.6"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
 
 "@zendeskgarden/react-buttons@^8.48.2":
   version "8.48.2"
@@ -3937,6 +3963,16 @@
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
     react-popper "^1.3.4"
+
+"@zendeskgarden/react-typography@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-8.49.0.tgz#78e2fd460cfb722d277469d518027faea6c3a844"
+  integrity sha512-8QsO/lyh7KsY0CPwdFvDqA+At0uDY3jEcBgCflcN6P3AiI0jYekGwtQ41kqQ+l6nBN/40hOgOfqc96jVaCztdw==
+  dependencies:
+    "@zendeskgarden/container-scrollregion" "^0.1.0"
+    polished "^4.0.0"
+    prism-react-renderer "^1.1.1"
+    prop-types "^15.5.7"
 
 "@zendeskgarden/svg-icons@^6.31.1":
   version "6.31.1"
@@ -12240,6 +12276,11 @@ pretty-ms@^7.0.0:
   integrity sha512-973driJZvxiGOQ5ONsFhOF/DtzPMOMtgC11kCpUrPGMTgqp2q/1gwzCquocrN33is0VZ5GFHXZYMM9l6h67v2Q==
   dependencies:
     parse-ms "^2.1.0"
+
+prism-react-renderer@^1.1.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.3.1.tgz#88fc9d0df6bed06ca2b9097421349f8c2f24e30d"
+  integrity sha512-xUeDMEz074d0zc5y6rxiMp/dlC7C+5IDDlaEUlcBOFE2wddz7hz5PNupb087mPwTt7T9BrFmewObfCBuf/LKwQ==
 
 prismjs@^1.21.0, prismjs@~1.27.0:
   version "1.27.0"

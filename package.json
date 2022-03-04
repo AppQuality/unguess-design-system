@@ -2,10 +2,12 @@
   "name": "@appquality/unguess-design-system",
   "version": "0.3.5",
   "dependencies": {
+    "@zendeskgarden/react-breadcrumbs": "^8.49.0",
     "@zendeskgarden/react-buttons": "^8.48.2",
     "@zendeskgarden/react-chrome": "^8.48.2",
     "@zendeskgarden/react-dropdowns": "^8.49.0",
     "@zendeskgarden/react-tooltips": "^8.49.0",
+    "@zendeskgarden/react-typography": "^8.49.0",
     "@zendeskgarden/svg-icons": "^6.31.1"
   },
   "scripts": {
