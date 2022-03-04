@@ -5,7 +5,11 @@ import { Default, Basic } from "../button/index.stories";
 import { ButtonGroupArgs } from "./_types";
 
 interface ButtonGroupProps extends ButtonGroupArgs {
-  items: any[],
+  /**
+   The children of the button group.
+   @default []
+  */ 
+  items: any[];
 }
 
 const defaultArgs: ButtonGroupProps = {
@@ -26,8 +30,6 @@ const Template: Story<ButtonGroupProps> = ({ items, ...args }) => {
 };
 
 export const TwoItems = Template.bind({});
-
-console.log("Basic args:", Basic.args);
 
 TwoItems.args = {
   ...defaultArgs,
