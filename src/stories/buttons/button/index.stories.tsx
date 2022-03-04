@@ -50,8 +50,8 @@ Primary.args = {
   variant: "isPrimary",
 };
 
-export const Media = Template.bind({});
-Media.args = {
+export const WithIcon = Template.bind({});
+WithIcon.args = {
   ...defaultArgs,
   variant: "isDefault",
   hasStartIcon: true,
@@ -59,7 +59,7 @@ Media.args = {
 };
 
 export default {
-  title: "Buttons/Button",
+  title: "Atoms/Buttons/Button",
   component: Button,
   subcomponents: {
     "Button.StartIcon": Button.StartIcon,

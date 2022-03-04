@@ -31,6 +31,6 @@ External.args = {
 };
 
 export default {
-  title: "Buttons/Anchor",
+  title: "Atoms/Buttons/Anchor",
   component: Anchor,
 } as ComponentMeta<typeof Anchor>;
