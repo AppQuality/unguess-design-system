@@ -1,5 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Paragraph, MD } from ".";
+import { Paragraph } from ".";
+import { MD } from "../typescale";
 import { ParagraphArgs } from "./_types";
 
 const Template: Story<ParagraphArgs> = (args) => {
