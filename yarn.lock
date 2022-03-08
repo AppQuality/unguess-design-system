@@ -3966,6 +3966,18 @@
     "@babel/runtime" "^7.8.4"
     "@reach/auto-id" "^0.16.0"
 
+"@zendeskgarden/react-accordions@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-accordions/-/react-accordions-8.49.0.tgz#1f627730130422b3eb3ec552f21fdfdddce7abfa"
+  integrity sha512-xkqyzBWIeT/0uAgDvOdBqk36QFLwagsiBTqdghrN7FFy4ns1rXhAAQi9WG0dYYoUU/SOhCcheHei24esTppnxA==
+  dependencies:
+    "@zendeskgarden/container-accordion" "^1.0.3"
+    "@zendeskgarden/container-utilities" "^0.7.0"
+    lodash.debounce "^4.0.8"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+    react-merge-refs "^1.1.0"
+
 "@zendeskgarden/react-breadcrumbs@^8.49.0":
   version "8.49.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-breadcrumbs/-/react-breadcrumbs-8.49.0.tgz#dcea59fae597e936f1a4a2fb4efd1f2a738a90a2"

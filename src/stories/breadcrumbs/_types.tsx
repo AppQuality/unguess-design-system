@@ -1,4 +1,4 @@
-export interface BreadcrumbProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface BreadcrumbArgs extends React.HTMLAttributes<HTMLDivElement> {
   /** The breadcrumb items */
   children: any[];
 }
