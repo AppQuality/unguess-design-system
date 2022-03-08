@@ -5,11 +5,10 @@ import { AvatarArgs } from './_types';
 const UgAvatar = styled(ZendeskAvatar)``;
 
 /**
- * Breadcrumbs mark and communicate a user’s location in the product.
+ * An Avatar is a visual way to represent a person or brand in the product. They can display text, icons, or images.
  * <hr>
  * Used for this:
-    - To show the user where they are in a nested navigation
-    - To provide a quick way to navigate to ancestor pages
+    - To visually represent a person, brand, or product
  */
 const Avatar = (props: AvatarArgs) => <UgAvatar {...props}/>;
 Avatar.Text = UgAvatar.Text;
