@@ -3,10 +3,10 @@ import { Breadcrumb } from ".";
 import { Anchor } from "../buttons/anchor";
 import { Basic } from "../buttons/anchor/index.stories";
 import { Span } from "@zendeskgarden/react-typography"; //TODO: replace with unguess component
-import { BreadcrumbProps } from "./_types";
+import { BreadcrumbArgs } from "./_types";
 
 
-const Template: Story<BreadcrumbProps> = ({ children, defaultValue, ...args }) => {
+const Template: Story<BreadcrumbArgs> = ({ children, defaultValue, ...args }) => {
   return (
     <Breadcrumb {...args}>
       {children.map((item) => (

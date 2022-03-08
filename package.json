@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "dependencies": {
     "@zendeskgarden/react-avatars": "^8.48.1",
+    "@zendeskgarden/react-accordions": "^8.49.0",
     "@zendeskgarden/react-breadcrumbs": "^8.49.0",
     "@zendeskgarden/react-buttons": "^8.48.2",
     "@zendeskgarden/react-chrome": "^8.48.2",
@@ -76,6 +77,8 @@
     "@zendeskgarden/react-theming": "^8.48.2",
     "auto": "^10.32.6",
     "babel-loader": "^8.2.3",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "3.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -94,5 +97,10 @@
     "type": "git",
     "url": "git+https://github.com/AppQuality/unguess-design-system.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
