@@ -1,46 +1,87 @@
-# Getting Started with Create React App
+# UNGUESS Design System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-## Available Scripts
+## Used by
 
-In the project directory, you can run:
+- [Unguess platform](https://app.unguess.io/)
 
-### `npm start`
+## Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Building components
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 🪴 [Zendesk Garden](https://garden.zendesk.com/) as base design system
+- ⚛️ [React](https://reactjs.org/) declarative component-centric UI
+- 📚 [Storybook](https://storybook.js.org) for UI component development and [auto-generated docs](https://medium.com/storybookjs/storybook-docs-sneak-peak-5be78445094a)
+- 👩‍🎤 [Styled Components](https://styled-components.com/) for component-scoped styling
 
-### `npm test`
+Maintaining the system
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 📦 [Yarn](https://yarnpkg.com/) for package management
+- 📦 [NPM](https://www.npmjs.com/) for distribution
+- ✅ [Chromatic](https://www.chromatic.com/) to prevent UI bugs in components (by Storybook maintainers)
 
-### `npm run build`
+## Why
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Unguess design system codifies existing UI components into a central, well-maintained repository. It is built to address having to paste the same components into multiple projects again and again. This simplifies building UI's with Storybook's design patterns.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### What we're doing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Build and maintain a design system in the open
+- Share UI components between multiple apps
+- Dogfood upcoming Storybook features
+- Welcome contributors of all levels and backgrounds
 
-### `npm run eject`
+#### What we're not doing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Rewrite all new components from scratch
+- Overhaul the visual design of components
+- Typescript (the consumer apps don't use it)
+- Compete with more general design systems like ANT or Material.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+yarn
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Global Styles
 
-## Learn More
+Components within the design system assume that a set of global styles have been configured. Depending upon the needs of the application, this can be done several ways:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Option 1: Render the `GlobalStyle` component
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Useful when you don't need any custom `body` styling in the application, typically this would be placed in a layout component that wraps all pages, or a top-level `App` component.
+
+```javascript
+import { global } from '@storybook/design-system';
+const { GlobalStyle } = global;
+```
+
+```javascript
+/* Render the global styles once per page */
+<GlobalStyle />
+```
+
+#### Option 2: Use the `bodyStyles` to apply styling
+
+Useful when you want build upon the shared global styling.
+
+```javascript
+import { Global, css } from '@storybook/theming';
+import { global } from '@storybook/design-system';
+const { bodyStyles } = global;
+
+const customGlobalStyle = css`
+  body {
+    ${bodyStyles}// Custom body styling for the app
+  }
+`;
+
+const CustomGlobalStyle = () => <Global styles={customGlobalStyle} />;
+```
+
+```javascript
+/* Render the global styles once per page */
+<CustomGlobalStyle />
+```
