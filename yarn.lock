@@ -3942,6 +3942,14 @@
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
 
+"@zendeskgarden/react-grid@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-grid/-/react-grid-8.49.0.tgz#c74d9078d93a67c1f4d147f4bd3fa28cd750b3bd"
+  integrity sha512-oOZVocKrj0wuvs5iYWk4oEIp2pyUzz9AVWWoOb0MZCqyvnfJ4eovop9QaS/I2zy3kxAIu3X8a9dOaEGAJxg7Uw==
+  dependencies:
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+
 "@zendeskgarden/react-theming@^8.48.2":
   version "8.48.2"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-8.48.2.tgz#cdb77b2e1a7e880e495266989ef9fc9615bfcb9e"
