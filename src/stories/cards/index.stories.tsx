@@ -1,5 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Title } from "@zendeskgarden/react-notifications";
+import { Title } from "../notifications";
 import { Card } from ".";
 import { CardProps } from "./_types";
 
