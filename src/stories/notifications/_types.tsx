@@ -14,5 +14,4 @@ export interface TitleArgs extends HTMLAttributes<HTMLDivElement> {
 export interface ToastProviderArgs extends IToastProviderProps {
   /** Applies regular (non-bold) font weight */
   isRegular?: boolean;
-  children?: React.ReactNode;
 }

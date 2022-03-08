@@ -1,7 +1,5 @@
-import { useCallback } from "react";
 import { ComponentMeta, Story } from "@storybook/react";
 import { Notification, Title, Close } from ".";
-import { Button } from "../buttons/button";
 import { NotificationArgs } from "./_types";
 
 interface NotificationStoryProps extends NotificationArgs {
