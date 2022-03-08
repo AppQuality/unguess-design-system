@@ -33,4 +33,11 @@ External.args = {
 export default {
   title: "Atoms/Buttons/Anchor",
   component: Anchor,
+  argTypes: {
+    children: {
+      name: "Anchor text",
+      description: "The example text of anchor button",
+      control: "text",
+    },
+  }
 } as ComponentMeta<typeof Anchor>;

@@ -34,5 +34,10 @@ export default {
         options: ["small", "medium", "large"],
       },
     },
+    children: {
+      name: "Paragraph text",
+      description: "The example text",
+      control: "text",
+    },
   },
 } as ComponentMeta<typeof Paragraph>;

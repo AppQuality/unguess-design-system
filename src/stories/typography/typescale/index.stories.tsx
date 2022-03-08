@@ -7,7 +7,6 @@ const StyledDiv = styled.div`
 `;
 
 const Template: Story<any> = (args) => {
-  console.log(args.tag);
   return (
     <>
       <SM {...args}>&lt;SM&gt;Veggies es bonus vobis proinde vos postulo</SM>

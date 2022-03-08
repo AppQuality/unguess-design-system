@@ -88,5 +88,12 @@ export default {
         category: "Events",
       },
     },
+    argTypes: {
+      children: {
+        name: "Button text",
+        description: "The example text of button",
+        control: "text",
+      },
+    }
   },
 } as ComponentMeta<typeof Button>;

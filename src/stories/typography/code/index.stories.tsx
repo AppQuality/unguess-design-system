@@ -39,5 +39,10 @@ export default {
         options: ["small", "medium", "large", "inherit"],
       },
     },
+    children: {
+      name: "Code text",
+      description: "The example code text",
+      control: "text",
+    },
   },
 } as ComponentMeta<typeof Code>;
