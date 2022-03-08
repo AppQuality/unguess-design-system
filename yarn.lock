@@ -3926,6 +3926,13 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^0.7.1"
 
+"@zendeskgarden/container-schedule@^1.3.7":
+  version "1.3.11"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-schedule/-/container-schedule-1.3.11.tgz#f24601ce8c99d3dbf8b53aed508f85a96073c71c"
+  integrity sha512-HzVXOAFirvC1eMYSn4Lk9mYjAkKFQYSyHpXXYRgiBcayl6VSC0HsY+Oml90kSjJF1PzpiJB3oGZolc1uxdoEwA==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
 "@zendeskgarden/container-scrollregion@^0.1.0":
   version "0.1.3"
   resolved "https://registry.npmjs.org/@zendeskgarden/container-scrollregion/-/container-scrollregion-0.1.3.tgz"
@@ -4046,6 +4053,15 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
 
+"@zendeskgarden/react-loaders@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-loaders/-/react-loaders-8.49.0.tgz#07637a09a85f2d04854c860f36a0fc9105081930"
+  integrity sha512-P/KhK6p6k9EPa6uCvfqewA1KNnKhTaXfo2gJuwkPimHA3xbUR+rnh4553zMbuiqGABst2TBPAubzaaLy9aSnUg==
+  dependencies:
+    "@zendeskgarden/container-schedule" "^1.3.7"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+
 "@zendeskgarden/react-notifications@^8.49.0":
   version "8.49.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.49.0.tgz#391f6d0e5d06ab1f04e7f029c39a88723f60a7e9"
@@ -4055,6 +4071,7 @@
     prop-types "^15.5.7"
     react-transition-group "^4.4.2"
     react-uid "^2.3.1"
+
 
 "@zendeskgarden/react-theming@^8.48.2":
   version "8.48.2"
