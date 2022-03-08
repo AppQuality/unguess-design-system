@@ -2,7 +2,6 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Blockquote } from ".";
 import { MD } from "../typescale";
 import { Paragraph } from "../paragraph";
-import styled from "styled-components";
 
 const Template: Story<any> = (args) => {
   return (
