@@ -1,18 +1,20 @@
-import { IAvatarProps } from '@zendeskgarden/react-avatars';
+import { ISpinnerProps } from '@zendeskgarden/react-loaders';
 
-export interface AvatarArgs extends IAvatarProps {
-  /** Sets the avatar background color */
-  backgroundColor?: string;
-  /** Sets the color for child SVG or `Avatar.Text` components */
-  foregroundColor?: string;
-  /** Provides surface color for an avatar placed on a non-white background */
-  surfaceColor?: string;
-  /** Applies system styling for representing objects, brands, or products */
-  isSystem?: boolean;
-  /** Specifies the avatar size */
-  size?: 'extraextrasmall' | 'extrasmall' | 'small' | 'medium' | 'large';
-  /** Applies status styling */
-  status?: 'available' | 'away';
-  /** Sets the badge text and applies active styling */
-  badge?: string | number;
+export interface SpinnerArgs extends ISpinnerProps {
+   /**
+   * Sets the height and width in pixels. Inherits the parent's font size by default.
+   **/
+   size?: string;
+   /**
+    * Sets the length of the animation cycle in milliseconds
+    **/
+   duration?: number;
+   /**
+    * Sets the fill color. Inherits the parent's `color` by default.
+    **/
+   color?: string;
+   /**
+    * Delays displaying the loader to prevent a render flash during normal loading times
+    **/
+   delayMS?: number;
 }

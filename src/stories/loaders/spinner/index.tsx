@@ -1,8 +1,8 @@
-import { Avatar as ZendeskAvatar } from '@zendeskgarden/react-avatars';
+import { Spinner as ZendeskSpinner } from '@zendeskgarden/react-loaders';
 import styled from "styled-components";
-import { AvatarArgs } from './_types';
+import { SpinnerArgs } from './_types';
 
-const UgAvatar = styled(ZendeskAvatar)``;
+const UgSpinner = styled(ZendeskSpinner)``;
 
 /**
  * Breadcrumbs mark and communicate a user’s location in the product.
@@ -11,7 +11,6 @@ const UgAvatar = styled(ZendeskAvatar)``;
     - To show the user where they are in a nested navigation
     - To provide a quick way to navigate to ancestor pages
  */
-const Avatar = (props: AvatarArgs) => <UgAvatar {...props}/>;
-Avatar.Text = UgAvatar.Text;
+const Spinner = (props: SpinnerArgs) => <UgSpinner {...props}/>;
 
-export { Avatar };
+export { Spinner };
