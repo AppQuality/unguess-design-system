@@ -2,8 +2,8 @@
   "name": "@appquality/unguess-design-system",
   "version": "2.0.0",
   "dependencies": {
-    "@zendeskgarden/react-avatars": "^8.48.1",
     "@zendeskgarden/react-accordions": "^8.49.0",
+    "@zendeskgarden/react-avatars": "^8.49.0",
     "@zendeskgarden/react-breadcrumbs": "^8.49.0",
     "@zendeskgarden/react-buttons": "^8.48.2",
     "@zendeskgarden/react-chrome": "^8.48.2",

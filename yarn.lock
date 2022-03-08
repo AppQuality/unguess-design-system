@@ -3420,11 +3420,15 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-
 "@types/node@*", "@types/node@^16.11.26":
   version "16.11.26"
   resolved "https://registry.npmjs.org/@types/node/-/node-16.11.26.tgz"
   integrity sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==
+
+"@types/node@>=12":
+  version "17.0.21"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.21.tgz#864b987c0c68d07b4345845c3e63b75edd143644"
+  integrity sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==
 
 "@types/node@^14.0.10":
   version "14.18.12"
@@ -3957,15 +3961,6 @@
     "@babel/runtime" "^7.8.4"
     "@reach/auto-id" "^0.16.0"
 
-
-"@zendeskgarden/react-avatars@^8.48.1":
-  version "8.49.0"
-  resolved "https://registry.npmjs.org/@zendeskgarden/react-avatars/-/react-avatars-8.49.0.tgz"
-  integrity sha512-QnoRnN+WO3EbYuWARZTjyS+UyOJRd+riUtUllDKNZ2RPHUaJRvmGi5PBwboVrDEVQ+TKwk+fTxXX/3TnclxyLA==
-  dependencies:
-    polished "^4.0.0"
-    prop-types "^15.5.7"
-
 "@zendeskgarden/react-accordions@^8.49.0":
   version "8.49.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-accordions/-/react-accordions-8.49.0.tgz#1f627730130422b3eb3ec552f21fdfdddce7abfa"
@@ -3977,6 +3972,14 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
+
+"@zendeskgarden/react-avatars@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.49.0.tgz#835eecc1e1d13a6f5839ee1dac3484ec7dae1101"
+  integrity sha512-QnoRnN+WO3EbYuWARZTjyS+UyOJRd+riUtUllDKNZ2RPHUaJRvmGi5PBwboVrDEVQ+TKwk+fTxXX/3TnclxyLA==
+  dependencies:
+    polished "^4.0.0"
+    prop-types "^15.5.7"
 
 "@zendeskgarden/react-breadcrumbs@^8.49.0":
   version "8.49.0"
@@ -8006,15 +8009,6 @@ fs-extra@^7.0.0:
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
   dependencies:
     graceful-fs "^4.1.2"
-    jsonfile "^4.0.0"
-    universalify "^0.1.0"
-
-fs-extra@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-8.1.0.tgz"
-  integrity sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
-  dependencies:
-    graceful-fs "^4.2.0"
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
@@ -14559,11 +14553,6 @@ strip-bom@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/strip-bom/-/strip-bom-3.0.0.tgz"
   integrity sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM=
-
-strip-bom@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/strip-bom/-/strip-bom-4.0.0.tgz"
-  integrity sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==
 
 strip-comments@^1.0.2:
   version "1.0.2"
