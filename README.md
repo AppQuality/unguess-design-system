@@ -25,20 +25,6 @@ Maintaining the system
 
 The Unguess design system codifies existing UI components into a central, well-maintained repository. It is built to address having to paste the same components into multiple projects again and again. This simplifies building UI's with Storybook's design patterns.
 
-#### What we're doing
-
-- Build and maintain a design system in the open
-- Share UI components between multiple apps
-- Dogfood upcoming Storybook features
-- Welcome contributors of all levels and backgrounds
-
-#### What we're not doing
-
-- Rewrite all new components from scratch
-- Overhaul the visual design of components
-- Typescript (the consumer apps don't use it)
-- Compete with more general design systems like ANT or Material.
-
 ## Install
 
 ```bash
