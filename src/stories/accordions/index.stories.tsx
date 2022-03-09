@@ -2,9 +2,9 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Accordion } from ".";
 import { Row } from "../grid/row";
 import { Col } from "../grid/col";
-import { AccordionProps } from "./_types";
+import { AccordionArgs } from "./_types";
 
-interface AccordionStoryArg extends AccordionProps {
+interface AccordionStoryArg extends AccordionArgs {
   items: Array<{
     headerTitle: string;
     content: string;
