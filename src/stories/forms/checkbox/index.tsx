@@ -1,10 +1,8 @@
-import { Checkbox as ZendeskCheckbox, Field as ZendeskField, Label as ZendeskLabel } from "@zendeskgarden/react-forms";
-import { CheckboxArgs, FieldArgs, LabelArgs } from "./_types";
+import { Checkbox as ZendeskCheckbox } from "@zendeskgarden/react-forms";
+import { CheckboxArgs } from "./_types";
 import styled from "styled-components";
 
 const UgCheckbox = styled(ZendeskCheckbox)``;
-const UgField = styled(ZendeskField)``;
-const UgLabel = styled(ZendeskLabel)``;
 
 /**
    * A Checkbox lets users select and unselect options from a list.
@@ -17,7 +15,5 @@ const UgLabel = styled(ZendeskLabel)``;
    *  - To let users activate an option that takes effect immediately, use a Toggle instead
    **/
 const Checkbox = (props: CheckboxArgs) => <UgCheckbox {...props} />;
-const Field = (props: FieldArgs) => <UgField {...props} />;
-const Label = (props: LabelArgs) => <UgLabel {...props} />;
 
-export { Checkbox, Field, Label };
+export { Checkbox };
