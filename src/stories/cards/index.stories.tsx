@@ -1,5 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Title } from "../notifications";
+import { Title } from "../title";
 import { Card } from ".";
 import { CardProps } from "./_types";
 

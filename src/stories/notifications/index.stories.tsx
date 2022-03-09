@@ -1,5 +1,7 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Notification, Title, Close } from ".";
+import { Notification } from ".";
+import { Title } from "../title";
+import { Close } from "../close";
 import { NotificationArgs } from "./_types";
 
 interface NotificationStoryProps extends NotificationArgs {
@@ -16,7 +18,7 @@ const Template: Story<NotificationStoryProps> = ({
     <Notification {...args}>
       <Title>{title}</Title>
       {content}
-      <Close aria-label="Close Notification" />
+      <Close aria-label="Close Notification" onClick={() => alert("Closed!")}/>
     </Notification>
   );
 };

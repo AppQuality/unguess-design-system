@@ -1,12 +1,9 @@
 import {
   Notification as ZendeskNotification,
-  Title as ZendeskTitle,
-  Close as ZendeskClose,
   ToastProvider as ZendeskToastProvider,
   useToast as ZendeskUseToast,
 } from "@zendeskgarden/react-notifications";
-import { NotificationArgs, TitleArgs, ToastProviderArgs } from "./_types";
-import { ButtonArgs } from "../buttons/button/_types";
+import { NotificationArgs, ToastProviderArgs } from "./_types";
 
 /**
  * A Notification is a passive status update that keeps users informed of system progress.
@@ -19,9 +16,7 @@ const Notification = (props: NotificationArgs) => (
 );
 
 //Extras
-const Title = (props: TitleArgs) => <ZendeskTitle {...props} />;
-const Close = (props: ButtonArgs) => <ZendeskClose {...props} />;
 const ToastProvider = (props: ToastProviderArgs) => <ZendeskToastProvider {...props}/>;
 const useToast = ZendeskUseToast;
 
-export { Notification, Title, Close, ToastProvider, useToast };
+export { Notification, ToastProvider, useToast };
