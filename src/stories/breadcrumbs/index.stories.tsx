@@ -36,6 +36,6 @@ Default.args = {
 
 
 export default {
-  title: "Atoms/Breadcrumbs",
+  title: "Molecules/Breadcrumbs",
   component: Breadcrumb,
 } as ComponentMeta<typeof Breadcrumb>;

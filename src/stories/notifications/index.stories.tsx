@@ -34,6 +34,6 @@ export const Default = Template.bind({});
 Default.args = defaultArgs;
 
 export default {
-  title: "Atoms/Notification",
+  title: "Molecules/Notification",
   component: Notification,
 } as ComponentMeta<typeof Notification>;

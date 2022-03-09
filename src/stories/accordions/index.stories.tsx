@@ -70,6 +70,6 @@ Expandable.args = {
 
 
 export default {
-  title: "Atoms/Accordion",
+  title: "Molecules/Accordion",
   component: Accordion,
 } as ComponentMeta<typeof Accordion>;

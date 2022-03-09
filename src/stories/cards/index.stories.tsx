@@ -35,6 +35,6 @@ Floating.args = {
 };
 
 export default {
-  title: "Atoms/Card",
+  title: "Molecules/Card",
   component: Card,
 } as ComponentMeta<typeof Card>;
