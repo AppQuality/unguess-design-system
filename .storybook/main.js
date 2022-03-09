@@ -4,7 +4,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/preset-create-react-app",
+    "@storybook/preset-create-react-app"
   ],
   framework: "@storybook/react",
   typescript: {
@@ -20,22 +20,22 @@ module.exports = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
-  webpackFinal: async (config, { configType }) => {
-    // Add SVGR Loader
-    // ========================================================
-    const assetRule = config.module.rules.find(({ test }) => test.test(".svg"));
+  // webpackFinal: async (config, { configType }) => {
+  //   // Add SVGR Loader
+  //   // ========================================================
+  //   const assetRule = config.module.rules.find(({ test }) => test.test(".svg"));
 
-    const assetLoader = {
-      loader: assetRule.loader,
-      options: assetRule.options || assetRule.query,
-    };
+  //   const assetLoader = {
+  //     loader: assetRule.loader,
+  //     options: assetRule.options || assetRule.query,
+  //   };
 
-    // Merge our rule with existing assetLoader rules
-    config.module.rules.unshift({
-      test: /\.svg$/,
-      use: ["@svgr/webpack", assetLoader],
-    });
-    // Return the altered config
-    return config;
-  },
+  //   // Merge our rule with existing assetLoader rules
+  //   config.module.rules.unshift({
+  //     test: /\.svg$/,
+  //     use: ["@svgr/webpack", assetLoader],
+  //   });
+  //   // Return the altered config
+  //   return config;
+  // },
 };
