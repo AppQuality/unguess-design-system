@@ -2,6 +2,10 @@ import { GlobalStyle } from './stories/shared/globalStyle';
 
 //-------------- Components --------------
 
+// --- Avatar ---
+export * from './stories/avatar';
+
+
 // --- Breadcrumbs ---
 export * from './stories/breadcrumbs';
 

@@ -7,13 +7,11 @@ const Template: Story<FieldArgs> = (args) => {
     <Field {...args}>
       <textarea value="Il componente Field contiene questa textarea" />
     </Field>
-  )
-}
+  );
+};
 
 export const Default = Template.bind({});
-Default.args = {
-  
-};
+Default.args = {};
 
 export default {
   title: "Atoms/Field",
