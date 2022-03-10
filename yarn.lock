@@ -4085,6 +4085,15 @@
     react-transition-group "^4.4.2"
     react-uid "^2.3.1"
 
+"@zendeskgarden/react-tags@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-8.49.0.tgz#6167d2ee589ddf78c2993f350dd4332cfd062e13"
+  integrity sha512-LmQ2CU7C6pqS1c1gHhf0pafBxpFLEuJZnionemFWa1t0jZuUmhZB+zcthRRZyCVZp+PRnc2m9modBv2ZCgVWfQ==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.7.0"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+
 "@zendeskgarden/react-theming@^8.48.2":
   version "8.48.2"
   resolved "https://registry.npmjs.org/@zendeskgarden/react-theming/-/react-theming-8.48.2.tgz"
