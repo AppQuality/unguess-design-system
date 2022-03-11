@@ -1,6 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Span } from ".";
-import { MD } from "../typescale";
 import { SpanArgs } from "./_types";
 
 const Template: Story<SpanArgs> = (args) => <Span {...args} />;

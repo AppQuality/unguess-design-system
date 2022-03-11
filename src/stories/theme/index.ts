@@ -1,11 +1,9 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import { palette } from "./palette";
 
 const theme = {
   ...DEFAULT_THEME,
-  colors: {
-    ...DEFAULT_THEME.colors,
-    primaryHue: "#003A57",
-  },
+  palette: palette,
   fonts: {
     ...DEFAULT_THEME.fonts,
     system: '"Poppins",sans-serif,Helvetica,Arial,sans-serif',
