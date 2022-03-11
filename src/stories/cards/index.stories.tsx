@@ -1,5 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Title } from "../notifications";
+import { Title } from "../title";
 import { Card } from ".";
 import { CardProps } from "./_types";
 
@@ -35,6 +35,6 @@ Floating.args = {
 };
 
 export default {
-  title: "Atoms/Card",
+  title: "Molecules/Card",
   component: Card,
 } as ComponentMeta<typeof Card>;

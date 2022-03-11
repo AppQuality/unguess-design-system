@@ -1,5 +1,5 @@
 import { Accordion as ZendeskAccordion } from '@zendeskgarden/react-accordions';
-import { AccordionProps } from './_types';
+import { AccordionArgs } from './_types';
 
 /**
  * Accordions are headers that can be expanded to reveal content or collapsed to hide it.
@@ -8,7 +8,7 @@ import { AccordionProps } from './_types';
     - To organize related information into sections
     - To surface information through progressive disclosure
  */
-const Accordion = (props: AccordionProps) => <ZendeskAccordion {...props}/>;
+const Accordion = (props: AccordionArgs) => <ZendeskAccordion {...props}/>;
 
 Accordion.Section = ZendeskAccordion.Section;
 Accordion.Header = ZendeskAccordion.Header;

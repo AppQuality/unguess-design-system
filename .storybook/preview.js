@@ -1,8 +1,7 @@
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import { Chrome } from '@zendeskgarden/react-chrome';
+import { Chrome } from "@zendeskgarden/react-chrome";
 import { GlobalStyle } from "../src/stories/shared/globalStyle";
-import { theme } from '../src/stories/theme';
-
+import { theme } from "../src/stories/theme";
 
 export const decorators = [
   (Story) => (
@@ -21,4 +20,16 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+  options: {
+    storySort: {
+      order: [
+        "Overview",
+        "Atoms",
+        "Molecules",
+        "Organisms",
+        "Templates",
+        "Pages",
+      ],
+    },
+  },
+};

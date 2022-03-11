@@ -10,9 +10,9 @@ interface AvatarProps extends AvatarArgs {
 
 const Template: Story<AvatarProps> = (args) => {
   const children = (type: string) => {
-    if (type == "icon") return <UserIcon role="img" aria-label="User" />
-    if (type == "image") return <img alt="image avatar" src="https://s3.eu-west-1.amazonaws.com/appq.static/rossini.png" />
-    if (type == "text") return <Avatar.Text>LC</Avatar.Text>
+    if (type === "icon") return <UserIcon role="img" aria-label="User" />
+    if (type === "image") return <img alt="avatar" src="https://s3.eu-west-1.amazonaws.com/appq.static/rossini.png" />
+    if (type === "text") return <Avatar.Text>LC</Avatar.Text>
   }
   return (
     <Avatar {...args}>

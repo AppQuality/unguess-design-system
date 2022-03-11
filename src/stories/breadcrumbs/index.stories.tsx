@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Breadcrumb } from ".";
 import { Anchor } from "../buttons/anchor";
 import { Basic } from "../buttons/anchor/index.stories";
-import { Span } from "@zendeskgarden/react-typography"; //TODO: replace with unguess component
+import { Span } from "../typography/span";
 import { BreadcrumbArgs } from "./_types";
 
 
@@ -36,6 +36,6 @@ Default.args = {
 
 
 export default {
-  title: "Atoms/Breadcrumbs",
+  title: "Molecules/Breadcrumbs",
   component: Breadcrumb,
 } as ComponentMeta<typeof Breadcrumb>;
