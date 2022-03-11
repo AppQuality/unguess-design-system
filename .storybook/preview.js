@@ -24,6 +24,7 @@ export const parameters = {
     storySort: {
       order: [
         "Overview",
+        "Theme",
         "Atoms",
         "Molecules",
         "Organisms",

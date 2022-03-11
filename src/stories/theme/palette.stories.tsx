@@ -87,7 +87,7 @@ const contrast = (hex: string) => {
 };
 
 export default {
-  title: "Overview/Palette",
+  title: "Theme/Palette",
   component: Paragraph,
   argTypes: {
     cards: {
