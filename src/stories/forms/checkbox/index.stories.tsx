@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Checkbox } from ".";
-import { Field } from "../../field";
+import { Field } from "../field";
 import { Label } from "../../label";
 import { CheckboxArgs } from "./_types";
 

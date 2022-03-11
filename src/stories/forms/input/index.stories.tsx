@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Input } from ".";
-import { Field } from "../../field";
+import { Field } from "../field";
 import { Label } from "../../label";
 import { Row } from "../../grid/row";
 import { Col } from "../../grid/col";
