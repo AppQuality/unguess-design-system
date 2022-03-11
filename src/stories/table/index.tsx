@@ -6,7 +6,8 @@ import {
    Body as ZendeskBody,
    Row as ZendeskRow,
    Cell as ZendeskCell,
-   GroupRow as ZendeskGroupRow
+   GroupRow as ZendeskGroupRow,
+   Caption as ZendeskCaption
 } from '@zendeskgarden/react-tables';
 import styled from "styled-components";
 import { CellArgs, HeaderCellArgs, RowArgs, TableProps } from './_types';
@@ -32,5 +33,16 @@ const Body = ({children}: React.PropsWithChildren<{}>) => <ZendeskBody>{children
 const Row = (props: RowArgs) => <ZendeskRow {...props} />;
 const Cell = (props: CellArgs) => <ZendeskCell {...props} />;
 const GroupRow = ({children}: React.PropsWithChildren<{}>) => <ZendeskGroupRow>{children}</ZendeskGroupRow>;
+const Caption = ({children}: React.PropsWithChildren<{}>) => <ZendeskCaption>{children}</ZendeskCaption>;
 
-export { Table, Head, HeaderRow, HeaderCell, Body, Row, Cell, GroupRow };
+export { 
+   Table, 
+   Head, 
+   HeaderRow, 
+   HeaderCell, 
+   Body, 
+   Row, 
+   Cell, 
+   GroupRow, 
+   Caption 
+};
