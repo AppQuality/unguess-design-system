@@ -103,7 +103,7 @@ OneWiderColumn.args = {
 
 
 export default {
-  title: "Atoms/Grid/Grid",
+  title: "Molecules/Grid",
   component: Grid,
   argTypes: {
     gutters: {

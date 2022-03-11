@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Textarea } from ".";
-import { Field } from "../field";
+import { Field } from "../../field";
 import { Label } from "../../label";
 import { Row } from "../../grid/row";
 import { Col } from "../../grid/col";
@@ -44,6 +44,6 @@ Resize.args = {
 };
 
 export default {
-  title: "Atoms/Forms/Textarea",
+  title: "Molecules/Forms/Textarea",
   component: Textarea
 } as ComponentMeta<typeof Textarea>;

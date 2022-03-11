@@ -105,7 +105,7 @@ Validation.args = {
 };
 
 export default {
-  title: "Atoms/Dropdown/Multiselect",
+  title: "Molecules/Dropdown/Multiselect",
   component: Multiselect,
   argTypes: {
     selectedItem: {

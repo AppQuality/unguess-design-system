@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Radio } from ".";
-import { Field } from "../field";
+import { Field } from "../../field";
 import { Label } from "../../label";
 import { Row } from "../../grid/row";
 import { Col } from "../../grid/col";
@@ -31,6 +31,6 @@ Checked.args = {
 };
 
 export default {
-  title: "Atoms/Forms/Radio",
+  title: "Molecules/Forms/Radio",
   component: Radio
 } as ComponentMeta<typeof Radio>;

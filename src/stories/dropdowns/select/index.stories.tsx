@@ -101,7 +101,7 @@ Validation.args = {
 };
 
 export default {
-  title: "Atoms/Dropdown/Select",
+  title: "Molecules/Dropdown/Select",
   component: Dropdown,
   argTypes: {
     selectedItem: {
