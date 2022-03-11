@@ -1,3 +1,37 @@
+# v2.1.0 (Fri Mar 11 2022)
+
+#### 🚀 Enhancement
+
+- Cup 431 form [#8](https://github.com/AppQuality/unguess-design-system/pull/8) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(multiselect): add multiselect and palette story [#9](https://github.com/AppQuality/unguess-design-system/pull/9) ([@cannarocks](https://github.com/cannarocks))
+- Cup 433 loaders [#7](https://github.com/AppQuality/unguess-design-system/pull/7) ([@marcbon](https://github.com/marcbon))
+- Cup 446 wells [#6](https://github.com/AppQuality/unguess-design-system/pull/6) ([@cannarocks](https://github.com/cannarocks))
+- add avatar component [#5](https://github.com/AppQuality/unguess-design-system/pull/5) ([@marcbon](https://github.com/marcbon))
+- Cup 424 accordion [#4](https://github.com/AppQuality/unguess-design-system/pull/4) ([@cannarocks](https://github.com/cannarocks))
+- Typography components [#3](https://github.com/AppQuality/unguess-design-system/pull/3) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- feat(storybook): add Unguess theme ([@cannarocks](https://github.com/cannarocks))
+- feat(intro): add intro page story ([@cannarocks](https://github.com/cannarocks))
+- fix(field): fix wrong import for form field component ([@cannarocks](https://github.com/cannarocks))
+- fix(field): restore form field component ([@cannarocks](https://github.com/cannarocks))
+- build(storybook): update Github action used to publish component build ([@cannarocks](https://github.com/cannarocks))
+- refactor(stories): move molecules under right group ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'CUP-430-dropdowns' ([@cannarocks](https://github.com/cannarocks))
+- fix(palette): remove useless import ([@cannarocks](https://github.com/cannarocks))
+- Create storybook.yml ([@cannarocks](https://github.com/cannarocks))
+- refactor(notifications): remove unused imports ([@cannarocks](https://github.com/cannarocks))
+- feat(notifications): add notification component ([@cannarocks](https://github.com/cannarocks))
+- fix avatars description ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- [@marcbon](https://github.com/marcbon)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v1.0.0 (Fri Mar 04 2022)
 
 #### 💥 Breaking Change
