@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Toggle } from ".";
-import { Field } from "../../field";
+import { Field } from "../field";
 import { Label } from "../../label";
 import { LabelArgs } from "../../label/_types";
 import { Basic as BasicLabel } from "../../label/index.stories";
