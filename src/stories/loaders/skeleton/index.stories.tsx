@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Skeleton } from ".";
 import { Col } from "../../grid/col";
 import { Row } from "../../grid/row";
-import { XXL, XL, MD } from "../../typography/typescale";
+import { XXL, XL } from "../../typography/typescale";
 import { SkeletonArgs } from "./_types";
 
 const defaultArgs: SkeletonArgs = {

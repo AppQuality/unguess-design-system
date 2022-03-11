@@ -1,6 +1,6 @@
 import { IAccordionProps } from "@zendeskgarden/react-accordions";
 
-export interface AccordionProps extends IAccordionProps {
+export interface AccordionArgs extends IAccordionProps {
   /** Sets `aria-level` heading rank in the document structure */
   level: number;
   /** Sets the expanded sections in a controlled accordion */

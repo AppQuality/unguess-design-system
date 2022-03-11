@@ -1,4 +1,5 @@
 import { Avatar as ZendeskAvatar } from '@zendeskgarden/react-avatars';
+import { theme } from '../theme'; 
 import styled from "styled-components";
 import { AvatarArgs } from './_types';
 
