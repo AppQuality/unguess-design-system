@@ -33,5 +33,5 @@ jobs:
         id: storybook
         run: |
           yarn --frozen-lockfile
-          yarn run build:dev
+          yarn run build
           npx chromatic --project-token  ${{ secrets.CHROMATIC_TOKEN }} --exit-zero-on-changes --ci
