@@ -3,7 +3,6 @@ import { HTMLAttributes } from "react";
 import { theme } from ".";
 import { Card } from "../cards";
 import { Title } from "../title";
-import { Row } from "../grid/row";
 import { Paragraph } from "@zendeskgarden/react-typography";
 
 const { palette } = theme;
