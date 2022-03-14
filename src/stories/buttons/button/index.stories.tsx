@@ -43,6 +43,13 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9271',
+  },
+};
+
 export const Basic = Template.bind({});
 Basic.args = {
   ...defaultArgs,
@@ -50,10 +57,24 @@ Basic.args = {
   variant: "isBasic",
 };
 
+Basic.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9341',
+  },
+};
+
 export const Primary = Template.bind({});
 Primary.args = {
   ...defaultArgs,
   variant: "isPrimary",
+};
+
+Primary.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9410',
+  },
 };
 
 export const WithIcon = Template.bind({});

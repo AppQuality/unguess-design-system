@@ -45,7 +45,7 @@ Square.args = {
 Square.parameters = {
   design: {
     type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A80',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=3673%3A29824',
   },
 };
 
