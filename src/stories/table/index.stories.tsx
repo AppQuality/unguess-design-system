@@ -5,12 +5,20 @@ import { TableProps } from "./_types";
 import styled from "styled-components";
 import { Pagination } from "../pagination";
 import { XL } from "../typography/typescale";
+import getScrollbarSize from 'dom-helpers/scrollbarSize';
+import { FixedSizeList } from 'react-window';
+import { Field } from "../forms/field";
+import { Checkbox } from "../forms/checkbox";
+import { Label } from "../label";
+import { KEY_CODES } from '@zendeskgarden/container-utilities';
 
 interface IRow {
+  id?: number | string;
   groupName?: string;
   fruit?: string;
   sunExposure?: string;
   soil?: string;
+  selected?: boolean;
 }
 
 interface TableStoryArg extends TableProps {
@@ -215,6 +223,232 @@ Truncated.args = {
     }
   ],
   isTruncated: true
+};
+
+/** SCROLL */
+const SCROLLBAR_SIZE = getScrollbarSize();
+const StyledSpacerCell = styled(HeaderCell)`
+  padding: 0;
+  width: ${SCROLLBAR_SIZE}px;
+`;
+const ScrollTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <Table style={{ minWidth: 400 }} {...args}>
+        <Head>
+          <HeaderRow>
+            {columns.map((key) => (
+              <HeaderCell>{key}</HeaderCell>
+            ))}
+            <StyledSpacerCell aria-hidden />
+          </HeaderRow>
+        </Head>
+      </Table>
+      <div style={{ maxHeight: 420, overflowY: 'auto' }}>
+        <Table>
+          <Body>
+            {items.map((item, index) => createRow(item, index, columns.length))}
+          </Body>
+        </Table>
+      </div>
+    </div>
+  );
+};
+export const Scroll = ScrollTemplate.bind({});
+Scroll.args = {
+  ...defaultArgs,
+  items: Array.from(Array(100)).map((row, index) => ({
+    fruit: `Fruit #${index}`,
+    sunExposure: 'Full sun',
+    soil: 'Well draining'
+  }))
+};
+
+/** SELECTION */
+const isSelectAllIndeterminate = (rows: IRow[]) => {
+  const numSelectedRows = rows.reduce((accumulator, row) => {
+    if (row.selected) {
+      return accumulator + 1;
+    }
+
+    return accumulator;
+  }, 0);
+
+  return numSelectedRows > 0 && numSelectedRows < rows.length;
+};
+const isSelectAllChecked = (rows: IRow[]) => rows.every(row => row.selected);
+const SelectionTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+  const [data, setData] = useState(items);
+  const [shiftEnabled, setShiftEnabled] = useState(false);
+  const [focusedRowIndex, setFocusedRowIndex] = useState<number | undefined>(undefined);
+
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <Table style={{ minWidth: 500 }}>
+        <Head>
+          <HeaderRow>
+            <HeaderCell isMinimum>
+              <Field>
+                <Checkbox
+                  indeterminate={isSelectAllIndeterminate(data)}
+                  checked={isSelectAllChecked(data)}
+                  onChange={e => {
+                    if (e.target.checked) {
+                      const updatedRows = data.map(row => ({ ...row, selected: true }));
+
+                      setData(updatedRows);
+                    } else {
+                      const updatedRows = data.map(row => ({ ...row, selected: false }));
+
+                      setData(updatedRows);
+                    }
+                  }}
+                >
+                  <Label hidden>Select all tickets</Label>
+                </Checkbox>
+              </Field>
+            </HeaderCell>
+            <HeaderCell>Fruit</HeaderCell>
+            <HeaderCell>Sun exposure</HeaderCell>
+            <HeaderCell>Soil type</HeaderCell>
+          </HeaderRow>
+        </Head>
+        <Body>
+          {data.map((row, index) => (
+            <Row key={row.id} isSelected={row.selected}>
+              <Cell isMinimum>
+                <Field>
+                  <Checkbox
+                    checked={row.selected}
+                    onKeyDown={e => {
+                      if (e.keyCode === KEY_CODES.SHIFT) {
+                        setShiftEnabled(true);
+                      }
+                    }}
+                    onKeyUp={() => {
+                      setShiftEnabled(false);
+                    }}
+                    onChange={e => {
+                      const updatedRows = [...data];
+
+                      if (shiftEnabled && focusedRowIndex !== undefined) {
+                        const startIndex = Math.min(focusedRowIndex, index);
+                        const endIndex = Math.max(focusedRowIndex, index);
+
+                        const isAllChecked = updatedRows
+                          .slice(startIndex, endIndex + 1)
+                          .every(slicedRow => slicedRow.selected);
+
+                        for (let x = startIndex; x <= endIndex; x++) {
+                          if (x === index && isAllChecked) {
+                            updatedRows[x].selected = true;
+                            continue;
+                          }
+
+                          updatedRows[x].selected = !isAllChecked;
+                        }
+                      } else if (e.target.checked) {
+                        updatedRows[index].selected = true;
+                      } else {
+                        updatedRows[index].selected = false;
+                      }
+
+                      setData(updatedRows);
+                      setFocusedRowIndex(index);
+                    }}
+                  >
+                    <Label hidden>Select ticket</Label>
+                  </Checkbox>
+                </Field>
+              </Cell>
+              <Cell>{row.fruit}</Cell>
+              <Cell>{row.sunExposure}</Cell>
+              <Cell>{row.soil}</Cell>
+            </Row>
+          ))}
+        </Body>
+      </Table>
+    </div>
+  );
+};
+export const Selection = SelectionTemplate.bind({});
+Selection.args = {
+  ...defaultArgs,
+  items: Array.from(Array(10)).map((row, index) => ({
+    id: `row-${index}`,
+    fruit: `Fruit #${index + 1}`,
+    sunExposure: 'Full sun',
+    soil: 'Well draining',
+    selected: false
+  }))
+};
+
+/** VIRTUAL SCROLLING */
+const ScrollableTable = styled(Table).attrs({ role: 'presentation' })`
+  /* stylelint-disable-next-line */
+  display: block !important;
+`;
+const ScrollableHead = styled(Head)`
+  display: block;
+`;
+const ScrollableHeaderRow = styled(HeaderRow).attrs({ role: 'row' })`
+  /* stylelint-disable-next-line */
+  display: table !important;
+  width: 100%;
+  table-layout: fixed;
+`;
+const ScrollableHeaderCell = styled(HeaderCell).attrs({ role: 'columnheader' })``;
+const ScrollableBody = styled(Body)`
+  /* stylelint-disable-next-line */
+  display: block !important;
+`;
+const ScrollableRow = styled(Row).attrs({ role: 'row' })`
+  /* stylelint-disable-next-line */
+  display: table !important;
+  table-layout: fixed;
+`;
+const ScrollableCell = styled(Cell).attrs({ role: 'cell' })``;
+const VirtualScrollingTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+  return (
+    <div role="grid" aria-rowcount={items.length} aria-colcount={4}>
+      <ScrollableTable>
+        <ScrollableHead>
+          <ScrollableHeaderRow>
+            <ScrollableHeaderCell>Fruit</ScrollableHeaderCell>
+            <ScrollableHeaderCell>Sun exposure</ScrollableHeaderCell>
+            <ScrollableHeaderCell>Soil type</ScrollableHeaderCell>
+            <StyledSpacerCell aria-hidden />
+          </ScrollableHeaderRow>
+        </ScrollableHead>
+      </ScrollableTable>
+      <FixedSizeList
+        height={420}
+        itemCount={items.length}
+        itemSize={40}
+        width="100%"
+        outerElementType={ScrollableTable}
+        innerElementType={ScrollableBody}
+      >
+        {({ index, style }) => (
+          <ScrollableRow key={items[index].id} style={style} aria-rowindex={index + 1}>
+            <ScrollableCell isTruncated>{items[index].fruit}</ScrollableCell>
+            <ScrollableCell isTruncated>{items[index].sunExposure}</ScrollableCell>
+            <ScrollableCell isTruncated>{items[index].soil}</ScrollableCell>
+          </ScrollableRow>
+        )}
+      </FixedSizeList>
+    </div>
+  );
+};
+export const VirtualScrolling = VirtualScrollingTemplate.bind({});
+VirtualScrolling.args = {
+  ...defaultArgs,
+  items: Array.from(Array(1000)).map((row, index) => ({
+    id: index,
+    fruit: `Fruit #${index + 1}`,
+    sunExposure: 'Full sun',
+    soil: 'Well draining'
+  }))
 };
 
 export default {
