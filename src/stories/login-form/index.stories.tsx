@@ -1,26 +1,25 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { LoginForm } from ".";
-import { LoginFormArgs, LoginFields } from "./_types";
+import { LoginFormArgs } from "./_types";
 
 const Template: Story<LoginFormArgs> = (args) => <LoginForm {...args} />;
 
 const defaultArgs: LoginFormArgs = {
   onSubmit: (values, actions) => {
-    console.log(values);
-    actions.setSubmitting(false);
+    setTimeout(() => {
+      alert("Submitted with a 2 seconds fake delay!");
+      actions.setSubmitting(false);
+    }, 2000)
   },
   initialValues: {
     email: "",
     password: "",
   },
-  isSubmitting: false,
-  isValid: false,
+  validateOnChange: true,
   errors: {},
-  onChange: (formData) => {
-    console.log(formData);
-  },
+  touched: {},
   validate: (values) => {
-    const errors = {email: "", password: ""};
+    let errors: any = {};
     if (!values.email) {
       errors.email = "Required";
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
@@ -32,6 +31,7 @@ const defaultArgs: LoginFormArgs = {
     } else if (values.password.length < 8) {
       errors.password = "Password must be at least 8 characters";
     }
+
     return errors;
   },
 };
@@ -48,10 +48,16 @@ Filled.args = {
     email: "john.doe@contoso.com",
     password: "password",
   },
-  isValid: true,
 };
 
 export default {
   title: "Organisms/LoginForm",
+  argTypes: {
+    isValid: {
+      table: {
+        disable: true
+      }
+    }
+  },
   component: LoginForm,
 } as ComponentMeta<typeof LoginForm>;

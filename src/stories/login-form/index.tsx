@@ -36,50 +36,49 @@ const LoginForm = (props: LoginFormArgs) => (
             errors,
             touched,
             handleChange,
-            handleBlur,
             handleSubmit,
             isSubmitting,
-            /* and other goodies */
-          }) => (
+          }) => {
+            return (
             <Form onSubmit={handleSubmit}>
               <Card isFloating>
-                <Title style={{textAlign: "center", margin: theme.space.md}}>Log In</Title>
+                <Title style={{ textAlign: "center", margin: theme.space.md }}>Log In</Title>
                 <Field>
-                  <Label></Label>
                   <Input
                     type="email"
                     name="email"
                     placeholder="Email Address"
                     onChange={handleChange}
                     value={values.email}
-                    {...errors && errors.email ? {validation: "error"} : {}}
+                    {...touched && values.email ? touched.email = true : touched.email = false}
+                    {...errors && errors.email ? { validation: "error" } : (touched.email ? { validation: "success" } : "")}
                   />
-                  { (errors.email) ? (<Message validation="error">{errors.email}</Message>) : ""}
+                  {(errors.email) ? (<Message validation="error">{errors.email}</Message>) : ""}
                 </Field>
-                <Field>
-                  <Label></Label>
+                <Field style={{ marginTop: theme.space.md }}>
                   <Input
                     type="password"
                     name="password"
                     placeholder="Password"
                     onChange={handleChange}
                     value={values.password}
-                    {...errors && errors.password ? {validation: "error"} : {}}
+                    {...touched && values.password ? touched.password = true : touched.password = false}
+                    {...errors && errors.password ? { validation: "error" } : (touched.password ? { validation: "success" } : "")}
                   />
-                  { (errors.password) ? (<Message validation="error">{errors.password}</Message>) : ""}
+                  {(errors.password) ? (<Message validation="error">{errors.password}</Message>) : ""}
                 </Field>
                 <br />
                 <Button
                   type="submit"
                   isStretched
-                  disabled={!props.isValid}
+                  disabled={(Object.keys(errors).length) ? true : (isSubmitting) ? true : false}
                   isPrimary
                 >
                   Log in
                 </Button>
               </Card>
             </Form>
-          )}
+          )}}
         </Formik>
       </Col>
     </Row>
