@@ -57,7 +57,7 @@ export * from './stories/login-form';
 export * from './stories/notifications';
 
 // --- Table ---
-export * from './stories/table';
+export {Table, Head as TableHead, HeaderRow, HeaderCell, Body as TableRow, Cell as TableCell, GroupRow, Caption } from './stories/table';
 
 // --- Theme ---
 export * from './stories/theme';
