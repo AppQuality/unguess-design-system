@@ -1,3 +1,30 @@
+# v2.2.0 (Tue Mar 15 2022)
+
+#### 🚀 Enhancement
+
+- feat(tiles): add tiles component [#12](https://github.com/AppQuality/unguess-design-system/pull/12) ([@antoninojob](https://github.com/antoninojob))
+- Login form [#15](https://github.com/AppQuality/unguess-design-system/pull/15) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Feat/improve storybook experience [#14](https://github.com/AppQuality/unguess-design-system/pull/14) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🐛 Bug Fix
+
+- fix(table): changed types definition for extras elements [#13](https://github.com/AppQuality/unguess-design-system/pull/13) ([@antoninojob](https://github.com/antoninojob))
+- Cup 438 table [#10](https://github.com/AppQuality/unguess-design-system/pull/10) ([@antoninojob](https://github.com/antoninojob))
+- feat(tag): add tag component [#11](https://github.com/AppQuality/unguess-design-system/pull/11) ([@antoninojob](https://github.com/antoninojob))
+
+#### ⚠️ Pushed to `master`
+
+- fix(export): prevent naming conflicts ([@cannarocks](https://github.com/cannarocks))
+- feat(loginform): add basic Login Form ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@marcbon](https://github.com/marcbon)
+- Antonino ([@antoninojob](https://github.com/antoninojob))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.1.0 (Fri Mar 11 2022)
 
 #### 🚀 Enhancement
