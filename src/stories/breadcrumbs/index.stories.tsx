@@ -35,6 +35,13 @@ Default.args = {
 };
 
 
+Default.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A32401',
+  },
+};
+
 export default {
   title: "Molecules/Breadcrumbs",
   component: Breadcrumb,

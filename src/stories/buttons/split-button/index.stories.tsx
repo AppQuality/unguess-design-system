@@ -1,6 +1,9 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { useState } from 'react';
-import { Dropdown, Trigger, Menu, Item  } from "@zendeskgarden/react-dropdowns";  //TODO: replace with unguess component
+import { useState } from "react";
+import { Dropdown } from "../../dropdowns/select";
+import { Item } from "../../dropdowns/item";
+import { Menu } from "../../dropdowns/menu";
+import { Trigger } from "../../trigger";
 import { Button } from "../button";
 import { IconButton } from "../icon-button";
 import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
@@ -10,17 +13,22 @@ import { SplitButtonArgs } from "./_types";
 const Template: Story<SplitButtonArgs> = (args) => {
   const [rotated, setRotated] = useState<boolean>();
   return (
-    <SplitButton>
-      <Button isBasic>button</Button>
+    <SplitButton {...args}>
+      <Button>button</Button>
       <Dropdown
         onStateChange={(options) =>
           options.hasOwnProperty("isOpen") && setRotated(options.isOpen)
         }
       >
         <Trigger>
-          <IconButton isPill={false} aria-label="other actions" isRotated={rotated}>
+          <IconButton
+            isPill={false}
+            isBasic={false}
+            aria-label="other actions"
+            isRotated={rotated}
+          >
             <LeafIcon />
-          </IconButton>  
+          </IconButton>
         </Trigger>
         <Menu placement="bottom-end">
           <Item value="prune">Prune</Item>
@@ -33,6 +41,12 @@ const Template: Story<SplitButtonArgs> = (args) => {
 };
 
 export const Default = Template.bind({});
+Default.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9661",
+  },
+};
 
 export default {
   title: "Atoms/Buttons/SplitButton",

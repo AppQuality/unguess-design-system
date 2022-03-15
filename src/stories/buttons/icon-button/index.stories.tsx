@@ -25,6 +25,13 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A8637",
+  },
+};
+
 export const Danger = Template.bind({});
 Danger.args = {
   ...defaultArgs,
@@ -37,12 +44,21 @@ Disabled.args = {
   disabled: true,
 };
 
+
 export const Shape = Template.bind({});
 Shape.args = {
   ...defaultArgs,
   isBasic: false,
   isPill: false,
 };
+
+Shape.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A8663",
+  },
+};
+
 
 export default {
   title: "Atoms/Buttons/IconButton",
