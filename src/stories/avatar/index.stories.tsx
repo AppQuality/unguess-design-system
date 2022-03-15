@@ -24,7 +24,14 @@ const Template: Story<AvatarProps> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   type: "text",
-  backgroundColor: theme.colors.primaryHue,
+  backgroundColor: theme.gradients.dark,
+};
+
+Default.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=3673%3A29791',
+  },
 };
 
 export const Square = Template.bind({});
@@ -33,6 +40,13 @@ Square.args = {
   backgroundColor: theme.colors.primaryHue,
   isSystem: true,
   status: "available"
+};
+
+Square.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=3673%3A29824',
+  },
 };
 
 export default {

@@ -16,11 +16,25 @@ Basic.args = {
   onClick: () => alert("clicked!"),
 };
 
+Basic.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26532',
+  },
+};
+
 export const Danger = Template.bind({});
 Danger.args = {
   ...defaultArgs,
   isDanger: true,
   onClick: () => alert("clicked!"),
+};
+
+Danger.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26537',
+  },
 };
 
 export const External = Template.bind({});

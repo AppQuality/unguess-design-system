@@ -49,12 +49,22 @@ const defaultArgs: AccordionStoryArg = {
       ...accordionContent,
       headerTitle: "(2) " + accordionContent.headerTitle,
     },
+    {
+      ...accordionContent,
+      headerTitle: "(3) " + accordionContent.headerTitle,
+    },
   ],
   level: 4,
 };
 
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+Default.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A80',
+  },
+};
 
 export const Bare = Template.bind({});
 Bare.args = {
@@ -62,10 +72,30 @@ Bare.args = {
   isBare: true,
 };
 
+Bare.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A86',
+  },
+};
+
 export const Expandable = Template.bind({});
 Expandable.args = {
   ...defaultArgs,
   isExpandable: true,
+};
+
+export const Compact = Template.bind({});
+Compact.args = {
+  ...defaultArgs,
+  isCompact: true,
+};
+
+Compact.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=1510%3A3230',
+  },
 };
 
 

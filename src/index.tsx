@@ -56,6 +56,9 @@ export * from './stories/login-form';
 // --- Notifications ---
 export * from './stories/notifications';
 
+// --- Table ---
+export * from './stories/table';
+
 // --- Theme ---
 export * from './stories/theme';
 
