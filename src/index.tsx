@@ -19,6 +19,9 @@ export * from './stories/buttons/split-button';
 // --- Loaders ---
 export * from './stories/loaders/spinner';
 
+// --- Table ---
+export * from './stories/table';
+
 // --- Theme ---
 export * from './stories/theme';
 export { GlobalStyle };
