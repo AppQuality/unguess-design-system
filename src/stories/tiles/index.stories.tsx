@@ -24,7 +24,9 @@ interface TilesStoryProps extends TilesArgs {
 
 const StyledCol = styled(Col)`
   ${p => mediaQuery('down', 'xs', p.theme)} {
-    margin-top: ${p => p.theme.space.sm};
+    :not(:first-child) {
+      margin-top: ${p => p.theme.space.sm};
+    }
   }
 `;
 const Template: Story<TilesStoryProps> = ({tiles, hasDescription, ...args}) => {
