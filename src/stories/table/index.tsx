@@ -9,6 +9,7 @@ import {
    GroupRow as ZendeskGroupRow,
    Caption as ZendeskCaption
 } from '@zendeskgarden/react-tables';
+import { HTMLAttributes } from 'react';
 import styled from "styled-components";
 import { CellArgs, HeaderCellArgs, RowArgs, TableProps } from './_types';
 
@@ -26,14 +27,14 @@ const UgTable = styled(ZendeskTable)``;
 const Table = (props: TableProps) => <UgTable {...props}/>;
 
 // Extras
-const Head = ({children}: React.PropsWithChildren<{}>) => <ZendeskHead>{children}</ZendeskHead>;
-const HeaderRow = ({children}: React.PropsWithChildren<{}>) => <ZendeskHeaderRow>{children}</ZendeskHeaderRow>;
+const Head = (props: HTMLAttributes<HTMLTableSectionElement>) => <ZendeskHead {...props} />;
+const HeaderRow = (props: RowArgs) => <ZendeskHeaderRow {...props} />;
 const HeaderCell = (props: HeaderCellArgs) => <ZendeskHeaderCell {...props}/>;
-const Body = ({children}: React.PropsWithChildren<{}>) => <ZendeskBody>{children}</ZendeskBody>;
+const Body = (props: HTMLAttributes<HTMLTableSectionElement>) => <ZendeskBody {...props} />;
 const Row = (props: RowArgs) => <ZendeskRow {...props} />;
 const Cell = (props: CellArgs) => <ZendeskCell {...props} />;
-const GroupRow = ({children}: React.PropsWithChildren<{}>) => <ZendeskGroupRow>{children}</ZendeskGroupRow>;
-const Caption = ({children}: React.PropsWithChildren<{}>) => <ZendeskCaption>{children}</ZendeskCaption>;
+const GroupRow = (props: RowArgs) => <ZendeskGroupRow {...props} />;
+const Caption = (props: HTMLAttributes<HTMLTableCaptionElement>) => <ZendeskCaption {...props} />;
 
 export { 
    Table, 
