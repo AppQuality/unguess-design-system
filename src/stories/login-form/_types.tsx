@@ -14,6 +14,10 @@ export interface LoginFormArgs {
   errors: FormikErrors<any>;
   touched: FormikTouched<any>;
   initialValues: LoginFields;
+  title: string;
+  buttonText: string;
+  placeholderEmail: string;
+  placeholderPassword: string;
 }
 
 
