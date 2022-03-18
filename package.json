@@ -17,6 +17,7 @@
     "@zendeskgarden/react-tooltips": "^8.49.0",
     "@zendeskgarden/react-typography": "^8.49.0",
     "@zendeskgarden/svg-icons": "^6.31.1",
+    "react-spring": "^9.4.4",
     "react-window": "^1.8.6"
   },
   "scripts": {

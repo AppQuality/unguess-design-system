@@ -1,5 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { Table, Head, HeaderRow, HeaderCell, Body, Row, Cell, GroupRow, Caption } from ".";
 import { TableProps } from "./_types";
 import styled from "styled-components";
@@ -11,6 +11,8 @@ import { Field } from "../forms/field";
 import { Checkbox } from "../forms/checkbox";
 import { Label } from "../label";
 import { KEY_CODES } from '@zendeskgarden/container-utilities';
+import { useSpring, animated, SpringValue } from 'react-spring';
+import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 
 interface IRow {
   id?: number | string;
@@ -20,34 +22,28 @@ interface IRow {
   soil?: string;
   selected?: boolean;
 }
-
+interface Group {
+  groupName: string;
+  groupIcon: string;
+  items: Array<IRow>;
+}
 interface TableStoryArg extends TableProps {
   columns: Array<string>;
   items: Array<IRow>;
+  groups: Array<Group> | null;
   isStriped?: boolean;
   hasCaption?: boolean;
   isTruncated?: boolean;
 }
 
-const createRow = (item: IRow, index: number, length?: number, isStriped?: boolean, isTruncated?: boolean) => {
-  if (item.groupName) {
-    return (
-      <GroupRow>
-        <Cell colSpan={length}>
-          <b>{item.groupName}</b>
-        </Cell>
-      </GroupRow>
-    );
-  } else {
-    return (
-      <Row key={index} isStriped={isStriped && index % 2 === 0}>
-        <Cell>{item.fruit}</Cell>
-        <Cell>{item.sunExposure}</Cell>
-        <Cell isTruncated={isTruncated}>{item.soil}</Cell>
-      </Row>
-    );
-  }
-};
+const createRow = (item: IRow, index: number, isStriped?: boolean, isTruncated?: boolean) => (
+  <Row key={index} isStriped={isStriped && index % 2 === 0}>
+    <Cell>{item.fruit}</Cell>
+    <Cell>{item.sunExposure}</Cell>
+    <Cell isTruncated={isTruncated}>{item.soil}</Cell>
+  </Row>
+);
+
 const DefaultTemplate: Story<TableStoryArg> = ({ columns, items, isStriped, hasCaption, isTruncated, ...args }) => {
   return (
     <div style={{ overflowX: 'auto' }}>
@@ -66,7 +62,7 @@ const DefaultTemplate: Story<TableStoryArg> = ({ columns, items, isStriped, hasC
           </HeaderRow>
         </Head>
         <Body>
-          {items.map((item, index) => createRow(item, index, columns.length, isStriped, isTruncated))}
+          {items.map((item, index) => createRow(item, index, isStriped, isTruncated))}
         </Body>
       </Table>
     </div>
@@ -101,7 +97,8 @@ const tableContent = {
       sunExposure: 'Partial shade',
       soil: 'Well draining',
     }
-  ]
+  ],
+  groups: null
 };
 
 const defaultArgs: TableStoryArg = {
@@ -114,41 +111,132 @@ Default.args = defaultArgs;
 const groupedItems = [
   {
     groupName: 'Fruits',
-  },
-  {
-    fruit: 'Raspberries',
-    sunExposure: 'Partial shade',
-    soil: 'Moist and slightly acidic',
-  },
-  {
-    fruit: 'Strawberries',
-    sunExposure: 'Full sun',
-    soil: 'Medium moisture',
-  },
-  {
-    fruit: 'Grapes',
-    sunExposure: 'Full sun',
-    soil: 'Rich and well draining',
-  },
-  {
-    fruit: 'Cherries',
-    sunExposure: 'Partial sun',
-    soil: 'Rich and well draining',
-  },
+    groupIcon: 'square',
+    items: [
+      {
+        fruit: 'Raspberries',
+        sunExposure: 'Partial shade',
+        soil: 'Moist and slightly acidic',
+      },
+      {
+        fruit: 'Strawberries',
+        sunExposure: 'Full sun',
+        soil: 'Medium moisture',
+      },
+      {
+        fruit: 'Grapes',
+        sunExposure: 'Full sun',
+        soil: 'Rich and well draining',
+      },
+      {
+        fruit: 'Cherries',
+        sunExposure: 'Partial sun',
+        soil: 'Rich and well draining',
+      },
+    ]
+  },  
   {
     groupName: 'Vegetables',
+    groupIcon: 'square',
+    items: [
+      {
+        fruit: 'Tomatoes',
+        sunExposure: 'Partial shade',
+        soil: 'Well draining',
+      }
+    ]
   },
-  {
-    fruit: 'Tomatoes',
-    sunExposure: 'Partial shade',
-    soil: 'Well draining',
-  }
 ];
-export const Grouped = DefaultTemplate.bind({});
+interface GroupRowProps {
+  handleToggle: any;
+  open: boolean;
+  colSpan?: number;
+  groupIcon: string;
+  groupName: string;
+  groupLength?: number;
+}
+
+const StyledGroupRow = styled(GroupRow)`
+  cursor: pointer;
+
+  svg {
+    vertical-align: middle;
+  }
+`
+const StyledAnimatedIcon = styled(animated.div)`
+  display: inline-block;
+  float: right;
+`
+
+const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProps) => {
+  const toggleIconAnimation = useSpring({
+    config: { duration: 120 },
+    transform: props.open ? 'rotate(180deg)' : 'rotate(0deg)',
+  })
+
+  return (
+    <>
+    {props.open}
+    <StyledGroupRow onClick={props.handleToggle}>
+      <Cell colSpan={props.colSpan}>
+        <span>{props.groupIcon}</span>
+        {props.groupName} <b>({props.groupLength})</b>
+        <StyledAnimatedIcon style={toggleIconAnimation}>
+          <ChevronIcon />
+        </StyledAnimatedIcon>
+      </Cell>
+    </StyledGroupRow>
+    </>
+  );
+}
+
+type GroupComponentProps = {
+  group: Group;
+  columnsLength: number;
+}
+const GroupComponent: FunctionComponent<any> = ({group, columnsLength}: GroupComponentProps) => {
+  const [open, setOpen] = useState(true)
+
+  const handleToggle = () => {
+    setOpen(!open)
+  }
+
+  return (
+    <>
+      <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} groupName={group.groupName} groupLength={group.items.length} groupIcon={group.groupIcon} />
+      {open && group.items.map((item, index) => (
+        createRow(item, index)
+      ))}
+    </>
+  );
+}
+
+const GroupedTemplate: Story<TableStoryArg> = ({ columns, groups, ...args }) => {
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <Table style={{ minWidth: 500 }} {...args}>
+        <Head>
+          <HeaderRow>
+            {columns.map((key) => (
+              <HeaderCell>{key}</HeaderCell>
+            ))}
+          </HeaderRow>
+        </Head>
+        <Body>
+          {groups?.map(group => {
+            return (<GroupComponent columnsLength={columns.length} group={group}/>)
+            }
+          )}
+        </Body>
+      </Table>
+    </div>
+  );
+};
+export const Grouped = GroupedTemplate.bind({});
 Grouped.args = {
   ...defaultArgs,
   columns: ['Type', 'Sun exposure', 'Soil'],
-  items: groupedItems
+  groups: groupedItems
 };
 
 /** WITH PAGINATION */
@@ -247,7 +335,7 @@ const ScrollTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
       <div style={{ maxHeight: 420, overflowY: 'auto' }}>
         <Table>
           <Body>
-            {items.map((item, index) => createRow(item, index, columns.length))}
+            {items.map((item, index) => createRow(item, index))}
           </Body>
         </Table>
       </div>
