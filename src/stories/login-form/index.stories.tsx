@@ -18,6 +18,10 @@ const defaultArgs: LoginFormArgs = {
   validateOnChange: true,
   errors: {},
   touched: {},
+  title: 'Welcome to Unguess',
+  buttonText: 'Sign In',
+  placeholderEmail: 'Insert Email',
+  placeholderPassword: 'Insert Password',
   validate: (values) => {
     let errors: any = {};
     if (!values.email) {
@@ -54,6 +58,36 @@ export default {
   title: "Organisms/LoginForm",
   argTypes: {
     isValid: {
+      table: {
+        disable: true
+      }
+    },
+    touched: {
+      table: {
+        disable: true
+      }
+    },
+    errors: {
+      table: {
+        disable: true
+      }
+    },
+    validateOnChange: {
+      table: {
+        disable: true
+      }
+    },
+    onBlur: {
+      table: {
+        disable: true
+      }
+    },
+    onSubmit: {
+      table: {
+        disable: true
+      }
+    },
+    validate: {
       table: {
         disable: true
       }
