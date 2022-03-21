@@ -13,6 +13,10 @@ import { Label } from "../label";
 import { KEY_CODES } from '@zendeskgarden/container-utilities';
 import { useSpring, animated, SpringValue } from 'react-spring';
 import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
+import { ReactComponent as UnguessSquare } from '../../assets/icons/unguess_square.svg'
+import { ReactComponent as UnguessCircle } from '../../assets/icons/unguess_circle.svg'
+import { ReactComponent as UnguessTriangle } from '../../assets/icons/unguess_triangle.svg'
+import { theme } from '../theme';
 
 interface IRow {
   id?: number | string;
@@ -24,7 +28,7 @@ interface IRow {
 }
 interface Group {
   groupName: string;
-  groupIcon: string;
+  groupIcon: JSX.Element;
   items: Array<IRow>;
 }
 interface TableStoryArg extends TableProps {
@@ -111,7 +115,7 @@ Default.args = defaultArgs;
 const groupedItems = [
   {
     groupName: 'Fruits',
-    groupIcon: 'square',
+    groupIcon: <UnguessSquare />,
     items: [
       {
         fruit: 'Raspberries',
@@ -137,7 +141,18 @@ const groupedItems = [
   },  
   {
     groupName: 'Vegetables',
-    groupIcon: 'square',
+    groupIcon: <UnguessTriangle />,
+    items: [
+      {
+        fruit: 'Tomatoes',
+        sunExposure: 'Partial shade',
+        soil: 'Well draining',
+      }
+    ]
+  },
+  {
+    groupName: 'Vegetables',
+    groupIcon: <UnguessCircle />,
     items: [
       {
         fruit: 'Tomatoes',
@@ -151,9 +166,7 @@ interface GroupRowProps {
   handleToggle: any;
   open: boolean;
   colSpan?: number;
-  groupIcon: string;
-  groupName: string;
-  groupLength?: number;
+  group: Group;
 }
 
 const StyledGroupRow = styled(GroupRow)`
@@ -162,10 +175,23 @@ const StyledGroupRow = styled(GroupRow)`
   svg {
     vertical-align: middle;
   }
+
+  .closed {
+    color: ${theme.palette.grey[500]}
+  }
 `
 const StyledAnimatedIcon = styled(animated.div)`
   display: inline-block;
   float: right;
+`
+
+const StyledUnguessIcon = styled.span`
+  padding-right: 10px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
 `
 
 const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProps) => {
@@ -175,18 +201,17 @@ const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProp
   })
 
   return (
-    <>
-    {props.open}
     <StyledGroupRow onClick={props.handleToggle}>
-      <Cell colSpan={props.colSpan}>
-        <span>{props.groupIcon}</span>
-        {props.groupName} <b>({props.groupLength})</b>
+      <Cell colSpan={props.colSpan} className={props.open ? undefined : 'closed'}>
+        <StyledUnguessIcon>
+          {props.group.groupIcon}
+        </StyledUnguessIcon>
+        {props.group.groupName} <b>({props.group.items.length})</b>
         <StyledAnimatedIcon style={toggleIconAnimation}>
           <ChevronIcon />
         </StyledAnimatedIcon>
       </Cell>
     </StyledGroupRow>
-    </>
   );
 }
 
@@ -194,6 +219,19 @@ type GroupComponentProps = {
   group: Group;
   columnsLength: number;
 }
+const AnimatedRow = styled(Row)`
+  &.render {
+    position:absolute;
+    opacity: 0;
+  }
+
+  &.show {
+    position: static;
+    opacity: 1;
+    transition: all 0.6s ease;
+  }
+`
+
 const GroupComponent: FunctionComponent<any> = ({group, columnsLength}: GroupComponentProps) => {
   const [open, setOpen] = useState(true)
 
@@ -203,10 +241,14 @@ const GroupComponent: FunctionComponent<any> = ({group, columnsLength}: GroupCom
 
   return (
     <>
-      <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} groupName={group.groupName} groupLength={group.items.length} groupIcon={group.groupIcon} />
-      {open && group.items.map((item, index) => (
-        createRow(item, index)
-      ))}
+    <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} group={group} />
+    {group.items.map((item, index) => (
+      <AnimatedRow key={index} className={open ? 'render show' : 'render'}>
+        <Cell>{item.fruit}</Cell>
+        <Cell>{item.sunExposure}</Cell>
+        <Cell>{item.soil}</Cell>
+      </AnimatedRow>
+    ))}
     </>
   );
 }
