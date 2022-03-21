@@ -11,12 +11,10 @@ import { Field } from "../forms/field";
 import { Checkbox } from "../forms/checkbox";
 import { Label } from "../label";
 import { KEY_CODES } from '@zendeskgarden/container-utilities';
-import { useSpring, animated, SpringValue } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
-import { ReactComponent as UnguessSquare } from '../../assets/icons/unguess_square.svg'
-import { ReactComponent as UnguessCircle } from '../../assets/icons/unguess_circle.svg'
-import { ReactComponent as UnguessTriangle } from '../../assets/icons/unguess_triangle.svg'
 import { theme } from '../theme';
+import { UgIcon } from "../icons/ug-icons";
 
 interface IRow {
   id?: number | string;
@@ -28,7 +26,7 @@ interface IRow {
 }
 interface Group {
   groupName: string;
-  groupIcon: JSX.Element;
+  groupIcon: 'square' | 'triangle' | 'circle';
   items: Array<IRow>;
 }
 interface TableStoryArg extends TableProps {
@@ -112,10 +110,114 @@ export const Default = DefaultTemplate.bind({});
 Default.args = defaultArgs;
 
 /** GROUPED */
+interface GroupRowProps {
+  handleToggle: any;
+  open: boolean;
+  colSpan?: number;
+  group: Group;
+}
+const StyledGroupRow = styled(GroupRow)`
+  cursor: pointer;
+
+  svg {
+    vertical-align: middle;
+  }
+
+  .closed {
+    color: ${theme.palette.grey[500]}
+  }
+
+  .title {
+    padding-left: 12px;
+  }
+`
+const StyledAnimatedToggle = styled(animated.div)`
+  display: inline-block;
+  float: right;
+`
+const StyledUgIcon = styled(UgIcon)`
+  padding-right: 10px;
+`
+const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProps) => {
+  const toggleIconAnimation = useSpring({
+    config: { duration: 120 },
+    transform: props.open ? 'rotate(180deg)' : 'rotate(0deg)',
+  })
+
+  return (
+    <StyledGroupRow onClick={props.handleToggle}>
+      <Cell colSpan={props.colSpan} className={props.open ? undefined : 'closed'}>
+        <StyledUgIcon type={props.group.groupIcon} />
+        <span className="title">{props.group.groupName} <b>({props.group.items.length})</b></span>
+        <StyledAnimatedToggle style={toggleIconAnimation}>
+          <ChevronIcon />
+        </StyledAnimatedToggle>
+      </Cell>
+    </StyledGroupRow>
+  );
+}
+const AnimatedRow = styled(Row)`
+&.render {
+  position:absolute;
+  opacity: 0;
+}
+
+&.show {
+  position: static;
+  opacity: 1;
+  transition: all 0.6s ease;
+}
+`
+interface GroupComponentProps {
+  group: Group;
+  columnsLength: number;
+}
+const GroupComponent: FunctionComponent<any> = ({group, columnsLength}: GroupComponentProps) => {
+  const [open, setOpen] = useState(true)
+
+  const handleToggle = () => {
+    setOpen(!open)
+  }
+
+  return (
+    <>
+    <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} group={group} />
+    {group.items.map((item, index) => (
+      <AnimatedRow key={index} className={open ? 'render show' : 'render'}>
+        <Cell>{item.fruit}</Cell>
+        <Cell>{item.sunExposure}</Cell>
+        <Cell>{item.soil}</Cell>
+      </AnimatedRow>
+    ))}
+    </>
+  );
+}
+const GroupedTemplate: Story<TableStoryArg> = ({ columns, groups, ...args }) => {
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <Table style={{ minWidth: 500 }} {...args}>
+        <Head>
+          <HeaderRow>
+            {columns.map((key) => (
+              <HeaderCell>{key}</HeaderCell>
+            ))}
+          </HeaderRow>
+        </Head>
+        <Body>
+          {groups?.map(group => {
+            return (<GroupComponent columnsLength={columns.length} group={group}/>)
+            }
+          )}
+        </Body>
+      </Table>
+    </div>
+  );
+};
+export const Grouped = GroupedTemplate.bind({});
 const groupedItems = [
   {
     groupName: 'Fruits',
-    groupIcon: <UnguessSquare />,
+    groupIcon: 'square' as const,
     items: [
       {
         fruit: 'Raspberries',
@@ -141,7 +243,7 @@ const groupedItems = [
   },  
   {
     groupName: 'Vegetables',
-    groupIcon: <UnguessTriangle />,
+    groupIcon: 'triangle' as const,
     items: [
       {
         fruit: 'Tomatoes',
@@ -152,7 +254,7 @@ const groupedItems = [
   },
   {
     groupName: 'Vegetables',
-    groupIcon: <UnguessCircle />,
+    groupIcon: 'circle' as const,
     items: [
       {
         fruit: 'Tomatoes',
@@ -162,119 +264,6 @@ const groupedItems = [
     ]
   },
 ];
-interface GroupRowProps {
-  handleToggle: any;
-  open: boolean;
-  colSpan?: number;
-  group: Group;
-}
-
-const StyledGroupRow = styled(GroupRow)`
-  cursor: pointer;
-
-  svg {
-    vertical-align: middle;
-  }
-
-  .closed {
-    color: ${theme.palette.grey[500]}
-  }
-`
-const StyledAnimatedIcon = styled(animated.div)`
-  display: inline-block;
-  float: right;
-`
-
-const StyledUnguessIcon = styled.span`
-  padding-right: 10px;
-
-  svg {
-    width: 12px;
-    height: 12px;
-  }
-`
-
-const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProps) => {
-  const toggleIconAnimation = useSpring({
-    config: { duration: 120 },
-    transform: props.open ? 'rotate(180deg)' : 'rotate(0deg)',
-  })
-
-  return (
-    <StyledGroupRow onClick={props.handleToggle}>
-      <Cell colSpan={props.colSpan} className={props.open ? undefined : 'closed'}>
-        <StyledUnguessIcon>
-          {props.group.groupIcon}
-        </StyledUnguessIcon>
-        {props.group.groupName} <b>({props.group.items.length})</b>
-        <StyledAnimatedIcon style={toggleIconAnimation}>
-          <ChevronIcon />
-        </StyledAnimatedIcon>
-      </Cell>
-    </StyledGroupRow>
-  );
-}
-
-type GroupComponentProps = {
-  group: Group;
-  columnsLength: number;
-}
-const AnimatedRow = styled(Row)`
-  &.render {
-    position:absolute;
-    opacity: 0;
-  }
-
-  &.show {
-    position: static;
-    opacity: 1;
-    transition: all 0.6s ease;
-  }
-`
-
-const GroupComponent: FunctionComponent<any> = ({group, columnsLength}: GroupComponentProps) => {
-  const [open, setOpen] = useState(true)
-
-  const handleToggle = () => {
-    setOpen(!open)
-  }
-
-  return (
-    <>
-    <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} group={group} />
-    {group.items.map((item, index) => (
-      <AnimatedRow key={index} className={open ? 'render show' : 'render'}>
-        <Cell>{item.fruit}</Cell>
-        <Cell>{item.sunExposure}</Cell>
-        <Cell>{item.soil}</Cell>
-      </AnimatedRow>
-    ))}
-    </>
-  );
-}
-
-const GroupedTemplate: Story<TableStoryArg> = ({ columns, groups, ...args }) => {
-  return (
-    <div style={{ overflowX: 'auto' }}>
-      <Table style={{ minWidth: 500 }} {...args}>
-        <Head>
-          <HeaderRow>
-            {columns.map((key) => (
-              <HeaderCell>{key}</HeaderCell>
-            ))}
-          </HeaderRow>
-        </Head>
-        <Body>
-          {groups?.map(group => {
-            return (<GroupComponent columnsLength={columns.length} group={group}/>)
-            }
-          )}
-        </Body>
-      </Table>
-    </div>
-  );
-};
-export const Grouped = GroupedTemplate.bind({});
 Grouped.args = {
   ...defaultArgs,
   columns: ['Type', 'Sun exposure', 'Soil'],
@@ -582,6 +571,6 @@ VirtualScrolling.args = {
 };
 
 export default {
-  title: "Atoms/Table",
+  title: "Molecules/Table",
   component: Table,
 } as ComponentMeta<typeof Table>;
