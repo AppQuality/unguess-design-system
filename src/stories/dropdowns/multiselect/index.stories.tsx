@@ -8,7 +8,7 @@ import { Field } from "../field";
 import { Label } from "../../label";
 import { MultiselectArgs } from "./_types";
 import { Tag } from "@zendeskgarden/react-tags"; //TODO: replace with unguess component
-import { MenuArgs } from "../../menu/_types";
+import { MenuArgs } from "../menu/_types";
 import { DropdownArgs } from "../select/_types";
 
 interface IItem {
