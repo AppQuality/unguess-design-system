@@ -18,7 +18,7 @@ import { theme } from "../theme";
 const LoginForm = (props: LoginFormArgs) => (
   <Card isFloating style={{width: "100%"}}>
     <Title style={{ textAlign: "center", margin: theme.space.md }}>
-      {props.title + "V1"}
+      {props.title}
     </Title>
     <Formik
       {...props}
