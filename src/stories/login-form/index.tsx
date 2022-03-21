@@ -16,24 +16,26 @@ import { theme } from "../theme";
  */
 
 const LoginForm = (props: LoginFormArgs) => (
-  <Formik
-    {...props}
-    initialValues={props.initialValues}
-    onSubmit={props.onSubmit}
-    validate={props.validate}
-  >
-    {({
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleSubmit,
-      isSubmitting,
-    }) => {
-      return (
-        <Form onSubmit={handleSubmit}>
-          <Card isFloating>
-            <Title style={{ textAlign: "center", margin: theme.space.md }}>{props.title}</Title>
+  <Card isFloating style={{width: "100%"}}>
+    <Title style={{ textAlign: "center", margin: theme.space.md }}>
+      {props.title + "V1"}
+    </Title>
+    <Formik
+      {...props}
+      initialValues={props.initialValues}
+      onSubmit={props.onSubmit}
+      validate={props.validate}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleSubmit,
+        isSubmitting,
+      }) => {
+        return (
+          <Form onSubmit={handleSubmit}>
             <Field>
               <Input
                 type="email"
@@ -41,10 +43,20 @@ const LoginForm = (props: LoginFormArgs) => (
                 placeholder={props.placeholderEmail}
                 onChange={handleChange}
                 value={values.email}
-                {...touched && values.email ? touched.email = true : touched.email = false}
-                {...errors && errors.email ? { validation: "error" } : (touched.email ? { validation: "success" } : "")}
+                {...(touched && values.email
+                  ? (touched.email = true)
+                  : (touched.email = false))}
+                {...(errors && errors.email
+                  ? { validation: "error" }
+                  : touched.email
+                  ? { validation: "success" }
+                  : "")}
               />
-              {(errors.email) ? (<Message validation="error">{errors.email}</Message>) : ""}
+              {errors.email ? (
+                <Message validation="error">{errors.email}</Message>
+              ) : (
+                ""
+              )}
             </Field>
             <Field style={{ marginTop: theme.space.md }}>
               <Input
@@ -53,25 +65,37 @@ const LoginForm = (props: LoginFormArgs) => (
                 placeholder={props.placeholderPassword}
                 onChange={handleChange}
                 value={values.password}
-                {...touched && values.password ? touched.password = true : touched.password = false}
-                {...errors && errors.password ? { validation: "error" } : (touched.password ? { validation: "success" } : "")}
+                {...(touched && values.password
+                  ? (touched.password = true)
+                  : (touched.password = false))}
+                {...(errors && errors.password
+                  ? { validation: "error" }
+                  : touched.password
+                  ? { validation: "success" }
+                  : "")}
               />
-              {(errors.password) ? (<Message validation="error">{errors.password}</Message>) : ""}
+              {errors.password ? (
+                <Message validation="error">{errors.password}</Message>
+              ) : (
+                ""
+              )}
             </Field>
             <br />
             <Button
               type="submit"
               isStretched
-              disabled={(Object.keys(errors).length) ? true : (isSubmitting) ? true : false}
+              disabled={
+                Object.keys(errors).length ? true : isSubmitting ? true : false
+              }
               isPrimary
             >
               {props.buttonText}
             </Button>
-          </Card>
-        </Form>
-      )
-    }}
-  </Formik>
+          </Form>
+        );
+      }}
+    </Formik>
+  </Card>
 );
 
 export { LoginForm };
