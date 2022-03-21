@@ -6,7 +6,7 @@ import { Field } from "../field";
 // import { Field } from "../../field";
 import { Label } from "../../label";
 import { DropdownArgs, SelectArgs } from "./_types";
-import { MenuArgs } from "../../menu/_types";
+import { MenuArgs } from "../menu/_types";
 
 interface IItem {
   label: string;
