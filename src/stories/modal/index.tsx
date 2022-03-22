@@ -5,7 +5,7 @@ import { ModalArgs } from "./_types";
 import { Button } from "../buttons/button";
 import { LG } from "@zendeskgarden/react-typography";
 import {ReactComponent as CloseIcon} from "@zendeskgarden/svg-icons/src/16/x-stroke.svg";
-import {ReactComponent as AlertIcon} from "@zendeskgarden/svg-icons/src/16/check-circle-stroke.svg";
+import {ReactComponent as AlertIcon} from "@zendeskgarden/svg-icons/src/16/alert-error-stroke.svg";
 import { MD } from "../typography/typescale";
 
 const HeaderWrapper = styled(Header)`

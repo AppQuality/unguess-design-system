@@ -32,7 +32,7 @@ const defaultArgs: ModalArgs ={
   isLarge: false,
   isDanger: false,
   confirmText: "Yes, go ahead",
-  cancelText: "Oh no, go back!",
+  cancelText: "Oh no, cancel!",
   content: longContent,
   open: true,
   title: "Cool title"
@@ -55,6 +55,9 @@ Default.parameters = {
 export const Danger = Template.bind({});
 Danger.args = {
   ...defaultArgs,
+  confirmText: "I don't care",
+  cancelText: "Oh no, go back!",
+  title: "You have problems!",
   isDanger: true,
 };
 Danger.parameters = {
