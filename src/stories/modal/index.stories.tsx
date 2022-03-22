@@ -6,6 +6,14 @@ const longContent = "The tang of the untainted, fresh and free sea air was like 
   "quieting thought, and the shells and pebbles and the seaweed with tiny living " +
   "creatures attached to it never lost their fascination for me."
 
+const customContent = [
+  'ELEMENT 1',
+  'ELEMENT 2',
+  'ELEMENT 3',
+  'ELEMENT 4',
+  'ELEMENT 5',
+].map(el => <li>{el}</li>)
+
 const design = {
   type: "figma",
   url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A124"
@@ -62,7 +70,13 @@ Large.parameters = {
   design
 }
 
+export const WithCustomContent = Template.bind({})
+WithCustomContent.args = {
+  ...defaultArgs,
+  customContent: <ul>{customContent}</ul>
+}
+
 export default {
-  title: "Atoms/Modals/StyledModal",
+  title: "Molecules/Modals/StyledModal",
   component: StyledModal
 } as ComponentMeta<typeof StyledModal>
