@@ -8,6 +8,8 @@ export interface NavItemArgs extends INavItemProps {
   hasLogo?: boolean;
   /** Indicates that the item contains the company brandmark */
   hasBrandmark?: boolean;
+  /** Expands the nav area to display the item text */
+  isExpanded?: boolean;
 }
 
 export interface NavItemTextArgs extends INavItemTextProps {
@@ -16,4 +18,13 @@ export interface NavItemTextArgs extends INavItemTextProps {
 }
 
 export interface NavItemIconArgs
-  extends PropsWithChildren<HTMLAttributes<HTMLElement>> {}
+  extends PropsWithChildren<HTMLAttributes<HTMLElement>> {
+  /** Indicates that the item is current in the nav */
+  isCurrent?: boolean;
+  /** Indicates that the item has a gradient style when selected */
+  isStyled?: boolean;
+}
+export interface NavToggleArgs extends NavItemIconArgs {
+  /** Expands the nav area to display the item text */
+  isExpanded?: boolean;
+}

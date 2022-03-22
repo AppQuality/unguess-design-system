@@ -1,5 +1,15 @@
 import { Nav as ZendeskNav } from "@zendeskgarden/react-chrome";
-import { NavArgs } from "./_types";
+import styled from "styled-components";
+import { getColor } from "@zendeskgarden/react-theming";
+import { SidebarArgs } from "./_types";
+
+const UgNav = styled(ZendeskNav)`
+   border-right: ${({ theme }) => theme.borders.sm};
+   border-color: ${({ theme }) => getColor(theme.colors.neutralHue, 300)};
+   ${props => !props.isExpanded && `width:  ${props.theme.space.base * 9}px;`}
+   transition: width 0.25s ease-in-out;
+`;
+
 
 /**
  * The Sidebar component provides a high-level layout structure and sets a framework for navigating around dashboards.
@@ -7,6 +17,6 @@ import { NavArgs } from "./_types";
  * Used for this:
     - To give a consistent dashboard and navigation experience
  */
-const Sidebar = (props: NavArgs) => <ZendeskNav {...props} />;
+const Sidebar = (props: SidebarArgs) => <UgNav {...props} />;
 
 export { Sidebar };

@@ -12,6 +12,7 @@ import styled from "styled-components";
 import useWindowSize from "../../../hooks/useWindowSize";
 
 interface HeaderStoryArgs extends HeaderArgs {
+  /** Display a brand identity name */
   brandName: string;
   avatar: AvatarArgs & { type: "icon" | "image" | "text" };
 }
@@ -46,7 +47,7 @@ const Template: Story<HeaderStoryArgs> = (args) => {
             <DefaultAvatar
               {...args.avatar}
               size={
-                width > parseInt(theme.breakpoints.sm) ? "medium" : "extrasmall"
+                width > parseInt(theme.breakpoints.sm) ? "small" : "extrasmall"
               }
             />
             <ChevronButton size="small">
