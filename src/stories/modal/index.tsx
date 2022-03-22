@@ -8,19 +8,19 @@ import {ReactComponent as CloseIcon} from "@zendeskgarden/svg-icons/src/16/x-str
 import {ReactComponent as AlertIcon} from "@zendeskgarden/svg-icons/src/16/alert-error-stroke.svg";
 import { MD } from "../typography/typescale";
 
-const HeaderWrapper = styled(Header)`
+const getHeaderWrapper = (isDanger?: boolean) => styled(Header)`
   font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.154px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  ${isDanger ? 'padding-left: 1rem;' : ''}
 `
 
-const Title = styled(MD)`
+const getTitle = (isDanger?: boolean) => styled(MD)`
   font-weight: bold;
+  font-size: 16px;
+  ${isDanger ? 'width: 100%; margin-left: 0.5rem; color: #D53032;' : ''}
 `
 
 const ModalWrapper = styled(Modal)`
@@ -30,6 +30,9 @@ const ModalWrapper = styled(Modal)`
 const CloseButton = styled(CloseIcon)`
   cursor: pointer;
   color: #68737d;
+`
+const getButton = (isDanger?: boolean) => styled(Button)`
+  ${isDanger ? 'background-color: #D53032; color: white; margin: 10px': 'background-color: #003A57; margin: 10px'}
 `
 
 const DangerIcon = styled(AlertIcon)``
@@ -41,6 +44,7 @@ const BodyContent = styled(LG)`
   line-height: 20px;
   letter-spacing: -0.154px;
 `
+
 
 const StyledModal = (props: ModalArgs) => {
 
@@ -58,18 +62,15 @@ const StyledModal = (props: ModalArgs) => {
     open
   } = props
 
-  const dangerStyles = {
-    buttonStyle:
-      { backgroundColor: "#D53032", color: "white", margin: "10px" },
-    titleStyle:
-      { width: '100%', marginLeft: '0.5vw', color: '#D53032'} }
-  const defaultStyles = { backgroundColor: '#003A57', margin: "10px" }
+  const HeaderWrapper = getHeaderWrapper(isDanger);
+  const Title = getTitle(isDanger)
+  const ConfirmButton = getButton(isDanger)
 
   if(open)
     return <ModalWrapper isLarge={isLarge}>
       <HeaderWrapper>
         {isDanger && <DangerIcon />}
-        <Title style={isDanger ? dangerStyles.titleStyle : {}}>{title}</Title>
+        <Title>{title}</Title>
         <CloseButton onClick={onClose} />
       </HeaderWrapper>
       <Body>
@@ -82,13 +83,12 @@ const StyledModal = (props: ModalArgs) => {
         <Button
           isBasic
           onClick={onCancel}>{cancelText}</Button>
-        <Button
+        <ConfirmButton
           isPrimary
-          style={isDanger ? dangerStyles.buttonStyle : defaultStyles}
           onClick={onConfirm}
         >
           {confirmText}
-        </Button>
+        </ConfirmButton>
       </Footer>
     </ModalWrapper>
   return <></>
