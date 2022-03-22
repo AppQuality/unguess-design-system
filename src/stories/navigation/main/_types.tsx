@@ -1,1 +1,1 @@
-export interface MainProps {}
+export interface MainArgs {}

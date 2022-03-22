@@ -1,1 +1,1 @@
-export interface ContentProps {}
+export interface ContentArgs {}

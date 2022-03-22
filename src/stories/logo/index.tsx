@@ -22,6 +22,7 @@ const Logo = (props: LogoArgs) => {
          {...props && props.type === "vertical" && {height: `${props.size}`}}
          {...props && props.type === "icon" && {width: `${props.size}`} && {height: `${props.size}`}}
          className={props.className}
+         alt={props.alt ?? "Unguess Logo"}
          src={{
             'horizontal': LogoHorizontal,
             'vertical': LogoVertical,
