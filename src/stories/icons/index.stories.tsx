@@ -1,14 +1,14 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { UgIcon } from ".";
-import { UgIconArgs } from "./_types";
-import { Row } from "../../grid/row";
-import { Col } from "../../grid/col";
+import { Icon } from ".";
+import { IconArgs } from "./_types";
+import { Row } from "../grid/row";
+import { Col } from "../grid/col";
 
-const Template: Story<UgIconArgs> = (args) => {
+const Template: Story<IconArgs> = (args) => {
   return (
     <Row>
       <Col textAlign="center">
-        <UgIcon {...args} />
+        <Icon {...args} />
       </Col>
     </Row>
   );
@@ -16,7 +16,8 @@ const Template: Story<UgIconArgs> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'square'
+  type: 'square',
+  size: 24
 }
 Default.parameters = {
   design: {
@@ -26,8 +27,8 @@ Default.parameters = {
 };
 
 export default {
-  title: "Atoms/UgIcon",
-  component: UgIcon,
+  title: "Atoms/Icon",
+  component: Icon,
   argTypes: {
     type: {
       control: {
@@ -36,4 +37,4 @@ export default {
       }
     }
   }
-} as ComponentMeta<typeof UgIcon>;
+} as ComponentMeta<typeof Icon>;

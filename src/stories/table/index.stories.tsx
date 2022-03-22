@@ -14,7 +14,8 @@ import { KEY_CODES } from '@zendeskgarden/container-utilities';
 import { useSpring, animated } from 'react-spring';
 import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 import { theme } from '../theme';
-import { UgIcon } from "../icons/ug-icons";
+import { Icon } from "../icons";
+import { IconArgs } from "../icons/_types";
 
 interface IRow {
   id?: number | string;
@@ -26,7 +27,7 @@ interface IRow {
 }
 interface Group {
   groupName: string;
-  groupIcon: 'square' | 'triangle' | 'circle';
+  groupIcon: IconArgs["type"];
   items: Array<IRow>;
 }
 interface TableStoryArg extends TableProps {
@@ -51,10 +52,10 @@ const DefaultTemplate: Story<TableStoryArg> = ({ columns, items, isStriped, hasC
     <div style={{ overflowX: 'auto' }}>
       <Table style={{ minWidth: 500 }} {...args}>
         {hasCaption && (
-            <Caption>
-              <XL>Garden details</XL>
-            </Caption>
-          )
+          <Caption>
+            <XL>Garden details</XL>
+          </Caption>
+        )
         }
         <Head>
           <HeaderRow>
@@ -119,36 +120,45 @@ interface GroupRowProps {
 const StyledGroupRow = styled(GroupRow)`
   cursor: pointer;
 
+  &.empty {
+    cursor: default;
+
+    * {
+      color: ${theme.palette.grey[500]} !important;
+      cursor: default !important;
+    }
+  }
+
   svg {
     vertical-align: middle;
   }
 
-  .closed {
-    color: ${theme.palette.grey[500]}
-  }
-
   .title {
-    padding-left: 12px;
+    padding-left: 10px;
+    vertical-align: middle;
+    font-size: ${theme.fontSizes.sm};
+    cursor: pointer;
   }
 `
 const StyledAnimatedToggle = styled(animated.div)`
   display: inline-block;
   float: right;
 `
-const StyledUgIcon = styled(UgIcon)`
-  padding-right: 10px;
-`
+const StyledUgIcon = styled(Icon)``
 const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProps) => {
   const toggleIconAnimation = useSpring({
     config: { duration: 120 },
-    transform: props.open ? 'rotate(180deg)' : 'rotate(0deg)',
+    transform: props.group.items.length > 0 ? (props.open ? 'rotate(180deg)' : 'rotate(0deg)') : 'rotate(0deg)',
   })
 
   return (
-    <StyledGroupRow onClick={props.handleToggle}>
-      <Cell colSpan={props.colSpan} className={props.open ? undefined : 'closed'}>
-        <StyledUgIcon type={props.group.groupIcon} />
-        <span className="title">{props.group.groupName} <b>({props.group.items.length})</b></span>
+    <StyledGroupRow
+      {...props && props.group.items.length === 0 && { className: 'empty' }}
+      {...props && props.group.items.length > 0 && { onClick: props.handleToggle }}
+    >
+      <Cell colSpan={props.colSpan} className={props.open ? 'open' : 'closed'}>
+        <StyledUgIcon size={12} type={props.group.groupIcon} />
+        <Label isRegular className="title">{props.group.groupName} <b>({props.group.items.length})</b></Label>
         <StyledAnimatedToggle style={toggleIconAnimation}>
           <ChevronIcon />
         </StyledAnimatedToggle>
@@ -157,22 +167,23 @@ const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProp
   );
 }
 const AnimatedRow = styled(Row)`
-&.render {
-  position:absolute;
-  opacity: 0;
-}
+  &.render {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
 
-&.show {
-  position: static;
-  opacity: 1;
-  transition: all 0.6s ease;
-}
+  &.show {
+    position: static;
+    opacity: 1;
+    transition: all 0.6s ease;
+  }
 `
 interface GroupComponentProps {
   group: Group;
   columnsLength: number;
 }
-const GroupComponent: FunctionComponent<any> = ({group, columnsLength}: GroupComponentProps) => {
+const GroupComponent: FunctionComponent<any> = ({ group, columnsLength }: GroupComponentProps) => {
   const [open, setOpen] = useState(true)
 
   const handleToggle = () => {
@@ -181,14 +192,14 @@ const GroupComponent: FunctionComponent<any> = ({group, columnsLength}: GroupCom
 
   return (
     <>
-    <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} group={group} />
-    {group.items.map((item, index) => (
-      <AnimatedRow key={index} className={open ? 'render show' : 'render'}>
-        <Cell>{item.fruit}</Cell>
-        <Cell>{item.sunExposure}</Cell>
-        <Cell>{item.soil}</Cell>
-      </AnimatedRow>
-    ))}
+      <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} group={group} />
+      {group.items.map((item, index) => (
+        <AnimatedRow key={index} className={open ? 'render show' : 'render'}>
+          <Cell>{item.fruit}</Cell>
+          <Cell>{item.sunExposure}</Cell>
+          <Cell>{item.soil}</Cell>
+        </AnimatedRow>
+      ))}
     </>
   );
 }
@@ -205,8 +216,8 @@ const GroupedTemplate: Story<TableStoryArg> = ({ columns, groups, ...args }) => 
         </Head>
         <Body>
           {groups?.map(group => {
-            return (<GroupComponent columnsLength={columns.length} group={group}/>)
-            }
+            return (<GroupComponent columnsLength={columns.length} group={group} />)
+          }
           )}
         </Body>
       </Table>
@@ -240,7 +251,7 @@ const groupedItems = [
         soil: 'Rich and well draining',
       },
     ]
-  },  
+  },
   {
     groupName: 'Vegetables',
     groupIcon: 'triangle' as const,
@@ -262,6 +273,11 @@ const groupedItems = [
         soil: 'Well draining',
       }
     ]
+  },
+  {
+    groupName: 'Arancini',
+    groupIcon: 'triangle' as const,
+    items: []
   },
 ];
 Grouped.args = {
@@ -293,8 +309,8 @@ const PaginationTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) =
           {currentPage === 1
             ? items.slice(currentPage - 1, pageSize).map((item, index) => createRow(item, index))
             : items
-                .slice(currentPage * pageSize - pageSize, currentPage * pageSize)
-                .map((item, index) => createRow(item, index))}
+              .slice(currentPage * pageSize - pageSize, currentPage * pageSize)
+              .map((item, index) => createRow(item, index))}
         </Body>
       </StyledTable>
       <Pagination
