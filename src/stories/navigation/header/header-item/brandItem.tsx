@@ -42,11 +42,11 @@ const MenuItem = styled(ZendeskHeaderItem)`
 const BrandItem = (props: BrandItemArgs) => {
   return (
     <>
-      <MenuItem>
+      <MenuItem {...props}>
         <HeaderItemIcon>
           <MenuIcon />
         </HeaderItemIcon>
-        <HeaderItemText>menu</HeaderItemText>
+        {props.menuLabel && <HeaderItemText>{props.menuLabel}</HeaderItemText>}
       </MenuItem>
       <LogoIconContainer {...props} hasLogo>
         <HeaderItemIcon>

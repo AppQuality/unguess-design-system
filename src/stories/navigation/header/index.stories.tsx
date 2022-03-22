@@ -26,7 +26,7 @@ const Template: Story<HeaderStoryArgs> = (args) => {
   const { width } = useWindowSize();
   return (
     <Header {...args}>
-      <BrandItem {...args} />
+      <BrandItem {...args} menuLabel={"menu"}/>
       <HeaderItem
         onClick={() => alert("What a wonderful changelog")}
         style={{ marginRight: "-" + theme.space.sm }}

@@ -24,6 +24,8 @@ export interface BrandItemArgs extends ButtonHTMLAttributes<HTMLButtonElement> {
   isRound?: boolean;
   /** Display a brand identity name */
   brandName?: string;
+  /** Add a descriptive text to the menu item icon*/
+  menuLabel?: string;
 }
 
 export interface HeaderItemTextArgs extends IHeaderItemTextProps {
