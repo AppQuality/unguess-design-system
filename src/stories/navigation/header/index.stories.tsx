@@ -1,5 +1,4 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { ReactComponent as ChangelogIcon } from "@zendeskgarden/svg-icons/src/16/megaphone-stroke.svg";
 import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 import { BrandItem, HeaderItem, HeaderItemIcon } from "./header-item";
