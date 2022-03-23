@@ -21,7 +21,6 @@
     "jsx": "react-jsx",
     "declaration": true,
     "outDir": "./build",
-    "baseUrl": ".",
   },
   "include": [
     "src"
