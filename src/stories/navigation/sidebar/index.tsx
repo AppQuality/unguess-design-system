@@ -1,10 +1,7 @@
-import styled from "styled-components";
 import { Nav } from "../nav";
 import { NavItem, NavItemIcon, NavItemText, NavToggle } from "../nav/nav-item";
 import { ReactComponent as ProductIcon } from "@zendeskgarden/svg-icons/src/26/garden.svg";
 import { ReactComponent as HomeIcon } from "@zendeskgarden/svg-icons/src/26/home-fill.svg";
-import { ReactComponent as EmailIcon } from "@zendeskgarden/svg-icons/src/26/email-fill.svg";
-import { ReactComponent as SettingsIcon } from "@zendeskgarden/svg-icons/src/26/settings-fill.svg";
 
 import { SidebarArgs } from "./_types";
 import { useState } from "react";
