@@ -40,7 +40,7 @@ const Sidebar = (props: SidebarArgs) => {
         <NavItem
           hasLogo
           isExpanded={props.isExpanded}
-          style={{ pointerEvents: "none" }}
+          style={{ pointerEvents: "none", paddingTop: 0 }}
         >
           <Card style={{ padding: theme.space.sm, width: "70%" }}>
             <TokenContainer>
