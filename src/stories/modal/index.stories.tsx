@@ -35,7 +35,8 @@ const defaultArgs: ModalArgs ={
   cancelText: "Oh no, cancel!",
   content: longContent,
   open: true,
-  title: "Cool title"
+  title: "Cool title",
+  customContent:<></>
 }
 
 const Template: Story<ModalArgs> = (args) => {
