@@ -3,10 +3,11 @@ import { Modal, Header, Body, Footer } from "@zendeskgarden/react-modals";
 import styled from "styled-components";
 import { ModalArgs } from "./_types";
 import { Button } from "../buttons/button";
-import { LG } from "@zendeskgarden/react-typography";
+import { LG } from "../typography/typescale";
 import {ReactComponent as CloseIcon} from "@zendeskgarden/svg-icons/src/16/x-stroke.svg";
 import {ReactComponent as AlertIcon} from "@zendeskgarden/svg-icons/src/16/alert-error-stroke.svg";
 import { MD } from "../typography/typescale";
+import { theme } from "../theme";
 
 const getHeaderWrapper = (isDanger?: boolean) => styled(Header)`
   font-style: normal;
@@ -19,8 +20,8 @@ const getHeaderWrapper = (isDanger?: boolean) => styled(Header)`
 
 const getTitle = (isDanger?: boolean) => styled(MD)`
   font-weight: bold;
-  font-size: 16px;
-  ${isDanger ? 'width: 100%; margin-left: 0.5rem; color: #D53032;' : ''}
+  font-size: ${theme.fontSizes.md}
+  ${isDanger ? 'width: 100%; margin-left: 0.5rem; color:'+ theme.palette.red["600"] : ''}
 `
 
 const ModalWrapper = styled(Modal)`
@@ -32,7 +33,7 @@ const CloseButton = styled(CloseIcon)`
   color: #68737d;
 `
 const getButton = (isDanger?: boolean) => styled(Button)`
-  ${isDanger ? 'background-color: #D53032; color: white; margin: 10px': 'background-color: #003A57; margin: 10px'}
+  ${isDanger ? 'background-color:'+ theme.palette.red["600"] + '; color:'+ theme.palette.white + ' ; margin: 10px': 'background-color: ' + theme.palette.blue["600"] +'; margin: 10px'}
 `
 
 const DangerIcon = styled(AlertIcon)``
@@ -40,9 +41,7 @@ const DangerIcon = styled(AlertIcon)``
 const BodyContent = styled(LG)`
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.154px;
+  font-size: ${theme.fontSizes.md}
 `
 
 
