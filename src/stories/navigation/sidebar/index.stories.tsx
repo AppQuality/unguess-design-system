@@ -2,7 +2,6 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { theme } from "../../theme";
 
 import { SidebarArgs } from "./_types";
-import { useState } from "react";
 import { Chrome } from "../chrome";
 import { Sidebar } from ".";
 
@@ -28,7 +27,26 @@ const Template: Story<SidebarStoryArgs> = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  currentRoute: "home",
+  projects: [
+    {
+      id: "1",
+      title: "Enel Premia Wow",
+      campaigns: "there are no campaigns",
+    },
+    {
+      id: "2",
+      title: "EAS",
+      campaigns: "12 campaigns",
+    },
+    {
+      id: "3",
+      title: "Beauty Contest Job Recruitment",
+      campaigns: "1 campaign",
+    }
+  ]
+};
 
 Default.parameters = {
   design: {

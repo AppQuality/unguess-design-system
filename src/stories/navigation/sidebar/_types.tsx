@@ -4,11 +4,12 @@ export interface SidebarArgs extends NavArgs {
   projects?: Array<ProjectItem>;
   currentRoute?: string;
   homeItemLabel?: string;
+  dividerLabel?: string;
   tokens?: number;
 }
 
 export interface ProjectItem {
-  id: number;
+  id: string;
   title: string;
-  campaigns: number;
+  campaigns: string;
 }

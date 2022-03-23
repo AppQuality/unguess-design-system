@@ -11,6 +11,7 @@ import { useState } from "react";
 import { theme } from "../../theme";
 import { Logo } from "../../logo";
 import { NavDivider } from "../nav/nav-item/navDivider";
+import { NavItemProject } from "../nav/nav-item/navItemProject";
 
 /**
  * The UNGUESS Sidebar component provides a high-level layout structure and sets a framework for navigating around projects.
@@ -41,7 +42,23 @@ const Sidebar = (props: SidebarArgs) => {
         <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
       </NavItem>
 
-      <NavDivider isExpanded={expanded}>Projects</NavDivider>
+      <NavDivider isExpanded={expanded}>
+        {props.homeItemLabel || "Projects"}
+      </NavDivider>
+      {props.projects &&
+        props.projects.map((project) => (
+          <NavItemProject
+            isExpanded={expanded}
+            isCurrent={nav === project.id}
+            onClick={() => setNav(project.id)}
+          >
+            <NavItemProject.Title
+              title={project.title}
+              children={project.title}
+            />
+            <NavItemProject.SubTitle children={project.campaigns} />
+          </NavItemProject>
+        ))}
 
       {/* Footer Logo */}
       <NavItem

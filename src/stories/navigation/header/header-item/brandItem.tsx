@@ -5,8 +5,6 @@ import { HeaderItemIcon, HeaderItemText } from ".";
 import { Logo } from "../../../logo";
 import { ReactComponent as MenuIcon } from "@zendeskgarden/svg-icons/src/16/menu-stroke.svg";
 
-import { Type as LogoTypes } from "../../../logo/_types";
-
 const LogoIconContainer = styled(ZendeskHeaderItem)`
   margin-right: 2px;
   border-right: none;
@@ -50,7 +48,7 @@ const BrandItem = (props: BrandItemArgs) => {
       </MenuItem>
       <LogoIconContainer {...props} hasLogo>
         <HeaderItemIcon>
-          <Logo type={LogoTypes.icon} />
+          <Logo type={"icon"} />
         </HeaderItemIcon>
       </LogoIconContainer>
 

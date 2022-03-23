@@ -14,7 +14,7 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   &:hover, &:focus {
     ${SelectedItemStyle}
   }
-
+  opacity: 1;
   color: ${(props) => props.theme.palette.blue["600"]};
   font-weight: ${(props) => props.theme.fontWeights.medium};
   ${(props) =>
@@ -25,6 +25,9 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   `}
 `;
 
-const NavItem = (props: NavItemArgs) => <UgNavItem {...props} />;
+const NavItem = (props: NavItemArgs) => {
+  // const { isExpanded } = props;
+  return <UgNavItem {...props} />;
+};
 
 export { NavItem };
