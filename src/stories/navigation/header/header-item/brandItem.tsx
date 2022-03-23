@@ -47,7 +47,7 @@ const BrandItem = (props: BrandItemArgs) => {
       </MenuItem>
       <LogoIconContainer {...props} hasLogo>
         <HeaderItemIcon>
-          <Logo type={"icon"} />
+          <Logo type={"icon"} size={150} />
         </HeaderItemIcon>
       </LogoIconContainer>
 

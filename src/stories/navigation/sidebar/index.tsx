@@ -44,7 +44,7 @@ const Sidebar = (props: SidebarArgs) => {
       </NavItem>
 
       <NavDivider isExpanded={props.isExpanded}>
-        {props.homeItemLabel || "Projects"}
+        {props.dividerLabel || ""}
       </NavDivider>
       {props.projects &&
         props.projects.map((project) => (
@@ -69,7 +69,7 @@ const Sidebar = (props: SidebarArgs) => {
         style={{ pointerEvents: "none" }}
       >
         <NavItemIcon>
-          <Logo type={"icon"} />
+          <Logo type={"icon"} size={150} />
         </NavItemIcon>
         <NavItemText>UNGUESS</NavItemText>
       </NavItem>

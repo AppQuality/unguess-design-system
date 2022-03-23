@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-import { LogoArgs, Type } from './_types';
+import { LogoArgs } from './_types';
 import LogoHorizontal from '../../assets/logo-horizontal.svg';
 import LogoVertical from '../../assets/logo-vertical.svg';
 import LogoIcon from '../../assets/logo-icon.svg';
@@ -31,18 +30,5 @@ const Logo = (props: LogoArgs) => {
       />
    );
 }
-
-Logo.propTypes = {
-   type: PropTypes.string,
-   className: PropTypes.string,
-   size: PropTypes.number
-}
-
-Logo.defaultProps = {
-   type: Type.horizontal,
-   size: 150,
-   style: {},
-   className: ""
-};
 
 export { Logo };

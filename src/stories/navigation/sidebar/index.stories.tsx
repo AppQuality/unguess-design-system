@@ -33,6 +33,7 @@ const Template: Story<SidebarStoryArgs> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   currentRoute: "home",
+  dividerLabel: "Projects",
   projects: [
     {
       id: "1",
