@@ -1,5 +1,6 @@
 import { INavItemProps, INavItemTextProps } from "@zendeskgarden/react-chrome";
 import { HTMLAttributes, PropsWithChildren } from "react";
+import { LabelArgs } from "src/stories/label/_types";
 
 export interface NavItemArgs extends INavItemProps {
   /** Indicates that the item is current in the nav */
@@ -28,3 +29,6 @@ export interface NavToggleArgs extends NavItemIconArgs {
   /** Expands the nav area to display the item text */
   isExpanded?: boolean;
 }
+
+
+export interface NavDividerArgs extends LabelArgs {}

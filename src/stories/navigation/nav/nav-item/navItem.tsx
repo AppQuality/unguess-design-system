@@ -17,7 +17,6 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
 
   color: ${(props) => props.theme.palette.blue["600"]};
   font-weight: ${(props) => props.theme.fontWeights.medium};
-
   ${(props) =>
     props.isCurrent &&
     `
