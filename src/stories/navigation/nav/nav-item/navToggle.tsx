@@ -12,6 +12,7 @@ const StyledToggle = styled(IconButton)`
   top: ${({ theme }) => theme.space.base * 3}px;
   right: -${({ theme }) => theme.space.base * 3}px;
   background: ${({ theme }) => theme.gradients.dark}};
+  z-index: 1;
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: none;
   }

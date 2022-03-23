@@ -8,15 +8,9 @@ import { useState } from "react";
 
 interface SidebarStoryArgs extends SidebarArgs {}
 
-// const ChevronButton = styled(IconButton)`
-//   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-//     display: none;
-//   }
-// `;
-
 const Template: Story<SidebarStoryArgs> = (args) => {
 
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(args.isExpanded || false);
 
 
   return (
@@ -30,8 +24,7 @@ const Template: Story<SidebarStoryArgs> = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
+const defaultArgs: SidebarStoryArgs = { 
   currentRoute: "home",
   dividerLabel: "Projects",
   projects: [
@@ -51,13 +44,22 @@ Default.args = {
       campaigns: "1 campaign",
     }
   ]
-};
+}
+export const Default = Template.bind({});
+Default.args = defaultArgs;
 
 Default.parameters = {
   design: {
     type: "figma",
     url: "https://www.figma.com/file/cDHa0NrDcLoJcPL20FfGBI/UNGUESS-%7C-Redesign-Zendesk?node-id=712%3A23480",
   },
+};
+
+export const WithTokens = Template.bind({});
+WithTokens.args = {
+  ...defaultArgs,
+  isExpanded: true,
+  tokens: "24 Tokens",
 };
 
 export default {

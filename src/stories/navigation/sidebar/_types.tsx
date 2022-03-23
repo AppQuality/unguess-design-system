@@ -5,7 +5,7 @@ export interface SidebarArgs extends NavArgs {
   currentRoute?: string;
   homeItemLabel?: string;
   dividerLabel?: string;
-  tokens?: number;
+  tokens?: string;
   isExpanded?: boolean;
   onToggleMenu?: () => void;
 }
