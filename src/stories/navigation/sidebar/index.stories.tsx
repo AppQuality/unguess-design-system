@@ -4,6 +4,7 @@ import { theme } from "../../theme";
 import { SidebarArgs } from "./_types";
 import { Chrome } from "../chrome";
 import { Sidebar } from ".";
+import { useState } from "react";
 
 interface SidebarStoryArgs extends SidebarArgs {}
 
@@ -15,13 +16,16 @@ interface SidebarStoryArgs extends SidebarArgs {}
 
 const Template: Story<SidebarStoryArgs> = (args) => {
 
+  const [expanded, setExpanded] = useState(false);
+
+
   return (
     <Chrome
       isFluid
-      style={{ height: 360, minWidth: 600 }}
+      style={{ height: 400, minWidth: 480 }}
       hue={theme.palette.white}
     >
-      <Sidebar {...args}/>
+      <Sidebar {...args} isExpanded={expanded} onToggleMenu={() => setExpanded(!expanded)}/>
     </Chrome>
   );
 };

@@ -29,7 +29,6 @@ const BrandName = styled(ZendeskHeaderItem)`
 
 const MenuItem = styled(ZendeskHeaderItem)`
   color: ${({ theme }) => theme.palette.blue["600"]};
-  pointer-events: none;
   position: absolute;
   left: 0;
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -40,7 +39,7 @@ const MenuItem = styled(ZendeskHeaderItem)`
 const BrandItem = (props: BrandItemArgs) => {
   return (
     <>
-      <MenuItem {...props}>
+      <MenuItem {...props} onClick={props.toggleMenu}>
         <HeaderItemIcon>
           <MenuIcon />
         </HeaderItemIcon>

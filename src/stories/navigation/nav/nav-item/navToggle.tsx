@@ -12,6 +12,9 @@ const StyledToggle = styled(IconButton)`
   top: ${({ theme }) => theme.space.base * 3}px;
   right: -${({ theme }) => theme.space.base * 3}px;
   background: ${({ theme }) => theme.gradients.dark}};
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: none;
+  }
 `;
 
 const NavToggle = (props: NavToggleArgs) => {

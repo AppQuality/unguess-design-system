@@ -1,7 +1,6 @@
 import { ReactComponent as ChangelogIcon } from "@zendeskgarden/svg-icons/src/16/megaphone-stroke.svg";
 import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 import styled from "styled-components";
-import useWindowSize from "../../../hooks/useWindowSize";
 import { theme } from "../../theme";
 import { Avatar } from "../../avatar";
 import { IconButton } from "../../buttons/icon-button";
@@ -16,14 +15,13 @@ const ChevronButton = styled(IconButton)`
 `;
 
 /**
- * An Header is a visual way to display general information. 
+ * An Header is a visual way to display general information.
  * This can include navList Items, modal, profile settings.
  */
 const AppHeader = ({ brand, avatar, ...args }: AppHeaderArgs) => {
-  const { width } = useWindowSize();
   return (
     <Header {...args}>
-      <BrandItem {...brand} />
+      <BrandItem {...brand} toggleMenu={args.onSidebarMenuToggle}/>
       {args.hasChangelog && (
         <HeaderItem
           onClick={args.onChangelogClick}
@@ -38,12 +36,7 @@ const AppHeader = ({ brand, avatar, ...args }: AppHeaderArgs) => {
       <HeaderItem isRound onClick={avatar?.onProfileModalToggle}>
         <HeaderItemIcon>
           <>
-            <Avatar
-              {...avatar}
-              size={
-                width > parseInt(theme.breakpoints.sm) ? "small" : "extrasmall"
-              }
-            />
+            <Avatar {...avatar} />
             <ChevronButton size="small">
               <ChevronIcon />
             </ChevronButton>

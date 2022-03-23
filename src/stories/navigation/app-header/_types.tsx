@@ -13,4 +13,6 @@ export interface AppHeaderArgs extends HeaderArgs {
   avatar?: AvatarArgs & {
     onProfileModalToggle?: () => void;
   };
+  /** Toggle Sidebar */
+  onSidebarMenuToggle?: () => void;
 }

@@ -8,6 +8,7 @@ import { Content } from "../navigation/content";
 import { Main } from "../navigation/main";
 import { AppHeader } from "../navigation/app-header";
 import { AppHeaderArgs } from "../navigation/app-header/_types";
+import { useState } from "react";
 
 export interface PageTemplatesArgs {
   sidebar?: SidebarArgs;
@@ -19,17 +20,23 @@ export const PageTemplate = ({
   header,
   ...args
 }: PageTemplatesArgs) => {
+
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleSidebar = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <Chrome
       isFluid
-      style={{ height: 480, minWidth: 600 }}
       hue={theme.palette.white}
     >
       <Body>
-        <AppHeader {...header} />
+        <AppHeader {...header} onSidebarMenuToggle={toggleSidebar}/>
 
         <Content>
-          <Sidebar {...sidebar} />
+          <Sidebar {...sidebar} isExpanded={expanded} onToggleMenu={toggleSidebar} />
           <Main>
             <h1 style={{ marginLeft: "24px" }}>This is Main.</h1>
           </Main>

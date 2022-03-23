@@ -21,18 +21,22 @@ import { NavItemProject } from "../nav/nav-item/navItemProject";
  */
 const Sidebar = (props: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
-  const [expanded, setExpanded] = useState(false);
+  
+  const toggleNav = () => {
+    props.onToggleMenu && props.onToggleMenu();
+  }
+
   return (
-    <Nav {...props} isExpanded={expanded}>
-      <NavToggle onClick={() => setExpanded(!expanded)} isExpanded={expanded} />
-      <NavItem hasLogo isExpanded={expanded} style={{ pointerEvents: "none" }}>
+    <Nav {...props}>
+      <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
+      <NavItem hasLogo isExpanded={props.isExpanded} style={{ pointerEvents: "none" }}>
         <NavItemIcon>
           <ProductIcon style={{ color: theme.palette.green[200] }} />
         </NavItemIcon>
         <NavItemText>Zendesk Garden</NavItemText>
       </NavItem>
       <NavItem
-        isExpanded={expanded}
+        isExpanded={props.isExpanded}
         isCurrent={nav === "home"}
         onClick={() => setNav("home")}
       >
@@ -42,13 +46,13 @@ const Sidebar = (props: SidebarArgs) => {
         <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
       </NavItem>
 
-      <NavDivider isExpanded={expanded}>
+      <NavDivider isExpanded={props.isExpanded}>
         {props.homeItemLabel || "Projects"}
       </NavDivider>
       {props.projects &&
         props.projects.map((project) => (
           <NavItemProject
-            isExpanded={expanded}
+            isExpanded={props.isExpanded}
             isCurrent={nav === project.id}
             onClick={() => setNav(project.id)}
           >
@@ -62,7 +66,7 @@ const Sidebar = (props: SidebarArgs) => {
 
       {/* Footer Logo */}
       <NavItem
-        isExpanded={expanded}
+        isExpanded={props.isExpanded}
         hasBrandmark
         title="Be smart from the start"
         style={{ pointerEvents: "none" }}

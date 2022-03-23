@@ -26,6 +26,8 @@ export interface BrandItemArgs extends ButtonHTMLAttributes<HTMLButtonElement> {
   brandName?: string;
   /** Add a descriptive text to the menu item icon*/
   menuLabel?: string;
+  /** Triggered when the menu item is clicked */
+  toggleMenu?: () => void;
 }
 
 export interface HeaderItemTextArgs extends IHeaderItemTextProps {
