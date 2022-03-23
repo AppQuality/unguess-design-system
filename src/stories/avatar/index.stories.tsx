@@ -1,51 +1,51 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from '../theme';
+import { theme } from "../theme";
 import { Avatar } from ".";
 import { AvatarArgs } from "./_types";
-import { ReactComponent as UserIcon } from '@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg';
+import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
 
-interface AvatarProps extends AvatarArgs {
-  type: 'icon' | 'image' | 'text';
-}
+const Template: Story<AvatarArgs> = (args) => {
+  const getChildren = (type: any) => {
+    switch (type) {
+      case "icon":
+        return <UserIcon role="img" aria-label="User" />;
 
-const Template: Story<AvatarProps> = (args) => {
-  const children = (type: string) => {
-    if (type === "icon") return <UserIcon role="img" aria-label="User" />
-    if (type === "image") return <img alt="avatar" src="https://s3.eu-west-1.amazonaws.com/appq.static/rossini.png" />
-    if (type === "text") return <Avatar.Text>LC</Avatar.Text>
-  }
-  return (
-    <Avatar {...args}>
-      {children(args.type)}
-    </Avatar>
-  );
+      case "image":
+        return "https://s3.eu-west-1.amazonaws.com/appq.static/rossini.png";
+
+      default:
+        return args.children;
+    }
+  };
+
+  return <Avatar {...args} children={getChildren(args.avatarType)} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  type: "text",
+  avatarType: "text",
+  children: "LC",
   backgroundColor: theme.gradients.dark,
 };
 
 Default.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=3673%3A29791',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=3673%3A29791",
   },
 };
 
 export const Square = Template.bind({});
 Square.args = {
-  type: "icon",
-  backgroundColor: theme.colors.primaryHue,
+  avatarType: "icon",
   isSystem: true,
-  status: "available"
+  status: "available",
 };
 
 Square.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=3673%3A29824',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=3673%3A29824",
   },
 };
 
@@ -55,14 +55,19 @@ export default {
   argTypes: {
     badge: {
       control: {
-        type: "text"
-      }
+        type: "text",
+      },
     },
-    type: {
+    avatarType: {
       control: {
         type: "select",
-        options: ['icon', 'image', 'text']
-      }
-    }
-  }
+        options: ["icon", "image", "text"],
+      },
+    },
+    children: {
+      name: "Avatar text",
+      description: "If AvatarType is `text` set the avatar content",
+      control: "text",
+    },
+  },
 } as ComponentMeta<typeof Avatar>;

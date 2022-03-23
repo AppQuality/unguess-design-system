@@ -20,7 +20,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "outDir": "./build"
+    "outDir": "./build",
+    "baseUrl": ".",
   },
   "include": [
     "src"

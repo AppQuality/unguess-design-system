@@ -4051,10 +4051,10 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
 
-"@zendeskgarden/react-chrome@^8.48.2":
-  version "8.48.2"
-  resolved "https://registry.npmjs.org/@zendeskgarden/react-chrome/-/react-chrome-8.48.2.tgz"
-  integrity sha512-1HcY+Ut9n/nSO0ovJwa52b2Qhp+02DHg3UOJo2807f1KH0OJA3TMNzUcxo1hd0civQO4IvW/cFqXP/VCk79nxQ==
+"@zendeskgarden/react-chrome@^8.49.0":
+  version "8.49.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-chrome/-/react-chrome-8.49.0.tgz#baa6876c78746e5f5f84448f6e4072823ccb411b"
+  integrity sha512-SEgEwR7gDY4NYRRWcBcHhH7kRRGTEeetndqzDQcpP44vntcIrA0bXfhv/bPGZehiOxs4knoYQUdgNgE+ftC+Qg==
   dependencies:
     "@zendeskgarden/container-accordion" "^1.0.3"
     "@zendeskgarden/container-utilities" "^0.7.0"
