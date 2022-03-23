@@ -19,7 +19,20 @@ const UgAvatar = styled(ZendeskAvatar)`
  */
 const Avatar = (props: AvatarArgs) => {
   const fixedBadge = props.badge && props.badge > 9 ? "9+" : props.badge;
-  return <UgAvatar {...props} badge={fixedBadge} />;
+  const wrapChildren = (type: string) => {
+    if (type === "icon") return props.children;
+    if (type === "image")
+      return <img alt="avatar" src={props.children as string} />;
+    if (type === "text") return <Avatar.Text>{props.children}</Avatar.Text>;
+  };
+
+  return (
+    <UgAvatar
+      {...props}
+      badge={fixedBadge}
+      children={wrapChildren(props.avatarType || "text")}
+    />
+  );
 };
 Avatar.Text = UgAvatar.Text;
 
