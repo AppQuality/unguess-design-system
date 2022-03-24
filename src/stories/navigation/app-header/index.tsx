@@ -1,5 +1,5 @@
-import { ReactComponent as ChangelogIcon } from "@zendeskgarden/svg-icons/src/16/megaphone-stroke.svg";
-import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
+import { ReactComponent as ChangelogIcon } from "../../../assets/icons/megaphone-stroke.svg";
+import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { Avatar } from "../../avatar";

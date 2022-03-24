@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { BrandItemArgs } from "./_types";
 import { HeaderItemIcon, HeaderItemText } from ".";
 import { Logo } from "../../../logo";
-import { ReactComponent as MenuIcon } from "@zendeskgarden/svg-icons/src/16/menu-stroke.svg";
+import { ReactComponent as MenuIcon } from "../../../../assets/icons/menu-stroke.svg";
 
 const LogoIconContainer = styled(ZendeskHeaderItem)`
   margin-right: 2px;

@@ -1,8 +1,8 @@
 import { Nav } from "../nav";
 import { NavItem, NavItemIcon, NavItemText, NavToggle } from "../nav/nav-item";
-import { ReactComponent as HomeIcon } from "@zendeskgarden/svg-icons/src/26/home-fill.svg";
-import { ReactComponent as HomeIconStyled } from "../../../assets/home-fill-styled.svg";
-import { ReactComponent as TokenIcon } from "../../../assets/token.svg";
+import { ReactComponent as HomeIcon } from "../../../assets/icons/home-fill.svg";
+import { ReactComponent as HomeIconStyled } from "../../../assets/icons/home-fill-styled.svg";
+import { ReactComponent as TokenIcon } from "../../../assets/icons/token.svg";
 
 import { SidebarArgs } from "./_types";
 import { useState } from "react";

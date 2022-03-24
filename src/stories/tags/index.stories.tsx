@@ -4,7 +4,7 @@ import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { TagArgs } from "./_types";
 import { KEY_CODES } from '@zendeskgarden/container-utilities';
-import { ReactComponent as LeafIcon } from '@zendeskgarden/svg-icons/src/12/leaf-stroke.svg';
+import { ReactComponent as LeafIcon } from '../../assets/icons/leaf-stroke.svg';
 
 interface TagStoryProps extends TagArgs {
   canBeClosed: boolean;

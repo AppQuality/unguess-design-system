@@ -6,7 +6,7 @@ import { Menu } from "../../dropdowns/menu";
 import { Trigger } from "../../trigger";
 import { Button } from "../button";
 import { IconButton } from "../icon-button";
-import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
+import { ReactComponent as LeafIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { SplitButton } from ".";
 import { SplitButtonArgs } from "./_types";
 
