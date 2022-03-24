@@ -1,3 +1,20 @@
+# v2.5.1 (Thu Mar 24 2022)
+
+#### 🐛 Bug Fix
+
+- feat(counter): add Counter component [#25](https://github.com/AppQuality/unguess-design-system/pull/25) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(navigation): export Chrome component ([@cannarocks](https://github.com/cannarocks))
+- build(chromatic): add delay to prevent blank snapshot ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.5.0 (Thu Mar 24 2022)
 
 #### 🚀 Enhancement
