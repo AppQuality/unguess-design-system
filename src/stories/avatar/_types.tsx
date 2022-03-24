@@ -15,4 +15,6 @@ export interface AvatarArgs extends IAvatarProps {
   status?: 'available' | 'away';
   /** Sets the badge text and applies active styling */
   badge?: string | number;
+  /** Sets the avatar type */
+  avatarType?: 'icon' | 'image' | 'text';
 }

@@ -1,3 +1,4 @@
+import { PropsWithChildren } from "react";
 import { Select as ZendeskSelect, Dropdown as ZendeskDropdown, Message as ZendeskMessage } from "@zendeskgarden/react-dropdowns";
 import { SelectArgs, DropdownArgs, MessageArgs } from "./_types";
 
@@ -12,7 +13,7 @@ import { SelectArgs, DropdownArgs, MessageArgs } from "./_types";
     - To select from a list on mobile, use a native Select instead
  */
 const Select = (props: SelectArgs) => <ZendeskSelect {...props} />;
-const Dropdown = (props: DropdownArgs) => <ZendeskDropdown {...props} />;
+const Dropdown = (props: PropsWithChildren<DropdownArgs>) => <ZendeskDropdown {...props} />;
 const Message = (props: MessageArgs) => <ZendeskMessage {...props} />;
 
 

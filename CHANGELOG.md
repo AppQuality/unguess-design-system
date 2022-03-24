@@ -1,3 +1,21 @@
+# v2.4.1 (Fri Mar 18 2022)
+
+
+
+---
+
+# v2.4.0 (Fri Mar 18 2022)
+
+#### 🚀 Enhancement
+
+- add logo component + fix login-form component issues [#17](https://github.com/AppQuality/unguess-design-system/pull/17) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.3.1 (Tue Mar 15 2022)
 
 
