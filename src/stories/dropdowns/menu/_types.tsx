@@ -1,4 +1,4 @@
-import { IMenuProps } from "@zendeskgarden/react-dropdowns";
+import { IItemProps, IMenuProps } from "@zendeskgarden/react-dropdowns";
 
 export interface MenuArgs extends IMenuProps {
   /**
@@ -29,4 +29,23 @@ export interface MenuArgs extends IMenuProps {
    * Sets the `max-height` of the menu
    */
   maxHeight?: string;
+}
+
+export interface PreviousItemArgs extends IItemProps {
+  /** Sets the value that is returned upon selection */
+  value?: any;
+  /** Indicates that the element is not interactive */
+  disabled?: boolean;
+  /** Applies danger styling */
+  isDanger?: boolean;
+}
+
+
+export interface NextItemArgs extends IItemProps {
+  /** Sets the value that is returned upon selection */
+  value?: any;
+  /** Indicates that the element is not interactive */
+  disabled?: boolean;
+  /** Applies danger styling */
+  isDanger?: boolean;
 }
