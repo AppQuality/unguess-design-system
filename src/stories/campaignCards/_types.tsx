@@ -1,32 +1,35 @@
-import { IWellProps } from "@zendeskgarden/react-notifications";
-import { ReactComponent as CompletedIcon } from "../../assets/completed-status-round-icon.svg";
-import { ReactComponent as OnGoingIcon } from "../../assets/on-going-status-round-icon.svg";
-import { ReactComponent as ArrivalIcon } from "../../assets/arrival-status-round-icon.svg";
+import { CardProps } from "../cards/_types";
 
-export interface CampaignCardsProps extends IWellProps {
+export interface CampaignCardsProps  extends CardProps{
+  /**
+   * displays a new tag in the top right
+   */
   isNew?: boolean;
+  /**
+   * displays the date, if is the current day, the word "Today" will be shown instead
+   * use this format DD/MM/YYYY
+   */
   date: string;
+  /**
+   * the main topic of the card
+   */
   title: string;
+  /**
+   * a specification to the topic of the card
+   */
   subTitle: string;
-  status: Status;
-  testType: TestType;
+  /**
+   * the status of the card,
+   * can be only
+   * "COMPLETED" or "ON_GOING" or "ARRIVING"
+   * default is "ARRIVING"
+   */
+  status?: 'COMPLETED' | 'ON_GOING' | 'ARRIVING';
+  /**
+   * this renders the pill of the card,
+   * can be only
+   * "FUNCTIONAL" or "REGRESSION"
+   * if nothing of that is chosen the pill will not be shown
+   */
+  type?: 'FUNCTIONAL' | 'REGRESSION';
 }
-
-export enum Status {
-  COMPLETED = "COMPLETED",
-  ON_GOING = "ON_GOING",
-  ARRIVING = "ARRIVING"
-}
-
-export const statusIcons = {
-  [Status.COMPLETED]: CompletedIcon,
-  [Status.ON_GOING]: OnGoingIcon,
-  [Status.ARRIVING]: ArrivalIcon,
-}
-
-export enum TestType  {
-  REGRESSION_TEST = "Regression Testing",
-  USABILITY_TEST = "Usability Test",
-  FUNCTIONAL_TEST = "Functional Test"
-}
-

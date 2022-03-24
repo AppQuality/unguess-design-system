@@ -1,18 +1,49 @@
-import { CampaignCardsProps, Status, statusIcons, TestType } from "./_types";
+import { CampaignCardsProps } from "./_types";
 import { Well as ZendeskWell } from "@zendeskgarden/react-notifications"
 import { Tag } from "../tags";
 import { theme } from "../theme";
 import { Label } from "../label";
 import styled from "styled-components";
-import { ReactComponent as UsabilityTestIcon } from "../../assets/usability-test-round-icon.svg";
+import { ReactComponent as FunctionalTestIcon } from "../../assets/icons/functional-test-round-icon.svg";
+import { ReactComponent as RegressionTestIcon } from "../../assets/icons/regression-test-round-icon.svg";
+import { ReactComponent as CompletedIcon } from "../../assets/icons/completed-status-round-icon.svg";
+import { ReactComponent as OnGoingIcon } from "../../assets/icons/on-going-status-round-icon.svg";
+import { ReactComponent as ArrivalIcon } from "../../assets/icons/arrival-status-round-icon.svg";
+import React from "react";
+import { Col } from "../grid/col";
+import { Row } from "../grid/row";
 
-const getWrapper = (debug: boolean) => styled(ZendeskWell)`
-  width: 30%;
+const getStatusIcon = (status: string) => {
+  switch (status) {
+    case "COMPLETED":
+      return CompletedIcon
+    case "ON_GOING":
+      return OnGoingIcon
+    case "ARRIVING":
+      return ArrivalIcon
+  }
+}
+
+const getTypeData = (type?: string) => {
+  switch (type) {
+    case "REGRESSION":
+      return {
+        pillIcon: RegressionTestIcon,
+        pillText: "Regression testing"
+      }
+    case "FUNCTIONAL":
+      return {
+        pillIcon: FunctionalTestIcon,
+        pillText: "Functional test"
+      }
+  }
+}
+
+const Wrapper = styled(ZendeskWell)`
   border-radius: 15px;
-  padding: 0.2rem;
-  ${debug ? '' : 'border: transparent'}
+  padding: 1rem;
+  border: transparent;
 `
-
 
 const StyledLabel = styled(Label)`
   color: ${theme.palette.grey["500"]}
@@ -21,59 +52,75 @@ const StyledLabel = styled(Label)`
 const StyledTitleLabel = styled(Label)`
   color: ${theme.palette.blue["600"]};
   font-size: ${theme.fontSizes.xl};
+  word-wrap: break-word;
 `
 
 const Divider = () => {
   return <div style={{
     width: "100%",
+    marginBottom: '1rem',
     overflow: "hidden",
-    border: `solid 1px ${theme.palette.grey["300"]}`
+    border: `solid 0.5px ${theme.palette.grey["300"]}`
   }}/>
 }
 
-const getFlexContainer = (direction: string, align: string) => styled(ZendeskWell)`
+
+const StyledCol = styled(Col)`
   display: flex;
-  align-items: ${align};
-  flex-direction: ${direction};
+  align-items: flex-start;
+  flex-direction: column;
   justify-content: space-between;
-  border: transparent;
+  padding: 0.8rem;
 `
 
+const StyledRow = styled(Row)`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+`
+
+const getFormattedLocaleDate = () => {
+  return new Date().toLocaleString().substring(0,10)
+}
+
 const CampaignCard = (props: CampaignCardsProps) => {
-  const {isNew, date, title, subTitle, status, testType} = props
+  const {isNew, date, title, subTitle, status, type} = props
+  const shownDate = date === getFormattedLocaleDate() ? "Today" : date
 
-  const HorizontalContainer = getFlexContainer("row", "center")
-  const VerticalContainer = getFlexContainer("column", "flex-start")
-  const Wrapper = getWrapper(true)
 
-  const StatusIcon = statusIcons[status] || statusIcons[Status.COMPLETED]
-  console.log(TestType.USABILITY_TEST)
-  console.log(Status.COMPLETED)
+  const StatusIcon = getStatusIcon(status ?? "ON_GOING") as React.ElementType
+  const typeData = getTypeData(type)
+  const PillIcon = typeData?.pillIcon as React.ElementType
+
   return <Wrapper>
-    <HorizontalContainer>
-      <StyledLabel isRegular>{date}</StyledLabel>
-      {isNew && <Tag hue={theme.palette.purple["600"]}
+    <StyledRow>
+      <StyledLabel isRegular>{shownDate}</StyledLabel>
+      {isNew && <Tag hue={theme.palette.fuschia["600"]}
                      isPill
-                     size="large"
+                     size="medium"
                      title="New!">New!</Tag>}
-    </HorizontalContainer>
-    <VerticalContainer>
+    </StyledRow>
+    <StyledCol>
       <StyledLabel isRegular>{title}</StyledLabel>
       <StyledTitleLabel isRegular>{subTitle}</StyledTitleLabel>
+    </StyledCol>
+    <StyledRow>
       <Divider/>
-    </VerticalContainer>
-    <HorizontalContainer>
-      <Tag size="large"
-           isPill
-           isRegular>
-        <Tag.Avatar>
-          <UsabilityTestIcon />
-        </Tag.Avatar>
-        {/*{TestType[testType]}*/}
-      </Tag>
+      {typeData &&
+        <Tag size="large"
+             isPill
+             isRegular>
+          <Tag.Avatar>
+            <PillIcon />
+          </Tag.Avatar>
+          {typeData.pillText}
+        </Tag>
+      }
       <StatusIcon />
-    </HorizontalContainer>
+    </StyledRow>
   </Wrapper>;
 }
-//TODO test type text and icon, less padding to the card
+
 export { CampaignCard }
