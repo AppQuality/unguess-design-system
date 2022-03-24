@@ -1,5 +1,5 @@
 import { Nav } from "../nav";
-import { NavItem, NavItemIcon, NavItemText, NavToggle } from "../nav/nav-item";
+import { NavItem, NavItemIcon, NavItemText, NavToggle, NavDivider, NavItemProject } from "../nav/nav-item";
 import { ReactComponent as HomeIcon } from "../../../assets/icons/home-fill.svg";
 import { ReactComponent as HomeIconStyled } from "../../../assets/icons/home-fill-styled.svg";
 import { ReactComponent as TokenIcon } from "../../../assets/icons/token.svg";
@@ -8,8 +8,6 @@ import { SidebarArgs } from "./_types";
 import { useState } from "react";
 import { theme } from "../../theme";
 import { Logo } from "../../logo";
-import { NavDivider } from "../nav/nav-item/navDivider";
-import { NavItemProject } from "../nav/nav-item/navItemProject";
 import { Card } from "../../cards";
 import styled from "styled-components";
 import { Span } from "../../typography/span";
