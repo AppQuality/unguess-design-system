@@ -40,4 +40,8 @@ export default {
       control: "text",
     },
   },
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Paragraph>;

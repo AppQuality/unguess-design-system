@@ -25,4 +25,8 @@ Default.args = {
 export default {
   title: "Atoms/Close",
   component: Close,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Close>;

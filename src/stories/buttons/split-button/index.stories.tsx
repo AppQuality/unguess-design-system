@@ -51,4 +51,8 @@ Default.parameters = {
 export default {
   title: "Atoms/Buttons/SplitButton",
   component: SplitButton,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof IconButton>;

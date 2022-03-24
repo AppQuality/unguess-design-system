@@ -37,4 +37,8 @@ Default.parameters = {
 export default {
   title: "Organisms/Header",
   component: AppHeader,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof AppHeader>;

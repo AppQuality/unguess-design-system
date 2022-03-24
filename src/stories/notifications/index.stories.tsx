@@ -36,4 +36,8 @@ Default.args = defaultArgs;
 export default {
   title: "Molecules/Notification",
   component: Notification,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Notification>;

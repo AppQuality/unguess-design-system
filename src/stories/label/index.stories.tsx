@@ -21,4 +21,8 @@ Bold.args = {
 export default {
   title: "Atoms/Label",
   component: Label,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Label>;

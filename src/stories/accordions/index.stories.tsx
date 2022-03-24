@@ -102,4 +102,8 @@ Compact.parameters = {
 export default {
   title: "Molecules/Accordion",
   component: Accordion,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Accordion>;

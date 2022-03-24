@@ -102,4 +102,8 @@ WithCustomContent.args = {
 export default {
   title: "Molecules/Modals",
   component: Modal,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Modal>;

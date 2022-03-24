@@ -689,4 +689,8 @@ VirtualScrolling.args = {
 export default {
   title: "Molecules/Table",
   component: Table,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Table>;

@@ -19,4 +19,8 @@ Default.args = {
 export default {
   title: "Templates/PageTemplate",
   component: PageTemplate,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof PageTemplate>;

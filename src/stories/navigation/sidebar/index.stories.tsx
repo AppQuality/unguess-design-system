@@ -65,4 +65,8 @@ WithTokens.args = {
 export default {
   title: "Organisms/Sidebar",
   component: Sidebar,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Sidebar>;
