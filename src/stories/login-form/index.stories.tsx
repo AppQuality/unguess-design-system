@@ -8,7 +8,7 @@ import { LoginFormArgs } from "./_types";
 const Template: Story<LoginFormArgs> = (args) => (
   <Grid>
     <Row>
-      <Col size={10} sm={4} offsetMd={4} >
+      <Col>
         <LoginForm {...args} />
       </Col>
     </Row>
