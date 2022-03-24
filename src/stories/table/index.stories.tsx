@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { FunctionComponent, useState } from "react";
-import { Table, Head, HeaderRow, HeaderCell, Body, Row, Cell, GroupRow, Caption } from ".";
+import { Table, Head, HeaderRow, HeaderCell, Body, Row, Cell, GroupRow, Caption, SortableCell } from ".";
 import { TableProps } from "./_types";
 import styled from "styled-components";
 import { Pagination } from "../pagination";
@@ -515,6 +515,106 @@ Selection.args = {
     sunExposure: 'Full sun',
     soil: 'Well draining',
     selected: false
+  }))
+};
+
+/** SORT */
+type Direction = 'asc' | 'desc' | undefined;
+const sortData = (tableData: IRow[], sunExposureSort: Direction, soilSort: Direction) => {
+  if (!sunExposureSort && !soilSort) {
+    return tableData;
+  }
+
+  let field: 'sunExposure' | 'soil';
+  let sortValue: Direction;
+
+  if (sunExposureSort) {
+    field = 'sunExposure';
+    sortValue = sunExposureSort;
+  } else {
+    field = 'soil';
+    sortValue = soilSort;
+  }
+
+  return tableData.sort((a, b) => {
+    const aValue = a[field] || '';
+    const bValue = b[field] || '';
+
+    if (aValue > bValue) {
+      return sortValue === 'asc' ? 1 : -1;
+    } else if (aValue < bValue) {
+      return sortValue === 'asc' ? -1 : 1;
+    }
+
+    return 0;
+  });
+};
+const SortTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+  const [data, setData] = useState(items);
+  const [sunExposureSort, setSunExposureSort] = useState<Direction>();
+  const [soilSort, setSoilSort] = useState<Direction>();
+
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <Table style={{ minWidth: 500 }}>
+        <Head>
+          <HeaderRow>
+            <HeaderCell>Fruit</HeaderCell>
+            <SortableCell
+              onClick={() => {
+                if (sunExposureSort === 'asc') {
+                  setSunExposureSort('desc');
+                } else if (sunExposureSort === 'desc') {
+                  setSunExposureSort(undefined);
+                } else {
+                  setSunExposureSort('asc');
+                }
+                setSoilSort(undefined);
+                setData(data);
+              }}
+              sort={sunExposureSort}
+            >
+              Sun Exposure
+            </SortableCell>
+            <SortableCell
+              onClick={() => {
+                if (soilSort === 'asc') {
+                  setSoilSort('desc');
+                } else if (soilSort === 'desc') {
+                  setSoilSort(undefined);
+                } else {
+                  setSoilSort('asc');
+                }
+                setSunExposureSort(undefined);
+                setData(data);
+              }}
+              sort={soilSort}
+            >
+              Soil
+            </SortableCell>
+          </HeaderRow>
+        </Head>
+        <Body>
+          {sortData(data.slice(), sunExposureSort, soilSort).map(row => (
+            <Row key={row.id}>
+              <Cell>{row.fruit}</Cell>
+              <Cell>{row.sunExposure}</Cell>
+              <Cell>{row.soil}</Cell>
+            </Row>
+          ))}
+        </Body>
+      </Table>
+    </div>
+  );
+};
+export const Sort = SortTemplate.bind({});
+Sort.args = {
+  ...defaultArgs,
+  items: Array.from(Array(10)).map((row, index) => ({
+    id: `row-${index}`,
+    fruit: `Custom fruit ${index + 1}`,
+    sunExposure: index % 2 === 0 ? 'Partial shade' : 'Full sun',
+    soil: index % 3 === 0 ? 'Moist and slightly acidic' : 'Well draining'
   }))
 };
 
