@@ -1,5 +1,5 @@
 import { BrandItemArgs } from "../header/header-item/_types";
-import { AvatarArgs } from "src/stories/avatar/_types";
+import { AvatarArgs } from "../../avatar/_types";
 import { HeaderArgs } from "../header/_types";
 
 export interface AppHeaderArgs extends HeaderArgs {

@@ -1,15 +1,26 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { LoginForm } from ".";
+import { Grid } from "../grid/grid";
+import { Row } from "../grid/row";
+import { Col } from "../grid/col";
 import { LoginFormArgs } from "./_types";
 
-const Template: Story<LoginFormArgs> = (args) => <LoginForm {...args} />;
+const Template: Story<LoginFormArgs> = (args) => (
+  <Grid>
+    <Row>
+      <Col size={10} sm={4} offsetMd={4} >
+        <LoginForm {...args} />
+      </Col>
+    </Row>
+  </Grid>
+);
 
 const defaultArgs: LoginFormArgs = {
   onSubmit: (values, actions) => {
     setTimeout(() => {
       alert("Submitted with a 2 seconds fake delay!");
       actions.setSubmitting(false);
-    }, 2000)
+    }, 2000);
   },
   initialValues: {
     email: "",
@@ -18,10 +29,10 @@ const defaultArgs: LoginFormArgs = {
   validateOnChange: true,
   errors: {},
   touched: {},
-  title: 'Welcome to Unguess',
-  buttonText: 'Sign In',
-  placeholderEmail: 'Insert Email',
-  placeholderPassword: 'Insert Password',
+  title: "Welcome to Unguess",
+  buttonText: "Sign In",
+  placeholderEmail: "Insert Email",
+  placeholderPassword: "Insert Password",
   validate: (values) => {
     let errors: any = {};
     if (!values.email) {
@@ -59,39 +70,39 @@ export default {
   argTypes: {
     isValid: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     touched: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     errors: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     validateOnChange: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     onBlur: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     onSubmit: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     validate: {
       table: {
-        disable: true
-      }
-    }
+        disable: true,
+      },
+    },
   },
   component: LoginForm,
 } as ComponentMeta<typeof LoginForm>;

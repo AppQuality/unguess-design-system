@@ -1,6 +1,6 @@
 import { INavItemProps, INavItemTextProps } from "@zendeskgarden/react-chrome";
 import { HTMLAttributes, PropsWithChildren } from "react";
-import { LabelArgs } from "src/stories/label/_types";
+import { LabelArgs } from "../../../label/_types";
 
 export interface NavItemArgs extends INavItemProps {
   /** Indicates that the item is current in the nav */

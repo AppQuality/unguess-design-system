@@ -16,7 +16,6 @@
     "@zendeskgarden/react-tags": "^8.49.0",
     "@zendeskgarden/react-tooltips": "^8.49.0",
     "@zendeskgarden/react-typography": "^8.49.0",
-    "@zendeskgarden/svg-icons": "^6.31.1",
     "react-window": "^1.8.6"
   },
   "scripts": {
@@ -84,6 +83,7 @@
     "@types/react-window": "^1.8.5",
     "@types/styled-components": "^5.1.23",
     "@zendeskgarden/react-theming": "^8.48.2",
+    "@zendeskgarden/svg-icons": "^6.31.1",
     "auto": "^10.32.6",
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",

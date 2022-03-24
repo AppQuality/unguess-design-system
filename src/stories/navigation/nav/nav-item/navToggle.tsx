@@ -1,6 +1,6 @@
 import { IconButton } from "../../../buttons/icon-button";
-import { ReactComponent as ChevronRightIcon } from "@zendeskgarden/svg-icons/src/16/chevron-right-stroke.svg";
-import { ReactComponent as ChevronLeftIcon } from "@zendeskgarden/svg-icons/src/16/chevron-left-stroke.svg";
+import { ReactComponent as ChevronRightIcon } from "../../../../assets/icons/chevron-right-stroke.svg";
+import { ReactComponent as ChevronLeftIcon } from "../../../../assets/icons/chevron-left-stroke.svg";
 import { NavToggleArgs } from "./_types";
 import styled from "styled-components";
 

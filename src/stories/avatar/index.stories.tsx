@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { theme } from "../theme";
 import { Avatar } from ".";
 import { AvatarArgs } from "./_types";
-import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
+import { ReactComponent as UserIcon } from "../../assets/icons/user-solo-stroke.svg";
 
 const Template: Story<AvatarArgs> = (args) => {
   const getChildren = (type: any) => {
