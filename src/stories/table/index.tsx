@@ -7,11 +7,12 @@ import {
    Row as ZendeskRow,
    Cell as ZendeskCell,
    GroupRow as ZendeskGroupRow,
-   Caption as ZendeskCaption
+   Caption as ZendeskCaption,
+   SortableCell as ZendeskSortableCell,
 } from '@zendeskgarden/react-tables';
 import { HTMLAttributes } from 'react';
 import styled from "styled-components";
-import { CellArgs, HeaderCellArgs, RowArgs, TableProps } from './_types';
+import { CellArgs, HeaderCellArgs, RowArgs, SortableCellArgs, TableProps } from './_types';
 
 const UgTable = styled(ZendeskTable)``;
 
@@ -35,6 +36,7 @@ const Row = (props: RowArgs) => <ZendeskRow {...props} />;
 const Cell = (props: CellArgs) => <ZendeskCell {...props} />;
 const GroupRow = (props: RowArgs) => <ZendeskGroupRow {...props} />;
 const Caption = (props: HTMLAttributes<HTMLTableCaptionElement>) => <ZendeskCaption {...props} />;
+const SortableCell = (props: SortableCellArgs) => <ZendeskSortableCell {...props}/>;
 
 export { 
    Table, 
@@ -45,5 +47,6 @@ export {
    Row, 
    Cell, 
    GroupRow, 
-   Caption 
+   Caption,
+   SortableCell,
 };
