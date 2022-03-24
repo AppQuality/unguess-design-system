@@ -16,6 +16,7 @@ const UgNav = styled(ZendeskNav)`
   `}
   transition: width 0.25s ease-in-out;
   padding-top: ${({ theme }) => theme.space.sm};
+  padding-left: ${({ theme }) => theme.space.xs};
 `;
 
 /**

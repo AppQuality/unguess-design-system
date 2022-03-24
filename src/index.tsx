@@ -74,6 +74,7 @@ export * from './stories/navigation/main';
 export * from './stories/navigation/nav';
 export * from './stories/navigation/nav/nav-item';
 export * from './stories/navigation/sidebar';
+export * from './stories/navigation/chrome';
 
 // --- Notifications ---
 export * from './stories/notifications';
