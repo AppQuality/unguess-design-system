@@ -6,12 +6,15 @@ import { Item } from "../dropdowns/item";
 import { ItemMeta, MediaBody, MediaFigure, MediaItem, NextItem, PreviousItem, Separator } from "../dropdowns/menu";
 import { Label } from "../label";
 import { theme } from "../theme";
-import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
 import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
 import { ReactComponent as QuestionMark } from "../../assets/icons/question-mark.svg";
 import { ReactComponent as TranslationExists } from "../../assets/icons/translation-exists.svg";
 import { ReactComponent as Exit } from "../../assets/icons/exit.svg";
+import { ReactComponent as CheckLg } from "../../assets/icons/check-lg.svg";
+import { ReactComponent as Copy } from "../../assets/icons/copy.svg";
+import { ReactComponent as InfoFill } from "../../assets/icons/info-fill.svg";
 import { ProfileModalArgs } from "./_types";
+import { Button } from "../buttons/button";
 
 const ProfileModalCard = styled(Card)`
    display: flex;
@@ -72,7 +75,7 @@ const InfoWrapper = styled.div`
    align-items: center;
    justify-content: space-between;
 
-   padding: 8px 0px 0px;
+   padding: 8px 8px 0px;
 
    position: static;
    height: 143px;
@@ -85,9 +88,6 @@ const InfoWrapper = styled.div`
 `
 
 const CompanyLabel = styled(Label)`
-   font-family: 'Poppins';
-   font-style: normal;
-   font-weight: 600;
    font-size: 12px;
    line-height: 16px;
 
@@ -98,23 +98,23 @@ const CompanyLabel = styled(Label)`
 `
 
 const NameLabel = styled(Label)`
-   font-family: 'Poppins';
-   font-style: normal;
-   font-weight: 600;
    font-size: 14px;
    line-height: 20px;
 
    display: flex;
    align-items: center;
    text-align: center;
+   justify-content: center;
    letter-spacing: -0.154px;
 
    margin: 2px 0px;
 `
 
 const Description = styled.div`
-   font-family: 'Poppins';
-   font-style: normal;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
    font-weight: 400;
    font-size: 12px;
    line-height: 140%;
@@ -124,10 +124,74 @@ const Description = styled.div`
    color: ${theme.palette.grey["600"]};
 
    margin: 2px 0px;
+
+   a {
+      color: ${theme.palette.grey["600"]};
+   }
 `
 
 const StyledMediaFigure = styled(MediaFigure)`
    margin-right: 4px;
+`
+
+const GreenThumbsUp = styled(ThumbsUp)`
+   path {
+      fill: ${theme.palette.kale["600"]};
+   }
+`
+
+const StandardQuestionMark = styled(QuestionMark)`
+   path {
+      fill: ${theme.palette.blue["600"]};
+   }
+`
+
+const StandardTranslationExists = styled(TranslationExists)`
+   path {
+      fill: ${theme.palette.blue["600"]};
+   }
+`
+
+const StandardInfoFill = styled(InfoFill)`
+   path {
+      fill: ${theme.palette.blue["600"]};
+   }
+`
+
+const RedExit = styled(Exit)`
+   path {
+      fill: ${theme.palette.red["600"]};
+   }
+`
+
+const EmptyIcon = styled.span`
+   float: left;
+   margin-top: 2px !important;
+   width: 16px;
+   height: 16px;
+`
+
+const HelpInfoWrapper = styled(InfoWrapper)`
+   margin-top: 20px;
+   align-items: flex-start;
+`
+
+const CSMInfos = styled.div`
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   width: 100%;
+`
+
+const StyledItemSmall = styled(StyledItem)`
+   height: 24px;
+`
+
+const Footer = styled.div`
+   position: fixed;
+   bottom: 0;
+   right: 0;
+   left: 0;
 `
 
 /**
@@ -137,80 +201,127 @@ const StyledMediaFigure = styled(MediaFigure)`
     - Show user main infos and actions
 
  */
-const ProfileModal = (props: PropsWithChildren<ProfileModalArgs>) => (
-   <ProfileModalCard isFloating>
-      {props.tempSelectedItem === 'need-help' &&
-         <>
-            <StyledPreviousItem value="initial">Bisogno di aiuto</StyledPreviousItem>
-            <StyledSeparator />
-            <InfoWrapper>
-               <Description>Contatta il tuo CSM</Description>
-               <Avatar avatarType="text" size="large" status="available">GP</Avatar>
-               <div>
-                  <NameLabel>Gianluca Peretti</NameLabel>
-                  <Description>gianluca.peretti@unguess.io</Description>
-               </div>
-            </InfoWrapper>
-         </>
-      }
-      {props.tempSelectedItem === 'change-language' &&
-         <>
-            <StyledPreviousItem value="initial">Cambia Lingua</StyledPreviousItem>
-            <StyledSeparator />
-            <StyledItem value="it">Italiano</StyledItem>
-            <StyledItem value="en">English</StyledItem>
-         </>
-      }
-      {(!props.tempSelectedItem || props.tempSelectedItem === 'initial') &&
-         <>
-            <InfoWrapper>
-               <CompanyLabel>ENEL</CompanyLabel>
-               <Avatar avatarType="text" size="large" status="available">MM</Avatar>
-               <div>
-                  <NameLabel>Martino Martinelli</NameLabel>
-                  <Description>m.martinelli@enel.com</Description>
-               </div>
-            </InfoWrapper>
-            <StyledSeparator />
-            <StyledItem id="feedback" value="feedback">
-               <StyledMediaFigure>
-                  <ThumbsUp />
-               </StyledMediaFigure>
-               <MediaBody>
-                  Fornisci un feedback
-                  <ItemMeta>Aiutaci a migliorare UNGUESS!</ItemMeta>
+const ProfileModal = (props: PropsWithChildren<ProfileModalArgs>) => {
+   const copyToClipBoard = () => {
+      const copyText: string = document.getElementById("csm-contact")!.innerHTML;
+      navigator.clipboard.writeText(copyText);
+   };
+
+   return (
+      <ProfileModalCard isFloating>
+         {props.tempSelectedItem === 'need-help' &&
+            <>
+               <StyledPreviousItem value="initial">Bisogno di aiuto</StyledPreviousItem>
+               <StyledSeparator />
+               <HelpInfoWrapper>
+                  <Description>Contatta il tuo CSM</Description>
+                  <Avatar avatarType="text" size="large" status="available">GP</Avatar>
+                  <CSMInfos>
+                     <NameLabel>Gianluca Peretti</NameLabel>
+                     <Description>
+                        <a id="csm-contact" href="mailto:gianluca.peretti@unguess.io">gianluca.peretti@unguess.io</a>
+                        <Button
+                           isBasic
+                           onClick={copyToClipBoard}
+                           size="small"
+                           variant="isBasic"
+                        >
+                           <Button.StartIcon>
+                              <Copy />
+                           </Button.StartIcon>
+                           Copy
+                        </Button>   
+                     </Description>
+                  </CSMInfos>
+               </HelpInfoWrapper>
+               <Footer>
+                  <StyledSeparator />
+                  {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
+                  <StyledItemSmall value="report-error" onClick={() => {}}>
+                     <StyledMediaFigure>
+                        <StandardInfoFill />
+                     </StyledMediaFigure>
+                     <MediaBody>
+                        Segnala un problema tecnico
+                     </MediaBody>
+                  </StyledItemSmall>
+               </Footer>
+            </>
+         }
+         {props.tempSelectedItem === 'change-language' &&
+            <>
+               <StyledPreviousItem value="initial">Cambia Lingua</StyledPreviousItem>
+               <StyledSeparator />
+               <StyledItem value="it">
+                  <StyledMediaFigure>
+                     <CheckLg />
+                  </StyledMediaFigure>
+                  <MediaBody>
+                     <Label>Italiano</Label>
                   </MediaBody>
-            </StyledItem>
-            <StyledSeparator />
-            <StyledNextItem value="need-help">
-               <StyledMediaFigure>
-                  <QuestionMark />
-               </StyledMediaFigure>
-               <MediaBody>
-                  Bisogno d'aiuto?
-               </MediaBody>
-            </StyledNextItem>
-            <StyledNextItem value="change-language">
-               <StyledMediaFigure>
-                  <TranslationExists />
-               </StyledMediaFigure>
-               <MediaBody>
-               Cambia lingua
-               <ItemMeta>Adesso: Italiano</ItemMeta>
-               </MediaBody>
-            </StyledNextItem>
-            <StyledItem value="logout">
-               <StyledMediaFigure>
-                  <Exit />
-               </StyledMediaFigure>
-               <MediaBody>
-                  Log out
-               </MediaBody>
-            </StyledItem>
-         </>
-      }
-   </ProfileModalCard>
-);
+               </StyledItem>
+               <StyledItem value="en">
+                  <StyledMediaFigure>
+                     {false ? <CheckLg /> : <EmptyIcon />}
+                  </StyledMediaFigure>
+                  <MediaBody>
+                     <Label isRegular>English</Label>
+                     <ItemMeta>Inglese</ItemMeta>
+                  </MediaBody>
+               </StyledItem>
+            </>
+         }
+         {(!props.tempSelectedItem || props.tempSelectedItem === 'initial') &&
+            <>
+               <InfoWrapper>
+                  <CompanyLabel>ENEL</CompanyLabel>
+                  <Avatar avatarType="text" size="large" status="available">MM</Avatar>
+                  <div>
+                     <NameLabel>Martino Martinelli</NameLabel>
+                     <Description>m.martinelli@enel.com</Description>
+                  </div>
+               </InfoWrapper>
+               <StyledSeparator />
+               <StyledItem id="feedback" value="feedback">
+                  <StyledMediaFigure>
+                     <GreenThumbsUp />
+                  </StyledMediaFigure>
+                  <MediaBody>
+                     Fornisci un feedback
+                     <ItemMeta>Aiutaci a migliorare UNGUESS!</ItemMeta>
+                  </MediaBody>
+               </StyledItem>
+               <StyledSeparator />
+               <StyledNextItem value="need-help">
+                  <StyledMediaFigure>
+                     <StandardQuestionMark />
+                  </StyledMediaFigure>
+                  <MediaBody>
+                     Bisogno d'aiuto?
+                  </MediaBody>
+               </StyledNextItem>
+               <StyledNextItem value="change-language">
+                  <StyledMediaFigure>
+                     <StandardTranslationExists />
+                  </StyledMediaFigure>
+                  <MediaBody>
+                     Cambia lingua
+                     <ItemMeta>Adesso: Italiano</ItemMeta>
+                  </MediaBody>
+               </StyledNextItem>
+               <StyledItem value="logout">
+                  <StyledMediaFigure>
+                     <RedExit />
+                  </StyledMediaFigure>
+                  <MediaBody>
+                     Log out
+                  </MediaBody>
+               </StyledItem>
+            </>
+         }
+      </ProfileModalCard>
+   );
+};
 
 export { ProfileModal };
     

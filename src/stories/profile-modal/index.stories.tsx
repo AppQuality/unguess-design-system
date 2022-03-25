@@ -1,17 +1,13 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { useState } from "react";
 import { ProfileModal } from ".";
-import { Item } from "../dropdowns/item";
-import { Menu, NextItem, PreviousItem, Separator } from "../dropdowns/menu";
+import { Menu } from "../dropdowns/menu";
 import { Dropdown } from "../dropdowns/select";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { Trigger } from "../trigger";
 import { ProfileModalArgs } from "./_types";
-import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down-stroke.svg";
 import { Button } from "@zendeskgarden/react-buttons";
-import { Title } from "../title";
-import { Avatar } from "../avatar";
 import styled from "styled-components";
 
 const StyledMenu = styled(Menu)`
@@ -48,7 +44,7 @@ const Template: Story<ProfileModalArgs> = (args) => {
 
             if (Object.hasOwn(changes, 'selectedItem')) {
               updatedState.tempSelectedItem = changes.selectedItem;
-              stateAndHelpers.setHighlightedIndex(1);
+              // stateAndHelpers.setHighlightedIndex(1);
             }
 
             if (Object.keys(updatedState).length > 0) {
@@ -57,9 +53,7 @@ const Template: Story<ProfileModalArgs> = (args) => {
           }}
         >
           <Trigger>
-            <Button>
-              
-            </Button>
+            <Button></Button>
           </Trigger>
           <StyledMenu placement="bottom-end">
             <ProfileModal tempSelectedItem={state.tempSelectedItem} />
