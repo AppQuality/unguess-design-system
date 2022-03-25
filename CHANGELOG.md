@@ -10,6 +10,12 @@
 
 ---
 
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
 # v2.5.2 (Fri Mar 25 2022)
 
 #### ⚠️ Pushed to `master`
