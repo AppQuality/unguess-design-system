@@ -1,5 +1,17 @@
 # v2.5.3 (Fri Mar 25 2022)
 
+#### ⚠️ Pushed to `master`
+
+- build(auto-it): update auto package ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
 
 
 ---
