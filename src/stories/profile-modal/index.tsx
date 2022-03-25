@@ -61,14 +61,6 @@ const StyledNextItem = styled(NextItem)`
    }
 `
 
-const StyledMediaItem = styled(MediaItem)`
-   width: -webkit-fill-available;
-`
-
-// const UgItem = (props: any) => (
-
-// )
-
 const InfoWrapper = styled.div`
    display: flex;
    flex-direction: column;
