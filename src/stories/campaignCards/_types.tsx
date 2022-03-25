@@ -21,10 +21,10 @@ export interface CampaignCardsProps  extends CardProps{
   /**
    * the status of the card,
    * can be only
-   * "COMPLETED" or "ON_GOING" or "ARRIVING"
-   * default is "ARRIVING"
+   * "COMPLETED" or "PROGRESS" or "INCOMING"
+   * default is "INCOMING"
    */
-  status?: 'COMPLETED' | 'ON_GOING' | 'ARRIVING';
+  status?: 'COMPLETED' | 'PROGRESS' | 'INCOMING';
   /**
    * this renders the pill of the card,
    * can be only
