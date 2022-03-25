@@ -4,6 +4,7 @@ import {
   Body as ModalBody,
   Footer as ModalFooter,
   FooterItem as ZendeskFooterItem,
+  Close as ModalClose
 } from "@zendeskgarden/react-modals";
 import { ModalArgs } from "./_types";
 import styled from "styled-components";
@@ -18,4 +19,4 @@ Modal.Header = ModalHeader;
 Modal.Body = ugModalBody;
 Modal.Footer = ModalFooter;
 
-export { Modal, FooterItem };
+export { Modal, FooterItem, ModalClose };

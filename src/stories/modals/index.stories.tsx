@@ -1,6 +1,6 @@
 import { ModalArgs } from "./_types";
 import { ComponentMeta, Story } from "@storybook/react";
-import { Modal, FooterItem } from ".";
+import { Modal, FooterItem, ModalClose } from ".";
 import { Button } from "../buttons/button";
 
 interface ModalStoryArgs extends ModalArgs {
@@ -62,6 +62,7 @@ const Template: Story<ModalStoryArgs> = (args) => {
           </Button>
         </FooterItem>
       </Modal.Footer>
+      <ModalClose aria-label="Close modal" />
     </Modal>
   );
 };

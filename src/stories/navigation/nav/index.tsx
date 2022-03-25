@@ -6,9 +6,9 @@ import { NavArgs } from "./_types";
 const UgNav = styled(ZendeskNav)`
   border-right: ${({ theme }) => theme.borders.sm};
   border-color: ${({ theme }) => getColor(theme.colors.neutralHue, 300)};
-  ${(props) => !props.isExpanded && `width:  ${props.theme.space.base * 9}px;`}
   ${(props) =>
     `
+      width: ${props.isExpanded ? props.theme.space.base * 60 : props.theme.space.base * 9}px;
       @media (max-width: ${props.theme.breakpoints.sm}) {
          width: ${props.isExpanded ? "100%" : "0"};
          border-right: none;

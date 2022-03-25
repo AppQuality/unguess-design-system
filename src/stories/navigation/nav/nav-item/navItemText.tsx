@@ -4,7 +4,7 @@ import { NavItemTextArgs } from "./_types";
 
 const NavItemText = (props: NavItemTextArgs) => (
   <ZendeskNavItemText {...props}>
-    <Ellipsis style={{width: "180px"}}>{props.children}</Ellipsis>
+    <Ellipsis style={{width: "200px"}}>{props.children}</Ellipsis>
   </ZendeskNavItemText>
 );
 

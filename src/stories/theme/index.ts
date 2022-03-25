@@ -10,7 +10,13 @@ const theme = {
     system: '"Poppins",sans-serif,Helvetica,Arial,sans-serif',
   },
   gradients: gradients,
-
+  components: {
+    ...DEFAULT_THEME.components,
+    Headers: {
+      ...DEFAULT_THEME.components.Headers,
+      height: "64px",
+    },
+  },
 };
 
 export { theme };
