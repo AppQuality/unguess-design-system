@@ -1,3 +1,15 @@
+# v2.5.2 (Fri Mar 25 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(nav): update header and sidebar sizes ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.5.1 (Thu Mar 24 2022)
 
 #### 🐛 Bug Fix
