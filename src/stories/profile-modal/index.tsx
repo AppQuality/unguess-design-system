@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
 import styled from "styled-components";
 import { Avatar } from "../avatar";
 import { Card } from "../cards";
@@ -13,7 +13,7 @@ import { ReactComponent as Exit } from "../../assets/icons/exit.svg";
 import { ReactComponent as CheckLg } from "../../assets/icons/check-lg.svg";
 import { ReactComponent as Copy } from "../../assets/icons/copy.svg";
 import { ReactComponent as InfoFill } from "../../assets/icons/info-fill.svg";
-import { ProfileModalArgs } from "./_types";
+import { Language, ProfileModalArgs, ProfileModalViewsEnum, UserInfos } from "./_types";
 import { Button } from "../buttons/button";
 
 const ProfileModalCard = styled(Card)`
@@ -194,6 +194,132 @@ const Footer = styled.div`
    left: 0;
 `
 
+const NeedHelpView = ({csmContactInfos}: {csmContactInfos: UserInfos}) => {
+   const copyToClipBoard = () => {
+      navigator.clipboard.writeText(csmContactInfos.email);
+   };
+
+   return (
+      <>
+         <StyledPreviousItem value={ProfileModalViewsEnum.INITIAL}>Bisogno di aiuto</StyledPreviousItem>
+         <StyledSeparator />
+         <HelpInfoWrapper>
+            <Description>Contatta il tuo CSM</Description>
+            <Avatar avatarType="text" size="large" status="available">{csmContactInfos.initials}</Avatar>
+            <CSMInfos>
+               <NameLabel>{csmContactInfos.fullName}</NameLabel>
+               <Description>
+                  <a 
+                     href={`mailto:${csmContactInfos.email}`}
+                  >
+                     {csmContactInfos.email}
+                  </a>
+                  <Button
+                     isBasic
+                     onClick={copyToClipBoard}
+                     size="small"
+                     variant="isBasic"
+                  >
+                     <Button.StartIcon>
+                        <Copy />
+                     </Button.StartIcon>
+                     Copy
+                  </Button>   
+               </Description>
+            </CSMInfos>
+         </HelpInfoWrapper>
+         <Footer>
+            <StyledSeparator />
+            {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
+            <StyledItemSmall value="report-error" onClick={() => {}}>
+               <StyledMediaFigure>
+                  <StandardInfoFill />
+               </StyledMediaFigure>
+               <MediaBody>
+                  Segnala un problema tecnico
+               </MediaBody>
+            </StyledItemSmall>
+         </Footer>
+      </>
+   );
+};
+
+const SetLanguageView = ({currentLanguage, setCurrentLanguage}: {currentLanguage: Language, setCurrentLanguage: Dispatch<SetStateAction<Language>>}) => (
+   <>
+      <StyledPreviousItem value={ProfileModalViewsEnum.INITIAL}>Cambia Lingua</StyledPreviousItem>
+      <StyledSeparator />
+      <StyledItem value={Language.IT} onClick={() => setCurrentLanguage(Language.IT)}>
+         <StyledMediaFigure>
+            {currentLanguage === Language.IT ? <CheckLg /> : <EmptyIcon />}
+         </StyledMediaFigure>
+         <MediaBody>
+            <Label isRegular={currentLanguage !== Language.IT}>Italiano</Label>
+         </MediaBody>
+      </StyledItem>
+      <StyledItem value={Language.EN} onClick={() => setCurrentLanguage(Language.EN)}>
+         <StyledMediaFigure>
+            {currentLanguage === Language.EN ? <CheckLg /> : <EmptyIcon />}
+         </StyledMediaFigure>
+         <MediaBody>
+            <Label isRegular={currentLanguage !== Language.EN}>English</Label>
+            <ItemMeta>Inglese</ItemMeta>
+         </MediaBody>
+      </StyledItem>
+   </>
+);
+
+const MainView = ({userInfos, currentLanguage}: {userInfos: UserInfos, currentLanguage: Language}) => {
+   return (
+      <>
+         <InfoWrapper>
+            <CompanyLabel>{userInfos.company}</CompanyLabel>
+            <Avatar avatarType="text" size="large" status="available">{userInfos.initials}</Avatar>
+            <div>
+               <NameLabel>{userInfos.fullName}</NameLabel>
+               <Description>{userInfos.email}</Description>
+            </div>
+         </InfoWrapper>
+         <StyledSeparator />
+         <StyledItem id="feedback" value="feedback">
+            <StyledMediaFigure>
+               <GreenThumbsUp />
+            </StyledMediaFigure>
+            <MediaBody>
+               Fornisci un feedback
+               <ItemMeta>Aiutaci a migliorare UNGUESS!</ItemMeta>
+            </MediaBody>
+         </StyledItem>
+         <StyledSeparator />
+         <StyledNextItem value={ProfileModalViewsEnum.NEED_HELP}>
+            <StyledMediaFigure>
+               <StandardQuestionMark />
+            </StyledMediaFigure>
+            <MediaBody>
+               Bisogno d'aiuto?
+            </MediaBody>
+         </StyledNextItem>
+         <StyledNextItem value={ProfileModalViewsEnum.CHANGE_LANGUAGE}>
+            <StyledMediaFigure>
+               <StandardTranslationExists />
+            </StyledMediaFigure>
+            <MediaBody>
+               Cambia lingua
+               <ItemMeta>Adesso: {currentLanguage}</ItemMeta>
+            </MediaBody>
+         </StyledNextItem>
+         {/* TODO: aggancia logout */}
+         <StyledItem value="logout" onClick={() => {}}>
+            <StyledMediaFigure>
+               <RedExit />
+            </StyledMediaFigure>
+            <MediaBody>
+               Log out
+            </MediaBody>
+         </StyledItem>
+      </>
+   );
+};
+
 /**
  * Profile Modal
 
@@ -202,122 +328,18 @@ const Footer = styled.div`
 
  */
 const ProfileModal = (props: PropsWithChildren<ProfileModalArgs>) => {
-   const copyToClipBoard = () => {
-      const copyText: string = document.getElementById("csm-contact")!.innerHTML;
-      navigator.clipboard.writeText(copyText);
-   };
+   const [currentLanguage, setCurrentLanguage] = useState(props.currentLanguage!);
 
    return (
       <ProfileModalCard isFloating>
-         {props.tempSelectedItem === 'need-help' &&
-            <>
-               <StyledPreviousItem value="initial">Bisogno di aiuto</StyledPreviousItem>
-               <StyledSeparator />
-               <HelpInfoWrapper>
-                  <Description>Contatta il tuo CSM</Description>
-                  <Avatar avatarType="text" size="large" status="available">GP</Avatar>
-                  <CSMInfos>
-                     <NameLabel>Gianluca Peretti</NameLabel>
-                     <Description>
-                        <a id="csm-contact" href="mailto:gianluca.peretti@unguess.io">gianluca.peretti@unguess.io</a>
-                        <Button
-                           isBasic
-                           onClick={copyToClipBoard}
-                           size="small"
-                           variant="isBasic"
-                        >
-                           <Button.StartIcon>
-                              <Copy />
-                           </Button.StartIcon>
-                           Copy
-                        </Button>   
-                     </Description>
-                  </CSMInfos>
-               </HelpInfoWrapper>
-               <Footer>
-                  <StyledSeparator />
-                  {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
-                  <StyledItemSmall value="report-error" onClick={() => {}}>
-                     <StyledMediaFigure>
-                        <StandardInfoFill />
-                     </StyledMediaFigure>
-                     <MediaBody>
-                        Segnala un problema tecnico
-                     </MediaBody>
-                  </StyledItemSmall>
-               </Footer>
-            </>
+         {props.tempSelectedItem === ProfileModalViewsEnum.NEED_HELP &&
+            <NeedHelpView csmContactInfos={props.csmContactInfos} />
          }
-         {props.tempSelectedItem === 'change-language' &&
-            <>
-               <StyledPreviousItem value="initial">Cambia Lingua</StyledPreviousItem>
-               <StyledSeparator />
-               <StyledItem value="it">
-                  <StyledMediaFigure>
-                     <CheckLg />
-                  </StyledMediaFigure>
-                  <MediaBody>
-                     <Label>Italiano</Label>
-                  </MediaBody>
-               </StyledItem>
-               <StyledItem value="en">
-                  <StyledMediaFigure>
-                     {false ? <CheckLg /> : <EmptyIcon />}
-                  </StyledMediaFigure>
-                  <MediaBody>
-                     <Label isRegular>English</Label>
-                     <ItemMeta>Inglese</ItemMeta>
-                  </MediaBody>
-               </StyledItem>
-            </>
+         {props.tempSelectedItem === ProfileModalViewsEnum.CHANGE_LANGUAGE &&
+            <SetLanguageView currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage}/>
          }
-         {(!props.tempSelectedItem || props.tempSelectedItem === 'initial') &&
-            <>
-               <InfoWrapper>
-                  <CompanyLabel>ENEL</CompanyLabel>
-                  <Avatar avatarType="text" size="large" status="available">MM</Avatar>
-                  <div>
-                     <NameLabel>Martino Martinelli</NameLabel>
-                     <Description>m.martinelli@enel.com</Description>
-                  </div>
-               </InfoWrapper>
-               <StyledSeparator />
-               <StyledItem id="feedback" value="feedback">
-                  <StyledMediaFigure>
-                     <GreenThumbsUp />
-                  </StyledMediaFigure>
-                  <MediaBody>
-                     Fornisci un feedback
-                     <ItemMeta>Aiutaci a migliorare UNGUESS!</ItemMeta>
-                  </MediaBody>
-               </StyledItem>
-               <StyledSeparator />
-               <StyledNextItem value="need-help">
-                  <StyledMediaFigure>
-                     <StandardQuestionMark />
-                  </StyledMediaFigure>
-                  <MediaBody>
-                     Bisogno d'aiuto?
-                  </MediaBody>
-               </StyledNextItem>
-               <StyledNextItem value="change-language">
-                  <StyledMediaFigure>
-                     <StandardTranslationExists />
-                  </StyledMediaFigure>
-                  <MediaBody>
-                     Cambia lingua
-                     <ItemMeta>Adesso: Italiano</ItemMeta>
-                  </MediaBody>
-               </StyledNextItem>
-               <StyledItem value="logout">
-                  <StyledMediaFigure>
-                     <RedExit />
-                  </StyledMediaFigure>
-                  <MediaBody>
-                     Log out
-                  </MediaBody>
-               </StyledItem>
-            </>
+         {(!props.tempSelectedItem || props.tempSelectedItem === ProfileModalViewsEnum.INITIAL) &&
+            <MainView userInfos={props.userInfos} currentLanguage={currentLanguage} />
          }
       </ProfileModalCard>
    );

@@ -6,7 +6,7 @@ import { Dropdown } from "../dropdowns/select";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { Trigger } from "../trigger";
-import { ProfileModalArgs } from "./_types";
+import { Language, ProfileModalArgs, ProfileModalViewsEnum } from "./_types";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 
@@ -27,24 +27,26 @@ const Template: Story<ProfileModalArgs> = (args) => {
         <Dropdown
           isOpen={true}
           onSelect={item => {
-            if (item !== 'need-help' && item !== 'change-language' && item !== 'initial') {
+            if (item !== ProfileModalViewsEnum.INITIAL 
+              && item !== ProfileModalViewsEnum.NEED_HELP 
+              && item !== ProfileModalViewsEnum.CHANGE_LANGUAGE
+            ) {
               alert(`You picked ${item}`);
             }
           }}
-          onStateChange={(changes, stateAndHelpers) => {
+          onStateChange={(changes) => {
             const updatedState: any = {};
 
             if (Object.hasOwn(changes, 'isOpen')) {
               updatedState.isOpen =
-                changes.selectedItem === 'need-help' ||
-                changes.selectedItem === 'change-language' ||
-                changes.selectedItem === 'initial' ||
-                changes.isOpen;
+              changes.selectedItem === ProfileModalViewsEnum.INITIAL 
+                || changes.selectedItem === ProfileModalViewsEnum.NEED_HELP 
+                || changes.selectedItem === ProfileModalViewsEnum.CHANGE_LANGUAGE
+                || changes.isOpen;
             }
 
             if (Object.hasOwn(changes, 'selectedItem')) {
               updatedState.tempSelectedItem = changes.selectedItem;
-              // stateAndHelpers.setHighlightedIndex(1);
             }
 
             if (Object.keys(updatedState).length > 0) {
@@ -56,7 +58,7 @@ const Template: Story<ProfileModalArgs> = (args) => {
             <Button></Button>
           </Trigger>
           <StyledMenu placement="bottom-end">
-            <ProfileModal tempSelectedItem={state.tempSelectedItem} />
+            <ProfileModal {...args} tempSelectedItem={state.tempSelectedItem} />
           </StyledMenu>
         </Dropdown>
       </Col>
@@ -65,7 +67,18 @@ const Template: Story<ProfileModalArgs> = (args) => {
 };
 
 const defaultArgs: ProfileModalArgs = {
-
+  userInfos: {
+    initials: 'MM',
+    fullName: 'Martino Martinelli',
+    email: 'm.martinelli@enel.com',
+    company: 'ENEL',
+  },
+  csmContactInfos: {
+    initials: 'GP',
+    fullName: 'Gianluca Peretti',
+    email: 'gianluca.peretti@unguess.io',
+  },
+  currentLanguage: Language.IT
 };
 
 export const Default = Template.bind({});
@@ -76,4 +89,12 @@ Default.args = {
 export default {
   title: "Organisms/ProfileModal",
   component: ProfileModal,
+  argTypes: {
+    tempSelectedItem: {
+      control: {
+        type: "select",
+        options: [ProfileModalViewsEnum.INITIAL, ProfileModalViewsEnum.NEED_HELP, ProfileModalViewsEnum.CHANGE_LANGUAGE],
+      },
+    },
+  },
 } as ComponentMeta<typeof ProfileModal>;
