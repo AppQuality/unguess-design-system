@@ -1,9 +1,9 @@
 import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Avatar } from "../avatar";
 import { Card } from "../cards";
 import { Item } from "../dropdowns/item";
-import { ItemMeta, MediaBody, MediaFigure, MediaItem, NextItem, PreviousItem, Separator } from "../dropdowns/menu";
+import { ItemMeta, MediaBody, MediaFigure, NextItem, PreviousItem, Separator } from "../dropdowns/menu";
 import { Label } from "../label";
 import { theme } from "../theme";
 import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
@@ -13,88 +13,51 @@ import { ReactComponent as Exit } from "../../assets/icons/exit.svg";
 import { ReactComponent as CheckLg } from "../../assets/icons/check-lg.svg";
 import { ReactComponent as Copy } from "../../assets/icons/copy.svg";
 import { ReactComponent as InfoFill } from "../../assets/icons/info-fill.svg";
-import { Language, ProfileModalArgs, ProfileModalViewsEnum, UserInfos } from "./_types";
+import { ProfileModalArgs, UserInfos } from "./_types";
 import { Button } from "../buttons/button";
+import { flexCenter, flexColumnCenter, flexStart } from "../theme/mixins";
 
 const ProfileModalCard = styled(Card)`
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 16px 8px 8px;
+   ${flexColumnCenter}
+   padding: ${`${4*theme.space.base}px`} ${theme.space.xs} ${theme.space.xs};
 
    position: relative;
    width: 296px;
    height: 437px;
 
-   background: #FFFFFF;
-
-   box-shadow: 0px 16px 48px rgba(0, 0, 0, 0.176);
-   border-radius: 8px;
+   box-shadow: ${theme.shadows.lg('16px', '48px', 'rgba(0, 0, 0, 0.176)')};
+   border-radius: ${theme.borderRadii.lg};
 `
 
-const StyledSeparator = styled(Separator)`
-   width: 100%;
-`
+// Main section
+const CompanyLabel = styled(Label)`
+   font-size: ${theme.fontSizes.sm};
+   line-height: ${theme.lineHeights.sm};
 
-const StyledItem = styled(Item)`
-   width: -webkit-fill-available;
-   height: 52px;
-   display: flex;
-   align-items: center;
-   padding: 8px 20px;
-`
-const StyledPreviousItem = styled(PreviousItem)`
-   width: -webkit-fill-available;
-   display: flex;
-   align-items: center;
-`
-const StyledNextItem = styled(NextItem)`
-   width: -webkit-fill-available;
-   height: 52px;
-   display: flex;
-   align-items: center;
-   padding: 8px 20px;
-
-   div:first-child {
-      height: 52px;
-      padding: 4px 0;
-   }
+   ${flexCenter}
+   text-align: center;
+   letter-spacing: -0.000427656px;
 `
 
 const InfoWrapper = styled.div`
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+   ${flexColumnCenter}
    justify-content: space-between;
 
-   padding: 8px 8px 0px;
+   padding: ${theme.space.xs} ${theme.space.xs} 0px;
 
    position: static;
    height: 143px;
 
    flex: none;
-   order: 0;
    align-self: stretch;
-   flex-grow: 0;
-   margin-bottom: 24px;
-`
-
-const CompanyLabel = styled(Label)`
-   font-size: 12px;
-   line-height: 16px;
-
-   display: flex;
-   align-items: center;
-   text-align: center;
-   letter-spacing: -0.000427656px;
+   margin-bottom: ${`${6*theme.space.base}px`};
 `
 
 const NameLabel = styled(Label)`
-   font-size: 14px;
-   line-height: 20px;
+   font-size: ${theme.fontSizes.md};
+   line-height: ${theme.lineHeights.md};
 
-   display: flex;
-   align-items: center;
+   ${flexCenter}
    text-align: center;
    justify-content: center;
    letter-spacing: -0.154px;
@@ -103,18 +66,14 @@ const NameLabel = styled(Label)`
 `
 
 const Description = styled.div`
-   display: flex;
-   align-items: center;
+   ${flexCenter}
    justify-content: space-between;
-   width: 100%;
-   font-weight: 400;
-   font-size: 12px;
-   line-height: 140%;
-
    text-align: center;
-
+   width: 100%;
+   font-weight: ${theme.fontWeights.regular};
+   font-size: ${theme.fontSizes.sm};
+   line-height: 140%;
    color: ${theme.palette.grey["600"]};
-
    margin: 2px 0px;
 
    a {
@@ -122,56 +81,61 @@ const Description = styled.div`
    }
 `
 
-const StyledMediaFigure = styled(MediaFigure)`
-   margin-right: 4px;
+// Menu nested Items
+const itemCommons = css`
+   width: -webkit-fill-available;
+   height: 52px;
+   ${flexCenter}
+   padding: ${theme.space.xs} ${theme.space.md};
 `
+const StyledItem = styled(Item)`
+   ${itemCommons}
+`
+const StyledPreviousItem = styled(PreviousItem)`
+   width: -webkit-fill-available;
+   ${flexCenter}
+`
+const StyledNextItem = styled(NextItem)`
+   ${itemCommons}
 
-const GreenThumbsUp = styled(ThumbsUp)`
-   path {
-      fill: ${theme.palette.kale["600"]};
+   div:first-child {
+      height: 52px;
+      padding: ${theme.space.xxs} 0;
    }
 `
 
-const StandardQuestionMark = styled(QuestionMark)`
-   path {
-      fill: ${theme.palette.blue["600"]};
-   }
+const StyledSeparator = styled(Separator)`
+   width: 100%;
 `
 
-const StandardTranslationExists = styled(TranslationExists)`
-   path {
-      fill: ${theme.palette.blue["600"]};
-   }
-`
+interface Prippo {
+   fill: string;
+}
+const StyledMediaFigure = styled(MediaFigure).attrs((props: Prippo) => ({
+   fill: props.fill,
+ }))`
+   margin-right: ${theme.space.xxs};
 
-const StandardInfoFill = styled(InfoFill)`
    path {
-      fill: ${theme.palette.blue["600"]};
-   }
-`
-
-const RedExit = styled(Exit)`
-   path {
-      fill: ${theme.palette.red["600"]};
+      fill: ${props => theme.palette[props.fill ? props.fill : 'blue']["600"]};
    }
 `
 
 const EmptyIcon = styled.span`
    float: left;
    margin-top: 2px !important;
-   width: 16px;
-   height: 16px;
+   width: ${theme.iconSizes.md};
+   height: ${theme.iconSizes.md};
 `
 
+// Help Section
 const HelpInfoWrapper = styled(InfoWrapper)`
-   margin-top: 20px;
+   margin-top: ${theme.space.md};
    align-items: flex-start;
 `
 
 const CSMInfos = styled.div`
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
+   ${flexStart}
    width: 100%;
 `
 
@@ -193,7 +157,7 @@ const NeedHelpView = ({csmContactInfos}: {csmContactInfos: UserInfos}) => {
 
    return (
       <>
-         <StyledPreviousItem value={ProfileModalViewsEnum.INITIAL}>Bisogno di aiuto</StyledPreviousItem>
+         <StyledPreviousItem value={'initial'}>Bisogno di aiuto</StyledPreviousItem>
          <StyledSeparator />
          <HelpInfoWrapper>
             <Description>Contatta il tuo CSM</Description>
@@ -225,7 +189,7 @@ const NeedHelpView = ({csmContactInfos}: {csmContactInfos: UserInfos}) => {
             {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
             <StyledItemSmall value="report-error" onClick={() => {}}>
                <StyledMediaFigure>
-                  <StandardInfoFill />
+                  <InfoFill />
                </StyledMediaFigure>
                <MediaBody>
                   Segnala un problema tecnico
@@ -236,31 +200,31 @@ const NeedHelpView = ({csmContactInfos}: {csmContactInfos: UserInfos}) => {
    );
 };
 
-const SetLanguageView = ({currentLanguage, setCurrentLanguage}: {currentLanguage: Language, setCurrentLanguage: Dispatch<SetStateAction<Language>>}) => (
+const SetLanguageView = ({currentLanguage, setCurrentLanguage}: {currentLanguage: string, setCurrentLanguage: Dispatch<SetStateAction<'EN' | 'IT'>>}) => (
    <>
-      <StyledPreviousItem value={ProfileModalViewsEnum.INITIAL}>Cambia Lingua</StyledPreviousItem>
+      <StyledPreviousItem value={'initial'}>Cambia Lingua</StyledPreviousItem>
       <StyledSeparator />
-      <StyledItem value={Language.IT} onClick={() => setCurrentLanguage(Language.IT)}>
+      <StyledItem value='IT' onClick={() => setCurrentLanguage('IT')}>
          <StyledMediaFigure>
-            {currentLanguage === Language.IT ? <CheckLg /> : <EmptyIcon />}
+            {currentLanguage === 'IT' ? <CheckLg /> : <EmptyIcon />}
          </StyledMediaFigure>
          <MediaBody>
-            <Label isRegular={currentLanguage !== Language.IT}>Italiano</Label>
+            <Label isRegular={currentLanguage !== 'IT'}>Italiano</Label>
          </MediaBody>
       </StyledItem>
-      <StyledItem value={Language.EN} onClick={() => setCurrentLanguage(Language.EN)}>
+      <StyledItem value='EN' onClick={() => setCurrentLanguage('EN')}>
          <StyledMediaFigure>
-            {currentLanguage === Language.EN ? <CheckLg /> : <EmptyIcon />}
+            {currentLanguage === 'EN' ? <CheckLg /> : <EmptyIcon />}
          </StyledMediaFigure>
          <MediaBody>
-            <Label isRegular={currentLanguage !== Language.EN}>English</Label>
+            <Label isRegular={currentLanguage !== 'EN'}>English</Label>
             <ItemMeta>Inglese</ItemMeta>
          </MediaBody>
       </StyledItem>
    </>
 );
 
-const MainView = ({userInfos, currentLanguage}: {userInfos: UserInfos, currentLanguage: Language}) => {
+const MainView = ({userInfos, currentLanguage}: {userInfos: UserInfos, currentLanguage: string}) => {
    return (
       <>
          <InfoWrapper>
@@ -273,8 +237,8 @@ const MainView = ({userInfos, currentLanguage}: {userInfos: UserInfos, currentLa
          </InfoWrapper>
          <StyledSeparator />
          <StyledItem id="feedback" value="feedback">
-            <StyledMediaFigure>
-               <GreenThumbsUp />
+            <StyledMediaFigure fill="kale">
+               <ThumbsUp />
             </StyledMediaFigure>
             <MediaBody>
                Fornisci un feedback
@@ -282,27 +246,27 @@ const MainView = ({userInfos, currentLanguage}: {userInfos: UserInfos, currentLa
             </MediaBody>
          </StyledItem>
          <StyledSeparator />
-         <StyledNextItem value={ProfileModalViewsEnum.NEED_HELP}>
+         <StyledNextItem value={'need-help'}>
             <StyledMediaFigure>
-               <StandardQuestionMark />
+               <QuestionMark />
             </StyledMediaFigure>
             <MediaBody>
                Bisogno d'aiuto?
             </MediaBody>
          </StyledNextItem>
-         <StyledNextItem value={ProfileModalViewsEnum.CHANGE_LANGUAGE}>
+         <StyledNextItem value={'change-language'}>
             <StyledMediaFigure>
-               <StandardTranslationExists />
+               <TranslationExists />
             </StyledMediaFigure>
             <MediaBody>
                Cambia lingua
-               <ItemMeta>Adesso: {currentLanguage}</ItemMeta>
+               <ItemMeta>Adesso: {currentLanguage === 'IT' ? 'Italiano' : 'Inglese'}</ItemMeta>
             </MediaBody>
          </StyledNextItem>
          {/* TODO: aggancia logout */}
          <StyledItem value="logout" onClick={() => {}}>
-            <StyledMediaFigure>
-               <RedExit />
+            <StyledMediaFigure fill="red">
+               <Exit />
             </StyledMediaFigure>
             <MediaBody>
                Log out
@@ -324,13 +288,13 @@ const ProfileModal = (props: PropsWithChildren<ProfileModalArgs>) => {
 
    return (
       <ProfileModalCard isFloating>
-         {props.tempSelectedItem === ProfileModalViewsEnum.NEED_HELP &&
+         {props.tempSelectedItem === 'need-help' &&
             <NeedHelpView csmContactInfos={props.csmContactInfos} />
          }
-         {props.tempSelectedItem === ProfileModalViewsEnum.CHANGE_LANGUAGE &&
+         {props.tempSelectedItem === 'change-language' &&
             <SetLanguageView currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage}/>
          }
-         {(!props.tempSelectedItem || props.tempSelectedItem === ProfileModalViewsEnum.INITIAL) &&
+         {(!props.tempSelectedItem || props.tempSelectedItem === 'initial') &&
             <MainView userInfos={props.userInfos} currentLanguage={currentLanguage} />
          }
       </ProfileModalCard>

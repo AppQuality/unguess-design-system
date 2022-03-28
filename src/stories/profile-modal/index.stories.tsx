@@ -6,7 +6,7 @@ import { Dropdown } from "../dropdowns/select";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { Trigger } from "../trigger";
-import { Language, ProfileModalArgs, ProfileModalViewsEnum } from "./_types";
+import { ProfileModalArgs } from "./_types";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 
@@ -27,9 +27,9 @@ const Template: Story<ProfileModalArgs> = (args) => {
         <Dropdown
           isOpen={true}
           onSelect={item => {
-            if (item !== ProfileModalViewsEnum.INITIAL 
-              && item !== ProfileModalViewsEnum.NEED_HELP 
-              && item !== ProfileModalViewsEnum.CHANGE_LANGUAGE
+            if (item !== 'initial' 
+              && item !== 'need-help' 
+              && item !== 'change-language'
             ) {
               alert(`You picked ${item}`);
             }
@@ -39,9 +39,9 @@ const Template: Story<ProfileModalArgs> = (args) => {
 
             if (Object.hasOwn(changes, 'isOpen')) {
               updatedState.isOpen =
-              changes.selectedItem === ProfileModalViewsEnum.INITIAL 
-                || changes.selectedItem === ProfileModalViewsEnum.NEED_HELP 
-                || changes.selectedItem === ProfileModalViewsEnum.CHANGE_LANGUAGE
+              changes.selectedItem === 'initial' 
+                || changes.selectedItem === 'need-help' 
+                || changes.selectedItem === 'change-language'
                 || changes.isOpen;
             }
 
@@ -78,13 +78,11 @@ const defaultArgs: ProfileModalArgs = {
     fullName: 'Gianluca Peretti',
     email: 'gianluca.peretti@unguess.io',
   },
-  currentLanguage: Language.IT
+  currentLanguage: 'IT' as const
 };
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs,
-};
+Default.args = defaultArgs;
 
 export default {
   title: "Organisms/ProfileModal",
@@ -93,7 +91,7 @@ export default {
     tempSelectedItem: {
       control: {
         type: "select",
-        options: [ProfileModalViewsEnum.INITIAL, ProfileModalViewsEnum.NEED_HELP, ProfileModalViewsEnum.CHANGE_LANGUAGE],
+        options: ['initial', 'need-help', 'change-language'],
       },
     },
   },

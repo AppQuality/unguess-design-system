@@ -110,9 +110,6 @@ const NestedTemplate: Story<any> = (args) => {
 };
 
 export const Nested = NestedTemplate.bind({});
-Nested.args = {
-  // ...defaultArgs
-}
 
 export default {
   title: "Molecules/Dropdown/Menu",
