@@ -6,6 +6,15 @@ const UgMain = styled(ZendeskMain)`
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin: ${({ theme }) => theme.space.xxl }
   }
+  
+  /* hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
 `;
 
 /**

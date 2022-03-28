@@ -67,6 +67,7 @@ const Sidebar = (props: SidebarArgs) => {
       {props.projects &&
         props.projects.map((project) => (
           <NavItemProject
+            key={project.id}
             isExpanded={props.isExpanded}
             isCurrent={nav === project.id}
             onClick={() => setNav(project.id)}

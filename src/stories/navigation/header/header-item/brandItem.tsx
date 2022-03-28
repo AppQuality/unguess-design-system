@@ -1,7 +1,8 @@
 import { HeaderItem as ZendeskHeaderItem } from "@zendeskgarden/react-chrome";
 import styled from "styled-components";
 import { BrandItemArgs } from "./_types";
-import { HeaderItemIcon, HeaderItemText } from ".";
+import { HeaderItemIcon } from "./headerItemIcon";
+import { HeaderItemText } from "./headerItemText";
 import { Logo } from "../../../logo";
 import { ReactComponent as MenuIcon } from "../../../../assets/icons/menu-stroke.svg";
 
