@@ -10,6 +10,10 @@ const theme = {
     system: '"Poppins",sans-serif,Helvetica,Arial,sans-serif',
   },
   gradients: gradients,
+  borderRadii: {
+    ...DEFAULT_THEME.borderRadii,
+    lg: "8px",
+  },
   components: {
     ...DEFAULT_THEME.components,
     Headers: {
