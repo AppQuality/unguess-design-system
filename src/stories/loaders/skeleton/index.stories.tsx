@@ -43,4 +43,8 @@ Light.args = {
 export default {
   title: "Atoms/Loaders/Skeleton",
   component: Skeleton,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Skeleton>;

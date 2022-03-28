@@ -44,4 +44,8 @@ Basic.args = {
 export default {
   title: "Atoms/Grid/Row",
   component: Row,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Row>;

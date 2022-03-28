@@ -3,8 +3,8 @@ import { Tag } from ".";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { TagArgs } from "./_types";
-import { KEY_CODES } from '@zendeskgarden/container-utilities';
-import { ReactComponent as LeafIcon } from '@zendeskgarden/svg-icons/src/12/leaf-stroke.svg';
+import { KEY_CODES } from "@zendeskgarden/container-utilities";
+import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
 
 interface TagStoryProps extends TagArgs {
   canBeClosed: boolean;
@@ -14,20 +14,26 @@ interface TagStoryProps extends TagArgs {
 const handleKeyDown = (e: React.KeyboardEvent<any>) => {
   if (e.keyCode === KEY_CODES.DELETE || e.keyCode === KEY_CODES.BACKSPACE) {
     e.preventDefault();
-    alert('Tag dismissed via keyboard');
+    alert("Tag dismissed via keyboard");
   }
 };
-const Template: Story<TagStoryProps> = ({hasAvatar, canBeClosed, ...args}) => (
+const Template: Story<TagStoryProps> = ({
+  hasAvatar,
+  canBeClosed,
+  ...args
+}) => (
   <Row>
     <Col textAlign="center">
       <Tag tabIndex={0} onKeyDown={handleKeyDown} {...args}>
-        {hasAvatar && 
+        {hasAvatar && (
           <Tag.Avatar>
             <LeafIcon />
           </Tag.Avatar>
-        }
+        )}
         <span>{args.title}</span>
-        {canBeClosed && <Tag.Close onClick={() => alert('Tag dismissed via mouse')} />}
+        {canBeClosed && (
+          <Tag.Close onClick={() => alert("Tag dismissed via mouse")} />
+        )}
       </Tag>
     </Col>
   </Row>
@@ -41,13 +47,13 @@ Default.args = {
 export const Avatar = Template.bind({});
 Avatar.args = {
   title: "Tag con avatar",
-  hasAvatar: true
+  hasAvatar: true,
 };
 
 export const Close = Template.bind({});
 Close.args = {
   title: "Tag rimovibile",
-  canBeClosed: true
+  canBeClosed: true,
 };
 
 export default {
@@ -59,6 +65,8 @@ export default {
         color: /(hue)$/i,
       },
     },
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
   },
   // argTypes: {
   //   hue: {
