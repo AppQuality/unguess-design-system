@@ -13,12 +13,12 @@ import styled from "styled-components";
 const StyledMenu = styled(Menu)`
   max-height: none !important;
   border: none;
-`
+`;
 
 const Template: Story<ProfileModalArgs> = (args) => {
   const [state, setState] = useState({
     isOpen: true,
-    tempSelectedItem: undefined
+    tempSelectedItem: undefined,
   });
 
   return (
@@ -26,10 +26,11 @@ const Template: Story<ProfileModalArgs> = (args) => {
       <Col textAlign="center">
         <Dropdown
           isOpen={true}
-          onSelect={item => {
-            if (item !== 'initial' 
-              && item !== 'need-help' 
-              && item !== 'change-language'
+          onSelect={(item) => {
+            if (
+              item !== "initial" &&
+              item !== "need-help" &&
+              item !== "change-language"
             ) {
               alert(`You picked ${item}`);
             }
@@ -37,15 +38,15 @@ const Template: Story<ProfileModalArgs> = (args) => {
           onStateChange={(changes) => {
             const updatedState: any = {};
 
-            if (Object.hasOwn(changes, 'isOpen')) {
+            if (Object.hasOwn(changes, "isOpen")) {
               updatedState.isOpen =
-              changes.selectedItem === 'initial' 
-                || changes.selectedItem === 'need-help' 
-                || changes.selectedItem === 'change-language'
-                || changes.isOpen;
+                changes.selectedItem === "initial" ||
+                changes.selectedItem === "need-help" ||
+                changes.selectedItem === "change-language" ||
+                changes.isOpen;
             }
 
-            if (Object.hasOwn(changes, 'selectedItem')) {
+            if (Object.hasOwn(changes, "selectedItem")) {
               updatedState.tempSelectedItem = changes.selectedItem;
             }
 
@@ -68,17 +69,17 @@ const Template: Story<ProfileModalArgs> = (args) => {
 
 const defaultArgs: ProfileModalArgs = {
   userInfos: {
-    initials: 'MM',
-    fullName: 'Martino Martinelli',
-    email: 'm.martinelli@enel.com',
-    company: 'ENEL',
+    initials: "MM",
+    fullName: "Martino Martinelli",
+    email: "m.martinelli@enel.com",
+    company: "ENEL",
   },
   csmContactInfos: {
-    initials: 'GP',
-    fullName: 'Gianluca Peretti',
-    email: 'gianluca.peretti@unguess.io',
+    initials: "GP",
+    fullName: "Gianluca Peretti",
+    email: "gianluca.peretti@unguess.io",
   },
-  currentLanguage: 'IT' as const
+  currentLanguage: "IT" as const,
 };
 
 export const Default = Template.bind({});
@@ -91,7 +92,7 @@ export default {
     tempSelectedItem: {
       control: {
         type: "select",
-        options: ['initial', 'need-help', 'change-language'],
+        options: ["initial", "need-help", "change-language"],
       },
     },
   },

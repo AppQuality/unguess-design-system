@@ -1,6 +1,6 @@
 export interface ProfileModalArgs {
   tempSelectedItem?: string;
-  currentLanguage: 'EN' | 'IT';
+  currentLanguage: "EN" | "IT";
   csmContactInfos: UserInfos;
   userInfos: UserInfos;
 }
