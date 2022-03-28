@@ -1,5 +1,5 @@
 import { CampaignCardsProps } from "./_types";
-import { Well as ZendeskWell } from "@zendeskgarden/react-notifications"
+import { Card } from "../cards";
 import { Tag } from "../tags";
 import { theme } from "../theme";
 import { Label } from "../label";
@@ -37,7 +37,7 @@ const getTypeData = (type?: string) => {
   }
 }
 
-const Wrapper = styled(ZendeskWell)`
+const Wrapper = styled(Card)`
   border-radius: ${theme.borderRadii.lg};
   padding: 1rem;
   border: 1px solid ${theme.palette.grey["200"]};
