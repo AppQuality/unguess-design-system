@@ -1,3 +1,15 @@
+# v2.5.5 (Mon Mar 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(main): add spaces as described by dressBerry ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.5.3 (Fri Mar 25 2022)
 
 #### ⚠️ Pushed to `master`
