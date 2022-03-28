@@ -3,8 +3,8 @@ import { MainArgs } from "./_types";
 import styled from "styled-components";
 
 const UgMain = styled(ZendeskMain)`
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: 0 ${({ theme }) => theme.space.xxl }
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin: ${({ theme }) => theme.space.xxl }
   }
 `;
 

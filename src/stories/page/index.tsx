@@ -8,6 +8,7 @@ import { Content } from "../navigation/content";
 import { Main } from "../navigation/main";
 import { AppHeader } from "../navigation/app-header";
 import { AppHeaderArgs } from "../navigation/app-header/_types";
+import { XXXL } from "../typography/typescale";
 import { useState } from "react";
 
 export interface PageTemplatesArgs {
@@ -38,7 +39,7 @@ export const PageTemplate = ({
         <Content>
           <Sidebar {...sidebar} isExpanded={expanded} onToggleMenu={toggleSidebar} />
           <Main>
-            <h1 style={{ marginLeft: "24px" }}>This is Main.</h1>
+            <XXXL>This is Main.</XXXL>
           </Main>
         </Content>
       </Body>
