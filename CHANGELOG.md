@@ -1,3 +1,129 @@
+# v2.5.7 (Mon Mar 28 2022)
+
+
+
+---
+
+# v2.5.6 (Mon Mar 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(spaces): fix spaces between main, body and page title ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.5 (Mon Mar 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(main): add spaces as described by dressBerry ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+#### ⚠️ Pushed to `master`
+
+- build(auto-it): update auto package ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.2 (Fri Mar 25 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(nav): update header and sidebar sizes ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.1 (Thu Mar 24 2022)
+
+#### 🐛 Bug Fix
+
+- feat(counter): add Counter component [#25](https://github.com/AppQuality/unguess-design-system/pull/25) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(navigation): export Chrome component ([@cannarocks](https://github.com/cannarocks))
+- build(chromatic): add delay to prevent blank snapshot ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.0 (Thu Mar 24 2022)
+
+#### 🚀 Enhancement
+
+- build(components): add component to index [#24](https://github.com/AppQuality/unguess-design-system/pull/24) ([@cannarocks](https://github.com/cannarocks))
+- feat(table): add Sort component variant [#16](https://github.com/AppQuality/unguess-design-system/pull/16) ([@antoninojob](https://github.com/antoninojob) [@cannarocks](https://github.com/cannarocks))
+- Cup 488 chrome navigation [#21](https://github.com/AppQuality/unguess-design-system/pull/21) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🐛 Bug Fix
+
+- refactor(icons): move used icon inside prj assets folder and remove @zendesk/svg-icons as dep [#23](https://github.com/AppQuality/unguess-design-system/pull/23) ([@cannarocks](https://github.com/cannarocks))
+- Cup 501 table accordion [#19](https://github.com/AppQuality/unguess-design-system/pull/19) ([@antoninojob](https://github.com/antoninojob) [@marcbon](https://github.com/marcbon))
+- Feature/cup 473 modal [#20](https://github.com/AppQuality/unguess-design-system/pull/20) ([@cicababba](https://github.com/cicababba))
+- feat(sidebar): add test fashion icon [#22](https://github.com/AppQuality/unguess-design-system/pull/22) ([@cannarocks](https://github.com/cannarocks))
+- Fix storybook issues [#18](https://github.com/AppQuality/unguess-design-system/pull/18) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(brandurl): fix BrandUrl domain ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): add space from header even if there are no tokens ([@cannarocks](https://github.com/cannarocks))
+- fix(loginform): remove debug text ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 4
+
+- Antonino ([@antoninojob](https://github.com/antoninojob))
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.4.1 (Fri Mar 18 2022)
 
 

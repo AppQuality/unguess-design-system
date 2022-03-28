@@ -13,7 +13,14 @@ const theme = {
   borderRadii: {
     ...DEFAULT_THEME.borderRadii,
     lg: "8px",
-  }
+  },
+  components: {
+    ...DEFAULT_THEME.components,
+    Headers: {
+      ...DEFAULT_THEME.components.Headers,
+      height: "64px",
+    },
+  },
 };
 
 export { theme };

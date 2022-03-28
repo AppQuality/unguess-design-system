@@ -3,9 +3,9 @@ import { Tiles } from ".";
 import { TilesArgs } from "./_types";
 import { Row } from "../grid/row";
 import { Col } from "../grid/col";
-import { ReactComponent as LeafIcon } from '@zendeskgarden/svg-icons/src/16/leaf-stroke.svg';
-import { ReactComponent as ImageIcon } from '@zendeskgarden/svg-icons/src/16/file-image-stroke.svg';
-import { ReactComponent as PresentationIcon } from '@zendeskgarden/svg-icons/src/16/file-presentation-stroke.svg';
+import { ReactComponent as LeafIcon } from '../../assets/icons/leaf-stroke.svg';
+import { ReactComponent as ImageIcon } from '../../assets/icons/file-image-stroke.svg';
+import { ReactComponent as PresentationIcon } from '../../assets/icons/file-presentation-stroke.svg';
 import styled from "styled-components";
 import { mediaQuery } from "@zendeskgarden/react-theming";
 
@@ -87,4 +87,8 @@ Disabled.args = {
 export default {
   title: "Atoms/Tiles",
   component: Tiles,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Tiles>;

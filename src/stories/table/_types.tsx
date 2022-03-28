@@ -1,5 +1,5 @@
-import { ITableProps, IRowProps, ICellProps, IHeaderCellProps } from "@zendeskgarden/react-tables";
-import { SIZE } from "@zendeskgarden/react-tables/dist/typings/styled";
+import { ITableProps, IRowProps, ICellProps, IHeaderCellProps, ISortableCellProps } from "@zendeskgarden/react-tables";
+import { SIZE, SORT } from "@zendeskgarden/react-tables/dist/typings/styled";
 
 export interface TableProps extends ITableProps {
   /** Sets the table size */
@@ -44,7 +44,6 @@ export interface CellArgs extends ICellProps {
   width?: string | number;
 }
 
-
 export interface HeadArgs extends ICellProps {
   /**
    * Applies minimum fixed width styling (e.g. for cells that contain
@@ -57,4 +56,13 @@ export interface HeadArgs extends ICellProps {
   hasOverflow?: boolean;
   /** Adjusts the [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width) of the cell */
   width?: string | number;
+}
+
+export interface SortableCellArgs extends ISortableCellProps {
+    /** Sets the sort order */
+    sort?: SORT;
+    /** Sets the width of the cell */
+    width?: string | number;
+    /** Passes props to the cell */
+    cellProps?: any;
 }

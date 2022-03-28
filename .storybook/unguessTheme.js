@@ -5,7 +5,7 @@ import { theme } from "../src/stories/theme";
 export default create({
   base: "light",
   brandTitle: "Unguess Design System",
-  brandUrl: "https://app.unguess.com",
+  brandUrl: "https://app.unguess.io",
   brandImage:
     "https://app.unguess.io/wp-content/themes/unguess/assets/img/logo.svg",
   colorPrimary: theme.colors.primaryHue,

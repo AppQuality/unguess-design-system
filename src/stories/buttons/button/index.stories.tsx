@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
-import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
+import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
+import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { Button } from ".";
 import { getButtonVariant } from "../utils/useButtonVariant";
 import { ButtonArgs } from "./_types";
@@ -109,12 +109,14 @@ export default {
         category: "Events",
       },
     },
-    argTypes: {
-      children: {
-        name: "Button text",
-        description: "The example text of button",
-        control: "text",
-      },
-    }
+    children: {
+      name: "Button text",
+      description: "The example text of button",
+      control: "text",
+    },
+  },
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
   },
 } as ComponentMeta<typeof Button>;

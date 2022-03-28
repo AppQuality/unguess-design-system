@@ -37,4 +37,8 @@ Default.args = {
 export default {
   title: "Molecules/Forms/Toggle",
   component: Toggle,
+  parameters: {
+    // Sets a delay for the component's stories
+    chromatic: { delay: 300 },
+  },
 } as ComponentMeta<typeof Toggle>;

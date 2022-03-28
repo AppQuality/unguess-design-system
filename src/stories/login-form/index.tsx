@@ -16,7 +16,7 @@ import { theme } from "../theme";
  */
 
 const LoginForm = (props: LoginFormArgs) => (
-  <Card isFloating style={{width: "100%"}}>
+  <Card isFloating>
     <Title style={{ textAlign: "center", margin: theme.space.md }}>
       {props.title}
     </Title>
