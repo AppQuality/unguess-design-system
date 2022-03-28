@@ -28,8 +28,13 @@ export interface CampaignCardsProps  extends CardProps{
   /**
    * this renders the pill of the card,
    * can be only
-   * "FUNCTIONAL" or "REGRESSION"
+   * "FUNCTIONAL" or "EXPERIENTIAL"
    * if nothing of that is chosen the pill will not be shown
    */
-  type?: 'FUNCTIONAL' | 'REGRESSION';
+  type?: 'FUNCTIONAL' | 'EXPERIENTIAL';
+  /**
+   * this renders the pill text
+   * if the value is not defined the pill text will not be shown
+   */
+  pillText?: string;
 }

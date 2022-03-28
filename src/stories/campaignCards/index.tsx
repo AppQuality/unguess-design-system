@@ -24,15 +24,13 @@ const getStatusIcon = (status: string) => {
 
 const getTypeData = (type?: string) => {
   switch (type) {
-    case "REGRESSION":
+    case "EXPERIENTIAL":
       return {
         pillIcon: RegressionTestIcon,
-        pillText: "Regression testing"
       }
     case "FUNCTIONAL":
       return {
         pillIcon: FunctionalTestIcon,
-        pillText: "Functional test"
       }
   }
 }
@@ -41,6 +39,10 @@ const Wrapper = styled(Card)`
   border-radius: ${theme.borderRadii.lg};
   padding: 1rem;
   border: 1px solid ${theme.palette.grey["200"]};
+
+  &:hover {
+    box-shadow: ${theme.shadows.boxShadow(theme)};
+  }
 `
 
 const StyledTag = styled(Tag)`
@@ -139,7 +141,7 @@ const CampaignCard = (props: CampaignCardsProps) => {
           <Tag.Avatar>
             <PillIcon />
           </Tag.Avatar>
-          {typeData.pillText}
+          {props.pillText}
         </StyledTag>
       }
       <StatusIcon />

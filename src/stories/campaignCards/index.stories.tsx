@@ -15,14 +15,15 @@ const defaultArgs: CampaignCardsProps = {
   title: "Amazing title",
   subTitle: "This is a subtitle",
   status: 'COMPLETED',
-  type: 'REGRESSION',
+  type: 'EXPERIENTIAL',
+  pillText: 'Experiential Test'
 }
 
 const MultiTemplate: Story<CampaignCardsProps> = (args) => {
   return <Row>
     <Col><CampaignCard {...args} type={"FUNCTIONAL"} date={new Date().toLocaleString().substring(0, 10)} status={"INCOMING"} /></Col>
     <Col><CampaignCard {...args} isNew={false} status={"PROGRESS"} /></Col>
-    <Col><CampaignCard {...args} isNew={false} type={"FUNCTIONAL"} /></Col>
+    <Col><CampaignCard {...args} isNew={false} type={"FUNCTIONAL"} pillText={"Funcional Test"} /></Col>
     <Col><CampaignCard {...args} isNew={false} /></Col>
   </Row>
 }
@@ -48,4 +49,16 @@ Grid.parameters = {
 export default {
   title: "Molecules/Card/CampaignCard",
   component: CampaignCard,
+  argTypes: {
+    isRecessed: {
+      table: {
+        disable: true,
+      },
+    },
+    isFloating: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 } as ComponentMeta<typeof CampaignCard>
