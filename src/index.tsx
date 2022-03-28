@@ -24,6 +24,9 @@ export * from './stories/cards';
 // --- Close ---
 export * from './stories/close';
 
+// --- Counter ---
+export * from './stories/counter';
+
 // --- Dropdowns ---
 export * as DropdownField from './stories/dropdowns/field';
 export * from './stories/dropdowns/item';
