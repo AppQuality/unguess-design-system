@@ -1,3 +1,15 @@
+# v2.5.6 (Mon Mar 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(spaces): fix spaces between main, body and page title ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.5.5 (Mon Mar 28 2022)
 
 #### ⚠️ Pushed to `master`
