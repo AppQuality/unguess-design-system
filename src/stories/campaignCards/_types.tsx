@@ -1,6 +1,6 @@
 import { CardProps } from "../cards/_types";
 
-export interface CampaignCardsProps  extends CardProps{
+export interface CampaignCardsProps extends CardProps {
   /**
    * displays a new tag in the top right
    */
@@ -37,4 +37,8 @@ export interface CampaignCardsProps  extends CardProps{
    * if the value is not defined the pill text will not be shown
    */
   pillText?: string;
+  /**
+   * this renders the new flag label
+   */
+  labelNew?: string;
 }
