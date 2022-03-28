@@ -24,15 +24,13 @@ const getStatusIcon = (status: string) => {
 
 const getTypeData = (type?: string) => {
   switch (type) {
-    case "REGRESSION":
+    case "EXPERIENTIAL":
       return {
         pillIcon: RegressionTestIcon,
-        pillText: "Regression testing"
       }
     case "FUNCTIONAL":
       return {
         pillIcon: FunctionalTestIcon,
-        pillText: "Functional test"
       }
   }
 }
@@ -139,7 +137,7 @@ const CampaignCard = (props: CampaignCardsProps) => {
           <Tag.Avatar>
             <PillIcon />
           </Tag.Avatar>
-          {typeData.pillText}
+          {props.pillText}
         </StyledTag>
       }
       <StatusIcon />
