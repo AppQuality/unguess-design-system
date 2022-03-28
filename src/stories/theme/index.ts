@@ -1,6 +1,7 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { palette } from "./palette";
 import { gradients } from "./gradients";
+import { boxShadow } from "./utils";
 
 const theme = {
   ...DEFAULT_THEME,
@@ -21,6 +22,10 @@ const theme = {
       height: "64px",
     },
   },
+  shadows: {
+    ...DEFAULT_THEME.shadows,
+    boxShadow: boxShadow,
+  }
 };
 
 export { theme };

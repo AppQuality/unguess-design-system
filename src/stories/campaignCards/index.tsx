@@ -39,6 +39,10 @@ const Wrapper = styled(Card)`
   border-radius: ${theme.borderRadii.lg};
   padding: 1rem;
   border: 1px solid ${theme.palette.grey["200"]};
+
+  &:hover {
+    box-shadow: ${theme.shadows.boxShadow(theme)};
+  }
 `
 
 const StyledTag = styled(Tag)`
