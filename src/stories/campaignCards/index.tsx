@@ -117,7 +117,7 @@ const CampaignCard = (props: CampaignCardsProps) => {
     subTitleCut = `${subTitle.substring(0, 26)}...`
   }
 
-  return <Wrapper>
+  return <Wrapper {...props}>
     <CardHeader>
       <StyledLabel isRegular>{shownDate}</StyledLabel>
       {isNew && (
