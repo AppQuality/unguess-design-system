@@ -1,3 +1,27 @@
+# v2.6.0 (Tue Mar 29 2022)
+
+#### 🚀 Enhancement
+
+- Feature/cup 500 campaign card [#27](https://github.com/AppQuality/unguess-design-system/pull/27) ([@cicababba](https://github.com/cicababba) [@marcbon](https://github.com/marcbon))
+
+#### 🐛 Bug Fix
+
+- Fix/campaign cards [#28](https://github.com/AppQuality/unguess-design-system/pull/28) ([@marcbon](https://github.com/marcbon))
+
+#### ⚠️ Pushed to `master`
+
+- fix(campaigncard): add html props to campaign card ([@cannarocks](https://github.com/cannarocks))
+- fix(scroll): hide <Main /> scroll ([@cannarocks](https://github.com/cannarocks))
+- fix(counter): fix error on zero counter values ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.5.7 (Mon Mar 28 2022)
 
 
