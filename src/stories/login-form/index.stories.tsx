@@ -33,6 +33,9 @@ const defaultArgs: LoginFormArgs = {
   buttonText: "Sign In",
   placeholderEmail: "Insert Email",
   placeholderPassword: "Insert Password",
+  passwordForgotLabel: "Forgot Password?",
+  backToLabel: "Back to UNGUESS",
+  onBackClick: () => {alert("back ")},
   validate: (values) => {
     let errors: any = {};
     if (!values.email) {

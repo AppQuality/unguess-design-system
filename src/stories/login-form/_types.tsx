@@ -1,4 +1,5 @@
 import { FormikTouched, FormikErrors, FormikValues } from "formik";
+import { CardProps } from "../cards/_types";
 
 export interface LoginFormArgs {
   /**
@@ -18,6 +19,11 @@ export interface LoginFormArgs {
   buttonText: string;
   placeholderEmail: string;
   placeholderPassword: string;
+  card?: CardProps
+  onBackClick?: () => void;
+  passwordForgotLabel?: string;
+  passwordForgotLink?: string;
+  backToLabel?: string;
 }
 
 
