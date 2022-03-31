@@ -1,3 +1,9 @@
+# v2.6.2 (Thu Mar 31 2022)
+
+
+
+---
+
 # v2.6.1 (Thu Mar 31 2022)
 
 #### ⚠️ Pushed to `master`
