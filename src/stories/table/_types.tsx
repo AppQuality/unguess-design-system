@@ -14,7 +14,7 @@ export interface TableProps extends ITableProps {
   /** Removes interactive styling from table rows */
   isReadOnly?: boolean;
 
-  columns?: Array<string>;
+  columns?: Array<{ name: string; field: string }>;
   items?: Array<IRow>;
   groups?: Array<Group> | null;
   isStriped?: boolean;
@@ -84,10 +84,8 @@ export interface SortableCellArgs extends ISortableCellProps {
 export interface IRow {
   id?: number | string;
   groupName?: string;
-  fruit?: string;
-  sunExposure?: string;
-  soil?: string;
   selected?: boolean;
+  [index: string]: any;
 }
 
 export interface Group {

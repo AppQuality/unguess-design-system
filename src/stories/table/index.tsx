@@ -23,8 +23,8 @@ import {
   SortableCellArgs,
   TableProps,
 } from "./_types";
-import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
 import { Icon } from "../icons";
+import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down-stroke.svg";
 
 const UgTable = styled(ZendeskTable)``;
 
@@ -139,11 +139,11 @@ const AnimatedRow = styled(Row)`
 `;
 interface GroupComponentProps {
   group: Group;
-  columnsLength: number;
+  columns: any[];
 }
 const GroupComponent: FunctionComponent<any> = ({
   group,
-  columnsLength,
+  columns,
 }: GroupComponentProps) => {
   const [open, setOpen] = useState(true);
 
@@ -154,16 +154,16 @@ const GroupComponent: FunctionComponent<any> = ({
   return (
     <>
       <GroupRowComponent
-        colSpan={columnsLength}
+        colSpan={columns.length}
         handleToggle={handleToggle}
         open={open}
         group={group}
       />
       {group.items.map((item, index) => (
         <AnimatedRow key={index} className={open ? "render show" : "render"}>
-          <Cell>{item.fruit}</Cell>
-          <Cell>{item.sunExposure}</Cell>
-          <Cell>{item.soil}</Cell>
+          {columns.map((column) => (
+            <Cell key={column.field}>{item[column.field]}</Cell>
+          ))}
         </AnimatedRow>
       ))}
     </>
@@ -173,14 +173,14 @@ const GroupedTable = ({ columns, groups, ...args }: TableProps) => (
   <Table style={{ minWidth: 500 }} {...args}>
     <Head>
       <HeaderRow>
-        {columns?.map((key) => (
-          <HeaderCell>{key}</HeaderCell>
+        {columns?.map((column) => (
+          <HeaderCell key={column.field}>{column.name}</HeaderCell>
         ))}
       </HeaderRow>
     </Head>
     <Body>
-      {groups?.map((group) => {
-        return <GroupComponent columnsLength={columns?.length} group={group} />;
+      {groups?.map((group, index) => {
+        return <GroupComponent key={index} columns={columns} group={group} />;
       })}
     </Body>
   </Table>

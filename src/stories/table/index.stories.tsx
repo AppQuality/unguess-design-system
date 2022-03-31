@@ -1,5 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { FunctionComponent, useState } from "react";
+import { useState } from "react";
 import {
   Table,
   Head,
@@ -8,12 +8,11 @@ import {
   Body,
   Row,
   Cell,
-  GroupRow,
   Caption,
   SortableCell,
   GroupedTable,
 } from ".";
-import { Group, IRow, TableProps } from "./_types";
+import { IRow, TableProps } from "./_types";
 import styled from "styled-components";
 import { Pagination } from "../pagination";
 import { XL } from "../typography/typescale";
@@ -23,10 +22,6 @@ import { Field } from "../forms/field";
 import { Checkbox } from "../forms/checkbox";
 import { Label } from "../label";
 import { KEY_CODES } from "@zendeskgarden/container-utilities";
-import { useSpring, animated } from "react-spring";
-import { theme } from "../theme";
-import { Icon } from "../icons";
-import { IconArgs } from "../icons/_types";
 
 const createRow = (
   item: IRow,
@@ -75,7 +70,11 @@ const DefaultTemplate: Story<TableProps> = ({
 };
 
 const tableContent = {
-  columns: ["Fruit", "Sun Exposure", "Soil"],
+  columns: [
+    { name: "Type", field: "type" },
+    { name: "Sun exposure", field: "sunExposure" },
+    { name: "Soil", field: "soil" },
+  ],
   items: [
     {
       fruit: "Raspberries",
@@ -178,7 +177,11 @@ const groupedItems = [
 ];
 Grouped.args = {
   ...defaultArgs,
-  columns: ["Type", "Sun exposure", "Soil"],
+  columns: [
+    { name: "Type", field: "fruit" },
+    { name: "Sun exposure", field: "sunExposure" },
+    { name: "Soil", field: "soil" },
+  ],
   groups: groupedItems,
 };
 
