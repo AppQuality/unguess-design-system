@@ -1,11 +1,25 @@
-import { ITableProps, IRowProps, ICellProps, IHeaderCellProps, ISortableCellProps } from "@zendeskgarden/react-tables";
+import {
+  ITableProps,
+  IRowProps,
+  ICellProps,
+  IHeaderCellProps,
+  ISortableCellProps,
+} from "@zendeskgarden/react-tables";
 import { SIZE, SORT } from "@zendeskgarden/react-tables/dist/typings/styled";
+import { IconArgs } from "../icons/_types";
 
 export interface TableProps extends ITableProps {
   /** Sets the table size */
   size?: SIZE;
   /** Removes interactive styling from table rows */
   isReadOnly?: boolean;
+
+  columns?: Array<string>;
+  items?: Array<IRow>;
+  groups?: Array<Group> | null;
+  isStriped?: boolean;
+  hasCaption?: boolean;
+  isTruncated?: boolean;
 }
 
 export interface HeaderCellArgs extends IHeaderCellProps {
@@ -59,10 +73,25 @@ export interface HeadArgs extends ICellProps {
 }
 
 export interface SortableCellArgs extends ISortableCellProps {
-    /** Sets the sort order */
-    sort?: SORT;
-    /** Sets the width of the cell */
-    width?: string | number;
-    /** Passes props to the cell */
-    cellProps?: any;
+  /** Sets the sort order */
+  sort?: SORT;
+  /** Sets the width of the cell */
+  width?: string | number;
+  /** Passes props to the cell */
+  cellProps?: any;
+}
+
+export interface IRow {
+  id?: number | string;
+  groupName?: string;
+  fruit?: string;
+  sunExposure?: string;
+  soil?: string;
+  selected?: boolean;
+}
+
+export interface Group {
+  groupName: string;
+  groupIcon: IconArgs["type"];
+  items: Array<IRow>;
 }

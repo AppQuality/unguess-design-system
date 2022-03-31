@@ -1,45 +1,39 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { FunctionComponent, useState } from "react";
-import { Table, Head, HeaderRow, HeaderCell, Body, Row, Cell, GroupRow, Caption, SortableCell } from ".";
-import { TableProps } from "./_types";
+import {
+  Table,
+  Head,
+  HeaderRow,
+  HeaderCell,
+  Body,
+  Row,
+  Cell,
+  GroupRow,
+  Caption,
+  SortableCell,
+  GroupedTable,
+} from ".";
+import { Group, IRow, TableProps } from "./_types";
 import styled from "styled-components";
 import { Pagination } from "../pagination";
 import { XL } from "../typography/typescale";
-import getScrollbarSize from 'dom-helpers/scrollbarSize';
-import { FixedSizeList } from 'react-window';
+import getScrollbarSize from "dom-helpers/scrollbarSize";
+import { FixedSizeList } from "react-window";
 import { Field } from "../forms/field";
 import { Checkbox } from "../forms/checkbox";
 import { Label } from "../label";
-import { KEY_CODES } from '@zendeskgarden/container-utilities';
-import { useSpring, animated } from 'react-spring';
-import { ReactComponent as ChevronIcon } from "@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg";
-import { theme } from '../theme';
+import { KEY_CODES } from "@zendeskgarden/container-utilities";
+import { useSpring, animated } from "react-spring";
+import { theme } from "../theme";
 import { Icon } from "../icons";
 import { IconArgs } from "../icons/_types";
 
-interface IRow {
-  id?: number | string;
-  groupName?: string;
-  fruit?: string;
-  sunExposure?: string;
-  soil?: string;
-  selected?: boolean;
-}
-interface Group {
-  groupName: string;
-  groupIcon: IconArgs["type"];
-  items: Array<IRow>;
-}
-interface TableStoryArg extends TableProps {
-  columns: Array<string>;
-  items: Array<IRow>;
-  groups: Array<Group> | null;
-  isStriped?: boolean;
-  hasCaption?: boolean;
-  isTruncated?: boolean;
-}
-
-const createRow = (item: IRow, index: number, isStriped?: boolean, isTruncated?: boolean) => (
+const createRow = (
+  item: IRow,
+  index: number,
+  isStriped?: boolean,
+  isTruncated?: boolean
+) => (
   <Row key={index} isStriped={isStriped && index % 2 === 0}>
     <Cell>{item.fruit}</Cell>
     <Cell>{item.sunExposure}</Cell>
@@ -47,25 +41,33 @@ const createRow = (item: IRow, index: number, isStriped?: boolean, isTruncated?:
   </Row>
 );
 
-const DefaultTemplate: Story<TableStoryArg> = ({ columns, items, isStriped, hasCaption, isTruncated, ...args }) => {
+const DefaultTemplate: Story<TableProps> = ({
+  columns,
+  items,
+  isStriped,
+  hasCaption,
+  isTruncated,
+  ...args
+}) => {
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div style={{ overflowX: "auto" }}>
       <Table style={{ minWidth: 500 }} {...args}>
         {hasCaption && (
           <Caption>
             <XL>Garden details</XL>
           </Caption>
-        )
-        }
+        )}
         <Head>
           <HeaderRow>
-            {columns.map((key) => (
+            {columns?.map((key) => (
               <HeaderCell>{key}</HeaderCell>
             ))}
           </HeaderRow>
         </Head>
         <Body>
-          {items.map((item, index) => createRow(item, index, isStriped, isTruncated))}
+          {items?.map((item, index) =>
+            createRow(item, index, isStriped, isTruncated)
+          )}
         </Body>
       </Table>
     </div>
@@ -73,248 +75,147 @@ const DefaultTemplate: Story<TableStoryArg> = ({ columns, items, isStriped, hasC
 };
 
 const tableContent = {
-  columns: ['Fruit', 'Sun Exposure', 'Soil'],
+  columns: ["Fruit", "Sun Exposure", "Soil"],
   items: [
     {
-      fruit: 'Raspberries',
-      sunExposure: 'Partial shade',
-      soil: 'Moist and slightly acidic',
+      fruit: "Raspberries",
+      sunExposure: "Partial shade",
+      soil: "Moist and slightly acidic",
     },
     {
-      fruit: 'Strawberries',
-      sunExposure: 'Full sun',
-      soil: 'Medium moisture',
+      fruit: "Strawberries",
+      sunExposure: "Full sun",
+      soil: "Medium moisture",
     },
     {
-      fruit: 'Grapes',
-      sunExposure: 'Full sun',
-      soil: 'Rich and well draining',
+      fruit: "Grapes",
+      sunExposure: "Full sun",
+      soil: "Rich and well draining",
     },
     {
-      fruit: 'Cherries',
-      sunExposure: 'Partial sun',
-      soil: 'Rich and well draining',
+      fruit: "Cherries",
+      sunExposure: "Partial sun",
+      soil: "Rich and well draining",
     },
     {
-      fruit: 'Tomatoes',
-      sunExposure: 'Partial shade',
-      soil: 'Well draining',
-    }
+      fruit: "Tomatoes",
+      sunExposure: "Partial shade",
+      soil: "Well draining",
+    },
   ],
-  groups: null
+  groups: null,
 };
 
-const defaultArgs: TableStoryArg = {
-  ...tableContent
+const defaultArgs: TableProps = {
+  ...tableContent,
 };
 export const Default = DefaultTemplate.bind({});
 Default.args = defaultArgs;
 
 /** GROUPED */
-interface GroupRowProps {
-  handleToggle: any;
-  open: boolean;
-  colSpan?: number;
-  group: Group;
-}
-const StyledGroupRow = styled(GroupRow)`
-  cursor: pointer;
-
-  &.empty {
-    cursor: default;
-
-    * {
-      color: ${theme.palette.grey[500]} !important;
-      cursor: default !important;
-    }
-  }
-
-  svg {
-    vertical-align: middle;
-  }
-
-  .title {
-    padding-left: 10px;
-    vertical-align: middle;
-    font-size: ${theme.fontSizes.sm};
-    cursor: pointer;
-  }
-`
-const StyledAnimatedToggle = styled(animated.div)`
-  display: inline-block;
-  float: right;
-`
-const StyledUgIcon = styled(Icon)``
-const GroupRowComponent: FunctionComponent<GroupRowProps> = (props: GroupRowProps) => {
-  const toggleIconAnimation = useSpring({
-    config: { duration: 120 },
-    transform: props.group.items.length > 0 ? (props.open ? 'rotate(180deg)' : 'rotate(0deg)') : 'rotate(0deg)',
-  })
-
+const GroupedTemplate: Story<TableProps> = ({ ...args }) => {
   return (
-    <StyledGroupRow
-      {...props && props.group.items.length === 0 && { className: 'empty' }}
-      {...props && props.group.items.length > 0 && { onClick: props.handleToggle }}
-    >
-      <Cell colSpan={props.colSpan} className={props.open ? 'open' : 'closed'}>
-        <StyledUgIcon size={12} type={props.group.groupIcon} />
-        <Label isRegular className="title">{props.group.groupName} <b>({props.group.items.length})</b></Label>
-        <StyledAnimatedToggle style={toggleIconAnimation}>
-          <ChevronIcon />
-        </StyledAnimatedToggle>
-      </Cell>
-    </StyledGroupRow>
-  );
-}
-const AnimatedRow = styled(Row)`
-  &.render {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-  }
-
-  &.show {
-    position: static;
-    opacity: 1;
-    transition: all 0.6s ease;
-  }
-`
-interface GroupComponentProps {
-  group: Group;
-  columnsLength: number;
-}
-const GroupComponent: FunctionComponent<any> = ({ group, columnsLength }: GroupComponentProps) => {
-  const [open, setOpen] = useState(true)
-
-  const handleToggle = () => {
-    setOpen(!open)
-  }
-
-  return (
-    <>
-      <GroupRowComponent colSpan={columnsLength} handleToggle={handleToggle} open={open} group={group} />
-      {group.items.map((item, index) => (
-        <AnimatedRow key={index} className={open ? 'render show' : 'render'}>
-          <Cell>{item.fruit}</Cell>
-          <Cell>{item.sunExposure}</Cell>
-          <Cell>{item.soil}</Cell>
-        </AnimatedRow>
-      ))}
-    </>
-  );
-}
-const GroupedTemplate: Story<TableStoryArg> = ({ columns, groups, ...args }) => {
-  return (
-    <div style={{ overflowX: 'auto' }}>
-      <Table style={{ minWidth: 500 }} {...args}>
-        <Head>
-          <HeaderRow>
-            {columns.map((key) => (
-              <HeaderCell>{key}</HeaderCell>
-            ))}
-          </HeaderRow>
-        </Head>
-        <Body>
-          {groups?.map(group => {
-            return (<GroupComponent columnsLength={columns.length} group={group} />)
-          }
-          )}
-        </Body>
-      </Table>
+    <div style={{ overflowX: "auto" }}>
+      <GroupedTable {...args} />
     </div>
   );
 };
 export const Grouped = GroupedTemplate.bind({});
 const groupedItems = [
   {
-    groupName: 'Fruits',
-    groupIcon: 'square' as const,
+    groupName: "Fruits",
+    groupIcon: "square" as const,
     items: [
       {
-        fruit: 'Raspberries',
-        sunExposure: 'Partial shade',
-        soil: 'Moist and slightly acidic',
+        fruit: "Raspberries",
+        sunExposure: "Partial shade",
+        soil: "Moist and slightly acidic",
       },
       {
-        fruit: 'Strawberries',
-        sunExposure: 'Full sun',
-        soil: 'Medium moisture',
+        fruit: "Strawberries",
+        sunExposure: "Full sun",
+        soil: "Medium moisture",
       },
       {
-        fruit: 'Grapes',
-        sunExposure: 'Full sun',
-        soil: 'Rich and well draining',
+        fruit: "Grapes",
+        sunExposure: "Full sun",
+        soil: "Rich and well draining",
       },
       {
-        fruit: 'Cherries',
-        sunExposure: 'Partial sun',
-        soil: 'Rich and well draining',
+        fruit: "Cherries",
+        sunExposure: "Partial sun",
+        soil: "Rich and well draining",
       },
-    ]
+    ],
   },
   {
-    groupName: 'Vegetables',
-    groupIcon: 'triangle' as const,
+    groupName: "Vegetables",
+    groupIcon: "triangle" as const,
     items: [
       {
-        fruit: 'Tomatoes',
-        sunExposure: 'Partial shade',
-        soil: 'Well draining',
-      }
-    ]
+        fruit: "Tomatoes",
+        sunExposure: "Partial shade",
+        soil: "Well draining",
+      },
+    ],
   },
   {
-    groupName: 'Vegetables',
-    groupIcon: 'circle' as const,
+    groupName: "Vegetables",
+    groupIcon: "circle" as const,
     items: [
       {
-        fruit: 'Tomatoes',
-        sunExposure: 'Partial shade',
-        soil: 'Well draining',
-      }
-    ]
+        fruit: "Tomatoes",
+        sunExposure: "Partial shade",
+        soil: "Well draining",
+      },
+    ],
   },
   {
-    groupName: 'Arancini',
-    groupIcon: 'triangle' as const,
-    items: []
+    groupName: "Arancini",
+    groupIcon: "triangle" as const,
+    items: [],
   },
 ];
 Grouped.args = {
   ...defaultArgs,
-  columns: ['Type', 'Sun exposure', 'Soil'],
-  groups: groupedItems
+  columns: ["Type", "Sun exposure", "Soil"],
+  groups: groupedItems,
 };
 
 /** WITH PAGINATION */
 const StyledTable = styled(Table)`
-  margin-bottom: ${p => p.theme.space.md};
+  margin-bottom: ${(p) => p.theme.space.md};
   min-width: 500px;
 `;
-const PaginationTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+const PaginationTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div style={{ overflowX: "auto" }}>
       <StyledTable style={{ minWidth: 500 }} {...args}>
         <Head>
           <HeaderRow>
-            {columns.map((key) => (
+            {columns?.map((key) => (
               <HeaderCell>{key}</HeaderCell>
             ))}
           </HeaderRow>
         </Head>
         <Body>
           {currentPage === 1
-            ? items.slice(currentPage - 1, pageSize).map((item, index) => createRow(item, index))
+            ? items
+                ?.slice(currentPage - 1, pageSize)
+                .map((item: IRow, index: number) => createRow(item, index))
             : items
-              .slice(currentPage * pageSize - pageSize, currentPage * pageSize)
-              .map((item, index) => createRow(item, index))}
+                ?.slice(
+                  currentPage * pageSize - pageSize,
+                  currentPage * pageSize
+                )
+                .map((item: IRow, index: number) => createRow(item, index))}
         </Body>
       </StyledTable>
       <Pagination
-        totalPages={items.length / pageSize}
+        totalPages={items!.length / pageSize}
         currentPage={currentPage}
         onChange={setCurrentPage}
       />
@@ -326,23 +227,23 @@ WithPagination.args = {
   ...defaultArgs,
   items: Array.from(Array(100)).map((row, index) => ({
     fruit: `Fruit #${index}`,
-    sunExposure: 'Full sun',
-    soil: 'Well draining'
-  }))
+    sunExposure: "Full sun",
+    soil: "Well draining",
+  })),
 };
 
 /** STRIPED */
 export const Striped = DefaultTemplate.bind({});
 Striped.args = {
   ...defaultArgs,
-  isStriped: true
+  isStriped: true,
 };
 
 /** WITH CAPTION */
 export const WithCaption = DefaultTemplate.bind({});
 WithCaption.args = {
   ...defaultArgs,
-  hasCaption: true
+  hasCaption: true,
 };
 
 /** TRUNCATED */
@@ -350,14 +251,14 @@ export const Truncated = DefaultTemplate.bind({});
 Truncated.args = {
   ...defaultArgs,
   items: [
-    ...defaultArgs.items,
+    ...defaultArgs.items!,
     {
-      fruit: 'Raspberries',
-      sunExposure: 'Partial shade',
-      soil: 'Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic',
-    }
+      fruit: "Raspberries",
+      sunExposure: "Partial shade",
+      soil: "Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic Moist and slightly acidic",
+    },
   ],
-  isTruncated: true
+  isTruncated: true,
 };
 
 /** SCROLL */
@@ -366,24 +267,22 @@ const StyledSpacerCell = styled(HeaderCell)`
   padding: 0;
   width: ${SCROLLBAR_SIZE}px;
 `;
-const ScrollTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+const ScrollTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div style={{ overflowX: "auto" }}>
       <Table style={{ minWidth: 400 }} {...args}>
         <Head>
           <HeaderRow>
-            {columns.map((key) => (
+            {columns?.map((key) => (
               <HeaderCell>{key}</HeaderCell>
             ))}
             <StyledSpacerCell aria-hidden />
           </HeaderRow>
         </Head>
       </Table>
-      <div style={{ maxHeight: 420, overflowY: 'auto' }}>
+      <div style={{ maxHeight: 420, overflowY: "auto" }}>
         <Table>
-          <Body>
-            {items.map((item, index) => createRow(item, index))}
-          </Body>
+          <Body>{items?.map((item, index) => createRow(item, index))}</Body>
         </Table>
       </div>
     </div>
@@ -394,9 +293,9 @@ Scroll.args = {
   ...defaultArgs,
   items: Array.from(Array(100)).map((row, index) => ({
     fruit: `Fruit #${index}`,
-    sunExposure: 'Full sun',
-    soil: 'Well draining'
-  }))
+    sunExposure: "Full sun",
+    soil: "Well draining",
+  })),
 };
 
 /** SELECTION */
@@ -411,14 +310,15 @@ const isSelectAllIndeterminate = (rows: IRow[]) => {
 
   return numSelectedRows > 0 && numSelectedRows < rows.length;
 };
-const isSelectAllChecked = (rows: IRow[]) => rows.every(row => row.selected);
-const SelectionTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
-  const [data, setData] = useState(items);
+const isSelectAllChecked = (rows: IRow[]) => rows.every((row) => row.selected);
+const SelectionTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
+  const [data, setData] = useState(items!);
   const [shiftEnabled, setShiftEnabled] = useState(false);
-  const [focusedRowIndex, setFocusedRowIndex] = useState<number | undefined>(undefined);
+  const [focusedRowIndex, setFocusedRowIndex] =
+    useState<number | undefined>(undefined);
 
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div style={{ overflowX: "auto" }}>
       <Table style={{ minWidth: 500 }}>
         <Head>
           <HeaderRow>
@@ -427,13 +327,19 @@ const SelectionTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) =>
                 <Checkbox
                   indeterminate={isSelectAllIndeterminate(data)}
                   checked={isSelectAllChecked(data)}
-                  onChange={e => {
+                  onChange={(e) => {
                     if (e.target.checked) {
-                      const updatedRows = data.map(row => ({ ...row, selected: true }));
+                      const updatedRows = data.map((row) => ({
+                        ...row,
+                        selected: true,
+                      }));
 
                       setData(updatedRows);
                     } else {
-                      const updatedRows = data.map(row => ({ ...row, selected: false }));
+                      const updatedRows = data.map((row) => ({
+                        ...row,
+                        selected: false,
+                      }));
 
                       setData(updatedRows);
                     }
@@ -455,7 +361,7 @@ const SelectionTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) =>
                 <Field>
                   <Checkbox
                     checked={row.selected}
-                    onKeyDown={e => {
+                    onKeyDown={(e) => {
                       if (e.keyCode === KEY_CODES.SHIFT) {
                         setShiftEnabled(true);
                       }
@@ -463,7 +369,7 @@ const SelectionTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) =>
                     onKeyUp={() => {
                       setShiftEnabled(false);
                     }}
-                    onChange={e => {
+                    onChange={(e) => {
                       const updatedRows = [...data];
 
                       if (shiftEnabled && focusedRowIndex !== undefined) {
@@ -472,7 +378,7 @@ const SelectionTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) =>
 
                         const isAllChecked = updatedRows
                           .slice(startIndex, endIndex + 1)
-                          .every(slicedRow => slicedRow.selected);
+                          .every((slicedRow) => slicedRow.selected);
 
                         for (let x = startIndex; x <= endIndex; x++) {
                           if (x === index && isAllChecked) {
@@ -512,62 +418,66 @@ Selection.args = {
   items: Array.from(Array(10)).map((row, index) => ({
     id: `row-${index}`,
     fruit: `Fruit #${index + 1}`,
-    sunExposure: 'Full sun',
-    soil: 'Well draining',
-    selected: false
-  }))
+    sunExposure: "Full sun",
+    soil: "Well draining",
+    selected: false,
+  })),
 };
 
 /** SORT */
-type Direction = 'asc' | 'desc' | undefined;
-const sortData = (tableData: IRow[], sunExposureSort: Direction, soilSort: Direction) => {
+type Direction = "asc" | "desc" | undefined;
+const sortData = (
+  tableData: IRow[],
+  sunExposureSort: Direction,
+  soilSort: Direction
+) => {
   if (!sunExposureSort && !soilSort) {
     return tableData;
   }
 
-  let field: 'sunExposure' | 'soil';
+  let field: "sunExposure" | "soil";
   let sortValue: Direction;
 
   if (sunExposureSort) {
-    field = 'sunExposure';
+    field = "sunExposure";
     sortValue = sunExposureSort;
   } else {
-    field = 'soil';
+    field = "soil";
     sortValue = soilSort;
   }
 
   return tableData.sort((a, b) => {
-    const aValue = a[field] || '';
-    const bValue = b[field] || '';
+    const aValue = a[field] || "";
+    const bValue = b[field] || "";
 
     if (aValue > bValue) {
-      return sortValue === 'asc' ? 1 : -1;
+      return sortValue === "asc" ? 1 : -1;
     } else if (aValue < bValue) {
-      return sortValue === 'asc' ? -1 : 1;
+      return sortValue === "asc" ? -1 : 1;
     }
 
     return 0;
   });
 };
-const SortTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+const SortTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
   const [data, setData] = useState(items);
   const [sunExposureSort, setSunExposureSort] = useState<Direction>();
   const [soilSort, setSoilSort] = useState<Direction>();
 
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div style={{ overflowX: "auto" }}>
       <Table style={{ minWidth: 500 }}>
         <Head>
           <HeaderRow>
             <HeaderCell>Fruit</HeaderCell>
             <SortableCell
               onClick={() => {
-                if (sunExposureSort === 'asc') {
-                  setSunExposureSort('desc');
-                } else if (sunExposureSort === 'desc') {
+                if (sunExposureSort === "asc") {
+                  setSunExposureSort("desc");
+                } else if (sunExposureSort === "desc") {
                   setSunExposureSort(undefined);
                 } else {
-                  setSunExposureSort('asc');
+                  setSunExposureSort("asc");
                 }
                 setSoilSort(undefined);
                 setData(data);
@@ -578,12 +488,12 @@ const SortTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
             </SortableCell>
             <SortableCell
               onClick={() => {
-                if (soilSort === 'asc') {
-                  setSoilSort('desc');
-                } else if (soilSort === 'desc') {
+                if (soilSort === "asc") {
+                  setSoilSort("desc");
+                } else if (soilSort === "desc") {
                   setSoilSort(undefined);
                 } else {
-                  setSoilSort('asc');
+                  setSoilSort("asc");
                 }
                 setSunExposureSort(undefined);
                 setData(data);
@@ -595,7 +505,7 @@ const SortTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
           </HeaderRow>
         </Head>
         <Body>
-          {sortData(data.slice(), sunExposureSort, soilSort).map(row => (
+          {sortData(data!.slice(), sunExposureSort, soilSort).map((row) => (
             <Row key={row.id}>
               <Cell>{row.fruit}</Cell>
               <Cell>{row.sunExposure}</Cell>
@@ -613,39 +523,45 @@ Sort.args = {
   items: Array.from(Array(10)).map((row, index) => ({
     id: `row-${index}`,
     fruit: `Custom fruit ${index + 1}`,
-    sunExposure: index % 2 === 0 ? 'Partial shade' : 'Full sun',
-    soil: index % 3 === 0 ? 'Moist and slightly acidic' : 'Well draining'
-  }))
+    sunExposure: index % 2 === 0 ? "Partial shade" : "Full sun",
+    soil: index % 3 === 0 ? "Moist and slightly acidic" : "Well draining",
+  })),
 };
 
 /** VIRTUAL SCROLLING */
-const ScrollableTable = styled(Table).attrs({ role: 'presentation' })`
+const ScrollableTable = styled(Table).attrs({ role: "presentation" })`
   /* stylelint-disable-next-line */
   display: block !important;
 `;
 const ScrollableHead = styled(Head)`
   display: block;
 `;
-const ScrollableHeaderRow = styled(HeaderRow).attrs({ role: 'row' })`
+const ScrollableHeaderRow = styled(HeaderRow).attrs({ role: "row" })`
   /* stylelint-disable-next-line */
   display: table !important;
   width: 100%;
   table-layout: fixed;
 `;
-const ScrollableHeaderCell = styled(HeaderCell).attrs({ role: 'columnheader' })``;
+const ScrollableHeaderCell = styled(HeaderCell).attrs({
+  role: "columnheader",
+})``;
 const ScrollableBody = styled(Body)`
   /* stylelint-disable-next-line */
   display: block !important;
 `;
-const ScrollableRow = styled(Row).attrs({ role: 'row' })`
+const ScrollableRow = styled(Row).attrs({ role: "row" })`
   /* stylelint-disable-next-line */
   display: table !important;
   table-layout: fixed;
 `;
-const ScrollableCell = styled(Cell).attrs({ role: 'cell' })``;
-const VirtualScrollingTemplate: Story<TableStoryArg> = ({ columns, items, ...args }) => {
+const ScrollableCell = styled(Cell).attrs({ role: "cell" })``;
+const VirtualScrollingTemplate: Story<TableProps> = ({
+  columns,
+  items,
+  ...args
+}) => {
   return (
-    <div role="grid" aria-rowcount={items.length} aria-colcount={4}>
+    <div role="grid" aria-rowcount={items?.length} aria-colcount={4}>
       <ScrollableTable>
         <ScrollableHead>
           <ScrollableHeaderRow>
@@ -658,17 +574,23 @@ const VirtualScrollingTemplate: Story<TableStoryArg> = ({ columns, items, ...arg
       </ScrollableTable>
       <FixedSizeList
         height={420}
-        itemCount={items.length}
+        itemCount={items!.length}
         itemSize={40}
         width="100%"
         outerElementType={ScrollableTable}
         innerElementType={ScrollableBody}
       >
         {({ index, style }) => (
-          <ScrollableRow key={items[index].id} style={style} aria-rowindex={index + 1}>
-            <ScrollableCell isTruncated>{items[index].fruit}</ScrollableCell>
-            <ScrollableCell isTruncated>{items[index].sunExposure}</ScrollableCell>
-            <ScrollableCell isTruncated>{items[index].soil}</ScrollableCell>
+          <ScrollableRow
+            key={items![index].id}
+            style={style}
+            aria-rowindex={index + 1}
+          >
+            <ScrollableCell isTruncated>{items![index].fruit}</ScrollableCell>
+            <ScrollableCell isTruncated>
+              {items![index].sunExposure}
+            </ScrollableCell>
+            <ScrollableCell isTruncated>{items![index].soil}</ScrollableCell>
           </ScrollableRow>
         )}
       </FixedSizeList>
@@ -681,9 +603,9 @@ VirtualScrolling.args = {
   items: Array.from(Array(1000)).map((row, index) => ({
     id: index,
     fruit: `Fruit #${index + 1}`,
-    sunExposure: 'Full sun',
-    soil: 'Well draining'
-  }))
+    sunExposure: "Full sun",
+    soil: "Well draining",
+  })),
 };
 
 export default {
