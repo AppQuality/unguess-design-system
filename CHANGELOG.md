@@ -1,3 +1,15 @@
+# v2.6.1 (Thu Mar 31 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(login): add generic error message ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.6.0 (Tue Mar 29 2022)
 
 #### 🚀 Enhancement
