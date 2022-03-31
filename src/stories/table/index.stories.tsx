@@ -54,8 +54,8 @@ const DefaultTemplate: Story<TableProps> = ({
         )}
         <Head>
           <HeaderRow>
-            {columns?.map((key) => (
-              <HeaderCell>{key}</HeaderCell>
+            {columns?.map((column) => (
+              <HeaderCell key={column.field}>{column.name}</HeaderCell>
             ))}
           </HeaderRow>
         </Head>
@@ -199,8 +199,8 @@ const PaginationTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
       <StyledTable style={{ minWidth: 500 }} {...args}>
         <Head>
           <HeaderRow>
-            {columns?.map((key) => (
-              <HeaderCell>{key}</HeaderCell>
+            {columns?.map((column) => (
+              <HeaderCell key={column.field}>{column.name}</HeaderCell>
             ))}
           </HeaderRow>
         </Head>
@@ -276,8 +276,8 @@ const ScrollTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
       <Table style={{ minWidth: 400 }} {...args}>
         <Head>
           <HeaderRow>
-            {columns?.map((key) => (
-              <HeaderCell>{key}</HeaderCell>
+            {columns?.map((column) => (
+              <HeaderCell key={column.field}>{column.name}</HeaderCell>
             ))}
             <StyledSpacerCell aria-hidden />
           </HeaderRow>
