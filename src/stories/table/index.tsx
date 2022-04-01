@@ -28,37 +28,7 @@ import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down-s
 
 const UgTable = styled(ZendeskTable)``;
 
-/**
- * A Table organizes data into columns and rows. Tables make it easier for users to compare and analyze information.
-
- * Used for this:
-    - To organize and display read-only data with logical relationships
-
- * Not for this:
-    - To structure content on a page, use the Grid component instead
- */
-const Table = (props: TableProps) => <UgTable {...props} />;
-
-// Extras
-const Head = (props: HTMLAttributes<HTMLTableSectionElement>) => (
-  <ZendeskHead {...props} />
-);
-const HeaderRow = (props: RowArgs) => <ZendeskHeaderRow {...props} />;
-const HeaderCell = (props: HeaderCellArgs) => <ZendeskHeaderCell {...props} />;
-const Body = (props: HTMLAttributes<HTMLTableSectionElement>) => (
-  <ZendeskBody {...props} />
-);
-const Row = (props: RowArgs) => <ZendeskRow {...props} />;
-const Cell = (props: CellArgs) => <ZendeskCell {...props} />;
-const GroupRow = (props: RowArgs) => <ZendeskGroupRow {...props} />;
-const Caption = (props: HTMLAttributes<HTMLTableCaptionElement>) => (
-  <ZendeskCaption {...props} />
-);
-const SortableCell = (props: SortableCellArgs) => (
-  <ZendeskSortableCell {...props} />
-);
-
-const StyledGroupRow = styled(GroupRow)`
+const UgGroupRow = styled(ZendeskGroupRow)`
   cursor: pointer;
 
   &.empty {
@@ -81,12 +51,43 @@ const StyledGroupRow = styled(GroupRow)`
     cursor: pointer;
   }
 `;
+
+/**
+ * A Table organizes data into columns and rows. Tables make it easier for users to compare and analyze information.
+
+ * Used for this:
+    - To organize and display read-only data with logical relationships
+
+ * Not for this:
+    - To structure content on a page, use the Grid component instead
+ */
+const Table = (props: TableProps) => <UgTable {...props} />;
+
+// Extras
+const Head = (props: HTMLAttributes<HTMLTableSectionElement>) => (
+  <ZendeskHead {...props} />
+);
+const HeaderRow = (props: RowArgs) => <ZendeskHeaderRow {...props} />;
+const HeaderCell = (props: HeaderCellArgs) => <ZendeskHeaderCell {...props} />;
+const Body = (props: HTMLAttributes<HTMLTableSectionElement>) => (
+  <ZendeskBody {...props} />
+);
+const Row = (props: RowArgs) => <ZendeskRow {...props} />;
+const Cell = (props: CellArgs) => <ZendeskCell {...props} />;
+const GroupRow = (props: RowArgs) => <UgGroupRow {...props} />;
+const Caption = (props: HTMLAttributes<HTMLTableCaptionElement>) => (
+  <ZendeskCaption {...props} />
+);
+const SortableCell = (props: SortableCellArgs) => (
+  <ZendeskSortableCell {...props} />
+);
+
+/** GROUPED */
 const StyledAnimatedToggle = styled(animated.div)`
   display: inline-block;
   float: right;
 `;
 const StyledUgIcon = styled(Icon)``;
-
 interface GroupRowProps {
   handleToggle: any;
   open: boolean;
@@ -107,7 +108,7 @@ const GroupRowComponent: FunctionComponent<GroupRowProps> = (
   });
 
   return (
-    <StyledGroupRow
+    <GroupRow
       {...(props && props.group.items.length === 0 && { className: "empty" })}
       {...(props &&
         props.group.items.length > 0 && { onClick: props.handleToggle })}
@@ -121,7 +122,7 @@ const GroupRowComponent: FunctionComponent<GroupRowProps> = (
           <ChevronIcon />
         </StyledAnimatedToggle>
       </Cell>
-    </StyledGroupRow>
+    </GroupRow>
   );
 };
 const AnimatedRow = styled(Row)`
