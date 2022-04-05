@@ -10,8 +10,9 @@ import {
   Cell,
   Caption,
   SortableCell,
-  GroupedTable,
+  GroupedTable
 } from ".";
+
 import { IRow, TableProps } from "./_types";
 import styled from "styled-components";
 import { Pagination } from "../pagination";

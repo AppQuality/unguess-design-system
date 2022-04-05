@@ -1,3 +1,5 @@
+import { HTMLAttributes } from "react";
+import styled from "styled-components";
 import {
   Table as ZendeskTable,
   Head as ZendeskHead,
@@ -6,51 +8,21 @@ import {
   Body as ZendeskBody,
   Row as ZendeskRow,
   Cell as ZendeskCell,
-  GroupRow as ZendeskGroupRow,
   Caption as ZendeskCaption,
   SortableCell as ZendeskSortableCell,
 } from "@zendeskgarden/react-tables";
-import { FunctionComponent, HTMLAttributes, useState } from "react";
-import { animated, useSpring } from "react-spring";
-import styled from "styled-components";
-import { Label } from "../label";
-import { theme } from "../theme";
+
 import {
   CellArgs,
-  Group,
   HeaderCellArgs,
   RowArgs,
   SortableCellArgs,
   TableProps,
 } from "./_types";
-import { Icon } from "../icons";
-import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down-stroke.svg";
+
+import {GroupRow, GroupedTable} from "./grouped"
 
 const UgTable = styled(ZendeskTable)``;
-
-const UgGroupRow = styled(ZendeskGroupRow)`
-  cursor: pointer;
-
-  &.empty {
-    cursor: default;
-
-    * {
-      color: ${theme.palette.grey[500]} !important;
-      cursor: default !important;
-    }
-  }
-
-  svg {
-    vertical-align: middle;
-  }
-
-  .title {
-    padding-left: 10px;
-    vertical-align: middle;
-    font-size: ${theme.fontSizes.sm};
-    cursor: pointer;
-  }
-`;
 
 /**
  * A Table organizes data into columns and rows. Tables make it easier for users to compare and analyze information.
@@ -74,117 +46,12 @@ const Body = (props: HTMLAttributes<HTMLTableSectionElement>) => (
 );
 const Row = (props: RowArgs) => <ZendeskRow {...props} />;
 const Cell = (props: CellArgs) => <ZendeskCell {...props} />;
-const GroupRow = (props: RowArgs) => <UgGroupRow {...props} />;
+
 const Caption = (props: HTMLAttributes<HTMLTableCaptionElement>) => (
   <ZendeskCaption {...props} />
 );
 const SortableCell = (props: SortableCellArgs) => (
   <ZendeskSortableCell {...props} />
-);
-
-/** GROUPED */
-const StyledAnimatedToggle = styled(animated.div)`
-  display: inline-block;
-  float: right;
-`;
-const StyledUgIcon = styled(Icon)``;
-interface GroupRowProps {
-  handleToggle: any;
-  open: boolean;
-  colSpan?: number;
-  group: Group;
-}
-const GroupRowComponent: FunctionComponent<GroupRowProps> = (
-  props: GroupRowProps
-) => {
-  const toggleIconAnimation = useSpring({
-    config: { duration: 120 },
-    transform:
-      props.group.items.length > 0
-        ? props.open
-          ? "rotate(180deg)"
-          : "rotate(0deg)"
-        : "rotate(0deg)",
-  });
-
-  return (
-    <GroupRow
-      {...(props && props.group.items.length === 0 && { className: "empty" })}
-      {...(props &&
-        props.group.items.length > 0 && { onClick: props.handleToggle })}
-    >
-      <Cell colSpan={props.colSpan} className={props.open ? "open" : "closed"}>
-        <StyledUgIcon size={12} type={props.group.groupIcon} />
-        <Label isRegular className="title">
-          {props.group.groupName} <b>({props.group.items.length})</b>
-        </Label>
-        <StyledAnimatedToggle style={toggleIconAnimation}>
-          <ChevronIcon />
-        </StyledAnimatedToggle>
-      </Cell>
-    </GroupRow>
-  );
-};
-const AnimatedRow = styled(Row)`
-  &.render {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-  }
-
-  &.show {
-    position: static;
-    opacity: 1;
-    transition: all 0.6s ease;
-  }
-`;
-interface GroupComponentProps {
-  group: Group;
-  columns: any[];
-}
-const GroupComponent: FunctionComponent<any> = ({
-  group,
-  columns,
-}: GroupComponentProps) => {
-  const [open, setOpen] = useState(true);
-
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
-  return (
-    <>
-      <GroupRowComponent
-        colSpan={columns.length}
-        handleToggle={handleToggle}
-        open={open}
-        group={group}
-      />
-      {group.items.map((item, index) => (
-        <AnimatedRow key={index} className={open ? "render show" : "render"}>
-          {columns.map((column) => (
-            <Cell key={column.field}>{item[column.field]}</Cell>
-          ))}
-        </AnimatedRow>
-      ))}
-    </>
-  );
-};
-const GroupedTable = ({ columns, groups, ...args }: TableProps) => (
-  <Table style={{ minWidth: 500 }} {...args}>
-    <Head>
-      <HeaderRow>
-        {columns?.map((column) => (
-          <HeaderCell key={column.field}>{column.name}</HeaderCell>
-        ))}
-      </HeaderRow>
-    </Head>
-    <Body>
-      {groups?.map((group, index) => {
-        return <GroupComponent key={index} columns={columns} group={group} />;
-      })}
-    </Body>
-  </Table>
 );
 
 export {
@@ -195,8 +62,8 @@ export {
   Body,
   Row,
   Cell,
-  GroupRow,
   Caption,
   SortableCell,
-  GroupedTable,
+  GroupRow,
+  GroupedTable
 };
