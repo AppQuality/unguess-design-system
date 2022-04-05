@@ -20,8 +20,6 @@ import {
   TableProps,
 } from "./_types";
 
-import {GroupRow, GroupedTable} from "./grouped"
-
 const UgTable = styled(ZendeskTable)``;
 
 /**
