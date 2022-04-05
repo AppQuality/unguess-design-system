@@ -97,10 +97,13 @@ export {
   Body as TableBody,
   Row as TableRow,
   Cell as TableCell,
-  GroupRow,
   Caption,
-  GroupedTable,
 } from "./stories/table";
+
+export {
+  GroupRow,
+  GroupedTable,
+} from "./stories/table/grouped";
 
 // --- Tags ---
 export * from "./stories/tags";

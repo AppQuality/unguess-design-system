@@ -63,7 +63,5 @@ export {
   Row,
   Cell,
   Caption,
-  SortableCell,
-  GroupRow,
-  GroupedTable
+  SortableCell
 };

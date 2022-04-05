@@ -9,9 +9,10 @@ import {
   Row,
   Cell,
   Caption,
-  SortableCell,
-  GroupedTable
+  SortableCell
 } from ".";
+
+import { GroupedTable } from "./grouped";
 
 import { IRow, TableProps } from "./_types";
 import styled from "styled-components";
