@@ -566,7 +566,7 @@ const VirtualScrollingTemplate: Story<TableProps> = ({
   ...args
 }) => {
   return (
-    <div role="grid" aria-rowcount={items?.length} aria-colcount={4}>
+    <div role="grid" aria-rowcount={items?.length || 0} aria-colcount={4}>
       <ScrollableTable>
         <ScrollableHead>
           <ScrollableHeaderRow>

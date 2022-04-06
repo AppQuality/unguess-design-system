@@ -124,7 +124,7 @@ const StyledMediaFigure = styled(MediaFigure).attrs((props: Prippo) => ({
   margin-right: ${theme.space.xxs};
 
   path {
-    fill: ${(props) => theme.palette[props.fill ? props.fill : "blue"]["600"]};
+    fill: ${(props) => theme.palette["blue"]["600"]};
   }
 `;
 
