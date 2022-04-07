@@ -1,5 +1,4 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { UserMenu } from "./userMenu";
 
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";

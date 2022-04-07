@@ -5,7 +5,7 @@ import { ReactComponent as InfoFill } from "../../assets/icons/info-fill.svg";
 import { PreviousButton } from "./previousMenuButton";
 import { Separator } from "../dropdowns/menu";
 import { Paragraph } from "../typography/paragraph";
-import { LG, MD, SM, XL } from "../typography/typescale";
+import { MD, SM } from "../typography/typescale";
 import { Avatar } from "../avatar";
 import styled from "styled-components";
 import { theme } from "../theme";
