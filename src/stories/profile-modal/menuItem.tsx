@@ -1,7 +1,6 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { MenuItemIcon, StyledMenuItemIcon } from "./menuItemIcon";
-import { NextItemArgs } from "../dropdowns/menu/_types";
-import { flexCenter, flexColumnCenter, flexStart } from "../theme/mixins";
+import { flexCenter } from "../theme/mixins";
 
 import { theme } from "../theme";
 import { MenuItemProps } from "./_types";
@@ -58,6 +57,12 @@ const StyledItem = styled.li<IStyledItemProps>`
   }
 `;
 
+const StyledBody = styled.li`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
 const IconContainer = styled.div`
   margin-right: ${({ theme }) => theme.space.sm};
   margin-top: 3px;
@@ -66,6 +71,7 @@ const IconContainer = styled.div`
 export const MenuItem = ({
   children,
   selectedItem,
+  content,
   ...props
 }: MenuItemProps) => {
   const isActive = selectedItem && selectedItem === props.value;
@@ -74,15 +80,11 @@ export const MenuItem = ({
   if (!isVisible) return <></>;
 
   return isActive ? (
-    <>
-      {props.content}
-      <br />
-      --- DEBUG ---
-      Opened {props.value} <br />
-      <button onClick={() => props.setActive("")}>&lt; Back</button>
-    </>
+    <StyledBody key={props.value}>
+      {content}
+    </StyledBody>
   ) : (
-    <StyledItem {...props} onClick={() => props.setActive(props.value)}>
+    <StyledItem key={props.value} {...props} onClick={() => props.setActive(props.value)}>
       {props.icon && <IconContainer>{props.icon}</IconContainer>}
       {children}
       <MenuItemIcon />

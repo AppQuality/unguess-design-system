@@ -11,6 +11,11 @@ import { MenuItem } from "./menuItem";
 import styled from "styled-components";
 import { HelpItem } from "./helpMenuItem";
 
+
+const StyledList = styled.ul`
+ padding: 0;
+ `;
+
 export const TestModal = (props: PropsWithChildren<ProfileModalArgs>) => {
   const [item, setActiveItem] = useState("");
 
@@ -25,7 +30,7 @@ export const TestModal = (props: PropsWithChildren<ProfileModalArgs>) => {
   };
 
   return (
-    <ul>
+    <StyledList>
       <MenuItem
         icon={<QuestionMark />}
         content={<h1>Content Title</h1>}
@@ -40,7 +45,9 @@ export const TestModal = (props: PropsWithChildren<ProfileModalArgs>) => {
         selectedItem={item}
         setActive={(i) => toggleItem(i)}
         title="Need Help?"
+        contactLabel="Contact your CSM"
         csm={csm}
+        toggleChat={() => {alert("Toggle Chat")}}
       />
       <MenuItem
         value={"test-1"}
@@ -64,6 +71,6 @@ export const TestModal = (props: PropsWithChildren<ProfileModalArgs>) => {
       >
         Test 3
       </MenuItem>
-    </ul>
+    </StyledList>
   );
 };
