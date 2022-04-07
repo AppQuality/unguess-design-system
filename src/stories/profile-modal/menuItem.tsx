@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MenuItemIcon, StyledMenuItemIcon } from "./menuItemIcon";
-import { flexCenter } from "../theme/mixins";
+import { flexCenter, flexStart } from "../theme/mixins";
 
 import { theme } from "../theme";
 import { MenuItemProps } from "./_types";
@@ -17,7 +17,7 @@ export interface IStyledItemProps {
  * 1. Allows an item to contain a positioned sub-menu.
  * 2. Reset stacking context for sub-menu css-arrows.
  **/
-const StyledItem = styled.li<IStyledItemProps>`
+const StyledItem = styled.li<MenuItemProps>`
   display: block;
   position: relative; /* [1] */
   z-index: 0; /* [2] */
@@ -55,6 +55,9 @@ const StyledItem = styled.li<IStyledItemProps>`
     left: ${(props) =>
       props.theme.rtl ? `${props.theme.space.base * 3}px` : "auto"};
   }
+
+  
+  
 `;
 
 const StyledBody = styled.li`
@@ -68,6 +71,11 @@ const IconContainer = styled.div`
   margin-top: 3px;
 `;
 
+export const MenuItemBody = styled.div`
+  ${flexStart}
+`;
+
+
 export const MenuItem = ({
   children,
   selectedItem,
@@ -79,7 +87,7 @@ export const MenuItem = ({
 
   if (!isVisible) return <></>;
 
-  return isActive ? (
+  return isActive && content ? (
     <StyledBody key={props.value}>
       {content}
     </StyledBody>
@@ -87,7 +95,7 @@ export const MenuItem = ({
     <StyledItem key={props.value} {...props} onClick={() => props.setActive(props.value)}>
       {props.icon && <IconContainer>{props.icon}</IconContainer>}
       {children}
-      <MenuItemIcon />
+      {content && <MenuItemIcon />}
     </StyledItem>
   );
 };

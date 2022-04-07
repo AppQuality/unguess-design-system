@@ -13,5 +13,5 @@ export const flexColumnCenter = css`
 export const flexStart = css`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: ${({ theme }) => (theme.rtl ? "flex-end" : "flex-start")};
 `;

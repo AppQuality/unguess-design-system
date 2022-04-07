@@ -12,12 +12,13 @@ import { theme } from "../theme";
 import { flexCenter } from "../theme/mixins";
 import { Button } from "../buttons/button";
 import { Anchor } from "../buttons/anchor";
+import { MenuItemProps } from "./_types";
+import { getInitials } from "./utils";
 
-interface HelpItemProps {
+interface HelpItemProps extends MenuItemProps {
   title: string;
   value: string;
   contactLabel: string;
-  selectedItem?: string;
   copyLabel?: string;
   chatSupportLabel?: string;
   /** Toggle Chat https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */
@@ -27,14 +28,7 @@ interface HelpItemProps {
     email: string;
     picture?: string;
   };
-  setActive: (item: string) => void;
 }
-
-const getInitials = (name: string) => {
-  const names = name.split(" ");
-  const initials = names.map((n) => n[0]).join("");
-  return initials;
-};
 
 const StyledButton = styled(Button)`
   color: ${(props) => props.theme.palette.grey[800]};
@@ -117,7 +111,7 @@ export const HelpItem = (props: HelpItemProps) => {
       <Footer>
         <Separator />
         {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
-        <StyledButton {...props} isStretched isBasic onClick={props.toggleChat}>
+        <StyledButton isStretched isBasic onClick={props.toggleChat}>
           <StyledButton.StartIcon>
             <InfoFill fill={theme.palette.blue[600]}/>
           </StyledButton.StartIcon>
@@ -134,7 +128,7 @@ export const HelpItem = (props: HelpItemProps) => {
         value={props.value}
         selectedItem={props.selectedItem}
         setActive={props.setActive}
-        icon={<QuestionMark />}
+        icon={<QuestionMark fill={theme.palette.grey[600]}/>}
       >
         {props.title}
       </MenuItem>
