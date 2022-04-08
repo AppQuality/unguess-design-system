@@ -18,9 +18,9 @@ const defaultArgs = {
   avatar: {
     ...DefaultAvatar.args,
     children: "LC",
-    onProfileModalToggle: () => {
-      alert("Triggered profile modal");
-    },
+  },
+  onProfileModalToggle: () => {
+    alert("Triggered profile modal");
   },
 };
 

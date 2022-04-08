@@ -33,7 +33,7 @@ const AppHeader = ({ brand, avatar, ...args }: AppHeaderArgs) => {
         </HeaderItem>
       )}
 
-      <HeaderItem isRound onClick={avatar?.onProfileModalToggle}>
+      <HeaderItem isRound onClick={args.onProfileModalToggle}>
         <HeaderItemIcon>
           <>
             <Avatar {...avatar} />

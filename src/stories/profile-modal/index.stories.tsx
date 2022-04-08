@@ -24,7 +24,7 @@ const languages = {
 const csm = {
   name: "John Doe",
   email: "john.doe@contoso.org",
-  picture: "https://placeimg.com/300/300/animal",
+  // picture: "https://placeimg.com/300/300/animal",
 };
 
 const Template: Story<ProfileModalArgs> = (args) => {
@@ -43,7 +43,7 @@ const defaultArgs: UserMenuArgs = {
     name: "John Doe",
     email: "gionni@contoso.com",
     company: "Enel",
-    picture: "https://placeimg.com/300/300/people"
+    // picture: "https://placeimg.com/300/300/people"
   },
   csm: csm,
   languages: languages,

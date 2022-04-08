@@ -73,9 +73,9 @@ export const HelpItem = (props: HelpItemProps) => {
       </PreviousButton>
       <Separator />
       <StyledBody>
-        <StyledParagraph style={{ color: theme.palette.grey[600] }}>
+        <Paragraph style={{ color: theme.palette.grey[600] }}>
           <SM>{props.contactLabel}</SM>
-        </StyledParagraph>
+        </Paragraph>
         <StyledParagraph>
           <Avatar
             children={props.csm.picture ?? getInitials(props.csm.name)}

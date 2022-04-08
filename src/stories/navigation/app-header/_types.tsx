@@ -10,9 +10,9 @@ export interface AppHeaderArgs extends HeaderArgs {
   /** Set Brand Item settings */
   brand?: BrandItemArgs;
   /** Set Avatar settings */
-  avatar?: AvatarArgs & {
-    onProfileModalToggle?: () => void;
-  };
+  avatar?: AvatarArgs;
+  
+  onProfileModalToggle?: () => void;
   /** Toggle Sidebar */
   onSidebarMenuToggle?: () => void;
 }

@@ -36,8 +36,6 @@ const StyledButtonContainer = styled.div`
 `;
 
 export const LanguageItem = (props: LanguagesProps) => {
-  
-  console.log(props);
 
   const content = (
     <>
