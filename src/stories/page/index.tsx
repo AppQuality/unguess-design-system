@@ -79,7 +79,7 @@ export const PageTemplate = ({
       hue={theme.palette.white}
     >
       <Body>
-        <AppHeader {...headerProps } onSidebarMenuToggle={toggleSidebar} />
+        <AppHeader {...headerProps } isProfileModalOpen={profileModalOpen} onSidebarMenuToggle={toggleSidebar} />
         {profileModalOpen && <ProfileModal onClose={()=> setProfileModalOpen(false)} {...{ menuArgs: profileModalArgs}}/>}
         <Content>
           <Sidebar {...sidebar} isExpanded={expanded} onToggleMenu={toggleSidebar} />

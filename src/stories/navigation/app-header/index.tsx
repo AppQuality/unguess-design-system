@@ -37,7 +37,7 @@ const AppHeader = ({ brand, avatar, ...args }: AppHeaderArgs) => {
         <HeaderItemIcon>
           <>
             <Avatar {...avatar} />
-            <ChevronButton size="small">
+            <ChevronButton size="small" isRotated={args.isProfileModalOpen}>
               <ChevronIcon />
             </ChevronButton>
           </>

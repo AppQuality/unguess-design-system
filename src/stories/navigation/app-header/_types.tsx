@@ -12,6 +12,8 @@ export interface AppHeaderArgs extends HeaderArgs {
   /** Set Avatar settings */
   avatar?: AvatarArgs;
   
+  isProfileModalOpen?: boolean;
+
   onProfileModalToggle?: () => void;
   /** Toggle Sidebar */
   onSidebarMenuToggle?: () => void;
