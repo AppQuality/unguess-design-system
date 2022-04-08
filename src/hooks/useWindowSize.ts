@@ -13,8 +13,8 @@ function debounce(callback: () => void, wait: number) {
 
 export default function useWindowSize() {
   const [size, setSize] = useState({
-    width: 0,
-    height: 0,
+    width: window.innerWidth,
+    height: window.innerHeight,
   });
 
   useLayoutEffect(() => {

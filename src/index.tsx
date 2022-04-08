@@ -88,6 +88,9 @@ export * from "./stories/notifications";
 // --- Pagination ---
 export * from "./stories/pagination";
 
+// --- Profile Modal ---
+export * from "./stories/profile-modal";
+
 // --- Table ---
 export {
   Table,

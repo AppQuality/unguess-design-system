@@ -31,7 +31,7 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
 `;
 
 const NavDivider = (props: NavItemArgs) => (
-  <UgNavItem {...props} id={"ciolla"}>
+  <UgNavItem {...props}>
     <span>{props.children}</span>
   </UgNavItem>
 );
