@@ -4,8 +4,8 @@ name: Publish storybook
 
 # The event that will trigger the action
 on:
-  # push:
-  #  branches: [master]
+  push:
+    branches: [master]
   # pull_request:
   #  branches: [master]
   # Allows you to run this workflow manually from the Actions tab
