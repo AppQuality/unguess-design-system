@@ -21,7 +21,7 @@ const defaultArgs: CampaignCardsProps = {
 
 const MultiTemplate: Story<CampaignCardsProps> = (args) => {
   return <Row>
-    <Col><CampaignCard {...args} type={"FUNCTIONAL"} date={new Date().toLocaleString().substring(0, 10)} status={"INCOMING"} /></Col>
+    <Col><CampaignCard {...args} title={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} subTitle={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} type={"FUNCTIONAL"} date={"20/10/2022"} status={"INCOMING"} /></Col>
     <Col><CampaignCard {...args} isNew={false} status={"PROGRESS"} /></Col>
     <Col><CampaignCard {...args} isNew={false} type={"FUNCTIONAL"} pillText={"Funcional Test"} /></Col>
     <Col><CampaignCard {...args} isNew={false} /></Col>

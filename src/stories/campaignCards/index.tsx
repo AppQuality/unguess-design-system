@@ -50,8 +50,8 @@ const StyledTag = styled(Tag)`
 `
 
 const StyledTagNew = styled(Tag)`
-  height: ${({theme}) => theme.space.base * 6}px;
-  padding: ${theme.space.base}px ${({theme}) => theme.space.base * 2}px;
+  height: ${({ theme }) => theme.space.base * 6}px;
+  padding: ${theme.space.base}px ${({ theme }) => theme.space.base * 2}px;
   color: ${theme.palette.white};
 `
 
@@ -78,6 +78,7 @@ const CardHeader = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  height: ${theme.space.base * 6}px;
 `
 
 const CardBody = styled.div`
@@ -95,13 +96,8 @@ const CardFooter = styled.div`
   justify-content: space-between;
 `
 
-const getFormattedLocaleDate = () => {
-  return new Date().toLocaleString().substring(0, 10)
-}
-
 const CampaignCard = (props: CampaignCardsProps) => {
-  const { isNew, date, title, subTitle, status, type } = props
-  const shownDate = date === getFormattedLocaleDate() ? "Today" : date
+  const { isNew, date, title, subTitle, status, type, labelNew } = props
 
   const StatusIcon = getStatusIcon(status ?? "PROGRESS") as React.ElementType
   const typeData = getTypeData(type)
@@ -119,12 +115,12 @@ const CampaignCard = (props: CampaignCardsProps) => {
 
   return <Wrapper {...props}>
     <CardHeader>
-      <StyledLabel isRegular>{shownDate}</StyledLabel>
+      <StyledLabel isRegular>{date}</StyledLabel>
       {isNew && (
         <StyledTagNew hue={theme.palette.fuschia["600"]}
           isPill
           size="medium"
-          title="New!">New!</StyledTagNew>
+          title={labelNew ? labelNew : "New!"}>{labelNew ? labelNew : "New!"}</StyledTagNew>
       )}
     </CardHeader>
     <CardBody>
