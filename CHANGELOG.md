@@ -1,3 +1,25 @@
+# v2.7.0 (Fri Apr 08 2022)
+
+#### 🚀 Enhancement
+
+- fix(campaign cards): add card props [#29](https://github.com/AppQuality/unguess-design-system/pull/29) ([@marcbon](https://github.com/marcbon))
+- Cup 523 profile modal [#26](https://github.com/AppQuality/unguess-design-system/pull/26) ([@antoninojob](https://github.com/antoninojob) [@cannarocks](https://github.com/cannarocks))
+- Refactor/table accordion [#30](https://github.com/AppQuality/unguess-design-system/pull/30) ([@antoninojob](https://github.com/antoninojob) [@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(profilemodal): minor spaces fixes on modal ([@cannarocks](https://github.com/cannarocks))
+- feat(navigation): add rotation to profile header chevron based on modal ([@cannarocks](https://github.com/cannarocks))
+- Update storybook.yml ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- Antonino ([@antoninojob](https://github.com/antoninojob))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.6.2 (Thu Mar 31 2022)
 
 
