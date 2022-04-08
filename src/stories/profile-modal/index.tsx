@@ -23,7 +23,7 @@ const StyledModal = styled(Modal)`
 `;
 
 const StyledBody = styled(Modal.Body)`
-  margin: ${({ theme }) => theme.space.base * 4 + "px " + theme.space.xs};
+  margin: ${({ theme }) => theme.space.xxs + " " + theme.space.xs};
   padding: 0;
 `;
 
@@ -44,8 +44,6 @@ const ProfileModal = ({ menuArgs, ...args }: ProfileModalArgs) => {
   const { width } = useWindowSize();
 
   const smBreakpoint = Number(theme.breakpoints.sm.replace("px", ""));
-
-  console.log("SM", smBreakpoint)
 
   let backDrop = {
     style: {

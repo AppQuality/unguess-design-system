@@ -38,7 +38,7 @@ const StyledItem = styled.li<MenuItemProps>`
 
   width: fill-available;
   ${flexCenter}
-  height: 52px;
+  height: ${theme.space.xxl};
   padding: ${theme.space.xs} ${theme.space.md};
 
   ${(props) => `

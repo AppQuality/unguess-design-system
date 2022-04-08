@@ -111,7 +111,7 @@ export const HelpItem = (props: HelpItemProps) => {
       <Footer>
         <Separator />
         {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
-        <StyledButton isStretched isBasic onClick={props.toggleChat}>
+        <StyledButton isStretched isBasic onClick={props.toggleChat} style={{paddingLeft: theme.space.xxs}}>
           <StyledButton.StartIcon>
             <InfoFill fill={theme.palette.blue[600]}/>
           </StyledButton.StartIcon>
