@@ -54,8 +54,8 @@ const defaultArgs: UserMenuArgs = {
   onLogout: () => { alert ("Logout clicked"); }
 };
 
-export const Test = Template.bind({});
-Test.args = {
+export const Default = Template.bind({});
+Default.args = {
   menuArgs: defaultArgs
 };
 
