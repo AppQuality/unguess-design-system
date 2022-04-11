@@ -22,8 +22,8 @@ const languages = {
 };
 
 const csm = {
-  name: "John Doe",
-  email: "john.doe@contoso.org",
+  name: "Alessandro Giommi",
+  email: "alessandro.giommi@app-quality.com",
   // picture: "https://placeimg.com/300/300/animal",
 };
 
@@ -60,7 +60,7 @@ Default.args = {
 };
 
 export default {
-  title: "Organisms/ProfileModalTest",
+  title: "Organisms/ProfileModal",
   component: ProfileModal,
   argTypes: {
     currentLanguage: {
