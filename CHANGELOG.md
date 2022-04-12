@@ -1,3 +1,15 @@
+# v2.8.4 (Tue Apr 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(profilemodal): add translatable props ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.3 (Tue Apr 12 2022)
 
 #### ⚠️ Pushed to `master`
