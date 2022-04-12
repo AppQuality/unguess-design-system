@@ -1,3 +1,15 @@
+# v2.8.0 (Tue Apr 12 2022)
+
+#### 🚀 Enhancement
+
+- Fix/components for release [#31](https://github.com/AppQuality/unguess-design-system/pull/31) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.7.1 (Fri Apr 08 2022)
 
 
