@@ -12,8 +12,9 @@ const design = {
 const defaultArgs: CampaignCardsProps = {
   isNew: true,
   date: "24/04/2022",
-  title: "Amazing title",
-  subTitle: "This is a subtitle",
+  title: "title html",
+  projectTitle:  "This is the project title",
+  campaignTitle: "This is the campaign title",
   status: 'COMPLETED',
   type: 'EXPERIENTIAL',
   pillText: 'Experiential Test'
@@ -21,7 +22,7 @@ const defaultArgs: CampaignCardsProps = {
 
 const MultiTemplate: Story<CampaignCardsProps> = (args) => {
   return <Row>
-    <Col><CampaignCard {...args} title={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} subTitle={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} type={"FUNCTIONAL"} date={"20/10/2022"} status={"INCOMING"} /></Col>
+    <Col><CampaignCard {...args} projectTitle={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} campaignTitle={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} type={"FUNCTIONAL"} date={"20/10/2022"} status={"INCOMING"} /></Col>
     <Col><CampaignCard {...args} isNew={false} status={"PROGRESS"} /></Col>
     <Col><CampaignCard {...args} isNew={false} type={"FUNCTIONAL"} pillText={"Funcional Test"} /></Col>
     <Col><CampaignCard {...args} isNew={false} /></Col>

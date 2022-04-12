@@ -39,6 +39,9 @@ const Wrapper = styled(Card)`
   border-radius: ${theme.borderRadii.lg};
   padding: 1rem;
   border: 1px solid ${theme.palette.grey["200"]};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &:hover {
     box-shadow: ${theme.shadows.boxShadow(theme)};
@@ -87,6 +90,7 @@ const CardBody = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   margin-top: ${theme.space.xxl};
+  flex: 1;
 `
 
 const CardFooter = styled.div`
@@ -97,20 +101,20 @@ const CardFooter = styled.div`
 `
 
 const CampaignCard = (props: CampaignCardsProps) => {
-  const { isNew, date, title, subTitle, status, type, labelNew } = props
+  const { isNew, date, projectTitle, campaignTitle, status, type, labelNew } = props
 
   const StatusIcon = getStatusIcon(status ?? "PROGRESS") as React.ElementType
   const typeData = getTypeData(type)
   const PillIcon = typeData?.pillIcon as React.ElementType
 
-  let titleCut = title;
-  if (title.length > 42) {
-    titleCut = `${title.substring(0, 39)}...`
+  let projectTitleCut = projectTitle;
+  if (projectTitle.length > 42) {
+    projectTitleCut = `${projectTitle.substring(0, 39)}...`
   }
 
-  let subTitleCut = subTitle;
-  if (subTitle.length > 29) {
-    subTitleCut = `${subTitle.substring(0, 26)}...`
+  let campaignTitleCut = campaignTitle;
+  if (campaignTitle.length > 29) {
+    campaignTitleCut = `${campaignTitle.substring(0, 26)}...`
   }
 
   return <Wrapper {...props}>
@@ -124,8 +128,8 @@ const CampaignCard = (props: CampaignCardsProps) => {
       )}
     </CardHeader>
     <CardBody>
-      <StyledLabel isRegular>{titleCut}</StyledLabel>
-      <StyledTitleLabel isRegular>{subTitleCut}</StyledTitleLabel>
+      <StyledLabel isRegular>{projectTitleCut}</StyledLabel>
+      <StyledTitleLabel isRegular>{campaignTitleCut}</StyledTitleLabel>
     </CardBody>
     <Divider />
     <CardFooter>

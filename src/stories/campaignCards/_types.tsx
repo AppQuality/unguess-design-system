@@ -13,11 +13,11 @@ export interface CampaignCardsProps extends CardProps {
   /**
    * the main topic of the card
    */
-  title: string;
+  projectTitle: string; // title
   /**
    * a specification to the topic of the card
    */
-  subTitle: string;
+  campaignTitle: string; // subTitle
   /**
    * the status of the card,
    * can be only

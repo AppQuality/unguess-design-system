@@ -49,10 +49,15 @@ const Footer = styled.div`
   margin-top: auto;
 `;
 
+const Name = styled(MD)`
+  text-align: left;
+  color: ${theme.palette.blue[600]};
+`
+
 const Description = styled.div`
   ${flexCenter}
   justify-content: space-between;
-  text-align: center;
+  text-align: left;
   width: 100%;
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.sm};
@@ -62,9 +67,17 @@ const Description = styled.div`
 `;
 
 export const HelpItem = (props: HelpItemProps) => {
+  const { csm } = props;
+  const { email } = csm;
+
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(props.csm.email);
   };
+
+  let csmEmailCut = email;
+  if (email.length > 24) {
+    csmEmailCut = `${email.substring(0, 21)}...`
+  }
 
   const content = (
     <>
@@ -84,14 +97,14 @@ export const HelpItem = (props: HelpItemProps) => {
           />
         </StyledParagraph>
 
-        <StyledParagraph style={{ color: theme.palette.blue[600] }}>
+        <StyledParagraph>
           <MD isBold>{props.csm.name}</MD>
           <Description>
             <Anchor
               href={`mailto:${props.csm.email}`}
               style={{ color: theme.palette.grey[600] }}
             >
-              {props.csm.email}
+              {csmEmailCut}
             </Anchor>
             <Button
               isBasic
