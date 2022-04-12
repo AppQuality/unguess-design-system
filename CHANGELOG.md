@@ -1,3 +1,15 @@
+# v2.8.3 (Tue Apr 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(changelog): add any ReactNode ad changelog item (cannarozzoluca@live.it)
+
+#### Authors: 1
+
+- Luca Cannarozzo (cannarozzoluca@live.it)
+
+---
+
 # v2.8.2 (Tue Apr 12 2022)
 
 
