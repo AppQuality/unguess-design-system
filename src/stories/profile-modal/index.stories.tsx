@@ -49,7 +49,6 @@ const defaultArgs: UserMenuArgs = {
   languages: languages,
   currentLanguage: "en",
   onSelectLanguage: (lang) => { alert ("Selected language: " + lang); },
-  onFeedbackClick: () => { alert ("Feedback clicked"); },
   onToggleChat: () => { alert ("Toggle chat clicked"); },
   onLogout: () => { alert ("Logout clicked"); }
 };

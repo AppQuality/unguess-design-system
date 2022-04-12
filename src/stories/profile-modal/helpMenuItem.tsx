@@ -49,11 +49,6 @@ const Footer = styled.div`
   margin-top: auto;
 `;
 
-const Name = styled(MD)`
-  text-align: left;
-  color: ${theme.palette.blue[600]};
-`
-
 const Description = styled.div`
   ${flexCenter}
   justify-content: space-between;

@@ -27,19 +27,21 @@ export const UserMenu = (props: UserMenuArgs) => {
     <>
       {item === "" && <UserContainer {...props.user} />}
       <StyledList>
-        {item === "" && <Separator />}
-        <MenuItem
-          selectedItem={item}
-          icon={<ThumbsUp />}
-          setActive={() => props.onFeedbackClick()}
-        >
-          <MenuItemBody>
-            {props.feedbackTitle || "Give us your feedback"}
-            <MD style={{ color: theme.palette.grey[600] }}>
-              {props.feedbackSubTitle || "Help us improve UNGUESS!"}
-            </MD>
-          </MenuItemBody>
-        </MenuItem>
+        {item === "" && props.onFeedbackClick && <Separator />}
+        {props.onFeedbackClick && (
+          <MenuItem
+            selectedItem={item}
+            icon={<ThumbsUp />}
+            setActive={() => props.onFeedbackClick ? props.onFeedbackClick() : console.log("feedback fired")}
+          >
+            <MenuItemBody>
+              {props.feedbackTitle || "Give us your feedback"}
+              <MD style={{ color: theme.palette.grey[600] }}>
+                {props.feedbackSubTitle || "Help us improve UNGUESS!"}
+              </MD>
+            </MenuItemBody>
+          </MenuItem>
+        )}
         {item === "" && <Separator />}
         <HelpItem
           value={"csm"}
@@ -49,6 +51,8 @@ export const UserMenu = (props: UserMenuArgs) => {
           contactLabel={props.csmContactLabel || "Contact your CSM"}
           csm={props.csm}
           toggleChat={props.onToggleChat}
+          chatSupportLabel={props?.chatSupportLabel}
+          copyLabel={props?.copyLabel}
         />
         <LanguageItem
           title={props.languageTitle || "Change Language"}
@@ -57,6 +61,7 @@ export const UserMenu = (props: UserMenuArgs) => {
           setActive={(i) => toggleItem(i)}
           languages={props.languages}
           currentLanguage={props.currentLanguage}
+          currentLanguageLabel={props.currentLanguageLabel}
           onSelectLanguage={(lang) => props.onSelectLanguage(lang)}
         />
 
