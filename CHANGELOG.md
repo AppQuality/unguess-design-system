@@ -1,3 +1,15 @@
+# v2.8.1 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- fix(sidebar): add navToggle callback [#32](https://github.com/AppQuality/unguess-design-system/pull/32) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.0 (Tue Apr 12 2022)
 
 #### 🚀 Enhancement
