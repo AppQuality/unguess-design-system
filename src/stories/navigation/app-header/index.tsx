@@ -1,4 +1,4 @@
-import { ReactComponent as ChangelogIcon } from "../../../assets/icons/megaphone-stroke.svg";
+
 import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import styled from "styled-components";
 import { theme } from "../../theme";
@@ -22,13 +22,12 @@ const AppHeader = ({ brand, avatar, ...args }: AppHeaderArgs) => {
   return (
     <Header {...args}>
       <BrandItem {...brand} toggleMenu={args.onSidebarMenuToggle}/>
-      {args.hasChangelog && (
+      {args.hasChangelog && args.changelogItem && (
         <HeaderItem
-          onClick={args.onChangelogClick}
           style={{ marginRight: "-" + theme.space.sm }}
         >
           <HeaderItemIcon>
-            <ChangelogIcon />
+            {args.changelogItem}
           </HeaderItemIcon>
         </HeaderItem>
       )}

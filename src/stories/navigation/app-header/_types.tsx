@@ -5,8 +5,8 @@ import { HeaderArgs } from "../header/_types";
 export interface AppHeaderArgs extends HeaderArgs {
   /** Display the changelog trigger item */
   hasChangelog?: boolean;
-  /** Triggered when the changelog is clicked */
-  onChangelogClick?: () => void;
+  /** Changelog element */
+  changelogItem?: React.ReactNode;
   /** Set Brand Item settings */
   brand?: BrandItemArgs;
   /** Set Avatar settings */

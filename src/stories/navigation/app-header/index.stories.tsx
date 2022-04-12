@@ -2,15 +2,14 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { AppHeader } from ".";
 import { AppHeaderArgs } from "./_types";
 import { Default as DefaultAvatar } from "../../avatar/index.stories";
+import { ReactComponent as ChangelogIcon } from "../../../assets/icons/megaphone-stroke.svg";
 
 const Template: Story<AppHeaderArgs> = (args) => <AppHeader {...args} />;
 
 const defaultArgs = {
   isStandalone: true,
   hasChangelog: true,
-  onChangelogClick: () => {
-    alert("clicked changelog");
-  },
+  changelogItem: <ChangelogIcon onClick={() =>  alert("clicked changelog")}/>,
   brand: {
     brandName: "Enel's Workspace",
     menuLabel: "menu",
