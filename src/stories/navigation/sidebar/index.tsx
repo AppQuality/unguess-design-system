@@ -31,6 +31,11 @@ const Sidebar = (props: SidebarArgs) => {
     props.onToggleMenu && props.onToggleMenu();
   };
 
+  const navigate = (route: string) => {
+    props.onNavToggle && props.onNavToggle(route);
+    setNav(route);
+  };
+
   return (
     <Nav {...props}>
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
@@ -44,7 +49,7 @@ const Sidebar = (props: SidebarArgs) => {
             <TokenContainer>
               <TokenIcon width={32} />
               <Span isBold style={{ marginLeft: theme.space.xs }}>
-                12 Tokens
+                {props.tokens + " " + (props.tokensLabel || "tokens")}
               </Span>
             </TokenContainer>
           </Card>
@@ -53,7 +58,7 @@ const Sidebar = (props: SidebarArgs) => {
       <NavItem
         isExpanded={props.isExpanded}
         isCurrent={nav === "home"}
-        onClick={() => setNav("home")}
+        onClick={() => navigate("home")}
       >
         <NavItemIcon isStyled>
           {nav === "home" ? <HomeIconStyled /> : <HomeIcon />}
@@ -70,7 +75,7 @@ const Sidebar = (props: SidebarArgs) => {
             key={project.id}
             isExpanded={props.isExpanded}
             isCurrent={nav === project.id}
-            onClick={() => setNav(project.id)}
+            onClick={() => navigate(project.id)}
           >
             <NavItemProject.Title
               title={project.title}

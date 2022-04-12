@@ -6,8 +6,10 @@ export interface SidebarArgs extends NavArgs {
   homeItemLabel?: string;
   dividerLabel?: string;
   tokens?: string;
+  tokensLabel?: string;
   isExpanded?: boolean;
   onToggleMenu?: () => void;
+  onNavToggle?: (route: string) => void;
 }
 
 export interface ProjectItem {

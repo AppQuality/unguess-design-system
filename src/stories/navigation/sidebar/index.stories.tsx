@@ -43,7 +43,10 @@ const defaultArgs: SidebarStoryArgs = {
       title: "Beauty Contest Job Recruitment",
       campaigns: "1 campaign",
     }
-  ]
+  ],
+  onNavToggle: (route: string) => {
+    console.log(`Navigating to ${route}`);
+  }
 }
 export const Default = Template.bind({});
 Default.args = defaultArgs;
