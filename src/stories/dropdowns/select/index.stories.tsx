@@ -35,17 +35,11 @@ const Template: Story<MenuStoryArgs> = ({
   dropdown,
   ...args
 }) => {
-  const props = { ...args } as MenuStoryArgs;
-  props.select = select;
-  props.menu = menu;
-  props.dropdown = dropdown;
-
-  console.log("Props:", props);
   return (
-    <Dropdown {...props.dropdown}>
+    <Dropdown {...dropdown}>
       <Field>
         <Label>Food Manager</Label>
-        <Select {...props.select} validation={args?.validation}>
+        <Select {...select} validation={args?.validation}>
           {items[0].label}
         </Select>
         {args?.hasHelpText && (
@@ -54,7 +48,7 @@ const Template: Story<MenuStoryArgs> = ({
           </Message>
         )}
       </Field>
-      <Menu {...props.menu}>
+      <Menu {...menu}>
         {items.map((item) => (
           <Item value={item.value}>{item.label}</Item>
         ))}
