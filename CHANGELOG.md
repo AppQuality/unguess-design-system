@@ -1,3 +1,15 @@
+# v2.8.6 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(menuitem): force hover background color ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.5 (Wed Apr 13 2022)
 
 #### ⚠️ Pushed to `master`
