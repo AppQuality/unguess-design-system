@@ -2,6 +2,23 @@
 
 #### ⚠️ Pushed to `master`
 
+- build(action): update Create Release step ([@cannarocks](https://github.com/cannarocks))
+- feat(dropdown): add primary props to select component ([@cannarocks](https://github.com/cannarocks))
+- fix(header): force header item to use theme font family ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'fix-sidebar-font' ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): force theme font in menuItem ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.9 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
 - Merge branch 'fix-sidebar-font' ([@cannarocks](https://github.com/cannarocks))
 - fix(sidebar): force theme font in menuItem ([@cannarocks](https://github.com/cannarocks))
 - Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
