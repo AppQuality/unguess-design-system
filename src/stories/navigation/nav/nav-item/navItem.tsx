@@ -9,6 +9,7 @@ const SelectedItemStyle = css`
 const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   border-top-left-radius: ${(props) => props.theme.space.base * 6}px;
   border-bottom-left-radius: ${(props) => props.theme.space.base * 6}px;
+  font-family: ${({ theme }) => theme.fonts.system};
   ${(props) => !props.isExpanded && "display: none;"}
   ${(props) => props.isCurrent && SelectedItemStyle}
   &:hover, &:focus {
