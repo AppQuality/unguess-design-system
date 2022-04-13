@@ -26,6 +26,8 @@ export interface SelectArgs extends ISelectProps {
   validation?: 'success' | 'warning' | 'error';
   /** Defines the icon rendered before the element's content */
   start?: any;
+  /** Sets the style of dropdown item*/
+  isPrimary?: boolean;
 }
 
 export interface MessageArgs extends IMessageProps {

@@ -71,6 +71,7 @@ Default.args = {
     isCompact: false,
     isBare: false,
     disabled: false,
+    isPrimary: false,
   },
 };
 
