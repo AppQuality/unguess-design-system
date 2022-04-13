@@ -1,3 +1,15 @@
+# v2.8.5 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- minor fixes (cannarozzoluca@live.it)
+
+#### Authors: 1
+
+- Luca Cannarozzo (cannarozzoluca@live.it)
+
+---
+
 # v2.8.4 (Tue Apr 12 2022)
 
 #### ⚠️ Pushed to `master`
