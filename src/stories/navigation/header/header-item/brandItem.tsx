@@ -23,6 +23,7 @@ const BrandName = styled(ZendeskHeaderItem)`
   margin-left: -8px;
   color: ${({ theme }) => theme.palette.blue["600"]};
   pointer-events: none;
+  font-family: ${({ theme }) => theme.fonts.system};
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: none;
   }

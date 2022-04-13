@@ -4,6 +4,7 @@ import { HeaderItemArgs } from "./_types";
 
 const UgHeaderItem = styled(ZendeskHeaderItem)`
   ${(props) => props.hasLogo && `border-right: none`};
+  font-family: ${({ theme }) => theme.fonts.system};
 `;
 
 const HeaderItem = (props: HeaderItemArgs) => <UgHeaderItem {...props} />;
