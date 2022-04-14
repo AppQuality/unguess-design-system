@@ -41,6 +41,7 @@ export * from "./stories/dropdowns/select";
 export * from "./stories/forms/checkbox";
 export * as FormField from "./stories/forms/field";
 export * from "./stories/forms/input";
+export * from "./stories/forms/mediaInput";
 export * from "./stories/forms/radio";
 export * from "./stories/forms/textarea";
 export * from "./stories/forms/toggle";
