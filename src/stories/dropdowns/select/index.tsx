@@ -13,9 +13,6 @@ const UgSelect = styled(ZendeskSelect)<SelectArgs>`
     `
       background-color: ${props.theme.palette.blue[600]};
       color: white;
-      li[disabled] svg {
-         opacity: 0.5;
-      }
       & svg[data-garden-id="forms.media_figure"] {
          color: white;
       }
