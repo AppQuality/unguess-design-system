@@ -42,7 +42,22 @@ const defaultArgs: SidebarStoryArgs = {
       id: "3",
       title: "Beauty Contest Job Recruitment",
       campaigns: "1 campaign",
-    }
+    },
+    {
+      id: "4",
+      title: "Enel Premia Wow",
+      campaigns: "there are no campaigns",
+    },
+    {
+      id: "5",
+      title: "EAS",
+      campaigns: "12 campaigns",
+    },
+    {
+      id: "6",
+      title: "Beauty Contest Job Recruitment",
+      campaigns: "1 campaign",
+    },
   ],
   onNavToggle: (route: string) => {
     console.log(`Navigating to ${route}`);
