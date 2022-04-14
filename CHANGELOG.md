@@ -1,3 +1,15 @@
+# v2.8.18 (Thu Apr 14 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(menuitem): fix disabled style to svg icons ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.17 (Thu Apr 14 2022)
 
 #### ⚠️ Pushed to `master`
