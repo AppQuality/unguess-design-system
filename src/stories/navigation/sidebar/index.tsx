@@ -18,6 +18,14 @@ const TokenContainer = styled.div`
   justify-content: center;
 `;
 
+const ScrollingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  overflow-y: auto;
+  height: 100%;
+`;
+
 /**
  * The UNGUESS Sidebar component provides a high-level layout structure and sets a framework for navigating around projects.
  * <br>
@@ -69,21 +77,23 @@ const Sidebar = (props: SidebarArgs) => {
       <NavDivider isExpanded={props.isExpanded}>
         {props.dividerLabel || ""}
       </NavDivider>
-      {props.projects &&
-        props.projects.map((project) => (
-          <NavItemProject
-            key={project.id}
-            isExpanded={props.isExpanded}
-            isCurrent={nav === project.id}
-            onClick={() => navigate(project.id)}
-          >
-            <NavItemProject.Title
-              title={project.title}
-              children={project.title}
-            />
-            <NavItemProject.SubTitle children={project.campaigns} />
-          </NavItemProject>
-        ))}
+      <ScrollingContainer>
+        {props.projects &&
+          props.projects.map((project) => (
+            <NavItemProject
+              key={project.id}
+              isExpanded={props.isExpanded}
+              isCurrent={nav === project.id}
+              onClick={() => navigate(project.id)}
+            >
+              <NavItemProject.Title
+                title={project.title}
+                children={project.title}
+              />
+              <NavItemProject.SubTitle children={project.campaigns} />
+            </NavItemProject>
+          ))}
+      </ScrollingContainer>
 
       {/* Footer Logo */}
       <NavItem
