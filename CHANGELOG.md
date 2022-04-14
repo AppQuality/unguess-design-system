@@ -1,3 +1,17 @@
+# v2.8.19 (Thu Apr 14 2022)
+
+#### 🐛 Bug Fix
+
+- feat(sidebar): add vertical scroll [#33](https://github.com/AppQuality/unguess-design-system/pull/33) ([@marcbon](https://github.com/marcbon))
+- feat(mediainput): add rich input component with mediaIcon support [#34](https://github.com/AppQuality/unguess-design-system/pull/34) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.8.18 (Thu Apr 14 2022)
 
 #### ⚠️ Pushed to `master`
