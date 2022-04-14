@@ -1,3 +1,16 @@
+# v2.8.16 (Thu Apr 14 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(dropdown): if primary the color must be applied only on component svgs ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.9 (Wed Apr 13 2022)
 
 #### ⚠️ Pushed to `master`
