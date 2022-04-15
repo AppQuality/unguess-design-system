@@ -31,6 +31,16 @@ interface HelpItemProps extends MenuItemProps {
 }
 
 const StyledButton = styled(Button)`
+  ${(props) => `
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: ${props.theme.palette.kale[100]};
+    color: ${props.isDanger ? props.theme.palette.red[500] : props.theme.palette.grey[800]};
+  }`};
+`;
+
+const StyledFooterButton = styled(StyledButton)`
   color: ${(props) => props.theme.palette.grey[800]};
   padding-left: 0;
   justify-content: flex-start;
@@ -71,7 +81,7 @@ export const HelpItem = (props: HelpItemProps) => {
 
   let csmEmailCut = email;
   if (email.length > 24) {
-    csmEmailCut = `${email.substring(0, 21)}...`
+    csmEmailCut = `${email.substring(0, 21)}...`;
   }
 
   const content = (
@@ -101,17 +111,17 @@ export const HelpItem = (props: HelpItemProps) => {
             >
               {csmEmailCut}
             </Anchor>
-            <Button
+            <StyledButton
               isBasic
               onClick={copyToClipBoard}
               size="small"
               variant="isBasic"
             >
-              <Button.StartIcon>
+              <StyledButton.StartIcon>
                 <CopyIcon />
-              </Button.StartIcon>
+              </StyledButton.StartIcon>
               {props.copyLabel ?? "Copy"}
-            </Button>
+            </StyledButton>
           </Description>
         </StyledParagraph>
       </StyledBody>
@@ -119,12 +129,17 @@ export const HelpItem = (props: HelpItemProps) => {
       <Footer>
         <Separator />
         {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
-        <StyledButton isStretched isBasic onClick={props.toggleChat} style={{paddingLeft: theme.space.xxs}}>
-          <StyledButton.StartIcon>
-            <InfoFill fill={theme.palette.blue[600]}/>
-          </StyledButton.StartIcon>
+        <StyledFooterButton
+          isStretched
+          isBasic
+          onClick={props.toggleChat}
+          style={{ paddingLeft: theme.space.xxs }}
+        >
+          <StyledFooterButton.StartIcon>
+            <InfoFill fill={theme.palette.blue[600]} />
+          </StyledFooterButton.StartIcon>
           {props.chatSupportLabel ?? "Report a technical issue"}
-        </StyledButton>
+        </StyledFooterButton>
       </Footer>
     </>
   );
@@ -136,7 +151,7 @@ export const HelpItem = (props: HelpItemProps) => {
         value={props.value}
         selectedItem={props.selectedItem}
         setActive={props.setActive}
-        icon={<QuestionMark fill={theme.palette.grey[600]}/>}
+        icon={<QuestionMark fill={theme.palette.grey[600]} />}
       >
         {props.title}
       </MenuItem>
