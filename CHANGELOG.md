@@ -1,3 +1,15 @@
+# v2.8.25 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(dropdown-menu): fix width auto important to override inline width [#39](https://github.com/AppQuality/unguess-design-system/pull/39) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.8.24 (Fri Apr 15 2022)
 
 #### 🐛 Bug Fix
