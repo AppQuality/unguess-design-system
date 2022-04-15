@@ -1,7 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { theme } from "../theme";
-
-import { math } from "polished";
 
 import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-right-stroke.svg";
 
