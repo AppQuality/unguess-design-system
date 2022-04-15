@@ -21,6 +21,7 @@ const defaultArgs = {
   onProfileModalToggle: () => {
     alert("Triggered profile modal");
   },
+  isLoading: false,
 };
 
 export const Default = Template.bind({});

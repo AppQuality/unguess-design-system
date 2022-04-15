@@ -2,7 +2,10 @@ import { Skeleton as ZendeskSkeleton } from '@zendeskgarden/react-loaders';
 import styled from "styled-components";
 import { SkeletonArgs } from './_types';
 
-const UgSkeleton = styled(ZendeskSkeleton)``;
+const UgSkeleton = styled(ZendeskSkeleton)`
+  background-color: ${(props) => props.theme.palette.grey[500]};
+  border-radius: ${(props) => props.theme.borderRadii.xxl};
+`;
 
 /**
  * A Skeleton loader shows users a blank version of a page or section of a page into which content is gradually loaded. It provides a visual estimate of the space needed.

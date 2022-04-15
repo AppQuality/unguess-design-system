@@ -10,6 +10,7 @@ export interface SidebarArgs extends NavArgs {
   isExpanded?: boolean;
   onToggleMenu?: () => void;
   onNavToggle?: (route: string) => void;
+  isLoading?: boolean;
 }
 
 export interface ProjectItem {

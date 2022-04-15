@@ -61,6 +61,7 @@ export * from "./stories/label";
 export * from "./stories/loaders/progress";
 export * from "./stories/loaders/skeleton";
 export * from "./stories/loaders/spinner";
+export * from "./stories/page/pageLoader";
 
 // --- Login Form ---
 export * from "./stories/login-form";

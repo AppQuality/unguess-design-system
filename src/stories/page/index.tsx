@@ -12,10 +12,12 @@ import { XXXL } from "../typography/typescale";
 import { useState } from "react";
 import { ProfileModal } from "../profile-modal";
 import { UserMenuArgs } from "../profile-modal/_types";
+import { PageLoader } from "./pageLoader";
 
 export interface PageTemplatesArgs {
   sidebar?: SidebarArgs;
   header?: AppHeaderArgs;
+  isLoading?: boolean;
 }
 
 const languages = {
@@ -73,7 +75,7 @@ export const PageTemplate = ({
     onProfileModalToggle: () => setProfileModalOpen(!profileModalOpen)
   };
 
-  return (
+  return args.isLoading ? <PageLoader /> : (
     <Chrome
       isFluid
       hue={theme.palette.white}

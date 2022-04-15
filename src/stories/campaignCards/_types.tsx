@@ -41,4 +41,6 @@ export interface CampaignCardsProps extends CardProps {
    * this renders the new flag label
    */
   labelNew?: string;
+
+  isLoading?: boolean;
 }

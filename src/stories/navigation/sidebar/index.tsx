@@ -11,6 +11,7 @@ import { Logo } from "../../logo";
 import { Card } from "../../cards";
 import styled from "styled-components";
 import { Span } from "../../typography/span";
+import { LoadingSidebar } from "./skeleton";
 
 const TokenContainer = styled.div`
   display: flex;
@@ -44,7 +45,7 @@ const Sidebar = (props: SidebarArgs) => {
     setNav(route);
   };
 
-  return (
+  return props.isLoading ? <LoadingSidebar /> : (
     <Nav {...props}>
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
       {props.tokens && (
