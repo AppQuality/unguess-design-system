@@ -1,3 +1,15 @@
+# v2.8.21 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(dropdown-menu): set auto width for dropdown menu list detached fr… [#36](https://github.com/AppQuality/unguess-design-system/pull/36) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.8.20 (Fri Apr 15 2022)
 
 #### 🐛 Bug Fix
