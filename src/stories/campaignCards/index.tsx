@@ -50,6 +50,7 @@ const Wrapper = styled(Card)`
 
 const StyledTag = styled(Tag)`
   color: ${theme.palette.grey["700"]};
+  max-width: 75%;
 `
 
 const StyledTagNew = styled(Tag)`
@@ -60,7 +61,7 @@ const StyledTagNew = styled(Tag)`
 
 const StyledLabel = styled(Label)`
   font-size: ${theme.fontSizes.sm};
-  color: ${theme.palette.grey["500"]}
+  color: ${theme.palette.grey["500"]};
 `
 
 const StyledTitleLabel = styled(Label)`
