@@ -19,4 +19,6 @@ export interface AppHeaderArgs extends HeaderArgs {
   onSidebarMenuToggle?: () => void;
   /** Callback when the Logo Item is clicked */
   onLogoItemClick?: () => void;
+
+  isLoading?: boolean;
 }

@@ -7,6 +7,7 @@ import { IconButton } from "../../buttons/icon-button";
 import { Header } from "../header";
 import { BrandItem, HeaderItem, HeaderItemIcon } from "../header/header-item";
 import { AppHeaderArgs } from "./_types";
+import { HeaderSkeleton } from "./skeleton";
 
 const ChevronButton = styled(IconButton)`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -18,13 +19,13 @@ const ChevronButton = styled(IconButton)`
  * An Header is a visual way to display general information.
  * This can include navList Items, modal, profile settings.
  */
-const AppHeader = ({ brand, avatar, ...args }: AppHeaderArgs) => {
-  return (
+const AppHeader = ({ brand, avatar, isLoading, ...args }: AppHeaderArgs) => {
+  return isLoading ? <HeaderSkeleton /> : (
     <Header {...args}>
       <BrandItem {...brand} toggleMenu={args.onSidebarMenuToggle}/>
       {args.hasChangelog && args.changelogItem && (
         <HeaderItem
-          style={{ marginRight: "-" + theme.space.sm }}
+          style={{ marginRight: "-" + theme.space.xs }}
         >
           <HeaderItemIcon>
             {args.changelogItem}

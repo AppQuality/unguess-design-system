@@ -6,7 +6,7 @@ import { HeaderItemText } from "./headerItemText";
 import { Logo } from "../../../logo";
 import { ReactComponent as MenuIcon } from "../../../../assets/icons/menu-stroke.svg";
 
-const LogoIconContainer = styled(ZendeskHeaderItem)`
+export const LogoIconContainer = styled(ZendeskHeaderItem)`
   margin-right: 2px;
   border-right: none;
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
