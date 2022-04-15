@@ -29,8 +29,8 @@ const MultiTemplate: Story<CampaignCardsProps> = (args) => {
       <Col size={3}>
         <CampaignCard {...args} isNew={false} status={"PROGRESS"} />
       </Col>
-      <Col size={3}>+
-        <CampaignCard {...args} isNew={false} type={"FUNCTIONAL"} pillText={"Funcional Test"} />
+      <Col size={3}>
+        <CampaignCard {...args} isNew={false} type={"FUNCTIONAL"} pillText={"Functional Test"} />
       </Col>
       <Col size={3}>
         <CampaignCard {...args} isNew={false} />

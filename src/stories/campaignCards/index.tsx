@@ -36,6 +36,7 @@ const getTypeData = (type?: string) => {
 }
 
 const Wrapper = styled(Card)`
+
   border-radius: ${theme.borderRadii.lg};
   padding: 1rem;
   border: 1px solid ${theme.palette.grey["200"]};
@@ -46,11 +47,14 @@ const Wrapper = styled(Card)`
   &:hover {
     box-shadow: ${theme.shadows.boxShadow(theme)};
   }
+
+  cursor: pointer;
 `
 
 const StyledTag = styled(Tag)`
   color: ${theme.palette.grey["700"]};
   max-width: 75%;
+  cursor: pointer;
 `
 
 const StyledTagNew = styled(Tag)`
@@ -62,12 +66,14 @@ const StyledTagNew = styled(Tag)`
 const StyledLabel = styled(Label)`
   font-size: ${theme.fontSizes.sm};
   color: ${theme.palette.grey["500"]};
+  cursor: pointer;
 `
 
 const StyledTitleLabel = styled(Label)`
   color: ${theme.palette.blue["600"]};
   font-size: ${theme.fontSizes.lg};
   word-wrap: break-word;
+  cursor: pointer;
 `
 
 const Divider = styled.div`
