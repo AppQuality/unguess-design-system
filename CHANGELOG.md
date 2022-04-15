@@ -1,3 +1,15 @@
+# v2.8.26 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(profilemodal): remove useless imports ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.25 (Fri Apr 15 2022)
 
 #### 🐛 Bug Fix
