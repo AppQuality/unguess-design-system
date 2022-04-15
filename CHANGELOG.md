@@ -1,3 +1,15 @@
+# v2.8.27 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 604 skeleton [#40](https://github.com/AppQuality/unguess-design-system/pull/40) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.26 (Fri Apr 15 2022)
 
 #### ⚠️ Pushed to `master`
