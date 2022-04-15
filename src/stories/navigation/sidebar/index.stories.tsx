@@ -61,7 +61,8 @@ const defaultArgs: SidebarStoryArgs = {
   ],
   onNavToggle: (route: string) => {
     console.log(`Navigating to ${route}`);
-  }
+  },
+  isLoading: false,
 }
 export const Default = Template.bind({});
 Default.args = defaultArgs;

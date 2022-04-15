@@ -1,8 +1,6 @@
-import { BrandItem, HeaderItem, HeaderItemIcon } from "../header/header-item";
-import { ReactComponent as ChangelogIcon } from "../../../assets/icons/megaphone-stroke.svg";
+import { HeaderItem, HeaderItemIcon } from "../header/header-item";
 import { Skeleton } from "../../loaders/skeleton";
 import { theme } from "../../theme";
-import { BrandItemArgs } from "../header/header-item/_types";
 import { Header } from "../header";
 import { LogoIconContainer } from "../header/header-item/brandItem";
 import { Logo } from "../../logo";
