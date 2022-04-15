@@ -7,6 +7,7 @@ const Template: Story<PageTemplatesArgs> = (args) => <PageTemplate {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  isLoading: false,
   header: {
     ...DefaultHeader.args,
   },
