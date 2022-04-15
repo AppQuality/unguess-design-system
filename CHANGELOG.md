@@ -1,3 +1,15 @@
+# v2.8.20 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(campaign-cards): add tag max-width [#35](https://github.com/AppQuality/unguess-design-system/pull/35) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.8.19 (Thu Apr 14 2022)
 
 #### 🐛 Bug Fix
