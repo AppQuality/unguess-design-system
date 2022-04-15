@@ -55,9 +55,6 @@ const StyledItem = styled.li<MenuItemProps>`
     left: ${(props) =>
       props.theme.rtl ? `${props.theme.space.base * 3}px` : "auto"};
   }
-
-  
-  
 `;
 
 const StyledBody = styled.li`
