@@ -13,7 +13,7 @@ import styled from "styled-components";
 import { HTMLAttributes, LiHTMLAttributes } from "react";
 
 const UgMenu = styled(ZendeskMenu)`
-   width: auto;
+   width: auto !important;
    min-width: 100%;
 `;
 
