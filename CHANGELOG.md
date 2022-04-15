@@ -1,3 +1,15 @@
+# v2.8.22 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- feat(app-header): add onclick to be used for logo item click [#37](https://github.com/AppQuality/unguess-design-system/pull/37) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.8.21 (Fri Apr 15 2022)
 
 #### 🐛 Bug Fix
