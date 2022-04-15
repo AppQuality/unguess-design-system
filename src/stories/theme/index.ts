@@ -14,6 +14,8 @@ const theme = {
   borderRadii: {
     ...DEFAULT_THEME.borderRadii,
     lg: "8px",
+    xl: "16px",
+    xxl: "32px",
   },
   components: {
     ...DEFAULT_THEME.components,

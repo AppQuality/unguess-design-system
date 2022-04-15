@@ -17,7 +17,8 @@ const defaultArgs: CampaignCardsProps = {
   campaignTitle: "This is the campaign title",
   status: 'COMPLETED',
   type: 'EXPERIENTIAL',
-  pillText: 'Experiential Testone Lungone Furbone'
+  pillText: 'Experiential Testone Lungone Furbone',
+  isLoading: false
 }
 
 const MultiTemplate: Story<CampaignCardsProps> = (args) => {
