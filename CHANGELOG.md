@@ -1,3 +1,15 @@
+# v2.8.24 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(profilemodal): fix wrong theme background color in sub menu-item [#38](https://github.com/AppQuality/unguess-design-system/pull/38) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.23 (Fri Apr 15 2022)
 
 #### ⚠️ Pushed to `master`
