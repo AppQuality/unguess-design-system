@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Skeleton } from "../../loaders/skeleton";
-import { Logo } from "../../logo";
 import { Nav } from "../nav";
 import {
   NavItem,
