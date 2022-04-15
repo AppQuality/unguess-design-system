@@ -8,6 +8,26 @@ import { Trigger } from '../../trigger';
 import { Menu, NextItem, PreviousItem, Separator } from '.';
 import { Item } from '../item';
 import { Button } from '@zendeskgarden/react-buttons';
+import styled from 'styled-components';
+
+const items = [
+  {
+    label: "All Tests",
+    value: "all",
+  },
+  {
+    label: "Bug Hunting & Customer Feedbacks",
+    value: "1",
+  },
+  {
+    label: "Special",
+    value: "2",
+  },
+  {
+    label: "Functional Testing (Bug Hunting)",
+    value: "3",
+  },
+]
 
 const Template: Story<any> = (args) => {
   const [rotated, setRotated] = useState<boolean | undefined>();
@@ -16,21 +36,26 @@ const Template: Story<any> = (args) => {
     <Row>
       <Col textAlign="center">
         <Dropdown
-          onSelect={item => alert(`You planted a ${item}`)}
+          onSelect={item => alert(`You choose ${item.label}`)}
           onStateChange={options => Object.hasOwn(options, 'isOpen') && setRotated(options.isOpen)}
         >
           <Trigger>
             <Button>
-              Choose succulent
+              Choose test
               <Button.EndIcon isRotated={rotated}>
                 <ChevronIcon />
               </Button.EndIcon>
             </Button>
           </Trigger>
           <Menu>
-            <Item value="cactus">Cactus</Item>
-            <Item value="jade">Jade plant</Item>
-            <Item value="echeveria">Echeveria</Item>
+            {items.map((item) => (
+              <Item
+                key={item.value}
+                value={item}
+              >
+                {item.label}
+              </Item>
+            ))}
           </Menu>
         </Dropdown>
       </Col>

@@ -12,7 +12,10 @@ import { MenuArgs, NextItemArgs, PreviousItemArgs } from "./_types";
 import styled from "styled-components";
 import { HTMLAttributes, LiHTMLAttributes } from "react";
 
-const UgMenu = styled(ZendeskMenu)``;
+const UgMenu = styled(ZendeskMenu)`
+   width: auto;
+   min-width: 100%;
+`;
 
 /**
    * A Menu is a wrapper for items elements
