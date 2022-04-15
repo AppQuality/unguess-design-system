@@ -1,3 +1,15 @@
+# v2.8.23 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(campaigncard): add cursor:pointer to card item and label ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.22 (Fri Apr 15 2022)
 
 #### 🐛 Bug Fix
