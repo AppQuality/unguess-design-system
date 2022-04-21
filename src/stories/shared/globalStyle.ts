@@ -4,8 +4,8 @@ import { theme } from "../theme";
 const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar-track:hover {
-    border-left: solid 1px #E9EBED;
-    border-right: solid 1px #E9EBED;
+    border-left: solid 1px ${theme.palette.grey["200"]};
+    border-right: solid 1px ${theme.palette.grey["200"]};
   }
 
   ::-webkit-scrollbar {
@@ -17,14 +17,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 10px 10px #B0C2CB;
+    box-shadow: inset 0 0 10px 10px ${theme.palette.blue["200"]};
     border: solid 2px transparent;
     border-radius: 25px;
   }
 
   /* This stuff is for Firefox */
   * {
-    scrollbar-color: #B0C2CB #FFFFFF;
+    scrollbar-color: ${theme.palette.blue["200"]} #FFFFFF;
     scrollbar-width: thin;
   }
   
