@@ -4,7 +4,6 @@ import { theme } from "../theme";
 const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar-track:hover {
-    /*border: solid 1px #E9EBED;*/
     border-left: solid 1px #E9EBED;
     border-right: solid 1px #E9EBED;
   }
