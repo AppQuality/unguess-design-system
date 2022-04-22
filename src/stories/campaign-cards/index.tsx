@@ -37,41 +37,41 @@ const getTypeData = (type?: string) => {
 };
 
 export const Wrapper = styled(Card)`
-  border-radius: ${theme.borderRadii.lg};
+  border-radius: ${({ theme }) => theme.borderRadii.lg};
   padding: 1rem;
-  border: 1px solid ${theme.palette.grey["200"]};
+  border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
   display: flex;
   flex-direction: column;
   height: 100%;
 
   &:hover {
-    box-shadow: ${theme.shadows.boxShadow(theme)};
+    box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
   }
 
   cursor: pointer;
 `;
 
 const StyledTag = styled(Tag)`
-  color: ${theme.palette.grey["700"]};
+  color: ${({ theme }) => theme.palette.grey["700"]};
   max-width: 75%;
   cursor: pointer;
 `;
 
 const StyledTagNew = styled(Tag)`
   height: ${({ theme }) => theme.space.base * 6}px;
-  padding: ${theme.space.base}px ${({ theme }) => theme.space.base * 2}px;
-  color: ${theme.palette.white};
+  padding: ${({ theme }) => theme.space.base}px ${({ theme }) => theme.space.base * 2}px;
+  color: ${({ theme }) => theme.palette.white};
 `;
 
 const StyledLabel = styled(Label)`
-  font-size: ${theme.fontSizes.sm};
-  color: ${theme.palette.grey["500"]};
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.palette.grey["500"]};
   cursor: pointer;
 `;
 
 const StyledTitleLabel = styled(Label)`
-  color: ${theme.palette.blue["600"]};
-  font-size: ${theme.fontSizes.lg};
+  color: ${({ theme }) => theme.palette.blue["600"]};
+  font-size: ${({ theme }) => theme.fontSizes.lg};
   word-wrap: break-word;
   cursor: pointer;
 `;
@@ -79,8 +79,8 @@ const StyledTitleLabel = styled(Label)`
 export const Divider = styled.div`
   width: 100%;
   height: 1px;
-  margin: ${theme.space.lg} 0;
-  background-color: ${theme.palette.grey["300"]};
+  margin: ${({ theme }) => theme.space.lg} 0;
+  background-color: ${({ theme }) => theme.palette.grey["300"]};
 `;
 
 export const CardHeader = styled.div`
@@ -88,7 +88,7 @@ export const CardHeader = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  height: ${theme.space.base * 6}px;
+  height: ${({ theme }) => theme.space.base * 6}px;
 `;
 
 export const CardBody = styled.div`
@@ -96,7 +96,7 @@ export const CardBody = styled.div`
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: ${theme.space.xxl};
+  margin-top: ${({ theme }) => theme.space.xxl};
   flex: 1;
 `;
 
