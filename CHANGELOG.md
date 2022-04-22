@@ -1,3 +1,22 @@
+# v2.8.28 (Fri Apr 22 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 627 new scrollbar design [#41](https://github.com/AppQuality/unguess-design-system/pull/41) ([@cicababba](https://github.com/cicababba) [@cannarocks](https://github.com/cannarocks))
+- Add express card [#42](https://github.com/AppQuality/unguess-design-system/pull/42) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(mainexport): rename drawer folder ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.27 (Fri Apr 15 2022)
 
 #### 🐛 Bug Fix
