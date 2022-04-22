@@ -22,7 +22,8 @@ export * from "./stories/buttons/split-button";
 export * from "./stories/cards";
 
 // --- Campaign Cards ---
-export * from "./stories/campaignCards";
+export * from "./stories/campaign-cards";
+export * from "./stories/product-cards";
 
 // --- Close ---
 export * from "./stories/close";

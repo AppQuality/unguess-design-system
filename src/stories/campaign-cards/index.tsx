@@ -38,7 +38,7 @@ const getTypeData = (type?: string) => {
 
 export const Wrapper = styled(Card)`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
-  padding: 1rem;
+  padding: ${({ theme }) => theme.components.notification.card.padding};
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
   display: flex;
   flex-direction: column;
@@ -59,7 +59,8 @@ const StyledTag = styled(Tag)`
 
 const StyledTagNew = styled(Tag)`
   height: ${({ theme }) => theme.space.base * 6}px;
-  padding: ${({ theme }) => theme.space.base}px ${({ theme }) => theme.space.base * 2}px;
+  padding: ${({ theme }) => theme.space.base}px
+    ${({ theme }) => theme.space.base * 2}px;
   color: ${({ theme }) => theme.palette.white};
 `;
 
