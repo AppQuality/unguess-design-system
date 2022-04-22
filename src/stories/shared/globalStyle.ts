@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: ${theme.fonts.system};
+    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
