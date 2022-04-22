@@ -1,1 +1,1 @@
-export interface MainArgs {}
+export interface MainArgs extends React.HTMLAttributes<HTMLElement> {}
