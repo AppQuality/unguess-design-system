@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "2.8.29",
+  "version": "2.8.30",
   "dependencies": {
     "@zendeskgarden/react-accordions": "^8.49.0",
     "@zendeskgarden/react-avatars": "^8.49.0",
