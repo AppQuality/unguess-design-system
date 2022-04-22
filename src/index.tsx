@@ -25,6 +25,9 @@ export * from "./stories/cards";
 export * from "./stories/campaign-cards";
 export * from "./stories/product-cards";
 
+// --- Drawers ---
+export * from "./stories/drawers";
+
 // --- Close ---
 export * from "./stories/close";
 
