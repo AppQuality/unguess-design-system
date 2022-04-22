@@ -7,7 +7,7 @@ import { Main } from "../navigation/main";
 import { theme } from "../theme";
 import { Skeleton } from "../loaders/skeleton";
 import styled from "styled-components";
-import { CampaignCard } from "../campaignCards";
+import { CampaignCard } from "../campaign-cards";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 
