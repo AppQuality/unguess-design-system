@@ -1,3 +1,15 @@
+# v2.8.29 (Fri Apr 22 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(main): fix Main component interface ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.28 (Fri Apr 22 2022)
 
 #### 🐛 Bug Fix
