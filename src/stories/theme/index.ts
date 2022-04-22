@@ -1,10 +1,15 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { palette } from "./palette";
 import { gradients } from "./gradients";
+import { components } from "./components";
 import { boxShadow } from "./utils";
 
 const theme = {
   ...DEFAULT_THEME,
+  colors: {
+    ...DEFAULT_THEME.colors,
+    primaryHue: palette.blue[600],
+  },
   palette: palette,
   fonts: {
     ...DEFAULT_THEME.fonts,
@@ -17,17 +22,11 @@ const theme = {
     xl: "16px",
     xxl: "32px",
   },
-  components: {
-    ...DEFAULT_THEME.components,
-    Headers: {
-      ...DEFAULT_THEME.components.Headers,
-      height: "64px",
-    },
-  },
+  components: components,
   shadows: {
     ...DEFAULT_THEME.shadows,
     boxShadow: boxShadow,
-  }
+  },
 };
 
 export { theme };

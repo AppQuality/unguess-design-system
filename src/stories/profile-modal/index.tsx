@@ -16,7 +16,7 @@ const StyledModal = styled(Modal)`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: calc(
-      ${({ theme }) => `${theme.components.Headers.height} - ${theme.space.xs}`}
+      ${({ theme }) => `${theme.components.chrome.header.height} - ${theme.space.xs}`}
     );
     margin-right: ${({ theme }) => theme.space.base * 3}px;
   }

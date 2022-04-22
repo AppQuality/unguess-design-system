@@ -5,7 +5,7 @@ import { HeaderArgs } from "./_types";
 import { theme } from "../../theme";
 
 const UgHeader = styled(ZendeskHeader)`
-    height: ${theme.components.Headers.height};
+    height: ${theme.components.chrome.header.height};
 `;
 
 

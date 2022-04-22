@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { ComponentMeta, Story } from '@storybook/react';
 import { Row } from '../../grid/row';
@@ -8,7 +8,6 @@ import { Trigger } from '../../trigger';
 import { Menu, NextItem, PreviousItem, Separator } from '.';
 import { Item } from '../item';
 import { Button } from '@zendeskgarden/react-buttons';
-import styled from 'styled-components';
 
 const items = [
   {
@@ -26,6 +25,30 @@ const items = [
   {
     label: "Functional Testing (Bug Hunting)",
     value: "3",
+  },
+  {
+    label: "Functional Testing (Customer Feedbacks)",
+    value: "4",
+  },
+  {
+    label: "Functional Testing (Special)",
+    value: "5",
+  },
+  {
+    label: "Functional Testing (Bug Hunting & Customer Feedbacks)",
+    value: "6",
+  },
+  {
+    label: "Functional Testing (Bug Hunting & Special)",
+    value: "7",
+  },
+  {
+    label: "Functional Testing (Customer Feedbacks & Special)",
+    value: "8",
+  },
+  {
+    label: "Functional Testing (Bug Hunting, Customer Feedbacks & Special)",
+    value: "9",
   },
 ]
 
