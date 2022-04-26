@@ -1,3 +1,16 @@
+# v2.8.32 (Tue Apr 26 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(counter): fix 0 value issue ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.31 (Tue Apr 26 2022)
 
 #### ⚠️ Pushed to `master`
