@@ -15,6 +15,10 @@ const theme = {
     ...DEFAULT_THEME.fonts,
     system: '"Poppins",sans-serif,Helvetica,Arial,sans-serif',
   },
+  fontWeights: {
+    ...DEFAULT_THEME.fontWeights,
+    semibold: 500,
+  },
   gradients: gradients,
   borderRadii: {
     ...DEFAULT_THEME.borderRadii,

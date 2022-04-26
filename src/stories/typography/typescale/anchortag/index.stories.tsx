@@ -1,41 +1,40 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { SM, MD, LG, XL, XXL, XXXL } from ".";
+import { LG, MD, SM, XL, XXL, XXXL } from "../index";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
   margin-top: ${p => p.theme.space.sm};
 `;
 
-const Template: Story<any> = (args) => {
+const AnchorTagTemplate: Story<any> = (args) => {
   return (
     <>
-      <SM {...args}>&lt;SM&gt;Veggies es bonus vobis proinde vos postulo</SM>
+      <SM {...args}>&lt;SM&gt;<a href="#sm">Veggies es bonus vobis proinde vos postulo</a></SM>
       <StyledDiv>
-        <MD {...args}>&lt;MD&gt;Veggies es bonus vobis proinde vos postulo</MD>
+        <MD {...args}>&lt;MD&gt;<a href="#md">Veggies es bonus vobis proinde vos postulo</a></MD>
       </StyledDiv>
       <StyledDiv>
-        <LG {...args}>&lt;LG&gt;Veggies es bonus vobis proinde vos postulo</LG>
+        <LG {...args}>&lt;LG&gt;<a href="#lg">Veggies es bonus vobis proinde vos postulo</a></LG>
       </StyledDiv>
       {!args.isMonospace &&
         <>
           <StyledDiv>
-            <XL {...args}>&lt;XL&gt;Veggies es bonus vobis proinde vos postulo</XL>
+            <XL {...args}>&lt;XL&gt;<a href="#xl">Veggies es bonus vobis proinde vos postulo</a></XL>
           </StyledDiv>
           <StyledDiv>
-            <XXL {...args}>&lt;XXL&gt;Veggies es bonus vobis proinde vos postulo</XXL>
+            <XXL {...args}>&lt;XXL&gt;<a href="#xxl">Veggies es bonus vobis proinde vos postulo</a></XXL>
           </StyledDiv>
           <StyledDiv>
-            <XXXL {...args}>&lt;XXXL&gt;Veggies es bonus vobis proinde</XXXL>
+            <XXXL {...args}>&lt;XXXL&gt;<a href="#xxxl">Veggies es bonus vobis proinde vos postulo</a></XXXL>
           </StyledDiv>
         </>
       }
     </>
-  );
-};
+  )
+}
 
-
-export const Default = Template.bind({});
-Default.args = {
+export const AnchorTag = AnchorTagTemplate.bind({})
+AnchorTag.args = {
   isBold: false,
   isMonospace: false,
 };
