@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
   svg {
     max-height: 100%;
   }
+  
+  a {
+    color: ${theme.palette.grey["800"]};
+  }
 
 `;
 
