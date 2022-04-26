@@ -101,7 +101,7 @@ const Sidebar = (props: SidebarArgs) => {
         isExpanded={props.isExpanded}
         hasBrandmark
         title="Be smart from the start"
-        style={{ pointerEvents: "none" }}
+        style={{ pointerEvents: "none", paddingBottom: theme.space.md }}
       >
         <NavItemIcon>
           <Logo type={"icon"} size={150} />
