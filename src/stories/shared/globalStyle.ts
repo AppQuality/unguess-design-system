@@ -1,8 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+
+import "@zendeskgarden/css-bedrock"; //This package provides a mostly reasonable CSS reset layered on top of modern-normalize.
+
 import { theme } from "../theme";
 
 const GlobalStyle = createGlobalStyle`
-
   ::-webkit-scrollbar-track:hover {
     border-left: solid 1px ${theme.palette.grey["200"]};
     border-right: solid 1px ${theme.palette.grey["200"]};
@@ -36,10 +38,6 @@ const GlobalStyle = createGlobalStyle`
   
   svg {
     max-height: 100%;
-  }
-  
-  a {
-    color: ${theme.palette.grey["800"]};
   }
 
 `;
