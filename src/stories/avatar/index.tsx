@@ -4,12 +4,11 @@ import styled from "styled-components";
 import { AvatarArgs } from "./_types";
 // import useWindowSize from "../../hooks/useWindowSize";
 
-const UgAvatar = styled(ZendeskAvatar)`
-  ${(props) => {
-    return `
-    background: ${props.backgroundColor || theme.gradients.dark};
-   `;
-  }}
+const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
+  ${(props) =>
+    props.avatarType &&
+    props.avatarType !== "image" &&
+    `background: ${props.backgroundColor || theme.gradients.dark};`}
 `;
 
 /**
