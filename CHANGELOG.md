@@ -1,3 +1,15 @@
+# v2.8.31 (Tue Apr 26 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(counter): remove counter required props ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.30 (Fri Apr 22 2022)
 
 #### ⚠️ Pushed to `master`
