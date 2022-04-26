@@ -38,7 +38,8 @@ const StyledTag = styled(Tag)<CounterArgs>`
  * Counter let users categorize content using a keyword.
  */
 const Counter = (props: CounterArgs) => {
-  const { status } = props;
+  const { status, counter } = props;
+
   return (
     <StyledTag {...props} size={props.size || "large"}>
       <StyledTag.Avatar>
@@ -51,7 +52,7 @@ const Counter = (props: CounterArgs) => {
         </>
       </StyledTag.Avatar>
       {props.children}
-      {props.counter && <span>{props.counter}</span>}
+      {counter !== undefined && counter > 0 && <span>{counter}</span>}
     </StyledTag>
   );
 };
