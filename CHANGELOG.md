@@ -1,3 +1,16 @@
+# v2.8.34 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 631 typography update [#43](https://github.com/AppQuality/unguess-design-system/pull/43) ([@cicababba](https://github.com/cicababba) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.33 (Tue Apr 26 2022)
 
 #### ⚠️ Pushed to `master`
