@@ -1,3 +1,16 @@
+# v2.8.33 (Tue Apr 26 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(avatar): remove background if avatarType is Image ([@cannarocks](https://github.com/cannarocks))
+- fix(navigationfootericon): add padding to UNGUESS footer icon ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.32 (Tue Apr 26 2022)
 
 #### ⚠️ Pushed to `master`
