@@ -52,7 +52,7 @@ const Counter = (props: CounterArgs) => {
         </>
       </StyledTag.Avatar>
       {props.children}
-      {counter !== undefined && counter > 0 && <span>{counter}</span>}
+      {counter !== undefined && <span>{counter.toString()}</span>}
     </StyledTag>
   );
 };

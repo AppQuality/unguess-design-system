@@ -19,7 +19,6 @@ const Template: Story<TagStoryProps> = ({hasAvatar, ...args}) => (
 export const Default = Template.bind({});
 Default.args = {
   children: "Completed",
-  counter: 1,
   status: "completed",
   hasAvatar: true
 };
