@@ -1,3 +1,15 @@
+# v2.8.35 (Wed Apr 27 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(counter): only if undefined the counter value MUST disappear ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.34 (Tue Apr 26 2022)
 
 #### 🐛 Bug Fix
