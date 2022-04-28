@@ -1,3 +1,15 @@
+# v2.8.37 (Thu Apr 28 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 642 modal fullscreen [#44](https://github.com/AppQuality/unguess-design-system/pull/44) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.8.36 (Thu Apr 28 2022)
 
 #### ⚠️ Pushed to `master`
