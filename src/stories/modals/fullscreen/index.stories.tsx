@@ -1,13 +1,14 @@
 import { ModalArgs } from "../_types";
 import { ComponentMeta, Story } from "@storybook/react";
 import { ModalFullScreen } from ".";
-import { ModalClose, FooterItem } from "../.";
 import { Button } from "../../buttons/button";
 import { Logo } from "../../logo";
 import { Breadcrumb } from "../../breadcrumbs";
 import { Anchor } from "../../buttons/anchor";
 import { Span } from "../../typography/span";
 import { theme } from "../../theme";
+import useWindowSize from "../../../hooks/useWindowSize";
+import styled from "styled-components";
 
 interface ModalStoryArgs extends ModalArgs {
   breadcrumbs?: any;
@@ -25,36 +26,46 @@ const defaultArgs: ModalStoryArgs = {
       children: "ACME's Workspace",
       onClick: () => { alert("ACME's Workspace clicked") }
     },
-    {
-      children: "Le mie campagne",
-      onClick: () => { alert("Le mie campagne clicked") }
-    },
   ],
   onClose: (e) => { alert("Close clicked"); }
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
 const Template: Story<ModalStoryArgs> = (args) => {
   const { isDanger, breadcrumbs } = args;
+  const { width } = useWindowSize();
 
   return (
     <ModalFullScreen {...args}>
       <ModalFullScreen.Header isDanger={isDanger}>
-        <Logo type="icon" size={25} style={{ marginRight: theme.space.xs }} />
-        <Breadcrumb {...args}>
-          {breadcrumbs.map((item: any) => (
-            <Anchor {...item} />
-          ))}
+        {width > parseInt(theme.breakpoints.sm) ? (
+          <Container>
+            <Logo type="icon" size={25} style={{ marginRight: theme.space.xs }} /><Breadcrumb {...args}>
+              {breadcrumbs.map((item: any) => (
+                <Anchor {...item} />
+              ))}
+              <Span>Nuovo test esplorativo express</Span>
+            </Breadcrumb>
+          </Container>
+        ) : (
           <Span>Nuovo test esplorativo express</Span>
-        </Breadcrumb>
+        )}
+        <ModalFullScreen.Close aria-label="Close modal" />
       </ModalFullScreen.Header>
-      <ModalFullScreen.Body>asdsadsadsadsada</ModalFullScreen.Body>
+      <ModalFullScreen.Body>Modal Body</ModalFullScreen.Body>
       <ModalFullScreen.Footer>
-        <FooterItem>
+        <ModalFullScreen.FooterItem>
           <Button isBasic onClick={args.onClose}>
             Secondary
           </Button>
-        </FooterItem>
-        <FooterItem>
+        </ModalFullScreen.FooterItem>
+        <ModalFullScreen.FooterItem>
           <Button
             isPrimary
             {...isDanger && { isDanger: true }}
@@ -64,9 +75,8 @@ const Template: Story<ModalStoryArgs> = (args) => {
           >
             Primary
           </Button>
-        </FooterItem>
+        </ModalFullScreen.FooterItem>
       </ModalFullScreen.Footer>
-      <ModalClose aria-label="Close modal" />
     </ModalFullScreen>
   );
 };

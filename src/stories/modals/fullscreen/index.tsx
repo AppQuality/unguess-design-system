@@ -1,6 +1,7 @@
 import { Modal } from '../.';
 import { ModalArgs } from "../_types";
 import styled from "styled-components";
+import { ModalClose, FooterItem } from "../.";
 
 const StyledModal = styled(Modal)`
   width: 100%;
@@ -16,9 +17,9 @@ const StyledModal = styled(Modal)`
 const StyledHeader = styled(Modal.Header)`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
-  padding: ${({ theme }) => theme.space.base * 4}px ${({ theme }) => theme.space.base * 6}px;
+  padding: ${({ theme }) => theme.space.base * 3}px ${({ theme }) => theme.space.base * 6}px;
 `;
 
 const StyledBody = styled(Modal.Body)`
@@ -29,9 +30,17 @@ const StyledFooter = styled(Modal.Footer)`
   padding: ${({ theme }) => theme.space.base * 4}px ${({ theme }) => theme.space.base * 6}px;
 `;
 
+const StyledModalClose = styled(ModalClose)`
+  position: relative;
+  top: unset;
+  right: unset;
+`;
+
 const ModalFullScreen = (props: ModalArgs) => <StyledModal {...props} />;
 ModalFullScreen.Header = StyledHeader;
 ModalFullScreen.Body = StyledBody;
 ModalFullScreen.Footer = StyledFooter;
+ModalFullScreen.Close = StyledModalClose;
+ModalFullScreen.FooterItem = FooterItem;
 
 export { ModalFullScreen };
