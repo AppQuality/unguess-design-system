@@ -20,19 +20,19 @@ const getStatusIcon = (status: string) => {
       return ProgressIcon;
     case "INCOMING":
       return IncomingIcon;
+    default:
+      return ProgressIcon;
   }
 };
 
-const getTypeData = (type?: string) => {
+const getTypeDataIcon = (type?: string) => {
   switch (type) {
     case "EXPERIENTIAL":
-      return {
-        pillIcon: RegressionTestIcon,
-      };
+      return RegressionTestIcon;
     case "FUNCTIONAL":
-      return {
-        pillIcon: FunctionalTestIcon,
-      };
+      return FunctionalTestIcon;
+    default:
+      return FunctionalTestIcon;
   }
 };
 
@@ -112,9 +112,8 @@ const CampaignCard = (props: CampaignCardsProps) => {
   const { isNew, date, projectTitle, campaignTitle, status, type, labelNew } =
     props;
 
-  const StatusIcon = getStatusIcon(status ?? "PROGRESS") as React.ElementType;
-  const typeData = getTypeData(type);
-  const PillIcon = typeData?.pillIcon as React.ElementType;
+  const StatusIcon = getStatusIcon(status ?? "PROGRESS");
+  const PillIcon = getTypeDataIcon(type);
 
   let projectTitleCut = projectTitle;
   if (projectTitle.length > 42) {
@@ -149,7 +148,7 @@ const CampaignCard = (props: CampaignCardsProps) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        {typeData && (
+        {props.pillText && (
           <StyledTag
             size="large"
             isPill
