@@ -1,3 +1,15 @@
+# v2.9.0 (Fri Apr 29 2022)
+
+#### 🚀 Enhancement
+
+- Cup 646 allow creation on select [#45](https://github.com/AppQuality/unguess-design-system/pull/45) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.8.37 (Thu Apr 28 2022)
 
 #### 🐛 Bug Fix
