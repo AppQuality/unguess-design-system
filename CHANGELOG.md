@@ -1,3 +1,15 @@
+# v2.10.1 (Mon May 02 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 647 radio cards [#48](https://github.com/AppQuality/unguess-design-system/pull/48) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.0 (Mon May 02 2022)
 
 #### 🚀 Enhancement
