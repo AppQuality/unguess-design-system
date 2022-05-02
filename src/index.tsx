@@ -98,6 +98,9 @@ export * from "./stories/pagination";
 // --- Profile Modal ---
 export * from "./stories/profile-modal";
 
+// --- Stepper ---
+export * from "./stories/stepper";
+
 // --- Table ---
 export {
   Table,
