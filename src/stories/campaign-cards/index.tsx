@@ -9,8 +9,8 @@ import { ReactComponent as RegressionTestIcon } from "../../assets/icons/regress
 import { ReactComponent as CompletedIcon } from "../../assets/icons/completed-status-round-icon.svg";
 import { ReactComponent as ProgressIcon } from "../../assets/icons/on-going-status-round-icon.svg";
 import { ReactComponent as IncomingIcon } from "../../assets/icons/arrival-status-round-icon.svg";
-import React from "react";
 import { CampaignCardSkeleton } from "./skeleton";
+import { cardStyle } from "../theme/mixins";
 
 const getStatusIcon = (status: string) => {
   switch (status) {
@@ -37,18 +37,7 @@ const getTypeDataIcon = (type?: string) => {
 };
 
 export const Wrapper = styled(Card)`
-  border-radius: ${({ theme }) => theme.borderRadii.lg};
-  padding: ${({ theme }) => theme.components.notification.card.padding};
-  border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-
-  &:hover {
-    box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
-  }
-
-  cursor: pointer;
+  ${cardStyle}
 `;
 
 const StyledTag = styled(Tag)`

@@ -15,3 +15,18 @@ export const flexStart = css`
   flex-direction: column;
   align-items: ${({ theme }) => (theme.rtl ? "flex-end" : "flex-start")};
 `;
+
+export const cardStyle = css`
+  border-radius: ${({ theme }) => theme.borderRadii.lg};
+  padding: ${({ theme }) => theme.components.notification.card.padding};
+  border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
+  }
+
+  cursor: pointer;
+`;
