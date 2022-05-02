@@ -36,17 +36,17 @@ const StyledLabel = styled(Label)`
 `;
 
 const CheckboxCard = (props: CheckboxCardArgs) => {
-   const [checked, setChecked] = useState(false);
+   const [checked, setChecked] = useState(props.defaultChecked || false);
 
    const handleToggle = () => {
       setChecked(!checked);
    };
 
    return (
-      <StyledCard {...props} {...props && !props.disabled && {onClick: handleToggle} } className={checked ? "card-active" : ""}>
+      <StyledCard {...props.card} {...props} {...props && !props.disabled && {onClick: handleToggle} } className={checked ? "card-active" : ""}>
          <IconWrapper>{(props.iconActive && checked) ? props.iconActive : props.icon}</IconWrapper>
          <LabelWrapper>{props.label}</LabelWrapper>
-         <Checkbox {...props} checked={checked}>
+         <Checkbox {...props} checked={checked} onClick={(e) => e.stopPropagation()}>
             <StyledLabel hidden>{props.label}</StyledLabel>
          </Checkbox>
       </StyledCard>
