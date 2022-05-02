@@ -43,6 +43,7 @@ export * from "./stories/dropdowns/select";
 
 // --- Forms ---
 export * from "./stories/forms/checkbox";
+export * from "./stories/forms/checkbox/cards";
 export * as FormField from "./stories/forms/field";
 export * from "./stories/forms/input";
 export * from "./stories/forms/mediaInput";

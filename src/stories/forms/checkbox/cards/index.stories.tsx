@@ -42,9 +42,9 @@ const FormTemplate: Story<FormProps> = (args) => {
       <Grid>
         <Row>
           {args.cards.map((card) => (
-            <Col size={4}>
+            <Col>
               <Field>
-                <CheckboxCard {...card} />
+                <CheckboxCard {...card} style={{ marginBottom: theme.space.sm}}/>
               </Field>
             </Col>
           ))}
