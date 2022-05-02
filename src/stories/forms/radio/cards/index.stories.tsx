@@ -58,8 +58,8 @@ const FormTemplate: Story<FormProps> = (args) => {
         <Row>
           {args.cards.map((card) => (
             <Col>
-              <Field>
-                <RadioCard {...card} style={{ marginBottom: theme.space.sm}} checked={radioValue === card.value}  onChecked={handleClick} />
+              <Field style={{ height: "100%" }}>
+                <RadioCard {...card} checked={radioValue === card.value} onChecked={handleClick} />
               </Field>
             </Col>
           ))}
@@ -84,7 +84,7 @@ MultipleCards.args = {
       card: {
         isFloating: false
       },
-      label: "Web App",
+      label: "Sito Web o Web App",
       icon: <SmartphoneIcon />,
       iconActive: <SmartphoneActiveIcon />,
       value: "webapp",
