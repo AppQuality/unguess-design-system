@@ -1,3 +1,20 @@
+# v2.10.0 (Mon May 02 2022)
+
+#### 🚀 Enhancement
+
+- feat(stepper): add stepper component with unguess color scheme [#47](https://github.com/AppQuality/unguess-design-system/pull/47) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🐛 Bug Fix
+
+- Cup 648 checkbox cards [#46](https://github.com/AppQuality/unguess-design-system/pull/46) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.9.0 (Fri Apr 29 2022)
 
 #### 🚀 Enhancement
