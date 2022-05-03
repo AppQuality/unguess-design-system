@@ -17,8 +17,6 @@ const Wrapper = styled(Card)`
   &:hover {
     box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
   }
-
-  cursor: pointer;
 `;
 
 const StyledTagNew = styled(Tag)`
@@ -67,6 +65,7 @@ const CardBody = styled.div`
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  cursor: pointer;
 `;
 
 const CardFooter = styled.div`
@@ -87,8 +86,8 @@ const ProductCard = (props: ProductCardProps) => {
   return props.isLoading ? (
     <CampaignCardSkeleton />
   ) : (
-    <Wrapper {...props}>
-      <CardBody>
+    <Wrapper {...props} >
+      <CardBody onClick={props.onCtaClick}>
         {isNew && (
           <StyledTagNew
             hue={theme.palette.fuschia["600"]}
