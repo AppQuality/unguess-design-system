@@ -1,3 +1,15 @@
+# v2.10.3 (Tue May 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(drawers): remove duplicated component ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.2 (Tue May 03 2022)
 
 #### ⚠️ Pushed to `master`
