@@ -1,3 +1,15 @@
+# v2.10.2 (Tue May 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- build(components): add full screen modal and radio card to main export ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.1 (Mon May 02 2022)
 
 #### 🐛 Bug Fix
