@@ -1,3 +1,15 @@
+# v2.10.4 (Tue May 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(product-card): add onClick on card body too ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.3 (Tue May 03 2022)
 
 #### ⚠️ Pushed to `master`
