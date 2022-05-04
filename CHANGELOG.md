@@ -1,3 +1,15 @@
+# v2.10.5 (Wed May 04 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(dropdowns-menu): remove width auto for all dropdowns menu ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.4 (Tue May 03 2022)
 
 #### ⚠️ Pushed to `master`
