@@ -1,5 +1,18 @@
-import { Well as ZendeskWell } from '@zendeskgarden/react-notifications';
-import { CardProps } from './_types';
+import { Well as ZendeskWell } from "@zendeskgarden/react-notifications";
+import { CardProps } from "./_types";
+import styled from "styled-components";
+
+const ContentCard = styled(ZendeskWell)`
+  border-radius: ${({ theme }) => theme.borderRadii.lg};
+  padding: ${({ theme }) => theme.components.notification.card.padding};
+  border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
+  ${({ isFloating, theme }) =>
+    !isFloating &&
+    `
+      &:hover {
+         box-shadow: ${theme.shadows.boxShadow(theme)};
+      }`}
+`;
 
 /**
  * A Card is a container that groups related content.
@@ -7,6 +20,10 @@ import { CardProps } from './_types';
  * Used for this:
     - To group related content
  */
-const Card = (props: CardProps) => <ZendeskWell {...props}/>;
+const Card = (props: CardProps) => <ContentCard {...props} />;
 
-export { Card };
+const ContainerCard = styled(Card)`
+  border-radius: ${({ theme }) => theme.borderRadii.xl};
+`;
+
+export { Card, ContainerCard };

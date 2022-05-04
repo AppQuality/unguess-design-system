@@ -21,6 +21,7 @@ const theme = {
   },
   gradients: gradients,
   borderRadii: {
+    //{sm: '2px', md: '4px', lg: '8px', xl: '16px', xxl: '32px'}
     ...DEFAULT_THEME.borderRadii,
     lg: "8px",
     xl: "16px",
