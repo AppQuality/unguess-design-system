@@ -9,18 +9,12 @@ import {
    MediaItem as ZendeskMediaItem
 } from "@zendeskgarden/react-dropdowns";
 import { MenuArgs, NextItemArgs, PreviousItemArgs } from "./_types";
-import styled from "styled-components";
 import { HTMLAttributes, LiHTMLAttributes } from "react";
-
-const UgMenu = styled(ZendeskMenu)`
-   width: auto !important;
-   min-width: 100%;
-`;
 
 /**
    * A Menu is a wrapper for items elements
    **/
-const Menu = (props: MenuArgs) => <UgMenu {...props} />;
+const Menu = (props: MenuArgs) => <ZendeskMenu {...props} />;
 
 // Extras
 const PreviousItem = (props: PreviousItemArgs) => <ZendeskPreviousItem {...props} />;
