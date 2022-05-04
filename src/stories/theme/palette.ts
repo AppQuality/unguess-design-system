@@ -16,7 +16,7 @@ export const palette = {
     sell: "#c38f00",
   },
   grey: {
-    "100": "#f8f9f9",
+    "100": "#F6F6F8",
     "200": "#e9ebed",
     "300": "#d8dcde",
     "400": "#c2c8cc",
@@ -140,5 +140,13 @@ export const palette = {
     "600": "#6a27b8",
     M400: "#b072cc",
     M600: "#9358b0",
+  },
+  water: {
+    100: "#D4FFF7",
+    200: "#ABEBDF",
+    300: "#6FD1BE",
+    600: "#2B8473",
+    700: "#206E6A",
+    800: "#0C4D5E",
   },
 };
