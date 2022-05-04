@@ -1,3 +1,15 @@
+# v2.10.7 (Wed May 04 2022)
+
+#### 🐛 Bug Fix
+
+- feat(card): add Container variant with different border-radius [#49](https://github.com/AppQuality/unguess-design-system/pull/49) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.6 (Wed May 04 2022)
 
 #### ⚠️ Pushed to `master`
