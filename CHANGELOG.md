@@ -1,3 +1,15 @@
+# v2.10.13 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(hint): add hint component ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.12 (Thu May 05 2022)
 
 #### ⚠️ Pushed to `master`
