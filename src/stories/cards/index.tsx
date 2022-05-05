@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const ContentCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
-  padding: ${({ theme }) => theme.components.notification.card.padding};
+  padding: ${({ theme }) => theme.space.xxl};
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
   ${({ isFloating, theme }) =>
     !isFloating &&
