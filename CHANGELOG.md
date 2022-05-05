@@ -1,3 +1,15 @@
+# v2.10.9 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- test(checkbox): test onChange callback ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.8 (Thu May 05 2022)
 
 #### ⚠️ Pushed to `master`
