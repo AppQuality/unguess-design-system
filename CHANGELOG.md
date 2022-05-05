@@ -1,3 +1,15 @@
+# v2.10.8 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(contentcard): update content card padding ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.7 (Wed May 04 2022)
 
 #### 🐛 Bug Fix
