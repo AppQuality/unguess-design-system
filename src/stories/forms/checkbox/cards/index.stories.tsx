@@ -34,6 +34,7 @@ SingleCard.args = {
     isFloating: false
   },
   label: "Smartphone",
+  onToggle: (checked: boolean) => { console.log("Checkbox isChecked?", checked); }
 };
 
 const FormTemplate: Story<FormProps> = (args) => {

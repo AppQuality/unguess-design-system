@@ -37,10 +37,9 @@ const StyledLabel = styled(Label)`
 
 const CheckboxCard = (props: CheckboxCardArgs) => {
    const [checked, setChecked] = useState(props.defaultChecked || false);
-
    const handleToggle = () => {
       setChecked(!checked);
-      props.onToggle && props.onToggle(checked);
+      props.onToggle && props.onToggle(!checked);
    };
 
    return (
