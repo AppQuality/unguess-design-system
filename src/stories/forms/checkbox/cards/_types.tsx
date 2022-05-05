@@ -6,4 +6,5 @@ export interface CheckboxCardArgs extends CheckboxArgs {
     label: string;
     icon: React.ReactNode;
     iconActive?: React.ReactNode;
+    onToggle?: (checked: boolean) => void;
 }
