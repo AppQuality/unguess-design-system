@@ -20,7 +20,7 @@ interface FormProps {
 const SingleTemplate: Story<CheckboxCardArgs> = (args) => {
   return (
     <Field>
-      <CheckboxCard {...args} name={"platform"} value={1} icon={<SmartphoneIcon />} iconActive={<SmartphoneActiveIcon />}></CheckboxCard>
+      <CheckboxCard {...args} name={"platform"} icon={<SmartphoneIcon />} iconActive={<SmartphoneActiveIcon />}></CheckboxCard>
     </Field>
   )
 }
