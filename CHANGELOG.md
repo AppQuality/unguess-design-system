@@ -1,3 +1,15 @@
+# v2.10.11 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(checkbox-card): add onToggle callback ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.10 (Thu May 05 2022)
 
 #### ⚠️ Pushed to `master`
