@@ -1,3 +1,15 @@
+# v2.10.15 (Fri May 06 2022)
+
+#### 🐛 Bug Fix
+
+- feat(alerts): add alerts component + styling [#51](https://github.com/AppQuality/unguess-design-system/pull/51) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.14 (Fri May 06 2022)
 
 #### 🐛 Bug Fix
