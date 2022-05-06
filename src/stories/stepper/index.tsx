@@ -40,6 +40,15 @@ const UgStepper = styled(ZendeskStepper)`
     `}
 `;
 
+const UgContent = styled(ZendeskStepper.Content)`
+  padding: ${({ theme }) => `${theme.space.sm} ${theme.space.sm} ${theme.space.sm} 24px`};
+  margin-top: 0;
+  margin-bottom: 0;
+  > div { 
+    color: ${({ theme }) => theme.palette.grey[600]}; 
+  }
+`;
+
 /**
  * A Stepper guides users through steps of a task in sequential order.
 
@@ -50,6 +59,6 @@ const Stepper = (props: StepperArgs) => <UgStepper {...props} />;
 
 Stepper.Step = UgStep;
 Stepper.Label = UgLabel;
-Stepper.Content = UgStepper.Content;
+Stepper.Content = UgContent;
 
 export { Stepper };
