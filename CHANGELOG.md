@@ -1,3 +1,15 @@
+# v2.10.16 (Fri May 06 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(alerts): add missing export ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.15 (Fri May 06 2022)
 
 #### 🐛 Bug Fix
