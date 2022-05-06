@@ -1,3 +1,15 @@
+# v2.10.14 (Fri May 06 2022)
+
+#### 🐛 Bug Fix
+
+- style(stepper): update spaces and content color [#50](https://github.com/AppQuality/unguess-design-system/pull/50) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.13 (Thu May 05 2022)
 
 #### ⚠️ Pushed to `master`
