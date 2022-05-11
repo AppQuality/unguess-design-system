@@ -27,6 +27,28 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
+export const MultipleWorkspaces = Template.bind({});
+MultipleWorkspaces.args = {
+  ...defaultArgs,
+  brand: {
+    ...defaultArgs.brand,
+    activeWorkspace: {
+      name: "Enel",
+      id: 1,
+    },
+    workspaces: [
+      {
+        name: "Enel",
+        id: 1,
+      },
+      {
+        name: "Amazon",
+        id: 2,
+      },
+    ],
+  },
+};
+
 Default.parameters = {
   design: {
     type: "figma",

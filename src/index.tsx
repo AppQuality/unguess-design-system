@@ -44,6 +44,7 @@ export * from "./stories/dropdowns/menu";
 export * from "./stories/dropdowns/multiselect";
 export * from "./stories/dropdowns/select";
 export * from "./stories/dropdowns/autocomplete";
+export * from "./stories/dropdowns/menuheader";
 
 // --- Forms ---
 export * from "./stories/forms/checkbox";
