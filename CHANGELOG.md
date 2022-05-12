@@ -1,3 +1,15 @@
+# v2.10.17 (Thu May 12 2022)
+
+#### 🐛 Bug Fix
+
+- feat(brand-item): add workspaces selector when there is more then one… [#52](https://github.com/AppQuality/unguess-design-system/pull/52) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.16 (Fri May 06 2022)
 
 #### ⚠️ Pushed to `master`
