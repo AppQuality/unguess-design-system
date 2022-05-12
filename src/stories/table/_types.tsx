@@ -5,9 +5,9 @@ import {
   IHeaderCellProps,
   ISortableCellProps,
 } from "@zendeskgarden/react-tables";
-import { SIZE, SORT } from "@zendeskgarden/react-tables/dist/typings/styled";
 import { IconArgs } from "../icons/_types";
 
+type SIZE = "small" | "medium" | "large";
 export interface TableProps extends ITableProps {
   /** Sets the table size */
   size?: SIZE;
@@ -73,8 +73,6 @@ export interface HeadArgs extends ICellProps {
 }
 
 export interface SortableCellArgs extends ISortableCellProps {
-  /** Sets the sort order */
-  sort?: SORT;
   /** Sets the width of the cell */
   width?: string | number;
   /** Passes props to the cell */

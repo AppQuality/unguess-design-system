@@ -6,7 +6,6 @@ import { ReactComponent as ProgressIcon } from "../../assets/icons/campaign-prog
 import { ReactComponent as IncomingIcon } from "../../assets/icons/campaign-incoming.svg";
 import { ReactComponent as FunctionalIcon } from "../../assets/icons/campaign-functional.svg";
 import { ReactComponent as ExperientialIcon } from "../../assets/icons/campaign-experiential.svg";
-import { MD } from "../typography/typescale";
 import { Span } from "../typography/span";
 import useWindowSize from "../../hooks/useWindowSize";
 import { theme } from "../theme";
