@@ -6,7 +6,17 @@ import {
 
 export interface Workspace {
   id: number;
-  name: string;
+  company: string;
+  tokens?: number;
+  logo?: string;
+  csm?: {
+    id: number;
+    email: string;
+    name: string;
+    profile_id: number;
+    tryber_wp_user_id: number;
+    picture?: string;
+  };
 }
 
 export interface HeaderItemArgs extends IHeaderItemProps {

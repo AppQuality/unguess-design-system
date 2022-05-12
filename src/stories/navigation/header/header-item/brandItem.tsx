@@ -84,13 +84,13 @@ const BrandItem = (props: BrandItemArgs) => {
               props.onWorkspaceChange && props.onWorkspaceChange(workspace);
             }}
             downshiftProps={{
-              itemToString: (item: Workspace) => item && item.name,
+              itemToString: (item: Workspace) => item && item.company,
             }}
           >
             <Field>
               <Select style={{ color: theme.colors.primaryHue }}>
                 {selectedWorkspace
-                  ? selectedWorkspace.name + "'s workspace"
+                  ? selectedWorkspace.company + "'s workspace"
                   : "Select workspace"}
               </Select>
             </Field>
@@ -102,7 +102,7 @@ const BrandItem = (props: BrandItemArgs) => {
               </MenuHeaderItem>
               <Separator />
               {props.workspaces.map((item) => (
-                <Item value={item}>{item.name}</Item>
+                <Item value={item}>{item.company}</Item>
               ))}
             </Menu>
           </Dropdown>
