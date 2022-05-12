@@ -1,3 +1,15 @@
+# v2.10.18 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(brand-item): update ws schema ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.17 (Thu May 12 2022)
 
 #### 🐛 Bug Fix
