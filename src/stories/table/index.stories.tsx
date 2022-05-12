@@ -534,32 +534,54 @@ Sort.args = {
 };
 
 /** VIRTUAL SCROLLING */
+const FixedTable = styled(Table).attrs({ role: "presentation" })`
+  /* stylelint-disable-next-line */
+  display: block !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+`;
+
 const ScrollableTable = styled(Table).attrs({ role: "presentation" })`
   /* stylelint-disable-next-line */
   display: block !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
 `;
+
 const ScrollableHead = styled(Head)`
   display: block;
 `;
+
 const ScrollableHeaderRow = styled(HeaderRow).attrs({ role: "row" })`
   /* stylelint-disable-next-line */
   display: table !important;
   width: 100%;
   table-layout: fixed;
+  border: 0;
+
+  th {
+    border-bottom: 0;
+  }
 `;
+
 const ScrollableHeaderCell = styled(HeaderCell).attrs({
   role: "columnheader",
 })``;
+
 const ScrollableBody = styled(Body)`
   /* stylelint-disable-next-line */
   display: block !important;
 `;
+
 const ScrollableRow = styled(Row).attrs({ role: "row" })`
   /* stylelint-disable-next-line */
   display: table !important;
   table-layout: fixed;
 `;
+
 const ScrollableCell = styled(Cell).attrs({ role: "cell" })``;
+
 const VirtualScrollingTemplate: Story<TableProps> = ({
   columns,
   items,
@@ -567,7 +589,7 @@ const VirtualScrollingTemplate: Story<TableProps> = ({
 }) => {
   return (
     <div role="grid" aria-rowcount={items?.length || 0} aria-colcount={4}>
-      <ScrollableTable>
+      <FixedTable>
         <ScrollableHead>
           <ScrollableHeaderRow>
             <ScrollableHeaderCell>Fruit</ScrollableHeaderCell>
@@ -576,7 +598,7 @@ const VirtualScrollingTemplate: Story<TableProps> = ({
             <StyledSpacerCell aria-hidden />
           </ScrollableHeaderRow>
         </ScrollableHead>
-      </ScrollableTable>
+      </FixedTable>
       <FixedSizeList
         height={420}
         itemCount={items!.length}

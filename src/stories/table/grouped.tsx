@@ -23,6 +23,13 @@ interface GroupRowProps {
 
 const UgGroupRow = styled(ZendeskGroupRow)`
   cursor: pointer;
+  border: 0;
+
+  &:last-child {
+    td {
+      border-bottom: 0;
+    }
+  }
 
   &.empty {
     cursor: default;
