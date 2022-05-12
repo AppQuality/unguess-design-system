@@ -1,3 +1,15 @@
+# v2.10.20 (Thu May 12 2022)
+
+#### 🐛 Bug Fix
+
+- fix(tables): restore borders + border-radius [#53](https://github.com/AppQuality/unguess-design-system/pull/53) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.19 (Thu May 12 2022)
 
 #### ⚠️ Pushed to `master`
