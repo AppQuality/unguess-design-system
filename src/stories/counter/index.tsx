@@ -6,7 +6,12 @@ import { ReactComponent as ProgressIcon } from "../../assets/icons/campaign-prog
 import { ReactComponent as IncomingIcon } from "../../assets/icons/campaign-incoming.svg";
 import { ReactComponent as FunctionalIcon } from "../../assets/icons/campaign-functional.svg";
 import { ReactComponent as ExperientialIcon } from "../../assets/icons/campaign-experiential.svg";
+import { MD } from "../typography/typescale";
+import { Span } from "../typography/span";
+import useWindowSize from "../../hooks/useWindowSize";
+import { theme } from "../theme";
 
+const StyledSpan = styled(Span)``;
 const StyledTag = styled(Tag)<CounterArgs>`
   background-color: transparent;
   pointer-events: none;
@@ -27,7 +32,7 @@ const StyledTag = styled(Tag)<CounterArgs>`
     margin-right: ${({ theme }) => theme.space.xxs} !important;
   }
 
-  span {
+  ${StyledSpan} {
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     margin-left: ${({ theme }) => theme.space.xxs};
     color: ${({ theme }) => theme.palette.grey[700]};
@@ -38,6 +43,7 @@ const StyledTag = styled(Tag)<CounterArgs>`
  * Counter let users categorize content using a keyword.
  */
 const Counter = (props: CounterArgs) => {
+  const { width } = useWindowSize();
   const { status, counter } = props;
 
   return (
@@ -51,8 +57,8 @@ const Counter = (props: CounterArgs) => {
           {status === "experiential" && <ExperientialIcon />}
         </>
       </StyledTag.Avatar>
-      {props.children}
-      {counter !== undefined && <span>{counter.toString()}</span>}
+      {width > parseInt(theme.breakpoints.sm) && props.children}
+      {counter !== undefined && <StyledSpan>{counter.toString()}</StyledSpan>}
     </StyledTag>
   );
 };

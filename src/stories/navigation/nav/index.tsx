@@ -8,7 +8,11 @@ const UgNav = styled(ZendeskNav)`
   border-color: ${({ theme }) => getColor(theme.colors.neutralHue, 300)};
   ${(props) =>
     `
-      width: ${props.isExpanded ? props.theme.space.base * 60 : props.theme.space.base * 9}px;
+      width: ${
+        props.isExpanded
+          ? props.theme.space.base * 60
+          : props.theme.space.base * 9
+      }px;
       @media (max-width: ${props.theme.breakpoints.sm}) {
          width: ${props.isExpanded ? "100%" : "0"};
          border-right: none;
@@ -16,7 +20,9 @@ const UgNav = styled(ZendeskNav)`
   `}
   transition: width 0.25s ease-in-out;
   padding-top: ${({ theme }) => theme.space.sm};
-  padding-left: ${({ theme }) => theme.space.xs};
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding-left: ${({ theme }) => theme.space.xs};
+  }
 `;
 
 /**
