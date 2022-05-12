@@ -33,16 +33,16 @@ MultipleWorkspaces.args = {
   brand: {
     ...defaultArgs.brand,
     activeWorkspace: {
-      name: "Enel",
+      company: "Enel",
       id: 1,
     },
     workspaces: [
       {
-        name: "Enel",
+        company: "Enel",
         id: 1,
       },
       {
-        name: "Amazon",
+        company: "Amazon",
         id: 2,
       },
     ],
