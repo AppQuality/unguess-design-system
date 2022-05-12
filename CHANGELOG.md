@@ -1,3 +1,17 @@
+# v2.10.21 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(tables): fix borders for grouped tables + fix story for virtual scrolling tables" ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.20 (Thu May 12 2022)
 
 #### 🐛 Bug Fix
