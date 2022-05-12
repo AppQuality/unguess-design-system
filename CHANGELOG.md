@@ -1,3 +1,15 @@
+# v2.10.23 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(counter): update counter behaviour based on screen size ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.22 (Thu May 12 2022)
 
 #### ⚠️ Pushed to `master`
