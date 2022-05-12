@@ -1,3 +1,16 @@
+# v2.10.22 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(app-header): fix stories type error ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.21 (Thu May 12 2022)
 
 #### ⚠️ Pushed to `master`
