@@ -4,6 +4,11 @@ import {
   IHeaderItemTextProps,
 } from "@zendeskgarden/react-chrome";
 
+export interface Workspace {
+  id: number;
+  name: string;
+}
+
 export interface HeaderItemArgs extends IHeaderItemProps {
   /** Maximizes the width of a flex item in the header */
   maxX?: boolean;
@@ -26,6 +31,15 @@ export interface BrandItemArgs extends ButtonHTMLAttributes<HTMLButtonElement> {
   brandName?: string;
   /** Add a descriptive text to the menu item icon*/
   menuLabel?: string;
+
+  workspacesLabel?: string;
+
+  activeWorkspace?: Workspace;
+
+  workspaces?: Workspace[];
+
+  onWorkspaceChange?: (workspace: Workspace) => void;
+
   /** Triggered when the menu item is clicked */
   toggleMenu?: () => void;
 }
@@ -36,3 +50,5 @@ export interface HeaderItemTextArgs extends IHeaderItemTextProps {
 }
 
 export interface HeaderItemIconArgs extends HTMLAttributes<HTMLDivElement> {}
+
+export interface HeaderItemWrapperArgs extends HTMLAttributes<HTMLDivElement> {}
