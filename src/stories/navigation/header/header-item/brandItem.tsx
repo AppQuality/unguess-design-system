@@ -42,6 +42,7 @@ const DropdownItem = styled(ZendeskHeaderItem)`
   margin-left: -8px;
   color: ${({ theme }) => theme.palette.blue["600"]};
   font-family: ${({ theme }) => theme.fonts.system};
+  z-index: 2;
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: none;
   }
