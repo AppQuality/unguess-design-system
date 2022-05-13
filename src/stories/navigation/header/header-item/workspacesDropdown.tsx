@@ -50,7 +50,7 @@ export const WorkspacesDropdown = (props: WorkspaceDropdownArgs) => {
           </MD>
         </MenuHeaderItem>
         <Separator />
-        {props.workspaces.map((item) => (
+        {props.workspaces && props.workspaces.map((item) => (
           <Item value={item}>{item.company}</Item>
         ))}
       </Menu>

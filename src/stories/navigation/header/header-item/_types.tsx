@@ -30,8 +30,8 @@ export interface HeaderItemArgs extends IHeaderItemProps {
   hasLogo?: boolean;
 }
 export interface WorkspaceDropdownArgs {
-  workspaces: Workspace[];
-  activeWorkspace: Workspace;
+  workspaces?: Workspace[];
+  activeWorkspace?: Workspace;
   workspacesLabel?: string;
   onWorkspaceChange?: (workspace: Workspace) => void;
   isCompact?: boolean;

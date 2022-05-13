@@ -1,5 +1,6 @@
 import { Skeleton } from "../../loaders/skeleton";
 import { Nav } from "../nav";
+import { SidebarArgs } from "./_types";
 import {
   NavItem,
   NavItemIcon,
@@ -8,12 +9,18 @@ import {
   NavDivider,
   NavItemProject,
 } from "../nav/nav-item";
+import styled from "styled-components";
 
-export const LoadingSidebar = () => {
-  const isExpanded = true;
+const StyledNav = styled(Nav)<SidebarArgs>`
+  ${({ isExpanded, theme }) =>
+    isExpanded && `width: ${theme.components.chrome.nav.openWidth}`};
+`;
+
+export const LoadingSidebar = (props: SidebarArgs) => {
+  const isExpanded = props.isExpanded;
 
   return (
-    <Nav style={{ width: "250px" }}>
+    <StyledNav {...props} isExpanded={isExpanded}>
       <NavToggle isExpanded={isExpanded} />
 
       <NavItem isExpanded={isExpanded} isCurrent={true}>
@@ -66,6 +73,6 @@ export const LoadingSidebar = () => {
         </NavItemIcon>
         <NavItemText>UNGUESS</NavItemText>
       </NavItem>
-    </Nav>
+    </StyledNav>
   );
 };

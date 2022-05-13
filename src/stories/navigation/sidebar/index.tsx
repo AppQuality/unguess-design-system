@@ -68,7 +68,7 @@ const Sidebar = (props: SidebarArgs) => {
   };
 
   return props.isLoading ? (
-    <LoadingSidebar />
+    <LoadingSidebar {...props}/>
   ) : (
     <Nav {...props}>
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />

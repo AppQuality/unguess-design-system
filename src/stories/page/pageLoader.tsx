@@ -18,27 +18,53 @@ const StyledHr = styled.hr`
 `;
 
 export const PageLoader = () => {
+  const isSidebarOpen = window.matchMedia(
+    `only screen and (min-width: 576px)`
+  ).matches;
   return (
     <Chrome isFluid hue={theme.palette.white}>
       <Body>
-        <AppHeader isLoading />
+        <AppHeader isLoading/>
         <Content>
-          <Sidebar isLoading />
+          <Sidebar
+            isExpanded={isSidebarOpen}
+            isLoading
+          />
           <Main>
-            <Skeleton width="30%" height="32px" />
-            <StyledHr style={{margin: "24px 0"}}/>
+            <Skeleton width="30%" height="32px" style={{marginTop: theme.space.sm, marginLeft: theme.space.sm}}/>
+            <StyledHr style={{ margin: "24px 0" }} />
             <Row>
-              <Col size={3}>
-                <CampaignCard isLoading projectTitle="" campaignTitle="" date="" />
+              <Col xs={12} md={6} lg={3}>
+                <CampaignCard
+                  isLoading
+                  projectTitle=""
+                  campaignTitle=""
+                  date=""
+                />
               </Col>
-              <Col size={3}>
-                <CampaignCard isLoading projectTitle="" campaignTitle="" date="" />
+              <Col xs={12} md={6} lg={3}>
+                <CampaignCard
+                  isLoading
+                  projectTitle=""
+                  campaignTitle=""
+                  date=""
+                />
               </Col>
-              <Col size={3}>
-                <CampaignCard isLoading projectTitle="" campaignTitle="" date="" />
+              <Col xs={12} md={6} lg={3}>
+                <CampaignCard
+                  isLoading
+                  projectTitle=""
+                  campaignTitle=""
+                  date=""
+                />
               </Col>
-              <Col size={3}>
-                <CampaignCard isLoading projectTitle="" campaignTitle="" date="" />
+              <Col xs={12} md={6} lg={3}>
+                <CampaignCard
+                  isLoading
+                  projectTitle=""
+                  campaignTitle=""
+                  date=""
+                />
               </Col>
             </Row>
           </Main>

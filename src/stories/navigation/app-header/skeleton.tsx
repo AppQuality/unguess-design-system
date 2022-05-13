@@ -13,12 +13,17 @@ export const HeaderSkeleton = () => {
           <Logo type={"icon"} size={150} />
         </HeaderItemIcon>
       </LogoIconContainer>
-      
+
       <HeaderItem style={{ marginRight: "auto", marginLeft: "-4px" }}>
-        <Skeleton
-          width="200px"
-          height={theme.space.sm}
-        />
+        {window.matchMedia(`only screen and (min-width: 576px)`).matches ? (
+          <Skeleton width="200px" height={theme.space.sm} />
+        ) : (
+          <Skeleton
+            width="80px"
+            height={theme.space.sm}
+            style={{ marginLeft: theme.space.sm }}
+          />
+        )}
       </HeaderItem>
 
       <HeaderItem isRound>
