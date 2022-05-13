@@ -1,3 +1,20 @@
+# v2.10.25 (Fri May 13 2022)
+
+#### 🐛 Bug Fix
+
+- refactor(workspace-dropdown): refactor component in order to use it o… [#54](https://github.com/AppQuality/unguess-design-system/pull/54) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(page-loader): refactor types and fix build errors ([@cannarocks](https://github.com/cannarocks))
+- fix(token-card): uI improvements on token card ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.24 (Thu May 12 2022)
 
 #### ⚠️ Pushed to `master`
