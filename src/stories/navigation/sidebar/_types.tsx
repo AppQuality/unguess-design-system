@@ -1,6 +1,7 @@
+import { WorkspaceDropdownArgs } from "../header/header-item/_types";
 import { NavArgs } from "../nav/_types";
 
-export interface SidebarArgs extends NavArgs {
+export interface SidebarArgs extends NavArgs, WorkspaceDropdownArgs {
   projects?: Array<ProjectItem>;
   currentRoute?: string;
   homeItemLabel?: string;

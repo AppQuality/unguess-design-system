@@ -9,10 +9,20 @@ const Template: Story<AppHeaderArgs> = (args) => <AppHeader {...args} />;
 const defaultArgs = {
   isStandalone: true,
   hasChangelog: true,
-  changelogItem: <ChangelogIcon onClick={() =>  alert("clicked changelog")}/>,
+  changelogItem: <ChangelogIcon onClick={() => alert("clicked changelog")} />,
   brand: {
     brandName: "Enel's Workspace",
     menuLabel: "menu",
+    activeWorkspace: {
+      company: "Enel",
+      id: 1,
+    },
+    workspaces: [
+      {
+        company: "Enel",
+        id: 1,
+      },
+    ],
   },
   avatar: {
     ...DefaultAvatar.args,
