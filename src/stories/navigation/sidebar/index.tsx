@@ -67,6 +67,10 @@ const Sidebar = (props: SidebarArgs) => {
     setNav(route);
   };
 
+  const padding = props.tokens ? {
+    paddingBottom: 0
+  }: {};
+
   return props.isLoading ? (
     <LoadingSidebar {...props}/>
   ) : (
@@ -74,7 +78,7 @@ const Sidebar = (props: SidebarArgs) => {
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
       {props.workspaces && props.workspaces.length > 1 && (
         <>
-          <StyledNavItem hasLogo isExpanded={props.isExpanded} style={{ paddingBottom: 0}}>
+          <StyledNavItem hasLogo isExpanded={props.isExpanded} style={padding}>
             <WorkspacesDropdown
               workspaces={props.workspaces}
               workspacesLabel={props.workspacesLabel}
