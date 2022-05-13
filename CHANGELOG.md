@@ -1,3 +1,15 @@
+# v2.10.28 (Fri May 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(sidebar): hide dropdown on desktop ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.27 (Fri May 13 2022)
 
 #### ⚠️ Pushed to `master`
