@@ -36,8 +36,9 @@ const ScrollingContainer = styled.div`
 `;
 
 const StyledNavItem = styled(NavItem)`
-  ${({ isExpanded }) => isExpanded &&
-  `
+  ${({ isExpanded }) =>
+    isExpanded &&
+    `
     display: block;
     padding-right: ${theme.space.md};
   `};
@@ -72,14 +73,19 @@ const Sidebar = (props: SidebarArgs) => {
     <Nav {...props}>
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
       {props.workspaces && props.workspaces.length > 1 && (
-        <StyledNavItem hasLogo isExpanded={props.isExpanded}>
-          <WorkspacesDropdown
-            workspaces={props.workspaces}
-            workspacesLabel={props.workspacesLabel}
-            activeWorkspace={props.activeWorkspace}
-            onWorkspaceChange={props.onWorkspaceChange}
-          />
-        </StyledNavItem>
+        <>
+          <StyledNavItem hasLogo isExpanded={props.isExpanded} style={{ paddingBottom: 0}}>
+            <WorkspacesDropdown
+              workspaces={props.workspaces}
+              workspacesLabel={props.workspacesLabel}
+              activeWorkspace={props.activeWorkspace}
+              onWorkspaceChange={props.onWorkspaceChange}
+            />
+          </StyledNavItem>
+          {props.tokens && (
+            <NavDivider isExpanded={props.isExpanded} style={{order: 0}} />
+          )}
+        </>
       )}
       {props.tokens && (
         <StyledNavItem
@@ -90,7 +96,7 @@ const Sidebar = (props: SidebarArgs) => {
           <Card style={{ padding: theme.space.sm }}>
             <TokenContainer>
               <TokenIcon width={32} />
-              <Span isBold style={{ marginLeft: theme.space.xs }}>
+              <Span isBold style={{ marginLeft: theme.space.xs, color: theme.palette.grey[800] }}>
                 {props.tokens + " " + (props.tokensLabel || "tokens")}
               </Span>
             </TokenContainer>

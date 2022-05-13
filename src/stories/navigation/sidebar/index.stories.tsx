@@ -102,7 +102,7 @@ export const WithTokens = Template.bind({});
 WithTokens.args = {
   ...defaultArgs,
   isExpanded: true,
-  tokens: "24 Tokens",
+  tokens: "24",
 };
 
 export const WithAll = Template.bind({});
