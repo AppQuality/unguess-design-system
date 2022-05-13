@@ -1,3 +1,16 @@
+# v2.10.26 (Fri May 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): remove padding only with tokens ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.25 (Fri May 13 2022)
 
 #### 🐛 Bug Fix
