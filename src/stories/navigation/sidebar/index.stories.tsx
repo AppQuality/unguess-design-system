@@ -9,9 +9,7 @@ import { useState } from "react";
 interface SidebarStoryArgs extends SidebarArgs {}
 
 const Template: Story<SidebarStoryArgs> = (args) => {
-
   const [expanded, setExpanded] = useState(args.isExpanded || false);
-
 
   return (
     <Chrome
@@ -19,12 +17,16 @@ const Template: Story<SidebarStoryArgs> = (args) => {
       style={{ height: 400, minWidth: 480 }}
       hue={theme.palette.white}
     >
-      <Sidebar {...args} isExpanded={expanded} onToggleMenu={() => setExpanded(!expanded)}/>
+      <Sidebar
+        {...args}
+        isExpanded={expanded}
+        onToggleMenu={() => setExpanded(!expanded)}
+      />
     </Chrome>
   );
 };
 
-const defaultArgs: SidebarStoryArgs = { 
+const defaultArgs: SidebarStoryArgs = {
   currentRoute: "home",
   dividerLabel: "Projects",
   projects: [
@@ -63,15 +65,37 @@ const defaultArgs: SidebarStoryArgs = {
     console.log(`Navigating to ${route}`);
   },
   isLoading: false,
-}
+  activeWorkspace: {
+    company: "Enel",
+    id: 1,
+  },
+  workspaces: [
+    {
+      company: "Enel",
+      id: 1,
+    },
+  ],
+};
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
-Default.parameters = {
-  design: {
-    type: "figma",
-    url: "https://www.figma.com/file/cDHa0NrDcLoJcPL20FfGBI/UNGUESS-%7C-Redesign-Zendesk?node-id=712%3A23480",
-  },
+export const MultipleWorkspaces = Template.bind({});
+MultipleWorkspaces.args = {
+  ...defaultArgs,
+  workspaces: [
+    {
+      company: "Enel",
+      id: 1,
+    },
+    {
+      company: "Amazon",
+      id: 2,
+    },
+    {
+      company: "One upon a time there was an insanely long company name",
+      id: 3,
+    },
+  ],
 };
 
 export const WithTokens = Template.bind({});
@@ -79,6 +103,32 @@ WithTokens.args = {
   ...defaultArgs,
   isExpanded: true,
   tokens: "24 Tokens",
+};
+
+export const WithAll = Template.bind({});
+WithAll.args = {
+  ...WithTokens.args,
+  workspaces: [
+    {
+      company: "Enel",
+      id: 1,
+    },
+    {
+      company: "Amazon",
+      id: 2,
+    },
+    {
+      company: "One upon a time there was an insanely long company name",
+      id: 3,
+    },
+  ],
+};
+
+Default.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/cDHa0NrDcLoJcPL20FfGBI/UNGUESS-%7C-Redesign-Zendesk?node-id=712%3A23480",
+  },
 };
 
 export default {

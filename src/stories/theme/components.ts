@@ -7,7 +7,13 @@ export const components = {
     header: {
       ...DEFAULT_THEME.components?.chrome?.header,
       height: "64px",
-    },  
+    },
+    nav: {
+      ...DEFAULT_THEME.components?.chrome?.nav,
+      openWidth: 240,
+      closedWidth: 36,
+      workspaceDropdownWidth: 192,
+    }
   },
 
   notification:

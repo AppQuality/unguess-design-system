@@ -29,8 +29,17 @@ export interface HeaderItemArgs extends IHeaderItemProps {
   /** Applies header logo styles to the item */
   hasLogo?: boolean;
 }
+export interface WorkspaceDropdownArgs {
+  workspaces: Workspace[];
+  activeWorkspace: Workspace;
+  workspacesLabel?: string;
+  onWorkspaceChange?: (workspace: Workspace) => void;
+  isCompact?: boolean;
+}
 
-export interface BrandItemArgs extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface BrandItemArgs
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    WorkspaceDropdownArgs {
   /** Maximizes the width of a flex item in the header */
   maxX?: boolean;
   /** Maximizes the height of the item (i.e. contains a search input) */
@@ -41,15 +50,6 @@ export interface BrandItemArgs extends ButtonHTMLAttributes<HTMLButtonElement> {
   brandName?: string;
   /** Add a descriptive text to the menu item icon*/
   menuLabel?: string;
-
-  workspacesLabel?: string;
-
-  activeWorkspace?: Workspace;
-
-  workspaces?: Workspace[];
-
-  onWorkspaceChange?: (workspace: Workspace) => void;
-
   /** Triggered when the menu item is clicked */
   toggleMenu?: () => void;
 }

@@ -1,5 +1,12 @@
 import { Nav } from "../nav";
-import { NavItem, NavItemIcon, NavItemText, NavToggle, NavDivider, NavItemProject } from "../nav/nav-item";
+import {
+  NavItem,
+  NavItemIcon,
+  NavItemText,
+  NavToggle,
+  NavDivider,
+  NavItemProject,
+} from "../nav/nav-item";
 import { ReactComponent as HomeIcon } from "../../../assets/icons/home-fill.svg";
 import { ReactComponent as HomeIconStyled } from "../../../assets/icons/home-fill-styled.svg";
 import { ReactComponent as TokenIcon } from "../../../assets/icons/token.svg";
@@ -12,6 +19,7 @@ import { Card } from "../../cards";
 import styled from "styled-components";
 import { Span } from "../../typography/span";
 import { LoadingSidebar } from "./skeleton";
+import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
 
 const TokenContainer = styled.div`
   display: flex;
@@ -25,6 +33,19 @@ const ScrollingContainer = styled.div`
   order: 1;
   overflow-y: auto;
   height: 100%;
+`;
+
+const StyledNavItem = styled(NavItem)`
+  ${({ isExpanded }) => isExpanded &&
+  `
+    display: block;
+    padding-right: ${theme.space.md};
+  `};
+
+  &:hover,
+  &:focus {
+    background-color: white;
+  }
 `;
 
 /**
@@ -45,16 +66,28 @@ const Sidebar = (props: SidebarArgs) => {
     setNav(route);
   };
 
-  return props.isLoading ? <LoadingSidebar /> : (
+  return props.isLoading ? (
+    <LoadingSidebar />
+  ) : (
     <Nav {...props}>
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
+      {props.workspaces && props.workspaces.length > 1 && (
+        <StyledNavItem hasLogo isExpanded={props.isExpanded}>
+          <WorkspacesDropdown
+            workspaces={props.workspaces}
+            workspacesLabel={props.workspacesLabel}
+            activeWorkspace={props.activeWorkspace}
+            onWorkspaceChange={props.onWorkspaceChange}
+          />
+        </StyledNavItem>
+      )}
       {props.tokens && (
-        <NavItem
+        <StyledNavItem
           hasLogo
           isExpanded={props.isExpanded}
           style={{ pointerEvents: "none", paddingTop: 0 }}
         >
-          <Card style={{ padding: theme.space.sm, width: "70%" }}>
+          <Card style={{ padding: theme.space.sm }}>
             <TokenContainer>
               <TokenIcon width={32} />
               <Span isBold style={{ marginLeft: theme.space.xs }}>
@@ -62,7 +95,7 @@ const Sidebar = (props: SidebarArgs) => {
               </Span>
             </TokenContainer>
           </Card>
-        </NavItem>
+        </StyledNavItem>
       )}
       <NavItem
         isExpanded={props.isExpanded}

@@ -1,18 +1,11 @@
 import { HeaderItem as ZendeskHeaderItem } from "@zendeskgarden/react-chrome";
 import styled from "styled-components";
-import { BrandItemArgs, Workspace } from "./_types";
+import { BrandItemArgs } from "./_types";
 import { HeaderItemIcon } from "./headerItemIcon";
 import { HeaderItemText } from "./headerItemText";
 import { Logo } from "../../../logo";
 import { ReactComponent as MenuIcon } from "../../../../assets/icons/menu-stroke.svg";
-import { Dropdown, Select } from "../../../dropdowns/select";
-import { Field } from "@zendeskgarden/react-dropdowns";
-import { Menu, Separator } from "../../../dropdowns/menu";
-import { Item } from "../../../dropdowns/item";
-import { MenuHeaderItem } from "../../../dropdowns/menuheader";
-import { useState } from "react";
-import { theme } from "../../../theme";
-import { MD } from "../../../typography/typescale";
+import { WorkspacesDropdown } from "./workspacesDropdown";
 
 export const LogoIconContainer = styled(ZendeskHeaderItem)`
   margin-right: 2px;
@@ -58,10 +51,6 @@ const MenuItem = styled(ZendeskHeaderItem)`
 `;
 
 const BrandItem = (props: BrandItemArgs) => {
-  const [selectedWorkspace, setSelectedWorkspace] = useState(
-    props.activeWorkspace
-  );
-
   return (
     <>
       <MenuItem {...props} onClick={props.toggleMenu}>
@@ -78,35 +67,12 @@ const BrandItem = (props: BrandItemArgs) => {
 
       {props.workspaces && props.workspaces.length > 1 ? (
         <DropdownItem>
-          <Dropdown
-            selectedItem={selectedWorkspace}
-            onSelect={(workspace) => {
-              setSelectedWorkspace(workspace);
-              props.onWorkspaceChange && props.onWorkspaceChange(workspace);
-            }}
-            downshiftProps={{
-              itemToString: (item: Workspace) => item && item.company,
-            }}
-          >
-            <Field>
-              <Select style={{ color: theme.colors.primaryHue }}>
-                {selectedWorkspace
-                  ? selectedWorkspace.company + "'s workspace"
-                  : "Select workspace"}
-              </Select>
-            </Field>
-            <Menu>
-              <MenuHeaderItem>
-                <MD isBold style={{ color: theme.palette.grey[800] }}>
-                  {props.workspacesLabel || "Workspaces"}
-                </MD>
-              </MenuHeaderItem>
-              <Separator />
-              {props.workspaces.map((item) => (
-                <Item value={item}>{item.company}</Item>
-              ))}
-            </Menu>
-          </Dropdown>
+          <WorkspacesDropdown
+            workspaces={props.workspaces}
+            workspacesLabel={props.workspacesLabel}
+            activeWorkspace={props.activeWorkspace}
+            onWorkspaceChange={props.onWorkspaceChange}
+          />
         </DropdownItem>
       ) : (
         <>

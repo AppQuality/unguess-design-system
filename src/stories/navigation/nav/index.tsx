@@ -10,8 +10,8 @@ const UgNav = styled(ZendeskNav)`
     `
       width: ${
         props.isExpanded
-          ? props.theme.space.base * 60
-          : props.theme.space.base * 9
+          ? props.theme.components.chrome.nav.openWidth
+          : props.theme.components.chrome.nav.closedWidth
       }px;
       @media (max-width: ${props.theme.breakpoints.sm}) {
          width: ${props.isExpanded ? "100%" : "0"};
