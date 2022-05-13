@@ -58,6 +58,8 @@ const StyledNavItem = styled(NavItem)`
 const Sidebar = (props: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
 
+  const showWorkspacesDropdown = window.matchMedia(`only screen and (min-width: ${theme.breakpoints.sm})`).matches;
+
   const toggleNav = () => {
     props.onToggleMenu && props.onToggleMenu();
   };
@@ -76,7 +78,7 @@ const Sidebar = (props: SidebarArgs) => {
   ) : (
     <Nav {...props}>
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
-      {props.workspaces && props.workspaces.length > 1 && (
+      {showWorkspacesDropdown && props.workspaces && props.workspaces.length > 1 && (
         <>
           <StyledNavItem hasLogo isExpanded={props.isExpanded} style={padding}>
             <WorkspacesDropdown
