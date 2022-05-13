@@ -10,6 +10,9 @@ import {
 import { ReactComponent as HomeIcon } from "../../../assets/icons/home-fill.svg";
 import { ReactComponent as HomeIconStyled } from "../../../assets/icons/home-fill-styled.svg";
 import { ReactComponent as TokenIcon } from "../../../assets/icons/token.svg";
+import { ReactComponent as FolderIcon } from "../../../assets/icons/folder-icon.svg";
+
+
 
 import { SidebarArgs } from "./_types";
 import { useState } from "react";
@@ -58,7 +61,7 @@ const StyledNavItem = styled(NavItem)`
 const Sidebar = (props: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
 
-  const showWorkspacesDropdown = window.matchMedia(`only screen and (min-width: ${theme.breakpoints.sm})`).matches;
+  const showWorkspacesDropdown = window.matchMedia(`only screen and (max-width: ${theme.breakpoints.sm})`).matches;
 
   const toggleNav = () => {
     props.onToggleMenu && props.onToggleMenu();
@@ -86,6 +89,7 @@ const Sidebar = (props: SidebarArgs) => {
               workspacesLabel={props.workspacesLabel}
               activeWorkspace={props.activeWorkspace}
               onWorkspaceChange={props.onWorkspaceChange}
+              isCompact
             />
           </StyledNavItem>
           {props.tokens && (
@@ -121,7 +125,7 @@ const Sidebar = (props: SidebarArgs) => {
       </NavItem>
 
       <NavDivider isExpanded={props.isExpanded}>
-        {props.dividerLabel || ""}
+        <FolderIcon/> {props.dividerLabel || ""}
       </NavDivider>
       <ScrollingContainer>
         {props.projects &&
