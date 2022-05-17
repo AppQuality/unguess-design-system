@@ -1,3 +1,15 @@
+# v2.10.33 (Tue May 17 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 739 timeline component [#56](https://github.com/AppQuality/unguess-design-system/pull/56) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.32 (Tue May 17 2022)
 
 #### ⚠️ Pushed to `master`
