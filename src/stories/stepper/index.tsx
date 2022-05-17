@@ -11,10 +11,6 @@ const UgStep = styled(ZendeskStepper.Step)`
 const UgLabel = styled(ZendeskStepper.Label)``;
 
 const UgStepper = styled(ZendeskStepper)`
-  ${(props) => {
-    console.log("Active index: ", props.activeIndex);
-    return "";
-  }}
 
   div[data-garden-id="accordions.step_icon"] {
     background-color: ${({ theme }) => theme.palette.grey[200]};
