@@ -1,3 +1,15 @@
+# v2.10.32 (Tue May 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(stepper): remove useless console.log ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.31 (Tue May 17 2022)
 
 #### ⚠️ Pushed to `master`
