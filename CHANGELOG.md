@@ -1,3 +1,15 @@
+# v2.10.30 (Tue May 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(main): hide white space for hidden scrollbar ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.29 (Tue May 17 2022)
 
 #### 🐛 Bug Fix
