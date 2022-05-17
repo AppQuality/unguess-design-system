@@ -1,3 +1,15 @@
+# v2.10.29 (Tue May 17 2022)
+
+#### 🐛 Bug Fix
+
+- fix(campaign-cards): fix wrong icons for type props [#55](https://github.com/AppQuality/unguess-design-system/pull/55) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.28 (Fri May 13 2022)
 
 #### ⚠️ Pushed to `master`
