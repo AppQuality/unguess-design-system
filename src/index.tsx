@@ -132,6 +132,9 @@ export * from "./stories/tags";
 // --- Tiles ---
 export * from "./stories/tiles";
 
+// --- Timeline ---
+export * from "./stories/timeline";
+
 // --- Theme ---
 export * from "./stories/theme";
 
