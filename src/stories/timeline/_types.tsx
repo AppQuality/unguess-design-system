@@ -7,6 +7,8 @@ import { ReactNode } from "react";
 export interface TimelineArgs extends ITimelineProps {
   /** Applies alternate styling */
   isAlternate?: boolean;
+  /** Applies invisibility power to timeline line */
+  hiddenLine?: boolean;
 }
 
 export interface TimelineItemArgs extends ITimelineItemProps {

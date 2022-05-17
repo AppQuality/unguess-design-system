@@ -4,6 +4,30 @@ import styled from "styled-components";
 
 const UgTimeline = styled(ZendeskTimeline)``;
 
+const UgTimelineContent = styled(ZendeskTimeline.Content)``;
+
+const UgTimelineItem = styled(ZendeskTimeline.Item)<TimelineArgs>`
+  div[data-garden-id="timeline.content.separator"] {
+    &:after {
+      border-left-color: ${({ theme }) => theme.palette.grey[300]};
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  ${({ hiddenLine }) =>
+    hiddenLine &&
+    `
+    div[data-garden-id="timeline.content.separator"] {
+      &:after {
+        border-left-color: transparent;
+      }
+    }
+  `}
+`;
+
 /**
  * A Timeline lists events over a period of time.
  * <hr>
@@ -15,7 +39,7 @@ const UgTimeline = styled(ZendeskTimeline)``;
  */
 const Timeline = (props: TimelineArgs) => <UgTimeline {...props} />;
 
-Timeline.Item = ZendeskTimeline.Item;
-Timeline.Content = ZendeskTimeline.Content;
+Timeline.Item = UgTimelineItem;
+Timeline.Content = UgTimelineContent;
 
 export { Timeline };
