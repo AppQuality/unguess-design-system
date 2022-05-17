@@ -6,8 +6,6 @@ const UgMain = styled(ZendeskMain)`
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin: ${({ theme }) => theme.space.xxl }
   }
-
-  overflow-y: auto;
   
   /* hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none;

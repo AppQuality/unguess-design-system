@@ -29,7 +29,11 @@ const GlobalStyle = createGlobalStyle`
     scrollbar-color: ${theme.palette.blue["200"]} #FFFFFF;
     scrollbar-width: thin;
   }
-  
+
+  html {
+    overflow-y: auto;
+  }
+
   body {
     font-family: ${theme.fonts.system};
     margin: 0;
