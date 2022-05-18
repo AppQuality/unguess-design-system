@@ -4,11 +4,12 @@ import { ServiceCard } from "./index"
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { ReactComponent as ExploratoryIcon } from "../../assets/icons/service-exploratory-icon.svg";
+import { Button } from "../buttons/button";
 
 const defaultArgs: ServiceCardsProps = {
-    service_icon: <ExploratoryIcon />,
-    service_title: "Exploratory",
-    service_subtitle: "Explore the data",
+    serviceIcon: <ExploratoryIcon />,
+    serviceTitle: "Bug hunting and Customer Feedback",
+    serviceSubtitle: "Trova ed elimina i bug e garantisci un'esperienza memorabile.",
     tags: [
         {
             label: "Explore",
@@ -18,6 +19,13 @@ const defaultArgs: ServiceCardsProps = {
             label: "Explore",
             icon: <ExploratoryIcon />
         },
+    ],
+    isHoverable: true,
+    hoverTitle: "Functional testing",
+    hoverSubtitle: "We assign our experienced testers test cases, such as purchasing with a credit card or creating an account, and they will detect the bugs.",
+    hoverButtons: [
+        <Button isPill isStretched>Come funziona</Button>,
+        <Button isPill isPrimary isStretched>Lancia campagna</Button>,
     ]
 }
 
@@ -27,6 +35,30 @@ const SingleTemplate: Story<ServiceCardsProps> = (args) => {
 
 export const SingleCard = SingleTemplate.bind({})
 SingleCard.args = {
+    ...defaultArgs
+}
+
+const MultiTemplate: Story<ServiceCardsProps> = (args) => {
+    return (
+        <Row>
+            <Col size={3}>
+                <ServiceCard {...args} />
+            </Col>
+            <Col size={3}>
+                <ServiceCard {...args} />
+            </Col>
+            <Col size={3}>
+                <ServiceCard {...args} />
+            </Col>
+            <Col size={3}>
+                <ServiceCard {...args} />
+            </Col>
+        </Row>
+    )
+}
+
+export const Grid = MultiTemplate.bind({})
+Grid.args = {
     ...defaultArgs
 }
 

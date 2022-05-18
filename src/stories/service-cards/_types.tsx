@@ -6,8 +6,12 @@ interface ITag {
 }
 
 export interface ServiceCardsProps extends CardProps {
-    service_icon: React.ReactElement;
-    service_title: string;
-    service_subtitle: string;
+    serviceIcon: React.ReactNode;
+    serviceTitle: string;
+    serviceSubtitle: string;
     tags?: Array<ITag>;
+    isHoverable?: boolean;
+    hoverTitle?: string;
+    hoverSubtitle?: string;
+    hoverButtons?: Array<React.ReactNode>;
 }
