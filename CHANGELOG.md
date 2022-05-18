@@ -1,3 +1,15 @@
+# v2.10.35 (Wed May 18 2022)
+
+#### 🐛 Bug Fix
+
+- feat(sidebar): add templates menu item [#59](https://github.com/AppQuality/unguess-design-system/pull/59) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.34 (Wed May 18 2022)
 
 #### 🐛 Bug Fix
