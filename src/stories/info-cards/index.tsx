@@ -10,13 +10,18 @@ const StyledCard = styled(Card)`
 `;
 
 const CardContent = styled.div`
-    transition: all 0.3s ease-in-out;
-    position: relative;
     z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
 `;
 
 const FooterContent = styled.div`
-    margin-top: ${({ theme }) => theme.space.sm};
+    padding-top: ${({ theme }) => theme.space.sm};
+    margin-top: auto;
+    width: 100%;
 `;
 
 const ButtonsWrap = styled.div`
@@ -85,19 +90,21 @@ const InfoCard = (props: InfoCardProps) => {
     return (
         <StyledCard {...props}>
             <CardContent>
-                {props.infoImg && (
-                    <CardHeader>
-                        <ImgContainer>{props.infoImg}</ImgContainer>
-                    </CardHeader>
-                )}
-                <CardBody>
-                    {props.infoSubtitle && (
-                        <InfoSubtitle>{props.infoSubtitle}</InfoSubtitle>
+                <>
+                    {props.infoImg && (
+                        <CardHeader>
+                            <ImgContainer>{props.infoImg}</ImgContainer>
+                        </CardHeader>
                     )}
-                    {props.infoTitle && (
-                        <InfoTitle>{props.infoTitle}</InfoTitle>
-                    )}
-                </CardBody>
+                    <CardBody>
+                        {props.infoSubtitle && (
+                            <InfoSubtitle>{props.infoSubtitle}</InfoSubtitle>
+                        )}
+                        {props.infoTitle && (
+                            <InfoTitle>{props.infoTitle}</InfoTitle>
+                        )}
+                    </CardBody>
+                </>
                 {props.infoButtons && (
                     <FooterContent>
                         <Divider />

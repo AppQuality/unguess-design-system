@@ -67,10 +67,17 @@ const CardContent = styled.div`
     transition: all 0.3s ease-in-out;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
 `;
 
 const FooterContent = styled.div`
-    margin-top: ${({ theme }) => theme.space.sm};
+    padding-top: ${({ theme }) => theme.space.sm};
+    margin-top: auto;
+    width: 100%;
 `;
 
 const ButtonsWrap = styled.div`
@@ -147,19 +154,21 @@ const ServiceCard = (props: ServiceCardsProps) => {
                 </HoverBody>
             )}
             <CardContent>
-                {props.serviceIcon && (
-                    <CardHeader>
-                        <IconContainer>{props.serviceIcon}</IconContainer>
-                    </CardHeader>
-                )}
-                <CardBody>
-                    {props.serviceSubtitle && (
-                        <ServiceSubtitle>{props.serviceSubtitle}</ServiceSubtitle>
+                <>
+                    {props.serviceIcon && (
+                        <CardHeader>
+                            <IconContainer>{props.serviceIcon}</IconContainer>
+                        </CardHeader>
                     )}
-                    {props.serviceTitle && (
-                        <ServiceTitle>{props.serviceTitle}</ServiceTitle>
-                    )}
-                </CardBody>
+                    <CardBody>
+                        {props.serviceSubtitle && (
+                            <ServiceSubtitle>{props.serviceSubtitle}</ServiceSubtitle>
+                        )}
+                        {props.serviceTitle && (
+                            <ServiceTitle>{props.serviceTitle}</ServiceTitle>
+                        )}
+                    </CardBody>
+                </>
                 {props.tags && (
                     <FooterContent>
                         <Divider />
