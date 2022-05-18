@@ -24,8 +24,8 @@ const defaultArgs: ServiceCardsProps = {
     hoverTitle: "Functional testing",
     hoverSubtitle: "We assign our experienced testers test cases, such as purchasing with a credit card or creating an account, and they will detect the bugs.",
     hoverButtons: [
-        <Button isPill isStretched>Come funziona</Button>,
-        <Button isPill isPrimary isStretched>Lancia campagna</Button>,
+        <Button isPill isStretched size="small">Come funziona</Button>,
+        <Button isPill isPrimary isStretched size="small">Lancia campagna</Button>,
     ]
 }
 

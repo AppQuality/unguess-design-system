@@ -1,11 +1,26 @@
-import { LG, SM } from "@zendeskgarden/react-typography";
-import styled from "styled-components";
-import { Button } from "../buttons/button";
+import { LG, SM } from "../typography/typescale";
 import { Card } from "../cards";
 import { Tag } from "../tags";
 import { theme } from "../theme";
 import { cardStyle } from "../theme/mixins";
 import { ServiceCardsProps } from "./_types";
+import styled from "styled-components";
+
+const ServiceSubtitle = styled(SM)`
+    color: ${({ theme }) => theme.palette.grey[500]};
+    margin-bottom: ${({ theme }) => theme.space.base}px;
+`;
+
+const ServiceTitle = styled(LG)`
+    color: ${({ theme }) => theme.palette.blue[600]};
+    margin-bottom: ${({ theme }) => theme.space.base}px;
+    font-weight: ${({ theme }) => theme.fontWeights.semibold};
+`;
+
+const StyledTag = styled(Tag)`
+    margin-right: ${({ theme }) => theme.space.xs};
+    margin-top: ${({ theme }) => theme.space.xs};
+`;
 
 const CardHeader = styled.div`
     display: flex;
@@ -48,22 +63,6 @@ const Divider = styled.div`
     background-color: ${({ theme }) => theme.palette.grey["300"]};
 `;
 
-const ServiceSubtitle = styled(SM)`
-    color: ${({ theme }) => theme.palette.grey[500]};
-    margin-bottom: ${({ theme }) => theme.space.base}px;
-`;
-
-const ServiceTitle = styled(LG)`
-    color: ${({ theme }) => theme.palette.blue[600]};
-    margin-bottom: ${({ theme }) => theme.space.base}px;
-    font-weight: ${({ theme }) => theme.fontWeights.semibold};
-`;
-
-const StyledTag = styled(Tag)`
-    margin-right: ${({ theme }) => theme.space.xs};
-    margin-bottom: ${({ theme }) => theme.space.xs};
-`;
-
 const CardContent = styled.div`
     transition: all 0.3s ease-in-out;
     position: relative;
@@ -102,17 +101,11 @@ const HoverBody = styled(CardBody)`
     align-items: space-between;
     flex-direction: column;
     justify-content: space-between;
-
-    ${ButtonsWrap} {
-
-    }
 `;
 
 const HoverMetaContainer = styled.div``;
 
 const StyledCard = styled(Card) <ServiceCardsProps>`
-    position: relative;
-    overflow: hidden;
     ${cardStyle}
 
     ${({ isHoverable }) => isHoverable && `

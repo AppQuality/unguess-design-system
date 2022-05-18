@@ -23,6 +23,8 @@ export const cardStyle = css`
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+  overflow: hidden;
 
   &:hover {
     box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
