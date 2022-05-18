@@ -4,7 +4,9 @@ import styled from "styled-components";
 
 const UgTimeline = styled(ZendeskTimeline)``;
 
-const UgTimelineContent = styled(ZendeskTimeline.Content)``;
+const UgTimelineContent = styled(ZendeskTimeline.Content)`
+  padding: 12px 16px;
+`;
 
 const UgTimelineItem = styled(ZendeskTimeline.Item)<TimelineArgs>`
   div[data-garden-id="timeline.content.separator"] {
@@ -15,6 +17,7 @@ const UgTimelineItem = styled(ZendeskTimeline.Item)<TimelineArgs>`
       width: 24px;
       height: 24px;
     }
+    padding: 12px 16px;
   }
 
   ${({ hiddenLine }) =>
