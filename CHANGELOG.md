@@ -1,3 +1,15 @@
+# v2.10.34 (Wed May 18 2022)
+
+#### 🐛 Bug Fix
+
+- fix(timeline): update component padding [#57](https://github.com/AppQuality/unguess-design-system/pull/57) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.33 (Tue May 17 2022)
 
 #### 🐛 Bug Fix
