@@ -5,6 +5,7 @@ export interface SidebarArgs extends NavArgs, WorkspaceDropdownArgs {
   projects?: Array<ProjectItem>;
   currentRoute?: string;
   homeItemLabel?: string;
+  servicesItemLabel?: string;
   dividerLabel?: string;
   tokens?: string;
   tokensLabel?: string;

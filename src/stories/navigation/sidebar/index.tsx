@@ -11,6 +11,8 @@ import { ReactComponent as HomeIcon } from "../../../assets/icons/home-fill.svg"
 import { ReactComponent as HomeIconStyled } from "../../../assets/icons/home-fill-styled.svg";
 import { ReactComponent as TokenIcon } from "../../../assets/icons/token.svg";
 import { ReactComponent as FolderIcon } from "../../../assets/icons/folder-icon.svg";
+import { ReactComponent as TemplatesIcon } from "../../../assets/icons/templates.svg";
+import { ReactComponent as TemplatesActiveIcon } from "../../../assets/icons/templates-active.svg";
 
 
 
@@ -122,6 +124,17 @@ const Sidebar = (props: SidebarArgs) => {
           {nav === "home" ? <HomeIconStyled /> : <HomeIcon />}
         </NavItemIcon>
         <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
+      </NavItem>
+      
+      <NavItem
+        isExpanded={props.isExpanded}
+        isCurrent={nav === "templates"}
+        onClick={() => navigate("templates")}
+      >
+        <NavItemIcon isStyled>
+          {nav === "templates" ? <TemplatesActiveIcon /> : <TemplatesIcon />}
+        </NavItemIcon>
+        <NavItemText>{props.servicesItemLabel || "Templates"}</NavItemText>
       </NavItem>
 
       <NavDivider isExpanded={props.isExpanded}>
