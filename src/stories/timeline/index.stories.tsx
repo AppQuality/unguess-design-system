@@ -27,7 +27,7 @@ const defaultArgs: TimelineStoryProps = {
   isAlternate: false,
   hiddenLine: false,
   items: [
-    { icon: <FlagIcon />, title: "Cosa testiamo e perché?", description: "Individuiamo l’obiettivo del test e il prodotto da testare" },
+    { icon: <FlagIcon />, title: "Cosa testiamo e perché?", description: "Individuiamo l'obiettivo del test e il prodotto da testare" },
     { icon: <LocationIcon />, title: "Dove lo testiamo?", description: "Scegliamo Dispositivi e touchpoint" },
     { icon: <UserGroupIcon />, title: "Con chi lo testiamo?", description: "Individuiamo i criteri di selezione dei tester" },
     { icon: <ClipboardIcon />, title: "Come lo testiamo?", description: "Definiamo fino a 7 test case" },
@@ -44,7 +44,7 @@ const Template: Story<TimelineStoryProps> = ({ items, ...args }) => {
           {items.map((item, index) => (
             <Timeline.Item key={index} hiddenLine={args.hiddenLine} {...item}>
               <Timeline.Content>
-                <Paragraph>{item.title}</Paragraph>
+                <Paragraph style={{fontWeight: 500}}>{item.title}</Paragraph>
                 {item.description && <Span hue="grey">{item.description}</Span>}
               </Timeline.Content>
             </Timeline.Item>
