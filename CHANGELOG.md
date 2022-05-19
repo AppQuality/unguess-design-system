@@ -1,3 +1,15 @@
+# v2.10.37 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- fix(sidebar): fix route for navigation [#60](https://github.com/AppQuality/unguess-design-system/pull/60) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.36 (Thu May 19 2022)
 
 #### 🐛 Bug Fix
