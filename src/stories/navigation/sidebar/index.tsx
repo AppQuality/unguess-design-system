@@ -13,9 +13,6 @@ import { ReactComponent as TokenIcon } from "../../../assets/icons/token.svg";
 import { ReactComponent as FolderIcon } from "../../../assets/icons/folder-icon.svg";
 import { ReactComponent as TemplatesIcon } from "../../../assets/icons/templates.svg";
 import { ReactComponent as TemplatesActiveIcon } from "../../../assets/icons/templates-active.svg";
-
-
-
 import { SidebarArgs } from "./_types";
 import { useState } from "react";
 import { theme } from "../../theme";
@@ -69,9 +66,10 @@ const Sidebar = (props: SidebarArgs) => {
     props.onToggleMenu && props.onToggleMenu();
   };
 
-  const navigate = (route: string) => {
-    props.onNavToggle && props.onNavToggle(route);
-    setNav(route);
+  const navigate = (route: string, parameter?: string) => {
+    let fullRoute = route + (parameter ? `/${parameter}` : "");
+    props.onNavToggle && props.onNavToggle(route, parameter);
+    setNav(fullRoute);
   };
 
   const padding = props.tokens ? {
@@ -146,8 +144,8 @@ const Sidebar = (props: SidebarArgs) => {
             <NavItemProject
               key={project.id}
               isExpanded={props.isExpanded}
-              isCurrent={nav === project.id}
-              onClick={() => navigate(project.id)}
+              isCurrent={nav === `projects/${project.id}`}
+              onClick={() => navigate("projects", project.id)}
             >
               <NavItemProject.Title
                 title={project.title}
