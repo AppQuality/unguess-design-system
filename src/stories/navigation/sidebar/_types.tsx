@@ -11,7 +11,7 @@ export interface SidebarArgs extends NavArgs, WorkspaceDropdownArgs {
   tokensLabel?: string;
   isExpanded?: boolean;
   onToggleMenu?: () => void;
-  onNavToggle?: (route: string) => void;
+  onNavToggle?: (route: string, parameter?: string) => void;
   isLoading?: boolean;
 }
 
