@@ -1,3 +1,15 @@
+# v2.10.36 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 721 service cards + info cards [#58](https://github.com/AppQuality/unguess-design-system/pull/58) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.35 (Wed May 18 2022)
 
 #### 🐛 Bug Fix
