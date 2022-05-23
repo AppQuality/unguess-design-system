@@ -1,5 +1,15 @@
 import { WorkspaceDropdownArgs } from "../header/header-item/_types";
 import { NavArgs } from "../nav/_types";
+export interface ProjectItem {
+  id: string;
+  title: string;
+  campaigns: string;
+}
+
+export interface FeatureItem {
+  slug: string;
+  name: string;
+}
 
 export interface SidebarArgs extends NavArgs, WorkspaceDropdownArgs {
   projects?: Array<ProjectItem>;
@@ -13,10 +23,5 @@ export interface SidebarArgs extends NavArgs, WorkspaceDropdownArgs {
   onToggleMenu?: () => void;
   onNavToggle?: (route: string, parameter?: string) => void;
   isLoading?: boolean;
-}
-
-export interface ProjectItem {
-  id: string;
-  title: string;
-  campaigns: string;
+  features?: Array<FeatureItem>;
 }
