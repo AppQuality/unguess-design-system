@@ -14,8 +14,6 @@ import { ReactComponent as FolderIcon } from "../../../assets/icons/folder-icon.
 import { ReactComponent as TemplatesIcon } from "../../../assets/icons/templates.svg";
 import { ReactComponent as TemplatesActiveIcon } from "../../../assets/icons/templates-active.svg";
 
-
-
 import { SidebarArgs } from "./_types";
 import { useState } from "react";
 import { theme } from "../../theme";
@@ -25,6 +23,7 @@ import styled from "styled-components";
 import { Span } from "../../typography/span";
 import { LoadingSidebar } from "./skeleton";
 import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
+import { FEATURE_FLAG_CATALOG } from "../../../constants";
 
 const TokenContainer = styled.div`
   display: flex;
@@ -62,8 +61,10 @@ const StyledNavItem = styled(NavItem)`
  */
 const Sidebar = (props: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
-
-  const showWorkspacesDropdown = window.matchMedia(`only screen and (max-width: ${theme.breakpoints.sm})`).matches;
+  const { features } = props;
+  const showWorkspacesDropdown = window.matchMedia(
+    `only screen and (max-width: ${theme.breakpoints.sm})`
+  ).matches;
 
   const toggleNav = () => {
     props.onToggleMenu && props.onToggleMenu();
@@ -74,31 +75,39 @@ const Sidebar = (props: SidebarArgs) => {
     setNav(route);
   };
 
-  const padding = props.tokens ? {
-    paddingBottom: 0
-  }: {};
+  const padding = props.tokens
+    ? {
+        paddingBottom: 0,
+      }
+    : {};
 
   return props.isLoading ? (
-    <LoadingSidebar {...props}/>
+    <LoadingSidebar {...props} />
   ) : (
     <Nav {...props}>
       <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
-      {showWorkspacesDropdown && props.workspaces && props.workspaces.length > 1 && (
-        <>
-          <StyledNavItem hasLogo isExpanded={props.isExpanded} style={padding}>
-            <WorkspacesDropdown
-              workspaces={props.workspaces}
-              workspacesLabel={props.workspacesLabel}
-              activeWorkspace={props.activeWorkspace}
-              onWorkspaceChange={props.onWorkspaceChange}
-              isCompact
-            />
-          </StyledNavItem>
-          {props.tokens && (
-            <NavDivider isExpanded={props.isExpanded} style={{order: 0}} />
-          )}
-        </>
-      )}
+      {showWorkspacesDropdown &&
+        props.workspaces &&
+        props.workspaces.length > 1 && (
+          <>
+            <StyledNavItem
+              hasLogo
+              isExpanded={props.isExpanded}
+              style={padding}
+            >
+              <WorkspacesDropdown
+                workspaces={props.workspaces}
+                workspacesLabel={props.workspacesLabel}
+                activeWorkspace={props.activeWorkspace}
+                onWorkspaceChange={props.onWorkspaceChange}
+                isCompact
+              />
+            </StyledNavItem>
+            {props.tokens && (
+              <NavDivider isExpanded={props.isExpanded} style={{ order: 0 }} />
+            )}
+          </>
+        )}
       {props.tokens && (
         <StyledNavItem
           hasLogo
@@ -108,7 +117,13 @@ const Sidebar = (props: SidebarArgs) => {
           <Card style={{ padding: theme.space.sm }}>
             <TokenContainer>
               <TokenIcon width={32} />
-              <Span isBold style={{ marginLeft: theme.space.xs, color: theme.palette.grey[800] }}>
+              <Span
+                isBold
+                style={{
+                  marginLeft: theme.space.xs,
+                  color: theme.palette.grey[800],
+                }}
+              >
                 {props.tokens + " " + (props.tokensLabel || "tokens")}
               </Span>
             </TokenContainer>
@@ -125,20 +140,27 @@ const Sidebar = (props: SidebarArgs) => {
         </NavItemIcon>
         <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
       </NavItem>
-      
-      <NavItem
-        isExpanded={props.isExpanded}
-        isCurrent={nav === "templates"}
-        onClick={() => navigate("templates")}
-      >
-        <NavItemIcon isStyled>
-          {nav === "templates" ? <TemplatesActiveIcon /> : <TemplatesIcon />}
-        </NavItemIcon>
-        <NavItemText>{props.servicesItemLabel || "Templates"}</NavItemText>
-      </NavItem>
+
+      {features &&
+        features.find((feature) => feature.slug === FEATURE_FLAG_CATALOG) && (
+          <NavItem
+            isExpanded={props.isExpanded}
+            isCurrent={nav === "templates"}
+            onClick={() => navigate("templates")}
+          >
+            <NavItemIcon isStyled>
+              {nav === "templates" ? (
+                <TemplatesActiveIcon />
+              ) : (
+                <TemplatesIcon />
+              )}
+            </NavItemIcon>
+            <NavItemText>{props.servicesItemLabel || "Templates"}</NavItemText>
+          </NavItem>
+        )}
 
       <NavDivider isExpanded={props.isExpanded}>
-        <FolderIcon/> {props.dividerLabel || ""}
+        <FolderIcon /> {props.dividerLabel || ""}
       </NavDivider>
       <ScrollingContainer>
         {props.projects &&

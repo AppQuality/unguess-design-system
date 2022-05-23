@@ -5,6 +5,7 @@ import { SidebarArgs } from "./_types";
 import { Chrome } from "../chrome";
 import { Sidebar } from ".";
 import { useState } from "react";
+import { FEATURE_FLAG_CATALOG } from "../../../constants";
 
 interface SidebarStoryArgs extends SidebarArgs {}
 
@@ -120,6 +121,12 @@ WithAll.args = {
     {
       company: "One upon a time there was an insanely long company name",
       id: 3,
+    },
+  ],
+  features: [
+    {
+      slug: FEATURE_FLAG_CATALOG,
+      name: "Catalog",
     },
   ],
 };
