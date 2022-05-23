@@ -70,9 +70,10 @@ const Sidebar = (props: SidebarArgs) => {
     props.onToggleMenu && props.onToggleMenu();
   };
 
-  const navigate = (route: string) => {
-    props.onNavToggle && props.onNavToggle(route);
-    setNav(route);
+  const navigate = (route: string, parameter?: string) => {
+    let fullRoute = route + (parameter ? `/${parameter}` : "");
+    props.onNavToggle && props.onNavToggle(route, parameter);
+    setNav(fullRoute);
   };
 
   const padding = props.tokens
@@ -168,8 +169,8 @@ const Sidebar = (props: SidebarArgs) => {
             <NavItemProject
               key={project.id}
               isExpanded={props.isExpanded}
-              isCurrent={nav === project.id}
-              onClick={() => navigate(project.id)}
+              isCurrent={nav === `projects/${project.id}`}
+              onClick={() => navigate("projects", project.id)}
             >
               <NavItemProject.Title
                 title={project.title}
