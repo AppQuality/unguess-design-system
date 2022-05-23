@@ -1,3 +1,15 @@
+# v2.10.38 (Mon May 23 2022)
+
+#### 🐛 Bug Fix
+
+- feat(sidebar): add features flag to sidebar item [#61](https://github.com/AppQuality/unguess-design-system/pull/61) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.37 (Thu May 19 2022)
 
 #### 🐛 Bug Fix
