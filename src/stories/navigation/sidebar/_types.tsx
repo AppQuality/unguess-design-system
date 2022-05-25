@@ -7,8 +7,8 @@ export interface ProjectItem {
 }
 
 export interface FeatureItem {
-  slug: string;
-  name: string;
+  slug?: string;
+  name?: string;
 }
 
 export interface SidebarArgs extends NavArgs, WorkspaceDropdownArgs {
