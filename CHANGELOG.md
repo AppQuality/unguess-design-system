@@ -1,3 +1,20 @@
+# v2.10.40 (Wed May 25 2022)
+
+#### 🐛 Bug Fix
+
+- fix(login): fix "Spread types may only be created from object types" … [#62](https://github.com/AppQuality/unguess-design-system/pull/62) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- build(package.json): update peer ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.39 (Wed May 25 2022)
 
 #### ⚠️ Pushed to `master`
