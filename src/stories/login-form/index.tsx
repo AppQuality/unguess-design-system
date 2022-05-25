@@ -54,9 +54,7 @@ const LoginForm = (props: LoginFormArgs) => (
                   placeholder={props.placeholderEmail}
                   onChange={handleChange}
                   value={values.email}
-                  {...(touched && values.email
-                    ? (touched.email = true)
-                    : (touched.email = false))}
+
                   {...(errors && errors.email
                     ? { validation: "error" }
                     : touched.email
@@ -76,9 +74,7 @@ const LoginForm = (props: LoginFormArgs) => (
                   placeholder={props.placeholderPassword}
                   onChange={handleChange}
                   value={values.password}
-                  {...(touched && values.password
-                    ? (touched.password = true)
-                    : (touched.password = false))}
+                
                   {...(errors && errors.password
                     ? { validation: "error" }
                     : touched.password

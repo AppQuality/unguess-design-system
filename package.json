@@ -27,7 +27,8 @@
     "storybook": "start-storybook -p 6006",
     "clean": "rimraf build",
     "release": "npx auto shipit --base-branch=master",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "type:check": "tsc"
   },
   "eslintConfig": {
     "extends": [
