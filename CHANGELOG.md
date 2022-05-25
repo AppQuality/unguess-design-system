@@ -1,3 +1,15 @@
+# v2.10.39 (Wed May 25 2022)
+
+#### ⚠️ Pushed to `master`
+
+- refactor(sidebar): update feature schema in order as defined on stoplight ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.38 (Mon May 23 2022)
 
 #### 🐛 Bug Fix
