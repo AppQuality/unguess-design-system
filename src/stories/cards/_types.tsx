@@ -7,7 +7,4 @@ export interface CardProps extends IWellProps {
   isFloating?: boolean;
 }
 
-export interface ContainerCardProps extends IWellProps {
-  /** Applies a background color */
-  isRecessed?: boolean;
-}
+export interface ContainerCardProps extends IWellProps {}
