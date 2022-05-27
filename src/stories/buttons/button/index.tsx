@@ -42,10 +42,6 @@ const Button = (props: ButtonArgs) => {
   return <UgButton {...props} />;
 };
 
-Button.defaultProps = {
-  isPill: true
-};
-
 Button.StartIcon = UgButton.StartIcon;
 Button.EndIcon = UgButton.EndIcon;
 
