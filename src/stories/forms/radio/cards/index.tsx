@@ -5,6 +5,7 @@ import { ReactComponent as CheckIcon } from "../../../../assets/icons/check-lg.s
 import { Divider } from "../../../campaign-cards";
 import { LG } from "@zendeskgarden/react-typography";
 import styled from "styled-components";
+import { theme } from "../../../theme";
 
 interface CircleProps {
    checked: boolean;
@@ -27,9 +28,8 @@ const IconWrapper = styled.div`
 
 const StyledText = styled(LG)`
    margin: ${({ theme }) => theme.space.base}px auto;
-   color: ${({ theme }) => theme.palette.grey[600]};
+   color: ${({ theme }) => theme.palette.grey[700]};
    font-weight: ${({ theme }) => theme.fontWeights.medium};
-   color: ${({ theme }) => theme.colors.primaryHue};
    user-select: none;
 
    &:focus {
@@ -66,7 +66,7 @@ const RadioCard = ({ card, icon, iconActive, ...props }: RadioCardArgs) => {
          <IconWrapper>{(iconActive && props.checked) ? iconActive : icon}</IconWrapper>
          <input hidden type="radio" value={props.value} name={props.name} checked={props.checked} />
          <StyledDivider />
-         <StyledText>{props.label}</StyledText>
+         <StyledText style={props.checked ? {color: theme.colors.primaryHue} : {}}>{props.label}</StyledText>
       </StyledCard>
    )
 }
