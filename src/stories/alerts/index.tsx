@@ -6,6 +6,11 @@ const UgAlert = styled(ZendeskAlert)`
    background-color: white;
    color: ${({ theme }) => theme.palette.grey[700]};
    border-width: 2px;
+   font-size: ${({ theme }) => theme.fontSizes.sm};
+`;
+
+const UgAlertTitle = styled(ZendeskTitle)`
+   font-size: ${({ theme }) => theme.fontSizes.md};
 `;
 
 /**
@@ -16,7 +21,7 @@ const UgAlert = styled(ZendeskAlert)`
     - To provide a quick way to navigate to ancestor pages
  */
 const Alert = (props: AlertArgs) => <UgAlert {...props}/>;
-Alert.Title = ZendeskTitle;
+Alert.Title = UgAlertTitle;
 Alert.Close = ZendeskClose;
 
 export { Alert };
