@@ -1,3 +1,15 @@
+# v2.10.41 (Fri May 27 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 786 fix components [#63](https://github.com/AppQuality/unguess-design-system/pull/63) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.40 (Wed May 25 2022)
 
 #### 🐛 Bug Fix
