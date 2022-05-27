@@ -24,7 +24,7 @@ const IconWrapper = styled.div`
 
 const LabelWrapper = styled(Label)`
    margin: ${({ theme }) => theme.space.base}px auto;
-   color: ${({ theme }) => theme.palette.grey[600]};
+   color: ${({ theme }) => theme.palette.grey[700]};
    user-select: none;
 
    &:focus {
