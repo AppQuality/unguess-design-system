@@ -7,7 +7,7 @@ import { ButtonArgs } from "./_types";
 
 const defaultArgs: ButtonArgs = {
   variant: "isDefault",
-  isPill: false,
+  isPill: true,
   size: "medium",
   children: "button",
   onClick: () => alert("clicked!"),

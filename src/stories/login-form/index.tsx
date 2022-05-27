@@ -107,6 +107,7 @@ const LoginForm = (props: LoginFormArgs) => (
                     : false
                 }
                 isPrimary
+                themeColor={theme.palette.water[600]}
                 style={{ marginBottom: theme.space.md }}
               >
                 {props.buttonText}

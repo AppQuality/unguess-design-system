@@ -28,15 +28,16 @@ const defaultArgs: CardStoryProps = {
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
-export const Floating = Template.bind({});
-Floating.args = {
-  ...defaultArgs,
-  isFloating: true,
-};
-
 export default {
   title: "Molecules/Card/ContainerCard",
   component: ContainerCard,
+  argTypes: {
+    isFloating: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },

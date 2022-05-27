@@ -28,4 +28,6 @@ export interface ButtonArgs extends IButtonProps {
    @default isDefault
    */
   variant?: string;
+  /** Applies button background color */
+  themeColor?: string;
 }

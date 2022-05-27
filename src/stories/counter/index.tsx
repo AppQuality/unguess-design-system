@@ -14,7 +14,6 @@ const StyledSpan = styled(Span)``;
 const StyledTag = styled(Tag)<CounterArgs>`
   background-color: transparent;
   pointer-events: none;
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
   ${({ status, theme }) => {
     switch (status) {
       case "completed":
@@ -32,9 +31,9 @@ const StyledTag = styled(Tag)<CounterArgs>`
   }
 
   ${StyledSpan} {
-    font-weight: ${({ theme }) => theme.fontWeights.bold};
     margin-left: ${({ theme }) => theme.space.xxs};
     color: ${({ theme }) => theme.palette.grey[700]};
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
   }
 `;
 

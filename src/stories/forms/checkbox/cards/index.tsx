@@ -5,6 +5,7 @@ import { Label } from "../../../label";
 import styled from "styled-components";
 import { cardStyle } from "../../../theme/mixins";
 import { useState } from "react";
+import { theme } from "../../../theme";
 
 const StyledCard = styled(Card)`
    ${cardStyle}
@@ -23,7 +24,7 @@ const IconWrapper = styled.div`
 
 const LabelWrapper = styled(Label)`
    margin: ${({ theme }) => theme.space.base}px auto;
-   color: ${({ theme }) => theme.palette.grey[600]};
+   color: ${({ theme }) => theme.palette.grey[700]};
    user-select: none;
 
    &:focus {
@@ -45,7 +46,9 @@ const CheckboxCard = (props: CheckboxCardArgs) => {
    return (
       <StyledCard {...props.card} {...props} {...props && !props.disabled && {onClick: handleToggle} } className={checked ? "card-active" : ""}>
          <IconWrapper>{(props.iconActive && checked) ? props.iconActive : props.icon}</IconWrapper>
-         <LabelWrapper>{props.label}</LabelWrapper>
+         <LabelWrapper style={checked ? {color: theme.colors.primaryHue} : {}}>
+            {props.label}
+         </LabelWrapper>
          <Checkbox {...props} checked={checked} value={checked ? 1 : 0} onClick={(e) => e.stopPropagation()}>
             <StyledLabel hidden>{props.label}</StyledLabel>
          </Checkbox>
