@@ -6,3 +6,8 @@ export interface CardProps extends IWellProps {
   /** Applies a drop shadow */
   isFloating?: boolean;
 }
+
+export interface ContainerCardProps extends IWellProps {
+  /** Applies a background color */
+  isRecessed?: boolean;
+}

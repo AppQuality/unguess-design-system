@@ -1,5 +1,5 @@
 import { Well as ZendeskWell } from "@zendeskgarden/react-notifications";
-import { CardProps } from "./_types";
+import { CardProps, ContainerCardProps } from "./_types";
 import styled from "styled-components";
 
 const UgContentCard = styled(ZendeskWell)`
@@ -28,6 +28,6 @@ const UgContainerCard = styled(ZendeskWell)`
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
 `;
 
-const ContainerCard = (props: CardProps) => <UgContainerCard {...props} />;
+const ContainerCard = (props: ContainerCardProps) => <UgContainerCard {...props} />;
 
 export { Card, ContainerCard };
