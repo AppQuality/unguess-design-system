@@ -4,11 +4,11 @@ import { Tag } from "../tags";
 import { theme } from "../theme";
 import { Label } from "../label";
 import styled from "styled-components";
-import { ReactComponent as FunctionalTestIcon } from "../../assets/icons/functional-test-icon.svg";
-import { ReactComponent as RegressionTestIcon } from "../../assets/icons/experiential-test-icon.svg";
-import { ReactComponent as CompletedIcon } from "../../assets/icons/completed-status-round-icon.svg";
-import { ReactComponent as ProgressIcon } from "../../assets/icons/on-going-status-round-icon.svg";
-import { ReactComponent as IncomingIcon } from "../../assets/icons/arrival-status-round-icon.svg";
+import { ReactComponent as FunctionalTestIcon } from "../../assets/icons/campaign-functional.svg";
+import { ReactComponent as RegressionTestIcon } from "../../assets/icons/campaign-experiential.svg";
+import { ReactComponent as CompletedIcon } from "../../assets/icons/campaign-completed.svg";
+import { ReactComponent as ProgressIcon } from "../../assets/icons/campaign-progress.svg";
+import { ReactComponent as IncomingIcon } from "../../assets/icons/campaign-incoming.svg";
 import { CampaignCardSkeleton } from "./skeleton";
 import { cardStyle } from "../theme/mixins";
 
