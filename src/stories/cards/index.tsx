@@ -2,7 +2,7 @@ import { Well as ZendeskWell } from "@zendeskgarden/react-notifications";
 import { CardProps } from "./_types";
 import styled from "styled-components";
 
-const ContentCard = styled(ZendeskWell)`
+const UgContentCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
   padding: ${({ theme }) => theme.space.xxl};
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
@@ -20,10 +20,14 @@ const ContentCard = styled(ZendeskWell)`
  * Used for this:
     - To group related content
  */
-const Card = (props: CardProps) => <ContentCard {...props} />;
+const Card = (props: CardProps) => <UgContentCard {...props} />;
 
-const ContainerCard = styled(Card)`
+const UgContainerCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.xl};
+  padding: ${({ theme }) => theme.space.xxl};
+  border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
 `;
+
+const ContainerCard = (props: CardProps) => <UgContainerCard {...props} />;
 
 export { Card, ContainerCard };
