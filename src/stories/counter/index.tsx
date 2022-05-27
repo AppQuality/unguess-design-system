@@ -31,7 +31,6 @@ const StyledTag = styled(Tag)<CounterArgs>`
   }
 
   ${StyledSpan} {
-    font-weight: ${({ theme }) => theme.fontWeights.bold};
     margin-left: ${({ theme }) => theme.space.xxs};
     color: ${({ theme }) => theme.palette.grey[700]};
     font-weight: ${({ theme }) => theme.fontWeights.medium};
