@@ -1,10 +1,18 @@
-import { Skeleton as ZendeskSkeleton } from '@zendeskgarden/react-loaders';
+import { Skeleton as ZendeskSkeleton } from "@zendeskgarden/react-loaders";
 import styled from "styled-components";
-import { SkeletonArgs } from './_types';
+import { SkeletonArgs } from "./_types";
 
 const UgSkeleton = styled(ZendeskSkeleton)`
-  background-color: ${(props) => props.theme.palette.grey[500]};
   border-radius: ${(props) => props.theme.borderRadii.xxl};
+  ${(props) =>
+    props.isLight ?
+    `
+    &:before {
+      background-image: linear-gradient(45deg, transparent, ${props.theme.palette.grey[200]}, transparent);
+    }
+  ` : `
+    background-color: ${props.theme.palette.grey[200]};
+  `}
 `;
 
 /**
@@ -20,6 +28,6 @@ const UgSkeleton = styled(ZendeskSkeleton)`
    - To indicate that a component (like a button or search input) is busy, use Dots instead
    - To communicate a typing status, use Inline instead
  */
-const Skeleton = (props: SkeletonArgs) => <UgSkeleton {...props}/>;
+const Skeleton = (props: SkeletonArgs) => <UgSkeleton {...props} />;
 
 export { Skeleton };
