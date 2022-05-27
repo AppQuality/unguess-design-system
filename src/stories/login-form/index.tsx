@@ -107,6 +107,7 @@ const LoginForm = (props: LoginFormArgs) => (
                     : false
                 }
                 isPrimary
+                isPill
                 style={{ marginBottom: theme.space.md }}
               >
                 {props.buttonText}
