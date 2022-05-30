@@ -18,7 +18,11 @@ const getThemeStyle = (props: ButtonArgs) => {
         primaryHue: themeColor,
       },
     };
+
+    return customTheme;
   }
+
+  return theme;
 };
 
 const UgButton = styled(ZendeskButton)``;
@@ -33,10 +37,8 @@ const UgButton = styled(ZendeskButton)``;
  */
 const Button = (props: ButtonArgs) => {
   if (props.themeColor) {
-    getThemeStyle(props);
-    UgButton.defaultProps = {
-      theme: customTheme
-    };
+    const currentTheme = getThemeStyle(props);
+    return <UgButton {...props} theme={currentTheme} />;
   }
 
   return <UgButton {...props} />;

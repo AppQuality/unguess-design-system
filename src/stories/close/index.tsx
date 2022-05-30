@@ -8,9 +8,6 @@ const UgClose = styled(ZendeskClose)`
     justify-content: center;
     width: ${({theme}) => theme.space.xl};
     height: ${({theme}) => theme.space.xl};
-    position: relative;
-    top: unset;
-    left: unset;
 `;
 
 /**
