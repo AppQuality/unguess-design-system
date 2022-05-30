@@ -1,3 +1,15 @@
+# v2.10.42 (Mon May 30 2022)
+
+#### 🐛 Bug Fix
+
+- fix(buttons): fix close positioning + fix login button isPill + fix buttons themeColor [#64](https://github.com/AppQuality/unguess-design-system/pull/64) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.41 (Fri May 27 2022)
 
 #### 🐛 Bug Fix
