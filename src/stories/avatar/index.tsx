@@ -2,9 +2,10 @@ import { Avatar as ZendeskAvatar } from "@zendeskgarden/react-avatars";
 import { theme } from "../theme";
 import styled from "styled-components";
 import { AvatarArgs } from "./_types";
-// import useWindowSize from "../../hooks/useWindowSize";
 
 const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
+  text-transform: uppercase;
+
   ${(props) =>
     props.avatarType &&
     props.avatarType !== "image" &&
@@ -26,18 +27,12 @@ const Avatar = (props: AvatarArgs) => {
     if (type === "text") return <Avatar.Text>{props.children}</Avatar.Text>;
   };
 
-  // const { width } = useWindowSize();
-
   return (
     <UgAvatar
       {...props}
       badge={fixedBadge}
       children={wrapChildren(props.avatarType || "text")}
       size={props.size || "small"}
-      // size={
-      //   props.size ??
-      //   (width && width > parseInt(theme.breakpoints.sm) ? "small" : "extrasmall")
-      // }
     />
   );
 };
