@@ -4,10 +4,12 @@ import styled from "styled-components";
 import { AvatarArgs } from "./_types";
 
 const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
+  text-transform: uppercase;
+
   ${(props) =>
-    `background: ${
-      props.backgroundColor || theme.gradients.dark
-    }; text-transform: uppercase;`}
+    props.avatarType &&
+    props.avatarType !== "image" &&
+    `background: ${props.backgroundColor || theme.gradients.dark};`}
 `;
 
 /**
