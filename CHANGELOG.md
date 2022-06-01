@@ -1,3 +1,15 @@
+# v2.10.43 (Wed Jun 01 2022)
+
+#### 🐛 Bug Fix
+
+- fix(avatar): set text uppercase + cleanings [#65](https://github.com/AppQuality/unguess-design-system/pull/65) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.42 (Mon May 30 2022)
 
 #### 🐛 Bug Fix
