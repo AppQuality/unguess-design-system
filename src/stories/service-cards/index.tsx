@@ -1,8 +1,6 @@
 import { LG, SM } from "../typography/typescale";
-import { Card } from "../cards";
 import { Tag } from "../tags";
 import { theme } from "../theme";
-import { cardStyle } from "../theme/mixins";
 import { ServiceCardsProps } from "./_types";
 import styled from "styled-components";
 import { SpecialCard } from "../special-cards";
@@ -23,47 +21,6 @@ const StyledTag = styled(Tag)`
   margin-top: ${({ theme }) => theme.space.xs};
 `;
 
-const CardHeader = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-`;
-
-const IconContainer = styled.div`
-  width: 100%;
-  max-width: ${({ theme }) => theme.space.base * 16}px;
-  height: 100%;
-  max-height: ${({ theme }) => theme.space.base * 16}px;
-
-  svg {
-    width: 100%;
-  }
-`;
-
-const CardBody = styled.div`
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-top: ${({ theme }) => theme.space.sm};
-`;
-
-const CardFooter = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-top: ${({ theme }) => theme.space.sm};
-`;
-
-const Divider = styled.div`
-  width: 100%;
-  height: 1px;
-  margin: ${({ theme }) => theme.space.base}px 0;
-  background-color: ${({ theme }) => theme.palette.grey["300"]};
-`;
-
 const CardContent = styled.div`
   transition: all 0.3s ease-in-out;
   position: relative;
@@ -73,12 +30,6 @@ const CardContent = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   flex-grow: 1;
-`;
-
-const FooterContent = styled.div`
-  padding-top: ${({ theme }) => theme.space.sm};
-  margin-top: auto;
-  width: 100%;
 `;
 
 const ButtonsWrap = styled.div`

@@ -59,7 +59,7 @@ Grid.parameters = {
 }
 
 export default {
-  title: "Molecules/ProductCard",
+  title: "Molecules/Card/ProductCard",
   component: ProductCard,
   argTypes: {
     isRecessed: {
