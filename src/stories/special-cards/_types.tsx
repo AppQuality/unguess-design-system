@@ -30,3 +30,8 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 export interface CardThumbProps extends HTMLAttributes<HTMLDivElement> {
   align?: "left" | "right" | "center";
 }
+
+export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
+  direction?: typeof FLEX_DIRECTION[number];
+  justifyContent?: typeof JUSTIFY_CONTENT[number];
+}

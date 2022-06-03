@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { CardMeta } from "./styled/meta";
 import { CardThumbnail } from "./styled/thumbnail";
 import { CardHeader } from "./styled/header";
+import { CardFooter } from "./styled/footer";
 
 const UgContentCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
@@ -29,5 +30,6 @@ const SpecialCard = (props: CardProps) => <UgContentCard {...props} />;
 SpecialCard.Meta = CardMeta;
 SpecialCard.Thumb = CardThumbnail;
 SpecialCard.Header = CardHeader;
+SpecialCard.Footer = CardFooter;
 
 export { SpecialCard };

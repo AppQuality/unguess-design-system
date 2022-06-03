@@ -6,6 +6,7 @@ import { ReactComponent as ExploratoryIcon } from "../../assets/icons/service-ex
 import styled from "styled-components";
 import { Tag } from "../tags";
 import { theme } from "../theme";
+import { Button } from "../buttons/button";
 // import { CardLabel, CardTitle } from "./styled/header";
 
 // --- Example Components (TO BE REMOVED) ---
@@ -40,16 +41,22 @@ const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
       <SpecialCard.Thumb>
         <ExploratoryIcon />
       </SpecialCard.Thumb>
-      
-      <SpecialCard.Header>
-        <>
-          <SpecialCard.Header.Label>Emporio Armani</SpecialCard.Header.Label>
-          <SpecialCard.Header.Title>{title}</SpecialCard.Header.Title>
-          <SpecialCard.Header.Text>Lorem ipsum dolorem</SpecialCard.Header.Text>
-        </>
-      </SpecialCard.Header>
-      
 
+      <SpecialCard.Header>
+        <SpecialCard.Header.Label>Emporio Armani</SpecialCard.Header.Label>
+        <SpecialCard.Header.Title>{title}</SpecialCard.Header.Title>
+        <SpecialCard.Header.Text>Lorem ipsum dolorem</SpecialCard.Header.Text>
+      </SpecialCard.Header>
+
+      <SpecialCard.Footer direction="column" justifyContent="center">
+        <Button themeColor={theme.palette.water[600]} isPrimary isPill isStretched style={{marginBottom: '4px'}}>
+          Contatta il tuo CSM
+        </Button>
+
+        <Button themeColor={theme.palette.water[600]} isPrimary isPill isStretched>
+          Contatta il tuo CSM
+        </Button>
+      </SpecialCard.Footer>
     </SpecialCard>
   );
 };
