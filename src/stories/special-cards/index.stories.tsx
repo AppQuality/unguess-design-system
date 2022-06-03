@@ -72,12 +72,6 @@ const defaultArgs: CardStoryProps = {
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
-export const Floating = Template.bind({});
-Floating.args = {
-  ...defaultArgs,
-  isFloating: true,
-};
-
 export default {
   title: "Molecules/Card/Special",
   component: SpecialCard,
