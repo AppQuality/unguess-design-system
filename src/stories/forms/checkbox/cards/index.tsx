@@ -6,54 +6,77 @@ import styled from "styled-components";
 import { cardStyle } from "../../../theme/mixins";
 import { useState } from "react";
 import { theme } from "../../../theme";
+import { SpecialCard } from "../../../special-cards";
+import { MD } from "../../../typography/typescale";
 
 const StyledCard = styled(Card)`
-   ${cardStyle}
-   text-align: center;
-   justify-content: center;
-   align-items: center;
+  ${cardStyle}
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 
-   &.card-active {
-      border-color: ${({theme}) => theme.palette.blue[300]};
-   }
+  &.card-active {
+    border-color: ${({ theme }) => theme.palette.blue[300]};
+  }
 `;
 
 const IconWrapper = styled.div`
-   margin: ${({ theme }) => theme.space.base}px auto;
+  margin: ${({ theme }) => theme.space.base}px auto;
 `;
 
 const LabelWrapper = styled(Label)`
-   margin: ${({ theme }) => theme.space.base}px auto;
-   color: ${({ theme }) => theme.palette.grey[700]};
-   user-select: none;
+  margin: ${({ theme }) => theme.space.base}px auto;
+  color: ${({ theme }) => theme.palette.grey[700]};
+  user-select: none;
 
-   &:focus {
-      outline: 0;
-   }
+  &:focus {
+    outline: 0;
+  }
 `;
 
 const StyledLabel = styled(Label)`
-   margin: ${({ theme }) => theme.space.base}px auto;
+  margin: ${({ theme }) => theme.space.base}px auto;
 `;
 
 const CheckboxCard = (props: CheckboxCardArgs) => {
-   const [checked, setChecked] = useState(props.defaultChecked || false);
-   const handleToggle = () => {
-      setChecked(!checked);
-      props.onToggle && props.onToggle(!checked);
-   };
+  const { card: cardArgs } = props;
+  const [checked, setChecked] = useState(props.defaultChecked || false);
+  const handleToggle = () => {
+    setChecked(!checked);
+    props.onToggle && props.onToggle(!checked);
+  };
 
-   return (
-      <StyledCard {...props.card} {...props} {...props && !props.disabled && {onClick: handleToggle} } className={checked ? "card-active" : ""}>
-         <IconWrapper>{(props.iconActive && checked) ? props.iconActive : props.icon}</IconWrapper>
-         <LabelWrapper style={checked ? {color: theme.colors.primaryHue} : {}}>
+  return (
+    <SpecialCard
+      title={props.label}
+      {...cardArgs}
+      {...(props && !props.disabled && { onClick: handleToggle })}
+      className={checked ? "card-active" : ""}
+    >
+      <SpecialCard.Thumb isStretched>
+        {props.iconActive && checked ? props.iconActive : props.icon}
+      </SpecialCard.Thumb>
+
+      <SpecialCard.Header align="center">
+        <SpecialCard.Header.Text>
+          <MD isBold style={checked ? { color: theme.colors.primaryHue } : {}}>
             {props.label}
-         </LabelWrapper>
-         <Checkbox {...props} checked={checked} value={checked ? 1 : 0} onClick={(e) => e.stopPropagation()}>
-            <StyledLabel hidden>{props.label}</StyledLabel>
-         </Checkbox>
-      </StyledCard>
-   )
-}
+          </MD>
+        </SpecialCard.Header.Text>
+      </SpecialCard.Header>
+
+      <SpecialCard.Footer direction="column" justifyContent="center" noDivider>
+        <Checkbox
+          {...props}
+          checked={checked}
+          value={checked ? 1 : 0}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <StyledLabel hidden>{props.label}</StyledLabel>
+        </Checkbox>
+      </SpecialCard.Footer>
+    </SpecialCard>
+  );
+};
 
 export { CheckboxCard };

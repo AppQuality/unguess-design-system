@@ -1,62 +1,92 @@
 import { CampaignCardsProps } from "./_types";
 import { ComponentMeta, Story } from "@storybook/react";
-import { CampaignCard } from "./index"
+import { CampaignCard } from "./index";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
+import { Grid as PageGrid } from "../grid/grid";
+import { theme } from "../theme";
+import styled from "styled-components";
 
 const design = {
   type: "figma",
-  url: "https://www.figma.com/file/cDHa0NrDcLoJcPL20FfGBI/UNGUESS-%7C-Redesign-Zendesk?node-id=205%3A14819"
-}
+  url: "https://www.figma.com/file/cDHa0NrDcLoJcPL20FfGBI/UNGUESS-%7C-Redesign-Zendesk?node-id=205%3A14819",
+};
 
 const defaultArgs: CampaignCardsProps = {
   isNew: true,
   date: "24/04/2022",
-  title: "title html",
   projectTitle: "This is the project title",
   campaignTitle: "This is the campaign title",
-  status: 'COMPLETED',
-  type: 'EXPERIENTIAL',
-  pillText: 'Experiential Testone Lungone Furbone',
-  isLoading: false
-}
+  status: "COMPLETED",
+  type: "EXPERIENTIAL",
+  pillText: "Experiential Testone Lungone Furbone",
+  isLoading: false,
+};
+
+const StyledRow = styled(Row)``;
+
+const CardsContainer = styled.div`
+  ${StyledRow} {
+    overflow-x: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+`;
 
 const MultiTemplate: Story<CampaignCardsProps> = (args) => {
   return (
-    <Row>
-      <Col size={3}>
-        <CampaignCard {...args} projectTitle={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} campaignTitle={"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"} type={"FUNCTIONAL"} date={"20/10/2022"} status={"INCOMING"} />
-      </Col>
-      <Col size={3}>
-        <CampaignCard {...args} isNew={false} status={"PROGRESS"} />
-      </Col>
-      <Col size={3}>
-        <CampaignCard {...args} isNew={false} type={"FUNCTIONAL"} pillText={"Functional Test"} />
-      </Col>
-      <Col size={3}>
-        <CampaignCard {...args} isNew={false} />
-      </Col>
-    </Row>
-  )
-}
+    <CardsContainer>
+      <StyledRow>
+        <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
+          <CampaignCard
+            {...args}
+            projectTitle={
+              "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
+            }
+            campaignTitle={
+              "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
+            }
+            type={"FUNCTIONAL"}
+            date={"20/10/2022"}
+            status={"INCOMING"}
+          />
+        </Col>
+        <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
+          <CampaignCard {...args} isNew={false} status={"PROGRESS"} />
+        </Col>
+        <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
+          <CampaignCard
+            {...args}
+            isNew={false}
+            type={"FUNCTIONAL"}
+            pillText={"Functional Test"}
+          />
+        </Col>
+        <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
+          <CampaignCard {...args} isNew={false} />
+        </Col>
+      </StyledRow>
+    </CardsContainer>
+  );
+};
 
 const SingleTemplate: Story<CampaignCardsProps> = (args) => {
-  return <CampaignCard {...args} />
-}
+  return <CampaignCard {...args} />;
+};
 
-export const SingleCard = SingleTemplate.bind({})
+export const SingleCard = SingleTemplate.bind({});
 SingleCard.args = {
-  ...defaultArgs
-}
+  ...defaultArgs,
+};
 
-export const Grid = MultiTemplate.bind({})
+export const Grid = MultiTemplate.bind({});
 Grid.args = {
-  ...defaultArgs
-}
+  ...defaultArgs,
+};
 
 Grid.parameters = {
-  design
-}
+  design,
+};
 
 export default {
   title: "Molecules/Card/CampaignCard",
@@ -73,4 +103,4 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof CampaignCard>
+} as ComponentMeta<typeof CampaignCard>;

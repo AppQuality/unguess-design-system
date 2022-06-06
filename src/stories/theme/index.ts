@@ -12,6 +12,7 @@ const theme = {
     warningHue: palette.yellow[600],
     successHue: palette.teal["M600"],
     dangerHue: palette.red[400],
+    accentHue: palette.water[600],
   },
   palette: palette,
   fonts: {
