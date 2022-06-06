@@ -49,12 +49,24 @@ const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
       </SpecialCard.Header>
 
       <SpecialCard.Footer direction="column" justifyContent="center">
-        <Button themeColor={theme.colors.accentHue} isPrimary isPill isStretched style={{marginBottom: '4px'}}>
+        <Button
+          themeColor={theme.colors.accentHue}
+          isPrimary
+          isPill
+          isStretched
+          style={{ marginBottom: "4px" }}
+        >
           Contatta il tuo CSM
         </Button>
-
-        <Button themeColor={theme.colors.accentHue} isPrimary isPill isStretched>
-          Contatta il tuo CSM
+      </SpecialCard.Footer>
+      <SpecialCard.Footer direction="column" justifyContent="center" noDivider>
+        <Button
+          themeColor={theme.colors.accentHue}
+          isPrimary
+          isPill
+          isStretched
+        >
+          Secondo bottone streched
         </Button>
       </SpecialCard.Footer>
     </SpecialCard>
