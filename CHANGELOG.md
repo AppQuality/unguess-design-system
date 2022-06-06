@@ -1,3 +1,15 @@
+# v2.10.44 (Mon Jun 06 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 720 refactor card component [#66](https://github.com/AppQuality/unguess-design-system/pull/66) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.43 (Wed Jun 01 2022)
 
 #### 🐛 Bug Fix
