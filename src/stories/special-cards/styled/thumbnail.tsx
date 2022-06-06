@@ -6,7 +6,7 @@ export const CardThumbnail = styled.div<CardThumbProps>`
     display: flex;
 
     ${!isStretched ? `max-width: ${theme.space.base * 16}px` : ""};
-    max-height: ${isStretched ? '160px' : `${theme.space.base * 16}px`};
+    max-height: ${isStretched ? '150px' : `${theme.space.base * 16}px`};
     ${align === "left" ? `margin-right: auto;`: ''}
     ${align === "center" ? `margin: auto;`: ''}
     ${align === "right" ? `margin-left: auto;`: ''}
