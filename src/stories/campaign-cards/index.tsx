@@ -86,6 +86,7 @@ const CampaignCard = ({
           </StyledTagNew>
         )}
       </SpecialCard.Meta>
+      
       <SpecialCard.Header>
         <SpecialCard.Header.Label>
           <Ellipsis style={{ width: "200px" }}>{projectTitle}</Ellipsis>
@@ -94,6 +95,7 @@ const CampaignCard = ({
           <Ellipsis style={{ width: "200px" }}>{campaignTitle}</Ellipsis>
         </SpecialCard.Header.Title>
       </SpecialCard.Header>
+
       <SpecialCard.Footer>
         {props.pillText && (
           <StyledTag

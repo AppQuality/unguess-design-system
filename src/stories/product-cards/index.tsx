@@ -55,7 +55,7 @@ const ProductCard = (props: ProductCardProps) => {
           isPill
           isPrimary
           onClick={props.onCtaClick}
-          themeColor={theme.palette.water[600]}
+          themeColor={theme.colors.accentHue}
         >
           {props.ctaLabel}
         </Button>

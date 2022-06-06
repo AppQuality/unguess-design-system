@@ -29,6 +29,7 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export interface CardThumbProps extends HTMLAttributes<HTMLDivElement> {
   align?: "left" | "right" | "center";
+  isStretched?: boolean;
 }
 
 export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {

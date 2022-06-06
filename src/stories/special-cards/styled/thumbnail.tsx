@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { CardThumbProps } from "../_types";
 
 export const CardThumbnail = styled.div<CardThumbProps>`
-  ${({ theme, align }) => `
+  ${({ theme, align, isStretched }) => `
     display: flex;
-    max-width: ${theme.space.base * 16}px;
-    max-height: ${theme.space.base * 16}px;
+
+    ${!isStretched ? `max-width: ${theme.space.base * 16}px` : ""};
+    max-height: ${isStretched ? '160px' : `${theme.space.base * 16}px`};
     ${align === "left" ? `margin-right: auto;`: ''}
     ${align === "center" ? `margin: auto;`: ''}
     ${align === "right" ? `margin-left: auto;`: ''}

@@ -31,7 +31,7 @@ const defaultArgs: ServiceCardsProps = {
       isPill
       isStretched
       size="small"
-      themeColor={theme.palette.water[600]}
+      themeColor={theme.colors.accentHue}
     >
       Come funziona
     </Button>,
@@ -40,7 +40,7 @@ const defaultArgs: ServiceCardsProps = {
       isPrimary
       isStretched
       size="small"
-      themeColor={theme.palette.water[600]}
+      themeColor={theme.colors.accentHue}
     >
       Lancia campagna
     </Button>,
