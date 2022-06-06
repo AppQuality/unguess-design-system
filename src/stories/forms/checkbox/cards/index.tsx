@@ -47,40 +47,34 @@ const CheckboxCard = (props: CheckboxCardArgs) => {
   };
 
   return (
-    <>
-      <SpecialCard
-        {...cardArgs}
-        {...(props && !props.disabled && { onClick: handleToggle })}
-        className={checked ? "card-active" : ""}
-      >
-        <SpecialCard.Thumb isStretched>
-          {props.iconActive && checked ? props.iconActive : props.icon}
-        </SpecialCard.Thumb>
+    <SpecialCard
+      {...cardArgs}
+      {...(props && !props.disabled && { onClick: handleToggle })}
+      className={checked ? "card-active" : ""}
+    >
+      <SpecialCard.Thumb isStretched>
+        {props.iconActive && checked ? props.iconActive : props.icon}
+      </SpecialCard.Thumb>
 
-        <SpecialCard.Header align="center">
-          <SpecialCard.Header.Text>
-            <MD isBold style={checked ? { color: theme.colors.primaryHue } : {}}>
-              {props.label}
-            </MD>
-          </SpecialCard.Header.Text>
-        </SpecialCard.Header>
+      <SpecialCard.Header align="center">
+        <SpecialCard.Header.Text>
+          <MD isBold style={checked ? { color: theme.colors.primaryHue } : {}}>
+            {props.label}
+          </MD>
+        </SpecialCard.Header.Text>
+      </SpecialCard.Header>
 
-        <SpecialCard.Footer
-          direction="column"
-          justifyContent="center"
-          noDivider
+      <SpecialCard.Footer direction="column" justifyContent="center" noDivider>
+        <Checkbox
+          {...props}
+          checked={checked}
+          value={checked ? 1 : 0}
+          onClick={(e) => e.stopPropagation()}
         >
-          <Checkbox
-            {...props}
-            checked={checked}
-            value={checked ? 1 : 0}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <StyledLabel hidden>{props.label}</StyledLabel>
-          </Checkbox>
-        </SpecialCard.Footer>
-      </SpecialCard>
-    </>
+          <StyledLabel hidden>{props.label}</StyledLabel>
+        </Checkbox>
+      </SpecialCard.Footer>
+    </SpecialCard>
   );
 };
 
