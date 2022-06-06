@@ -10,6 +10,9 @@ const UgContentCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
   padding: ${({ theme }) => `${theme.space.base * 4}px ${theme.space.sm}`};
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   ${({ isFloating, theme }) =>
     !isFloating &&
     `

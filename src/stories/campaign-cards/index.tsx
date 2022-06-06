@@ -1,8 +1,6 @@
 import { CampaignCardsProps } from "./_types";
-import { Card } from "../cards";
 import { Tag } from "../tags";
 import { theme } from "../theme";
-import { Label } from "../label";
 import styled from "styled-components";
 import { ReactComponent as FunctionalTestIcon } from "../../assets/icons/campaign-functional.svg";
 import { ReactComponent as RegressionTestIcon } from "../../assets/icons/campaign-experiential.svg";
@@ -10,7 +8,6 @@ import { ReactComponent as CompletedIcon } from "../../assets/icons/campaign-com
 import { ReactComponent as ProgressIcon } from "../../assets/icons/campaign-progress.svg";
 import { ReactComponent as IncomingIcon } from "../../assets/icons/campaign-incoming.svg";
 import { CampaignCardSkeleton } from "./skeleton";
-import { cardStyle } from "../theme/mixins";
 import { SpecialCard } from "../special-cards";
 import { SM } from "../typography/typescale";
 import { Ellipsis } from "../typography/ellipsis";
@@ -41,7 +38,6 @@ const getTypeDataIcon = (type?: string) => {
 
 const StyledTag = styled(Tag)`
   color: ${({ theme }) => theme.palette.grey["700"]};
-  max-width: 75%;
   cursor: pointer;
 `;
 
@@ -72,7 +68,7 @@ const CampaignCard = ({
   return props.isLoading ? (
     <CampaignCardSkeleton />
   ) : (
-    <SpecialCard {...props}>
+    <SpecialCard title={campaignTitle} {...props}>
       <SpecialCard.Meta>
         <StyledLabel>{date}</StyledLabel>
         {isNew && (
@@ -86,14 +82,10 @@ const CampaignCard = ({
           </StyledTagNew>
         )}
       </SpecialCard.Meta>
-      
+
       <SpecialCard.Header>
-        <SpecialCard.Header.Label>
-          <Ellipsis style={{ width: "200px" }}>{projectTitle}</Ellipsis>
-        </SpecialCard.Header.Label>
-        <SpecialCard.Header.Title>
-          <Ellipsis style={{ width: "200px" }}>{campaignTitle}</Ellipsis>
-        </SpecialCard.Header.Title>
+        <SpecialCard.Header.Label>{projectTitle}</SpecialCard.Header.Label>
+        <SpecialCard.Header.Title>{campaignTitle}</SpecialCard.Header.Title>
       </SpecialCard.Header>
 
       <SpecialCard.Footer>
@@ -107,7 +99,7 @@ const CampaignCard = ({
             <Tag.Avatar>
               <PillIcon />
             </Tag.Avatar>
-            {props.pillText}
+            <Ellipsis style={{maxWidth: "180px"}}>{props.pillText}</Ellipsis>
           </StyledTag>
         )}
         <StatusIcon />

@@ -48,6 +48,7 @@ const CheckboxCard = (props: CheckboxCardArgs) => {
 
   return (
     <SpecialCard
+      title={props.label}
       {...cardArgs}
       {...(props && !props.disabled && { onClick: handleToggle })}
       className={checked ? "card-active" : ""}

@@ -22,7 +22,8 @@ const Container = styled.div<CardHeaderProps>`
     display: flex;
     align-items: ${align || "start"};
     flex-direction: column;
-    justify-content: center;
+    flex-grow: 1;
+    justify-content: start;
     padding: ${theme.space.xxs} 0;
     margin-top: ${theme.space.xs};
   `}

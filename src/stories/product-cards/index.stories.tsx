@@ -12,7 +12,6 @@ const design = {
 
 const defaultArgs: ProductCardProps = {
   isNew: true,
-  title: "title html",
   preTitle: "Express",
   productTitle: "Test esplorativo",
   ctaLabel: "This is the cta label",

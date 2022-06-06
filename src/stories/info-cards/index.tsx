@@ -16,8 +16,13 @@ const ButtonsWrap = styled.div`
 
 const InfoCard = (props: InfoCardProps) => {
   return (
-    <SpecialCard {...props}>
-      {props.infoImg && <SpecialCard.Thumb isStretched>{props.infoImg}</SpecialCard.Thumb>}
+    <SpecialCard
+      {...(props.infoTitle && { title: props.infoTitle })}
+      {...props}
+    >
+      {props.infoImg && (
+        <SpecialCard.Thumb isStretched>{props.infoImg}</SpecialCard.Thumb>
+      )}
       <SpecialCard.Header>
         {props.infoSubtitle && (
           <SpecialCard.Header.Label>
@@ -30,9 +35,7 @@ const InfoCard = (props: InfoCardProps) => {
       </SpecialCard.Header>
       {props.infoButtons && (
         <SpecialCard.Footer direction="column" justifyContent="center">
-          <ButtonsWrap>
-            {props.infoButtons.map((button, index) => button)}
-          </ButtonsWrap>
+          <ButtonsWrap>{props.infoButtons.map((button) => button)}</ButtonsWrap>
         </SpecialCard.Footer>
       )}
     </SpecialCard>

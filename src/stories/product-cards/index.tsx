@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { CampaignCardSkeleton } from "../campaign-cards/skeleton";
 import { Button } from "../buttons/button";
 import { SpecialCard } from "../special-cards";
-import { Ellipsis } from "../typography/ellipsis";
 
 const StyledTagNew = styled(Tag)`
   height: ${({ theme }) => theme.space.base * 6}px;
@@ -25,7 +24,7 @@ const ProductCard = (props: ProductCardProps) => {
   return props.isLoading ? (
     <CampaignCardSkeleton />
   ) : (
-    <SpecialCard {...props}>
+    <SpecialCard title={productTitle} {...props}>
       <SpecialCard.Meta>
         {isNew && (
           <StyledTagNew
@@ -38,17 +37,13 @@ const ProductCard = (props: ProductCardProps) => {
           </StyledTagNew>
         )}
       </SpecialCard.Meta>
-      {props.icon && <SpecialCard.Thumb>{props.icon}</SpecialCard.Thumb>}
+      {props.icon && <SpecialCard.Thumb align={"center"}>{props.icon}</SpecialCard.Thumb>}
 
-      <SpecialCard.Header onClick={props.onCtaClick}>
+      <SpecialCard.Header onClick={props.onCtaClick} align={"center"}>
         {props.preTitle && (
-          <SpecialCard.Header.Label>
-            <Ellipsis style={{ width: "200px" }}>{props.preTitle}</Ellipsis>
-          </SpecialCard.Header.Label>
+          <SpecialCard.Header.Label>{props.preTitle}</SpecialCard.Header.Label>
         )}
-        <SpecialCard.Header.Title>
-          <Ellipsis style={{ width: "200px" }}>{productTitle}</Ellipsis>
-        </SpecialCard.Header.Title>
+        <SpecialCard.Header.Title>{productTitle}</SpecialCard.Header.Title>
       </SpecialCard.Header>
       <SpecialCard.Footer direction="column" justifyContent="center">
         <Button
@@ -56,6 +51,7 @@ const ProductCard = (props: ProductCardProps) => {
           isPrimary
           onClick={props.onCtaClick}
           themeColor={theme.colors.accentHue}
+          size={"small"}
         >
           {props.ctaLabel}
         </Button>

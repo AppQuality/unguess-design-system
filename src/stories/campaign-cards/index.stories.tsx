@@ -15,7 +15,6 @@ const design = {
 const defaultArgs: CampaignCardsProps = {
   isNew: true,
   date: "24/04/2022",
-  title: "title html",
   projectTitle: "This is the project title",
   campaignTitle: "This is the campaign title",
   status: "COMPLETED",

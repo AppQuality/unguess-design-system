@@ -44,6 +44,7 @@ const Circle = styled.div<CircleProps>`
 const RadioCard = ({ card, icon, iconActive, ...props }: RadioCardArgs) => {
   return (
     <SpecialCard
+      title={props.label}
       {...card}
       {...props}
       className={props.checked ? "card-active" : ""}
