@@ -46,7 +46,7 @@ const ButtonsWrap = styled.div`
   }
 
   button:not(:first-child) {
-    margin-top: ${({ theme }) => theme.space.xs};
+    margin-top: ${({ theme }) => theme.space.base * 4}px;
   }
 `;
 
@@ -120,7 +120,7 @@ const ServiceCard = (props: ServiceCardsProps) => {
           </SpecialCard.Header>
         </>
         {props.tags && (
-          <SpecialCard.Footer>
+          <SpecialCard.Footer justifyContent={"start"}>
             {props.tags.map((tag, index) => (
               <StyledTag
                 key={index}

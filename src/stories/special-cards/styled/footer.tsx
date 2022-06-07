@@ -4,7 +4,8 @@ import { CardFooterProps } from "../_types";
 const Divider = styled.div`
   width: 100%;
   height: 1px;
-  margin-top: ${({ theme }) => theme.space.xs};
+  margin-top: ${({ theme }) => theme.space.base * 3}px;
+  margin-bottom: ${({ theme }) => theme.space.xxs};
   background-color: ${({ theme }) => theme.palette.grey["300"]};
 `;
 
@@ -12,6 +13,7 @@ const Footer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: auto;
+  width: 100%;
 `;
 
 const Container = styled.div<CardFooterProps>`
