@@ -1,3 +1,15 @@
+# v2.10.45 (Tue Jun 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(card-footer): update space between divider [#67](https://github.com/AppQuality/unguess-design-system/pull/67) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.44 (Mon Jun 06 2022)
 
 #### 🐛 Bug Fix
