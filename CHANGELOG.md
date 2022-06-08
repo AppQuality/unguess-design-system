@@ -1,3 +1,15 @@
+# v2.10.46 (Wed Jun 08 2022)
+
+#### 🐛 Bug Fix
+
+- fix(special-card): update base card padding [#69](https://github.com/AppQuality/unguess-design-system/pull/69) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.45 (Tue Jun 07 2022)
 
 #### 🐛 Bug Fix
