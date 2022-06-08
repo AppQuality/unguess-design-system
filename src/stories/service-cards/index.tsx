@@ -120,7 +120,7 @@ const ServiceCard = (props: ServiceCardsProps) => {
           </SpecialCard.Header>
         </>
         {props.tags && (
-          <SpecialCard.Footer justifyContent={"start"}>
+          <SpecialCard.Footer justifyContent={"start"} wrap>
             {props.tags.map((tag, index) => (
               <StyledTag
                 key={index}

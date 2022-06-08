@@ -36,4 +36,5 @@ export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
   direction?: typeof FLEX_DIRECTION[number];
   justifyContent?: typeof JUSTIFY_CONTENT[number];
   noDivider?: boolean;
+  wrap?: boolean;
 }

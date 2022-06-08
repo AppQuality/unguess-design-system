@@ -17,13 +17,14 @@ const Footer = styled.div`
 `;
 
 const Container = styled.div<CardFooterProps>`
-  ${({ theme, direction, justifyContent }) => `
+  ${({ theme, direction, justifyContent, wrap }) => `
       display: flex;
       align-items: center;
       flex-direction: ${direction || "row"};
       justify-content: ${justifyContent || "space-between"};
       padding: ${theme.space.xxs} 0;
       margin-top: ${theme.space.xs};
+      ${wrap ? "flex-wrap: wrap;" : ""}
     `}
 `;
 
