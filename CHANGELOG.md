@@ -1,3 +1,15 @@
+# v2.10.47 (Wed Jun 08 2022)
+
+#### 🐛 Bug Fix
+
+- fix(service-card): add wrap option to footer [#70](https://github.com/AppQuality/unguess-design-system/pull/70) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.46 (Wed Jun 08 2022)
 
 #### 🐛 Bug Fix
