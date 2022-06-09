@@ -1,3 +1,15 @@
+# v2.10.48 (Thu Jun 09 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(sidebar): update catalog url from /templates to /services ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.47 (Wed Jun 08 2022)
 
 #### 🐛 Bug Fix
