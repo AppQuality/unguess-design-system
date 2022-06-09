@@ -146,17 +146,17 @@ const Sidebar = (props: SidebarArgs) => {
         features.find((feature) => feature.slug === FEATURE_FLAG_CATALOG) && (
           <NavItem
             isExpanded={props.isExpanded}
-            isCurrent={nav === "templates"}
-            onClick={() => navigate("templates")}
+            isCurrent={nav === "services"}
+            onClick={() => navigate("services")}
           >
             <NavItemIcon isStyled>
-              {nav === "templates" ? (
+              {nav === "services" ? (
                 <TemplatesActiveIcon />
               ) : (
                 <TemplatesIcon />
               )}
             </NavItemIcon>
-            <NavItemText>{props.servicesItemLabel || "Templates"}</NavItemText>
+            <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
           </NavItem>
         )}
 
