@@ -3,13 +3,14 @@ import { Stepper } from ".";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { StepperArgs } from "./_types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button } from "../buttons/button";
-import { Card } from "../cards";
+import { ContainerCard } from "../cards";
 
 interface StepperStoryProps extends StepperArgs {
   currentStep: number;
+  accordionTitle: string;
 }
 
 const StyledButtons = styled.div`
@@ -78,9 +79,13 @@ const Template: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
 
 const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
   const [step, setStep] = useState(currentStep);
-
+  const [title, setTitle] = useState("");
   const onNext = () => setStep(step + 1);
   const onBack = () => setStep(step - 1);
+
+  useEffect(() => {
+    setTitle(`Step ${step + 1} of ${5}`);
+  }, [step]);
 
   const steps = [
     {
@@ -127,9 +132,9 @@ const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
 
   return (
     <Row>
-      <Col size={4}>
-        <Card>
-          <Stepper activeIndex={step} {...args}>
+      <Col sm={12} md={4}>
+        <ContainerCard>
+          <Stepper activeIndex={step} {...args} accordionTitle={title}>
             {steps.map((item, index) => (
               <Stepper.Step key={index}>
                 <Stepper.Label>{item.label}</Stepper.Label>
@@ -137,16 +142,16 @@ const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
               </Stepper.Step>
             ))}
           </Stepper>
-        </Card>
+        </ContainerCard>
       </Col>
-      <Col size={8}>
+      <Col sm={12} md={8}>
         {steps.map(
           (item, index) =>
             index === step && (
-              <Card key={index}>
+              <ContainerCard key={index}>
                 {item.content}
                 <StyledButtons>{item.buttons}</StyledButtons>
-              </Card>
+              </ContainerCard>
             )
         )}
       </Col>
@@ -157,11 +162,12 @@ const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
 export const Default = Template.bind({});
 Default.args = {
   currentStep: 1,
+  accordionTitle: "Steps",
 };
 
 export const SeparateContent = SplitTemplate.bind({});
 SeparateContent.args = {
-  currentStep: 0,
+  currentStep: 1,
 };
 
 export default {

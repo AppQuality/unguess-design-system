@@ -8,6 +8,8 @@ export interface StepperArgs extends IStepperProps {
   activeIndex?: number;
   /** Applies horizontal layout styling */
   isHorizontal?: boolean;
+  /** Title used for the accordion shown on mobile */
+  accordionTitle?: string;
 }
 
 export interface StepperLabelArgs extends IStepperLabelProps {

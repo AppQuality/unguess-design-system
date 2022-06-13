@@ -43,7 +43,7 @@ const backDropStyle = {
 const ProfileModal = ({ menuArgs, ...args }: ProfileModalArgs) => {
   const { width } = useWindowSize();
 
-  const smBreakpoint = Number(theme.breakpoints.sm.replace("px", ""));
+  const smBreakpoint = parseInt(theme.breakpoints.sm);
 
   let backDrop = {
     style: {
