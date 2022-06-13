@@ -1,7 +1,7 @@
 import {
-  Accordion,
   Stepper as ZendeskStepper,
 } from "@zendeskgarden/react-accordions";
+import { Accordion } from "../accordions";
 import { StepperArgs } from "./_types";
 import styled from "styled-components";
 import useWindowSize from "../../hooks/useWindowSize";
@@ -58,7 +58,7 @@ const UgContent = styled(ZendeskStepper.Content)`
  */
 const Stepper = (props: StepperArgs) => {
   const { width } = useWindowSize();
-  const smBreakpoint = Number(theme.breakpoints.sm.replace("px", ""));
+  const smBreakpoint = parseInt(theme.breakpoints.sm);
 
   return width <= smBreakpoint ? (
     <Accordion level={1} isBare isExpandable isAnimated>
