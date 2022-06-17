@@ -1,0 +1,76 @@
+import styled from "styled-components";
+import { theme } from "../../theme";
+import { PageHeaderProps } from "./_types";
+import { Breadcrumb } from "../../breadcrumbs";
+import { Main } from "./styled/main";
+import { BreadcrumbArgs } from "../../breadcrumbs/_types";
+import { ButtonArgs } from "../../buttons/button/_types";
+import { Button } from "../../buttons/button";
+
+const StyledPageHeader = styled.div<PageHeaderProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: ${theme.palette.white};
+  padding-top: ${theme.space.xxl};
+  padding-left: ${theme.space.xxl};
+  padding-right: ${theme.space.xxl};
+  padding-bottom: ${theme.space.md};
+  box-sizing: border-box;
+  border-bottom: 1px solid ${theme.palette.grey[200]};
+`;
+
+const PullLeft = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: ${theme.space.sm};
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: ${theme.space.md} 0;
+`;
+
+const StyledBreadcrumb = (props: BreadcrumbArgs) => {
+   return (
+      <PullLeft>
+         <Breadcrumb {...props} />
+      </PullLeft>
+   )
+}
+
+const StyledButton = (props: ButtonArgs) => {
+   return (
+      <ButtonContainer>
+         <Button {...props} />
+      </ButtonContainer>
+   )
+}
+
+/**
+ * A PageHeader is a modular container used for pages with an opinionated set of default spaces and subcomponents order.
+ * <hr>
+ * Used for this:
+    - Display page informations and meta data
+    - As a container for the top part of the page
+ */
+const PageHeader = (props: PageHeaderProps) => {
+  return <StyledPageHeader {...props} />;
+};
+PageHeader.Breadcrumb = StyledBreadcrumb;
+PageHeader.Main = Main;
+PageHeader.Button = StyledButton;
+
+export { PageHeader };
