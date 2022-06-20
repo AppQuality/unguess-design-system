@@ -60,7 +60,7 @@ const Counters = styled.div`
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: ${theme.space.lg};
+  margin-top: ${theme.space.md};
 
   > *:first-child {
     padding-left: 0;
@@ -80,7 +80,7 @@ export const Main = (props: PageHeaderMainProps) => {
             )}
             {props.infoCounters && (
               <Counters>
-                {props.infoCounters.map((counter, index) => (counter))}
+                {props.infoCounters.map((counter) => (counter))}
               </Counters>
             )}
           </InformationContainer>

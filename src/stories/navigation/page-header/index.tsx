@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
 import { PageHeaderProps } from "./_types";
 import { Breadcrumb } from "../../breadcrumbs";
 import { Main } from "./styled/main";
 import { BreadcrumbArgs } from "../../breadcrumbs/_types";
-import { ButtonArgs } from "../../buttons/button/_types";
-import { Button } from "../../buttons/button";
 import { PropsWithChildren } from "react";
 
 const StyledPageHeader = styled.div<PageHeaderProps>`
@@ -13,15 +10,17 @@ const StyledPageHeader = styled.div<PageHeaderProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
   width: 100%;
   background-color: ${({ theme }) => theme.palette.white};
-  padding-top: ${({ theme }) => theme.space.xxl};
-  padding-left: ${({ theme }) => theme.space.xxl};
-  padding-right: ${({ theme }) => theme.space.xxl};
-  padding-bottom: ${({ theme }) => theme.space.md};
+  padding: ${({ theme }) =>
+    `${theme.space.xxl} ${theme.space.xxl} ${theme.space.md}`};
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+   padding: ${({ theme }) =>
+    `${theme.space.md} ${theme.space.md} ${theme.space.xs}`};
+  }
 `;
 
 const PullLeft = styled.div`
