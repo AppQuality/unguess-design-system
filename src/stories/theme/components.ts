@@ -23,5 +23,9 @@ export const components = {
       ...DEFAULT_THEME.components?.notification?.well,
       padding: "16px",
     },
+  },
+
+  pageHeader: {
+    imgMaxHeight: "214px",
   }
 };
