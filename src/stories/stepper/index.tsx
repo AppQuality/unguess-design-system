@@ -1,6 +1,4 @@
-import {
-  Stepper as ZendeskStepper,
-} from "@zendeskgarden/react-accordions";
+import { Stepper as ZendeskStepper } from "@zendeskgarden/react-accordions";
 import { Accordion } from "../accordions";
 import { StepperArgs } from "./_types";
 import styled from "styled-components";
@@ -50,6 +48,12 @@ const UgContent = styled(ZendeskStepper.Content)`
   }
 `;
 
+const StyledAccordionHeader = styled(Accordion.Header)`
+  button, svg {
+    padding: ${({ theme }) => `${theme.space.xs} ${theme.space.md}`};
+  }
+`;
+
 /**
  * A Stepper guides users through steps of a task in sequential order.
 
@@ -61,11 +65,11 @@ const Stepper = (props: StepperArgs) => {
   const smBreakpoint = parseInt(theme.breakpoints.sm);
 
   return width <= smBreakpoint ? (
-    <Accordion level={1} isBare isExpandable isAnimated>
+    <Accordion level={1} isBare isExpandable isAnimated isCompact>
       <Accordion.Section>
-        <Accordion.Header>
+        <StyledAccordionHeader>
           <Accordion.Label>{props.accordionTitle}</Accordion.Label>
-        </Accordion.Header>
+        </StyledAccordionHeader>
         <Accordion.Panel>
           <UgStepper {...props} />
         </Accordion.Panel>

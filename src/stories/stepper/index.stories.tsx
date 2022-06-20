@@ -27,6 +27,12 @@ const StyledButtons = styled.div`
   }
 `;
 
+const StyledContainer = styled(ContainerCard)`
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0;
+  }
+`;
+
 const Template: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
   const [step, setStep] = useState(currentStep);
 
@@ -133,7 +139,7 @@ const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
   return (
     <Row>
       <Col sm={12} md={4}>
-        <ContainerCard>
+        <StyledContainer>
           <Stepper activeIndex={step} {...args} accordionTitle={title}>
             {steps.map((item, index) => (
               <Stepper.Step key={index}>
@@ -142,7 +148,7 @@ const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
               </Stepper.Step>
             ))}
           </Stepper>
-        </ContainerCard>
+        </StyledContainer>
       </Col>
       <Col sm={12} md={8}>
         {steps.map(
