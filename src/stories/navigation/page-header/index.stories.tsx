@@ -23,9 +23,7 @@ const Template: Story<PageHeaderStoryProps> = (args) => {
       </PageHeader.Breadcrumb>
       <PageHeader.Main {...args.pageHeaderMainArgs} />
       <PageHeader.Buttons>
-        <>
-          {args.pageHeaderArgs.buttons.map((button) => button)}
-        </>
+        <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
       </PageHeader.Buttons>
     </PageHeader>
   );
@@ -34,7 +32,13 @@ const Template: Story<PageHeaderStoryProps> = (args) => {
 const defaultArgs: PageHeaderStoryProps = {
   pageHeaderArgs: {
     buttons: [
-      <Button isPill size="large" isPrimary themeColor={theme.colors.accentHue} style={{marginRight: theme.space.xs}}>
+      <Button
+        isPill
+        size="large"
+        isPrimary
+        themeColor={theme.colors.accentHue}
+        style={{ marginRight: theme.space.xs }}
+      >
         Button
       </Button>,
       <Button isPill size="large">
@@ -46,17 +50,21 @@ const defaultArgs: PageHeaderStoryProps = {
     infoTitle: "Title H1",
     infoOverline: "OVERLINE",
     infoDescription: "Description",
-    infoCounters: [
-      <Counter status="completed" counter={1}>
-        Completed
-      </Counter>,
-      <Counter status="progress" counter={2}>
-        In Progress
-      </Counter>,
-      <Counter status="functional" counter={3}>
-        Functional
-      </Counter>,
-    ],
+    infoCounters: (
+      <>
+        <Counter status="completed" counter={1}>
+          Completed
+        </Counter>
+        ,
+        <Counter status="progress" counter={2}>
+          In Progress
+        </Counter>
+        ,
+        <Counter status="functional" counter={3}>
+          Functional
+        </Counter>
+      </>
+    ),
     metaImage: "https://via.placeholder.com/600x400.png",
   },
 };

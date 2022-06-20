@@ -6,6 +6,6 @@ export interface PageHeaderMainProps extends HTMLAttributes<HTMLDivElement>  {
   infoTitle: string;
   infoOverline?: string;
   infoDescription?: string;
-  infoCounters?: Array<React.ReactNode>;
+  infoCounters?: React.ReactNode;
   metaImage?: string;
 }

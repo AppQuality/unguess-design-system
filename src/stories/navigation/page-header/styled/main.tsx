@@ -84,7 +84,7 @@ export const Main = (props: PageHeaderMainProps) => {
             )}
             {props.infoCounters && (
               <Counters>
-                {props.infoCounters.map((counter) => (counter))}
+                {props.infoCounters}
               </Counters>
             )}
           </InformationContainer>
