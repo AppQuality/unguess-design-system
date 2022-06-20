@@ -1,3 +1,20 @@
+# v2.10.49 (Mon Jun 20 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 634 mobile view [#68](https://github.com/AppQuality/unguess-design-system/pull/68) ([@marcbon](https://github.com/marcbon))
+
+#### ⚠️ Pushed to `master`
+
+- chore(repo): Add dependabot.yml ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.48 (Thu Jun 09 2022)
 
 #### ⚠️ Pushed to `master`
