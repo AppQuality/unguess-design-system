@@ -1,12 +1,16 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { PageHeaderMainProps, PageHeaderProps } from "./_types";
+import { PageHeaderMainProps } from "./_types";
 import { PageHeader } from ".";
 import { Anchor } from "../../buttons/anchor";
 import { Counter } from "../../counter";
 import { Button } from "../../buttons/button";
+import React from "react";
+import { theme } from "../../theme";
 
 interface PageHeaderStoryProps {
-  pageHeaderArgs: PageHeaderProps;
+  pageHeaderArgs: {
+    buttons: Array<React.ReactNode>;
+  };
   pageHeaderMainArgs: PageHeaderMainProps;
 }
 
@@ -18,9 +22,11 @@ const Template: Story<PageHeaderStoryProps> = (args) => {
         <Anchor href="#">Page</Anchor>
       </PageHeader.Breadcrumb>
       <PageHeader.Main {...args.pageHeaderMainArgs} />
-      <PageHeader.Button isPill isPrimary>
-        Book a call
-      </PageHeader.Button>
+      <PageHeader.Buttons>
+        <>
+          {args.pageHeaderArgs.buttons.map((button) => button)}
+        </>
+      </PageHeader.Buttons>
     </PageHeader>
   );
 };
@@ -28,17 +34,28 @@ const Template: Story<PageHeaderStoryProps> = (args) => {
 const defaultArgs: PageHeaderStoryProps = {
   pageHeaderArgs: {
     buttons: [
-      <Button isPill size="large">Book a call</Button>
-    ]
+      <Button isPill size="large" isPrimary themeColor={theme.colors.accentHue} style={{marginRight: theme.space.xs}}>
+        Button
+      </Button>,
+      <Button isPill size="large">
+        Please dress ignore me
+      </Button>,
+    ],
   },
   pageHeaderMainArgs: {
     infoTitle: "Title H1",
     infoOverline: "OVERLINE",
     infoDescription: "Description",
     infoCounters: [
-      <Counter status="completed" counter={1}>Completed</Counter>,
-      <Counter status="progress" counter={2}>In Progress</Counter>,
-      <Counter status="functional" counter={3}>Functional</Counter>,
+      <Counter status="completed" counter={1}>
+        Completed
+      </Counter>,
+      <Counter status="progress" counter={2}>
+        In Progress
+      </Counter>,
+      <Counter status="functional" counter={3}>
+        Functional
+      </Counter>,
     ],
     metaImage: "https://via.placeholder.com/600x400.png",
   },

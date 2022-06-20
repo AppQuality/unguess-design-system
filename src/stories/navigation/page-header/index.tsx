@@ -6,6 +6,7 @@ import { Main } from "./styled/main";
 import { BreadcrumbArgs } from "../../breadcrumbs/_types";
 import { ButtonArgs } from "../../buttons/button/_types";
 import { Button } from "../../buttons/button";
+import { PropsWithChildren } from "react";
 
 const StyledPageHeader = styled.div<PageHeaderProps>`
   display: flex;
@@ -14,13 +15,13 @@ const StyledPageHeader = styled.div<PageHeaderProps>`
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-color: ${theme.palette.white};
-  padding-top: ${theme.space.xxl};
-  padding-left: ${theme.space.xxl};
-  padding-right: ${theme.space.xxl};
-  padding-bottom: ${theme.space.md};
+  background-color: ${({ theme }) => theme.palette.white};
+  padding-top: ${({ theme }) => theme.space.xxl};
+  padding-left: ${({ theme }) => theme.space.xxl};
+  padding-right: ${({ theme }) => theme.space.xxl};
+  padding-bottom: ${({ theme }) => theme.space.md};
   box-sizing: border-box;
-  border-bottom: 1px solid ${theme.palette.grey[200]};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
 `;
 
 const PullLeft = styled.div`
@@ -30,7 +31,7 @@ const PullLeft = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: ${theme.space.sm};
+  margin-bottom: ${({ theme }) => theme.space.sm};
 `;
 
 const ButtonContainer = styled.div`
@@ -40,24 +41,20 @@ const ButtonContainer = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  margin: ${theme.space.md} 0;
+  margin: ${({ theme }) => theme.space.md} 0;
 `;
 
 const StyledBreadcrumb = (props: BreadcrumbArgs) => {
-   return (
-      <PullLeft>
-         <Breadcrumb {...props} />
-      </PullLeft>
-   )
-}
+  return (
+    <PullLeft>
+      <Breadcrumb {...props} />
+    </PullLeft>
+  );
+};
 
-const StyledButton = (props: ButtonArgs) => {
-   return (
-      <ButtonContainer>
-         <Button {...props} />
-      </ButtonContainer>
-   )
-}
+const Buttons = (props: PropsWithChildren<{}>) => (
+  <ButtonContainer {...props} />
+);
 
 /**
  * A PageHeader is a modular container used for pages with an opinionated set of default spaces and subcomponents order.
@@ -71,6 +68,6 @@ const PageHeader = (props: PageHeaderProps) => {
 };
 PageHeader.Breadcrumb = StyledBreadcrumb;
 PageHeader.Main = Main;
-PageHeader.Button = StyledButton;
+PageHeader.Buttons = Buttons;
 
 export { PageHeader };
