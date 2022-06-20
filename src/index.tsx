@@ -108,6 +108,9 @@ export * from "./stories/notifications";
 // --- Pagination ---
 export * from "./stories/pagination";
 
+// --- Page Header ---
+export * from "./stories/navigation/page-header";
+
 // --- Profile Modal ---
 export * from "./stories/profile-modal";
 
@@ -126,10 +129,7 @@ export {
   Caption,
 } from "./stories/table";
 
-export {
-  GroupRow,
-  GroupedTable,
-} from "./stories/table/grouped";
+export { GroupRow, GroupedTable } from "./stories/table/grouped";
 
 // --- Tags ---
 export * from "./stories/tags";
