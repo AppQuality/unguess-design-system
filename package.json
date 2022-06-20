@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "2.10.48",
+  "version": "2.10.52",
   "dependencies": {
     "@zendeskgarden/css-bedrock": "^9.0.0",
     "@zendeskgarden/react-accordions": "^8.49.0",
