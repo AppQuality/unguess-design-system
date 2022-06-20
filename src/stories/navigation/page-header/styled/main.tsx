@@ -67,11 +67,15 @@ const Counters = styled.div`
   }
 `;
 
+const StyledCol = styled(Col)`
+  margin: 0;
+`
+
 export const Main = (props: PageHeaderMainProps) => {
   return (
     <MainContainer>
       <Row>
-        <Col xs={12} sm={props.metaImage ? 6 : 12}>
+        <StyledCol orderXs={2} orderSm={1} xs={12} sm={props.metaImage ? 6 : 12}>
           <InformationContainer>
             {props.infoOverline && <Overline>{props.infoOverline}</Overline>}
             {props.infoTitle && <Title>{props.infoTitle}</Title>}
@@ -84,13 +88,13 @@ export const Main = (props: PageHeaderMainProps) => {
               </Counters>
             )}
           </InformationContainer>
-        </Col>
+        </StyledCol>
         {props.metaImage && (
-          <Col xs={12} sm={props.metaImage ? 6 : 12}>
+          <StyledCol orderXs={1} orderSm={2} xs={12} sm={props.metaImage ? 6 : 12}>
             <MetaContainer>
               <Image src={props.metaImage} />
             </MetaContainer>
-          </Col>
+          </StyledCol>
         )}
       </Row>
     </MainContainer>
