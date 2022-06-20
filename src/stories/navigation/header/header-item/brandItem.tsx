@@ -10,7 +10,7 @@ import { WorkspacesDropdown } from "./workspacesDropdown";
 export const LogoIconContainer = styled(ZendeskHeaderItem)`
   margin-right: 2px;
   border-right: none;
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     right: 0;
     left: 0;
     margin-right: auto;
@@ -25,7 +25,7 @@ const BrandName = styled(ZendeskHeaderItem)`
   color: ${({ theme }) => theme.palette.blue["600"]};
   pointer-events: none;
   font-family: ${({ theme }) => theme.fonts.system};
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
 `;
@@ -36,7 +36,7 @@ const DropdownItem = styled(ZendeskHeaderItem)`
   color: ${({ theme }) => theme.palette.blue["600"]};
   font-family: ${({ theme }) => theme.fonts.system};
   z-index: 2;
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
 `;
@@ -45,7 +45,7 @@ const MenuItem = styled(ZendeskHeaderItem)`
   color: ${({ theme }) => theme.palette.blue["600"]};
   position: absolute;
   left: 0;
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
 `;
