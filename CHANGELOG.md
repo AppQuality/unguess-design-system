@@ -1,3 +1,16 @@
+# v2.10.53 (Mon Jun 20 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 823 page header [#72](https://github.com/AppQuality/unguess-design-system/pull/72) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.49 (Mon Jun 20 2022)
 
 #### 🐛 Bug Fix
