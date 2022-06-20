@@ -55,11 +55,9 @@ const defaultArgs: PageHeaderStoryProps = {
         <Counter status="completed" counter={1}>
           Completed
         </Counter>
-        ,
         <Counter status="progress" counter={2}>
           In Progress
         </Counter>
-        ,
         <Counter status="functional" counter={3}>
           Functional
         </Counter>
