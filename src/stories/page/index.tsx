@@ -84,9 +84,10 @@ const Container = styled.div`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: ${({ theme }) => theme.palette.grey[100]};
+  margin: ${({ theme }) => theme.space.xxl};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: ${({ theme }) => theme.space.xxl};
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin: ${({ theme }) => `${theme.space.lg} ${theme.space.md}`};
   }
 `;
 
@@ -129,7 +130,7 @@ export const PageTemplate = ({
             isExpanded={expanded}
             onToggleMenu={toggleSidebar}
           />
-          <Main id="main" style={{ backgroundColor: 'transparent', margin: 0 }}>
+          <Main id="main" style={{ backgroundColor: "transparent", margin: 0 }}>
             <PageHeader>
               <PageHeader.Breadcrumb>
                 <Anchor href="#">Home</Anchor>
@@ -139,26 +140,36 @@ export const PageTemplate = ({
                 infoOverline="LIMITED EDITION - DRESSING BERRIES"
                 infoTitle="Example Page"
                 infoDescription="This is a page description, with a lot of text to test the overflow behavior of the page header."
-                infoCounters={[
-                  <Counter key={"completed"} status="completed" counter={12}>
-                    Completed
-                  </Counter>,
-                  <Counter key={"progress"} status="progress" counter={212}>
-                    In Progress
-                  </Counter>,
-                  <Counter key={"functional"} status="functional" counter={3}>
-                    Functional
-                  </Counter>,
-                ]}
-
+                infoCounters={
+                  <>
+                    <Counter key={"completed"} status="completed" counter={12}>
+                      Completed
+                    </Counter>
+                    <Counter key={"progress"} status="progress" counter={212}>
+                      In Progress
+                    </Counter>
+                    <Counter key={"functional"} status="functional" counter={3}>
+                      Functional
+                    </Counter>
+                  </>
+                }
+                metaImage="https://placeimg.com/600/400/nature"
               />
               <PageHeader.Buttons>
-                <Button onClick={() => alert('hacked')} isPill isPrimary themeColor={theme.colors.accentHue}>Click to win 1 billion of rupie</Button>
+                <Button
+                  onClick={() => alert("hacked")}
+                  isPill
+                  isPrimary
+                  themeColor={theme.colors.accentHue}
+                >
+                  Click to win 1 billion of rupie
+                </Button>
               </PageHeader.Buttons>
             </PageHeader>
             <Container>
               <Paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl quis nisi porttitor aliquet. Nulla facilisi. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                eu nisl quis nisi porttitor aliquet. Nulla facilisi.
               </Paragraph>
             </Container>
           </Main>

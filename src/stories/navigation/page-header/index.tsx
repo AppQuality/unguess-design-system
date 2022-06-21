@@ -30,7 +30,8 @@ const PullLeft = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: ${({ theme }) => theme.space.sm};
+  padding: ${({ theme }) => `${theme.space.xs} 0`};
+  margin-bottom: ${({ theme }) => theme.space.xs};
 `;
 
 const ButtonContainer = styled.div`

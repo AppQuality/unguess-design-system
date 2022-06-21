@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { Col } from "../../../grid/col";
 import { Row } from "../../../grid/row";
 import { theme } from "../../../theme";
-import { Paragraph } from "../../../typography/paragraph";
-import { MD } from "../../../typography/typescale";
+import { LG, MD } from "../../../typography/typescale";
 import { PageHeaderMainProps } from "../_types";
 
 const MainContainer = styled.div`
@@ -42,16 +41,10 @@ const Title = styled.h1`
   line-height: ${theme.lineHeights.xxxl};
 `;
 
-const Description = styled(Paragraph)`
+const Description = styled(LG)`
   color: ${theme.palette.grey[600]};
   margin: ${theme.space.md} 0;
   line-height: ${theme.lineHeights.lg};
-`;
-
-const Image = styled.img`
-  width: auto;
-  height: 100%;
-  max-height: ${theme.components.pageHeader.imgMaxHeight};
 `;
 
 const Counters = styled.div`
@@ -69,7 +62,13 @@ const Counters = styled.div`
 
 const StyledCol = styled(Col)`
   margin: 0;
-`
+`;
+
+const Image = styled.img`
+  width: auto;
+  height: 100%;
+  max-height: ${theme.components.pageHeader.imgMaxHeight};
+`;
 
 export const Main = (props: PageHeaderMainProps) => {
   return (
@@ -82,17 +81,13 @@ export const Main = (props: PageHeaderMainProps) => {
             {props.infoDescription && (
               <Description>{props.infoDescription}</Description>
             )}
-            {props.infoCounters && (
-              <Counters>
-                {props.infoCounters}
-              </Counters>
-            )}
+            {props.infoCounters && <Counters>{props.infoCounters}</Counters>}
           </InformationContainer>
         </StyledCol>
         {props.metaImage && (
           <StyledCol orderXs={1} orderSm={2} xs={12} sm={props.metaImage ? 6 : 12}>
             <MetaContainer>
-              <Image src={props.metaImage} />
+              <Image src={props.metaImage} title={props.infoTitle} alt={props.infoTitle} />
             </MetaContainer>
           </StyledCol>
         )}
