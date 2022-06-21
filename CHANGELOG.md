@@ -1,3 +1,15 @@
+# v2.10.60 (Tue Jun 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(page-header): hide metaImage on mobile ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.59 (Tue Jun 21 2022)
 
 #### ⚠️ Pushed to `master`
