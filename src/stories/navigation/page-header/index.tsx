@@ -30,7 +30,7 @@ const PullLeft = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  padding: ${({ theme }) => `${theme.space.xs} 0`};
+  padding: ${({ theme }) => `${theme.space.xs} 10px`};
   margin-bottom: ${({ theme }) => theme.space.xs};
 `;
 

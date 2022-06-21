@@ -91,6 +91,20 @@ const Container = styled.div`
   }
 `;
 
+const Pipe = styled.span`
+  /** Vertical Separator */
+  border-left: 1px solid ${({ theme }) => theme.palette.grey[300]};
+  height: ${({ theme }) => theme.space.lg};
+  margin-right: ${({ theme }) => theme.space.sm};
+  display: inline;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    height: 0;
+    margin: 0;
+  }
+`;
+
 export const PageTemplate = ({
   sidebar,
   header,
@@ -142,14 +156,21 @@ export const PageTemplate = ({
                 infoDescription="This is a page description, with a lot of text to test the overflow behavior of the page header."
                 infoCounters={
                   <>
-                    <Counter key={"completed"} status="completed" counter={12}>
+                    <Counter key={"completed"} counter={11} status="completed">
                       Completed
                     </Counter>
-                    <Counter key={"progress"} status="progress" counter={212}>
-                      In Progress
+                    <Counter key={"progress"} counter={22} status="progress">
+                      In progress
                     </Counter>
-                    <Counter key={"functional"} status="functional" counter={3}>
+                    <Counter key={"incoming"} counter={33} status="incoming">
+                      Incoming
+                    </Counter>
+                    <Pipe />
+                    <Counter key={"functional"} counter={44} status="functional">
                       Functional
+                    </Counter>
+                    <Counter  key={"experiential"} counter={55} status="experiential">
+                      Experiential
                     </Counter>
                   </>
                 }

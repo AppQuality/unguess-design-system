@@ -61,7 +61,6 @@ const StyledNavItem = styled(NavItem)`
  */
 const Sidebar = (props: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
-  const { features } = props;
   const showWorkspacesDropdown = window.matchMedia(
     `only screen and (max-width: ${theme.breakpoints.sm})`
   ).matches;
@@ -142,23 +141,16 @@ const Sidebar = (props: SidebarArgs) => {
         <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
       </NavItem>
 
-      {features &&
-        features.find((feature) => feature.slug === FEATURE_FLAG_CATALOG) && (
-          <NavItem
-            isExpanded={props.isExpanded}
-            isCurrent={nav === "services"}
-            onClick={() => navigate("services")}
-          >
-            <NavItemIcon isStyled>
-              {nav === "services" ? (
-                <TemplatesActiveIcon />
-              ) : (
-                <TemplatesIcon />
-              )}
-            </NavItemIcon>
-            <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
-          </NavItem>
-        )}
+      <NavItem
+        isExpanded={props.isExpanded}
+        isCurrent={nav === "services"}
+        onClick={() => navigate("services")}
+      >
+        <NavItemIcon isStyled>
+          {nav === "services" ? <TemplatesActiveIcon /> : <TemplatesIcon />}
+        </NavItemIcon>
+        <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
+      </NavItem>
 
       <NavDivider isExpanded={props.isExpanded}>
         <FolderIcon /> {props.dividerLabel || ""}
