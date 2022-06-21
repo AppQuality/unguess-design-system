@@ -31,7 +31,7 @@ const StyledBody = styled(Modal.Body)`
   padding: ${({ theme }) => `${theme.space.md} ${theme.space.base * 6}px`};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.space.md};
+    padding: ${({ theme }) => `${theme.space.lg} ${theme.space.md}`};
   }
 `;
 

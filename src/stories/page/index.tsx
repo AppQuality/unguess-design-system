@@ -87,7 +87,7 @@ const Container = styled.div`
   margin: ${({ theme }) => theme.space.xxl};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: ${({ theme }) => theme.space.md};
+    margin: ${({ theme }) => `${theme.space.lg} ${theme.space.md}`};
   }
 `;
 
