@@ -1,3 +1,16 @@
+# v2.10.59 (Tue Jun 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@marcbon](https://github.com/marcbon))
+- refactor(navigation): fix page-header spacings + remove sidebar feature check ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.58 (Tue Jun 21 2022)
 
 #### 🐛 Bug Fix
