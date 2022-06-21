@@ -1,3 +1,15 @@
+# v2.10.58 (Tue Jun 21 2022)
+
+#### 🐛 Bug Fix
+
+- Fix/page header [#73](https://github.com/AppQuality/unguess-design-system/pull/73) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.57 (Mon Jun 20 2022)
 
 #### ⚠️ Pushed to `master`
