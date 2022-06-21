@@ -63,7 +63,7 @@ const defaultArgs: PageHeaderStoryProps = {
         </Counter>
       </>
     ),
-    metaImage: "https://via.placeholder.com/600x400.png",
+    metaImage: "https://placeimg.com/600/400/nature",
   },
 };
 
