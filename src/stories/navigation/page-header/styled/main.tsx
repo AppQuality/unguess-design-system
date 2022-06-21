@@ -27,6 +27,10 @@ const MetaContainer = styled.div`
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: none;
+  }
 `;
 
 const Overline = styled(MD)`
@@ -78,8 +82,6 @@ export const Main = (props: PageHeaderMainProps) => {
     <MainContainer>
       <Row>
         <StyledCol
-          orderXs={2}
-          orderSm={1}
           xs={12}
           sm={props.metaImage ? 6 : 12}
         >
@@ -94,8 +96,6 @@ export const Main = (props: PageHeaderMainProps) => {
         </StyledCol>
         {props.metaImage && (
           <StyledCol
-            orderXs={1}
-            orderSm={2}
             xs={12}
             sm={props.metaImage ? 6 : 12}
           >
