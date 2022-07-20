@@ -1,4 +1,3 @@
-export interface EditorArgs extends React.HTMLAttributes<HTMLDivElement> {
-  /** The breadcrumb items */
-  children: any[];
-}
+import { EditorOptions } from "@tiptap/react";
+
+export interface EditorArgs extends Partial<EditorOptions> {}
