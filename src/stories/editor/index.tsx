@@ -1,4 +1,5 @@
 import { useEditor, EditorContent } from "@tiptap/react";
+import Typography from '@tiptap/extension-typography'
 import StarterKit from "@tiptap/starter-kit";
 import styled from "styled-components";
 import { editorStyle } from "./editorStyle";
@@ -33,18 +34,8 @@ const Editor = (props: EditorArgs) => {
   const { content, onUpdate } = props;
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({
-        // Disable an included extension
-
-        // Configure an included extension
-        heading: {
-          levels: [1, 2],
-
-          HTMLAttributes: {
-            class: "ciolla",
-          },
-        },
-      }),
+      Typography,
+      StarterKit
     ],
     content: content || "<p>Hello World!</p>",
     onUpdate,

@@ -5,6 +5,10 @@ export const editorStyle = css`
     margin-top: 0.75em;
   }
 
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
   h1,
   h2,
   h3,
@@ -12,6 +16,8 @@ export const editorStyle = css`
   h5,
   h6 {
     line-height: 1.1;
+    font-weight: 500;
+    color: ${({ theme }) => theme.palette.grey["800"]};
   }
 
   h1 {
@@ -43,19 +49,23 @@ export const editorStyle = css`
       =====*/
   ul,
   ol,
-  dl {
-    padding: 0.618em 0.618rem; /* Comment-A */
+  dl
+   {
+    padding: 0.618em 0.618rem; 
+    margin-left: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
   }
 
   li {
-    text-indent: -0.9em;
+    padding: 0 0.618rem; 
     line-height: 1.618;
-    padding: 0;
-    margin: 0 0 0 0.618rem;
-  }
-
-  li {
-    list-style-position: inside;
   }
 
   dt {
@@ -84,19 +94,10 @@ export const editorStyle = css`
   }
 
   blockquote {
-    background: rgba(165, 165, 165, 0.15);
-    border-left: 2px solid rgba(#0d0d0d, 0.1);
+    border-left: 3px solid;
+    border-color: ${({ theme }) => theme.palette.grey["300"]};
     margin: 1.618em 0.618rem;
-    padding: 0.618em 0.618rem;
-  }
-
-  blockquote::before {
-    color: rgb(193, 193, 193);
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
+    padding-left: 0.618em;
   }
 
   em,
@@ -107,7 +108,7 @@ export const editorStyle = css`
 
   strong,
   b {
-    font-weight: 700;
+    font-weight: 500;
   }
 
   cite {
@@ -123,7 +124,7 @@ export const editorStyle = css`
   small,
   sub,
   sup {
-    font-size: var(0.618rem);
+    font-size: 0.618rem;
     line-height: 1;
   }
 
@@ -133,13 +134,6 @@ export const editorStyle = css`
 
   sup {
     vertical-align: super;
-  }
-
-  s,
-  strike,
-  del,
-  ins {
-    color: rgb(193, 193, 193);
   }
 
   s,
@@ -215,9 +209,9 @@ export const editorStyle = css`
   }
 
   kbd {
-    font-size: var(0.75rem);
+    font-size: 0.75rem;
     padding: 0.25ex 0.5ex;
-    border: 1px solid var(rgb(193, 193, 193));
+    border: 1px solid rgb(193, 193, 193);
     border-radius: 3px;
   }
 
@@ -233,11 +227,10 @@ export const editorStyle = css`
   }
 
   samp {
-    border-left: 5px solid var(rgb(193, 193, 193));
+    border-left: 5px solid rgb(193, 193, 193);
   }
 
   data {
     padding: 0 10px;
   }
-
 `;
