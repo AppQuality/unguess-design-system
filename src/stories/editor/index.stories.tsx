@@ -9,7 +9,7 @@ const Template: Story<EditorArgs> = ({ content, ...args }) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  content: "<p>I'm a stupid editor</p>",
+  content: "<p>I'm a stupid <code>editor</code>!</p>",
   onUpdate: ({ editor }) => {
     const HTML = editor.getHTML();
     console.log("HTML:");
