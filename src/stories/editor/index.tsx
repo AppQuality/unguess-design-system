@@ -1,9 +1,18 @@
-import { useEditor, EditorContent } from "@tiptap/react";
-import Typography from '@tiptap/extension-typography'
-import StarterKit from "@tiptap/starter-kit";
+import {
+  useEditor,
+  EditorContent,
+  Editor as TipTapEditor,
+} from "@tiptap/react";
 import styled from "styled-components";
+
+import Typography from "@tiptap/extension-typography";
+import StarterKit from "@tiptap/starter-kit";
+import Placeholder from "@tiptap/extension-placeholder";
+
 import { editorStyle } from "./editorStyle";
 import { EditorArgs } from "./_types";
+import { PropsWithChildren, useEffect, useState } from "react";
+import { FloatingMenu } from "./floatingMenu";
 
 const EditorContainer = styled.div`
   .ProseMirror {
@@ -30,24 +39,63 @@ const EditorContainer = styled.div`
    Not for this:
     - Simple text input, use textarea instead.
  */
-const Editor = (props: EditorArgs) => {
-  const { content, onUpdate } = props;
-  const editor = useEditor({
+const Editor = ({ onSave, ...props }: PropsWithChildren<EditorArgs>) => {
+  const { children, placeholderOptions, hasInlineMenu, bubbleOptions } = props;
+
+  const [activeEditor, setEditor] = useState<TipTapEditor | null>();
+
+  const ed = useEditor({
     extensions: [
       Typography,
-      StarterKit
-    ],
-    content: content || "<p>Hello World!</p>",
-    onUpdate,
-  });
+      StarterKit,
+      Placeholder.configure({
+        placeholder: ({ node }) => {
+          if (node.type.name === "heading") {
+            return "What’s the title?";
+          }
 
-  if (!editor) {
+          return "Can you add some further context?";
+        },
+        ...placeholderOptions,
+      }),
+    ],
+    content: children || "",
+    editorProps: {
+      handleKeyDown: (view, event: KeyboardEvent) => {
+        if (event.ctrlKey && event.key === "Enter") {
+          alert("Save this shit");
+
+          if (onSave && activeEditor) onSave(activeEditor);
+          else console.log("No onSave callback", onSave, activeEditor);
+          return true;
+        }
+
+        return false;
+      },
+    },
+    onUpdate: ({ editor }) => {
+      setEditor(editor as TipTapEditor);
+    },
+    ...props,
+  }, [children]);
+
+  useEffect(() => {
+    setEditor(ed);
+  }, [ed]);
+
+  if (!activeEditor) {
     return null;
   }
 
   return (
     <EditorContainer>
-      <EditorContent editor={editor} />
+      {hasInlineMenu && (
+        <FloatingMenu
+          editor={activeEditor}
+          tippyOptions={{ ...bubbleOptions }}
+        />
+      )}
+      <EditorContent editor={activeEditor} />
     </EditorContainer>
   );
 };

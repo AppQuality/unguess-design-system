@@ -5,7 +5,9 @@ export const editorStyle = css`
     margin-top: 0.75em;
   }
 
-  *, *:before, *:after {
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
   }
 
@@ -49,9 +51,8 @@ export const editorStyle = css`
       =====*/
   ul,
   ol,
-  dl
-   {
-    padding: 0.618em 0.618rem; 
+  dl {
+    padding: 0.618em 0.618rem;
     margin-left: 1rem;
   }
 
@@ -64,7 +65,7 @@ export const editorStyle = css`
   }
 
   li {
-    padding: 0 0.618rem; 
+    padding: 0 0.618rem;
     line-height: 1.618;
   }
 
@@ -232,5 +233,23 @@ export const editorStyle = css`
 
   data {
     padding: 0 10px;
+  }
+
+  /* Placeholder (at the top) */
+    /*p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #ced4da;
+    pointer-events: none;
+    height: 0;
+  }*/
+
+  /* Placeholder (on every new line) */
+  .is-empty::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #ced4da;
+    pointer-events: none;
+    height: 0;
   }
 `;
