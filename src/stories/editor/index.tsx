@@ -11,7 +11,11 @@ import Placeholder from "@tiptap/extension-placeholder";
 
 import { editorStyle } from "./editorStyle";
 import { EditorArgs } from "./_types";
-import { PropsWithChildren, useEffect, useState } from "react";
+import {
+  KeyboardEvent as ReactKeyboardEvent,
+  PropsWithChildren,
+  useState,
+} from "react";
 import { FloatingMenu } from "./floatingMenu";
 
 const EditorContainer = styled.div`
@@ -42,7 +46,13 @@ const EditorContainer = styled.div`
 const Editor = ({ onSave, ...props }: PropsWithChildren<EditorArgs>) => {
   const { children, placeholderOptions, hasInlineMenu, bubbleOptions } = props;
 
-  const [activeEditor, setEditor] = useState<TipTapEditor | null>();
+  const [activeEditor, setActiveEditor] = useState<TipTapEditor | null>();
+
+  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.ctrlKey && event.key === "Enter") {
+      if(onSave && activeEditor) onSave(activeEditor);
+    }
+  };
 
   const ed = useEditor({
     extensions: [
@@ -63,39 +73,27 @@ const Editor = ({ onSave, ...props }: PropsWithChildren<EditorArgs>) => {
     editorProps: {
       handleKeyDown: (view, event: KeyboardEvent) => {
         if (event.ctrlKey && event.key === "Enter") {
-          alert("Save this shit");
-
-          if (onSave && activeEditor) onSave(activeEditor);
-          else console.log("No onSave callback", onSave, activeEditor);
           return true;
         }
 
         return false;
       },
     },
-    onUpdate: ({ editor }) => {
-      setEditor(editor as TipTapEditor);
-    },
     ...props,
-  }, [children]);
+  });
 
-  useEffect(() => {
-    setEditor(ed);
-  }, [ed]);
-
-  if (!activeEditor) {
+  if (!ed) {
     return null;
   }
+
+  ed.on("update", ({ editor }) => setActiveEditor(editor as TipTapEditor));
 
   return (
     <EditorContainer>
       {hasInlineMenu && (
-        <FloatingMenu
-          editor={activeEditor}
-          tippyOptions={{ ...bubbleOptions }}
-        />
+        <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
       )}
-      <EditorContent editor={activeEditor} />
+      <EditorContent editor={ed} onKeyDown={onKeyDown} />
     </EditorContainer>
   );
 };

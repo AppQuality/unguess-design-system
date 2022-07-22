@@ -1,6 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
+import { Editor as TipTapEditor } from "@tiptap/react";
 import { Editor } from ".";
-
 import { EditorArgs } from "./_types";
 
 interface EditorStoryArgs extends EditorArgs {
@@ -8,22 +8,26 @@ interface EditorStoryArgs extends EditorArgs {
 }
 
 const Template: Story<EditorStoryArgs> = ({ children, ...args }) => {
+  const handleSave = (editor: TipTapEditor) => {
+    console.log("we have to save this", editor.getHTML());
+  }
+
   return (
-    <Editor
-      {...args}
-      onSave={(editor) => {
-        console.log("Saved", editor.getHTML());
-      }}
-    >
-      {children}
-    </Editor>
+    <>
+      <Editor
+        {...args}
+        onSave={handleSave}
+      >
+        {children}
+      </Editor>
+    </>
   );
 };
 
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor) => {},
+  onSave: () => {},
 };
 
 export const Default = Template.bind({});
