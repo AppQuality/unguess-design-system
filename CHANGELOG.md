@@ -1,3 +1,22 @@
+# v2.10.61 (Fri Jul 22 2022)
+
+#### 🐛 Bug Fix
+
+- Add a new customizable editor component [#77](https://github.com/AppQuality/unguess-design-system/pull/77) ([@cannarocks](https://github.com/cannarocks))
+- feat(editor-ui): Add header and footer [#76](https://github.com/AppQuality/unguess-design-system/pull/76) ([@cannarocks](https://github.com/cannarocks))
+- Cup 1042 setup wygiwys editor [#75](https://github.com/AppQuality/unguess-design-system/pull/75) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🔩 Dependency Updates
+
+- chore(deps): bump terser from 4.8.0 to 4.8.1 [#74](https://github.com/AppQuality/unguess-design-system/pull/74) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.60 (Tue Jun 21 2022)
 
 #### ⚠️ Pushed to `master`
