@@ -1,3 +1,15 @@
+# v2.10.62 (Fri Jul 22 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(editor): Trigger save on ctrl+click or cmd+click ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.61 (Fri Jul 22 2022)
 
 #### 🐛 Bug Fix
