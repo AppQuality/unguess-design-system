@@ -8,18 +8,9 @@ interface EditorStoryArgs extends EditorArgs {
 }
 
 const Template: Story<EditorStoryArgs> = ({ children, ...args }) => {
-  const handleSave = (editor: TipTapEditor) => {
-    console.log("we have to save this", editor.getHTML());
-  }
-
   return (
     <>
-      <Editor
-        {...args}
-        onSave={handleSave}
-      >
-        {children}
-      </Editor>
+      <Editor {...args}>{children}</Editor>
     </>
   );
 };
@@ -27,7 +18,9 @@ const Template: Story<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: () => {},
+  onSave: (editor: TipTapEditor) => {
+    console.log("we have to save this", editor.getHTML());
+  },
 };
 
 export const Default = Template.bind({});
@@ -71,7 +64,7 @@ Placeholder.args = {
 export const BubbleMenu = Template.bind({});
 BubbleMenu.args = {
   ...defaultArgs,
-  children: `<p>Hey, try to select some text here. There will popup a menu for selecting some inline styles. Remember: you have full control about content and styling of this menu.</p>`,
+  children: `<p>Hey, try to select some text here. There will popup a menu for selecting some inline styles.<br><strong>Remember:</strong> you have full control about content and styling of this menu.</p>`,
   hasInlineMenu: true,
 };
 
