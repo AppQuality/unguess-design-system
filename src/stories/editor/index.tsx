@@ -17,12 +17,19 @@ import {
   useState,
 } from "react";
 import { FloatingMenu } from "./floatingMenu";
+import { EditorHeader } from "./editorHeader";
+import { EditorFooter } from "./editorFooter";
 
 const EditorContainer = styled.div`
+  border: 2px solid ${({ theme }) => theme.colors.primaryHue};
+  border-radius: ${({ theme }) => theme.borderRadii.md};
+  &:focus-within {
+    outline: ${({ theme }) => theme.palette.blue["300"]};
+    outline-style: solid;
+  }
+
   .ProseMirror {
     padding: ${({ theme }) => theme.space.md};
-    border: 2px solid ${({ theme }) => theme.palette.blue["300"]};
-    border-radius: ${({ theme }) => theme.borderRadii.md};
     background-color: #fff;
     min-height: 100px;
     outline: none;
@@ -43,14 +50,14 @@ const EditorContainer = styled.div`
    Not for this:
     - Simple text input, use textarea instead.
  */
-const Editor = ({ onSave, ...props }: PropsWithChildren<EditorArgs>) => {
+const Editor = ({ onSave, headerTitle, footerSaveText, ...props }: PropsWithChildren<EditorArgs>) => {
   const { children, placeholderOptions, hasInlineMenu, bubbleOptions } = props;
 
   const [activeEditor, setActiveEditor] = useState<TipTapEditor | null>();
 
   const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.ctrlKey && event.key === "Enter") {
-      if(onSave && activeEditor) onSave(activeEditor);
+      if (onSave && activeEditor) onSave(activeEditor);
     }
   };
 
@@ -86,14 +93,17 @@ const Editor = ({ onSave, ...props }: PropsWithChildren<EditorArgs>) => {
     return null;
   }
 
+  // Add here because we want to keep also the listener from the props.
   ed.on("update", ({ editor }) => setActiveEditor(editor as TipTapEditor));
 
   return (
     <EditorContainer>
+      <EditorHeader title={headerTitle}/>
       {hasInlineMenu && (
         <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
       )}
       <EditorContent editor={ed} onKeyDown={onKeyDown} />
+      <EditorFooter saveText={footerSaveText}/>
     </EditorContainer>
   );
 };

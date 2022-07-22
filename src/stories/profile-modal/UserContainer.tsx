@@ -16,7 +16,7 @@ const CompanyHolder = styled(SM)`
   text-transform: uppercase;
   margin-top: ${({ theme }) => theme.space.base * 2}px;
   margin-bottom: ${({ theme }) => theme.space.base * 4}px;
-  color: ${({ theme }) => theme.palette.blue["600"]};
+  color: ${({ theme }) => theme.colors.primaryHue};
 `;
 
 const UserDetails = styled.div`

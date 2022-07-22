@@ -22,7 +22,7 @@ export const LogoIconContainer = styled(ZendeskHeaderItem)`
 const BrandName = styled(ZendeskHeaderItem)`
   margin-right: auto;
   margin-left: -8px;
-  color: ${({ theme }) => theme.palette.blue["600"]};
+  color: ${({ theme }) => theme.colors.primaryHue};
   pointer-events: none;
   font-family: ${({ theme }) => theme.fonts.system};
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -33,7 +33,7 @@ const BrandName = styled(ZendeskHeaderItem)`
 const DropdownItem = styled(ZendeskHeaderItem)`
   margin-right: auto;
   margin-left: -8px;
-  color: ${({ theme }) => theme.palette.blue["600"]};
+  color: ${({ theme }) => theme.colors.primaryHue};
   font-family: ${({ theme }) => theme.fonts.system};
   z-index: 2;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -42,7 +42,7 @@ const DropdownItem = styled(ZendeskHeaderItem)`
 `;
 
 const MenuItem = styled(ZendeskHeaderItem)`
-  color: ${({ theme }) => theme.palette.blue["600"]};
+  color: ${({ theme }) => theme.colors.primaryHue};
   position: absolute;
   left: 0;
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {

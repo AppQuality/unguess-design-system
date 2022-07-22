@@ -1,6 +1,9 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Editor as TipTapEditor } from "@tiptap/react";
 import { Editor } from ".";
+import { Col } from "../grid/col";
+import { Grid } from "../grid/grid";
+import { Row } from "../grid/row";
 import { EditorArgs } from "./_types";
 
 interface EditorStoryArgs extends EditorArgs {
@@ -9,9 +12,13 @@ interface EditorStoryArgs extends EditorArgs {
 
 const Template: Story<EditorStoryArgs> = ({ children, ...args }) => {
   return (
-    <>
-      <Editor {...args}>{children}</Editor>
-    </>
+    <Grid>
+      <Row>
+        <Col xs={12} sm={6}>
+          <Editor {...args}>{children}</Editor>
+        </Col>
+      </Row>
+    </Grid>
   );
 };
 
