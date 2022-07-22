@@ -23,7 +23,8 @@
     "@zendeskgarden/react-tooltips": "^8.49.0",
     "@zendeskgarden/react-typography": "^8.49.0",
     "react-spring": "^9.4.4",
-    "react-window": "^1.8.6"
+    "react-window": "^1.8.6",
+    "ua-parser-js": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -92,6 +93,7 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-window": "^1.8.5",
     "@types/styled-components": "^5.1.23",
+    "@types/ua-parser-js": "^0.7.36",
     "@zendeskgarden/react-dropdowns": "^8.49.0",
     "@zendeskgarden/react-forms": "^8.49.0",
     "@zendeskgarden/react-theming": "^8.48.2",
