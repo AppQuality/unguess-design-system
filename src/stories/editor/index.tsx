@@ -50,13 +50,13 @@ const EditorContainer = styled.div`
    Not for this:
     - Simple text input, use textarea instead.
  */
-const Editor = ({ onSave, headerTitle, footerSaveText, ...props }: PropsWithChildren<EditorArgs>) => {
-  const { children, placeholderOptions, hasInlineMenu, bubbleOptions } = props;
+const Editor = ({ onSave, headerTitle, footerSaveText, placeholderOptions, ...props }: PropsWithChildren<EditorArgs>) => {
+  const { children, hasInlineMenu, bubbleOptions } = props;
 
   const [activeEditor, setActiveEditor] = useState<TipTapEditor | null>();
 
   const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if (event.ctrlKey && event.key === "Enter") {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
       if (onSave && activeEditor) onSave(activeEditor);
     }
   };
@@ -79,7 +79,7 @@ const Editor = ({ onSave, headerTitle, footerSaveText, ...props }: PropsWithChil
     content: children || "",
     editorProps: {
       handleKeyDown: (view, event: KeyboardEvent) => {
-        if (event.ctrlKey && event.key === "Enter") {
+        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
           return true;
         }
 
