@@ -52,6 +52,9 @@ export * from "./stories/dropdowns/select";
 export * from "./stories/dropdowns/autocomplete";
 export * from "./stories/dropdowns/menuheader";
 
+// --- Editor ---
+export * from "./stories/editor";
+
 // --- Forms ---
 export * from "./stories/forms/checkbox";
 export * from "./stories/forms/checkbox/cards";
