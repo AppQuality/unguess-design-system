@@ -51,6 +51,7 @@ const EditorContainer = styled.div<EditorArgs>`
       border: none;
       outline: none;
       padding: 0;
+      min-height: 0;
       `}
   }
 `;
