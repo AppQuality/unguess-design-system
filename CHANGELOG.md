@@ -1,3 +1,15 @@
+# v2.10.63 (Wed Jul 27 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(editor): add read only style ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.62 (Fri Jul 22 2022)
 
 #### ⚠️ Pushed to `master`
