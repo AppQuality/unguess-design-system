@@ -75,6 +75,13 @@ BubbleMenu.args = {
   hasInlineMenu: true,
 };
 
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  ...defaultArgs,
+  children: `<p>Hey, try to select some text here. There will popup a menu for selecting some inline styles.<br><strong>Remember:</strong> you have full control about content and styling of this menu.</p>`,
+  editable: false,
+};
+
 export default {
   title: "Organisms/Editor",
   component: Editor,

@@ -20,13 +20,21 @@ import { FloatingMenu } from "./floatingMenu";
 import { EditorHeader } from "./editorHeader";
 import { EditorFooter } from "./editorFooter";
 
-const EditorContainer = styled.div`
+const EditorContainer = styled.div<EditorArgs>`
   border: 2px solid ${({ theme }) => theme.colors.primaryHue};
   border-radius: ${({ theme }) => theme.borderRadii.md};
   &:focus-within {
     outline: ${({ theme }) => theme.palette.blue["300"]};
     outline-style: solid;
   }
+
+  ${({ editable }) =>
+    !editable &&
+    `
+      border: none;
+      outline: none;
+      
+    `}
 
   .ProseMirror {
     padding: ${({ theme }) => theme.space.md};
@@ -35,6 +43,15 @@ const EditorContainer = styled.div`
     outline: none;
 
     ${editorStyle}
+
+    ${({ editable }) =>
+      !editable &&
+      `
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 0;
+      `}
   }
 `;
 
@@ -50,8 +67,16 @@ const EditorContainer = styled.div`
    Not for this:
     - Simple text input, use textarea instead.
  */
-const Editor = ({ onSave, headerTitle, footerSaveText, placeholderOptions, ...props }: PropsWithChildren<EditorArgs>) => {
-  const { children, hasInlineMenu, bubbleOptions } = props;
+const Editor = ({
+  onSave,
+  headerTitle,
+  footerSaveText,
+  placeholderOptions,
+  ...props
+}: PropsWithChildren<EditorArgs>) => {
+  const { children, hasInlineMenu, bubbleOptions, editable } = props;
+
+  const isEditable = editable !== undefined ? editable : true;
 
   const [activeEditor, setActiveEditor] = useState<TipTapEditor | null>();
 
@@ -97,13 +122,17 @@ const Editor = ({ onSave, headerTitle, footerSaveText, placeholderOptions, ...pr
   ed.on("update", ({ editor }) => setActiveEditor(editor as TipTapEditor));
 
   return (
-    <EditorContainer>
-      <EditorHeader title={headerTitle}/>
-      {hasInlineMenu && (
-        <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
+    <EditorContainer editable={isEditable}>
+      {isEditable && (
+        <>
+          <EditorHeader title={headerTitle} />
+          {hasInlineMenu && (
+            <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
+          )}
+        </>
       )}
       <EditorContent editor={ed} onKeyDown={onKeyDown} />
-      <EditorFooter saveText={footerSaveText}/>
+      {isEditable && <EditorFooter saveText={footerSaveText} />}
     </EditorContainer>
   );
 };
