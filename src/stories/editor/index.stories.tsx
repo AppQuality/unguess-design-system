@@ -82,6 +82,13 @@ ReadOnly.args = {
   editable: false,
 };
 
+export const Validation = Template.bind({});
+Validation.args = {
+  ...defaultArgs,
+  children: `<p>Hey, try to change the validation here. Our editor will change the theme color accordingly.</p>`,
+  validation: "error",
+};
+
 export default {
   title: "Organisms/Editor",
   component: Editor,

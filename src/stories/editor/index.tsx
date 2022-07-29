@@ -21,12 +21,24 @@ import { EditorHeader } from "./editorHeader";
 import { EditorFooter } from "./editorFooter";
 
 const EditorContainer = styled.div<EditorArgs>`
-  border: 2px solid ${({ theme }) => theme.colors.primaryHue};
+  border: 2px solid;
   border-radius: ${({ theme }) => theme.borderRadii.md};
   &:focus-within {
     outline: ${({ theme }) => theme.palette.blue["300"]};
     outline-style: solid;
   }
+
+  ${({ validation, theme }) => {
+    if (validation === "success") {
+      return `border-color: ${theme.colors.successHue};`;
+    } else if (validation === "warning") {
+      return `border-color: ${theme.colors.warningHue};`;
+    } else if (validation === "error") {
+      return `border-color: ${theme.colors.dangerHue};`;
+    } else {
+      return `border-color: ${theme.colors.primaryHue};`;
+    }
+  }}
 
   ${({ editable }) =>
     !editable &&
@@ -123,10 +135,10 @@ const Editor = ({
   ed.on("update", ({ editor }) => setActiveEditor(editor as TipTapEditor));
 
   return (
-    <EditorContainer editable={isEditable}>
+    <EditorContainer editable={isEditable} validation={props.validation}>
       {isEditable && (
         <>
-          <EditorHeader title={headerTitle} />
+          <EditorHeader title={headerTitle} validation={props.validation}/>
           {hasInlineMenu && (
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}
