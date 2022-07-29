@@ -28,6 +28,12 @@ const defaultArgs: EditorStoryArgs = {
   onSave: (editor: TipTapEditor) => {
     console.log("we have to save this", editor.getHTML());
   },
+  onUpdate: ({ editor }) => {
+    console.log(
+      "Characters count:",
+      editor.storage.characterCount.characters()
+    );
+  },
 };
 
 export const Default = Template.bind({});

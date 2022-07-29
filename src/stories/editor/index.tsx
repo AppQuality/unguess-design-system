@@ -8,6 +8,8 @@ import styled from "styled-components";
 import Typography from "@tiptap/extension-typography";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
+import CharacterCount from '@tiptap/extension-character-count'
+
 
 import { editorStyle } from "./editorStyle";
 import { EditorArgs } from "./_types";
@@ -113,6 +115,7 @@ const Editor = ({
         },
         ...placeholderOptions,
       }),
+      CharacterCount,
     ],
     content: children || "",
     editorProps: {
