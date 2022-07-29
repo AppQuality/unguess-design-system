@@ -1,3 +1,15 @@
+# v2.10.67 (Fri Jul 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(editor): Add characters count feature ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.66 (Fri Jul 29 2022)
 
 #### ⚠️ Pushed to `master`
