@@ -1,3 +1,16 @@
+# v2.10.65 (Fri Jul 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- feat(editor): Add validation support ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.64 (Wed Jul 27 2022)
 
 #### ⚠️ Pushed to `master`

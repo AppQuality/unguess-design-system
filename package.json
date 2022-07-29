@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "2.10.64",
+  "version": "2.10.65",
   "dependencies": {
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.61",
     "@tiptap/extension-placeholder": "^2.0.0-beta.53",
