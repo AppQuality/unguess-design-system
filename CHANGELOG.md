@@ -1,3 +1,16 @@
+# v2.10.66 (Fri Jul 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- chore(theme): update dangerHue shade ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.65 (Fri Jul 29 2022)
 
 #### ⚠️ Pushed to `master`
