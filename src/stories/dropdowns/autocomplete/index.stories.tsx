@@ -8,10 +8,18 @@ import { Dropdown } from "../select";
 import { Label } from "../../label";
 import { AutocompleteArgs } from "./_types";
 import { ReactComponent as AddIcon } from "../../../assets/icons/grid-add.svg";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
+import { ItemContent } from "../item-content";
 
 interface IItem {
+  label: string;
+  value: string;
+}
+
+interface IContentItem {
+  thumbSrc: string;
+  description: string;
   label: string;
   value: string;
 }
@@ -78,7 +86,9 @@ const Template: Story<AutocompleteStoryArgs> = (args) => {
             </Item>
           ))
         ) : (
-          <Item disabled><span>No matches found</span></Item>
+          <Item disabled>
+            <span>No matches found</span>
+          </Item>
         )}
         {args.allowNew && inputValue && (
           <>
@@ -107,8 +117,121 @@ const Template: Story<AutocompleteStoryArgs> = (args) => {
   );
 };
 
+const itemsMedia = [
+  {
+    thumbSrc: "https://via.placeholder.com/60x40",
+    label: "Ferdinand ThreeMelons",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    value: "item-1",
+  },
+  {
+    thumbSrc: "https://via.placeholder.com/60x40",
+    label: "Giommo Cornelio",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    value: "item-2",
+  },
+  {
+    thumbSrc: "https://via.placeholder.com/40x60",
+    label: "Rubber Tree",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    value: "item-3",
+  },
+];
+
+const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
+  const [selectedItem, setSelectedItem] = useState(itemsMedia[0]);
+  const [inputValue, setInputValue] = useState("");
+  const [matchingOptions, setMatchingOptions] = useState(itemsMedia);
+
+  const onSelect = useCallback((item: IContentItem) => {
+    setInputValue("");
+    setSelectedItem(item);
+  }, []);
+
+  const debouncedInputValue = useDebounce<string>(inputValue, 300);
+  /**
+   * Debounce filtering
+   */
+  const filterMatchingOptions = (value: string) => {
+    console.log("debounce fired with value: ", value);
+    const matchedOptions = itemsMedia.filter(
+      (item) =>
+        item.label.trim().toLowerCase().indexOf(value.trim().toLowerCase()) !==
+        -1
+    );
+
+    console.log("matchedOptions: ", matchedOptions);
+    setMatchingOptions(matchedOptions);
+  };
+
+  useEffect(() => {
+    filterMatchingOptions(debouncedInputValue);
+  }, [debouncedInputValue]);
+
+  console.log("Selected item: ", selectedItem);
+
+  return (
+    <Dropdown
+      inputValue={inputValue}
+      selectedItem={selectedItem}
+      onSelect={onSelect}
+      onInputValueChange={(value) => {
+        setInputValue(value);
+      }}
+      downshiftProps={{
+        itemToString: (item: IContentItem) => item && item.label,
+      }}
+    >
+      <Field>
+        <Label>Food Manager</Label>
+        <Autocomplete {...args}>{selectedItem.label}</Autocomplete>
+      </Field>
+      <Menu>
+        {matchingOptions.length ? (
+          matchingOptions.map((item) => (
+            <Item key={item.value} value={item}>
+              <ItemContent key={`${item.value}-content`} {...item} />
+            </Item>
+          ))
+        ) : (
+          <Item disabled>
+            <span>No matches found</span>
+          </Item>
+        )}
+        {args.allowNew && inputValue && (
+          <>
+            <Separator />
+            <Item key="new" value={inputValue}>
+              <MediaFigure>
+                <AddIcon />
+              </MediaFigure>
+              <MediaBody>Add {inputValue}</MediaBody>
+            </Item>
+          </>
+        )}
+      </Menu>
+      <Menu>
+        {matchingOptions.length ? (
+          matchingOptions.map((item) => (
+            <Item key={item.value} value={item}>
+              <ItemContent key={`${item.value}-content`} {...item} />
+            </Item>
+          ))
+        ) : (
+          <Item disabled>No matches found</Item>
+        )}
+      </Menu>
+    </Dropdown>
+  );
+};
+
 export const Default = Template.bind({});
 Default.args = {
+  allowNew: false,
+};
+
+export const WithMedia = TemplateWithItemMedia.bind({});
+WithMedia.args = {
   allowNew: false,
 };
 
