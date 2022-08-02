@@ -1,3 +1,16 @@
+# v2.10.69 (Tue Aug 02 2022)
+
+#### 🐛 Bug Fix
+
+- feat(item-with-media): add new item content to handle media [#78](https://github.com/AppQuality/unguess-design-system/pull/78) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.68 (Tue Aug 02 2022)
 
 #### 🐛 Bug Fix
