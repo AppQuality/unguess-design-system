@@ -1,3 +1,15 @@
+# v2.10.68 (Tue Aug 02 2022)
+
+#### 🐛 Bug Fix
+
+- feat(item-with-media): add new item content to handle media ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.10.67 (Fri Jul 29 2022)
 
 #### ⚠️ Pushed to `master`

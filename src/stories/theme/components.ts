@@ -27,5 +27,9 @@ export const components = {
 
   pageHeader: {
     imgMaxHeight: "214px",
+  },
+
+  autocomplete: {
+    thumbSize: "60px",
   }
 };
