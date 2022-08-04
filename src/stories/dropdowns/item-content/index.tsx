@@ -38,7 +38,7 @@ const ThumbContainer = styled.div`
 
 const Label = styled(MD)`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
-  color: ${({ theme }) => theme.colors.primaryHue};
+  color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
 const Description = styled(SM)`
@@ -60,7 +60,7 @@ const ItemContent = (props: ItemContentArgs) => {
         </ThumbContainer>
       )}
       <MetaContainer>
-        {label && <Label>{label}</Label>}
+        {label && <Label isBold>{label}</Label>}
         {description && <Description>{description}</Description>}
       </MetaContainer>
     </Container>
