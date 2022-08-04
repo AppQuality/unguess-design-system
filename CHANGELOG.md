@@ -1,3 +1,15 @@
+# v2.10.70 (Thu Aug 04 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(item-container): Update label color ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.69 (Tue Aug 02 2022)
 
 #### 🐛 Bug Fix
