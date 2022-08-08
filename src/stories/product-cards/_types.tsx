@@ -1,6 +1,6 @@
-import { CardProps } from "../cards/_types";
+import { SpecialCardProps } from "../special-cards/_types";
 
-export interface ProductCardProps extends CardProps {
+export interface ProductCardProps extends SpecialCardProps {
   /**
    * displays a new tag in the top right
    */

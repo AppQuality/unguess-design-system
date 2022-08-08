@@ -9,31 +9,6 @@ import { theme } from "../../../theme";
 import { SpecialCard } from "../../../special-cards";
 import { MD } from "../../../typography/typescale";
 
-const StyledCard = styled(Card)`
-  ${cardStyle}
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-
-  &.card-active {
-    border-color: ${({ theme }) => theme.palette.blue[300]};
-  }
-`;
-
-const IconWrapper = styled.div`
-  margin: ${({ theme }) => theme.space.base}px auto;
-`;
-
-const LabelWrapper = styled(Label)`
-  margin: ${({ theme }) => theme.space.base}px auto;
-  color: ${({ theme }) => theme.palette.grey[700]};
-  user-select: none;
-
-  &:focus {
-    outline: 0;
-  }
-`;
-
 const StyledLabel = styled(Label)`
   margin: ${({ theme }) => theme.space.base}px auto;
 `;

@@ -79,7 +79,8 @@ MultipleCards.args = {
     {
       disabled: false,
       card: {
-        isFloating: false
+        isFloating: false,
+        isDisabled: true
       },
       label: "Tablet",
       icon: <SmartphoneIcon />,

@@ -1,12 +1,12 @@
 import { Well as ZendeskWell } from "@zendeskgarden/react-notifications";
-import { CardProps } from "./_types";
+import { SpecialCardProps } from "./_types";
 import styled from "styled-components";
 import { CardMeta } from "./styled/meta";
 import { CardThumbnail } from "./styled/thumbnail";
 import { CardHeader } from "./styled/header";
 import { CardFooter } from "./styled/footer";
 
-const UgContentCard = styled(ZendeskWell)`
+const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
   padding: ${({ theme }) => `${theme.space.sm} ${theme.space.base * 4}px`};
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
@@ -19,6 +19,13 @@ const UgContentCard = styled(ZendeskWell)`
       &:hover {
          box-shadow: ${theme.shadows.boxShadow(theme)};
       }`}
+
+  ${({ isDisabled }) =>
+    isDisabled &&
+    `
+    pointer-events: none;
+    opacity: 0.7;
+    `}
 `;
 
 /**
@@ -28,7 +35,7 @@ const UgContentCard = styled(ZendeskWell)`
     - Display products and services
     - As container of input (checkboxCard, radioCard)
  */
-const SpecialCard = (props: CardProps) => <UgContentCard {...props} />;
+const SpecialCard = (props: SpecialCardProps) => <UgContentCard {...props} />;
 
 SpecialCard.Meta = CardMeta;
 SpecialCard.Thumb = CardThumbnail;
