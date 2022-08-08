@@ -1,7 +1,6 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Title } from "../title";
 import { SpecialCard } from ".";
-import { CardProps } from "./_types";
+import { SpecialCardProps } from "./_types";
 import { ReactComponent as ExploratoryIcon } from "../../assets/icons/service-exploratory-icon.svg";
 import styled from "styled-components";
 import { Tag } from "../tags";
@@ -19,7 +18,7 @@ const StyledTagNew = styled(Tag)`
 
 // --- END Example Components (TO BE REMOVED) ---
 
-interface CardStoryProps extends CardProps {
+interface CardStoryProps extends SpecialCardProps {
   title: string;
   content: string;
 }

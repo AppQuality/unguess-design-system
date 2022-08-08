@@ -1,8 +1,6 @@
 import { ProductCardProps } from "./_types";
-import { Card } from "../cards";
 import { Tag } from "../tags";
-import { Label } from "../label";
-import { theme } from "../theme";
+import { theme as globalTheme } from "../theme";
 import styled from "styled-components";
 import { CampaignCardSkeleton } from "../campaign-cards/skeleton";
 import { Button } from "../buttons/button";
@@ -28,7 +26,7 @@ const ProductCard = (props: ProductCardProps) => {
       <SpecialCard.Meta>
         {isNew && (
           <StyledTagNew
-            hue={theme.palette.fuschia["600"]}
+            hue={globalTheme.palette.fuschia["600"]}
             isPill
             size="medium"
             title={labelNew ? labelNew : "New!"}
@@ -50,7 +48,7 @@ const ProductCard = (props: ProductCardProps) => {
           isPill
           isPrimary
           onClick={props.onCtaClick}
-          themeColor={theme.colors.accentHue}
+          themeColor={globalTheme.colors.accentHue}
           size={"small"}
         >
           {props.ctaLabel}

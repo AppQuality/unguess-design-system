@@ -11,11 +11,13 @@ export const JUSTIFY_CONTENT = [
   "end",
 ];
 
-export interface CardProps extends IWellProps {
+export interface SpecialCardProps extends IWellProps {
   /** Applies a background color */
   isRecessed?: boolean;
   /** Applies a drop shadow */
   isFloating?: boolean;
+  /** Reduce opacity and disable pointer events*/
+  isDisabled?: boolean;
 }
 
 export interface CardMetaProps extends HTMLAttributes<HTMLDivElement> {
