@@ -20,11 +20,11 @@ const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
          box-shadow: ${theme.shadows.boxShadow(theme)};
       }`}
 
-  ${({ isDisabled, theme }) =>
+  ${({ isDisabled }) =>
     isDisabled &&
     `
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.7;
     `}
 `;
 
