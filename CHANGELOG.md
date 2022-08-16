@@ -1,3 +1,15 @@
+# v2.11.0 (Tue Aug 16 2022)
+
+#### 🚀 Enhancement
+
+- feat(editor): add headings buttons [#80](https://github.com/AppQuality/unguess-design-system/pull/80) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.10.71 (Mon Aug 08 2022)
 
 #### 🐛 Bug Fix
