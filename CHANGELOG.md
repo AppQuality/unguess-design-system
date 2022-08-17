@@ -1,3 +1,15 @@
+# v2.11.1 (Wed Aug 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(page-header): add boxed layout support ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.0 (Tue Aug 16 2022)
 
 #### 🚀 Enhancement
