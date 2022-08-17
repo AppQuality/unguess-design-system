@@ -29,6 +29,8 @@ const StyledPageHeader = styled.div<PageHeaderProps>`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
     margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 `;
 
