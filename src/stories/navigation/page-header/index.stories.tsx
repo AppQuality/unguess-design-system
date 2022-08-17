@@ -6,6 +6,12 @@ import { Counter } from "../../counter";
 import { Button } from "../../buttons/button";
 import React from "react";
 import { theme } from "../../theme";
+import styled from "styled-components";
+import { Paragraph } from "../../typography/paragraph";
+
+const FakeBody = styled.div`
+  background-color: ${({ theme }) => theme.palette.grey[100]};
+`;
 
 interface PageHeaderStoryProps {
   pageHeaderArgs: {
@@ -16,16 +22,23 @@ interface PageHeaderStoryProps {
 
 const Template: Story<PageHeaderStoryProps> = (args) => {
   return (
-    <PageHeader>
-      <PageHeader.Breadcrumb>
-        <Anchor href="#">Home</Anchor>
-        <Anchor href="#">Page</Anchor>
-      </PageHeader.Breadcrumb>
-      <PageHeader.Main {...args.pageHeaderMainArgs} />
-      <PageHeader.Buttons>
-        <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
-      </PageHeader.Buttons>
-    </PageHeader>
+    <FakeBody>
+      <PageHeader>
+        <PageHeader.Breadcrumb>
+          <Anchor href="#">Home</Anchor>
+          <Anchor href="#">Page</Anchor>
+        </PageHeader.Breadcrumb>
+        <PageHeader.Main {...args.pageHeaderMainArgs} />
+        <PageHeader.Buttons>
+          <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
+        </PageHeader.Buttons>
+      </PageHeader>
+      <Paragraph style={{marginTop: "24px"}}>
+        This is a long paragraph, please ignore the style. It's not the object of this story, and it's useful to non-design purposes.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nunc eget nisi egestas pretium. Nulla facilisi. 
+        Donec eu nunc eget nisi egestas pretium. Nulla facilisi. 
+      </Paragraph>
+    </FakeBody>
   );
 };
 

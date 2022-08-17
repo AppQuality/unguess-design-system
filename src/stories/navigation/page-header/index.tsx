@@ -5,13 +5,16 @@ import { Main } from "./styled/main";
 import { BreadcrumbArgs } from "../../breadcrumbs/_types";
 import { PropsWithChildren } from "react";
 
+const PageContainer = styled.div`
+  background-color: ${({ theme }) => theme.palette.white};
+`;
+
 const StyledPageHeader = styled.div<PageHeaderProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: ${({ theme }) => theme.palette.white};
   padding: ${({ theme }) =>
     `${theme.space.xxl} ${theme.space.xxl} ${theme.space.md}`};
   box-sizing: border-box;
@@ -70,7 +73,11 @@ const Buttons = (props: PropsWithChildren<{}>) => (
     - As a container for the top part of the page
  */
 const PageHeader = (props: PageHeaderProps) => {
-  return <StyledPageHeader {...props} />;
+  return (
+    <PageContainer>
+      <StyledPageHeader {...props} />
+    </PageContainer>
+  );
 };
 PageHeader.Breadcrumb = StyledBreadcrumb;
 PageHeader.Main = Main;
