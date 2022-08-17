@@ -1,3 +1,15 @@
+# v2.11.2 (Wed Aug 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(page-header): only the content MUST be boxed,keep the background ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.1 (Wed Aug 17 2022)
 
 #### ⚠️ Pushed to `master`
