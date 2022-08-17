@@ -18,8 +18,14 @@ const StyledPageHeader = styled.div<PageHeaderProps>`
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-   padding: ${({ theme }) =>
-    `${theme.space.md} ${theme.space.md} ${theme.space.xs}`};
+    padding: ${({ theme }) =>
+      `${theme.space.md} ${theme.space.md} ${theme.space.xs}`};
+  }
+
+  max-width: ${({ theme }) => theme.breakpoints.xl};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+    margin: 0 auto;
   }
 `;
 
