@@ -6,6 +6,10 @@ import { boxShadow } from "./utils";
 
 const theme = {
   ...DEFAULT_THEME,
+  breakpoints: {
+    ...DEFAULT_THEME.breakpoints,
+    xxl: "1440px",
+  },
   colors: {
     ...DEFAULT_THEME.colors,
     primaryHue: palette.blue[600],

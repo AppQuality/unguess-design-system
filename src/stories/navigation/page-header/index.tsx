@@ -25,9 +25,9 @@ const StyledPageHeader = styled.div<PageHeaderProps>`
       `${theme.space.md} ${theme.space.md} ${theme.space.xs}`};
   }
 
-  max-width: ${({ theme }) => theme.breakpoints.xl};
+  max-width: ${({ theme }) => theme.breakpoints.xxl};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.xxl}) {
     margin: 0 auto;
   }
 `;
