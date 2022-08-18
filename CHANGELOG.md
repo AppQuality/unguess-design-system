@@ -1,3 +1,16 @@
+# v2.11.4 (Thu Aug 18 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(layout): add new breakpoint and move boxed to xxl ([@cannarocks](https://github.com/cannarocks))
+- fix(page-header): keep paddings even on large screen ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.3 (Wed Aug 17 2022)
 
 #### ⚠️ Pushed to `master`
