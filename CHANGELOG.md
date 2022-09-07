@@ -1,3 +1,15 @@
+# v2.11.6 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- feat(input-toggle): add new component behavior [#82](https://github.com/AppQuality/unguess-design-system/pull/82) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.5 (Wed Sep 07 2022)
 
 #### 🐛 Bug Fix
