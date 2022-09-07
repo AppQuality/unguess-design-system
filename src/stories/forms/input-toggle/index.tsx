@@ -26,6 +26,7 @@ const StyledInput = styled(Input)`
   border-left: 0;
   border-right: 0;
   border-bottom-width: 2px;
+  padding: ${({ theme }) => `${theme.space.xs} ${theme.space.xxs}`};
   width: 100%;
 
   &[readonly] {
@@ -81,7 +82,7 @@ const InputToggle = (props: InputToggleArgs) => {
   };
 
   return (
-    <Wrapper onClick={onClick} onKeyDown={onKeyDown} onBlur={onBlur}>
+    <Wrapper onClick={onClick} onKeyDown={onKeyDown} onBlur={onBlur} {...props}>
       {props.label && (
         <StyledLabel
           isRegular={true}
