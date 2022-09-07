@@ -1,19 +1,21 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Input } from ".";
+import { InputToggle } from ".";
 import { Field } from "../field";
-import { Label } from "../../label";
-import { InputArgs } from "./_types";
+import { InputToggleArgs } from "./_types";
 
-const defaultArgs: InputArgs = {
+const defaultArgs: InputToggleArgs = {
   isBare: false,
   focusInset: false,
+  label: "Titolo",
+  message: "Messaggio",
+  placeholder: "Placeholder",
+  required: true,
 };
 
-const Template: Story<InputArgs> = (args) => {
+const Template: Story<InputToggleArgs> = (args) => {
   return (
     <Field>
-      <Label isRegular={true}>Questa è la Label dell'Input</Label>
-      <Input {...args} />
+      <InputToggle {...args} />
     </Field>
   );
 };
@@ -43,6 +45,6 @@ Error.args = {
 };
 
 export default {
-  title: "Molecules/Forms/Input",
-  component: Input,
-} as ComponentMeta<typeof Input>;
+  title: "Molecules/Forms/InputToggle",
+  component: InputToggle,
+} as ComponentMeta<typeof InputToggle>;
