@@ -1,4 +1,5 @@
 import { SplitButton as ZendeskSplitButton } from "@zendeskgarden/react-buttons";
+import { forwardRef } from "react";
 import { SplitButtonArgs } from "./_types";
 
 /**
@@ -8,8 +9,8 @@ Used for this:
 - To let users select from multiple parallel actions. Actions are parallel when each represents a path forward for the user and none cancel the action.
 - To reduce visual complexity when there are multiple actions a user can take
 **/
-const SplitButton = (props: SplitButtonArgs) => (
-  <ZendeskSplitButton {...props} />
+const SplitButton = forwardRef<HTMLDivElement, SplitButtonArgs>(
+  (props, ref) => <ZendeskSplitButton ref={ref} {...props} />
 );
 
 export { SplitButton };

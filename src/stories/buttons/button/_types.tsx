@@ -16,7 +16,7 @@ export interface ButtonArgs extends IButtonProps {
   /** Applies danger styling */
   isDanger?: boolean;
   /** Specifies the buton size */
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   /** Stretches the button fill to its container width */
   isStretched?: boolean;
   /** Applies neutral button styling */

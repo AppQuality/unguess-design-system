@@ -1,4 +1,5 @@
 import { Anchor as ZendeskAnchor } from "@zendeskgarden/react-buttons";
+import { forwardRef } from "react";
 import { AnchorArgs } from "./_types";
 
 /**
@@ -9,6 +10,6 @@ import { AnchorArgs } from "./_types";
     - To navigate within a page
     - To display links alongside text 
  */
-const Anchor = (props: AnchorArgs) => <ZendeskAnchor {...props} />;
+const Anchor = forwardRef<HTMLAnchorElement, AnchorArgs>((props, ref) => <ZendeskAnchor ref={ref} {...props} />);
 
 export { Anchor };
