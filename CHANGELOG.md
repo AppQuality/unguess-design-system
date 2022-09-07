@@ -1,3 +1,15 @@
+# v2.11.5 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- Add tooltip modal (skip-ci) [#81](https://github.com/AppQuality/unguess-design-system/pull/81) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.4 (Thu Aug 18 2022)
 
 #### ⚠️ Pushed to `master`
