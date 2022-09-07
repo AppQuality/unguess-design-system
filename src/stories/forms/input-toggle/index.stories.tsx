@@ -1,6 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { InputToggle } from ".";
-import { Field } from "../field";
 import { InputToggleArgs } from "./_types";
 
 const defaultArgs: InputToggleArgs = {
@@ -13,11 +12,7 @@ const defaultArgs: InputToggleArgs = {
 };
 
 const Template: Story<InputToggleArgs> = (args) => {
-  return (
-    <Field>
-      <InputToggle {...args} />
-    </Field>
-  );
+  return <InputToggle {...args} />;
 };
 
 export const Default = Template.bind({});
