@@ -1,3 +1,15 @@
+# v2.11.8 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): fix different height if toggled [#84](https://github.com/AppQuality/unguess-design-system/pull/84) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.7 (Wed Sep 07 2022)
 
 #### 🐛 Bug Fix
