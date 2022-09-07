@@ -36,12 +36,12 @@ const StyledInput = styled(Input)`
 
   &:focus {
     box-shadow: none;
-    transition: border-color 0.2s ease-in-out 0.2s;
+    transition: border-color 0.2s ease-in-out 0.1s;
   }
 `;
 
 const StyledEditIcon = styled(EditIcon)`
-  margin: ${({ theme }) => theme.space.md};
+  margin: ${({ theme }) => theme.space.sm};
 `;
 
 const StyledLabel = styled(Label)`
