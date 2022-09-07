@@ -1,3 +1,15 @@
+# v2.11.9 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): fix input padding + container props [#85](https://github.com/AppQuality/unguess-design-system/pull/85) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.8 (Wed Sep 07 2022)
 
 #### 🐛 Bug Fix
