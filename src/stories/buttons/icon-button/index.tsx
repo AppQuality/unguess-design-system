@@ -1,4 +1,5 @@
 import { IconButton as ZendeskIconButton } from "@zendeskgarden/react-buttons";
+import { forwardRef } from "react";
 import { IconButtonArgs } from "./_types";
 
 /**
@@ -11,8 +12,8 @@ Used for this
  - To simplify the appearance of repeated or persistent actions on a page 
  - To enable action in a toolbar
 **/
-const IconButton = (props: IconButtonArgs) => (
-  <ZendeskIconButton {...props} />
+const IconButton = forwardRef<HTMLButtonElement, IconButtonArgs>(
+  (props, ref) => <ZendeskIconButton ref={ref} {...props} />
 );
 
 export { IconButton };
