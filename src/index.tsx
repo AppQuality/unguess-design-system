@@ -61,6 +61,7 @@ export * from "./stories/forms/checkbox";
 export * from "./stories/forms/checkbox/cards";
 export * as FormField from "./stories/forms/field";
 export * from "./stories/forms/input";
+export * from "./stories/forms/input-toggle";
 export * from "./stories/forms/mediaInput";
 export * from "./stories/forms/radio";
 export * from "./stories/forms/radio/cards";
