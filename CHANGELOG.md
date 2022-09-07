@@ -1,3 +1,15 @@
+# v2.11.7 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): add missing export for input-toggle component [#83](https://github.com/AppQuality/unguess-design-system/pull/83) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.6 (Wed Sep 07 2022)
 
 #### 🐛 Bug Fix
