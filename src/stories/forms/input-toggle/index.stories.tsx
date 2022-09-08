@@ -4,7 +4,6 @@ import { InputToggleArgs } from "./_types";
 
 const defaultArgs: InputToggleArgs = {
   isBare: false,
-  focusInset: false,
   label: "Titolo",
   message: "Messaggio",
   placeholder: "Placeholder",
