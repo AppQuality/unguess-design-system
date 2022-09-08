@@ -1,5 +1,10 @@
 import { TooltipModalArgs } from "./_types";
 import { TooltipModal as ZendeskTooltipModal } from "@zendeskgarden/react-modals";
+import styled from "styled-components";
+
+const StyledTooltipModal = styled(ZendeskTooltipModal)`
+   border-radius: ${({ theme }) => theme.borderRadii.md};
+`;
 
 /**
  * A Tooltip modal provides contextual information about a paired element. It either opens automatically or through user action.
@@ -10,12 +15,12 @@ import { TooltipModal as ZendeskTooltipModal } from "@zendeskgarden/react-modals
  */
 
 
-const TooltipModal = (props: TooltipModalArgs) => <ZendeskTooltipModal {...props} />;
+const TooltipModal = (props: TooltipModalArgs) => <StyledTooltipModal {...props} />;
 
-TooltipModal.Title = ZendeskTooltipModal.Title;
-TooltipModal.Body = ZendeskTooltipModal.Body;
-TooltipModal.Close = ZendeskTooltipModal.Close;
-TooltipModal.Footer = ZendeskTooltipModal.Footer;
-TooltipModal.FooterItem = ZendeskTooltipModal.FooterItem;
+TooltipModal.Title = StyledTooltipModal.Title;
+TooltipModal.Body = StyledTooltipModal.Body;
+TooltipModal.Close = StyledTooltipModal.Close;
+TooltipModal.Footer = StyledTooltipModal.Footer;
+TooltipModal.FooterItem = StyledTooltipModal.FooterItem;
 
 export { TooltipModal };

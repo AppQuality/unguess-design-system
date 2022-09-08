@@ -60,9 +60,21 @@ const StyledMessage = styled(Message)`
  *  - To let the user enter data into a field
  *  - To enter multiline text, use a Textarea
  **/
-const InputToggle = (props: InputToggleArgs) => {
+ const InputToggle = (props: InputToggleArgs) => {
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const {
+    validation,
+    size,
+    label,
+    message,
+    required,
+    onBlur,
+    placeholder,
+    style,
+    ...rest
+  } = props;
 
   const onClick = () => {
     setIsEditing(true);
@@ -70,49 +82,57 @@ const InputToggle = (props: InputToggleArgs) => {
   };
 
   const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
       setIsEditing(false);
       inputRef.current?.blur();
     }
   };
 
-  const onBlur = () => {
+  const handleOnBlur = () => {
     setIsEditing(false);
     inputRef.current?.blur();
   };
 
   return (
-    <Wrapper onClick={onClick} onKeyDown={onKeyDown} onBlur={onBlur} {...props}>
-      {props.label && (
+    <Wrapper
+      {...(style && { style })}
+    >
+      {label && (
         <StyledLabel
-          isRegular={true}
+          isRegular
           {...(isEditing
             ? { style: { opacity: 1 } }
             : { style: { opacity: 0 } })}
         >
-          {props.label}
-          {props.label && props.required ? (
+          {label}
+          {label && required ? (
             <Span style={{ color: theme.palette.red[600] }}>*</Span>
           ) : null}
         </StyledLabel>
       )}
       <InputContainer>
         <StyledInput
+          placeholder={placeholder}
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          onBlur={(e) => {
+            onBlur?.(e);
+            handleOnBlur();
+          }}
           ref={inputRef}
-          {...props}
           {...(isEditing ? { readOnly: false } : { readOnly: true })}
-          {...(props.size ? { style: { fontSize: `${props.size}px` } } : {})}
+          {...(size ? { style: { fontSize: `${size}px` } } : {})}
+          {...(validation && { validation })}
+          {...rest}
         />
         {!isEditing && <StyledEditIcon />}
       </InputContainer>
-      {props.message && (
+      {message && (
         <StyledMessage
-          validation={props.validation}
-          {...(props.message
-            ? { style: { opacity: 1 } }
-            : { style: { opacity: 0 } })}
+          validation={validation}
+          {...(message ? { style: { opacity: 1 } } : { style: { opacity: 0 } })}
         >
-          {props.message}
+          {message}
         </StyledMessage>
       )}
     </Wrapper>
