@@ -1,7 +1,7 @@
 import { Input } from "../input";
 import { InputToggleArgs } from "./_types";
 import styled from "styled-components";
-import { useRef, useState, KeyboardEvent as ReactKeyboardEvent } from "react";
+import { useRef, useState, KeyboardEvent as ReactKeyboardEvent, useEffect } from "react";
 import { Label } from "../../label";
 import { Message } from "../../dropdowns/select";
 import { Span } from "../../typography/span";
@@ -60,9 +60,6 @@ const IconContainer = styled.div`
  *  - To enter multiline text, use a Textarea
  **/
 const InputToggle = (props: InputToggleArgs) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
   const {
     validation,
     size,
@@ -73,8 +70,18 @@ const InputToggle = (props: InputToggleArgs) => {
     placeholder,
     endIcon,
     style,
+    isFocused,
     ...rest
   } = props;
+
+  const [isEditing, setIsEditing] = useState(isFocused);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isFocused) {
+      inputRef.current?.focus();
+    }
+  }, []);
 
   const onClick = () => {
     setIsEditing(true);
