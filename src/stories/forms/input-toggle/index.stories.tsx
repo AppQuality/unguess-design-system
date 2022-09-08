@@ -1,6 +1,7 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { InputToggle } from ".";
 import { InputToggleArgs } from "./_types";
+import { ReactComponent as EditIcon } from "../../../assets/icons/input-toggle-edit.svg";
 
 const defaultArgs: InputToggleArgs = {
   isBare: false,
@@ -8,6 +9,7 @@ const defaultArgs: InputToggleArgs = {
   message: "Messaggio",
   placeholder: "Placeholder",
   required: true,
+  endIcon: <EditIcon />,
 };
 
 const Template: Story<InputToggleArgs> = (args) => {

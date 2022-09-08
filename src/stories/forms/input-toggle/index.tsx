@@ -2,7 +2,6 @@ import { Input } from "../input";
 import { InputToggleArgs } from "./_types";
 import styled from "styled-components";
 import { useRef, useState, KeyboardEvent as ReactKeyboardEvent } from "react";
-import { ReactComponent as EditIcon } from "../../../assets/icons/input-toggle-edit.svg";
 import { Label } from "../../label";
 import { Message } from "../../dropdowns/select";
 import { Span } from "../../typography/span";
@@ -17,7 +16,6 @@ const InputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
 `;
 
 const StyledInput = styled(Input)`
@@ -41,16 +39,17 @@ const StyledInput = styled(Input)`
   }
 `;
 
-const StyledEditIcon = styled(EditIcon)`
-  margin: ${({ theme }) => theme.space.sm};
-`;
-
 const StyledLabel = styled(Label)`
   transition: opacity 0.2s ease-in-out;
 `;
 
 const StyledMessage = styled(Message)`
   margin-top: ${({ theme }) => theme.space.sm};
+`;
+
+const IconContainer = styled.div`
+  margin-left: ${({ theme }) => theme.space.md};
+  cursor: pointer;
 `;
 
 /**
@@ -60,7 +59,7 @@ const StyledMessage = styled(Message)`
  *  - To let the user enter data into a field
  *  - To enter multiline text, use a Textarea
  **/
- const InputToggle = (props: InputToggleArgs) => {
+const InputToggle = (props: InputToggleArgs) => {
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -72,6 +71,7 @@ const StyledMessage = styled(Message)`
     required,
     onBlur,
     placeholder,
+    endIcon,
     style,
     ...rest
   } = props;
@@ -82,7 +82,7 @@ const StyledMessage = styled(Message)`
   };
 
   const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
       setIsEditing(false);
       inputRef.current?.blur();
     }
@@ -94,9 +94,7 @@ const StyledMessage = styled(Message)`
   };
 
   return (
-    <Wrapper
-      {...(style && { style })}
-    >
+    <Wrapper {...(style && { style })}>
       {label && (
         <StyledLabel
           isRegular
@@ -125,7 +123,9 @@ const StyledMessage = styled(Message)`
           {...(validation && { validation })}
           {...rest}
         />
-        {!isEditing && <StyledEditIcon />}
+        {!isEditing && endIcon && (
+          <IconContainer onClick={onClick}>{endIcon}</IconContainer>
+        )}
       </InputContainer>
       {message && (
         <StyledMessage

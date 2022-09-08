@@ -13,4 +13,6 @@ export interface InputToggleArgs extends IInputProps {
   message?: string;
   /** Sets the asterisk if required */
   required?: boolean;
+  /** Sets the endicon */
+  endIcon?: React.ReactNode;
 }
