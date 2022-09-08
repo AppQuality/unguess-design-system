@@ -15,4 +15,6 @@ export interface InputToggleArgs extends IInputProps {
   required?: boolean;
   /** Sets the endicon */
   endIcon?: React.ReactNode;
+  /** Sets the initial focus */
+  isFocused?: boolean;
 }

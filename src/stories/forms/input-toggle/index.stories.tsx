@@ -10,6 +10,7 @@ const defaultArgs: InputToggleArgs = {
   placeholder: "Placeholder",
   required: true,
   endIcon: <EditIcon />,
+  isFocused: true,
 };
 
 const Template: Story<InputToggleArgs> = (args) => {
