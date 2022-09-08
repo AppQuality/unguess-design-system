@@ -1,3 +1,15 @@
+# v2.11.10 (Thu Sep 08 2022)
+
+#### 🐛 Bug Fix
+
+- Fix/input toggle [#86](https://github.com/AppQuality/unguess-design-system/pull/86) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.9 (Wed Sep 07 2022)
 
 #### 🐛 Bug Fix
