@@ -1,3 +1,15 @@
+# v2.11.12 (Thu Sep 08 2022)
+
+#### 🐛 Bug Fix
+
+- feat(input-toggle): add auto focus props [#88](https://github.com/AppQuality/unguess-design-system/pull/88) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.11 (Thu Sep 08 2022)
 
 #### 🐛 Bug Fix
