@@ -1,3 +1,15 @@
+# v2.11.11 (Thu Sep 08 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): fix icon click + set endicon optional [#87](https://github.com/AppQuality/unguess-design-system/pull/87) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.10 (Thu Sep 08 2022)
 
 #### 🐛 Bug Fix
