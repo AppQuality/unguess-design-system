@@ -1,22 +1,17 @@
+import styled from "styled-components";
+import { useRef, useState, useEffect, createContext, useMemo, useContext } from "react";
 import { Input } from "../input";
 import { InputToggleArgs } from "./_types";
-import styled from "styled-components";
-import { useRef, useState, KeyboardEvent as ReactKeyboardEvent, useEffect } from "react";
+import { ReactComponent as EditIcon } from "../../../assets/icons/notes-stroke.svg";
 import { Label } from "../../label";
-import { Message } from "../../dropdowns/select";
-import { Span } from "../../typography/span";
-import { theme } from "../../theme";
+import { XL } from "../../typography/typescale";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+interface IInputToggleContext {
+  isEditing?: boolean;
+  setIsEditing?: (isEditing: boolean) => void;
+}
 
-const InputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+const ToggleContext = createContext<IInputToggleContext>({});
 
 const StyledInput = styled(Input)`
   border-radius: 0;
@@ -27,12 +22,6 @@ const StyledInput = styled(Input)`
   padding: ${({ theme }) => `${theme.space.xs} ${theme.space.xxs}`};
   width: 100%;
 
-  &[readonly] {
-    background-color: transparent;
-    border-color: transparent;
-    transition: border-color 0s;
-  }
-
   &:focus {
     box-shadow: none;
     transition: border-color 0.2s ease-in-out 0.1s;
@@ -40,110 +29,90 @@ const StyledInput = styled(Input)`
 `;
 
 const StyledLabel = styled(Label)`
+  padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.xxs} 0`};
   transition: opacity 0.2s ease-in-out;
 `;
 
-const StyledMessage = styled(Message)`
-  margin-top: ${({ theme }) => theme.space.sm};
+const StyledText = styled(XL)``;
+
+const Wrapper = styled.div<InputToggleArgs>`
+  display: flex;
+  flex-direction: column;
+
+  ${StyledText} {
+    border-bottom: 2px solid transparent;
+    padding: ${({ theme }) => `${theme.space.xs} ${theme.space.xxs}`};
+    display: flex;
+    align-items: center;
+
+    svg {
+      opacity: 0;
+      margin-left: ${({ theme }) => theme.space.xs};
+    }
+
+    &:hover {
+      svg {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
-const IconContainer = styled.div`
-  margin-left: ${({ theme }) => theme.space.md};
-  cursor: pointer;
-`;
-
-/**
+/*
  * An Input Toggle lets users use the input by activating it pressing the edit button.
  * <hr>
  * Used for this:
  *  - To let the user enter data into a field
  *  - To enter multiline text, use a Textarea
- **/
-const InputToggle = (props: InputToggleArgs) => {
-  const {
-    validation,
-    size,
-    label,
-    message,
-    required,
-    onBlur,
-    placeholder,
-    endIcon,
-    style,
-    isFocused,
-    ...rest
-  } = props;
+ */
+const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
+  const [isEditing, setIsEditing] = useState<boolean>(!!isFocused);
+  const context = useMemo(() => ({ isEditing, setIsEditing }), [isEditing]);
+  const container = useRef<HTMLDivElement>(null);
 
-  const [isEditing, setIsEditing] = useState(isFocused);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (isFocused) {
-      inputRef.current?.focus();
-    }
-  }, []);
-
-  const onClick = () => {
+  const handleClick = () => {
     setIsEditing(true);
-    inputRef.current?.focus();
-  };
-
-  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-      setIsEditing(false);
-      inputRef.current?.blur();
-    }
-  };
-
-  const handleOnBlur = () => {
-    setIsEditing(false);
-    inputRef.current?.blur();
+    container.current?.focus();
   };
 
   return (
-    <Wrapper {...(style && { style })}>
-      {label && (
-        <StyledLabel
-          isRegular
-          {...(isEditing
-            ? { style: { opacity: 1 } }
-            : { style: { opacity: 0 } })}
-        >
-          {label}
-          {label && required ? (
-            <Span style={{ color: theme.palette.red[600] }}>*</Span>
-          ) : null}
-        </StyledLabel>
-      )}
-      <InputContainer>
-        <StyledInput
-          placeholder={placeholder}
-          onClick={onClick}
-          onKeyDown={onKeyDown}
-          onBlur={(e) => {
-            onBlur?.(e);
-            handleOnBlur();
-          }}
-          ref={inputRef}
-          {...(isEditing ? { readOnly: false } : { readOnly: true })}
-          {...(size ? { style: { fontSize: `${size}px` } } : {})}
-          {...(validation && { validation })}
-          {...rest}
-        />
-        {!isEditing && endIcon && (
-          <IconContainer onClick={onClick}>{endIcon}</IconContainer>
-        )}
-      </InputContainer>
-      {message && (
-        <StyledMessage
-          validation={validation}
-          {...(message ? { style: { opacity: 1 } } : { style: { opacity: 0 } })}
-        >
-          {message}
-        </StyledMessage>
-      )}
-    </Wrapper>
+    <ToggleContext.Provider value={context}>
+      <Wrapper
+        ref={container}
+        onClick={handleClick}
+        onBlur={() => setIsEditing(false)}
+        {...props}
+      />
+    </ToggleContext.Provider>
   );
 };
+
+const InputItem = (props: InputToggleArgs) => {
+  const { placeholder = "Insert a value", value, style, size = 22 } = props;
+  const [input, setInput] = useState<HTMLInputElement | null>();
+
+  const { isEditing } = useContext(ToggleContext);
+
+  useEffect(() => {
+    if (isEditing && input) {
+      input.focus();
+    }
+  }, [isEditing, input]);
+
+  return isEditing ? (
+    <StyledInput
+      ref={setInput}
+      {...props}
+      style={{ fontSize: `${size}px`, fontWeight: 500, ...style }}
+    />
+  ) : (
+    <StyledText isBold>
+      {!value ? placeholder : value} <EditIcon />
+    </StyledText>
+  );
+};
+
+InputToggle.Item = InputItem;
+InputToggle.Label = StyledLabel;
 
 export { InputToggle };
