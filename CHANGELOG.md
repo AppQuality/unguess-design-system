@@ -1,3 +1,15 @@
+# v2.11.13 (Mon Sep 12 2022)
+
+#### 🐛 Bug Fix
+
+- refactor(input-toggle): simplify component [#89](https://github.com/AppQuality/unguess-design-system/pull/89) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.12 (Thu Sep 08 2022)
 
 #### 🐛 Bug Fix
