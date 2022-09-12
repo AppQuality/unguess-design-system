@@ -7,14 +7,6 @@ export interface InputToggleArgs extends IInputProps {
   validation?: 'success' | 'warning' | 'error';
   /** Sets input size */
   size?: number;
-  /** Sets the input label */
-  label?: string;
-  /** Sets the input message */
-  message?: string;
-  /** Sets the asterisk if required */
-  required?: boolean;
-  /** Sets the endicon */
-  endIcon?: React.ReactNode;
   /** Sets the initial focus */
   isFocused?: boolean;
 }
