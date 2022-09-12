@@ -75,6 +75,12 @@ const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
     container.current?.focus();
   };
 
+  useEffect(() => {
+    if (isFocused) {
+      handleClick();
+    }
+  }, []);
+
   return (
     <ToggleContext.Provider value={context}>
       <Wrapper

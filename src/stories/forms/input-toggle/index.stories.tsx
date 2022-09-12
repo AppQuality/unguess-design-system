@@ -24,12 +24,12 @@ const TitleContainer = styled.div`
   flex-direction: column;
 `;
 
-const Template: Story<InputStoryArgs> = ({ value, ...props }) => {
+const Template: Story<InputStoryArgs> = ({ value, isFocused, ...props }) => {
   const [inputValue, setInputValue] = useState<string>((value as string) || "");
 
   return (
     <>
-      <InputToggle>
+      <InputToggle isFocused={isFocused}>
         <InputToggle.Item
           {...props}
           value={inputValue}
@@ -48,6 +48,7 @@ const Template: Story<InputStoryArgs> = ({ value, ...props }) => {
 const TemplateWithLabel: Story<InputStoryArgs> = ({
   label,
   value,
+  isFocused,
   ...props
 }) => {
   const [showLabel, setShowLabel] = useState(false);
@@ -59,7 +60,7 @@ const TemplateWithLabel: Story<InputStoryArgs> = ({
         <InputToggle.Label style={{ opacity: showLabel ? 1 : 0 }}>
           {label}
         </InputToggle.Label>
-        <InputToggle isFocused>
+        <InputToggle isFocused={isFocused}>
           <InputToggle.Item
             {...props}
             value={inputValue}
