@@ -1,3 +1,16 @@
+# v2.11.14 (Mon Sep 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(input-toggle): fix initialFocus props ignored ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.13 (Mon Sep 12 2022)
 
 #### 🐛 Bug Fix
