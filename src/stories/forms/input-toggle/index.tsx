@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { useRef, useState, useEffect, createContext, useMemo, useContext } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  createContext,
+  useMemo,
+  useContext,
+} from "react";
 import { Input } from "../input";
 import { InputToggleArgs } from "./_types";
 import { ReactComponent as EditIcon } from "../../../assets/icons/notes-stroke.svg";
@@ -112,7 +119,7 @@ const InputItem = (props: InputToggleArgs) => {
       style={{ fontSize: `${size}px`, fontWeight: 500, ...style }}
     />
   ) : (
-    <StyledText isBold>
+    <StyledText isBold style={style}>
       {!value ? placeholder : value} <EditIcon />
     </StyledText>
   );
