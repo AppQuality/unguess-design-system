@@ -6,6 +6,8 @@ const UgCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
   padding: ${({ theme }) => theme.space.xxl};
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
+  cursor: pointer;
+
   ${({ isFloating, theme }) =>
     !isFloating &&
     `
@@ -26,6 +28,7 @@ const UgContainerCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.xl};
   padding: ${({ theme }) => theme.space.xxl};
   border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
+  cursor: default;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => `${theme.space.xl} ${theme.space.md}`};
