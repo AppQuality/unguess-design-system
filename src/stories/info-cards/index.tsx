@@ -1,9 +1,5 @@
-import { Card } from "../cards";
-import { theme } from "../theme";
-import { cardStyle } from "../theme/mixins";
 import { InfoCardProps } from "./_types";
 import styled from "styled-components";
-import { LG, SM } from "../typography/typescale";
 import { SpecialCard } from "../special-cards";
 
 const ButtonsWrap = styled.div`
