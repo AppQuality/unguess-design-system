@@ -6,7 +6,7 @@ export interface InputToggleArgs extends IInputProps {
   /** Applies validation state styling */
   validation?: 'success' | 'warning' | 'error';
   /** Sets input size */
-  size?: number;
+  textSize?: string;
   /** Sets the initial focus */
   isFocused?: boolean;
 }

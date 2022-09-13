@@ -101,7 +101,7 @@ const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
 };
 
 const InputItem = (props: InputToggleArgs) => {
-  const { placeholder = "Insert a value", value, style, size = 22 } = props;
+  const { placeholder = "Insert a value", value, style, textSize = '22px' } = props;
   const [input, setInput] = useState<HTMLInputElement | null>();
 
   const { isEditing } = useContext(ToggleContext);
@@ -116,10 +116,10 @@ const InputItem = (props: InputToggleArgs) => {
     <StyledInput
       ref={setInput}
       {...props}
-      style={{ fontSize: `${size}px`, fontWeight: 500, ...style }}
+      style={{ fontSize: textSize, fontWeight: 500, ...style }}
     />
   ) : (
-    <StyledText isBold style={style}>
+    <StyledText isBold style={{ fontSize: textSize, fontWeight: 500, ...style }}>
       {!value ? placeholder : value} <EditIcon />
     </StyledText>
   );
