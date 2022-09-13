@@ -16,7 +16,7 @@ const defaultArgs: InputStoryArgs = {
   message: "Messaggio",
   placeholder: "Placeholder",
   required: true,
-  isFocused: true,
+  isFocused: false,
 };
 
 const TitleContainer = styled.div`

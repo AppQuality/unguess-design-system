@@ -53,14 +53,7 @@ const Wrapper = styled.div<InputToggleArgs>`
     align-items: center;
 
     svg {
-      opacity: 0;
       margin-left: ${({ theme }) => theme.space.xs};
-    }
-
-    &:hover {
-      svg {
-        opacity: 1;
-      }
     }
   }
 `;
