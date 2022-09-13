@@ -1,3 +1,28 @@
+# v2.11.17 (Tue Sep 13 2022)
+
+#### 🐛 Bug Fix
+
+- fix(cards): fix cursor hover for all type of cards [#90](https://github.com/AppQuality/unguess-design-system/pull/90) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.16 (Tue Sep 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- refactor(toggle-input): update text size prop ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.15 (Mon Sep 12 2022)
 
 #### ⚠️ Pushed to `master`
