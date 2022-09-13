@@ -1,3 +1,15 @@
+# v2.11.17 (Tue Sep 13 2022)
+
+#### 🐛 Bug Fix
+
+- fix(cards): fix cursor hover for all type of cards [#90](https://github.com/AppQuality/unguess-design-system/pull/90) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.11.16 (Tue Sep 13 2022)
 
 #### ⚠️ Pushed to `master`
