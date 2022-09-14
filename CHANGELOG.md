@@ -1,3 +1,16 @@
+# v2.11.18 (Tue Sep 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(input-toggle): show edit icon always when isn't editing ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.17 (Tue Sep 13 2022)
 
 #### 🐛 Bug Fix
