@@ -174,7 +174,7 @@ export const PageTemplate = ({
                     </Counter>
                   </>
                 }
-                metaImage="https://placeimg.com/600/400/nature"
+                metaImage="https://s3.eu-west-1.amazonaws.com/appq.static/nature.jpg"
               />
               <PageHeader.Buttons>
                 <Button
