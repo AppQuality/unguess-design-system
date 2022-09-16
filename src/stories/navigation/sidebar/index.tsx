@@ -24,6 +24,8 @@ import { Span } from "../../typography/span";
 import { LoadingSidebar } from "./skeleton";
 import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
 import { FEATURE_FLAG_CATALOG } from "../../../constants";
+import { Accordion } from "../../accordions";
+import { AccordionItem } from "../nav/nav-item/accordionItem";
 
 const TokenContainer = styled.div`
   display: flex;
@@ -32,9 +34,9 @@ const TokenContainer = styled.div`
 `;
 
 const ScrollingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  order: 1;
+  // display: flex;
+  // flex-direction: column;
+  // order: 1;
   overflow-y: auto;
   height: 100%;
 `;
@@ -141,6 +143,40 @@ const Sidebar = (props: SidebarArgs) => {
         <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
       </NavItem>
 
+      {/** Projects Accordion */}
+      <AccordionItem level={4} isExpanded={props.isExpanded}>
+        <AccordionItem.Section>
+          <AccordionItem.Header>
+            <AccordionItem.Label>
+              {props.dividerLabel || ""}{" "}
+              <FolderIcon style={{ marginLeft: "8px" }} />
+            </AccordionItem.Label>
+          </AccordionItem.Header>
+          <AccordionItem.Panel>
+            {/* <ScrollingContainer> */}
+            {props.projects &&
+              props.projects.map((project) => (
+                <NavItemProject
+                  key={project.id}
+                  isExpanded={props.isExpanded}
+                  isCurrent={nav === `projects/${project.id}`}
+                  onClick={() => navigate("projects", project.id)}
+                >
+                  <NavItemProject.Title
+                    title={project.title}
+                    children={project.title}
+                  />
+                  <NavItemProject.SubTitle children={project.campaigns} />
+                </NavItemProject>
+              ))}
+            {/* </ScrollingContainer> */}
+          </AccordionItem.Panel>
+        </AccordionItem.Section>
+      </AccordionItem>
+
+      <NavDivider isExpanded={props.isExpanded} />
+
+      {/** Services */}
       <NavItem
         isExpanded={props.isExpanded}
         isCurrent={nav === "services"}
@@ -151,27 +187,6 @@ const Sidebar = (props: SidebarArgs) => {
         </NavItemIcon>
         <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
       </NavItem>
-
-      <NavDivider isExpanded={props.isExpanded}>
-        <FolderIcon /> {props.dividerLabel || ""}
-      </NavDivider>
-      <ScrollingContainer>
-        {props.projects &&
-          props.projects.map((project) => (
-            <NavItemProject
-              key={project.id}
-              isExpanded={props.isExpanded}
-              isCurrent={nav === `projects/${project.id}`}
-              onClick={() => navigate("projects", project.id)}
-            >
-              <NavItemProject.Title
-                title={project.title}
-                children={project.title}
-              />
-              <NavItemProject.SubTitle children={project.campaigns} />
-            </NavItemProject>
-          ))}
-      </ScrollingContainer>
 
       {/* Footer Logo */}
       <NavItem

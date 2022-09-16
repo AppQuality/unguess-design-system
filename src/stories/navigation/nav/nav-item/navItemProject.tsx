@@ -11,6 +11,8 @@ const UgProjectSubtitle = styled(NavItemText)<NavItemArgs>`
 const UgNavItem = styled(NavItem)<NavItemArgs>`
   flex-flow: column;
   align-items: flex-start;
+  padding: 12px 8px;
+  padding-left: ${({ theme }) => theme.space.xxl}; //Accordion Alingment
 `;
 
 const NavItemProject = (props: NavItemArgs) => <UgNavItem {...props} />;

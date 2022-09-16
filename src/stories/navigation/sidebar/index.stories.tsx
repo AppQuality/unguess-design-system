@@ -15,7 +15,7 @@ const Template: Story<SidebarStoryArgs> = (args) => {
   return (
     <Chrome
       isFluid
-      style={{ height: 400, minWidth: 480 }}
+      style={{ height: '80vh', minWidth: 480 }}
       hue={theme.palette.white}
     >
       <Sidebar
