@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   width: 100%;
-  min-height: ${(props) => props.theme.space.lg};
+  min-height: 16px;
   opacity: 1;
   display: flex;
   align-items: center;

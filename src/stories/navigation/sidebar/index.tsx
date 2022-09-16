@@ -23,9 +23,8 @@ import styled from "styled-components";
 import { Span } from "../../typography/span";
 import { LoadingSidebar } from "./skeleton";
 import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
-import { FEATURE_FLAG_CATALOG } from "../../../constants";
-import { Accordion } from "../../accordions";
 import { AccordionItem } from "../nav/nav-item/accordionItem";
+import { SM } from "../../typography/typescale";
 
 const TokenContainer = styled.div`
   display: flex;
@@ -53,6 +52,18 @@ const StyledNavItem = styled(NavItem)`
   &:focus {
     background-color: white;
   }
+`;
+
+const SidebarLabel = styled(SM)<SidebarArgs>`
+  color: ${({ theme }) => theme.palette.grey["500"]};
+  margin: ${({ theme }) => theme.space.xxs} 0 16px;
+  padding-left: 16px;
+  order: 1;
+
+  ${({ isExpanded }) =>
+    !isExpanded &&
+    `
+    display: none; `};
 `;
 
 /**
@@ -93,6 +104,7 @@ const Sidebar = (props: SidebarArgs) => {
         props.workspaces.length > 1 && (
           <>
             <StyledNavItem
+              title="Workspaces"
               hasLogo
               isExpanded={props.isExpanded}
               style={padding}
@@ -105,34 +117,15 @@ const Sidebar = (props: SidebarArgs) => {
                 isCompact
               />
             </StyledNavItem>
-            {props.tokens && (
-              <NavDivider isExpanded={props.isExpanded} style={{ order: 0 }} />
-            )}
           </>
         )}
       {props.tokens && (
-        <StyledNavItem
-          hasLogo
-          isExpanded={props.isExpanded}
-          style={{ pointerEvents: "none", paddingTop: 0 }}
-        >
-          <Card style={{ padding: theme.space.sm }}>
-            <TokenContainer>
-              <TokenIcon width={32} />
-              <Span
-                isBold
-                style={{
-                  marginLeft: theme.space.xs,
-                  color: theme.palette.grey[800],
-                }}
-              >
-                {props.tokens + " " + (props.tokensLabel || "tokens")}
-              </Span>
-            </TokenContainer>
-          </Card>
-        </StyledNavItem>
+        <SidebarLabel isExpanded={props.isExpanded}>
+          {props.activityLabel || "My activity"}
+        </SidebarLabel>
       )}
       <NavItem
+        title="Home"
         isExpanded={props.isExpanded}
         isCurrent={nav === "home"}
         onClick={() => navigate("home")}
@@ -178,15 +171,45 @@ const Sidebar = (props: SidebarArgs) => {
 
       {/** Services */}
       <NavItem
+        title="Services"
         isExpanded={props.isExpanded}
         isCurrent={nav === "services"}
         onClick={() => navigate("services")}
+        style={{ marginBottom: "16px" }}
       >
         <NavItemIcon isStyled>
           {nav === "services" ? <TemplatesActiveIcon /> : <TemplatesIcon />}
         </NavItemIcon>
         <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
       </NavItem>
+
+      {props.tokens && (
+        <>
+          <SidebarLabel isExpanded={props.isExpanded}>
+            {props.walletLabel || "Wallet"}
+          </SidebarLabel>
+          <StyledNavItem
+            title="Tokens"
+            isExpanded={props.isExpanded}
+            style={{ pointerEvents: "none", paddingTop: 0 }}
+          >
+            <Card style={{ padding: theme.space.sm }}>
+              <TokenContainer>
+                <TokenIcon width={32} />
+                <Span
+                  isBold
+                  style={{
+                    marginLeft: theme.space.xs,
+                    color: theme.palette.grey[800],
+                  }}
+                >
+                  {props.tokens + " " + (props.tokensLabel || "tokens")}
+                </Span>
+              </TokenContainer>
+            </Card>
+          </StyledNavItem>
+        </>
+      )}
 
       {/* Footer Logo */}
       <NavItem
