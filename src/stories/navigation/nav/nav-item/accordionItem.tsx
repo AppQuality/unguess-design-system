@@ -39,8 +39,12 @@ const AccordionItemPanel = styled(Accordion.Panel)<AccordionArgs & NavItemArgs>`
   max-height: 180px;
   padding: 0;
   padding-left: 5px;
-  overflow-y: auto;
+  overflow-y: hidden;
   opacity: 1;
+
+  &:hover {
+    overflow-y: auto;
+  }
 `;
 
 const AccordionItemLabel = styled(Accordion.Label)<AccordionArgs & NavItemArgs>`
