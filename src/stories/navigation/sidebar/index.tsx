@@ -32,14 +32,6 @@ const TokenContainer = styled.div`
   justify-content: center;
 `;
 
-const ScrollingContainer = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  // order: 1;
-  overflow-y: auto;
-  height: 100%;
-`;
-
 const StyledNavItem = styled(NavItem)`
   ${({ isExpanded }) =>
     isExpanded &&
@@ -142,7 +134,7 @@ const Sidebar = (props: SidebarArgs) => {
           <AccordionItem.Header>
             <AccordionItem.Label>
               {props.dividerLabel || ""}{" "}
-              <FolderIcon style={{ marginLeft: "8px" }} />
+              <FolderIcon style={{ marginLeft: theme.space.xs }} />
             </AccordionItem.Label>
           </AccordionItem.Header>
           <AccordionItem.Panel>

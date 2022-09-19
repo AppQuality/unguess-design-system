@@ -6,19 +6,25 @@ import { NavArgs } from "./_types";
 const UgNav = styled(ZendeskNav)`
   border-right: ${({ theme }) => theme.borders.sm};
   border-color: ${({ theme }) => getColor(theme.colors.neutralHue, 300)};
+  transition: all 0.25s ease;
   ${(props) =>
     `
-      width: ${
-        props.isExpanded
-          ? props.theme.components.chrome.nav.openWidth
-          : props.theme.components.chrome.nav.closedWidth
-      }px;
+    margin-left: ${
+      props.isExpanded
+        ? 0
+        : -(
+            props.theme.components.chrome.nav.openWidth -
+            props.theme.components.chrome.nav.closedWidth
+          )
+    }px;
+    width: ${props.theme.components.chrome.nav.openWidth}px;
+      
       @media (max-width: ${props.theme.breakpoints.sm}) {
          width: ${props.isExpanded ? "100%" : "0"};
          border-right: none;
       }
   `}
-  transition: width 0.25s ease-in-out;
+  // transition: width 0.25s ease-in-out;
   padding-top: ${({ theme }) => theme.space.sm};
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding-left: ${({ theme }) => theme.space.xs};
