@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Accordion } from "../../../accordions";
 import { AccordionArgs } from "../../../accordions/_types";
 import {
-  opacityTransition,
   sidebarNavItemExpanded,
   sidebarNavItemHidden,
 } from "../../../theme/utils";
@@ -14,7 +13,6 @@ const AccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
   ${(props) => !props.isExpanded && sidebarNavItemHidden}
   order: 1;
   margin-top: ${({ theme }) => theme.space.xs}px;
-  ${opacityTransition}
 `;
 
 const AccordionItemHeader = styled(Accordion.Header)<

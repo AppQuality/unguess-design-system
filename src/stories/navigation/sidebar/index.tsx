@@ -117,6 +117,7 @@ const Sidebar = (props: SidebarArgs) => {
         </SidebarLabel>
       )}
       <NavItem
+        className="sidebar-first-level-item"
         title="Home"
         isExpanded={props.isExpanded}
         isCurrent={nav === "home"}
@@ -129,7 +130,11 @@ const Sidebar = (props: SidebarArgs) => {
       </NavItem>
 
       {/** Projects Accordion */}
-      <AccordionItem level={4} isExpanded={props.isExpanded}>
+      <AccordionItem
+        className="sidebar-project-accordion-first-item"
+        level={4}
+        isExpanded={props.isExpanded}
+      >
         <AccordionItem.Section>
           <AccordionItem.Header>
             <AccordionItem.Label>
@@ -142,6 +147,7 @@ const Sidebar = (props: SidebarArgs) => {
             {props.projects &&
               props.projects.map((project) => (
                 <NavItemProject
+                  className="sidebar-project-item"
                   key={project.id}
                   isExpanded={props.isExpanded}
                   isCurrent={nav === `projects/${project.id}`}
@@ -163,6 +169,7 @@ const Sidebar = (props: SidebarArgs) => {
 
       {/** Services */}
       <NavItem
+        className="sidebar-first-level-item"
         title="Services"
         isExpanded={props.isExpanded}
         isCurrent={nav === "services"}

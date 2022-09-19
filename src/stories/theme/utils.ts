@@ -31,7 +31,7 @@ export const opacityTransition = css`
 export const sidebarNavItemExpanded = css`
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.2s ease;
+  // transition: opacity 0.2s ease;
 `;
 export const sidebarNavItemHidden = css`
   visibility: hidden;
