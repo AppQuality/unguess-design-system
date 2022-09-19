@@ -1,4 +1,5 @@
 import { getColor, IGardenTheme } from "@zendeskgarden/react-theming";
+import { css } from "styled-components";
 import UAParser from "ua-parser-js";
 
 export const hex2rgba = (hex: string, alpha = 1) => {
@@ -22,3 +23,18 @@ export const isMac = () => {
 
   return os && /Mac OS|iOS/.test(os);
 };
+
+export const opacityTransition = css`
+  transition: opacity 0.2s ease;
+`;
+
+export const sidebarNavItemExpanded = css`
+  visibility: visible;
+  opacity: 1;
+  // transition: opacity 0.2s ease;
+`;
+export const sidebarNavItemHidden = css`
+  visibility: hidden;
+  pointer-events: none;
+  color: transparent;
+`;

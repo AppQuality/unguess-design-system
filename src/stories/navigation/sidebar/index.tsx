@@ -23,20 +23,13 @@ import styled from "styled-components";
 import { Span } from "../../typography/span";
 import { LoadingSidebar } from "./skeleton";
 import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
-import { FEATURE_FLAG_CATALOG } from "../../../constants";
+import { AccordionItem } from "../nav/nav-item/accordionItem";
+import { SM } from "../../typography/typescale";
 
 const TokenContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const ScrollingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  order: 1;
-  overflow-y: auto;
-  height: 100%;
 `;
 
 const StyledNavItem = styled(NavItem)`
@@ -51,6 +44,18 @@ const StyledNavItem = styled(NavItem)`
   &:focus {
     background-color: white;
   }
+`;
+
+const SidebarLabel = styled(SM)<SidebarArgs>`
+  color: ${({ theme }) => theme.palette.grey["500"]};
+  margin: ${({ theme }) => theme.space.xxs} 0 16px;
+  padding-left: 16px;
+  order: 1;
+
+  ${({ isExpanded }) =>
+    !isExpanded &&
+    `
+    display: none; `};
 `;
 
 /**
@@ -91,6 +96,7 @@ const Sidebar = (props: SidebarArgs) => {
         props.workspaces.length > 1 && (
           <>
             <StyledNavItem
+              title="Workspaces"
               hasLogo
               isExpanded={props.isExpanded}
               style={padding}
@@ -103,34 +109,16 @@ const Sidebar = (props: SidebarArgs) => {
                 isCompact
               />
             </StyledNavItem>
-            {props.tokens && (
-              <NavDivider isExpanded={props.isExpanded} style={{ order: 0 }} />
-            )}
           </>
         )}
       {props.tokens && (
-        <StyledNavItem
-          hasLogo
-          isExpanded={props.isExpanded}
-          style={{ pointerEvents: "none", paddingTop: 0 }}
-        >
-          <Card style={{ padding: theme.space.sm }}>
-            <TokenContainer>
-              <TokenIcon width={32} />
-              <Span
-                isBold
-                style={{
-                  marginLeft: theme.space.xs,
-                  color: theme.palette.grey[800],
-                }}
-              >
-                {props.tokens + " " + (props.tokensLabel || "tokens")}
-              </Span>
-            </TokenContainer>
-          </Card>
-        </StyledNavItem>
+        <SidebarLabel isExpanded={props.isExpanded}>
+          {props.activityLabel || "My activity"}
+        </SidebarLabel>
       )}
       <NavItem
+        className="sidebar-first-level-item"
+        title="Home"
         isExpanded={props.isExpanded}
         isCurrent={nav === "home"}
         onClick={() => navigate("home")}
@@ -141,10 +129,52 @@ const Sidebar = (props: SidebarArgs) => {
         <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
       </NavItem>
 
+      {/** Projects Accordion */}
+      <AccordionItem
+        className="sidebar-project-accordion-first-item"
+        level={4}
+        isExpanded={props.isExpanded}
+      >
+        <AccordionItem.Section>
+          <AccordionItem.Header>
+            <AccordionItem.Label>
+              {props.dividerLabel || ""}{" "}
+              <FolderIcon style={{ marginLeft: theme.space.xs }} />
+            </AccordionItem.Label>
+          </AccordionItem.Header>
+          <AccordionItem.Panel>
+            {/* <ScrollingContainer> */}
+            {props.projects &&
+              props.projects.map((project) => (
+                <NavItemProject
+                  className="sidebar-project-item"
+                  key={project.id}
+                  isExpanded={props.isExpanded}
+                  isCurrent={nav === `projects/${project.id}`}
+                  onClick={() => navigate("projects", project.id)}
+                >
+                  <NavItemProject.Title
+                    title={project.title}
+                    children={project.title}
+                  />
+                  <NavItemProject.SubTitle children={project.campaigns} />
+                </NavItemProject>
+              ))}
+            {/* </ScrollingContainer> */}
+          </AccordionItem.Panel>
+        </AccordionItem.Section>
+      </AccordionItem>
+
+      <NavDivider isExpanded={props.isExpanded} />
+
+      {/** Services */}
       <NavItem
+        className="sidebar-first-level-item"
+        title="Services"
         isExpanded={props.isExpanded}
         isCurrent={nav === "services"}
         onClick={() => navigate("services")}
+        style={{ marginBottom: "16px" }}
       >
         <NavItemIcon isStyled>
           {nav === "services" ? <TemplatesActiveIcon /> : <TemplatesIcon />}
@@ -152,26 +182,33 @@ const Sidebar = (props: SidebarArgs) => {
         <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
       </NavItem>
 
-      <NavDivider isExpanded={props.isExpanded}>
-        <FolderIcon /> {props.dividerLabel || ""}
-      </NavDivider>
-      <ScrollingContainer>
-        {props.projects &&
-          props.projects.map((project) => (
-            <NavItemProject
-              key={project.id}
-              isExpanded={props.isExpanded}
-              isCurrent={nav === `projects/${project.id}`}
-              onClick={() => navigate("projects", project.id)}
-            >
-              <NavItemProject.Title
-                title={project.title}
-                children={project.title}
-              />
-              <NavItemProject.SubTitle children={project.campaigns} />
-            </NavItemProject>
-          ))}
-      </ScrollingContainer>
+      {props.tokens && (
+        <>
+          <SidebarLabel isExpanded={props.isExpanded}>
+            {props.walletLabel || "Wallet"}
+          </SidebarLabel>
+          <StyledNavItem
+            title="Tokens"
+            isExpanded={props.isExpanded}
+            style={{ pointerEvents: "none", paddingTop: 0 }}
+          >
+            <Card style={{ padding: theme.space.sm }}>
+              <TokenContainer>
+                <TokenIcon width={32} />
+                <Span
+                  isBold
+                  style={{
+                    marginLeft: theme.space.xs,
+                    color: theme.palette.grey[800],
+                  }}
+                >
+                  {props.tokens + " " + (props.tokensLabel || "tokens")}
+                </Span>
+              </TokenContainer>
+            </Card>
+          </StyledNavItem>
+        </>
+      )}
 
       {/* Footer Logo */}
       <NavItem
