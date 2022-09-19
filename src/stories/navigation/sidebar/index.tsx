@@ -36,7 +36,9 @@ const ScrollingContainer = styled.div`
   display: flex;
   flex-direction: column;
   order: 1;
-  overflow-y: hidden;
+  & ::-webkit-scrollbar {
+    display: none;
+  }
   height: 100%;
 `;
 
