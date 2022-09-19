@@ -1,3 +1,15 @@
+# v2.12.0 (Mon Sep 19 2022)
+
+#### 🚀 Enhancement
+
+- CUP-1300-restyle-sidebar [#91](https://github.com/AppQuality/unguess-design-system/pull/91) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.11.19 (Wed Sep 14 2022)
 
 #### ⚠️ Pushed to `master`
