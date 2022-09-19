@@ -32,6 +32,16 @@ const TokenContainer = styled.div`
   justify-content: center;
 `;
 
+const ScrollingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  & ::-webkit-scrollbar {
+    display: none;
+  }
+  height: 100%;
+`;
+
 const StyledNavItem = styled(NavItem)`
   ${({ isExpanded }) =>
     isExpanded &&
@@ -90,126 +100,127 @@ const Sidebar = (props: SidebarArgs) => {
     <LoadingSidebar {...props} />
   ) : (
     <Nav {...props}>
-      <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
-      {showWorkspacesDropdown &&
-        props.workspaces &&
-        props.workspaces.length > 1 && (
+      <ScrollingContainer>
+        <NavToggle onClick={toggleNav} isExpanded={props.isExpanded} />
+        {showWorkspacesDropdown &&
+          props.workspaces &&
+          props.workspaces.length > 1 && (
+            <>
+              <StyledNavItem
+                title="Workspaces"
+                hasLogo
+                isExpanded={props.isExpanded}
+                style={padding}
+              >
+                <WorkspacesDropdown
+                  workspaces={props.workspaces}
+                  workspacesLabel={props.workspacesLabel}
+                  activeWorkspace={props.activeWorkspace}
+                  onWorkspaceChange={props.onWorkspaceChange}
+                  isCompact
+                />
+              </StyledNavItem>
+            </>
+          )}
+        {props.tokens && (
+          <SidebarLabel isExpanded={props.isExpanded}>
+            {props.activityLabel || "My activity"}
+          </SidebarLabel>
+        )}
+        <NavItem
+          className="sidebar-first-level-item"
+          title="Home"
+          isExpanded={props.isExpanded}
+          isCurrent={nav === "home"}
+          onClick={() => navigate("home")}
+        >
+          <NavItemIcon isStyled>
+            {nav === "home" ? <HomeIconStyled /> : <HomeIcon />}
+          </NavItemIcon>
+          <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
+        </NavItem>
+
+        {/** Projects Accordion */}
+        <AccordionItem
+          className="sidebar-project-accordion-first-item"
+          level={4}
+          isExpanded={props.isExpanded}
+        >
+          <AccordionItem.Section>
+            <AccordionItem.Header>
+              <AccordionItem.Label>
+                {props.dividerLabel || ""}{" "}
+                <FolderIcon style={{ marginLeft: theme.space.xs }} />
+              </AccordionItem.Label>
+            </AccordionItem.Header>
+            <AccordionItem.Panel>
+              {/* <ScrollingContainer> */}
+              {props.projects &&
+                props.projects.map((project) => (
+                  <NavItemProject
+                    className="sidebar-project-item"
+                    key={project.id}
+                    isExpanded={props.isExpanded}
+                    isCurrent={nav === `projects/${project.id}`}
+                    onClick={() => navigate("projects", project.id)}
+                  >
+                    <NavItemProject.Title
+                      title={project.title}
+                      children={project.title}
+                    />
+                    <NavItemProject.SubTitle children={project.campaigns} />
+                  </NavItemProject>
+                ))}
+              {/* </ScrollingContainer> */}
+            </AccordionItem.Panel>
+          </AccordionItem.Section>
+        </AccordionItem>
+
+        <NavDivider isExpanded={props.isExpanded} />
+
+        {/** Services */}
+        <NavItem
+          className="sidebar-first-level-item"
+          title="Services"
+          isExpanded={props.isExpanded}
+          isCurrent={nav === "services"}
+          onClick={() => navigate("services")}
+          style={{ marginBottom: "16px" }}
+        >
+          <NavItemIcon isStyled>
+            {nav === "services" ? <TemplatesActiveIcon /> : <TemplatesIcon />}
+          </NavItemIcon>
+          <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
+        </NavItem>
+
+        {props.tokens && (
           <>
+            <SidebarLabel isExpanded={props.isExpanded}>
+              {props.walletLabel || "Wallet"}
+            </SidebarLabel>
             <StyledNavItem
-              title="Workspaces"
-              hasLogo
+              title="Tokens"
               isExpanded={props.isExpanded}
-              style={padding}
+              style={{ pointerEvents: "none", paddingTop: 0 }}
             >
-              <WorkspacesDropdown
-                workspaces={props.workspaces}
-                workspacesLabel={props.workspacesLabel}
-                activeWorkspace={props.activeWorkspace}
-                onWorkspaceChange={props.onWorkspaceChange}
-                isCompact
-              />
+              <Card style={{ padding: theme.space.sm }}>
+                <TokenContainer>
+                  <TokenIcon width={32} />
+                  <Span
+                    isBold
+                    style={{
+                      marginLeft: theme.space.xs,
+                      color: theme.palette.grey[800],
+                    }}
+                  >
+                    {props.tokens + " " + (props.tokensLabel || "tokens")}
+                  </Span>
+                </TokenContainer>
+              </Card>
             </StyledNavItem>
           </>
         )}
-      {props.tokens && (
-        <SidebarLabel isExpanded={props.isExpanded}>
-          {props.activityLabel || "My activity"}
-        </SidebarLabel>
-      )}
-      <NavItem
-        className="sidebar-first-level-item"
-        title="Home"
-        isExpanded={props.isExpanded}
-        isCurrent={nav === "home"}
-        onClick={() => navigate("home")}
-      >
-        <NavItemIcon isStyled>
-          {nav === "home" ? <HomeIconStyled /> : <HomeIcon />}
-        </NavItemIcon>
-        <NavItemText>{props.homeItemLabel || "My Campaigns"}</NavItemText>
-      </NavItem>
-
-      {/** Projects Accordion */}
-      <AccordionItem
-        className="sidebar-project-accordion-first-item"
-        level={4}
-        isExpanded={props.isExpanded}
-      >
-        <AccordionItem.Section>
-          <AccordionItem.Header>
-            <AccordionItem.Label>
-              {props.dividerLabel || ""}{" "}
-              <FolderIcon style={{ marginLeft: theme.space.xs }} />
-            </AccordionItem.Label>
-          </AccordionItem.Header>
-          <AccordionItem.Panel>
-            {/* <ScrollingContainer> */}
-            {props.projects &&
-              props.projects.map((project) => (
-                <NavItemProject
-                  className="sidebar-project-item"
-                  key={project.id}
-                  isExpanded={props.isExpanded}
-                  isCurrent={nav === `projects/${project.id}`}
-                  onClick={() => navigate("projects", project.id)}
-                >
-                  <NavItemProject.Title
-                    title={project.title}
-                    children={project.title}
-                  />
-                  <NavItemProject.SubTitle children={project.campaigns} />
-                </NavItemProject>
-              ))}
-            {/* </ScrollingContainer> */}
-          </AccordionItem.Panel>
-        </AccordionItem.Section>
-      </AccordionItem>
-
-      <NavDivider isExpanded={props.isExpanded} />
-
-      {/** Services */}
-      <NavItem
-        className="sidebar-first-level-item"
-        title="Services"
-        isExpanded={props.isExpanded}
-        isCurrent={nav === "services"}
-        onClick={() => navigate("services")}
-        style={{ marginBottom: "16px" }}
-      >
-        <NavItemIcon isStyled>
-          {nav === "services" ? <TemplatesActiveIcon /> : <TemplatesIcon />}
-        </NavItemIcon>
-        <NavItemText>{props.servicesItemLabel || "Services"}</NavItemText>
-      </NavItem>
-
-      {props.tokens && (
-        <>
-          <SidebarLabel isExpanded={props.isExpanded}>
-            {props.walletLabel || "Wallet"}
-          </SidebarLabel>
-          <StyledNavItem
-            title="Tokens"
-            isExpanded={props.isExpanded}
-            style={{ pointerEvents: "none", paddingTop: 0 }}
-          >
-            <Card style={{ padding: theme.space.sm }}>
-              <TokenContainer>
-                <TokenIcon width={32} />
-                <Span
-                  isBold
-                  style={{
-                    marginLeft: theme.space.xs,
-                    color: theme.palette.grey[800],
-                  }}
-                >
-                  {props.tokens + " " + (props.tokensLabel || "tokens")}
-                </Span>
-              </TokenContainer>
-            </Card>
-          </StyledNavItem>
-        </>
-      )}
-
+      </ScrollingContainer>
       {/* Footer Logo */}
       <NavItem
         isExpanded={props.isExpanded}
