@@ -1,3 +1,15 @@
+# v2.12.2 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(sidebar): overflow hidden without reason ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.1 (Mon Sep 19 2022)
 
 #### 🐛 Bug Fix
