@@ -15,7 +15,7 @@ import { ReactComponent as TemplatesIcon } from "../../../assets/icons/templates
 import { ReactComponent as TemplatesActiveIcon } from "../../../assets/icons/templates-active.svg";
 
 import { SidebarArgs } from "./_types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { theme } from "../../theme";
 import { Logo } from "../../logo";
 import { Card } from "../../cards";
@@ -71,8 +71,10 @@ const SidebarLabel = styled(SM)<SidebarArgs>`
  * Used for this:
     - To give a consistent dashboard and navigation experience
  */
-const Sidebar = (props: SidebarArgs) => {
+const Sidebar = ({ projects, ...props }: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
+  const [accordionPanels, setAccordionPanels] = useState<number[]>([]);
+
   const showWorkspacesDropdown = window.matchMedia(
     `only screen and (max-width: ${theme.breakpoints.sm})`
   ).matches;
@@ -92,6 +94,10 @@ const Sidebar = (props: SidebarArgs) => {
         paddingBottom: 0,
       }
     : {};
+
+  useEffect(() => {
+    if (projects?.length) setAccordionPanels([0]);
+  }, [projects]);
 
   return props.isLoading ? (
     <LoadingSidebar {...props} />
@@ -138,11 +144,11 @@ const Sidebar = (props: SidebarArgs) => {
         </NavItem>
 
         {/** Projects Accordion */}
-        {props.projects && props.projects.length && (
+        {projects && projects.length ? (
           <AccordionItem
             className="sidebar-project-accordion-first-item"
             level={4}
-            defaultExpandedSections={[0]}
+            expandedSections={accordionPanels}
             isExpanded={props.isExpanded}
           >
             <AccordionItem.Section>
@@ -153,7 +159,7 @@ const Sidebar = (props: SidebarArgs) => {
                 </AccordionItem.Label>
               </AccordionItem.Header>
               <AccordionItem.Panel>
-                {props.projects.map((project) => (
+                {projects.map((project) => (
                   <NavItemProject
                     className="sidebar-project-item"
                     key={project.id}
@@ -171,7 +177,7 @@ const Sidebar = (props: SidebarArgs) => {
               </AccordionItem.Panel>
             </AccordionItem.Section>
           </AccordionItem>
-        )}
+        ) : null}
 
         <NavDivider isExpanded={props.isExpanded} />
 
