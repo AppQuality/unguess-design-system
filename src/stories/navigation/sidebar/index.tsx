@@ -138,7 +138,7 @@ const Sidebar = (props: SidebarArgs) => {
         </NavItem>
 
         {/** Projects Accordion */}
-        {props.projects && (
+        {props.projects && props.projects.length && (
           <AccordionItem
             className="sidebar-project-accordion-first-item"
             level={4}
