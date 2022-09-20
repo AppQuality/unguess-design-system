@@ -73,7 +73,6 @@ const SidebarLabel = styled(SM)<SidebarArgs>`
  */
 const Sidebar = ({ projects, ...props }: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
-  const [accordionPanels, setAccordionPanels] = useState<number[]>([]);
 
   const showWorkspacesDropdown = window.matchMedia(
     `only screen and (max-width: ${theme.breakpoints.sm})`
@@ -94,10 +93,6 @@ const Sidebar = ({ projects, ...props }: SidebarArgs) => {
         paddingBottom: 0,
       }
     : {};
-
-  useEffect(() => {
-    if (projects?.length) setAccordionPanels([0]);
-  }, [projects]);
 
   return props.isLoading ? (
     <LoadingSidebar {...props} />
@@ -148,7 +143,7 @@ const Sidebar = ({ projects, ...props }: SidebarArgs) => {
           <AccordionItem
             className="sidebar-project-accordion-first-item"
             level={4}
-            expandedSections={accordionPanels}
+            expandedSections={[0]}
             isExpanded={props.isExpanded}
           >
             <AccordionItem.Section>
