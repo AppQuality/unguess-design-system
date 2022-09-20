@@ -138,23 +138,22 @@ const Sidebar = (props: SidebarArgs) => {
         </NavItem>
 
         {/** Projects Accordion */}
-        <AccordionItem
-          className="sidebar-project-accordion-first-item"
-          level={4}
-          defaultExpandedSections={[0]}
-          isExpanded={props.isExpanded}
-        >
-          <AccordionItem.Section>
-            <AccordionItem.Header>
-              <AccordionItem.Label>
-                {props.dividerLabel || ""}{" "}
-                <FolderIcon style={{ marginLeft: theme.space.xs }} />
-              </AccordionItem.Label>
-            </AccordionItem.Header>
-            <AccordionItem.Panel>
-              {/* <ScrollingContainer> */}
-              {props.projects &&
-                props.projects.map((project) => (
+        {props.projects && (
+          <AccordionItem
+            className="sidebar-project-accordion-first-item"
+            level={4}
+            defaultExpandedSections={[0]}
+            isExpanded={props.isExpanded}
+          >
+            <AccordionItem.Section>
+              <AccordionItem.Header>
+                <AccordionItem.Label>
+                  {props.dividerLabel || ""}{" "}
+                  <FolderIcon style={{ marginLeft: theme.space.xs }} />
+                </AccordionItem.Label>
+              </AccordionItem.Header>
+              <AccordionItem.Panel>
+                {props.projects.map((project) => (
                   <NavItemProject
                     className="sidebar-project-item"
                     key={project.id}
@@ -169,10 +168,10 @@ const Sidebar = (props: SidebarArgs) => {
                     <NavItemProject.SubTitle children={project.campaigns} />
                   </NavItemProject>
                 ))}
-              {/* </ScrollingContainer> */}
-            </AccordionItem.Panel>
-          </AccordionItem.Section>
-        </AccordionItem>
+              </AccordionItem.Panel>
+            </AccordionItem.Section>
+          </AccordionItem>
+        )}
 
         <NavDivider isExpanded={props.isExpanded} />
 
