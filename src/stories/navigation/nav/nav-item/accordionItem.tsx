@@ -41,7 +41,6 @@ const AccordionItemPanel = styled(Accordion.Panel)<AccordionArgs & NavItemArgs>`
   padding-left: 5px;
   overflow-y: hidden;
   opacity: 1;
-
   &:hover {
     overflow-y: auto;
   }
