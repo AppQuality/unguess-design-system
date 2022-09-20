@@ -1,3 +1,16 @@
+# v2.12.5 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- test(sidebar): hide accordion when there are no projects ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.4 (Tue Sep 20 2022)
 
 #### ⚠️ Pushed to `master`
