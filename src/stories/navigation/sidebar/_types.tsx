@@ -26,4 +26,5 @@ export interface SidebarArgs extends NavArgs, WorkspaceDropdownArgs {
   onNavToggle?: (route: string, parameter?: string) => void;
   isLoading?: boolean;
   features?: Array<FeatureItem>;
+  defaultAccordionPanels?: Array<number>;
 }

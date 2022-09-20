@@ -110,7 +110,7 @@ export const PageTemplate = ({
   header,
   ...args
 }: PageTemplatesArgs) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -141,6 +141,7 @@ export const PageTemplate = ({
         <Content>
           <Sidebar
             {...sidebar}
+            defaultAccordionPanels={[0]}
             isExpanded={expanded}
             onToggleMenu={toggleSidebar}
           />

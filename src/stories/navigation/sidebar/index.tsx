@@ -71,7 +71,7 @@ const SidebarLabel = styled(SM)<SidebarArgs>`
  * Used for this:
     - To give a consistent dashboard and navigation experience
  */
-const Sidebar = ({ projects, ...props }: SidebarArgs) => {
+const Sidebar = ({ projects, defaultAccordionPanels=[0], ...props }: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
 
   const showWorkspacesDropdown = window.matchMedia(
@@ -143,6 +143,7 @@ const Sidebar = ({ projects, ...props }: SidebarArgs) => {
           <AccordionItem
             className="sidebar-project-accordion-first-item"
             level={4}
+            defaultExpandedSections={defaultAccordionPanels}
             isExpanded={props.isExpanded}
           >
             <AccordionItem.Section>
