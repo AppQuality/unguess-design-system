@@ -143,7 +143,6 @@ const Sidebar = ({ projects, ...props }: SidebarArgs) => {
           <AccordionItem
             className="sidebar-project-accordion-first-item"
             level={4}
-            expandedSections={[0]}
             isExpanded={props.isExpanded}
           >
             <AccordionItem.Section>
