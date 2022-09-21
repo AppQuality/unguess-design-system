@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PageHeaderProps } from "./_types";
 import { Breadcrumb } from "../../breadcrumbs";
-import { Main } from "./styled/main";
+import { Main, MainCounters, MainDescription, MainOverline, MainTitle } from "./styled/main";
 import { BreadcrumbArgs } from "../../breadcrumbs/_types";
 import { PropsWithChildren } from "react";
 
@@ -82,5 +82,9 @@ const PageHeader = (props: PageHeaderProps) => {
 PageHeader.Breadcrumb = StyledBreadcrumb;
 PageHeader.Main = Main;
 PageHeader.Buttons = Buttons;
+PageHeader.Overline = MainOverline;
+PageHeader.Title = MainTitle;
+PageHeader.Description = MainDescription;
+PageHeader.Counters = MainCounters;
 
 export { PageHeader };

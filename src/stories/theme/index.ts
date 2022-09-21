@@ -35,6 +35,10 @@ const theme = {
     xl: "16px",
     xxl: "32px",
   },
+  lineHeights: {
+    ...DEFAULT_THEME.lineHeights,
+    xs: '16px' // same as sm
+  },
   components: components,
   shadows: {
     ...DEFAULT_THEME.shadows,

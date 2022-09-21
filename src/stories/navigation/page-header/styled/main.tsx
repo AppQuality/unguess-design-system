@@ -33,27 +33,28 @@ const MetaContainer = styled.div`
   }
 `;
 
-const Overline = styled(MD)`
+export const MainOverline = styled(MD)`
   color: ${({ theme }) => theme.palette.grey[600]};
   margin-bottom: ${({ theme }) => theme.space.md};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   line-height: ${({ theme }) => theme.lineHeights.md};
 `;
 
-const Title = styled.h1`
+export const MainTitle = styled.h1`
   color: ${({ theme }) => theme.colors.primaryHue};
   font-size: ${({ theme }) => theme.fontSizes.xxxl};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   line-height: ${({ theme }) => theme.lineHeights.xxxl};
+  width: 100%;
 `;
 
-const Description = styled(LG)`
+export const MainDescription = styled(LG)`
   color: ${({ theme }) => theme.palette.grey[600]};
   margin: ${({ theme }) => theme.space.md} 0;
   line-height: ${({ theme }) => theme.lineHeights.lg};
 `;
 
-const Counters = styled.div`
+export const MainCounters = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -81,24 +82,11 @@ export const Main = (props: PageHeaderMainProps) => {
   return (
     <MainContainer>
       <Row>
-        <StyledCol
-          xs={12}
-          sm={props.metaImage ? 6 : 12}
-        >
-          <InformationContainer>
-            {props.infoOverline && <Overline>{props.infoOverline}</Overline>}
-            {props.infoTitle && <Title>{props.infoTitle}</Title>}
-            {props.infoDescription && (
-              <Description>{props.infoDescription}</Description>
-            )}
-            {props.infoCounters && <Counters>{props.infoCounters}</Counters>}
-          </InformationContainer>
+        <StyledCol xs={12} sm={props.metaImage ? 6 : 12}>
+          <InformationContainer>{props.children}</InformationContainer>
         </StyledCol>
         {props.metaImage && (
-          <StyledCol
-            xs={12}
-            sm={props.metaImage ? 6 : 12}
-          >
+          <StyledCol xs={12} sm={props.metaImage ? 6 : 12}>
             <MetaContainer>
               <Image
                 src={props.metaImage}

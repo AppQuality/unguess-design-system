@@ -4,10 +4,11 @@ import { PageHeader } from ".";
 import { Anchor } from "../../buttons/anchor";
 import { Counter } from "../../counter";
 import { Button } from "../../buttons/button";
-import React from "react";
+import React, { useState } from "react";
 import { theme } from "../../theme";
 import styled from "styled-components";
 import { Paragraph } from "../../typography/paragraph";
+import { InputToggle } from "../../forms/input-toggle";
 
 const FakeBody = styled.div`
   background-color: ${({ theme }) => theme.palette.grey[100]};
@@ -21,6 +22,8 @@ interface PageHeaderStoryProps {
 }
 
 const Template: Story<PageHeaderStoryProps> = (args) => {
+  const { pageHeaderMainArgs } = args;
+
   return (
     <FakeBody>
       <PageHeader>
@@ -28,15 +31,94 @@ const Template: Story<PageHeaderStoryProps> = (args) => {
           <Anchor href="#">Home</Anchor>
           <Anchor href="#">Page</Anchor>
         </PageHeader.Breadcrumb>
-        <PageHeader.Main {...args.pageHeaderMainArgs} />
+        <PageHeader.Main {...pageHeaderMainArgs}>
+          {pageHeaderMainArgs.infoOverline && (
+            <PageHeader.Overline>
+              {pageHeaderMainArgs.infoOverline}
+            </PageHeader.Overline>
+          )}
+          {pageHeaderMainArgs.infoTitle && (
+            <PageHeader.Title>{pageHeaderMainArgs.infoTitle}</PageHeader.Title>
+          )}
+          {pageHeaderMainArgs.infoDescription && (
+            <PageHeader.Description>
+              {pageHeaderMainArgs.infoDescription}
+            </PageHeader.Description>
+          )}
+          {pageHeaderMainArgs.infoCounters && (
+            <PageHeader.Counters>
+              {pageHeaderMainArgs.infoCounters}
+            </PageHeader.Counters>
+          )}
+        </PageHeader.Main>
         <PageHeader.Buttons>
           <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
         </PageHeader.Buttons>
       </PageHeader>
-      <Paragraph style={{marginTop: "24px"}}>
-        This is a long paragraph, please ignore the style. It's not the object of this story, and it's useful to non-design purposes.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nunc eget nisi egestas pretium. Nulla facilisi. 
-        Donec eu nunc eget nisi egestas pretium. Nulla facilisi. 
+      <Paragraph style={{ marginTop: "24px" }}>
+        This is a long paragraph, please ignore the style. It's not the object
+        of this story, and it's useful to non-design purposes. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Donec eu nunc eget nisi egestas
+        pretium. Nulla facilisi. Donec eu nunc eget nisi egestas pretium. Nulla
+        facilisi.
+      </Paragraph>
+    </FakeBody>
+  );
+};
+
+const TemplateEditable: Story<PageHeaderStoryProps> = (args) => {
+  const { pageHeaderMainArgs } = args;
+  const [inputValue, setInputValue] = useState<string>(
+    (pageHeaderMainArgs.title as string) || ""
+  );
+
+  return (
+    <FakeBody>
+      <PageHeader>
+        <PageHeader.Breadcrumb>
+          <Anchor href="#">Home</Anchor>
+          <Anchor href="#">Page</Anchor>
+        </PageHeader.Breadcrumb>
+        <PageHeader.Main {...pageHeaderMainArgs}>
+          {pageHeaderMainArgs.infoOverline && (
+            <PageHeader.Overline>
+              {pageHeaderMainArgs.infoOverline}
+            </PageHeader.Overline>
+          )}
+          {pageHeaderMainArgs.infoTitle && (
+            <PageHeader.Title>
+              <InputToggle>
+                <InputToggle.Item
+                  textSize={"xxxl"}
+                  maxLength={64}
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.currentTarget.value)}
+                  style={{ paddingLeft: 0 }}
+                />
+              </InputToggle>
+            </PageHeader.Title>
+          )}
+          {pageHeaderMainArgs.infoDescription && (
+            <PageHeader.Description>
+              {pageHeaderMainArgs.infoDescription}
+            </PageHeader.Description>
+          )}
+          {pageHeaderMainArgs.infoCounters && (
+            <PageHeader.Counters>
+              {pageHeaderMainArgs.infoCounters}
+            </PageHeader.Counters>
+          )}
+        </PageHeader.Main>
+        <PageHeader.Buttons>
+          <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
+        </PageHeader.Buttons>
+      </PageHeader>
+      <Paragraph style={{ marginTop: "24px" }}>
+        This is a long paragraph, please ignore the style. It's not the object
+        of this story, and it's useful to non-design purposes. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Donec eu nunc eget nisi egestas
+        pretium. Nulla facilisi. Donec eu nunc eget nisi egestas pretium. Nulla
+        facilisi.
       </Paragraph>
     </FakeBody>
   );
@@ -82,6 +164,9 @@ const defaultArgs: PageHeaderStoryProps = {
 
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+
+export const Editable = TemplateEditable.bind({});
+Editable.args = defaultArgs;
 
 export default {
   title: "Molecules/PageHeader",
