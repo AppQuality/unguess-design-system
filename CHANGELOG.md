@@ -1,3 +1,16 @@
+# v2.12.10 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): move out prj accordion panel setting ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.9 (Tue Sep 20 2022)
 
 #### ⚠️ Pushed to `master`
