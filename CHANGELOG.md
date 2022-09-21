@@ -1,3 +1,17 @@
+# v2.12.11 (Wed Sep 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- feat(page-header): allow complex child on main sub-component ([@cannarocks](https://github.com/cannarocks))
+- feat(inputToggle): keep ratio between textSize and lineHeight costant ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.10 (Tue Sep 20 2022)
 
 #### ⚠️ Pushed to `master`
