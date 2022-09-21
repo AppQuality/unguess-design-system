@@ -17,6 +17,7 @@ const defaultArgs: InputStoryArgs = {
   placeholder: "Placeholder",
   required: true,
   isFocused: false,
+  textSize: "xl",
 };
 
 const TitleContainer = styled.div`
@@ -116,4 +117,12 @@ WithLabel.args = {
 export default {
   title: "Molecules/Forms/InputToggle",
   component: InputToggle,
+  argTypes: {
+    textSize: {
+      control: {
+        type: "select",
+        options: ['xs','sm','md','lg','xl','xxl', 'xxxl'],
+      },
+    }
+  },
 } as ComponentMeta<typeof InputToggle>;

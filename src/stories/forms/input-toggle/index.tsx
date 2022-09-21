@@ -8,10 +8,11 @@ import {
   useContext,
 } from "react";
 import { Input } from "../input";
-import { InputToggleArgs } from "./_types";
+import { InputToggleArgs, textSizes } from "./_types";
 import { ReactComponent as EditIcon } from "../../../assets/icons/notes-stroke.svg";
 import { Label } from "../../label";
 import { XL } from "../../typography/typescale";
+import { theme } from "../../theme";
 
 interface IInputToggleContext {
   isEditing?: boolean;
@@ -93,11 +94,24 @@ const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
   );
 };
 
+const getInputSize = (textSize: textSizes) => ({
+  fontSize: textSize in theme.fontSizes ? theme.fontSizes[textSize] : "22px",
+  lineHeight:
+    textSize in theme.lineHeights ? theme.lineHeights[textSize] : "28px",
+});
+
 const InputItem = (props: InputToggleArgs) => {
-  const { placeholder = "Insert a value", value, style, textSize = '22px' } = props;
+  const {
+    placeholder = "Insert a value",
+    value,
+    style,
+    textSize = "xl",
+  } = props;
   const [input, setInput] = useState<HTMLInputElement | null>();
 
   const { isEditing } = useContext(ToggleContext);
+
+  const size = getInputSize(textSize);
 
   useEffect(() => {
     if (isEditing && input) {
@@ -109,10 +123,10 @@ const InputItem = (props: InputToggleArgs) => {
     <StyledInput
       ref={setInput}
       {...props}
-      style={{ fontSize: textSize, fontWeight: 500, ...style }}
+      style={{ fontWeight: 500, ...size, ...style }}
     />
   ) : (
-    <StyledText isBold style={{ fontSize: textSize, fontWeight: 500, ...style }}>
+    <StyledText isBold style={{ fontWeight: 500, ...size, ...style }}>
       {!value ? placeholder : value} <EditIcon />
     </StyledText>
   );
