@@ -15,7 +15,7 @@ const Template: Story<SidebarStoryArgs> = (args) => {
   return (
     <Chrome
       isFluid
-      style={{ height: '95vh', minWidth: 480 }}
+      style={{ maxHeight: '95vh', minWidth: 480 }}
       hue={theme.palette.white}
     >
       <Sidebar
@@ -28,7 +28,7 @@ const Template: Story<SidebarStoryArgs> = (args) => {
 };
 
 const defaultArgs: SidebarStoryArgs = {
-  currentRoute: "home",
+  currentRoute: "projects/6",
   dividerLabel: "Projects",
   projects: [
     {
@@ -79,6 +79,18 @@ const defaultArgs: SidebarStoryArgs = {
 };
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+
+export const SingleProject = Template.bind({});
+SingleProject.args = {
+  ...defaultArgs,
+  projects: [
+    {
+      id: "1",
+      title: "Enel Premia Wow",
+      campaigns: "there are no campaigns",
+    },
+  ],
+};
 
 export const MultipleWorkspaces = Template.bind({});
 MultipleWorkspaces.args = {

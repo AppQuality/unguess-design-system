@@ -5,6 +5,7 @@ import {
   sidebarNavItemExpanded,
   sidebarNavItemHidden,
 } from "../../../theme/utils";
+import { forwardRef } from "react";
 
 const SelectedItemStyle = css`
   background-color: ${({ theme }) => theme.palette.kale["100"]};
@@ -34,9 +35,6 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   margin: ${({ theme }) => theme.space.xs} 0;
 `;
 
-const NavItem = (props: NavItemArgs) => {
-  // const { isExpanded } = props;
-  return <UgNavItem {...props} />;
-};
+const NavItem = forwardRef<HTMLButtonElement, NavItemArgs>((props, ref) => <UgNavItem ref={ref} {...props} />);
 
 export { NavItem };

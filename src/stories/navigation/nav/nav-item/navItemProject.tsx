@@ -2,6 +2,7 @@ import { NavItem } from "./navItem";
 import { NavItemArgs } from "./_types";
 import styled from "styled-components";
 import { NavItemText } from "./navItemText";
+import { forwardRef } from "react";
 
 const UgProjectSubtitle = styled(NavItemText)<NavItemArgs>`
   color: ${(props) => props.theme.palette.grey["500"]};
@@ -16,7 +17,15 @@ const UgNavItem = styled(NavItem)<NavItemArgs>`
   padding-left: ${({ theme }) => theme.space.xxl}; //Accordion Alingment
 `;
 
-const NavItemProject = (props: NavItemArgs) => <UgNavItem {...props} />;
+const NavItemComponent = forwardRef<HTMLButtonElement, NavItemArgs>(
+  (props, ref) => <UgNavItem ref={ref} {...props} />
+);
+
+const NavItemProject = NavItemComponent as typeof NavItemComponent & {
+  Title: typeof NavItemText;
+  SubTitle: typeof UgProjectSubtitle;
+};
+
 NavItemProject.Title = NavItemText;
 NavItemProject.SubTitle = UgProjectSubtitle;
 

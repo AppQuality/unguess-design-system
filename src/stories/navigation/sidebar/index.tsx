@@ -15,7 +15,7 @@ import { ReactComponent as TemplatesIcon } from "../../../assets/icons/templates
 import { ReactComponent as TemplatesActiveIcon } from "../../../assets/icons/templates-active.svg";
 
 import { SidebarArgs } from "./_types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { theme } from "../../theme";
 import { Logo } from "../../logo";
 import { Card } from "../../cards";
@@ -71,8 +71,13 @@ const SidebarLabel = styled(SM)<SidebarArgs>`
  * Used for this:
     - To give a consistent dashboard and navigation experience
  */
-const Sidebar = ({ projects, defaultAccordionPanels=[0], ...props }: SidebarArgs) => {
+const Sidebar = ({
+  projects,
+  defaultAccordionPanels = [0],
+  ...props
+}: SidebarArgs) => {
   const [nav, setNav] = useState(props.currentRoute || "home");
+  const prjRef = useRef<HTMLButtonElement>(null);
 
   const showWorkspacesDropdown = window.matchMedia(
     `only screen and (max-width: ${theme.breakpoints.sm})`
@@ -93,6 +98,15 @@ const Sidebar = ({ projects, defaultAccordionPanels=[0], ...props }: SidebarArgs
         paddingBottom: 0,
       }
     : {};
+
+  useEffect(() => {
+    if (prjRef && prjRef.current && props.isExpanded) {
+      prjRef.current?.scrollIntoView({
+        behavior: "auto",
+        block: "end"
+      });
+    }
+  }, [props.isExpanded]);
 
   return props.isLoading ? (
     <LoadingSidebar {...props} />
@@ -154,13 +168,15 @@ const Sidebar = ({ projects, defaultAccordionPanels=[0], ...props }: SidebarArgs
                 </AccordionItem.Label>
               </AccordionItem.Header>
               <AccordionItem.Panel>
-                {projects.map((project) => (
+                {projects.map((project, index) => (
                   <NavItemProject
                     className="sidebar-project-item"
                     key={project.id}
                     isExpanded={props.isExpanded}
                     isCurrent={nav === `projects/${project.id}`}
+                    {...(nav === `projects/${project.id}` && { ref: prjRef })}
                     onClick={() => navigate("projects", project.id)}
+                    {...(index === projects.length -1 &&  { style: { marginBottom: 61 } })}
                   >
                     <NavItemProject.Title
                       title={project.title}
