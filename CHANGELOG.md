@@ -1,3 +1,15 @@
+# v2.12.13 (Wed Sep 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Create codeql-analysis.yml ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.12 (Tue Sep 27 2022)
 
 #### ⚠️ Pushed to `master`
