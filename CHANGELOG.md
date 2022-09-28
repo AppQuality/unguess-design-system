@@ -1,3 +1,16 @@
+# v2.12.14 (Wed Sep 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): disable animation on accordion ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.13 (Wed Sep 28 2022)
 
 #### ⚠️ Pushed to `master`
