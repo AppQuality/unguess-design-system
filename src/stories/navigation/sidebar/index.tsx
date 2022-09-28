@@ -25,6 +25,7 @@ import { LoadingSidebar } from "./skeleton";
 import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
 import { AccordionItem } from "../nav/nav-item/accordionItem";
 import { SM } from "../../typography/typescale";
+import useDebounce from "../../../hooks/useDebounce";
 
 const TokenContainer = styled.div`
   display: flex;
@@ -102,8 +103,8 @@ const Sidebar = ({
   useEffect(() => {
     if (prjRef && prjRef.current && props.isExpanded) {
       prjRef.current?.scrollIntoView({
-        behavior: "auto",
-        block: "end"
+        behavior: "smooth",
+        block: "end",
       });
     }
   }, [props.isExpanded]);
@@ -159,6 +160,7 @@ const Sidebar = ({
             level={4}
             defaultExpandedSections={defaultAccordionPanels}
             isExpanded={props.isExpanded}
+            isAnimated={false}
           >
             <AccordionItem.Section>
               <AccordionItem.Header>
@@ -168,7 +170,7 @@ const Sidebar = ({
                 </AccordionItem.Label>
               </AccordionItem.Header>
               <AccordionItem.Panel>
-                {projects.map((project, index) => (
+                {projects.map((project) => (
                   <NavItemProject
                     className="sidebar-project-item"
                     key={project.id}
@@ -176,7 +178,6 @@ const Sidebar = ({
                     isCurrent={nav === `projects/${project.id}`}
                     {...(nav === `projects/${project.id}` && { ref: prjRef })}
                     onClick={() => navigate("projects", project.id)}
-                    {...(index === projects.length -1 &&  { style: { marginBottom: 61 } })}
                   >
                     <NavItemProject.Title
                       title={project.title}
