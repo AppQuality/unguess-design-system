@@ -1,3 +1,15 @@
+# v2.12.15 (Thu Sep 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- chore(export): export special-cards ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.14 (Wed Sep 28 2022)
 
 #### ⚠️ Pushed to `master`
