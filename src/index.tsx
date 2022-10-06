@@ -34,6 +34,9 @@ export * from "./stories/service-cards";
 // --- Info Cards ---
 export * from "./stories/info-cards";
 
+// --- Special Cards ---
+export * from "./stories/special-cards";
+
 // --- Close ---
 export * from "./stories/close";
 
