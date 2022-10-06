@@ -1,3 +1,16 @@
+# v2.12.16 (Thu Oct 06 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): remove margin-left on sm breakpoint ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.15 (Thu Sep 29 2022)
 
 #### ⚠️ Pushed to `master`
