@@ -21,6 +21,7 @@ const UgNav = styled(ZendeskNav)`
       
       @media (max-width: ${props.theme.breakpoints.sm}) {
          width: ${props.isExpanded ? "100%" : "0"};
+         margin-left: 0;
          border-right: none;
       }
   `}
