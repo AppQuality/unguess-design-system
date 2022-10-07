@@ -1,3 +1,15 @@
+# v2.12.17 (Fri Oct 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(sidebar): fix duplicated key for skeleton items [#93](https://github.com/AppQuality/unguess-design-system/pull/93) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.16 (Thu Oct 06 2022)
 
 #### ⚠️ Pushed to `master`
