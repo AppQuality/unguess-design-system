@@ -52,7 +52,7 @@ export const LoadingSidebar = (props: SidebarArgs) => {
         <Skeleton height="12px" width="80%" />
       </NavItemProject>
 
-      <NavItemProject key={3} isExpanded={isExpanded} isCurrent={false}>
+      <NavItemProject key={4} isExpanded={isExpanded} isCurrent={false}>
         <Skeleton width="60%" style={{ marginBottom: "6px" }} />
         <Skeleton height="12px" width="80%" />
       </NavItemProject>
