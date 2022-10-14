@@ -1,9 +1,10 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from "../theme";
+import { theme } from "../../theme";
 import { BarChart } from ".";
+import { BarChartProps } from "./_types";
 
-const Template: Story = ({ data, width, height, ...args }) => (
-  <BarChart data={data} width={width} height={height} {...args} />
+const Template: Story<BarChartProps> = (args) => (
+  <BarChart {...args} />
 );
 
 export const Default = Template.bind({});

@@ -1,5 +1,6 @@
 import { ResponsiveBar } from "@nivo/bar";
 import styled from "styled-components";
+import { DEFAULT_CHARTS_THEME } from "../../theme/charts";
 import { BarChartProps } from "./_types";
 
 interface ChartContainerProps {
@@ -12,9 +13,12 @@ const ChartContainer = styled.div<ChartContainerProps>`
   width: ${(props) => `${props.width}px` || "100%"};
 `;
 
-const BarChart = (props: BarChartProps) => (
+const BarChart = ({theme, ...props}: BarChartProps) => (
   <ChartContainer width={props.width} height={props.height}>
-    <ResponsiveBar {...props} />
+    <ResponsiveBar theme={{
+      ...DEFAULT_CHARTS_THEME,
+      ...theme,
+    }} {...props} />
   </ChartContainer>
 );
 
