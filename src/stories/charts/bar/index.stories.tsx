@@ -125,7 +125,6 @@ Default.args = {
   groupMode: "grouped",
   valueScale: { type: "linear" },
   indexScale: { type: "band", round: true },
-  colors: { scheme: "blues" },
   theme: {
     textColor: theme.colors.primaryHue,
     fontFamily: theme.fonts.system,

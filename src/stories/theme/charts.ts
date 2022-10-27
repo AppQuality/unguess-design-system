@@ -139,3 +139,14 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
     tableCellValue: {},
   },
 };
+
+export const DEFAULT_CHARTS_COLOR_SCHEME = [
+  theme.palette.blue["500"],
+  theme.palette.azure["400"],
+  theme.palette.green["500"],
+  theme.palette.yellow["500"],
+  theme.palette.red["500"],
+  theme.palette.purple["400"],
+  theme.palette.orange["400"],
+  theme.palette.teal["400"],
+];

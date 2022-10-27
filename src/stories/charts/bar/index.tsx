@@ -1,24 +1,21 @@
 import { ResponsiveBar } from "@nivo/bar";
-import styled from "styled-components";
-import { DEFAULT_CHARTS_THEME } from "../../theme/charts";
+import {
+  DEFAULT_CHARTS_COLOR_SCHEME,
+  DEFAULT_CHARTS_THEME,
+} from "../../theme/charts";
 import { BarChartProps } from "./_types";
+import { ChartContainer } from "../ChartContainer";
 
-interface ChartContainerProps {
-    width: number;
-    height: number;
-};
-
-const ChartContainer = styled.div<ChartContainerProps>`
-  height: ${(props) => `${props.height}px` || "300px"};
-  width: ${(props) => `${props.width}px` || "100%"};
-`;
-
-const BarChart = ({theme, ...props}: BarChartProps) => (
+const BarChart = ({ theme, colors, ...props }: BarChartProps) => (
   <ChartContainer width={props.width} height={props.height}>
-    <ResponsiveBar theme={{
-      ...DEFAULT_CHARTS_THEME,
-      ...theme,
-    }} {...props} />
+    <ResponsiveBar
+      theme={{
+        ...DEFAULT_CHARTS_THEME,
+        ...theme,
+      }}
+      colors={colors ?? DEFAULT_CHARTS_COLOR_SCHEME}
+      {...props}
+    />
   </ChartContainer>
 );
 
