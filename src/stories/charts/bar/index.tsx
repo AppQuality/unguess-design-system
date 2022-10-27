@@ -6,8 +6,8 @@ import {
 import { BarChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
 
-const BarChart = ({ theme, colors, ...props }: BarChartProps) => (
-  <ChartContainer width={props.width} height={props.height}>
+const BarChart = ({ theme, colors, width, height, ...props }: BarChartProps) => (
+  <ChartContainer width={width} height={height}>
     <ResponsiveBar
       theme={{
         ...DEFAULT_CHARTS_THEME,

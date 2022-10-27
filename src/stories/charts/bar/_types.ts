@@ -1,7 +1,7 @@
 import { BarDatum, BarSvgProps } from "@nivo/bar";
 
-export interface BarChartProps extends BarSvgProps<BarDatum> {
+export interface BarChartProps extends Omit<BarSvgProps<BarDatum>, "height" | "width"> {
     data: BarDatum[];
-    width: number;
-    height: number;
+    width?: string;
+    height?: string;
 }

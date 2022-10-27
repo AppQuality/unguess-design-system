@@ -9,8 +9,8 @@ const Template: Story<BarChartProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  width: 500,
-  height: 300,
+  width: "100%",
+  height: "100vh",
   data: [
     {
       country: "AD",

@@ -6,8 +6,8 @@ import {
 import { PieChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
 
-const PieChart = ({ theme, colors, ...props }: PieChartProps) => (
-  <ChartContainer width={props.width} height={props.height}>
+const PieChart = ({ theme, colors, width, height, ...props }: PieChartProps) => (
+  <ChartContainer width={width} height={height}>
     <ResponsivePie
       theme={{
         ...DEFAULT_CHARTS_THEME,

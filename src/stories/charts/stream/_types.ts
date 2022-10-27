@@ -1,7 +1,7 @@
 import { StreamDatum, StreamSvgProps } from "@nivo/stream";
 
-export interface StreamChartProps extends StreamSvgProps<StreamDatum> {
+export interface StreamChartProps extends Omit<StreamSvgProps<StreamDatum>, "width" | "height"> {
     data: StreamDatum[];
-    width: number;
-    height: number;
+    width?: string;
+    height?: string;
 }

@@ -4,8 +4,8 @@ interface PieDatum {
     [key: string]: string | number;
 }
 
-export interface PieChartProps extends PieSvgProps<PieDatum> {
+export interface PieChartProps extends Omit<PieSvgProps<PieDatum>, "width"| "height"> {
     data: PieDatum[];
-    width: number;
-    height: number;
+    width?: string;
+    height?: string;
 }
