@@ -8,7 +8,6 @@ import { ChartContainer } from "../ChartContainer";
 
 const LineChart = ({ theme, colors, width, height, ...props }: LineChartProps) => (
   <ChartContainer width={width} height={height}>
-    {/* @ts-ignore */}
     <ResponsiveLine
       theme={{
         ...DEFAULT_CHARTS_THEME,
