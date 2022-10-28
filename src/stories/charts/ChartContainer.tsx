@@ -6,6 +6,6 @@ interface ChartContainerProps {
 }
 
 export const ChartContainer = styled.div<ChartContainerProps>`
-  height: ${(props) => `${props.height}` || "300px"};
-  width: ${(props) => `${props.width}` || "100%"};
+  height: ${({ height }) => height || "300px"};
+  width: ${({ width }) => width || "100%"};
 `;
