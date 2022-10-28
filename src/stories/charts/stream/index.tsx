@@ -6,8 +6,8 @@ import {
 } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
 
-const StreamChart = ({ theme, colors, ...props }: StreamChartProps) => (
-  <ChartContainer width={props.width} height={props.height}>
+const StreamChart = ({ theme, colors, height, width, ...props }: StreamChartProps) => (
+  <ChartContainer width={width} height={height}>
     <ResponsiveStream
       theme={{
         ...DEFAULT_CHARTS_THEME,

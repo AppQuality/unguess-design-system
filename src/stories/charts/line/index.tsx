@@ -1,14 +1,14 @@
-import { ResponsivePie } from "@nivo/pie";
+import { ResponsiveLine } from "@nivo/line";
 import {
   DEFAULT_CHARTS_COLOR_SCHEME,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
-import { PieChartProps } from "./_types";
+import { LineChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
 
-const PieChart = ({ theme, colors, width, height, ...props }: PieChartProps) => (
+const LineChart = ({ theme, colors, width, height, ...props }: LineChartProps) => (
   <ChartContainer width={width} height={height}>
-    <ResponsivePie
+    <ResponsiveLine
       theme={{
         ...DEFAULT_CHARTS_THEME,
         ...theme,
@@ -19,4 +19,4 @@ const PieChart = ({ theme, colors, width, height, ...props }: PieChartProps) => 
   </ChartContainer>
 );
 
-export { PieChart };
+export { LineChart };
