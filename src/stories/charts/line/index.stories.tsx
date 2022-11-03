@@ -11,276 +11,292 @@ Default.args = {
   height: "100vh",
   data: [
     {
-      "id": "japan",
-      "color": "hsl(335, 70%, 50%)",
-      "data": [
+      id: "japan",
+      color: "hsl(335, 70%, 50%)",
+      data: [
         {
-          "x": "plane",
-          "y": 18
+          x: "plane",
+          y: 18,
         },
         {
-          "x": "helicopter",
-          "y": 56
+          x: "helicopter",
+          y: 56,
         },
         {
-          "x": "boat",
-          "y": 176
+          x: "boat",
+          y: 176,
         },
         {
-          "x": "train",
-          "y": 238
+          x: "train",
+          y: 238,
         },
         {
-          "x": "subway",
-          "y": 231
+          x: "subway",
+          y: 231,
         },
         {
-          "x": "bus",
-          "y": 45
+          x: "bus",
+          y: 45,
         },
         {
-          "x": "car",
-          "y": 16
+          x: "car",
+          y: 16,
         },
         {
-          "x": "moto",
-          "y": 93
+          x: "moto",
+          y: 93,
         },
         {
-          "x": "bicycle",
-          "y": 120
+          x: "bicycle",
+          y: 120,
         },
         {
-          "x": "horse",
-          "y": 8
+          x: "horse",
+          y: 8,
         },
         {
-          "x": "skateboard",
-          "y": 112
+          x: "skateboard",
+          y: 112,
         },
         {
-          "x": "others",
-          "y": 91
-        }
-      ]
+          x: "others",
+          y: 91,
+        },
+      ],
     },
     {
-      "id": "france",
-      "color": "hsl(172, 70%, 50%)",
-      "data": [
+      id: "france",
+      color: "hsl(172, 70%, 50%)",
+      data: [
         {
-          "x": "plane",
-          "y": 209
+          x: "plane",
+          y: 209,
         },
         {
-          "x": "helicopter",
-          "y": 284
+          x: "helicopter",
+          y: 284,
         },
         {
-          "x": "boat",
-          "y": 93
+          x: "boat",
+          y: 93,
         },
         {
-          "x": "train",
-          "y": 251
+          x: "train",
+          y: 251,
         },
         {
-          "x": "subway",
-          "y": 39
+          x: "subway",
+          y: 39,
         },
         {
-          "x": "bus",
-          "y": 58
+          x: "bus",
+          y: 58,
         },
         {
-          "x": "car",
-          "y": 53
+          x: "car",
+          y: 53,
         },
         {
-          "x": "moto",
-          "y": 157
+          x: "moto",
+          y: 157,
         },
         {
-          "x": "bicycle",
-          "y": 278
+          x: "bicycle",
+          y: 278,
         },
         {
-          "x": "horse",
-          "y": 108
+          x: "horse",
+          y: 108,
         },
         {
-          "x": "skateboard",
-          "y": 214
+          x: "skateboard",
+          y: 214,
         },
         {
-          "x": "others",
-          "y": 27
-        }
-      ]
+          x: "others",
+          y: 27,
+        },
+      ],
     },
     {
-      "id": "us",
-      "color": "hsl(155, 70%, 50%)",
-      "data": [
+      id: "us",
+      color: "hsl(155, 70%, 50%)",
+      data: [
         {
-          "x": "plane",
-          "y": 116
+          x: "plane",
+          y: 116,
         },
         {
-          "x": "helicopter",
-          "y": 105
+          x: "helicopter",
+          y: 105,
         },
         {
-          "x": "boat",
-          "y": 198
+          x: "boat",
+          y: 198,
         },
         {
-          "x": "train",
-          "y": 126
+          x: "train",
+          y: 126,
         },
         {
-          "x": "subway",
-          "y": 274
+          x: "subway",
+          y: 274,
         },
         {
-          "x": "bus",
-          "y": 202
+          x: "bus",
+          y: 202,
         },
         {
-          "x": "car",
-          "y": 171
+          x: "car",
+          y: 171,
         },
         {
-          "x": "moto",
-          "y": 110
+          x: "moto",
+          y: 110,
         },
         {
-          "x": "bicycle",
-          "y": 122
+          x: "bicycle",
+          y: 122,
         },
         {
-          "x": "horse",
-          "y": 248
+          x: "horse",
+          y: 248,
         },
         {
-          "x": "skateboard",
-          "y": 49
+          x: "skateboard",
+          y: 49,
         },
         {
-          "x": "others",
-          "y": 98
-        }
-      ]
+          x: "others",
+          y: 98,
+        },
+      ],
     },
     {
-      "id": "germany",
-      "color": "hsl(62, 70%, 50%)",
-      "data": [
+      id: "germany",
+      color: "hsl(62, 70%, 50%)",
+      data: [
         {
-          "x": "plane",
-          "y": 264
+          x: "plane",
+          y: 264,
         },
         {
-          "x": "helicopter",
-          "y": 19
+          x: "helicopter",
+          y: 19,
         },
         {
-          "x": "boat",
-          "y": 241
+          x: "boat",
+          y: 241,
         },
         {
-          "x": "train",
-          "y": 183
+          x: "train",
+          y: 183,
         },
         {
-          "x": "subway",
-          "y": 278
+          x: "subway",
+          y: 278,
         },
         {
-          "x": "bus",
-          "y": 232
+          x: "bus",
+          y: 232,
         },
         {
-          "x": "car",
-          "y": 293
+          x: "car",
+          y: 293,
         },
         {
-          "x": "moto",
-          "y": 101
+          x: "moto",
+          y: 101,
         },
         {
-          "x": "bicycle",
-          "y": 35
+          x: "bicycle",
+          y: 35,
         },
         {
-          "x": "horse",
-          "y": 109
+          x: "horse",
+          y: 109,
         },
         {
-          "x": "skateboard",
-          "y": 240
+          x: "skateboard",
+          y: 240,
         },
         {
-          "x": "others",
-          "y": 47
-        }
-      ]
+          x: "others",
+          y: 47,
+        },
+      ],
     },
     {
-      "id": "norway",
-      "color": "hsl(126, 70%, 50%)",
-      "data": [
+      id: "norway",
+      color: "hsl(126, 70%, 50%)",
+      data: [
         {
-          "x": "plane",
-          "y": 146
+          x: "plane",
+          y: 146,
         },
         {
-          "x": "helicopter",
-          "y": 27
+          x: "helicopter",
+          y: 27,
         },
         {
-          "x": "boat",
-          "y": 195
+          x: "boat",
+          y: 195,
         },
         {
-          "x": "train",
-          "y": 197
+          x: "train",
+          y: 197,
         },
         {
-          "x": "subway",
-          "y": 241
+          x: "subway",
+          y: 241,
         },
         {
-          "x": "bus",
-          "y": 21
+          x: "bus",
+          y: 21,
         },
         {
-          "x": "car",
-          "y": 276
+          x: "car",
+          y: 276,
         },
         {
-          "x": "moto",
-          "y": 273
+          x: "moto",
+          y: 273,
         },
         {
-          "x": "bicycle",
-          "y": 185
+          x: "bicycle",
+          y: 185,
         },
         {
-          "x": "horse",
-          "y": 126
+          x: "horse",
+          y: 126,
         },
         {
-          "x": "skateboard",
-          "y": 283
+          x: "skateboard",
+          y: 283,
         },
         {
-          "x": "others",
-          "y": 105
-        }
-      ]
-    }
+          x: "others",
+          y: 105,
+        },
+      ],
+    },
   ],
+  margin: {
+    top: 40,
+    right: 80,
+    bottom: 80,
+    left: 80,
+  },
+  xScale: { type: "point" },
+  yScale: {
+    type: "linear",
+    min: "auto",
+    max: "auto",
+    stacked: true,
+    reverse: false,
+  },
+  pointSize: 10,
+  useMesh: true,
 };
 
 export default {
