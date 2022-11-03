@@ -9,7 +9,6 @@ export const Default = Template.bind({});
 Default.args = {
   width: "100%",
   height: "100vh",
-  colors: { scheme: "blues" },
   theme: {
     textColor: theme.colors.primaryHue,
     fontFamily: theme.fonts.system,

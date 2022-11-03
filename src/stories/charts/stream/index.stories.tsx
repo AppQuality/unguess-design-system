@@ -2,7 +2,6 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { theme } from "../../theme";
 import { StreamChart } from ".";
 import { StreamChartProps } from "./_types";
-import { DEFAULT_CHARTS_COLOR_SCHEME } from "../../theme/charts";
 
 const Template: Story<StreamChartProps> = (args) => <StreamChart {...args} />;
 export const Default = Template.bind({});
@@ -102,7 +101,6 @@ Default.args = {
   enableGridX: false,
   enableGridY: false,
   offsetType: "diverging",
-  colors: DEFAULT_CHARTS_COLOR_SCHEME,
   fillOpacity: 0.85,
   borderColor: {
     from: "color",

@@ -140,13 +140,24 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
 };
 
-export const DEFAULT_CHARTS_COLOR_SCHEME = [
-  theme.palette.blue["500"],
-  theme.palette.azure["400"],
-  theme.palette.green["500"],
-  theme.palette.yellow["500"],
-  theme.palette.red["500"],
-  theme.palette.purple["400"],
-  theme.palette.orange["400"],
-  theme.palette.teal["400"],
+export const CHARTS_COLOR_SCHEME_DARK = [
+  "#B86B27",
+  "#02803B",
+  "#7A0280",
+  "#800208",
+  "#020880",
+  "#02807A",
+  "#024780",
+];
+
+export const CHARTS_COLOR_SCHEME_BRIGHT = [
+  "#573ECF",
+  "#CE2A7A",
+  "#B327B8",
+  "#B75CAD",
+  "#C78430",
+  "#BA261E",
+  "#5FA41C",
+  "#029E99",
+  "#3392CE",
 ];

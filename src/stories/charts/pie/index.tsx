@@ -1,6 +1,6 @@
 import { ResponsivePie } from "@nivo/pie";
 import {
-  DEFAULT_CHARTS_COLOR_SCHEME,
+  CHARTS_COLOR_SCHEME_BRIGHT,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { PieChartProps } from "./_types";
@@ -13,7 +13,7 @@ const PieChart = ({ theme, colors, width, height, ...props }: PieChartProps) => 
         ...DEFAULT_CHARTS_THEME,
         ...theme,
       }}
-      colors={colors ?? DEFAULT_CHARTS_COLOR_SCHEME}
+      colors={colors ?? CHARTS_COLOR_SCHEME_BRIGHT}
       {...props}
     />
   </ChartContainer>
