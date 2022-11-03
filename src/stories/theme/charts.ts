@@ -140,24 +140,45 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
 };
 
-export const CHARTS_COLOR_SCHEME_DARK = [
-  "#B86B27",
-  "#02803B",
-  "#7A0280",
-  "#800208",
-  "#020880",
-  "#02807A",
-  "#024780",
+export const CHARTS_COLOR_SCHEME_MONO = [
+  "#02807A", // Dark pine 900
+  theme.palette.grey[200],
 ];
 
-export const CHARTS_COLOR_SCHEME_BRIGHT = [
-  "#573ECF",
-  "#CE2A7A",
-  "#B327B8",
-  "#B75CAD",
-  "#C78430",
-  "#BA261E",
-  "#5FA41C",
-  "#029E99",
-  "#3392CE",
+export const CHARTS_COLOR_SCHEME_SEMANTIC = [
+  "#800208",  // Mattone 900
+  "#C78430",  // Gubbio light 600
+  "#024780",  // Blue royal 900
+  "#02807A",  // Dark pine 900
+  theme.palette.grey[200],
+];
+
+export const CHARTS_COLOR_SCHEME_CATEGORICAL_5 = [
+  "#5FA41C",  // Green light 700
+  "#020880",  // Blue 900
+  "#CE2A7A",  // Fucsia 700
+  "#573ECF",  // Violet 500
+  "#B75CAD",  // Orchidea 300
+];
+
+export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_A = [
+  "#02807A",  // Dark pine 900
+  "#CE2A7A",  // Fucsia 700
+  "#573ECF",  // Violet 500
+  "#5FA41C",  // Green light 700
+  "#800208",  // Mattone 900
+  "#3392CE",  // Sky 500
+  "#B75CAD",  // Orchidea 300
+  "#020880",  // Blue 900
+];
+
+export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_B = [
+  "#3392CE",  // Sky 500
+  "#B75CAD",  // Orchidea 300
+  "#020880",  // Blue 900
+  "#02807A",  // Dark pine 900
+  "#CE2A7A",  // Fucsia 700
+  "#573ECF",  // Violet 500
+  "#5FA41C",  // Green light 700
+  "#800208",  // Mattone 900
 ];

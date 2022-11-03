@@ -1,6 +1,6 @@
 import { ResponsiveBar } from "@nivo/bar";
 import {
-  CHARTS_COLOR_SCHEME_BRIGHT,
+  CHARTS_COLOR_SCHEME_CATEGORICAL_5,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { BarChartProps } from "./_types";
@@ -13,7 +13,7 @@ const BarChart = ({ theme, colors, width, height, ...props }: BarChartProps) => 
         ...DEFAULT_CHARTS_THEME,
         ...theme,
       }}
-      colors={colors ?? CHARTS_COLOR_SCHEME_BRIGHT}
+      colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_5}
       enableLabel={false}
       {...props}
     />

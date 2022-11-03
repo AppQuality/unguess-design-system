@@ -25,7 +25,7 @@ Default.args = {
     {
       id: "erlang",
       label: "erlang",
-      value: 3,
+      value: 300,
       color: "hsl(159, 70%, 50%)",
     },
     {
