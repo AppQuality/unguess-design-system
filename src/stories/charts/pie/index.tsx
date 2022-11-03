@@ -15,6 +15,7 @@ const PieChart = ({ theme, colors, width, height, ...props }: PieChartProps) => 
       }}
       colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_5}
       enableArcLabels={false}
+      arcLinkLabelsColor={{ from: 'color' }}
       {...props}
     />
   </ChartContainer>
