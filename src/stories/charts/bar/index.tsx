@@ -14,6 +14,7 @@ const BarChart = ({ theme, colors, width, height, ...props }: BarChartProps) => 
         ...theme,
       }}
       colors={colors ?? CHARTS_COLOR_SCHEME_BRIGHT}
+      enableLabel={false}
       {...props}
     />
   </ChartContainer>

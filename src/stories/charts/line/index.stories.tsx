@@ -9,10 +9,6 @@ export const Default = Template.bind({});
 Default.args = {
   width: "100%",
   height: "100vh",
-  theme: {
-    textColor: theme.colors.primaryHue,
-    fontFamily: theme.fonts.system,
-  },
   data: [
     {
       "id": "japan",

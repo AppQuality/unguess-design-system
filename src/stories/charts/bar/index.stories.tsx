@@ -125,32 +125,6 @@ Default.args = {
   groupMode: "grouped",
   valueScale: { type: "linear" },
   indexScale: { type: "band", round: true },
-  theme: {
-    textColor: theme.colors.primaryHue,
-    fontFamily: theme.fonts.system,
-  },
-  axisBottom: {
-    tickSize: 5,
-    tickPadding: 5,
-    tickRotation: 0,
-    legend: "country",
-    legendPosition: "middle",
-    legendOffset: 32,
-  },
-  axisLeft: {
-    tickSize: 5,
-    tickPadding: 5,
-    tickRotation: 0,
-    legend: "food",
-    legendPosition: "middle",
-    legendOffset: -40,
-  },
-  labelSkipWidth: 12,
-  labelSkipHeight: 12,
-  labelTextColor: {
-    from: "color",
-    modifiers: [["darker", 1.6]],
-  },
   legends: [
     {
       dataFrom: "keys",

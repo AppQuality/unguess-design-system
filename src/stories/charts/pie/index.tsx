@@ -14,6 +14,7 @@ const PieChart = ({ theme, colors, width, height, ...props }: PieChartProps) => 
         ...theme,
       }}
       colors={colors ?? CHARTS_COLOR_SCHEME_BRIGHT}
+      enableArcLabels={false}
       {...props}
     />
   </ChartContainer>
