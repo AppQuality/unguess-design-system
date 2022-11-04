@@ -42,7 +42,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
     domain: {
       line: {
         stroke: theme.palette.grey[600],
-        strokeWidth: 1,
+        strokeWidth: 2,
       },
     },
     legend: {
@@ -54,7 +54,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
     ticks: {
       line: {
         stroke: theme.palette.grey[600],
-        strokeWidth: 1,
+        strokeWidth: 3,
       },
       text: {
         fontSize: Number(theme.fontSizes.sm),
@@ -80,7 +80,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   grid: {
     line: {
       stroke: theme.palette.grey[600],
-      strokeWidth: 1,
+      strokeWidth: .5,
     },
   },
   labels: {
