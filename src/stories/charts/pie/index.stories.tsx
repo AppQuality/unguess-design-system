@@ -48,12 +48,13 @@ Default.args = {
     left: 80,
   },
   innerRadius: 0.5,
-  padAngle: 0.7,
   borderWidth: 1,
   borderColor: {
     from: "color",
     modifiers: [["darker", 0.2]],
   },
+  arcLinkLabelsThickness: 2,
+  arcLinkLabelsTextColor: theme.palette.grey[600],
   legends: [
     {
       anchor: "bottom",
@@ -63,12 +64,12 @@ Default.args = {
       translateY: 56,
       itemsSpacing: 0,
       itemWidth: 100,
-      itemHeight: 18,
+      itemHeight: 16,
       itemTextColor: "#999",
       itemDirection: "left-to-right",
       itemOpacity: 1,
-      symbolSize: 18,
-      symbolShape: "circle",
+      symbolSize: 12,
+      symbolShape: "square",
       effects: [
         {
           on: "hover",
