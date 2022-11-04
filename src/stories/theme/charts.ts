@@ -3,9 +3,10 @@ import { theme } from ".";
 
 interface UnguessChartsTheme extends CompleteTheme {}
 
+console.log(theme.fontSizes);
 export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   background: theme.palette.white,
-  fontSize: Number(theme.fontSizes.xs), // Not used
+  fontSize: Number(theme.fontSizes.sm), // Not used
   fontFamily: theme.fonts.system,
   textColor: theme.palette.grey[600],
   annotations: {
@@ -106,6 +107,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
       },
     },
     text: {
+      fontWeight: theme.fontWeights.bold,
       fontSize: Number(theme.fontSizes.sm),
       fill: theme.palette.grey[600],
     },
@@ -129,7 +131,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   tooltip: {
     container: {
       background: theme.palette.white,
-      color: theme.palette.grey[600],
+      color: theme.palette.grey[800],
       fontSize: Number(theme.fontSizes.sm),
     },
     basic: {},
