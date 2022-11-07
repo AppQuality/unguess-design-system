@@ -14,7 +14,6 @@ const SunburstChart = ({ theme, colors, width, height, ...props }: SunburstChart
         ...theme,
       }}
       colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
-      cornerRadius={2}
       childColor={{
         from: 'color',
         modifiers: [
