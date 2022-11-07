@@ -3,7 +3,6 @@ import { theme } from ".";
 
 interface UnguessChartsTheme extends CompleteTheme {}
 
-console.log(theme.fontSizes);
 export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   background: theme.palette.white,
   fontSize: Number(theme.fontSizes.sm), // Not used
