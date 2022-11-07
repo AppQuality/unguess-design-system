@@ -7,13 +7,16 @@ const Template: Story<BulletChartProps> = (args) => <BulletChart {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   width: "90%",
-  height: "100px",
-  margin:{ top: 0, right: 100, bottom: 0, left: 70 },
+  height: "70px",
+  margin:{ top: 50, right: 100, bottom: -1, left: 70 },
   titleOffsetX: -60,
   titleAlign: "start",
+  minValue: 0,
+  maxValue: 100,
   data: [
     {
       "id": "cost",
+      title: "",
       "ranges": [
         25,
         50,
@@ -25,21 +28,6 @@ Default.args = {
       ],
       "markers": [
         74
-      ]
-    },
-    {
-      "id": "revenue",
-      "ranges": [
-        25,
-        50,
-        75,
-        100
-      ],
-      "measures": [
-        40
-      ],
-      "markers": [
-        40
       ]
     }
   ]

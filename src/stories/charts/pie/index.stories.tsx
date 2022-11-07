@@ -83,6 +83,6 @@ Default.args = {
 };
 
 export default {
-  title: "Charts/PieChart",
+  title: "Charts/Pie",
   component: PieChart,
 } as ComponentMeta<typeof PieChart>;

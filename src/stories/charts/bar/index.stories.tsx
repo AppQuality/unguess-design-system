@@ -152,6 +152,6 @@ Default.args = {
 };
 
 export default {
-  title: "Charts/BarChart",
+  title: "Charts/Bar",
   component: BarChart,
 } as ComponentMeta<typeof BarChart>;

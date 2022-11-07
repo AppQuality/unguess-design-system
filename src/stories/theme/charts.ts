@@ -1,4 +1,5 @@
 import { CompleteTheme } from "@nivo/core";
+import { ThemeConsumer } from "styled-components";
 import { theme } from ".";
 
 interface UnguessChartsTheme extends CompleteTheme {}
@@ -130,7 +131,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   tooltip: {
     container: {
       background: theme.palette.white,
-      color: theme.palette.grey[800],
+      color: theme.colors.primaryHue,
       fontSize: Number(theme.fontSizes.sm),
     },
     basic: {},

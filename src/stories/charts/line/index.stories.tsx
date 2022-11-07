@@ -300,6 +300,6 @@ Default.args = {
 };
 
 export default {
-  title: "Charts/LineChart",
+  title: "Charts/Line",
   component: LineChart,
 } as ComponentMeta<typeof LineChart>;
