@@ -1,3 +1,4 @@
+import exp from "constants";
 import { GlobalStyle } from "./stories/shared/globalStyle";
 
 // -------------- Components --------------
@@ -39,8 +40,12 @@ export * from "./stories/special-cards";
 
 // --- Charts
 export * from "./stories/charts/bar";
+export * from "./stories/charts/bullet";
+export * from "./stories/charts/line";
 export * from "./stories/charts/pie";
 export * from "./stories/charts/stream";
+export * from "./stories/charts/sunburst";
+export * from "./stories/charts/waffle";
 
 // --- Close ---
 export * from "./stories/close";
