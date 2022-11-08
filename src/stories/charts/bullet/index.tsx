@@ -1,7 +1,7 @@
 import { ResponsiveBullet } from "@nivo/bullet";
 import { BulletChartProps } from "./_types";
 import {
-  CHARTS_COLOR_SCHEME_MONO,
+  darkPine,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import {theme as unguessTheme} from "../../theme";
@@ -17,10 +17,10 @@ const BulletChart = ({ theme, height, width, lineHeight, bulletRadius, ...props 
         ...theme,
       }}
       measureSize={lineHeight || .1}
-      rangeColors={CHARTS_COLOR_SCHEME_MONO[1]}
+      rangeColors={unguessTheme.palette.grey[200]}
       measureColors={unguessTheme.palette.grey[600]}
-      markerComponent={markerProps => (<CustomBulletChartMarker bulletRadius={bulletRadius || 4} fill={CHARTS_COLOR_SCHEME_MONO[0]} {...markerProps} />)}
-      rangeComponent={rangeProps => (<CustomBulletChartRange fill={CHARTS_COLOR_SCHEME_MONO[1]} {...rangeProps} />)}
+      markerComponent={markerProps => (<CustomBulletChartMarker bulletRadius={bulletRadius || 4} fill={darkPine[900]} {...markerProps} />)}
+      rangeComponent={rangeProps => (<CustomBulletChartRange fill={unguessTheme.palette.grey[200]} {...rangeProps} />)}
       {...props}
     />
   </ChartContainer>
