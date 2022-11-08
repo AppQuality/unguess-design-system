@@ -142,49 +142,60 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
 };
 
-export const darkPine = {
-  900: "#02807A"
-};
+export const chartColors = {
+  darkPine: "#02807A",
+  lightGrey: theme.palette.grey[200],
+  darkGrey: theme.palette.grey[600],
+  mattone: "#800208",
+  gubbioLight: "#C78430",
+  blueRoyal: "#024780",
+  greenLight: "#5FA41C",
+  blue: "#020880",
+  fucsia: "#CE2A7A",
+  violet: "#573ECF",
+  orchidea: "#B75CAD",
+  sky: "#3392CE",
+}
 
-export const CHARTS_COLOR_SCHEME_MONO = [
-  darkPine[900], // Dark pine 900
-  theme.palette.grey[200],
-];
+ export const CHARTS_COLOR_SCHEME_MONO = [
+  chartColors.darkPine,
+  chartColors.lightGrey,
+ ];
 
 export const CHARTS_COLOR_SCHEME_SEMANTIC = [
-  "#800208", // Mattone 900
-  "#C78430", // Gubbio light 600
-  "#024780", // Blue royal 900
-  darkPine[900], // Dark pine 900
-  theme.palette.grey[200],
+  chartColors.mattone, // Mattone 900
+  chartColors.gubbioLight, // Gubbio light 600
+  chartColors.blueRoyal, // Blue royal 900
+  chartColors.darkPine, // Dark pine 900
+  chartColors.lightGrey,
 ];
 
 export const CHARTS_COLOR_SCHEME_CATEGORICAL_5 = [
-  "#5FA41C", // Green light 700
-  "#020880", // Blue 900
-  "#CE2A7A", // Fucsia 700
-  "#573ECF", // Violet 500
-  "#B75CAD", // Orchidea 300
+  chartColors.greenLight, // Green light 700
+  chartColors.blue, // Blue 900
+  chartColors.fucsia, // Fucsia 700
+  chartColors.violet, // Violet 500
+  chartColors.orchidea, // Orchidea 300
 ];
 
 export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_A = [
-  darkPine[900], // Dark pine 900
-  "#CE2A7A", // Fucsia 700
-  "#573ECF", // Violet 500
-  "#5FA41C", // Green light 700
-  "#800208", // Mattone 900
-  "#3392CE", // Sky 500
-  "#B75CAD", // Orchidea 300
-  "#020880", // Blue 900
+  chartColors.darkPine, // Dark pine 900
+  chartColors.fucsia, // Fucsia 700
+  chartColors.violet, // Violet 500
+  chartColors.greenLight, // Green light 700
+  chartColors.mattone, // Mattone 900
+  chartColors.sky, // Sky 500
+  chartColors.orchidea, // Orchidea 300
+  chartColors.blue, // Blue 900
 ];
 
 export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_B = [
-  "#3392CE", // Sky 500
-  "#B75CAD", // Orchidea 300
-  "#020880", // Blue 900
-  darkPine[900], // Dark pine 900
-  "#CE2A7A", // Fucsia 700
-  "#573ECF", // Violet 500
-  "#5FA41C", // Green light 700
-  "#800208", // Mattone 900
+  chartColors.sky, // Sky 500
+  chartColors.orchidea, // Orchidea 300
+  chartColors.blue, // Blue 900
+  chartColors.darkPine, // Dark pine 900
+  chartColors.fucsia, // Fucsia 700
+  chartColors.violet, // Violet 500
+  chartColors.greenLight, // Green light 700
+  chartColors.mattone, // Mattone 900
 ];
