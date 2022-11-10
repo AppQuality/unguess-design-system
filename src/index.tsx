@@ -43,6 +43,7 @@ export * from "./stories/charts/bar";
 export * from "./stories/charts/bullet";
 export * from "./stories/charts/line";
 export * from "./stories/charts/pie";
+export * from "./stories/charts/halfPie";
 export * from "./stories/charts/stream";
 export * from "./stories/charts/sunburst";
 export * from "./stories/charts/waffle";
