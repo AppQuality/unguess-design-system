@@ -1,6 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Button } from "@zendeskgarden/react-buttons";
-import { useRef } from "react";
 import { theme } from "../theme";
 import { Tooltip } from ".";
 import { TooltipArgs } from "./_types";
@@ -17,10 +16,9 @@ const defaultArgs: TooltipArgs = {
 };
 
 const Template: Story<TooltipArgs> = ({ children, ...args }) => {
-  const tooltipRef = useRef<HTMLDivElement>(null);
 
   return (
-    <StyledTooltip ref={tooltipRef} {...args}>
+    <StyledTooltip {...args}>
       {children}
     </StyledTooltip>
   );

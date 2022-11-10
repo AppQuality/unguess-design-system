@@ -1,5 +1,4 @@
 import { Tooltip as ZendeskTooltip } from "@zendeskgarden/react-tooltips";
-import { forwardRef } from "react";
 import { TooltipArgs } from "./_types";
 
 /**
@@ -12,6 +11,6 @@ import { TooltipArgs } from "./_types";
  *    - To provide information a user needs to know or remember
  *    - To display truncated text, use a title attribute instead
  */
-const Tooltip = forwardRef<HTMLDivElement, TooltipArgs>((props, ref) => <ZendeskTooltip {...props} />);
+const Tooltip = (props: TooltipArgs) => <ZendeskTooltip {...props} />;
 
 export { Tooltip };
