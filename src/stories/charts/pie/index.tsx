@@ -21,43 +21,47 @@ const CustomLayer = ({
   centerY: number;
   radius: number;
   theme: typeof globalTheme;
-  label: string;
-  value: string;
+  label?: string;
+  value?: string;
 }) => {
   const parameter = 6;
-  const fontSizeFactor = 15 * parameter;
+  const fontSizeFactor = radius / (14 * parameter);
   const spacing = radius / (parameter * 0.9);
-  const shift = -radius / (parameter * 3);
+  const shift = -radius / (parameter * 2.5);
   return (
     <>
-      <g transform={`translate(${centerX},${centerY})`}>
-        <text
-          textAnchor="middle"
-          baselineShift={shift + spacing}
-          style={{
-            fontSize:
-              (parseInt(theme.fontSizes.md.replace("px", "")) * radius) /
-              fontSizeFactor,
-            fontWeight: theme.fontWeights.thin,
-          }}
-        >
-          {label}
-        </text>
-      </g>
-      <g transform={`translate(${centerX},${centerY})`}>
-        <text
-          textAnchor="middle"
-          baselineShift={shift - spacing}
-          style={{
-            fontSize:
-              (parseInt(theme.fontSizes.xxl.replace("px", "")) * radius) /
-              fontSizeFactor,
-            fontWeight: theme.fontWeights.semibold,
-          }}
-        >
-          {value}
-        </text>
-      </g>
+      {label && (
+        <g transform={`translate(${centerX},${centerY})`}>
+          <text
+            textAnchor="middle"
+            baselineShift={shift + (value ? spacing : spacing / 2)}
+            fill={theme.palette.grey[600]}
+            style={{
+              fontSize:
+                parseInt(theme.fontSizes.md.replace("px", "")) * fontSizeFactor,
+            }}
+          >
+            {label}
+          </text>
+        </g>
+      )}
+      {value && (
+        <g transform={`translate(${centerX},${centerY})`}>
+          <text
+            textAnchor="middle"
+            baselineShift={shift - (label ? spacing : spacing / 2)}
+            fill={theme.palette.blue[600]}
+            style={{
+              fontSize:
+                parseInt(theme.fontSizes.xxl.replace("px", "")) *
+                fontSizeFactor,
+              fontWeight: theme.fontWeights.semibold,
+            }}
+          >
+            {value}
+          </text>
+        </g>
+      )}
     </>
   );
 };
@@ -87,9 +91,7 @@ const PieChart = ({
           data={data}
           margin={{
             top: 40,
-            right: 80,
             bottom: 80,
-            left: 80,
           }}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}
@@ -98,7 +100,6 @@ const PieChart = ({
             "arcs",
             "arcLabels",
             "arcLinkLabels",
-            "legends",
             ...(centerItem
               ? [
                   (props: any) => (
@@ -113,31 +114,6 @@ const PieChart = ({
               : []),
           ]}
           activeOuterRadiusOffset={12}
-          legends={[
-            {
-              anchor: "bottom",
-              direction: "row",
-              justify: false,
-              translateX: 0,
-              translateY: 56,
-              itemsSpacing: 0,
-              itemWidth: 100,
-              itemHeight: 16,
-              itemTextColor: "#999",
-              itemDirection: "left-to-right",
-              itemOpacity: 1,
-              symbolSize: 12,
-              symbolShape: "square",
-              effects: [
-                {
-                  on: "hover",
-                  style: {
-                    itemTextColor: "#000",
-                  },
-                },
-              ],
-            },
-          ]}
         />
       </ChartContainer>
     </div>

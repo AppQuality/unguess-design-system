@@ -8,11 +8,12 @@ export const Default = Template.bind({});
 Default.args = {
   width: "100%",
   height: "100vh",
+  colors: ["#800208", "#c78430", "#024780", "#02807a"],
   data: [
     {
       id: "sass",
       label: "sass",
-      value: 108,
+      value: 400,
     },
     {
       id: "make",
@@ -22,27 +23,7 @@ Default.args = {
     {
       id: "erlang",
       label: "erlang",
-      value: 108,
-    },
-    {
-      id: "lisp",
-      label: "lisp",
-      value: 108,
-    },
-    {
-      id: "go",
-      label: "go",
-      value: 108,
-    },
-    {
-      id: "goo",
-      label: "go",
-      value: 108,
-    },
-    {
-      id: "High",
-      label: "go",
-      value: 108,
+      value: 70,
     },
   ],
 };
