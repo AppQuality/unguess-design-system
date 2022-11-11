@@ -1,5 +1,4 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from "../../theme";
 import { PieChart } from ".";
 import { PieChartProps } from "./_types";
 
@@ -41,48 +40,13 @@ Default.args = {
       color: "hsl(163, 70%, 50%)",
     },
   ],
-  margin: {
-    top: 40,
-    right: 80,
-    bottom: 80,
-    left: 80,
+  centerItem: {
+    label: "Tot. bugs",
+    value: "27",
   },
-  innerRadius: 0.5,
-  borderWidth: 1,
-  borderColor: {
-    from: "color",
-    modifiers: [["darker", 0.2]],
-  },
-  arcLinkLabelsThickness: 2,
-  arcLinkLabelsTextColor: theme.palette.grey[600],
-  legends: [
-    {
-      anchor: "bottom",
-      direction: "row",
-      justify: false,
-      translateX: 0,
-      translateY: 56,
-      itemsSpacing: 0,
-      itemWidth: 100,
-      itemHeight: 16,
-      itemTextColor: "#999",
-      itemDirection: "left-to-right",
-      itemOpacity: 1,
-      symbolSize: 12,
-      symbolShape: "square",
-      effects: [
-        {
-          on: "hover",
-          style: {
-            itemTextColor: "#000",
-          },
-        },
-      ],
-    },
-  ],
 };
 
 export default {
-  title: "Charts/Pie",
+  title: "Atoms/Charts/Pie",
   component: PieChart,
 } as ComponentMeta<typeof PieChart>;

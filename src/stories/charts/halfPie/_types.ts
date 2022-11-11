@@ -9,7 +9,7 @@ export interface PieChartProps {
   width?: string;
   height?: string;
   theme?: PieSvgProps<PieDatum>["theme"];
-  colors?: PieSvgProps<PieDatum>["colors"];
-  margin?: PieSvgProps<PieDatum>["margin"];
-  centerItem?: { label?: string; value?: string };
+  colors?: string[];
+  showArcLinks?: boolean;
+  margin?:PieSvgProps<PieDatum>["theme"];
 }
