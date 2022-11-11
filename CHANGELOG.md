@@ -1,3 +1,33 @@
+# v2.12.18 (Fri Nov 11 2022)
+
+#### 🐛 Bug Fix
+
+- fix(bullet-chart): use only the compact component + insert handful props [#101](https://github.com/AppQuality/unguess-design-system/pull/101) ([@marcbon](https://github.com/marcbon))
+- Remove line chart and update types [#102](https://github.com/AppQuality/unguess-design-system/pull/102) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- Setup pie charts [#100](https://github.com/AppQuality/unguess-design-system/pull/100) ([@d-beezee](https://github.com/d-beezee))
+- Cup 1372 charts [#94](https://github.com/AppQuality/unguess-design-system/pull/94) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks))
+- feat(tooltip): add tooltip component [#99](https://github.com/AppQuality/unguess-design-system/pull/99) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(charts): add sunburst chart [#98](https://github.com/AppQuality/unguess-design-system/pull/98) ([@iacopolea](https://github.com/iacopolea))
+- Un 55 Bullet [#97](https://github.com/AppQuality/unguess-design-system/pull/97) ([@iacopolea](https://github.com/iacopolea))
+- feat: waffle chart [#96](https://github.com/AppQuality/unguess-design-system/pull/96) ([@iacopolea](https://github.com/iacopolea))
+- [UN-32] Line chart and wrapper interface [#95](https://github.com/AppQuality/unguess-design-system/pull/95) ([@iacopolea](https://github.com/iacopolea))
+
+#### ⚠️ Pushed to `master`
+
+- chore(workflows): update node version from 12.x to 14.x for "Release on NPM" action ([@marcbon](https://github.com/marcbon))
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@marcbon](https://github.com/marcbon))
+- feat(bullet-chart): refactor component for widget ([@marcbon](https://github.com/marcbon))
+- chore(modules): update yarn.lock ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.17 (Fri Oct 07 2022)
 
 #### 🐛 Bug Fix
