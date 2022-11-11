@@ -25,8 +25,6 @@ const BulletChart = ({
 }: BulletChartProps) => {
   const rangesCount = data[0].ranges.length;
 
-  console.log("rangesCount", rangesCount);
-
   return (
     <ChartContainer width={width} height={height}>
       <UgBulletChart
