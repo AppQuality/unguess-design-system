@@ -41,7 +41,6 @@ export * from "./stories/special-cards";
 // --- Charts
 export * from "./stories/charts/bar";
 export * from "./stories/charts/bullet";
-export * from "./stories/charts/line";
 export * from "./stories/charts/pie";
 export * from "./stories/charts/halfPie";
 export * from "./stories/charts/stream";
