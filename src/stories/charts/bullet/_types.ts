@@ -1,10 +1,10 @@
-import { BulletSvgProps, Datum } from "@nivo/bullet";
-
+type BulletChartData = {
+    ranges: number[];
+    measures: number[];
+    markers: number[];
+};
 export interface BulletChartProps {
-    data: Datum[];
-    minValue?: number;
-    maxValue?: number;
-    theme?: BulletSvgProps["theme"];
+    data: BulletChartData[];
     width?: string;
     height?: string;
     markerColor?: string;

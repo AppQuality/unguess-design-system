@@ -1,6 +1,6 @@
-import { ResponsiveBullet } from "@nivo/bullet";
+import { ResponsiveBullet, Datum } from "@nivo/bullet";
 import { BulletChartProps } from "./_types";
-import { chartColors, DEFAULT_CHARTS_THEME } from "../../theme/charts";
+import { chartColors } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
 import { CustomBulletChartMarker } from "./CustomBulletChartMarker";
 import { CustomBulletChartRange } from "./CustomBulletChartRange";
@@ -12,7 +12,6 @@ const UgBulletChart = styled(ResponsiveBullet)`
 `;
 
 const BulletChart = ({
-  theme,
   width,
   height,
   data,
@@ -25,17 +24,21 @@ const BulletChart = ({
 }: BulletChartProps) => {
   const rangesCount = data[0].ranges.length;
 
+  const formattedData = data.map((item) => ({
+    id: "",
+    title: "",
+    ranges: item.ranges,
+    measures: item.measures,
+    markers: item.markers,
+  })) as Datum[];
+
   return (
     <ChartContainer width={width} height={height}>
       <UgBulletChart
-        data={data}
-        theme={{
-          ...DEFAULT_CHARTS_THEME,
-          ...theme,
-        }}
+        data={formattedData}
         measureColors={measureColor ?? chartColors.darkGrey}
         measureSize={measureSize ?? 0.2}
-        markerComponent={({size, ...markerProps}) => (
+        markerComponent={({ size, ...markerProps }) => (
           <CustomBulletChartMarker
             bulletRadius={4}
             fill={markerColor ?? chartColors.darkPine}
@@ -43,15 +46,17 @@ const BulletChart = ({
             {...markerProps}
           />
         )}
-        rangeComponent={({ index, ...rangeProps }) => (
-          <CustomBulletChartRange
-            fill={rangeColor ?? chartColors.lightGrey}
-            {...rangeProps}
-            {...(index + 1 === rangesCount
-              ? { width: rangeProps.width + 2 }
-              : { width: rangeProps.width })}
-          />
-        )}
+        rangeComponent={({ index, width, ...rangeProps }) => {
+          const isLast = index === rangesCount - 1;
+
+          return (
+            <CustomBulletChartRange
+              fill={rangeColor ?? chartColors.lightGrey}
+              {...rangeProps}
+              width={isLast ? width + 2 : width}
+            />
+          );
+        }}
         margin={{ top: 0, right: 10, bottom: -1, left: 10 }}
         {...props}
       />
