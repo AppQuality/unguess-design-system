@@ -8,63 +8,7 @@ import { ChartContainer } from "../ChartContainer";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
 import { theme as globalTheme } from "../../theme";
-
-const CustomLayer = ({
-  centerX,
-  centerY,
-  theme,
-  radius,
-  label,
-  value,
-}: {
-  centerX: number;
-  centerY: number;
-  radius: number;
-  theme: typeof globalTheme;
-  label?: string;
-  value?: string;
-}) => {
-  const parameter = 6;
-  const fontSizeFactor = radius / (14 * parameter);
-  const spacing = radius / (parameter * 0.9);
-  const shift = -radius / (parameter * 2.5);
-  return (
-    <>
-      {label && (
-        <g transform={`translate(${centerX},${centerY})`}>
-          <text
-            textAnchor="middle"
-            baselineShift={shift + (value ? spacing : spacing / 2)}
-            fill={theme.palette.grey[600]}
-            style={{
-              fontSize:
-                parseInt(theme.fontSizes.md.replace("px", "")) * fontSizeFactor,
-            }}
-          >
-            {label}
-          </text>
-        </g>
-      )}
-      {value && (
-        <g transform={`translate(${centerX},${centerY})`}>
-          <text
-            textAnchor="middle"
-            baselineShift={shift - (label ? spacing : spacing / 2)}
-            fill={theme.palette.blue[600]}
-            style={{
-              fontSize:
-                parseInt(theme.fontSizes.xxl.replace("px", "")) *
-                fontSizeFactor,
-              fontWeight: theme.fontWeights.semibold,
-            }}
-          >
-            {value}
-          </text>
-        </g>
-      )}
-    </>
-  );
-};
+import { CenteredItem } from "./CenteredItem";
 
 const PieChart = ({
   theme,
@@ -73,6 +17,7 @@ const PieChart = ({
   height,
   data,
   centerItem,
+  margin,
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext);
 
@@ -91,7 +36,8 @@ const PieChart = ({
           data={data}
           margin={{
             top: 40,
-            bottom: 80,
+            bottom: 40,
+            ...margin,
           }}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}
@@ -103,7 +49,7 @@ const PieChart = ({
             ...(centerItem
               ? [
                   (props: any) => (
-                    <CustomLayer
+                    <CenteredItem
                       {...props}
                       theme={themeContext}
                       label={centerItem.label}

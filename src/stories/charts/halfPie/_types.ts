@@ -11,4 +11,5 @@ export interface PieChartProps {
   theme?: PieSvgProps<PieDatum>["theme"];
   colors?: string[];
   showArcLinks?: boolean;
+  margin?:PieSvgProps<PieDatum>["theme"];
 }
