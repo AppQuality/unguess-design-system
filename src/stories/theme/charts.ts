@@ -1,5 +1,4 @@
 import { CompleteTheme } from "@nivo/core";
-import { ThemeConsumer } from "styled-components";
 import { theme } from ".";
 
 interface UnguessChartsTheme extends CompleteTheme {}

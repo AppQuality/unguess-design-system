@@ -3,12 +3,19 @@ interface CustomBulletChartMarkerProps {
   y: number;
   bulletRadius: number;
   fill: string;
-}
+  size: number;
+};
 
-export const CustomBulletChartMarker = ({ x, y, bulletRadius, fill }: CustomBulletChartMarkerProps) => (
- <circle
+export const CustomBulletChartMarker = ({
+  x,
+  y,
+  bulletRadius,
+  fill,
+  size,
+}: CustomBulletChartMarkerProps) => (
+  <circle
     r={bulletRadius}
     fill={fill}
-    transform={`translate(${x},${y})`}
+    transform={`translate(${x},${y}) scale(${size})`}
  />
 );

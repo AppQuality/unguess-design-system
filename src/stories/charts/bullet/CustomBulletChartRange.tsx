@@ -4,14 +4,14 @@ export interface CustomBulletChartRangeProps {
   width: number;
   height: number;
   fill: string;
-}
+};
 
 export const CustomBulletChartRange = ({ x, y, width, height, fill }: CustomBulletChartRangeProps) => (
   <rect
-      x={x + 2}
-      y={y + 2}
-      width={width - 4}
-      height={height - 4}
+      x={x}
+      y={y}
+      width={width - 2}
+      height={height}
       fill={fill}
   />
 );
