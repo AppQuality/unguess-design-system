@@ -24,7 +24,7 @@ const HalfPieChartComponent = ({
   onMouseLeave?: (props: any) => void;
   mode: "back" | "front";
 }) => {
-  const themeContext = useContext(ThemeContext);
+  const themeContext = useContext(ThemeContext as React.Context<any>);
 
   return (
     <div

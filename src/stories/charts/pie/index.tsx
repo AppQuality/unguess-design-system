@@ -6,8 +6,7 @@ import {
 import { PieChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
 import { ThemeContext } from "styled-components";
-import { useContext } from "react";
-import { theme as globalTheme } from "../../theme";
+import React, { useContext } from "react";
 import { CenteredItem } from "./CenteredItem";
 
 const PieChart = ({
@@ -19,7 +18,7 @@ const PieChart = ({
   centerItem,
   margin,
 }: PieChartProps) => {
-  const themeContext = useContext(ThemeContext);
+  const themeContext = useContext(ThemeContext as React.Context<any>);
 
   return (
     <div>
