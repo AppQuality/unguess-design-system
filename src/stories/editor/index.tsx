@@ -2,6 +2,7 @@ import {
   useEditor,
   EditorContent,
   Editor as TipTapEditor,
+  Content,
 } from "@tiptap/react";
 import styled from "styled-components";
 
@@ -117,7 +118,7 @@ const Editor = ({
       }),
       CharacterCount,
     ],
-    content: children || "",
+    content: children as Content || "",
     editorProps: {
       handleKeyDown: (view, event: KeyboardEvent) => {
         if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {

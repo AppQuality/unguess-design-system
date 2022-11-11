@@ -1,8 +1,4 @@
-import { ResponsivePie } from "@nivo/pie";
-import {
-  CHARTS_COLOR_SCHEME_CATEGORICAL_8_A,
-  DEFAULT_CHARTS_THEME,
-} from "../../theme/charts";
+import { CHARTS_COLOR_SCHEME_CATEGORICAL_8_A } from "../../theme/charts";
 import { PieChartProps } from "./_types";
 import { ThemeContext } from "styled-components";
 import { useContext, useState } from "react";
@@ -17,7 +13,7 @@ const HalfPieChart = ({
   margin,
   showArcLinks,
 }: PieChartProps) => {
-  const themeContext = useContext(ThemeContext);
+  const themeContext = useContext(ThemeContext as React.Context<any>);
 
   const activeColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A;
 
