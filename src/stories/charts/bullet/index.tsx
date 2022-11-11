@@ -1,4 +1,4 @@
-import { ResponsiveBullet, Datum } from "@nivo/bullet";
+import { ResponsiveBullet } from "@nivo/bullet";
 import { BulletChartProps } from "./_types";
 import { chartColors } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
@@ -25,21 +25,16 @@ const BulletChart = ({
 }: BulletChartProps) => {
   const rangesCount = ranges.length;
 
-  // Format data item as Datum[] type with empty title and id
-  const formattedData: Datum[] = [
-    {
-      id: "",
-      title: "",
-      ranges: ranges,
-      measures: values,
-      markers: values,
-    },
-  ];
-
   return (
     <ChartContainer width={width} height={height}>
       <UgBulletChart
-        data={formattedData}
+        data={[{
+          id: "",
+          title: "",
+          ranges: ranges,
+          measures: values,
+          markers: values,
+        }]}
         measureColors={measureColor ?? chartColors.darkGrey}
         measureSize={measureSize ?? 0.2}
         markerComponent={({ size, ...markerProps }) => (
