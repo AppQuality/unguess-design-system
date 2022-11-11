@@ -84,6 +84,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/helpers": "^7.20.1",
     "@rollup/plugin-image": "^2.1.1",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
