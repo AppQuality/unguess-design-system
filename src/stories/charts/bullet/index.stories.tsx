@@ -11,15 +11,8 @@ export const Default = TemplateBullet.bind({});
 Default.args = {
   width: "180px",
   height: "15px",
-  data: [
-    {
-      id: "cost",
-      title: "",
-      ranges: [25, 50, 75, 100],
-      measures: [74],
-      markers: [74],
-    },
-  ],
+  ranges: [25, 50, 75, 100],
+  values: [62.5],
 } as BulletChartProps;
 
 const TemplateWidget: Story<BulletChartProps> = (args) => {
@@ -28,17 +21,20 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
       <Paragraph style={{ marginBottom: theme.space.sm, paddingLeft: 10 }}>
         Completamento Use Case
       </Paragraph>
-      <BulletChart {...args} data={[
-          { id: "", ranges: [25, 50, 75, 100], measures: [0], markers: [0] },
-        ]}/>
-      <Paragraph style={{ marginBottom: theme.space.sm, paddingLeft: 10, marginTop: 20 }}>
+      <BulletChart
+        {...args}
+        ranges={[25, 50, 75, 100]}
+        values={[0]}
+      />
+      <Paragraph
+        style={{ marginBottom: theme.space.sm, paddingLeft: 10, marginTop: 20 }}
+      >
         Tempo trascorso
       </Paragraph>
       <BulletChart
         {...args}
-        data={[
-          { id: "", ranges: [25, 50, 75, 100], measures: [100], markers: [100] },
-        ]}
+        ranges={[25, 50, 75, 100]}
+        values={[100]}
       />
     </>
   );
@@ -46,17 +42,17 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
 export const Widget = TemplateWidget.bind({});
 Widget.args = {
   width: "180px",
-  height: "15px"
+  height: "15px",
 } as BulletChartProps;
 
 export default {
-  title: "Charts/Bullet",
+  title: "Atoms/Charts/Bullet",
   component: BulletChart,
   argTypes: {
     theme: {
       table: {
         disable: true,
-      }
+      },
     },
   },
 } as ComponentMeta<typeof BulletChart>;

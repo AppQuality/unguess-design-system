@@ -1,16 +1,6 @@
-import { BulletSvgProps, Datum } from "@nivo/bullet";
-
-export interface BulletChartDefaultProps extends Omit<BulletSvgProps, "width" | "height"> {
-    data: Datum[];
-    lineHeight?: number;
-    bulletRadius?: number;
-    width?: string;
-    height?: string;
-};
-
 export interface BulletChartProps {
-    data: Datum[];
-    theme?: BulletSvgProps["theme"];
+    ranges: number[];
+    values: number[];
     width?: string;
     height?: string;
     markerColor?: string;
