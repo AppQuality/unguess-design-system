@@ -46,7 +46,9 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
 export const Widget = TemplateWidget.bind({});
 Widget.args = {
   width: "180px",
-  height: "15px"
+  height: "15px",
+  minValue: 0,
+  maxValue: 100,
 } as BulletChartProps;
 
 export default {
