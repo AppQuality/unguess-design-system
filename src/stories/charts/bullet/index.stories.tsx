@@ -49,7 +49,7 @@ Widget.args = {
 } as BulletChartProps;
 
 export default {
-  title: "Charts/Bullet",
+  title: "Atoms/Charts/Bullet",
   component: BulletChart,
   argTypes: {
     theme: {
