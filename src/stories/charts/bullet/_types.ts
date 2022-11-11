@@ -1,10 +1,6 @@
-type BulletChartData = {
-    ranges: number[];
-    measures: number[];
-    markers: number[];
-};
 export interface BulletChartProps {
-    data: BulletChartData[];
+    ranges: number[];
+    values: number[];
     width?: string;
     height?: string;
     markerColor?: string;

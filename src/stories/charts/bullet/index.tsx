@@ -14,7 +14,8 @@ const UgBulletChart = styled(ResponsiveBullet)`
 const BulletChart = ({
   width,
   height,
-  data,
+  ranges,
+  values,
   markerColor,
   markerSize,
   rangeColor,
@@ -22,15 +23,18 @@ const BulletChart = ({
   measureColor,
   ...props
 }: BulletChartProps) => {
-  const rangesCount = data[0].ranges.length;
+  const rangesCount = ranges.length;
 
-  const formattedData = data.map((item) => ({
-    id: "",
-    title: "",
-    ranges: item.ranges,
-    measures: item.measures,
-    markers: item.markers,
-  })) as Datum[];
+  // Format data item as Datum[] type with empty title and id
+  const formattedData: Datum[] = [
+    {
+      id: "",
+      title: "",
+      ranges: ranges,
+      measures: values,
+      markers: values,
+    },
+  ];
 
   return (
     <ChartContainer width={width} height={height}>

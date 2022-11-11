@@ -11,13 +11,8 @@ export const Default = TemplateBullet.bind({});
 Default.args = {
   width: "180px",
   height: "15px",
-  data: [
-    {
-      ranges: [25, 50, 75, 100],
-      measures: [74],
-      markers: [74],
-    },
-  ],
+  ranges: [25, 50, 75, 100],
+  values: [62.5],
 } as BulletChartProps;
 
 const TemplateWidget: Story<BulletChartProps> = (args) => {
@@ -28,7 +23,8 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
       </Paragraph>
       <BulletChart
         {...args}
-        data={[{ ranges: [25, 50, 75, 100], measures: [0], markers: [0] }]}
+        ranges={[25, 50, 75, 100]}
+        values={[0]}
       />
       <Paragraph
         style={{ marginBottom: theme.space.sm, paddingLeft: 10, marginTop: 20 }}
@@ -37,7 +33,8 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
       </Paragraph>
       <BulletChart
         {...args}
-        data={[{ ranges: [25, 50, 75], measures: [30], markers: [30] }]}
+        ranges={[25, 50, 75, 100]}
+        values={[100]}
       />
     </>
   );
