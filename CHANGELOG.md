@@ -1,3 +1,15 @@
+# v2.12.22 (Mon Nov 14 2022)
+
+#### 🐛 Bug Fix
+
+- chore: Export tooltip component [#103](https://github.com/AppQuality/unguess-design-system/pull/103) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.18 (Fri Nov 11 2022)
 
 #### 🐛 Bug Fix
