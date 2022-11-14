@@ -165,6 +165,7 @@ export * from "./stories/theme";
 export * from "./stories/title";
 
 // --- Tooltips ---
+export * from "./stories/tooltip";
 export * from "./stories/tooltip-modal";
 
 // --- Trigger ---
