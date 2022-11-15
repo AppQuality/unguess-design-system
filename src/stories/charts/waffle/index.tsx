@@ -7,7 +7,7 @@ import {
 import { ChartContainer } from "../ChartContainer";
 import { CustomCell } from "./CustomCell";
 
-const WaffleChart = ({ height, width, data }: WaffleChartProps) => {
+const WaffleChart = ({ height, width, data, total }: WaffleChartProps) => {
 
   return (
     <ChartContainer width={width} height={height}>
@@ -16,17 +16,17 @@ const WaffleChart = ({ height, width, data }: WaffleChartProps) => {
         data={[
           {
             id: "green-circles",
-            label: data[0].label,
-            value: data[0].value,
+            label: data.label,
+            value: data.value,
           },
           {
             id: "grey-circles",
-            label: data[1].label,
-            value: data[1].value,
+            label: total.label,
+            value: total.value,
           },
         ]}
         fillDirection="bottom"
-        total={data[1].value}
+        total={total.value}
         rows={8}
         columns={8}
         colors={CHARTS_COLOR_SCHEME_MONO}

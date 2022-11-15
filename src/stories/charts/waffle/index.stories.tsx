@@ -7,16 +7,14 @@ export const Default = Template.bind({});
 Default.args = {
   width: "100%",
   height: "90vh",
-  data: [
-    {
-      label: "Unique bugs",
-      value: 30,
-    },
-    {
-      label: "Total bugs",
-      value: 100,
-    },
-  ],
+  data: {
+    label: "Unique bugs",
+    value: 30,
+  },
+  total: {
+    label: "Total bugs",
+    value: 100,
+  },
 };
 
 export default {
