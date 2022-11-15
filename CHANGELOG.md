@@ -1,3 +1,16 @@
+# v2.12.31 (Tue Nov 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(bullet chart): tooltip & theme [#105](https://github.com/AppQuality/unguess-design-system/pull/105) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.30 (Tue Nov 15 2022)
 
 #### 🐛 Bug Fix
