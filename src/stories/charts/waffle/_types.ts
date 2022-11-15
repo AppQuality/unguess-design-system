@@ -1,9 +1,11 @@
-import { WaffleDatum, WaffleSvgProps } from "@nivo/waffle";
+interface WaffleDataItem {
+    label: string;
+    value: number;
+};
 
-
-
-export interface WaffleChartProps extends Omit<WaffleSvgProps, "width" | "height"> {
-    data: WaffleDatum[];
+export interface WaffleChartProps {
+    data: WaffleDataItem;
+    total: WaffleDataItem;
     width?: string;
     height?: string;
-}
+};
