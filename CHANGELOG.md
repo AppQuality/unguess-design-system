@@ -1,3 +1,16 @@
+# v2.12.28 (Tue Nov 15 2022)
+
+#### 🐛 Bug Fix
+
+- Waffle refactor [#104](https://github.com/AppQuality/unguess-design-system/pull/104) (gianpaolo.sinatra@app-quality.com [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.22 (Mon Nov 14 2022)
 
 #### 🐛 Bug Fix
