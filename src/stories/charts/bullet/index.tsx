@@ -1,9 +1,9 @@
-import { ResponsiveBullet } from "@nivo/bullet";
+import { BulletMarkersItemProps, ResponsiveBullet } from "@nivo/bullet";
+import styled from "styled-components";
 import { BulletChartProps } from "./_types";
 import { chartColors, DEFAULT_CHARTS_THEME } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
-import { CustomBulletChartMarker } from "./CustomBulletChartMarker";
-import styled from "styled-components";
+import { CustomBulletChartMarkers } from "./CustomBulletChartMarker";
 import { CustomMeasure } from "./CustomBulletChartMeasure";
 
 const UgBulletChart = styled(ResponsiveBullet)`
@@ -11,43 +11,29 @@ const UgBulletChart = styled(ResponsiveBullet)`
   height: 100%;
 `;
 
-const BulletChart = ({
-  width,
-  height,
-  ranges,
-  values,
-  markerColor,
-  markerSize,
-  rangeColor,
-  measureSize,
-  measureColor,
-  ...props
-}: BulletChartProps) => {
+const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
   return (
-    <ChartContainer width={width} height={height}>
+    <ChartContainer width={width} height={height} id="ciolla">
       <UgBulletChart
         theme={DEFAULT_CHARTS_THEME}
-        data={[{
-          id: "",
-          title: "",
-          ranges: ranges,
-          measures: values,
-          markers: values,
-        }]}
+        data={[
+          {
+            id: "",
+            title: "",
+            ranges: ranges,
+            measures: values,
+            markers: values,
+          },
+        ]}
         measureComponent={CustomMeasure}
-        markerComponent={({ size, ...markerProps }) => (
-          <CustomBulletChartMarker
-            bulletRadius={4}
-            fill={markerColor ?? chartColors.darkPine}
-            size={markerSize ?? 1}
-            {...markerProps}
-          />
+        markerColors={chartColors.darkPine}
+        markerComponent={({ size, ...markerProps }: BulletMarkersItemProps) => (
+          <CustomBulletChartMarkers {...markerProps} size={4} />
         )}
         rangeColors={chartColors.lightGrey}
-        rangeBorderColor='#FFFFFF'
-        rangeBorderWidth={3}
-        margin={{ top: 0, right: 0, bottom: -1, left: 0 }}
-        {...props}
+        rangeBorderColor="white"
+        rangeBorderWidth={2}
+        margin={{ top: 0, right: 10, bottom: -1, left: 10 }}
       />
     </ChartContainer>
   );

@@ -48,11 +48,4 @@ Widget.args = {
 export default {
   title: "Atoms/Charts/Bullet",
   component: BulletChart,
-  argTypes: {
-    theme: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 } as ComponentMeta<typeof BulletChart>;
