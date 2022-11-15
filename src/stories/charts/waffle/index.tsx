@@ -25,7 +25,7 @@ const WaffleChart = ({
         motionStiffness={90}
         motionDamping={11}
         // @ts-ignore property cellComponent does not exist, but it does
-        cellComponent={CustomCell}
+        cellComponent={({borderWidth, borderColor, ...rest})=><CustomCell borderWidth={2} borderColor={"white"} {...rest}/>}
         {...props}
       />
     </ChartContainer>

@@ -28,7 +28,7 @@ Default.args = {
 };
 
 export default {
-  title: "Charts/Waffle",
+  title: "Atoms/Charts/Waffle",
   component: WaffleChart,
   argTypes: {
     theme: {
