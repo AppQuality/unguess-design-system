@@ -1,63 +1,39 @@
-import { ResponsiveBullet } from "@nivo/bullet";
-import { BulletChartProps } from "./_types";
-import { chartColors } from "../../theme/charts";
-import { ChartContainer } from "../ChartContainer";
-import { CustomBulletChartMarker } from "./CustomBulletChartMarker";
-import { CustomBulletChartRange } from "./CustomBulletChartRange";
+import { BulletMarkersItemProps, ResponsiveBullet } from "@nivo/bullet";
 import styled from "styled-components";
+import { BulletChartProps } from "./_types";
+import { chartColors, DEFAULT_CHARTS_THEME } from "../../theme/charts";
+import { ChartContainer } from "../ChartContainer";
+import { CustomBulletChartMarkers } from "./CustomBulletChartMarker";
+import { CustomMeasure } from "./CustomBulletChartMeasure";
 
 const UgBulletChart = styled(ResponsiveBullet)`
   width: 100%;
   height: 100%;
 `;
 
-const BulletChart = ({
-  width,
-  height,
-  ranges,
-  values,
-  markerColor,
-  markerSize,
-  rangeColor,
-  measureSize,
-  measureColor,
-  ...props
-}: BulletChartProps) => {
-  const rangesCount = ranges.length;
-
+const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
   return (
-    <ChartContainer width={width} height={height}>
+    <ChartContainer width={width} height={height} id="ciolla">
       <UgBulletChart
-        data={[{
-          id: "",
-          title: "",
-          ranges: ranges,
-          measures: values,
-          markers: values,
-        }]}
-        measureColors={measureColor ?? chartColors.darkGrey}
-        measureSize={measureSize ?? 0.2}
-        markerComponent={({ size, ...markerProps }) => (
-          <CustomBulletChartMarker
-            bulletRadius={4}
-            fill={markerColor ?? chartColors.darkPine}
-            size={markerSize ?? 1}
-            {...markerProps}
-          />
+        theme={DEFAULT_CHARTS_THEME}
+        data={[
+          {
+            id: "",
+            title: "",
+            ranges: ranges,
+            measures: values,
+            markers: values,
+          },
+        ]}
+        measureComponent={CustomMeasure}
+        markerColors={chartColors.darkPine}
+        markerComponent={({ size, ...markerProps }: BulletMarkersItemProps) => (
+          <CustomBulletChartMarkers {...markerProps} size={4} />
         )}
-        rangeComponent={({ index, width, ...rangeProps }) => {
-          const isLast = index === rangesCount - 1;
-
-          return (
-            <CustomBulletChartRange
-              fill={rangeColor ?? chartColors.lightGrey}
-              {...rangeProps}
-              width={isLast ? width + 2 : width}
-            />
-          );
-        }}
+        rangeColors={chartColors.lightGrey}
+        rangeBorderColor="white"
+        rangeBorderWidth={2}
         margin={{ top: 0, right: 10, bottom: -1, left: 10 }}
-        {...props}
       />
     </ChartContainer>
   );

@@ -24,7 +24,7 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
       <BulletChart
         {...args}
         ranges={[25, 50, 75, 100]}
-        values={[0]}
+        values={[20]}
       />
       <Paragraph
         style={{ marginBottom: theme.space.sm, paddingLeft: 10, marginTop: 20 }}
@@ -34,7 +34,7 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
       <BulletChart
         {...args}
         ranges={[25, 50, 75, 100]}
-        values={[100]}
+        values={[80]}
       />
     </>
   );
@@ -48,11 +48,4 @@ Widget.args = {
 export default {
   title: "Atoms/Charts/Bullet",
   component: BulletChart,
-  argTypes: {
-    theme: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 } as ComponentMeta<typeof BulletChart>;
