@@ -11,7 +11,6 @@ import { useContext } from "react";
 const HalfPieChartComponent = ({
   theme,
   colors,
-  width,
   height,
   data,
   onMouseEnter,
@@ -38,7 +37,7 @@ const HalfPieChartComponent = ({
         pointerEvents: mode === "front" ? "none" : undefined,
       }}
     >
-      <ChartContainer width={width} height={height}>
+      <ChartContainer width="100%" height={height}>
         <ResponsivePie
           theme={{
             ...DEFAULT_CHARTS_THEME,
