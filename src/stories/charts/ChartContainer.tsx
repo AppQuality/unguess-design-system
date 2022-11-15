@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface ChartContainerProps {
+export interface ChartContainerProps {
   width?: string;
   height?: string;
 }
