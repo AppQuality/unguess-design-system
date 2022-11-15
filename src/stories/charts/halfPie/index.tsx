@@ -33,11 +33,11 @@ const HalfPieChart = ({
   const [currentColors, setCurrentColors] = useState(grayOutColors(0));
 
   return (
-    <>
+    <div style={{ width, height, position: "relative" }}>
       <HalfPieChartComponent
         theme={theme}
         colors={currentColors}
-        width={width}
+        width="100%"
         height={height}
         data={data}
         onMouseEnter={(data) => {
@@ -66,7 +66,7 @@ const HalfPieChart = ({
         }}
         mode="back"
       />
-    </>
+    </div>
   );
 };
 export { HalfPieChart };
