@@ -1,3 +1,15 @@
+# v2.12.29 (Tue Nov 15 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(halfpie): Make toplevel component relative instead of absolute ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.28 (Tue Nov 15 2022)
 
 #### 🐛 Bug Fix
