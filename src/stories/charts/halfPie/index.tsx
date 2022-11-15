@@ -37,7 +37,6 @@ const HalfPieChart = ({
       <HalfPieChartComponent
         theme={theme}
         colors={currentColors}
-        width="100%"
         height={height}
         data={data}
         onMouseEnter={(data) => {
@@ -53,7 +52,6 @@ const HalfPieChart = ({
       <HalfPieChartComponent
         theme={theme}
         colors={activeColors}
-        width={width}
         height={height}
         data={data}
         margin={margin}
