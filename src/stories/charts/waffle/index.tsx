@@ -7,12 +7,29 @@ import {
 import { ChartContainer } from "../ChartContainer";
 import { CustomCell } from "./CustomCell";
 
-const WaffleChart = ({ height, width, data, total }: WaffleChartProps) => {
-
+const WaffleChart = ({
+  height,
+  width,
+  data,
+  total,
+  tooltip,
+}: WaffleChartProps) => {
   return (
     <ChartContainer width={width} height={height}>
       <ResponsiveWaffle
-        theme={DEFAULT_CHARTS_THEME}
+        theme={
+          tooltip
+            ? {
+                ...DEFAULT_CHARTS_THEME,
+                tooltip: {
+                  ...tooltip,
+                  container: {
+                    padding: 0,
+                  },
+                },
+              }
+            : DEFAULT_CHARTS_THEME
+        }
         data={[
           {
             id: "green-circles",
@@ -25,6 +42,9 @@ const WaffleChart = ({ height, width, data, total }: WaffleChartProps) => {
             value: total.value,
           },
         ]}
+        tooltip={({ value, label }: { value: number; label: string }) =>
+          tooltip ? tooltip({ label, value }) : <>{`${label}: ${value}`}</>
+        }
         fillDirection="bottom"
         total={total.value}
         rows={8}
