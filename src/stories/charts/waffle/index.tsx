@@ -47,7 +47,7 @@ const WaffleChart = ({
         }
         fillDirection="bottom"
         total={total.value}
-        rows={8}
+        rows={6}
         columns={8}
         colors={CHARTS_COLOR_SCHEME_MONO}
         // @ts-ignore property cellComponent does not exist, but it does
