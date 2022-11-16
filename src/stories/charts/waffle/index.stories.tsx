@@ -17,6 +17,36 @@ Default.args = {
   },
 };
 
+export const WithCustomTooltip = Template.bind({});
+WithCustomTooltip.args = {
+  width: "100%",
+  height: "90vh",
+  data: {
+    label: "Unique bugs",
+    value: 30,
+  },
+  total: {
+    label: "Total bugs",
+    value: 100,
+  },
+  tooltip: ({ label, value }) => (
+    <>
+      <div
+        style={{
+          background: "purple",
+          color: "white",
+          padding: "10px",
+          margin: "0",
+        }}
+      >
+        {`i'm the label ${label}!`}
+      </div>
+      <div
+        style={{ color: "yellow", background: "red" }}
+      >{`and i'm the value ${value}!`}</div>
+    </>
+  ),
+};
 export default {
   title: "Atoms/Charts/Waffle",
   component: WaffleChart,
