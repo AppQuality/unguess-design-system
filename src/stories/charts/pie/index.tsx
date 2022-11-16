@@ -31,7 +31,7 @@ const PieChart = ({
           colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
           enableArcLabels={false}
           arcLinkLabelsColor={{ from: "color" }}
-          padAngle={1}
+          padAngle={2}
           data={data}
           margin={{
             top: 40,
