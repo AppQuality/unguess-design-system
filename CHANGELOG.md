@@ -1,3 +1,15 @@
+# v2.12.33 (Wed Nov 16 2022)
+
+#### 🐛 Bug Fix
+
+- feat(waffle): Use 6 rows instead of 8 [#108](https://github.com/AppQuality/unguess-design-system/pull/108) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.32 (Wed Nov 16 2022)
 
 #### 🐛 Bug Fix
