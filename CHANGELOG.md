@@ -1,3 +1,15 @@
+# v2.12.32 (Wed Nov 16 2022)
+
+#### 🐛 Bug Fix
+
+- Add custom tooltip to waffle and fix pie padangle [#107](https://github.com/AppQuality/unguess-design-system/pull/107) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.31 (Tue Nov 15 2022)
 
 #### 🐛 Bug Fix
