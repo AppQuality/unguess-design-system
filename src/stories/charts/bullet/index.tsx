@@ -5,6 +5,7 @@ import { chartColors, DEFAULT_CHARTS_THEME } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
 import { CustomBulletChartMarkers } from "./CustomBulletChartMarker";
 import { CustomMeasure } from "./CustomBulletChartMeasure";
+import { CustomTooltip } from "./CustomTooltip";
 
 const UgBulletChart = styled(ResponsiveBullet)`
   width: 100%;
@@ -30,6 +31,7 @@ const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
         markerComponent={({ size, ...markerProps }: BulletMarkersItemProps) => (
           <CustomBulletChartMarkers {...markerProps} size={4} />
         )}
+        tooltip={CustomTooltip}
         rangeColors={chartColors.lightGrey}
         rangeBorderColor="white"
         rangeBorderWidth={2}
