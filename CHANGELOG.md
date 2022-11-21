@@ -1,3 +1,15 @@
+# v2.12.36 (Mon Nov 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(bullet chart): adjust margins ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v2.12.35 (Mon Nov 21 2022)
 
 #### 🐛 Bug Fix
