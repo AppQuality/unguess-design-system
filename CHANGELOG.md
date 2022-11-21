@@ -1,3 +1,15 @@
+# v2.12.35 (Mon Nov 21 2022)
+
+#### 🐛 Bug Fix
+
+- Un 64 last fixes bullet chart [#110](https://github.com/AppQuality/unguess-design-system/pull/110) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v2.12.34 (Mon Nov 21 2022)
 
 #### 🐛 Bug Fix
