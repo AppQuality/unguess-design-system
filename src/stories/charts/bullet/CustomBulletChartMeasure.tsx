@@ -8,7 +8,7 @@ export interface CustomBulletChartMeasureProps {
   height: number;
 };
 
-export const CustomMeasure = ({ x, y, width, height, color }: CustomBulletChartMeasureProps) => (
+export const CustomMeasure = ({ x, y, width, height }: CustomBulletChartMeasureProps) => (
   <rect
     x={x + 2}
     y={y + 2}

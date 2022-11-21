@@ -2048,7 +2048,7 @@
     d3-hierarchy "^1.1.8"
     lodash "^4.17.21"
 
-"@nivo/tooltip@0.80.0":
+"@nivo/tooltip@0.80.0", "@nivo/tooltip@^0.80.0":
   version "0.80.0"
   resolved "https://registry.yarnpkg.com/@nivo/tooltip/-/tooltip-0.80.0.tgz#07ebef47eb708a0612bd6297d5ad156bbec19d34"
   integrity sha512-qGmrreRwnCsYjn/LAuwBtxBn/tvG8y+rwgd4gkANLBAoXd3bzJyvmkSe+QJPhUG64bq57ibDK+lO2pC48a3/fw==
