@@ -14,7 +14,7 @@ const UgBulletChart = styled(ResponsiveBullet)`
 
 const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
   return (
-    <ChartContainer width={width} height={height} id="ciolla">
+    <ChartContainer width={width} height={height}>
       <UgBulletChart
         theme={DEFAULT_CHARTS_THEME}
         data={[
@@ -35,7 +35,7 @@ const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
         rangeColors={chartColors.lightGrey}
         rangeBorderColor="white"
         rangeBorderWidth={2}
-        margin={{ top: 0, right: 0, bottom: -1, left: 0 }}
+        margin={{ top: 0, right: 5, bottom: -1, left: 0 }}
       />
     </ChartContainer>
   );

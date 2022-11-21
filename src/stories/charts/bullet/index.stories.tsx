@@ -34,7 +34,7 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
       <BulletChart
         {...args}
         ranges={[25, 50, 75, 100]}
-        values={[80]}
+        values={[100]}
       />
     </>
   );
