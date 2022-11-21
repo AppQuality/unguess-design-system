@@ -1,3 +1,24 @@
+# v2.12.34 (Mon Nov 21 2022)
+
+#### 🐛 Bug Fix
+
+- Un 64 bullet graph [#109](https://github.com/AppQuality/unguess-design-system/pull/109) ([@iacopolea](https://github.com/iacopolea) gianpaolo.sinatra@app-quality.com [@marcbon](https://github.com/marcbon) runner@fv-az201-795.yo4stti0dhyudgyjg01iu2obqd.jx.internal.cloudapp.net [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 10
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra (gianpaolo.sinatra@app-quality.com)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo (runner@fv-az133-182.ac31hddj4phu5ocom5smqd4hkf.cx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az201-795.yo4stti0dhyudgyjg01iu2obqd.jx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az220-111.shdwizndlbjulinwhzhdmup5sb.jx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az241-131.2tfxs3cvuluejhi1wdm4o5ef4c.bx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az241-855.2tfxs3cvuluejhi1wdm4o5ef4c.bx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az83-745.pawgbth4qraerhbqawdeo1jfng.dx.internal.cloudapp.net)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.33 (Wed Nov 16 2022)
 
 #### 🐛 Bug Fix
