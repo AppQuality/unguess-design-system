@@ -46,7 +46,7 @@ const BulletChart = ({
         rangeColors={chartColors.lightGrey}
         rangeBorderColor='#FFFFFF'
         rangeBorderWidth={3}
-        margin={{ top: 0, right: 10, bottom: -1, left: 10 }}
+        margin={{ top: 0, right: 0, bottom: -1, left: 0 }}
         {...props}
       />
     </ChartContainer>

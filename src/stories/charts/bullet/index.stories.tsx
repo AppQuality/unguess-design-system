@@ -18,7 +18,7 @@ Default.args = {
 const TemplateWidget: Story<BulletChartProps> = (args) => {
   return (
     <>
-      <Paragraph style={{ marginBottom: theme.space.sm, paddingLeft: 10 }}>
+      <Paragraph style={{ marginBottom: theme.space.sm }}>
         Completamento Use Case
       </Paragraph>
       <BulletChart
@@ -27,7 +27,7 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
         values={[20]}
       />
       <Paragraph
-        style={{ marginBottom: theme.space.sm, paddingLeft: 10, marginTop: 20 }}
+        style={{ marginBottom: theme.space.sm, marginTop: 20 }}
       >
         Tempo trascorso
       </Paragraph>
