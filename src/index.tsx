@@ -46,6 +46,7 @@ export * from "./stories/charts/halfPie";
 export * from "./stories/charts/stream";
 export * from "./stories/charts/sunburst";
 export * from "./stories/charts/waffle";
+export { CHARTS_COLOR_PALETTE } from "./stories/theme/charts";
 
 // --- Close ---
 export * from "./stories/close";

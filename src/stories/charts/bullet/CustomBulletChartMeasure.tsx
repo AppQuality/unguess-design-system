@@ -1,4 +1,4 @@
-import { chartColors } from "../../theme/charts";
+import { CHARTS_COLOR_PALETTE } from "../../theme/charts";
 
 export interface CustomBulletChartMeasureProps {
   x: number;
@@ -14,6 +14,6 @@ export const CustomMeasure = ({ x, y, width, height }: CustomBulletChartMeasureP
     y={y + 2}
     width={width - 4}
     height={height - 4}
-    fill={chartColors.darkGrey}
+    fill={CHARTS_COLOR_PALETTE.darkGrey}
   />
 )
