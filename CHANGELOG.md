@@ -1,3 +1,18 @@
+# v2.12.37 (Thu Nov 24 2022)
+
+#### 🐛 Bug Fix
+
+- Pull request develop master [#113](https://github.com/AppQuality/unguess-design-system/pull/113) ([@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon))
+- feat(charts): export charts colors [#112](https://github.com/AppQuality/unguess-design-system/pull/112) ([@marcbon](https://github.com/marcbon))
+- ci: Use develop branch for storybook publish [#111](https://github.com/AppQuality/unguess-design-system/pull/111) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.36 (Mon Nov 21 2022)
 
 #### ⚠️ Pushed to `master`
