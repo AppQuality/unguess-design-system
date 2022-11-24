@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { theme } from "../../theme";
 import { StreamChart } from ".";
 import { StreamChartProps } from "./_types";
-import { chartColors, CHARTS_COLOR_SCHEME_CATEGORICAL_5 } from "../../theme/charts";
+import { CHARTS_COLOR_PALETTE, CHARTS_COLOR_SCHEME_CATEGORICAL_5 } from "../../theme/charts";
 
 const keys = ["Raoul", "Josiane", "Marcel", "René", "Paul", "Jacques", "Reference"];
 
@@ -103,7 +103,7 @@ Default.args = {
   colors: keys.map((key, index) => {
     const len = CHARTS_COLOR_SCHEME_CATEGORICAL_5.length;
     // last datum (reference line) should be gray
-    if (index === keys.length-1) return chartColors.lightGrey;
+    if (index === keys.length-1) return CHARTS_COLOR_PALETTE.lightGrey;
     // otherwise let's cicle through the theme colors
     const colorIndex = len * ((index/len) - Math.floor(index/(len)));
     return CHARTS_COLOR_SCHEME_CATEGORICAL_5[colorIndex];

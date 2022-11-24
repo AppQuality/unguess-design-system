@@ -141,7 +141,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
 };
 
-export const chartColors = {
+export const CHARTS_COLOR_PALETTE = {
   darkPine: "#02807A",
   lightGrey: theme.palette.grey[200],
   darkGrey: theme.palette.grey[600],
@@ -154,47 +154,47 @@ export const chartColors = {
   violet: "#573ECF",
   orchidea: "#B75CAD",
   sky: "#3392CE",
-}
+};
 
  export const CHARTS_COLOR_SCHEME_MONO = [
-  chartColors.darkPine,
-  chartColors.lightGrey,
+  CHARTS_COLOR_PALETTE.darkPine,
+  CHARTS_COLOR_PALETTE.lightGrey,
  ];
 
 export const CHARTS_COLOR_SCHEME_SEMANTIC = [
-  chartColors.mattone, // Mattone 900
-  chartColors.gubbioLight, // Gubbio light 600
-  chartColors.blueRoyal, // Blue royal 900
-  chartColors.darkPine, // Dark pine 900
-  chartColors.lightGrey,
+  CHARTS_COLOR_PALETTE.mattone, // Mattone 900
+  CHARTS_COLOR_PALETTE.gubbioLight, // Gubbio light 600
+  CHARTS_COLOR_PALETTE.blueRoyal, // Blue royal 900
+  CHARTS_COLOR_PALETTE.darkPine, // Dark pine 900
+  CHARTS_COLOR_PALETTE.lightGrey,
 ];
 
 export const CHARTS_COLOR_SCHEME_CATEGORICAL_5 = [
-  chartColors.greenLight, // Green light 700
-  chartColors.blue, // Blue 900
-  chartColors.fucsia, // Fucsia 700
-  chartColors.violet, // Violet 500
-  chartColors.orchidea, // Orchidea 300
+  CHARTS_COLOR_PALETTE.greenLight, // Green light 700
+  CHARTS_COLOR_PALETTE.blue, // Blue 900
+  CHARTS_COLOR_PALETTE.fucsia, // Fucsia 700
+  CHARTS_COLOR_PALETTE.violet, // Violet 500
+  CHARTS_COLOR_PALETTE.orchidea, // Orchidea 300
 ];
 
 export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_A = [
-  chartColors.darkPine, // Dark pine 900
-  chartColors.fucsia, // Fucsia 700
-  chartColors.violet, // Violet 500
-  chartColors.greenLight, // Green light 700
-  chartColors.mattone, // Mattone 900
-  chartColors.sky, // Sky 500
-  chartColors.orchidea, // Orchidea 300
-  chartColors.blue, // Blue 900
+  CHARTS_COLOR_PALETTE.darkPine, // Dark pine 900
+  CHARTS_COLOR_PALETTE.fucsia, // Fucsia 700
+  CHARTS_COLOR_PALETTE.violet, // Violet 500
+  CHARTS_COLOR_PALETTE.greenLight, // Green light 700
+  CHARTS_COLOR_PALETTE.mattone, // Mattone 900
+  CHARTS_COLOR_PALETTE.sky, // Sky 500
+  CHARTS_COLOR_PALETTE.orchidea, // Orchidea 300
+  CHARTS_COLOR_PALETTE.blue, // Blue 900
 ];
 
 export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_B = [
-  chartColors.sky, // Sky 500
-  chartColors.orchidea, // Orchidea 300
-  chartColors.blue, // Blue 900
-  chartColors.darkPine, // Dark pine 900
-  chartColors.fucsia, // Fucsia 700
-  chartColors.violet, // Violet 500
-  chartColors.greenLight, // Green light 700
-  chartColors.mattone, // Mattone 900
+  CHARTS_COLOR_PALETTE.sky, // Sky 500
+  CHARTS_COLOR_PALETTE.orchidea, // Orchidea 300
+  CHARTS_COLOR_PALETTE.blue, // Blue 900
+  CHARTS_COLOR_PALETTE.darkPine, // Dark pine 900
+  CHARTS_COLOR_PALETTE.fucsia, // Fucsia 700
+  CHARTS_COLOR_PALETTE.violet, // Violet 500
+  CHARTS_COLOR_PALETTE.greenLight, // Green light 700
+  CHARTS_COLOR_PALETTE.mattone, // Mattone 900
 ];
