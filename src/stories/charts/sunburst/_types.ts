@@ -14,4 +14,5 @@ export interface SunburstChartProps {
   theme?: SunburstSvgProps<SunburstData>["theme"];
   colors?: SunburstSvgProps<SunburstData>["colors"];
   centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
+  onChange?: (data:SunburstData ) => void
 }

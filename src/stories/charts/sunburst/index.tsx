@@ -5,7 +5,7 @@ import {
 } from "../../theme/charts";
 import { SunburstChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
@@ -20,12 +20,18 @@ const SunburstChart = ({
   data,
   centerItem,
   margin,
+  onChange,
 }: SunburstChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
   const [currentData, setCurrentData] = useState(data);
   const [currentColor, setCurrentColor] = useState<string | undefined>();
   const [isHovering, setIsHovering] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    if (onChange) onChange(currentData);
+  }, [currentData]);
 
   if (!data.children) return <>No data</>;
 
