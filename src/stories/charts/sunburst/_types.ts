@@ -15,5 +15,5 @@ export interface SunburstChartProps
   width?: string;
   height?: string;
   margin?: SunburstSvgProps<SunburstData>["margin"];
-  centerItem?: { label?: string; value?: string };
+  centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
 }

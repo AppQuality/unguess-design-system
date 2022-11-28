@@ -63,6 +63,7 @@ const PieChart = ({
                       theme={themeContext}
                       label={centerItem.label}
                       value={centerItem.value}
+                      fontSizeMultiplier={centerItem.fontSizeMultiplier}
                     />
                   ),
                 ]

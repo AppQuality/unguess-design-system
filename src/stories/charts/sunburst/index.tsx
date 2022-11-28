@@ -48,6 +48,7 @@ const SunburstChart = ({
                 (props: any) => (
                   <CenteredItem
                     {...props}
+                    fontSizeMultiplier={centerItem.fontSizeMultiplier}
                     theme={themeContext}
                     label={centerItem.label}
                     value={centerItem.value}
