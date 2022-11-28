@@ -8,7 +8,7 @@ export interface TabsArgs extends ITabsProps {
   /**
    * Specifies the currently selected tab
    */
-  selectedItem?: any;
+  selectedItem?: string;
   /**
    * Handles tab selection
    *
