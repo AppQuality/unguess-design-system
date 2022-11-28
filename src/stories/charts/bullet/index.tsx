@@ -26,6 +26,7 @@ const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
             markers: values,
           },
         ]}
+        animate={false}
         measureComponent={CustomMeasure}
         markerColors={CHARTS_COLOR_PALETTE.darkPine}
         markerComponent={({ size, ...markerProps }: BulletMarkersItemProps) => (
