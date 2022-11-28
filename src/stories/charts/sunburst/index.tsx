@@ -59,29 +59,16 @@ const SunburstChart = ({
           ...(currentColor
             ? [
                 (props: any) => (
-                  <g
-                    transform={`translate(${props.centerX - props.radius},${
-                      props.centerY - props.radius
-                    })`}
-                  >
-                    <text
-                      style={{
-                        fontSize:
-                          (parseInt(
-                            themeContext.fontSizes.md.replace("px", "")
-                          ) *
-                            props.radius) /
-                          160,
-                        cursor: "pointer",
-                      }}
+                  <ResetButton
+                    centerX={props.centerX}
+                    centerY={props.centerY}
+                    radius={props.radius}
+                    theme={themeContext}
                       onClick={() => {
                         setCurrentData(data);
                         setCurrentColor(undefined);
                       }}
-                    >
-                      {`< Reset`}
-                    </text>
-                  </g>
+                  />
                 ),
               ]
             : []),
