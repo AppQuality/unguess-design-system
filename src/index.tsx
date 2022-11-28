@@ -39,11 +39,9 @@ export * from "./stories/info-cards";
 export * from "./stories/special-cards";
 
 // --- Charts
-export * from "./stories/charts/bar";
 export * from "./stories/charts/bullet";
 export * from "./stories/charts/pie";
 export * from "./stories/charts/halfPie";
-export * from "./stories/charts/stream";
 export * from "./stories/charts/sunburst";
 export * from "./stories/charts/waffle";
 export { CHARTS_COLOR_PALETTE } from "./stories/theme/charts";
