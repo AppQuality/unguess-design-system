@@ -7,6 +7,7 @@ const CenteredItem = ({
   radius,
   label,
   value,
+  fontSizeMultiplier,
 }: {
   centerX: number;
   centerY: number;
@@ -14,10 +15,14 @@ const CenteredItem = ({
   theme: typeof globalTheme;
   label?: string;
   value?: string;
+  fontSizeMultiplier?: number;
 }) => {
   const parameter = 6;
-  const fontSizeFactor = radius / (14 * parameter);
-  const spacing = radius / (parameter * 0.9);
+  const fontSizeFactor =
+    ((fontSizeMultiplier ? fontSizeMultiplier : 1) * radius) / (14 * parameter);
+  const spacing =
+    ((fontSizeMultiplier ? fontSizeMultiplier : 1) * radius) /
+    (parameter * 0.9);
   const shift = -radius / (parameter * 2.5);
   return (
     <>
