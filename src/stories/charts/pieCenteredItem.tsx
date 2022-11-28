@@ -1,4 +1,4 @@
-import { theme as globalTheme } from "../../theme";
+import { theme as globalTheme } from "../theme";
 
 const CenteredItem = ({
   centerX,
@@ -57,4 +57,4 @@ const CenteredItem = ({
   );
 };
 
-export { CenteredItem };
+export default CenteredItem;

@@ -7,7 +7,7 @@ import { PieChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
-import { CenteredItem } from "./CenteredItem";
+import CenteredItem from "../pieCenteredItem";
 
 const PieChart = ({
   theme,
@@ -48,6 +48,7 @@ const PieChart = ({
             bottom: 40,
             ...margin,
           }}
+          cornerRadius={3}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}
           layers={[
