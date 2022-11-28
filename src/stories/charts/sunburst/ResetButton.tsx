@@ -1,4 +1,16 @@
 import { theme as globalTheme } from "../../theme";
+import styled from "styled-components";
+
+const ResetText = styled.text<{ radius: number }>`
+  font-size: ${({ radius, theme }) =>
+    (parseInt(theme.fontSizes.md.replace("px", "")) * radius) / 130}px;
+  cursor: pointer;
+
+  fill: ${({ theme }) => theme.palette.blue[600]};
+  &:hover {
+    fill: ${({ theme }) => theme.palette.blue[400]};
+  }
+`;
 
 const ResetButton = ({
   centerX,
@@ -14,16 +26,7 @@ const ResetButton = ({
   onClick: () => void;
 }) => (
   <g transform={`translate(${centerX - radius},${centerY - radius})`}>
-    <text
-      style={{
-        fontSize:
-          (parseInt(theme.fontSizes.md.replace("px", "")) * radius) / 130,
-        cursor: "pointer",
-      }}
-      onClick={onClick}
-    >
-      {`< Reset`}
-    </text>
+    <ResetText onClick={onClick} radius={radius}>{`< Reset`}</ResetText>
   </g>
 );
 
