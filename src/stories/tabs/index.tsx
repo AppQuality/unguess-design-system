@@ -5,14 +5,8 @@ import {
   TabPanel as ZendeskTabPanel,
 } from "@zendeskgarden/react-tabs";
 import { forwardRef, useState } from "react";
-import styled from "styled-components";
 import { TabsArgs } from "./_types";
 
-const StyledZendeskTabs = styled(ZendeskTabs)`
-  [aria-selected="true"] {
-    font-weight: ${({ theme }) => theme.fontWeights.semibold};
-  }
-`;
 /**
  * Use Tabs to organize related content in a single view. This helps users navigate related content without having to switch contexts.
 
@@ -28,7 +22,7 @@ const TabsComponent = forwardRef<HTMLDivElement, TabsArgs>((props, ref) => {
   const [selectedTab, setSelectedTab] = useState(props.selectedItem);
 
   return (
-    <StyledZendeskTabs
+    <ZendeskTabs
       ref={ref}
       {...props}
       selectedItem={selectedTab}
