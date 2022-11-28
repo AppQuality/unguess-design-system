@@ -1,5 +1,4 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from "../../theme";
 import { SunburstChart } from ".";
 import { SunburstChartProps } from "./_types";
 

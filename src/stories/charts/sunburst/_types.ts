@@ -3,7 +3,7 @@ import { SunburstSvgProps } from "@nivo/sunburst";
 interface SunburstData {
   name: string;
   children?: SunburstData[];
-  [key: string]: any;
+  value?: number;
 }
 
 export interface SunburstChartProps
