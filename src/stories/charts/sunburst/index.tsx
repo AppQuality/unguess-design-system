@@ -11,6 +11,7 @@ import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
 
 import CenteredItem from "../pieCenteredItem";
+import ResetButton from "./ResetButton";
 const SunburstChart = ({
   theme,
   colors,
@@ -24,11 +25,16 @@ const SunburstChart = ({
 
   const [currentData, setCurrentData] = useState(data);
   const [currentColor, setCurrentColor] = useState<string | undefined>();
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   if (!data.children) return <>No data</>;
 
   return (
-    <ChartContainer width={width} height={height}>
+    <ChartContainer
+      width={width}
+      height={height}
+      style={isHovering ? { cursor: "pointer" } : undefined}
+    >
       <ResponsiveSunburst
         theme={{
           ...DEFAULT_CHARTS_THEME,
@@ -41,6 +47,16 @@ const SunburstChart = ({
         }
         borderWidth={4}
         cornerRadius={3}
+        onMouseEnter={(node: any) => {
+          if (node.data.children) {
+            setIsHovering(true);
+          }
+        }}
+        onMouseLeave={(node: any) => {
+          if (node.data.children) {
+            setIsHovering(false);
+          }
+        }}
         layers={[
           "arcs",
           ...(centerItem
@@ -64,10 +80,10 @@ const SunburstChart = ({
                     centerY={props.centerY}
                     radius={props.radius}
                     theme={themeContext}
-                      onClick={() => {
-                        setCurrentData(data);
-                        setCurrentColor(undefined);
-                      }}
+                    onClick={() => {
+                      setCurrentData(data);
+                      setCurrentColor(undefined);
+                    }}
                   />
                 ),
               ]
