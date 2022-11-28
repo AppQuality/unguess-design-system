@@ -25,8 +25,18 @@ const PieChart = ({
       <ChartContainer width={width} height={height}>
         <ResponsivePie
           theme={{
-            ...DEFAULT_CHARTS_THEME,
-            ...theme,
+            ...{
+              ...DEFAULT_CHARTS_THEME,
+              ...theme,
+              labels: {
+                ...theme?.labels,
+                text: {
+                  fontWeight: themeContext.fontWeights.semibold,
+                  fill: themeContext.palette.grey[800],
+                  ...theme?.labels?.text,
+                },
+              },
+            },
           }}
           colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
           enableArcLabels={false}
@@ -40,7 +50,6 @@ const PieChart = ({
           }}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}
-          arcLinkLabelsTextColor={themeContext.palette.grey[600]}
           layers={[
             "arcs",
             "arcLabels",

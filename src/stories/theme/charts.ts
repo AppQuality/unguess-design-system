@@ -79,7 +79,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   grid: {
     line: {
       stroke: theme.palette.grey[600],
-      strokeWidth: .5,
+      strokeWidth: 0.5,
     },
   },
   labels: {
@@ -156,10 +156,10 @@ export const CHARTS_COLOR_PALETTE = {
   sky: "#3392CE",
 };
 
- export const CHARTS_COLOR_SCHEME_MONO = [
+export const CHARTS_COLOR_SCHEME_MONO = [
   CHARTS_COLOR_PALETTE.darkPine,
   CHARTS_COLOR_PALETTE.lightGrey,
- ];
+];
 
 export const CHARTS_COLOR_SCHEME_SEMANTIC = [
   CHARTS_COLOR_PALETTE.mattone, // Mattone 900
