@@ -27,8 +27,8 @@ const TabsComponent = forwardRef<HTMLDivElement, TabsArgs>((props, ref) => {
       {...props}
       selectedItem={selectedTab}
       onChange={(item) => {
-         setSelectedTab(item);
-         props.onChange?.(item);
+        setSelectedTab(item);
+        props.onChange?.(item);
       }}
     />
   );

@@ -3,6 +3,7 @@ import { palette } from "./palette";
 import { gradients } from "./gradients";
 import { components } from "./components";
 import { boxShadow } from "./utils";
+import { fontWeights } from "./fontWeights";
 
 const theme = {
   ...DEFAULT_THEME,
@@ -23,10 +24,7 @@ const theme = {
     ...DEFAULT_THEME.fonts,
     system: '"Poppins",sans-serif,Helvetica,Arial,sans-serif',
   },
-  fontWeights: {
-    ...DEFAULT_THEME.fontWeights,
-    semibold: 500,
-  },
+  fontWeights: fontWeights,
   gradients: gradients,
   borderRadii: {
     //{sm: '2px', md: '4px', lg: '8px', xl: '16px', xxl: '32px'}
@@ -37,7 +35,7 @@ const theme = {
   },
   lineHeights: {
     ...DEFAULT_THEME.lineHeights,
-    xs: '16px' // same as sm
+    xs: "16px", // same as sm
   },
   components: components,
   shadows: {

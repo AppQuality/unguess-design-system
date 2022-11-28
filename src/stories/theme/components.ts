@@ -1,4 +1,5 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import { fontWeights } from "./fontWeights";
 
 export const components = {
   ...DEFAULT_THEME.components,
@@ -13,11 +14,10 @@ export const components = {
       openWidth: 240,
       closedWidth: 36,
       workspaceDropdownWidth: 192,
-    }
+    },
   },
 
-  notification:
-  {
+  notification: {
     ...DEFAULT_THEME.components?.notification,
     card: {
       ...DEFAULT_THEME.components?.notification?.well,
@@ -31,5 +31,9 @@ export const components = {
 
   autocomplete: {
     thumbSize: "60px",
-  }
+  },
+
+  "tabs.tab": ({isSelected}: { isSelected: boolean }) => {
+    return isSelected ? { fontWeight: fontWeights.semibold } : undefined;
+  },
 };
