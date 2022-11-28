@@ -1,7 +1,5 @@
-type SunburstData = {
-  name: string;
-  children?: SunburstData[];
-};
+import { SunburstData } from "./_types";
+
 const flatten = (data: SunburstData[]) =>
   data.reduce((acc: SunburstData[], item: SunburstData): SunburstData[] => {
     if (item.children) {
