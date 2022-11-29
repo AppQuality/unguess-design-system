@@ -4,11 +4,15 @@ import { SunburstChartProps } from "./_types";
 import { useState } from "react";
 
 const Template: Story<SunburstChartProps> = (args) => {
-  const [tot, setTot] = useState(args.centerItem.value || 123);
+  const [tot, setTot] = useState(
+    args && args.centerItem && args.centerItem.value
+      ? parseInt(args.centerItem.value)
+      : 123
+  );
   return (
     <SunburstChart
       {...args}
-      centerItem={{ ...args.centerItem, value: tot }}
+      centerItem={{ ...args.centerItem, value: tot.toString() }}
       onChange={() => setTot(Math.floor(Math.random() * 100))}
     />
   );
