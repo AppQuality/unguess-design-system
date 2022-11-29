@@ -17,6 +17,7 @@ const PieChart = ({
   data,
   centerItem,
   margin,
+  tooltip,
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -48,6 +49,22 @@ const PieChart = ({
             bottom: 40,
             ...margin,
           }}
+          tooltip={
+            tooltip
+              ? (node) => (
+                  <>
+                    {tooltip({
+                      label: node.datum.data.label.toString(),
+                      value:
+                        typeof node.datum.data.value === "number"
+                          ? node.datum.data.value
+                          : parseInt(node.datum.data.value),
+                      data: node.datum.data,
+                    })}
+                  </>
+                )
+              : undefined
+          }
           cornerRadius={3}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}
