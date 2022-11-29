@@ -9,6 +9,7 @@ import { useState } from "react";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
+import {SunburstData} from "./_types"
 
 import CenteredItem from "../pieCenteredItem";
 import ResetButton from "./ResetButton";
