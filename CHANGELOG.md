@@ -1,3 +1,25 @@
+# v2.12.38 (Tue Nov 29 2022)
+
+#### 🐛 Bug Fix
+
+- Update Design System [#121](https://github.com/AppQuality/unguess-design-system/pull/121) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Sunburst component - design fixes [#119](https://github.com/AppQuality/unguess-design-system/pull/119) ([@d-beezee](https://github.com/d-beezee))
+- Sunburst-component [#116](https://github.com/AppQuality/unguess-design-system/pull/116) ([@d-beezee](https://github.com/d-beezee))
+- Design fixes [#118](https://github.com/AppQuality/unguess-design-system/pull/118) ([@d-beezee](https://github.com/d-beezee))
+- Design fixes [#117](https://github.com/AppQuality/unguess-design-system/pull/117) ([@d-beezee](https://github.com/d-beezee))
+- Bullet-remove-animation [#115](https://github.com/AppQuality/unguess-design-system/pull/115) ([@cannarocks](https://github.com/cannarocks) [@iacopolea](https://github.com/iacopolea))
+- Un 153 tabs [#114](https://github.com/AppQuality/unguess-design-system/pull/114) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 5
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.37 (Thu Nov 24 2022)
 
 #### 🐛 Bug Fix
