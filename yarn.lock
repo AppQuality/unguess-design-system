@@ -4778,6 +4778,15 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^1.0.1"
 
+"@zendeskgarden/container-tabs@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-tabs/-/container-tabs-1.0.1.tgz#b6f91eccbf9b1dc5d6bb4e75f710b9e621696243"
+  integrity sha512-IBBx56yJ3ivftVsirXQksDeN76fwMH3eswTqV45U2NjxzMPvRuKLyx6EuQ89iidcHTBKIBg+/NRH9z+vdB/sWw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-selection" "^2.0.1"
+    "@zendeskgarden/container-utilities" "^1.0.1"
+
 "@zendeskgarden/container-tooltip@^0.5.12":
   version "0.5.17"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-tooltip/-/container-tooltip-0.5.17.tgz#71e7b23effd2d55e926faabccd6349350c77e982"
@@ -4961,6 +4970,17 @@
     dom-helpers "^5.1.0"
     polished "^4.0.0"
     prop-types "^15.5.7"
+
+"@zendeskgarden/react-tabs@^8.49.0":
+  version "8.60.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tabs/-/react-tabs-8.60.0.tgz#f0dae789ca2cc6a170a121f999ffd6d35d27dea9"
+  integrity sha512-DNAd3F4pJWYMl1M+wWiTE+RdXjfVgRkt6ZoFCa1VlLAIA71VFwda7D4yZcluI7iniVPadSyEupLQPezdoZc6KA==
+  dependencies:
+    "@zendeskgarden/container-tabs" "^1.0.0"
+    "@zendeskgarden/container-utilities" "^1.0.0"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+    react-merge-refs "^1.1.0"
 
 "@zendeskgarden/react-tags@^8.49.0":
   version "8.60.0"

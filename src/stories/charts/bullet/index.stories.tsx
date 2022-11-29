@@ -9,7 +9,7 @@ const TemplateBullet: Story<BulletChartProps> = (args) => (
 );
 export const Default = TemplateBullet.bind({});
 Default.args = {
-  width: "180px",
+  width: "50%",
   height: "15px",
   ranges: [25, 50, 75, 100],
   values: [62.5],

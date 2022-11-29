@@ -1,13 +1,18 @@
 import { SunburstSvgProps } from "@nivo/sunburst";
 
-interface SunburstData {
-    name: string;
-    children?: SunburstData[];
-    [key: string]: any;
+export interface SunburstData {
+  name: string;
+  children?: SunburstData[];
+  value?: number;
 }
 
-export interface SunburstChartProps extends Omit<SunburstSvgProps<SunburstData>, "width"| "height" | "cornerRadius" | "childColor"> {
-    data: SunburstData;
-    width?: string;
-    height?: string;
+export interface SunburstChartProps {
+  data: SunburstData;
+  width?: string;
+  height?: string;
+  margin?: SunburstSvgProps<SunburstData>["margin"];
+  theme?: SunburstSvgProps<SunburstData>["theme"];
+  colors?: SunburstSvgProps<SunburstData>["colors"];
+  centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
+  onChange?: (data:SunburstData ) => void
 }

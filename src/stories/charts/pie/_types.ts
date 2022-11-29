@@ -11,5 +11,5 @@ export interface PieChartProps {
   theme?: PieSvgProps<PieDatum>["theme"];
   colors?: PieSvgProps<PieDatum>["colors"];
   margin?: PieSvgProps<PieDatum>["margin"];
-  centerItem?: { label?: string; value?: string };
+  centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
 }
