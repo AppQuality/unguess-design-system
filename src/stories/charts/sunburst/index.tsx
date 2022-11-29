@@ -9,6 +9,7 @@ import { useState } from "react";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
+import {SunburstData} from "./_types"
 
 import CenteredItem from "../pieCenteredItem";
 import ResetButton from "./ResetButton";
@@ -20,12 +21,22 @@ const SunburstChart = ({
   data,
   centerItem,
   margin,
+  onChange,
 }: SunburstChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
   const [currentData, setCurrentData] = useState(data);
   const [currentColor, setCurrentColor] = useState<string | undefined>();
   const [isHovering, setIsHovering] = useState<boolean>(false);
+
+  const changeDataSlice = ({
+    data, color
+  }: {data: SunburstData, color?:string}) => {
+    setCurrentData(data);
+    setCurrentColor(color);
+    if (onChange) onChange(currentData);
+  }
+
 
   if (!data.children) return <>No data</>;
 
@@ -81,8 +92,9 @@ const SunburstChart = ({
                     radius={props.radius}
                     theme={themeContext}
                     onClick={() => {
-                      setCurrentData(data);
-                      setCurrentColor(undefined);
+                      changeDataSlice({
+                        data
+                      })
                     }}
                   />
                 ),
@@ -104,8 +116,10 @@ const SunburstChart = ({
             clickedData.id.toString()
           );
           if (foundObject && foundObject.children) {
-            setCurrentData(foundObject);
-            setCurrentColor(clickedData.color);
+            changeDataSlice({
+              data: foundObject,
+              color:clickedData.color
+            })
           }
         }}
       />
