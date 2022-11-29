@@ -19,7 +19,7 @@ const PieChart = ({
   centerItem,
   margin,
   tooltip,
-  showLegend,
+  legend,
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -85,10 +85,11 @@ const PieChart = ({
           ]}
           activeOuterRadiusOffset={12}
         />
-        {showLegend ? (
+        {legend ? (
           <Legend
             colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
             data={data.map((d) => d.id)}
+            columns={typeof legend === "object" ? legend.columns : undefined}
           />
         ) : undefined}
       </ChartContainer>
