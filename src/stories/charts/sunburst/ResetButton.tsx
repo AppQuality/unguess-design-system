@@ -6,9 +6,9 @@ const ResetText = styled.text<{ radius: number }>`
     (parseInt(theme.fontSizes.md.replace("px", "")) * radius) / 130}px;
   cursor: pointer;
 
-  fill: ${({ theme }) => theme.palette.blue[600]};
+  fill: ${({ theme }) => theme.palette.blue[500]};
   &:hover {
-    fill: ${({ theme }) => theme.palette.blue[400]};
+    fill: ${({ theme }) => theme.palette.blue[700]};
   }
 `;
 
