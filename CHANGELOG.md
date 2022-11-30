@@ -1,3 +1,16 @@
+# v2.12.39 (Wed Nov 30 2022)
+
+#### 🐛 Bug Fix
+
+- Export tabs component [#124](https://github.com/AppQuality/unguess-design-system/pull/124) ([@marcbon](https://github.com/marcbon))
+- fix(tabs): export component [#123](https://github.com/AppQuality/unguess-design-system/pull/123) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.38 (Tue Nov 29 2022)
 
 #### 🐛 Bug Fix
