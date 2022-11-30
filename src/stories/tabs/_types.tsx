@@ -1,6 +1,6 @@
-import { ITabsProps } from "@zendeskgarden/react-tabs";
+import { HTMLAttributes } from "react";
 
-export interface TabsArgs extends ITabsProps {
+export interface TabsArgs extends HTMLAttributes<HTMLDivElement> {
   selectedIndex?: number;
 
   onTabChange?: (index: number) => void;

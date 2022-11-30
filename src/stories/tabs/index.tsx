@@ -1,8 +1,6 @@
 import { Button } from "@zendeskgarden/react-buttons";
-import { ITabsProps } from "@zendeskgarden/react-tabs";
 import React, {
   Children,
-  ReactElement,
   useCallback,
   useEffect,
   useState,
