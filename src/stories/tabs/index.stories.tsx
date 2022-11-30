@@ -1,8 +1,10 @@
 import { ComponentMeta, Story } from "@storybook/react";
+import { TabPanel } from "@zendeskgarden/react-tabs";
 import { Tabs } from ".";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
-import { TabsArgs } from "./_types";
+import { CustomTabs } from "./customTabs";
+import { CustomTabsArgs, TabsArgs } from "./_types";
 
 const Template: Story<TabsArgs> = (args) => (
   <Row>
@@ -21,6 +23,18 @@ const Template: Story<TabsArgs> = (args) => (
   </Row>
 );
 
+const TemplateBuyedOnWish: Story<CustomTabsArgs> = (args) => (
+  <Row>
+    <Col>
+      <CustomTabs {...args}>
+        <TabPanel title="Tab 1">Tab 1 content</TabPanel>
+        <TabPanel title="Tab 2">Tab 2 content</TabPanel>
+        <TabPanel title="Tab 3">Tab 3 content</TabPanel>
+      </CustomTabs>
+    </Col>
+  </Row>
+);
+
 export const Horizontal = Template.bind({});
 Horizontal.args = {
   onChange: (item) => console.log(item),
@@ -31,6 +45,11 @@ Vertical.args = {
   isVertical: true,
   selectedItem: "tab-1",
   onChange: (item) => console.log(item),
+};
+
+export const BuyedOnWish = TemplateBuyedOnWish.bind({});
+BuyedOnWish.args = {
+  selectedIndex: 2,
 };
 
 export default {

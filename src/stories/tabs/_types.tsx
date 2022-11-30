@@ -15,3 +15,20 @@ export interface TabsArgs extends ITabsProps {
    * @param {String} selectedItem The selected tab's `item` value
    */
 }
+
+export interface TabsContextType {
+  /**
+   * Specifies the currently selected tab
+   */
+  selectedItem?: string;
+  /**
+   * Handles tab selection
+   *
+   * @param {String} selectedItem The selected tab's `item` value
+   */
+  setSelectedItem?: (item: string) => void;
+}
+
+export interface CustomTabsArgs extends ITabsProps {
+  selectedIndex?: number;
+}
