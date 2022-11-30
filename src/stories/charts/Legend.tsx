@@ -1,10 +1,10 @@
 import { SM } from "../typography/typescale";
 import { Ellipsis } from "../typography/ellipsis";
 import styled, { ThemeContext } from "styled-components";
-import { useRef, useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 
-const StyledEllipsis = styled(Ellipsis)<{ width?: number }>`
-  ${({ width }) => width && `max-width: ${width}px;`}
+const StyledEllipsis = styled(Ellipsis)`
+  max-width: 100%;
 `;
 
 const LegendColoredSquare = styled.div<{
@@ -19,57 +19,47 @@ const LegendColoredSquare = styled.div<{
   margin-right: ${({ marginRight }) => marginRight}px;
 `;
 
-const LegendItemWrapper = styled.div<{ margin: number }>`
+const LegendItemWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: ${({ margin }) => margin}px;
+  margin: ${({ theme }) => theme.space.base * 1.5}px;
   flex: 0 0 auto;
+  overflow: hidden;
+`;
+
+const StyledSM = styled(SM)<{ squareSize: number }>`
+  max-width: calc(100% - ${({ squareSize }) => squareSize}px);
 `;
 
 const LegendItem = ({
   color,
   value,
-  width,
-  columns,
 }: {
   color: string;
   value: string | number;
-  width: number;
-  columns: number;
 }) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
   const squareSide = theme.space.base * 3;
   const marginRight = theme.space.base * 2;
-  const itemMargin = theme.space.base * 1.5;
 
   return (
-    <LegendItemWrapper margin={itemMargin}>
+    <LegendItemWrapper>
       <LegendColoredSquare
         color={color}
         size={squareSide}
         marginRight={marginRight}
       />
-      <SM>
-        <StyledEllipsis
-          width={
-            width / columns - squareSide - marginRight - itemMargin * 2 - 1
-          }
-        >
-          {value}
-        </StyledEllipsis>
-      </SM>
+      <StyledSM squareSize={squareSide + marginRight}>
+        <StyledEllipsis>{value}</StyledEllipsis>
+      </StyledSM>
     </LegendItemWrapper>
   );
 };
 
-const LegendWrapper = styled.div`
-  width: 75%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+const LegendWrapper = styled.div<{ columns: number }>`
+  display: grid;
+  grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
 `;
 
 const Legend = ({
@@ -81,25 +71,15 @@ const Legend = ({
   data: (string | number)[];
   columns?: number;
 }) => {
-  const [width, setWidth] = useState<number>();
-  const ref = useRef<HTMLDivElement>(null);
   const colorScheme = data.map((d, index) => {
     return { value: d, color: colors[index % colors.length] };
   });
 
-  useEffect(() => {
-    if (ref.current) {
-      setWidth(ref.current.clientWidth);
-    }
-  }, [ref]);
-
   return (
-    <LegendWrapper ref={ref}>
-      {width
-        ? colorScheme.map((item, i) => (
-            <LegendItem key={i} {...item} width={width} columns={columns} />
-          ))
-        : null}
+    <LegendWrapper columns={columns}>
+      {colorScheme.map((item) => (
+        <LegendItem key={item.value} {...item} />
+      ))}
     </LegendWrapper>
   );
 };

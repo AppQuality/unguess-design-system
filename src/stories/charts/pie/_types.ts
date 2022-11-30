@@ -18,5 +18,9 @@ export interface PieChartProps {
   margin?: PieSvgProps<PieDatum>["margin"];
   centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
   tooltip?: ChartTooltipFunction;
-  showLegend?: boolean;
+  legend?:
+    | {
+        columns?: number;
+      }
+    | true;
 }
