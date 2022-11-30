@@ -1,47 +1,107 @@
-import {
-  Tabs as ZendeskTabs,
-  TabList as ZendeskTabList,
-  Tab as ZendeskTab,
-  TabPanel as ZendeskTabPanel,
-} from "@zendeskgarden/react-tabs";
-import { forwardRef, useState } from "react";
-import { TabsArgs } from "./_types";
+import { Button } from "@zendeskgarden/react-buttons";
+import React, {
+  Children,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+import styled from "styled-components";
+import { ButtonArgs } from "../buttons/button/_types";
+import { TabsArgs, TabItemProps, TabPanelProps } from "./_types";
 
-/**
- * Use Tabs to organize related content in a single view. This helps users navigate related content without having to switch contexts.
+const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
+  padding: 10px 28px 6px;
+  color: ${({ theme }) => theme.palette.grey[600]};
+  border-bottom: ${({ theme }) => theme.borderStyles.solid} transparent;
+  border-width: 0 0 ${({ theme }) => theme.borderWidths.md} 0;
+  border-radius: 0;
 
- * Used for this:
-    - To filter information into easily parsable views
-    - To organize related content and controls within a single page
+  ${({ theme, isSelected }) =>
+    isSelected &&
+    `
+        color: ${theme.colors.primaryHue};
+        background-color: transparent;
+        
+        border-color: ${theme.colors.primaryHue};
+        font-weight: ${theme.fontWeights.semibold};
+    `}
 
- * Not for this:
-    - To guide users through a task list, use a Stepper instead
-    - As a secondary navigation bar that spans multiple pages, use Anchors instead
- */
-const TabsComponent = forwardRef<HTMLDivElement, TabsArgs>((props, ref) => {
-  const [selectedTab, setSelectedTab] = useState(props.selectedItem);
+  ${({ disabled }) => disabled && `pointer-events: none;`}
+
+  &:hover {
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.primaryHue};
+  }
+`;
+
+const StyledTabList = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.palette.grey[300]};
+  margin-bottom: ${({ theme }) => theme.space.md};
+`;
+
+const TabPanel = (props: TabPanelProps) => <div>{props.children}</div>;
+
+const TabNavItem = (props: TabItemProps) => {
+  const { children, isSelected, isDisabled, index, setSelectedTab } = props;
+
+  const handleTabClick = useCallback(() => {
+    setSelectedTab(index);
+  }, [setSelectedTab, index]);
 
   return (
-    <ZendeskTabs
-      ref={ref}
-      {...props}
-      selectedItem={selectedTab}
-      onChange={(item) => {
-        setSelectedTab(item);
-        props.onChange?.(item);
-      }}
-    />
+    <StyledNavButton
+      disabled={isDisabled}
+      onClick={handleTabClick}
+      isBasic
+      isSelected={isSelected}
+    >
+      {children}
+    </StyledNavButton>
   );
-});
-
-const Tabs = TabsComponent as typeof TabsComponent & {
-  List: typeof ZendeskTabList;
-  Tab: typeof ZendeskTab;
-  Panel: typeof ZendeskTabPanel;
 };
 
-Tabs.List = ZendeskTabList;
-Tabs.Tab = ZendeskTab;
-Tabs.Panel = ZendeskTabPanel;
+export const Tabs = (props: TabsArgs) => {
+  const { children, selectedIndex } = props;
+  const tabs = Children.toArray(children);
 
-export { Tabs };
+  // Filter valid elements
+  const tabPanels = tabs.filter(
+    (tab) => typeof tab !== "string" && typeof tab !== "number"
+  );
+
+  const internalIndex =
+    selectedIndex && selectedIndex < tabPanels.length ? selectedIndex : 0;
+
+  // SelectedItem or first child
+  const [selectedTabIndex, setSelectedTabIndex] =
+    useState<number>(internalIndex);
+
+  useEffect(() => {
+    if (props.onTabChange) {
+      props.onTabChange(selectedTabIndex);
+    }
+  }, [selectedTabIndex]);
+
+  return (
+    <div>
+      <StyledTabList>
+        {tabPanels.map((item, index) => {
+          return React.isValidElement<TabPanelProps>(item) ? (
+            <TabNavItem
+              index={index}
+              isSelected={index === selectedTabIndex}
+              setSelectedTab={setSelectedTabIndex}
+              {...item.props}
+            >
+              {item.props?.title}
+            </TabNavItem>
+          ) : null;
+        })}
+      </StyledTabList>
+
+      {tabPanels[selectedTabIndex]}
+    </div>
+  );
+};
+
+Tabs.Panel = TabPanel;
