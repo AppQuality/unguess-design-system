@@ -148,6 +148,9 @@ export {
 
 export { GroupRow, GroupedTable } from "./stories/table/grouped";
 
+// --- Tabs ---
+export * from "./stories/tabs";
+
 // --- Tags ---
 export * from "./stories/tags";
 
