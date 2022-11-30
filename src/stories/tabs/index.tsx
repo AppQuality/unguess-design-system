@@ -1,10 +1,5 @@
 import { Button } from "@zendeskgarden/react-buttons";
-import React, {
-  Children,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { Children, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ButtonArgs } from "../buttons/button/_types";
 import { TabsArgs, TabItemProps, TabPanelProps } from "./_types";
@@ -26,7 +21,11 @@ const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
         font-weight: ${theme.fontWeights.semibold};
     `}
 
-  ${({ disabled }) => disabled && `pointer-events: none;`}
+  ${({ disabled }) =>
+    disabled && `
+    pointer-events: none; 
+    background-color: transparent !important;
+    `}
 
   &:hover {
     background-color: transparent;
