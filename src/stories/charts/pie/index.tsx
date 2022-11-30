@@ -39,6 +39,7 @@ const PieChart = ({
               },
             },
           }}
+          arcLinkLabel={(d) => (d.label || d.id).toString()}
           colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
           enableArcLabels={false}
           arcLinkLabelsColor={{ from: "color" }}
@@ -51,18 +52,12 @@ const PieChart = ({
           }}
           tooltip={
             tooltip
-              ? (node) => (
-                  <>
-                    {tooltip({
-                      label: node.datum.data.label.toString(),
-                      value:
-                        typeof node.datum.data.value === "number"
-                          ? node.datum.data.value
-                          : parseInt(node.datum.data.value),
-                      data: node.datum.data,
-                    })}
-                  </>
-                )
+              ? (node) => {
+                  const data = node.datum.data;
+                  const label = data?.label || data.id;
+                  const value = data.value;
+                  return <>{tooltip({ label, value, data })}</>;
+                }
               : undefined
           }
           cornerRadius={3}

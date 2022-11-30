@@ -7,27 +7,28 @@ const Template: Story<PieChartProps> = (args) => <PieChart {...args} />;
 const data = [
   {
     id: "sass",
-    label: "sass",
+    label: "sass label",
     value: 309,
+    custom_data: "custom data",
   },
   {
     id: "make",
-    label: "make",
+    label: "make label",
     value: 420,
   },
   {
     id: "erlang",
-    label: "erlang",
+    label: "erlang label",
     value: 300,
   },
   {
     id: "lisp",
-    label: "lisp",
+    label: "lisp label",
     value: 491,
   },
   {
     id: "go",
-    label: "go",
+    label: "go label",
     value: 108,
   },
 ];
@@ -67,9 +68,11 @@ WithCustomTooltip.args = {
       <div
         style={{ color: "yellow", background: "red" }}
       >{`and i'm the value ${value}!`}</div>
-      <div
-        style={{ color: "red", background: "yellow" }}
-      >{`and this is other stuff ${JSON.stringify(data)}!`}</div>
+      {data?.custom_data && (
+        <div
+          style={{ color: "red", background: "yellow" }}
+        >{`and this is other stuff ${JSON.stringify(data.custom_data)}!`}</div>
+      )}
     </>
   ),
 };
