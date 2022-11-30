@@ -22,7 +22,7 @@ const WaffleChart = ({
             ? {
                 ...DEFAULT_CHARTS_THEME,
                 tooltip: {
-                  ...tooltip,
+                  ...DEFAULT_CHARTS_THEME.tooltip,
                   container: {
                     padding: 0,
                   },

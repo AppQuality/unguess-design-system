@@ -17,6 +17,7 @@ const PieChart = ({
   data,
   centerItem,
   margin,
+  tooltip,
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -38,6 +39,7 @@ const PieChart = ({
               },
             },
           }}
+          arcLinkLabel={(d) => (d.label || d.id).toString()}
           colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
           enableArcLabels={false}
           arcLinkLabelsColor={{ from: "color" }}
@@ -48,6 +50,16 @@ const PieChart = ({
             bottom: 40,
             ...margin,
           }}
+          tooltip={
+            tooltip
+              ? (node) => {
+                  const data = node.datum.data;
+                  const label = data?.label || data.id;
+                  const value = data.value;
+                  return <>{tooltip({ label, value, data })}</>;
+                }
+              : undefined
+          }
           cornerRadius={3}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}

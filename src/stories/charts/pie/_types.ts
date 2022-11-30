@@ -1,8 +1,13 @@
 import { PieSvgProps } from "@nivo/pie";
+import { ChartTooltipFunction } from "../_types";
 
-interface PieDatum {
-  [key: string]: string | number;
-}
+type PieDatum = {
+  id: string;
+  label?: string;
+  value: number;
+} & {
+  [key: string]: string | number | undefined;
+};
 
 export interface PieChartProps {
   data: PieDatum[];
@@ -12,4 +17,5 @@ export interface PieChartProps {
   colors?: PieSvgProps<PieDatum>["colors"];
   margin?: PieSvgProps<PieDatum>["margin"];
   centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
+  tooltip?: ChartTooltipFunction;
 }
