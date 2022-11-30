@@ -11,6 +11,7 @@ import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
 import { getChildrenValue } from "./getChildrenValue";
 import { SunburstData } from "./_types";
+import Legend from "../Legend";
 
 import CenteredItem from "../pieCenteredItem";
 import ResetButton from "./ResetButton";
@@ -24,6 +25,7 @@ const SunburstChart = ({
   margin,
   onChange,
   tooltip,
+  legend,
 }: SunburstChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -149,6 +151,13 @@ const SunburstChart = ({
           }
         }}
       />
+      {legend ? (
+        <Legend
+          colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+          data={data.children.map((d) => d.name)}
+          columns={typeof legend === "object" ? legend.columns : undefined}
+        />
+      ) : undefined}
     </ChartContainer>
   );
 };

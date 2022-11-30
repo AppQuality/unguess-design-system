@@ -42,6 +42,7 @@ Default.args = {
     label: "Tot. bugs",
     value: "27",
   },
+  legend: { columns: 4 },
 };
 
 export const WithCustomTooltip = Template.bind({});

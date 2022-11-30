@@ -8,6 +8,7 @@ import { ChartContainer } from "../ChartContainer";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import CenteredItem from "../pieCenteredItem";
+import Legend from "../Legend";
 
 const PieChart = ({
   theme,
@@ -18,6 +19,7 @@ const PieChart = ({
   centerItem,
   margin,
   tooltip,
+  legend,
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -83,6 +85,13 @@ const PieChart = ({
           ]}
           activeOuterRadiusOffset={12}
         />
+        {legend ? (
+          <Legend
+            colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+            data={data.map((d) => d.id)}
+            columns={typeof legend === "object" ? legend.columns : undefined}
+          />
+        ) : undefined}
       </ChartContainer>
     </div>
   );
