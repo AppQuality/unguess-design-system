@@ -1,3 +1,17 @@
+# v2.12.41 (Thu Dec 01 2022)
+
+#### 🐛 Bug Fix
+
+- Fix tabs and allow scroll [#130](https://github.com/AppQuality/unguess-design-system/pull/130) ([@d-beezee](https://github.com/d-beezee))
+- fix: Type fix [#129](https://github.com/AppQuality/unguess-design-system/pull/129) ([@d-beezee](https://github.com/d-beezee))
+- fix: Add scroll to tabs if heigth is set to container [#128](https://github.com/AppQuality/unguess-design-system/pull/128) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.40 (Thu Dec 01 2022)
 
 #### 🐛 Bug Fix
