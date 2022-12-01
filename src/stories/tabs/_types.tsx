@@ -6,7 +6,7 @@ export interface TabsArgs extends HTMLAttributes<HTMLDivElement> {
   onTabChange?: (index: number) => void;
 }
 
-export interface TabItemProps {
+export interface TabItemProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   index: number;
   isSelected?: boolean;
@@ -14,8 +14,9 @@ export interface TabItemProps {
   setSelectedTab: (index: number) => void;
 }
 
-export interface TabPanelProps {
+export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   isDisabled?: boolean;
   title: string;
+  hidden?: boolean;
 }
