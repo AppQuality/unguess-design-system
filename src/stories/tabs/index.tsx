@@ -108,7 +108,10 @@ export const Tabs = (props: TabsArgs) => {
       </StyledTabList>
 
       {tabPanels.map((item, index) => {
-        if (React.isValidElement(item) && index !== selectedTabIndex) {
+        if (
+          React.isValidElement<TabPanelProps>(item) &&
+          index !== selectedTabIndex
+        ) {
           return React.cloneElement(item, { hidden: true });
         }
         return item;
