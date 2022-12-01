@@ -1,5 +1,6 @@
 import { SunburstSvgProps } from "@nivo/sunburst";
 import { ChartTooltipFunction } from "../_types";
+import { LegendType } from "../Legend";
 
 export interface SunburstData {
   name: string;
@@ -18,9 +19,5 @@ export interface SunburstChartProps {
   centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
   onChange?: (data: SunburstData) => void;
   tooltip?: ChartTooltipFunction;
-  legend?:
-    | {
-        columns?: number;
-      }
-    | true;
+  legend?: LegendType | true;
 }
