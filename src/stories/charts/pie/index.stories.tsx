@@ -6,28 +6,28 @@ const Template: Story<PieChartProps> = (args) => <PieChart {...args} />;
 
 const data = [
   {
-    id: "sass",
+    id: "Use case 1: Carrello di acquisto",
     label: "sass label",
     value: 309,
     custom_data: "custom data",
   },
   {
-    id: "make",
+    id: "Use case 2: Registrazione e login",
     label: "make label",
     value: 420,
   },
   {
-    id: "erlang",
+    id: "Use case 3: Pagamento e checkout",
     label: "erlang label",
     value: 300,
   },
   {
-    id: "lisp",
+    id: "Use case 4: Gestione profilo utente",
     label: "lisp label",
     value: 491,
   },
   {
-    id: "go",
+    id: "Use case 5: Gestione ordini",
     label: "go label",
     value: 108,
   },
