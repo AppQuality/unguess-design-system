@@ -24,7 +24,7 @@ const PieChart = ({
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
   return (
-    <div>
+    <>
       <ChartContainer width={width} height={height}>
         <ResponsivePie
           theme={{
@@ -85,15 +85,26 @@ const PieChart = ({
           ]}
           activeOuterRadiusOffset={12}
         />
+      </ChartContainer>
+      <ChartContainer width={width} height="auto">
         {legend ? (
           <Legend
             colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
             data={data.map((d) => d.id)}
-            columns={typeof legend === "object" ? legend.columns : undefined}
+            columns={
+              typeof legend === "object" && legend.columns
+                ? legend.columns
+                : undefined
+            }
+            width={
+              typeof legend === "object" && legend.width
+                ? legend.width
+                : undefined
+            }
           />
         ) : undefined}
       </ChartContainer>
-    </div>
+    </>
   );
 };
 

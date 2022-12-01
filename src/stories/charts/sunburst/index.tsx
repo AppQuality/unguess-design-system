@@ -48,117 +48,130 @@ const SunburstChart = ({
   if (!data.children) return <>No data</>;
 
   return (
-    <ChartContainer
-      width={width}
-      height={height}
-      style={isHovering ? { cursor: "pointer" } : undefined}
-    >
-      <ResponsiveSunburst
-        theme={
-          tooltip
-            ? {
-                ...DEFAULT_CHARTS_THEME,
-                tooltip: {
-                  ...DEFAULT_CHARTS_THEME.tooltip,
-                  container: {
-                    padding: 0,
+    <>
+      <ChartContainer
+        width={width}
+        height={height}
+        style={isHovering ? { cursor: "pointer" } : undefined}
+      >
+        <ResponsiveSunburst
+          theme={
+            tooltip
+              ? {
+                  ...DEFAULT_CHARTS_THEME,
+                  tooltip: {
+                    ...DEFAULT_CHARTS_THEME.tooltip,
+                    container: {
+                      padding: 0,
+                    },
                   },
-                },
-              }
-            : DEFAULT_CHARTS_THEME
-        }
-        colors={
-          currentColor
-            ? () => currentColor
-            : colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A
-        }
-        borderWidth={4}
-        cornerRadius={3}
-        onMouseEnter={(node: any) => {
-          if (node.data.children) {
-            setIsHovering(true);
+                }
+              : DEFAULT_CHARTS_THEME
           }
-        }}
-        onMouseLeave={(node: any) => {
-          if (node.data.children) {
-            setIsHovering(false);
+          colors={
+            currentColor
+              ? () => currentColor
+              : colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A
           }
-        }}
-        tooltip={
-          tooltip
-            ? (node) => (
-                <>
-                  {tooltip({
-                    label: node.data.label || node.data.name,
-                    value: getChildrenValue(node.data),
-                  })}
-                </>
-              )
-            : undefined
-        }
-        layers={[
-          "arcs",
-          ...(centerItem
-            ? [
-                (props: any) => (
-                  <CenteredItem
-                    {...props}
-                    fontSizeMultiplier={centerItem.fontSizeMultiplier}
-                    theme={themeContext}
-                    label={centerItem.label}
-                    value={centerItem.value}
-                  />
-                ),
-              ]
-            : []),
-          ...(currentColor
-            ? [
-                (props: any) => (
-                  <ResetButton
-                    centerX={props.centerX}
-                    centerY={props.centerY}
-                    radius={props.radius}
-                    theme={themeContext}
-                    onClick={() => {
-                      changeDataSlice({
-                        data,
-                      });
-                    }}
-                  />
-                ),
-              ]
-            : []),
-        ]}
-        id="name"
-        value="value"
-        margin={{
-          top: 40,
-          bottom: 40,
-          ...margin,
-        }}
-        data={currentData}
-        childColor={{ from: "color", modifiers: [["brighter", 0.5]] }}
-        onClick={(clickedData) => {
-          const foundObject = findChildrenByName(
-            currentData,
-            clickedData.id.toString()
-          );
-          if (foundObject && foundObject.children) {
-            changeDataSlice({
-              data: foundObject,
-              color: clickedData.color,
-            });
+          borderWidth={4}
+          cornerRadius={3}
+          onMouseEnter={(node: any) => {
+            if (node.data.children) {
+              setIsHovering(true);
+            }
+          }}
+          onMouseLeave={(node: any) => {
+            if (node.data.children) {
+              setIsHovering(false);
+            }
+          }}
+          tooltip={
+            tooltip
+              ? (node) => (
+                  <>
+                    {tooltip({
+                      label: node.data.label || node.data.name,
+                      value: getChildrenValue(node.data),
+                    })}
+                  </>
+                )
+              : undefined
           }
-        }}
-      />
-      {legend ? (
-        <Legend
-          colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
-          data={data.children.map((d) => d.name)}
-          columns={typeof legend === "object" ? legend.columns : undefined}
+          layers={[
+            "arcs",
+            ...(centerItem
+              ? [
+                  (props: any) => (
+                    <CenteredItem
+                      {...props}
+                      fontSizeMultiplier={centerItem.fontSizeMultiplier}
+                      theme={themeContext}
+                      label={centerItem.label}
+                      value={centerItem.value}
+                    />
+                  ),
+                ]
+              : []),
+            ...(currentColor
+              ? [
+                  (props: any) => (
+                    <ResetButton
+                      centerX={props.centerX}
+                      centerY={props.centerY}
+                      radius={props.radius}
+                      theme={themeContext}
+                      onClick={() => {
+                        changeDataSlice({
+                          data,
+                        });
+                      }}
+                    />
+                  ),
+                ]
+              : []),
+          ]}
+          id="name"
+          value="value"
+          margin={{
+            top: 40,
+            bottom: 40,
+            ...margin,
+          }}
+          data={currentData}
+          childColor={{ from: "color", modifiers: [["brighter", 0.5]] }}
+          onClick={(clickedData) => {
+            const foundObject = findChildrenByName(
+              currentData,
+              clickedData.id.toString()
+            );
+            if (foundObject && foundObject.children) {
+              changeDataSlice({
+                data: foundObject,
+                color: clickedData.color,
+              });
+            }
+          }}
         />
-      ) : undefined}
-    </ChartContainer>
+      </ChartContainer>
+      <ChartContainer width={width} height="auto">
+        {legend ? (
+          <Legend
+            colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+            data={data.children.map((d) => d.name)}
+            columns={
+              typeof legend === "object" && legend.columns
+                ? legend.columns
+                : undefined
+            }
+            width={
+              typeof legend === "object" && legend.width
+                ? legend.width
+                : undefined
+            }
+          />
+        ) : undefined}
+      </ChartContainer>
+    </>
   );
 };
 

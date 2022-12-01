@@ -2,7 +2,18 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { PieChart } from ".";
 import { PieChartProps } from "./_types";
 
-const Template: Story<PieChartProps> = (args) => <PieChart {...args} />;
+const Template: Story<PieChartProps> = (args) => (
+  <div
+    style={{
+      width: "350px",
+      height: "500px",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    <PieChart {...args} />
+  </div>
+);
 
 const data = [
   {

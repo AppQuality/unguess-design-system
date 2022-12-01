@@ -1,5 +1,6 @@
 import { PieSvgProps } from "@nivo/pie";
 import { ChartTooltipFunction } from "../_types";
+import { LegendType } from "../Legend";
 
 type PieDatum = {
   id: string;
@@ -18,9 +19,5 @@ export interface PieChartProps {
   margin?: PieSvgProps<PieDatum>["margin"];
   centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
   tooltip?: ChartTooltipFunction;
-  legend?:
-    | {
-        columns?: number;
-      }
-    | true;
+  legend?: LegendType | true;
 }
