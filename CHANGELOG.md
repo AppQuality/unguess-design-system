@@ -1,3 +1,16 @@
+# v2.12.42 (Thu Dec 01 2022)
+
+#### 🐛 Bug Fix
+
+- Allow centering and resizing legend [#132](https://github.com/AppQuality/unguess-design-system/pull/132) ([@d-beezee](https://github.com/d-beezee))
+- feat: Allow styling legend width and move legend to specific container [#131](https://github.com/AppQuality/unguess-design-system/pull/131) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.41 (Thu Dec 01 2022)
 
 #### 🐛 Bug Fix
