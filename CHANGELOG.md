@@ -1,3 +1,22 @@
+# v2.12.40 (Thu Dec 01 2022)
+
+#### 🐛 Bug Fix
+
+- Legend component, custom tooltips and tabs rework [#126](https://github.com/AppQuality/unguess-design-system/pull/126) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- fix: Use correct styles [#127](https://github.com/AppQuality/unguess-design-system/pull/127) ([@d-beezee](https://github.com/d-beezee))
+- Add legend component [#120](https://github.com/AppQuality/unguess-design-system/pull/120) ([@d-beezee](https://github.com/d-beezee))
+- Replace zendesk tab with the new shine handmade awesome customTabs [#125](https://github.com/AppQuality/unguess-design-system/pull/125) ([@cannarocks](https://github.com/cannarocks))
+- feat: Allow setting custom tooltip on pie and sunburst [#122](https://github.com/AppQuality/unguess-design-system/pull/122) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.39 (Wed Nov 30 2022)
 
 #### 🐛 Bug Fix
