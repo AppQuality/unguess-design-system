@@ -22,7 +22,8 @@ const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
     `}
 
   ${({ disabled }) =>
-    disabled && `
+    disabled &&
+    `
     pointer-events: none; 
     background-color: transparent !important;
     `}
@@ -38,7 +39,15 @@ const StyledTabList = styled.div`
   margin-bottom: ${({ theme }) => theme.space.md};
 `;
 
-const TabPanel = (props: TabPanelProps) => <div>{props.children}</div>;
+const StyledTabPanel = styled.div<{ hidden?: boolean }>`
+  display: ${({ hidden }) => (hidden ? "none" : "block")};
+  height: 100%;
+  overflow-y: auto;
+`;
+
+const TabPanel = (props: TabPanelProps) => (
+  <StyledTabPanel hidden={props.hidden}>{props.children}</StyledTabPanel>
+);
 
 const TabNavItem = (props: TabItemProps) => {
   const { children, isSelected, isDisabled, index, setSelectedTab } = props;
@@ -82,7 +91,7 @@ export const Tabs = (props: TabsArgs) => {
   }, [selectedTabIndex]);
 
   return (
-    <div>
+    <>
       <StyledTabList>
         {tabPanels.map((item, index) => {
           return React.isValidElement<TabPanelProps>(item) ? (
@@ -98,8 +107,16 @@ export const Tabs = (props: TabsArgs) => {
         })}
       </StyledTabList>
 
-      {tabPanels[selectedTabIndex]}
-    </div>
+      {tabPanels.map((item, index) => {
+        if (
+          React.isValidElement<TabPanelProps>(item) &&
+          index !== selectedTabIndex
+        ) {
+          return React.cloneElement(item, { hidden: true });
+        }
+        return item;
+      })}
+    </>
   );
 };
 
