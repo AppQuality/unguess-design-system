@@ -29,6 +29,7 @@ const LegendItemWrapper = styled.div`
 
 const StyledSM = styled(SM)<{ squareSize: number }>`
   max-width: calc(100% - ${({ squareSize }) => squareSize}px);
+  color: ${({ theme }) => theme.palette.grey[600]};
 `;
 
 const LegendItem = ({
@@ -50,7 +51,7 @@ const LegendItem = ({
         size={squareSide}
         marginRight={marginRight}
       />
-      <StyledSM squareSize={squareSide + marginRight}>
+      <StyledSM isBold squareSize={squareSide + marginRight}>
         <StyledEllipsis>{value}</StyledEllipsis>
       </StyledSM>
     </LegendItemWrapper>
@@ -58,6 +59,8 @@ const LegendItem = ({
 };
 
 const LegendWrapper = styled.div<{ columns: number }>`
+  width: 75%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
 `;
