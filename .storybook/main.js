@@ -22,4 +22,8 @@ module.exports = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
+  reactOptions: {
+    fastRefresh: true,
+    strictMode: true,
+  },
 };

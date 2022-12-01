@@ -1,36 +1,55 @@
 import { ComponentMeta, Story } from "@storybook/react";
-import { Tabs } from ".";
+import { Tabs } from "./index";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { TabsArgs } from "./_types";
 
-const Template: Story<TabsArgs> = (args) => (
+interface TabStoryArgs extends TabsArgs {
+  items: { title: string; content: string; isDisabled?: boolean }[];
+}
+
+const Template: Story<TabStoryArgs> = (args) => (
   <Row>
     <Col>
       <Tabs {...args}>
-        <Tabs.List>
-          <Tabs.Tab item="tab-1">Tab 1</Tabs.Tab>
-          <Tabs.Tab item="tab-2">Tab 2</Tabs.Tab>
-          <Tabs.Tab item="tab-3">Tab 3</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel item="tab-1">Tab 1 content</Tabs.Panel>
-        <Tabs.Panel item="tab-2">Tab 2 content</Tabs.Panel>
-        <Tabs.Panel item="tab-3">Tab 3 content</Tabs.Panel>
+        {args.items.map((item, index) => (
+          <Tabs.Panel
+            key={index}
+            title={item.title}
+            isDisabled={item.isDisabled}
+          >
+            {item.content}
+          </Tabs.Panel>
+        ))}
       </Tabs>
     </Col>
   </Row>
 );
 
-export const Horizontal = Template.bind({});
-Horizontal.args = {
-  onChange: (item) => console.log(item),
+const defaultArgs: TabStoryArgs = {
+  selectedIndex: 1,
+  onTabChange: (index) => console.log("⭐ Tab:", index),
+  items: [],
 };
 
-export const Vertical = Template.bind({});
-Vertical.args = {
-  isVertical: true,
-  selectedItem: "tab-1",
-  onChange: (item) => console.log(item),
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+  items: [
+    { title: "Tab 1", content: "Tab 1 content" },
+    { title: "Tab 2", content: "Tab 2 content" },
+    { title: "Tab 3", content: "Tab 3 content" },
+  ],
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...defaultArgs,
+  items: [
+    { title: "Tab 1", content: "Tab 1 content" },
+    { title: "Tab 2", content: "Tab 2 content" },
+    { title: "Tab 3", content: "Tab 3 content", isDisabled: true },
+  ],
 };
 
 export default {

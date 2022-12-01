@@ -1,17 +1,21 @@
-import { ITabsProps } from "@zendeskgarden/react-tabs";
+import { HTMLAttributes } from "react";
 
-export interface TabsArgs extends ITabsProps {
-  /**
-   * Arranges the tabs vertically
-   */
-  isVertical?: boolean;
-  /**
-   * Specifies the currently selected tab
-   */
-  selectedItem?: string;
-  /**
-   * Handles tab selection
-   *
-   * @param {String} selectedItem The selected tab's `item` value
-   */
+export interface TabsArgs extends HTMLAttributes<HTMLDivElement> {
+  selectedIndex?: number;
+
+  onTabChange?: (index: number) => void;
+}
+
+export interface TabItemProps {
+  children: React.ReactNode;
+  index: number;
+  isSelected?: boolean;
+  isDisabled?: boolean;
+  setSelectedTab: (index: number) => void;
+}
+
+export interface TabPanelProps {
+  children: React.ReactNode;
+  isDisabled?: boolean;
+  title: string;
 }

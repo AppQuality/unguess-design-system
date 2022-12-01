@@ -25,7 +25,7 @@ const data = [
       {
         name: "Windows",
         children: [
-          { name: "Notebook1", value: 34 },
+          { name: "Notebook1", label: "Notebook", value: 34 },
           { name: "Gaming PC", value: 9 },
         ],
       },
@@ -61,6 +61,7 @@ const data = [
       },
       {
         name: "smartphone iOS",
+        label: "iOS",
         children: [
           {
             name: "Apple iPhone XS Max",
@@ -75,6 +76,7 @@ const data = [
     children: [
       {
         name: "tablet iOS",
+        label: "iOS",
         children: [{ name: "Apple iPad Air 2", value: 17 }],
       },
     ],
@@ -90,8 +92,36 @@ Default.args = {
     label: "Tot. bugs",
     value: "27",
   },
+  legend: { columns: 4 },
 };
 
+export const WithCustomTooltip = Template.bind({});
+WithCustomTooltip.args = {
+  width: "100%",
+  height: "100vh",
+  data: { name: "graph", children: data },
+  centerItem: {
+    label: "Tot. bugs",
+    value: "27",
+  },
+  tooltip: ({ label, value }) => (
+    <>
+      <div
+        style={{
+          background: "purple",
+          color: "white",
+          padding: "10px",
+          margin: "0",
+        }}
+      >
+        {`i'm the label ${label}!`}
+      </div>
+      <div
+        style={{ color: "yellow", background: "red" }}
+      >{`and i'm the value ${value}!`}</div>
+    </>
+  ),
+};
 export default {
   title: "Atoms/Charts/Sunburst",
   component: SunburstChart,

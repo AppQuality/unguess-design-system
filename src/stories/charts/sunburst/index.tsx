@@ -9,12 +9,14 @@ import { useState } from "react";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
-import {SunburstData} from "./_types"
+import { getChildrenValue } from "./getChildrenValue";
+import { SunburstData } from "./_types";
+import Legend from "../Legend";
 
 import CenteredItem from "../pieCenteredItem";
 import ResetButton from "./ResetButton";
+
 const SunburstChart = ({
-  theme,
   colors,
   width,
   height,
@@ -22,6 +24,8 @@ const SunburstChart = ({
   centerItem,
   margin,
   onChange,
+  tooltip,
+  legend,
 }: SunburstChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -30,13 +34,16 @@ const SunburstChart = ({
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
   const changeDataSlice = ({
-    data, color
-  }: {data: SunburstData, color?:string}) => {
+    data,
+    color,
+  }: {
+    data: SunburstData;
+    color?: string;
+  }) => {
     setCurrentData(data);
     setCurrentColor(color);
     if (onChange) onChange(currentData);
-  }
-
+  };
 
   if (!data.children) return <>No data</>;
 
@@ -47,10 +54,19 @@ const SunburstChart = ({
       style={isHovering ? { cursor: "pointer" } : undefined}
     >
       <ResponsiveSunburst
-        theme={{
-          ...DEFAULT_CHARTS_THEME,
-          ...theme,
-        }}
+        theme={
+          tooltip
+            ? {
+                ...DEFAULT_CHARTS_THEME,
+                tooltip: {
+                  ...DEFAULT_CHARTS_THEME.tooltip,
+                  container: {
+                    padding: 0,
+                  },
+                },
+              }
+            : DEFAULT_CHARTS_THEME
+        }
         colors={
           currentColor
             ? () => currentColor
@@ -68,6 +84,18 @@ const SunburstChart = ({
             setIsHovering(false);
           }
         }}
+        tooltip={
+          tooltip
+            ? (node) => (
+                <>
+                  {tooltip({
+                    label: node.data.label || node.data.name,
+                    value: getChildrenValue(node.data),
+                  })}
+                </>
+              )
+            : undefined
+        }
         layers={[
           "arcs",
           ...(centerItem
@@ -93,8 +121,8 @@ const SunburstChart = ({
                     theme={themeContext}
                     onClick={() => {
                       changeDataSlice({
-                        data
-                      })
+                        data,
+                      });
                     }}
                   />
                 ),
@@ -118,11 +146,18 @@ const SunburstChart = ({
           if (foundObject && foundObject.children) {
             changeDataSlice({
               data: foundObject,
-              color:clickedData.color
-            })
+              color: clickedData.color,
+            });
           }
         }}
       />
+      {legend ? (
+        <Legend
+          colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+          data={data.children.map((d) => d.name)}
+          columns={typeof legend === "object" ? legend.columns : undefined}
+        />
+      ) : undefined}
     </ChartContainer>
   );
 };

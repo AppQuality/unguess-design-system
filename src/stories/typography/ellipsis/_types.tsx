@@ -1,6 +1,4 @@
-import {
-  IEllipsisProps
-} from "@zendeskgarden/react-typography";
+import { IEllipsisProps } from "@zendeskgarden/react-typography";
 
 export interface EllipsisArgs extends IEllipsisProps {
   /** Overrides the auto-generated `title` attribute */
