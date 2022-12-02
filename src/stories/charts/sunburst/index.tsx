@@ -92,6 +92,10 @@ const SunburstChart = ({
                     {tooltip({
                       label: node.data.label || node.data.name,
                       value: getChildrenValue(node.data),
+                      data: {
+                        ...node.data,
+                        children: undefined,
+                      },
                     })}
                   </>
                 )
