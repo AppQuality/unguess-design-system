@@ -42,6 +42,12 @@ const theme = {
     ...DEFAULT_THEME.shadows,
     boxShadow: boxShadow,
   },
+  levels: {
+    back: -1,
+    base: 0,
+    front: 100,
+    modal: 200,
+  },
 };
 
 export { theme };
