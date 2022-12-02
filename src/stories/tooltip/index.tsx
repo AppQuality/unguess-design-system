@@ -1,7 +1,9 @@
 import { Tooltip as ZendeskTooltip } from "@zendeskgarden/react-tooltips";
 import { getColor } from "@zendeskgarden/react-theming";
+import { useContext } from "react";
 import { TooltipArgs } from "./_types";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
+import { theme as globalTheme } from "../theme";
 
 /**
  * Tooltips appear when a user hovers or focuses an element. They provide contextual information about the element they are paired with.
@@ -13,7 +15,11 @@ import styled from "styled-components";
  *    - To provide information a user needs to know or remember
  *    - To display truncated text, use a title attribute instead
  */
-const TooltipComponent = (props: TooltipArgs) => <ZendeskTooltip {...props} />;
+const TooltipComponent = (props: TooltipArgs) => {
+  const theme = useContext(ThemeContext as React.Context<typeof globalTheme>);
+  
+  return <ZendeskTooltip {...props} zIndex={props.zIndex ?? theme.levels.front} />
+};
 
 const Tooltip = styled(TooltipComponent)`
   box-shadow: ${({ theme }) =>
