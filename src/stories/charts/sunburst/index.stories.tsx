@@ -13,7 +13,10 @@ const Template: Story<SunburstChartProps> = (args) => {
     <SunburstChart
       {...args}
       centerItem={{ ...args.centerItem, value: tot.toString() }}
-      onChange={() => setTot(Math.floor(Math.random() * 100))}
+      onChange={(data) => {
+        console.log(data);
+        setTot(Math.floor(Math.random() * 100));
+      }}
     />
   );
 };
