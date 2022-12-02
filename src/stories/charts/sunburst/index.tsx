@@ -5,7 +5,7 @@ import {
 } from "../../theme/charts";
 import { SunburstChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
@@ -42,8 +42,11 @@ const SunburstChart = ({
   }) => {
     setCurrentData(data);
     setCurrentColor(color);
-    if (onChange) onChange(currentData);
   };
+
+  useEffect(() => {
+    if (onChange) onChange(currentData);
+  }, [currentData]);
 
   if (!data.children) return <>No data</>;
 
@@ -92,6 +95,10 @@ const SunburstChart = ({
                     {tooltip({
                       label: node.data.label || node.data.name,
                       value: getChildrenValue(node.data),
+                      data: {
+                        ...node.data,
+                        children: undefined,
+                      },
                     })}
                   </>
                 )
@@ -157,7 +164,7 @@ const SunburstChart = ({
         {legend ? (
           <Legend
             colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
-            data={data.children.map((d) => d.name)}
+            data={data.children.map((d) => d.label || d.name)}
             columns={
               typeof legend === "object" && legend.columns
                 ? legend.columns
