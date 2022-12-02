@@ -1,3 +1,17 @@
+# v2.12.43 (Fri Dec 02 2022)
+
+#### 🐛 Bug Fix
+
+- Add zindex default to tooltip [#134](https://github.com/AppQuality/unguess-design-system/pull/134) ([@marcbon](https://github.com/marcbon) [@d-beezee](https://github.com/d-beezee))
+- fix(tooltip): add zIndex default props + add levels attribute on theme object [#133](https://github.com/AppQuality/unguess-design-system/pull/133) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.42 (Thu Dec 01 2022)
 
 #### 🐛 Bug Fix
