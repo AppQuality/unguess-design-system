@@ -1,3 +1,16 @@
+# v2.12.44 (Fri Dec 02 2022)
+
+#### 🐛 Bug Fix
+
+- Update sunburst [#136](https://github.com/AppQuality/unguess-design-system/pull/136) ([@d-beezee](https://github.com/d-beezee))
+- feat(sunburst): Allow passing custom data to tooltip [#135](https://github.com/AppQuality/unguess-design-system/pull/135) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.43 (Fri Dec 02 2022)
 
 #### 🐛 Bug Fix
