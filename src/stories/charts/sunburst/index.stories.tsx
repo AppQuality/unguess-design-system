@@ -21,6 +21,7 @@ const Template: Story<SunburstChartProps> = (args) => {
 const data = [
   {
     name: "desktop",
+    label: "Desktop",
     custom_data: "custom data",
     children: [
       {
