@@ -13,7 +13,10 @@ const Template: Story<SunburstChartProps> = (args) => {
     <SunburstChart
       {...args}
       centerItem={{ ...args.centerItem, value: tot.toString() }}
-      onChange={() => setTot(Math.floor(Math.random() * 100))}
+      onChange={(data) => {
+        console.log(data);
+        setTot(Math.floor(Math.random() * 100));
+      }}
     />
   );
 };
@@ -21,6 +24,8 @@ const Template: Story<SunburstChartProps> = (args) => {
 const data = [
   {
     name: "desktop",
+    label: "Desktop",
+    custom_data: "custom data",
     children: [
       {
         name: "Windows",
@@ -104,7 +109,7 @@ WithCustomTooltip.args = {
     label: "Tot. bugs",
     value: "27",
   },
-  tooltip: ({ label, value }) => (
+  tooltip: ({ label, value, data }) => (
     <>
       <div
         style={{
@@ -119,6 +124,11 @@ WithCustomTooltip.args = {
       <div
         style={{ color: "yellow", background: "red" }}
       >{`and i'm the value ${value}!`}</div>
+      {data?.custom_data && (
+        <div
+          style={{ color: "red", background: "yellow" }}
+        >{`and this is other stuff ${JSON.stringify(data.custom_data)}!`}</div>
+      )}
     </>
   ),
 };
