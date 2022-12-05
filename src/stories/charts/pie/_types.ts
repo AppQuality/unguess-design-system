@@ -20,4 +20,5 @@ export interface PieChartProps {
   centerItem?: { label?: string; value?: string; fontSizeMultiplier?: number };
   tooltip?: ChartTooltipFunction;
   legend?: LegendType | true;
+  arcLinkLabelsSkipAngle?: number;
 }
