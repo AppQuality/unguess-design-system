@@ -1,3 +1,20 @@
+# v2.12.45 (Mon Dec 05 2022)
+
+#### 🐛 Bug Fix
+
+- Change sunburst and pie cornerradius, expose skiparclabel and rerender bullet on resize [#140](https://github.com/AppQuality/unguess-design-system/pull/140) ([@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea))
+- feat: Rerender bullet on resize to prevent invalid positioning [#139](https://github.com/AppQuality/unguess-design-system/pull/139) ([@d-beezee](https://github.com/d-beezee))
+- feat: Change pie and sunburst corner radius [#137](https://github.com/AppQuality/unguess-design-system/pull/137) ([@d-beezee](https://github.com/d-beezee))
+- feat(pie): add arcLinkLabelsSkipAngle props [#138](https://github.com/AppQuality/unguess-design-system/pull/138) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.44 (Fri Dec 02 2022)
 
 #### 🐛 Bug Fix
