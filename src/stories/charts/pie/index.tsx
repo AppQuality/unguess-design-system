@@ -20,6 +20,7 @@ const PieChart = ({
   margin,
   tooltip,
   legend,
+  arcLinkLabelsSkipAngle,
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -45,6 +46,7 @@ const PieChart = ({
           colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
           enableArcLabels={false}
           arcLinkLabelsColor={{ from: "color" }}
+          arcLinkLabelsSkipAngle={arcLinkLabelsSkipAngle ?? 10}
           padAngle={2}
           data={data}
           margin={{
@@ -62,7 +64,7 @@ const PieChart = ({
                 }
               : undefined
           }
-          cornerRadius={3}
+          cornerRadius={2}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}
           layers={[
