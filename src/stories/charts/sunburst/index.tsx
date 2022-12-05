@@ -77,7 +77,7 @@ const SunburstChart = ({
               : colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A
           }
           borderWidth={4}
-          cornerRadius={3}
+          cornerRadius={4}
           onMouseEnter={(node: any) => {
             if (node.data.children) {
               setIsHovering(true);

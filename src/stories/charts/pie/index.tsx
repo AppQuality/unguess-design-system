@@ -62,7 +62,7 @@ const PieChart = ({
                 }
               : undefined
           }
-          cornerRadius={3}
+          cornerRadius={2}
           innerRadius={0.8}
           arcLinkLabelsThickness={2}
           layers={[
