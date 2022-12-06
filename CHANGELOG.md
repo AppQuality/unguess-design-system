@@ -1,3 +1,17 @@
+# v2.12.46 (Tue Dec 06 2022)
+
+#### 🐛 Bug Fix
+
+- Revert bullet fix [#142](https://github.com/AppQuality/unguess-design-system/pull/142) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- revert: Remove resize from bullet chart [#141](https://github.com/AppQuality/unguess-design-system/pull/141) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.45 (Mon Dec 05 2022)
 
 #### 🐛 Bug Fix
