@@ -13,26 +13,10 @@ const UgBulletChart = styled(ResponsiveBullet)`
   height: 100%;
 `;
 
-const useResizeOfReference = () => {
-  const ref = createRef<HTMLDivElement>();
-  const [, setDimensions] = useState({ width: 0 });
-  useEffect(() => {
-    if (ref.current) {
-      setDimensions({
-        width: ref.current.clientWidth,
-      });
-    }
-  }, [ref]);
-
-  return {ref}
-}
-
 const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
-  const {ref} = useResizeOfReference();
-
   return (
     <ChartContainer width={width} height={height}>
-      <div style={{ width: "100%", height: height }} ref={ref}>
+      <div style={{ width: "100%", height: height }}>
         <UgBulletChart
           theme={DEFAULT_CHARTS_THEME}
           data={[
