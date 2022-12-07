@@ -21,6 +21,7 @@ const PieChart = ({
   tooltip,
   legend,
   arcLinkLabelsSkipAngle,
+  labelFormatter,
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
@@ -42,7 +43,17 @@ const PieChart = ({
               },
             },
           }}
-          arcLinkLabel={(d) => (d.label || d.id).toString()}
+          arcLinkLabel={(d) =>
+            labelFormatter
+              ? labelFormatter({
+                  label: d.label,
+                  id: d.id,
+                  value: d.value,
+                  data: d.data,
+                  labelPosition: "arclink",
+                })
+              : (d.label || d.id).toString()
+          }
           colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
           enableArcLabels={false}
           arcLinkLabelsColor={{ from: "color" }}
@@ -92,7 +103,17 @@ const PieChart = ({
         {legend ? (
           <Legend
             colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
-            data={data.map((d) => d.id)}
+            data={data.map((d) =>
+              labelFormatter
+                ? labelFormatter({
+                    label: d.label,
+                    id: d.id,
+                    value: d.value,
+                    data: d,
+                    labelPosition: "legend",
+                  })
+                : d.id.toString()
+            )}
             columns={
               typeof legend === "object" && legend.columns
                 ? legend.columns

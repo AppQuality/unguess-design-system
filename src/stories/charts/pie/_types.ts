@@ -2,9 +2,15 @@ import { PieSvgProps } from "@nivo/pie";
 import { ChartTooltipFunction } from "../_types";
 import { LegendType } from "../Legend";
 
+type BasicPieDatum = {
+  id: string | number;
+  label?: string | number;
+  value: number;
+};
+
 type PieDatum = {
-  id: string;
-  label?: string;
+  id: string | number;
+  label?: string | number;
   value: number;
 } & {
   [key: string]: string | number | undefined;
@@ -21,4 +27,10 @@ export interface PieChartProps {
   tooltip?: ChartTooltipFunction;
   legend?: LegendType | true;
   arcLinkLabelsSkipAngle?: number;
+  labelFormatter?: (
+    data: BasicPieDatum & {
+      labelPosition: "arclink" | "legend";
+      data?: PieDatum;
+    }
+  ) => string;
 }

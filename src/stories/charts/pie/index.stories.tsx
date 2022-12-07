@@ -88,6 +88,25 @@ WithCustomTooltip.args = {
     </>
   ),
 };
+
+export const WithCustomLabel = Template.bind({});
+WithCustomLabel.args = {
+  width: "100%",
+  height: "100vh",
+  data: data,
+  centerItem: {
+    label: "Tot. bugs",
+    value: "27",
+  },
+  labelFormatter: ({ label, id, labelPosition, ...data }) =>
+    data.data?.custom_data
+      ? data.data.custom_data.toString()
+      : labelPosition === "arclink"
+      ? `${label} ${id}`
+      : `${id}`,
+  legend: true,
+};
+
 export default {
   title: "Atoms/Charts/Pie",
   component: PieChart,
