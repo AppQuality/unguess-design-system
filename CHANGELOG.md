@@ -1,3 +1,17 @@
+# v2.12.47 (Wed Dec 07 2022)
+
+#### 🐛 Bug Fix
+
+- Allow custom label on pie [#144](https://github.com/AppQuality/unguess-design-system/pull/144) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- feat: Allow custom label for arclink and legend [#143](https://github.com/AppQuality/unguess-design-system/pull/143) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.46 (Tue Dec 06 2022)
 
 #### 🐛 Bug Fix
