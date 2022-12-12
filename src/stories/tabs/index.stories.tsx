@@ -11,9 +11,10 @@ interface TabStoryArgs extends TabsArgs {
 const Template: Story<TabStoryArgs> = (args) => (
   <Row>
     <Col>
-      <Tabs {...args}>
+      <Tabs {...args} className="tabs-wrapper">
         {args.items.map((item, index) => (
           <Tabs.Panel
+            className={`tab-panel-${index}`}
             key={index}
             title={item.title}
             isDisabled={item.isDisabled}
