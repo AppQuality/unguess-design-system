@@ -5,7 +5,7 @@ import {
 } from "../../theme/charts";
 import { SunburstChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
