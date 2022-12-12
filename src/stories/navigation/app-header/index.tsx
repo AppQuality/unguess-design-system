@@ -22,7 +22,7 @@ const ChevronButton = styled(IconButton)`
 const AppHeader = ({ brand, avatar, isLoading, ...args }: AppHeaderArgs) => {
   return isLoading ? <HeaderSkeleton /> : (
     <Header {...args}>
-      <BrandItem {...brand} toggleMenu={args.onSidebarMenuToggle}/>
+      <BrandItem {...brand} toggleMenu={args.onSidebarMenuToggle} />
       {args.hasChangelog && args.changelogItem && (
         <HeaderItem
           style={{ marginRight: "-" + theme.space.xs }}
