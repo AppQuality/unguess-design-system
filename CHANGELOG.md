@@ -1,3 +1,17 @@
+# v2.12.50 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Minor change on sunburst story [#152](https://github.com/AppQuality/unguess-design-system/pull/152) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- fix(sunburst): remove tot state math random [#151](https://github.com/AppQuality/unguess-design-system/pull/151) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.49 (Mon Dec 12 2022)
 
 #### 🐛 Bug Fix
