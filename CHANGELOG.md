@@ -1,3 +1,20 @@
+# v2.12.48 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Fix bullet charts and improve responsiveness on breadcrumbs [#149](https://github.com/AppQuality/unguess-design-system/pull/149) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(app-header): add onclick on header item icon [#148](https://github.com/AppQuality/unguess-design-system/pull/148) ([@marcbon](https://github.com/marcbon))
+- feat(breadcrumbs): add responsive behavior + remove last item from story (new desktop behavior) [#147](https://github.com/AppQuality/unguess-design-system/pull/147) ([@marcbon](https://github.com/marcbon))
+- fix(bullet): UN-209 animate measue component [#146](https://github.com/AppQuality/unguess-design-system/pull/146) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 3
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.47 (Wed Dec 07 2022)
 
 #### 🐛 Bug Fix
