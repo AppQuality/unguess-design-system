@@ -27,11 +27,11 @@ Default.args = {
     },
     {
       ...Basic.args,
-      children: "Dashboards",
+      children: "Nome lunghissimo della breadcrumb per provare l'ellipsis",
       onClick: () => {}
     },
   ],
-  defaultValue: "Functional Dashboard",
+  defaultValue: "",
 };
 
 
