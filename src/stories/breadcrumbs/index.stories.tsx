@@ -1,14 +1,21 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Breadcrumb } from ".";
 import { Anchor } from "../buttons/anchor";
+import { AnchorArgs } from "../buttons/anchor/_types";
 import { Basic } from "../buttons/anchor/index.stories";
 import { BreadcrumbArgs } from "./_types";
+interface StoryArgs extends BreadcrumbArgs {
+  items: AnchorArgs &
+    {
+      children: string;
+      onClick: () => void;
+    }[];
+}
 
-
-const Template: Story<BreadcrumbArgs> = ({ children, ...args }) => {
+const Template: Story<StoryArgs> = ({ items, ...args }) => {
   return (
     <Breadcrumb {...args}>
-      {children.map((item) => (
+      {items.map((item) => (
         <Anchor {...item} />
       ))}
     </Breadcrumb>
@@ -17,7 +24,7 @@ const Template: Story<BreadcrumbArgs> = ({ children, ...args }) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  children: [
+  items: [
     {
       ...Basic.args,
       children: "Home",
@@ -29,6 +36,7 @@ Default.args = {
       onClick: () => {}
     },
   ],
+  showLastArrow: true
 };
 
 
@@ -45,5 +53,6 @@ export default {
   parameters: {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
+
   },
 } as ComponentMeta<typeof Breadcrumb>;
