@@ -1,3 +1,15 @@
+# v2.12.49 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Update Breadcrumb children type in order to support single children cases [#150](https://github.com/AppQuality/unguess-design-system/pull/150) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.48 (Mon Dec 12 2022)
 
 #### 🐛 Bug Fix
