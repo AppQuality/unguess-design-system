@@ -10,6 +10,7 @@ import { WorkspacesDropdown } from "./workspacesDropdown";
 export const LogoIconContainer = styled(ZendeskHeaderItem)`
   margin-right: 2px;
   border-right: none;
+  cursor: pointer;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     right: 0;
     left: 0;
@@ -51,15 +52,17 @@ const MenuItem = styled(ZendeskHeaderItem)`
 `;
 
 const BrandItem = (props: BrandItemArgs) => {
+  const { menuLabel, toggleMenu, ...rest } = props;
+
   return (
     <>
-      <MenuItem {...props} onClick={props.toggleMenu}>
+      <MenuItem onClick={toggleMenu}>
         <HeaderItemIcon>
           <MenuIcon />
         </HeaderItemIcon>
-        {props.menuLabel && <HeaderItemText>{props.menuLabel}</HeaderItemText>}
+        {menuLabel && <HeaderItemText>{menuLabel}</HeaderItemText>}
       </MenuItem>
-      <LogoIconContainer {...props} hasLogo>
+      <LogoIconContainer {...rest} hasLogo>
         <HeaderItemIcon>
           <Logo type={"icon"} size={150} />
         </HeaderItemIcon>
