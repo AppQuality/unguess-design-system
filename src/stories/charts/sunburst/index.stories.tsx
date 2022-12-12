@@ -1,25 +1,15 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { SunburstChart } from ".";
 import { SunburstChartProps } from "./_types";
-import { useState } from "react";
 
-const Template: Story<SunburstChartProps> = (args) => {
-  const [tot, setTot] = useState(
-    args && args.centerItem && args.centerItem.value
-      ? parseInt(args.centerItem.value)
-      : 123
-  );
-  return (
-    <SunburstChart
-      {...args}
-      centerItem={{ ...args.centerItem, value: tot.toString() }}
-      onChange={(data) => {
-        console.log(data);
-        setTot(Math.floor(Math.random() * 100));
-      }}
-    />
-  );
-};
+const Template: Story<SunburstChartProps> = (args) => (
+  <SunburstChart
+    {...args}
+    onChange={(data) => {
+      console.log(data);
+    }}
+  />
+);
 
 const data = [
   {
