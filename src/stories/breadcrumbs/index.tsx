@@ -10,7 +10,7 @@ import styled from "styled-components";
     - To provide a quick way to navigate to ancestor pages
  */
 
-const StyledBreadcrumb = styled(ZendeskBreadcrumb)`
+const StyledBreadcrumb = styled(ZendeskBreadcrumb)<BreadcrumbArgs>`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     > ol {
       display: block;
@@ -18,10 +18,9 @@ const StyledBreadcrumb = styled(ZendeskBreadcrumb)`
       > li {
         display: none;
 
-        &:nth-last-child(3) {
-          // Show only third last child (3) = Last item + arrow + upper (current) level
-          width: 100%;
+        &:nth-last-child(${({ showLastArrow }) => (showLastArrow ? 3 : 1)}) {
           display: block;
+          width: 100%;
           text-overflow: ellipsis;
           overflow: hidden;
           position: relative;
@@ -38,6 +37,18 @@ const StyledBreadcrumb = styled(ZendeskBreadcrumb)`
   }
 `;
 
-const Breadcrumb = (props: BreadcrumbArgs) => <StyledBreadcrumb {...props} />;
+const Breadcrumb = ({
+  children,
+  showLastArrow = true,
+  ...props
+}: BreadcrumbArgs) =>
+  showLastArrow ? (
+    <StyledBreadcrumb {...props} showLastArrow={true}>
+      {children}
+      <div />
+    </StyledBreadcrumb>
+  ) : (
+    <StyledBreadcrumb {...props}>{children}</StyledBreadcrumb>
+  );
 
 export { Breadcrumb };
