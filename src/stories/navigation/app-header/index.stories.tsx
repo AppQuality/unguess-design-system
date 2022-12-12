@@ -9,7 +9,7 @@ const Template: Story<AppHeaderArgs> = (args) => <AppHeader {...args} />;
 const defaultArgs = {
   isStandalone: true,
   hasChangelog: true,
-  changelogItem: <ChangelogIcon onClick={() => alert("clicked changelog")} />,
+  changelogItem: <ChangelogIcon onClick={() => alert("Changelog clicked")} />,
   brand: {
     brandName: "Enel's Workspace",
     menuLabel: "menu",
@@ -23,6 +23,9 @@ const defaultArgs = {
         id: 1,
       },
     ],
+    onClick: () => {
+      alert("Logo clicked");
+    },
   },
   avatar: {
     ...DefaultAvatar.args,
@@ -32,6 +35,9 @@ const defaultArgs = {
     alert("Triggered profile modal");
   },
   isLoading: false,
+  onSidebarMenuToggle: () => {
+    alert("Triggered sidebar menu");
+  },
 };
 
 export const Default = Template.bind({});
