@@ -156,6 +156,12 @@ export const CHARTS_COLOR_PALETTE = {
   sky: "#3392CE",
 };
 
+export const CHARTS_COLOR_SCHEME_GRAVITY = [
+  CHARTS_COLOR_PALETTE.darkPine,
+  CHARTS_COLOR_PALETTE.blueRoyal,
+  CHARTS_COLOR_PALETTE.gubbioLight,
+  CHARTS_COLOR_PALETTE.mattone,
+];
 export const CHARTS_COLOR_SCHEME_MONO = [
   CHARTS_COLOR_PALETTE.darkPine,
   CHARTS_COLOR_PALETTE.lightGrey,
