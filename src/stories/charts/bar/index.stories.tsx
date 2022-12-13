@@ -10,9 +10,9 @@ const TemplateBar: Story<BarChartProps> = (args) => (
     data={data}
     keys={keys}
     indexBy="bugType"
-    total={90}
-    maxValue={39}
-    margin={{ top: 0, right: 8, bottom: 60, left: 110 }} />
+    axisBottom={{legend: "Bugs (Tot: 60)", offset: 50}}
+    axisLeft={{legend: "Typology", offset: -140}}
+    margin={{ top: 0, right: 8, bottom: 60, left: 145 }} />
 );
 export const Default = TemplateBar.bind({});
 

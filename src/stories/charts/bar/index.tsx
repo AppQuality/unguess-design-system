@@ -1,10 +1,10 @@
 import { ResponsiveBar } from '@nivo/bar'
 import { BarChartProps } from "./_types";
 import { CHARTS_COLOR_SCHEME_GRAVITY, DEFAULT_CHARTS_THEME } from "../../theme/charts";
-import {theme} from "../../theme";
+import { theme } from "../../theme";
 import { ChartContainer } from "../ChartContainer";
 
-export const BarChart = ({ width, height, data, keys, indexBy, margin, total, maxValue }: BarChartProps) => {
+export const BarChart = ({ width, height, data, keys, indexBy, margin, axisBottom, axisLeft }: BarChartProps) => {
   return (
     <ChartContainer width={width} height={height}>
       <ResponsiveBar
@@ -15,13 +15,26 @@ export const BarChart = ({ width, height, data, keys, indexBy, margin, total, ma
           ...DEFAULT_CHARTS_THEME,
           axis: {
             domain: {
-                line: {
-                    strokeWidth: 0
-                }
+              line: {
+                strokeWidth: 0
+              },
             },
+            ticks: {
+              text: {
+                fontSize: 12,
+                fill: theme.palette.grey[600],
+              },
+            },
+            legend: {
+              text: {
+                fontSize: 14,
+                fontWeight: theme.fontWeights.semibold,
+                fill: theme.palette.blue[600],
+              }
+            }
           },
           grid: {
-            line: {strokeDasharray: 4, strokeDashoffset: 2, strokeWidth: 1, stroke: theme.palette.grey[400]}
+            line: { strokeDasharray: 2, strokeDashoffset: 2, strokeWidth: 1, stroke: theme.palette.grey[400] }
           },
         }}
         colors={CHARTS_COLOR_SCHEME_GRAVITY}
@@ -38,13 +51,16 @@ export const BarChart = ({ width, height, data, keys, indexBy, margin, total, ma
         axisBottom={{
           tickSize: 0,
           tickPadding: 10,
-          legend: 'Total',
-          legendOffset: 48,
+          legend: axisBottom?.legend,
+          legendOffset: axisBottom?.offset,
           legendPosition: 'middle',
         }}
         axisLeft={{
           tickSize: 0,
           tickPadding: 20,
+          legend: axisLeft?.legend,
+          legendOffset: axisLeft?.offset,
+          legendPosition: 'middle',
         }}
         layers={['bars', 'grid', 'axes']}
       />
