@@ -1,19 +1,22 @@
-import { BarDatum, BarTooltipProps } from "@nivo/bar";
+import { BarTooltipProps } from "@nivo/bar";
+
+type BarData = {
+  label: string;
+  keys: { [key: string]: number | undefined };
+};
 
 export interface BarChartProps {
-    data: BarDatum[];
-    keys: string[];
-    indexBy: string;
-    tooltip?: React.FC<BarTooltipProps<BarDatum>>;
-    margin?: {
-        top: number;
-        right: number;
-        bottom: number;
-        left: number;
-    };
-    axisLeft?: {legend?: string, offset?: number};
-    axisBottom?: {legend?: string, offset?: number};
-    width?: string;
-    height?: string;
-    padding?: number;
-};
+  data: BarData[];
+  width?: string;
+  height?: string;
+  padding?: number;
+  margin?: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+  axisLeftLabel?: string;
+  axisBottomLabel?: string;
+  tooltip?: React.FC<BarTooltipProps<BarData>>;
+}
