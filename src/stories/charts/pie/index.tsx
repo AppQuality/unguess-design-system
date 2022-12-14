@@ -43,6 +43,11 @@ const PieChart = ({
               },
             },
           }}
+          colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+          enableArcLabels={false}
+          arcLinkLabelsColor={{ from: "color" }}
+          arcLinkLabelsSkipAngle={arcLinkLabelsSkipAngle ?? 10}
+          arcLinkLabelsThickness={2}
           arcLinkLabel={(d) =>
             labelFormatter
               ? labelFormatter({
@@ -54,10 +59,9 @@ const PieChart = ({
                 })
               : (d.label || d.id).toString()
           }
-          colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
-          enableArcLabels={false}
-          arcLinkLabelsColor={{ from: "color" }}
-          arcLinkLabelsSkipAngle={arcLinkLabelsSkipAngle ?? 10}
+          arcLinkLabelsDiagonalLength={8}
+          arcLinkLabelsStraightLength={12}
+          arcLinkLabelsTextOffset={4}
           padAngle={2}
           data={data}
           margin={{
@@ -77,7 +81,6 @@ const PieChart = ({
           }
           cornerRadius={2}
           innerRadius={0.8}
-          arcLinkLabelsThickness={2}
           layers={[
             "arcs",
             "arcLabels",
