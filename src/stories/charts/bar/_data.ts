@@ -22,6 +22,7 @@ export const data = [
   {
     label: "Usability",
     keys: { Low: 12, Medium: 3, High: 2, Critical: 0 },
+    custom_data: "custom data",
   },
   {
     label: "Grafic",

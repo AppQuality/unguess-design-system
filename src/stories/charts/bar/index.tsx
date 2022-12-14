@@ -1,7 +1,7 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { BarChartProps } from "./_types";
 import {
-  CHARTS_COLOR_SCHEME_GRAVITY,
+  CHARTS_COLOR_SCHEME_CATEGORICAL_8_A,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
@@ -27,6 +27,7 @@ export const BarChart = ({
   axisLeftLabel,
   axisBottomLabel,
   colors,
+  tooltip,
 }: BarChartProps) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
@@ -75,16 +76,20 @@ export const BarChart = ({
         }}
         colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
         layout="horizontal"
-        tooltip={({ id, value, indexValue }) => (
-          <Tooltip>
-            <MD>
-              {indexValue} - {id}:{" "}
-              <MD tag="span" isBold>
-                {value}
-              </MD>
-            </MD>
-          </Tooltip>
-        )}
+        tooltip={
+          tooltip
+            ? (node) => <>{tooltip(node)}</>
+            : ({ id, value, indexValue }) => (
+                <Tooltip>
+                  <MD>
+                    {indexValue} - {id}:{" "}
+                    <MD tag="span" isBold>
+                      {value}
+                    </MD>
+                  </MD>
+                </Tooltip>
+              )
+        }
         padding={padding || 0.3}
         margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
         enableGridY={false}

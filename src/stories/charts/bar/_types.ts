@@ -1,4 +1,4 @@
-import { BarTooltipProps } from "@nivo/bar";
+import { ChartTooltipFunction } from "../_types";
 
 type BarData = {
   label: string;
@@ -19,5 +19,5 @@ export interface BarChartProps {
   };
   axisLeftLabel?: string;
   axisBottomLabel?: string;
-  tooltip?: React.FC<BarTooltipProps<BarData>>;
+  tooltip?: ChartTooltipFunction;
 }

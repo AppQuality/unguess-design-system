@@ -20,6 +20,26 @@ Default.args = {
   data: data,
 };
 
+export const WithCustomTooltip = Template.bind({});
+WithCustomTooltip.args = {
+  data: data,
+  tooltip: (node) => (
+    <>
+      <div style={{ width: "500px", background: "red", color: "white" }}>
+        {JSON.stringify(node.value)}
+      </div>
+      <div style={{ width: "500px", background: "yellow" }}>
+        {JSON.stringify(node.label)}
+      </div>
+      {node.data?.custom_data && (
+        <div style={{ width: "500px", background: "purple", color: "white" }}>
+          {JSON.stringify(node.data.custom_data)}
+        </div>
+      )}
+    </>
+  ),
+};
+
 export default {
   title: "Atoms/Charts/Bar",
   component: BarChart,
