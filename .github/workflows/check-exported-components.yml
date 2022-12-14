@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       has_changes: ${{ steps.results.outputs.components_changed }}
+      current_count: ${{ steps.current-branch.outputs.components_count }}
+      target_count: ${{ steps.target-branch.outputs.components_count }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -65,13 +67,13 @@ jobs:
 
   comment-pr:
     runs-on: ubuntu-latest
-    needs: [check-index-changes]
+    needs: [check-index-changes, check-components]
     if: needs.check-index-changes.outputs.need_changes == 'true'
     steps:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            Ci sono ${{ steps.current-branch.outputs.components_count }} componenti nel tuo branch e ${{ steps.target-branch.outputs.components_count }} componenti nel branch target, ma nessuna modifica nell'index.tsx. :man_shrugging: 
+            Ci sono ${{ needs.check-components.outputs.current_count }} componenti nel tuo branch e ${{ needs.check-components.outputs.target_count }} componenti nel branch target, ma nessuna modifica nell'index.tsx. :man_shrugging: 
             Dovevi esportare qualcosa?
           comment_tag: component_check
