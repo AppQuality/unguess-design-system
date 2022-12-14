@@ -1,0 +1,60 @@
+name: Check exported components
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 0
+
+      - name: Get target branch component number
+        id: target-branch
+        run: |
+          COUNT=$(find . -wholename "./src/stories/**/index.stories.tsx" | wc -l)
+          echo "components_count=${COUNT}" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get current branch component number
+        id: current-branch
+        run: |
+          COUNT=$(find . -wholename "./src/stories/**/index.stories.tsx" | wc -l)
+          echo "components_count=${COUNT}" >> $GITHUB_OUTPUT
+
+      - name: Exit early if there aren't component changes
+        run: |
+          if [ ${{ steps.current-branch.outputs.components_count }} -eq  ${{ steps.target-branch.outputs.components_count }} ]; then
+            echo "There are no new stories"
+            exit 0
+          fi
+
+      - name: Get changed files in the docs folder
+        id: changed-index-tsx
+        uses: tj-actions/changed-files@v34
+        with:
+          since_last_remote_commit: true
+          files: |
+            src/index.tsx
+
+      - name: Check if index has changed
+        if: steps.changed-index-tsx.outputs.any_changed == 'true'
+        run: |
+          echo "Correctly changed index"
+          exit 0
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Ci sono ${{ steps.current-branch.outputs.components_count }} componenti nel tuo branch e ${{ steps.target-branch.outputs.components_count }} componenti nel branch target, ma nessuna modifica nell'index.tsx. :man_shrugging: 
+            Dovevi esportare qualcosa?
+          comment_tag: component_check
