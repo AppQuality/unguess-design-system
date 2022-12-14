@@ -45,7 +45,7 @@ export const BarChart = ({ width, height, data, keys, indexBy, margin, axisBotto
         enableGridY={false}
         enableLabel={false}
         enableGridX
-        gridXValues={4}
+        gridXValues={3}
         valueScale={{
           type: 'linear',
           nice: true,
@@ -53,7 +53,7 @@ export const BarChart = ({ width, height, data, keys, indexBy, margin, axisBotto
         axisBottom={{
           tickSize: 0,
           tickPadding: 10,
-          tickValues: 4,
+          tickValues: 3,
           legend: axisBottom?.legend,
           legendOffset: axisBottom?.offset,
           legendPosition: 'middle',
