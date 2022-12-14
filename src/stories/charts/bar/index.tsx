@@ -47,8 +47,14 @@ export const BarChart = ({
   return (
     <ChartContainer width={width} height={height}>
       <ResponsiveBar
-        data={formattedData}
-        keys={formattedKeys}
+        data={data.map((d) => {
+          const { keys, ...rest } = d;
+          return {
+            ...rest,
+            ...keys,
+          };
+        })}
+        keys={[...new Set(data.map(({ keys }) => Object.keys(keys)).flat())]}
         indexBy="label"
         theme={{
           ...DEFAULT_CHARTS_THEME,
