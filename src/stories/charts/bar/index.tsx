@@ -16,6 +16,8 @@ const Tooltip = styled.div`
   max-width: 216px;
 `;
 
+const DEFAULT_CHART_MARGINS = { top: 0, right: 0, bottom: 30, left: 30 };
+
 export const BarChart = ({
   data,
   width,
@@ -100,7 +102,7 @@ export const BarChart = ({
           </Tooltip>
         )}
         padding={padding || 0.3}
-        margin={margin}
+        margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
         enableGridY={false}
         enableLabel={false}
         enableGridX
@@ -115,7 +117,7 @@ export const BarChart = ({
             tickPadding: 10,
             tickValues: 3,
             legend: axisBottomLabel,
-            legendOffset: margin.bottom - 10,
+            legendOffset: (margin?.bottom || DEFAULT_CHART_MARGINS.bottom) - 10,
             legendPosition: "middle",
           },
         })}
@@ -124,7 +126,8 @@ export const BarChart = ({
             tickSize: 0,
             tickPadding: 20,
             legend: axisLeftLabel,
-            legendOffset: (margin.left - 10) * -1,
+            legendOffset:
+              ((margin?.left || DEFAULT_CHART_MARGINS.left) - 10) * -1,
             legendPosition: "middle",
           },
         })}

@@ -11,10 +11,10 @@ export interface BarChartProps {
   height?: string;
   padding?: number;
   margin?: {
-    top: number;
-    right: number;
-    bottom: number;
-    left: number;
+    top?: number;
+    right?: number;
+    bottom?: number;
+    left?: number;
   };
   axisLeftLabel?: string;
   axisBottomLabel?: string;
