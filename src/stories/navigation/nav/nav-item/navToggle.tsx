@@ -20,7 +20,7 @@ const StyledToggle = styled(IconButton)`
 
 const NavToggle = (props: NavToggleArgs) => {
   return (
-    <StyledToggle {...props} isPrimary size={"small"}>
+    <StyledToggle {...props} className="toggle-navigation" isPrimary size={"small"}>
       {props.isExpanded ? (
         <ChevronLeftIcon style={{ width: "100%" }} />
       ) : (
