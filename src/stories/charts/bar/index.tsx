@@ -4,10 +4,10 @@ import {
   CHARTS_COLOR_SCHEME_GRAVITY,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
-import { theme } from "../../theme";
 import { ChartContainer } from "../ChartContainer";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { MD } from "../../typography/typescale";
+import { useContext } from "react";
 
 const Tooltip = styled.div`
   padding: ${({ theme }) => theme.space.base * 3}px;
@@ -27,24 +27,7 @@ export const BarChart = ({
   axisLeftLabel,
   axisBottomLabel,
 }: BarChartProps) => {
-  margin = margin || { top: 0, right: 0, bottom: 30, left: 30 };
-
-  // Get the data in the format that nivo bar chart expects
-  const formattedData = data.map((d) => ({
-    label: d.label,
-    ...d.keys,
-  }));
-
-  // Get the total unique keys labels from all the data items
-  const formattedKeys = data.reduce((acc, item) => {
-    const keysLabels = Object.keys(item.keys);
-    keysLabels.forEach((key) => {
-      if (!acc.includes(key)) {
-        acc.push(key);
-      }
-    });
-    return acc;
-  }, [] as string[]);
+  const theme = useContext(ThemeContext as React.Context<any>);
 
   return (
     <ChartContainer width={width} height={height}>
