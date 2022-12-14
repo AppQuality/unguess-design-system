@@ -1,4 +1,5 @@
 import { ChartTooltipFunction } from "../_types";
+import { LegendType } from "../Legend";
 
 type BarData = {
   label: string;
@@ -20,4 +21,5 @@ export interface BarChartProps {
   axisLeftLabel?: string;
   axisBottomLabel?: string;
   tooltip?: ChartTooltipFunction;
+  legend?: LegendType | true;
 }
