@@ -4,7 +4,7 @@ import { CHARTS_COLOR_SCHEME_GRAVITY, DEFAULT_CHARTS_THEME } from "../../theme/c
 import { theme } from "../../theme";
 import { ChartContainer } from "../ChartContainer";
 
-export const BarChart = ({ width, height, data, keys, indexBy, margin, axisBottom, axisLeft }: BarChartProps) => {
+export const BarChart = ({ width, height, data, keys, indexBy, margin, axisBottom, axisLeft, padding, tooltip }: BarChartProps) => {
   return (
     <ChartContainer width={width} height={height}>
       <ResponsiveBar
@@ -39,11 +39,13 @@ export const BarChart = ({ width, height, data, keys, indexBy, margin, axisBotto
         }}
         colors={CHARTS_COLOR_SCHEME_GRAVITY}
         layout="horizontal"
-        padding={0.3}
+        tooltip={tooltip}
+        padding={padding || 0.3}
         margin={margin || { top: 0, right: 0, bottom: 30, left: 30 }}
         enableGridY={false}
         enableLabel={false}
         enableGridX
+        gridXValues={4}
         valueScale={{
           type: 'linear',
           nice: true,
@@ -51,6 +53,7 @@ export const BarChart = ({ width, height, data, keys, indexBy, margin, axisBotto
         axisBottom={{
           tickSize: 0,
           tickPadding: 10,
+          tickValues: 4,
           legend: axisBottom?.legend,
           legendOffset: axisBottom?.offset,
           legendPosition: 'middle',
