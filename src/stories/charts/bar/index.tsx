@@ -26,6 +26,7 @@ export const BarChart = ({
   margin,
   axisLeftLabel,
   axisBottomLabel,
+  colors,
 }: BarChartProps) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
@@ -72,7 +73,7 @@ export const BarChart = ({
             },
           },
         }}
-        colors={CHARTS_COLOR_SCHEME_GRAVITY}
+        colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
         layout="horizontal"
         tooltip={({ id, value, indexValue }) => (
           <Tooltip>

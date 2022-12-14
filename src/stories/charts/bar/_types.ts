@@ -10,6 +10,7 @@ export interface BarChartProps {
   width?: string;
   height?: string;
   padding?: number;
+  colors?: string[];
   margin?: {
     top?: number;
     right?: number;
