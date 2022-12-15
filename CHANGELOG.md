@@ -1,3 +1,24 @@
+# v2.12.51 (Thu Dec 15 2022)
+
+#### 🐛 Bug Fix
+
+- new version [#159](https://github.com/AppQuality/unguess-design-system/pull/159) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea) gianpaolo.sinatra@app-quality.com [@d-beezee](https://github.com/d-beezee))
+- ci: Comment on pr on missing export [#157](https://github.com/AppQuality/unguess-design-system/pull/157) ([@d-beezee](https://github.com/d-beezee))
+- feat(legend): Allow overriding legend margin top [#158](https://github.com/AppQuality/unguess-design-system/pull/158) ([@d-beezee](https://github.com/d-beezee))
+- UN-184 Bar Chart [#153](https://github.com/AppQuality/unguess-design-system/pull/153) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@d-beezee](https://github.com/d-beezee))
+- feat(icon-toggle-nav): add class [#156](https://github.com/AppQuality/unguess-design-system/pull/156) (gianpaolo.sinatra@app-quality.com)
+- feat(tabs): add support to className and id props [#155](https://github.com/AppQuality/unguess-design-system/pull/155) ([@marcbon](https://github.com/marcbon))
+- feat(pie): optimize arc link labels [#154](https://github.com/AppQuality/unguess-design-system/pull/154) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.50 (Mon Dec 12 2022)
 
 #### 🐛 Bug Fix
