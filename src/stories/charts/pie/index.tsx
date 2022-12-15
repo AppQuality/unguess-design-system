@@ -114,16 +114,7 @@ const PieChart = ({
                   })
                 : d.id.toString()
             )}
-            columns={
-              typeof legend === "object" && legend.columns
-                ? legend.columns
-                : undefined
-            }
-            width={
-              typeof legend === "object" && legend.width
-                ? legend.width
-                : undefined
-            }
+            {...(typeof legend === "object" && legend)}
           />
         ) : undefined}
       </ChartContainer>

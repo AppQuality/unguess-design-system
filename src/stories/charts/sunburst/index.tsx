@@ -5,7 +5,7 @@ import {
 } from "../../theme/charts";
 import { SunburstChartProps } from "./_types";
 import { ChartContainer } from "../ChartContainer";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import findChildrenByName from "./findChildrenByName";
@@ -165,16 +165,7 @@ const SunburstChart = ({
           <Legend
             colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
             data={data.children.map((d) => d.label || d.name)}
-            columns={
-              typeof legend === "object" && legend.columns
-                ? legend.columns
-                : undefined
-            }
-            width={
-              typeof legend === "object" && legend.width
-                ? legend.width
-                : undefined
-            }
+            {...(typeof legend === "object" && legend)}
           />
         ) : undefined}
       </ChartContainer>
