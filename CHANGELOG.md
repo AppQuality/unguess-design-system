@@ -1,3 +1,16 @@
+# v2.12.52 (Thu Dec 15 2022)
+
+#### 🐛 Bug Fix
+
+- Release responsive [#161](https://github.com/AppQuality/unguess-design-system/pull/161) ([@marcbon](https://github.com/marcbon))
+- Un 226 responsive [#160](https://github.com/AppQuality/unguess-design-system/pull/160) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.51 (Thu Dec 15 2022)
 
 #### 🐛 Bug Fix
