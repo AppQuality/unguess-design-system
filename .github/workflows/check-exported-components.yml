@@ -1,0 +1,79 @@
+name: Check exported components
+
+on:
+  pull_request:
+
+jobs:
+  check-components:
+    name: Check components changes
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.results.outputs.components_changed }}
+      current_count: ${{ steps.current-branch.outputs.components_count }}
+      target_count: ${{ steps.target-branch.outputs.components_count }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 0
+
+      - name: Get target branch component number
+        id: target-branch
+        run: |
+          COUNT=$(find . -wholename "./src/stories/**/index.stories.tsx" | wc -l)
+          echo "components_count=${COUNT}" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get current branch component number
+        id: current-branch
+        run: |
+          COUNT=$(find . -wholename "./src/stories/**/index.stories.tsx" | wc -l)
+          echo "components_count=${COUNT}" >> $GITHUB_OUTPUT
+
+      - name: Exit early if there aren't component changes
+        id: results
+        run: |
+          if [ ${{ steps.current-branch.outputs.components_count }} -ne  ${{ steps.target-branch.outputs.components_count }} ]; then
+            echo "components_changed=true" >> $GITHUB_OUTPUT
+          fi
+
+  check-index-changes:
+    name: Check index changes
+    runs-on: ubuntu-latest
+    needs: [check-components]
+    if: needs.check-components.outputs.has_changes == 'true'
+    outputs:
+      need_changes: ${{ steps.results.outputs.index_not_changed }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get changed index
+        id: changed-index-tsx
+        uses: tj-actions/changed-files@v34
+        with:
+          since_last_remote_commit: true
+          files: |
+            src/index.tsx
+
+      - name: Check if index hasn't changed
+        id: results
+        if: steps.changed-index-tsx.outputs.any_changed == 'false'
+        run: |
+          echo "index_not_changed=true" >> $GITHUB_OUTPUT
+
+  comment-pr:
+    runs-on: ubuntu-latest
+    needs: [check-index-changes, check-components]
+    if: needs.check-index-changes.outputs.need_changes == 'true'
+    steps:
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Ci sono ${{ needs.check-components.outputs.current_count }} componenti nel tuo branch e ${{ needs.check-components.outputs.target_count }} componenti nel branch target, ma nessuna modifica nell'index.tsx. :man_shrugging: 
+            Dovevi esportare qualcosa?
+          comment_tag: component_check
