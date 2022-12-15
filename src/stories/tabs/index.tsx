@@ -45,12 +45,12 @@ const StyledTabPanel = styled.div<{ hidden?: boolean }>`
   overflow-y: auto;
 `;
 
-const TabPanel = (props: TabPanelProps) => (
-  <StyledTabPanel hidden={props.hidden}>{props.children}</StyledTabPanel>
+const TabPanel = ({ hidden, children, ...rest }: TabPanelProps) => (
+  <StyledTabPanel hidden={hidden} {...rest}>{children}</StyledTabPanel>
 );
 
 const TabNavItem = (props: TabItemProps) => {
-  const { children, isSelected, isDisabled, index, setSelectedTab } = props;
+  const { children, isSelected, isDisabled, index, setSelectedTab, className, id } = props;
 
   const handleTabClick = useCallback(() => {
     setSelectedTab(index);
@@ -59,9 +59,11 @@ const TabNavItem = (props: TabItemProps) => {
   return (
     <StyledNavButton
       disabled={isDisabled}
-      onClick={handleTabClick}
       isBasic
       isSelected={isSelected}
+      onClick={handleTabClick}
+      className={className}
+      id={id}
     >
       {children}
     </StyledNavButton>
@@ -92,7 +94,7 @@ export const Tabs = (props: TabsArgs) => {
 
   return (
     <>
-      <StyledTabList>
+      <StyledTabList {...props}>
         {tabPanels.map((item, index) => {
           return React.isValidElement<TabPanelProps>(item) ? (
             <TabNavItem

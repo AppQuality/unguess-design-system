@@ -58,9 +58,14 @@ const LegendItem = ({
   );
 };
 
-const LegendWrapper = styled.div<{ columns: number; width: string }>`
+const LegendWrapper = styled.div<{
+  columns: number;
+  width: string;
+  marginTop?: string;
+}>`
   width: ${({ width }) => width};
   margin: 0 auto;
+  margin-top: ${({ marginTop }) => marginTop || 0};
   display: grid;
   grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
 `;
@@ -70,6 +75,7 @@ const Legend = ({
   data,
   columns = 2,
   width = "75%",
+  marginTop,
 }: {
   colors: string[];
   data: (string | number)[];
@@ -79,7 +85,7 @@ const Legend = ({
   });
 
   return (
-    <LegendWrapper columns={columns} width={width}>
+    <LegendWrapper columns={columns} width={width} marginTop={marginTop}>
       {colorScheme.map((item) => (
         <LegendItem key={item.value} {...item} />
       ))}
@@ -92,5 +98,6 @@ export default Legend;
 type LegendType = {
   columns?: number;
   width?: string;
+  marginTop?: string;
 };
 export type { LegendType };
