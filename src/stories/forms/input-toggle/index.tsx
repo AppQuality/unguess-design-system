@@ -127,7 +127,7 @@ const InputItem = (props: InputToggleArgs) => {
     />
   ) : (
     <StyledText isBold style={{ fontWeight: 500, ...size, ...style }}>
-      {!value ? placeholder : value} <EditIcon />
+      {!value ? placeholder : value} <EditIcon width={50} />
     </StyledText>
   );
 };
