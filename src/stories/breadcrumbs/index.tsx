@@ -11,7 +11,7 @@ import styled from "styled-components";
  */
 
 const StyledBreadcrumb = styled(ZendeskBreadcrumb)<BreadcrumbArgs>`
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     > ol {
       display: block;
 
