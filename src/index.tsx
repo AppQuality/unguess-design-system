@@ -1,4 +1,4 @@
-import exp from "constants";
+import { Field as ZDField } from "@zendeskgarden/react-dropdowns";
 import { GlobalStyle } from "./stories/shared/globalStyle";
 
 // -------------- Components --------------
@@ -183,4 +183,5 @@ export * from "./stories/typography/paragraph";
 export * from "./stories/typography/span";
 export * from "./stories/typography/typescale";
 
+export { ZDField };
 export { GlobalStyle };
