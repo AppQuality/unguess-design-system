@@ -18,7 +18,7 @@ const Template: Story<BarChartProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   data: data,
-  legend: { columns: 4 },
+  legend: { columns: 4, marginTop: "200px" },
 };
 
 export const WithCustomTooltip = Template.bind({});

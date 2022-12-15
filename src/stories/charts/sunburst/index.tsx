@@ -165,16 +165,7 @@ const SunburstChart = ({
           <Legend
             colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
             data={data.children.map((d) => d.label || d.name)}
-            columns={
-              typeof legend === "object" && legend.columns
-                ? legend.columns
-                : undefined
-            }
-            width={
-              typeof legend === "object" && legend.width
-                ? legend.width
-                : undefined
-            }
+            {...(typeof legend === "object" && legend)}
           />
         ) : undefined}
       </ChartContainer>
