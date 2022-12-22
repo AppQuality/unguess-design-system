@@ -1,5 +1,6 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { fontWeights } from "./fontWeights";
+import { colors } from "./colors";
 
 export const components = {
   ...DEFAULT_THEME.components,
@@ -33,7 +34,18 @@ export const components = {
     thumbSize: "60px",
   },
 
-  "tabs.tab": ({isSelected}: { isSelected: boolean }) => {
+  "tabs.tab": ({ isSelected }: { isSelected: boolean }) => {
     return isSelected ? { fontWeight: fontWeights.semibold } : undefined;
+  },
+
+  "dropdowns.item": ({ addable }: { addable: boolean }) => {
+    if (addable) {
+      return {
+        color: colors.primaryHue,
+        cursor: "pointer",
+      };
+    }
+
+    return undefined;
   },
 };
