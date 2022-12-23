@@ -105,6 +105,9 @@ export * from "./stories/login-form";
 // --- Logo ---
 export * from "./stories/logo";
 
+// --- Multiselect ---
+export * from "./stories/multiselect";
+
 // --- Modals ---
 export * from "./stories/modals";
 export * from "./stories/modals/fullscreen";

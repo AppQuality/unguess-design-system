@@ -17,6 +17,7 @@ const Item = ({ option }: { option: MultiSelectProps["options"][number] }) => (
     <span>{option.label}</span>
   </ZenDeskItem>
 );
+
 const DisabledItem = ({ label }: { label: string }) => (
   <ZenDeskItem disabled>{label}</ZenDeskItem>
 );
