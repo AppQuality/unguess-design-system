@@ -4,11 +4,14 @@ type Item = {
 };
 
 export type MultiSelectProps = {
-  /**
-   * The options to display in the dropdown
-   */
+  maxItems?: number;
   options: Item[];
   selectedItems?: Item[];
-  onChange?: (selectedItems: Item[]) => void;
-  onCreate?: (newLabel: string) => Promise<Item>;
+  onChange?: (selectedItems: Item[], newItem?: string) => Promise<Item[]>;
+  creatable?: boolean;
+  i18n: {
+    label?: string;
+    noMatches?: string;
+    addNew?: (value: string) => string;
+  };
 };

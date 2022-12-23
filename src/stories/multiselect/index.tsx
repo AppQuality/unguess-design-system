@@ -1,112 +1,99 @@
-import React, { useState, useEffect } from "react";
 import {
   Dropdown,
   Multiselect,
   Field,
   Menu,
-  Item,
+  Item as ZenDeskItem,
   Label,
-  IItemProps,
 } from "@zendeskgarden/react-dropdowns";
 import { Tag } from "@zendeskgarden/react-tags";
 import { MultiSelectProps } from "./_types";
+import { Separator } from "../dropdowns/menu";
+import { AddableItem } from "./AddableItem";
+import { useOptions } from "./useOptions";
 
-const CustomItem: React.ForwardRefExoticComponent<
-  IItemProps & { addable?: boolean } & React.RefAttributes<HTMLLIElement>
-> = Item;
-
-const AddableItem = (props: IItemProps) => (
-  <CustomItem {...props} addable disabled />
+const Item = ({ option }: { option: MultiSelectProps["options"][number] }) => (
+  <ZenDeskItem key={`${option.label}-${option.id}`} value={option}>
+    <span>{option.label}</span>
+  </ZenDeskItem>
+);
+const DisabledItem = ({ label }: { label: string }) => (
+  <ZenDeskItem disabled>{label}</ZenDeskItem>
 );
 
 export const MultiSelect = ({
   options,
   selectedItems,
   onChange,
-  onCreate,
+  creatable,
+  i18n,
+  maxItems,
 }: MultiSelectProps) => {
-  const [currentOptions, setCurrentOptions] = useState(options);
-  const [currentSelectedItems, setSelectedItems] = useState(
-    selectedItems || []
-  );
-  const [inputValue, setInputValue] = useState("");
-  const [matchingOptions, setMatchingOptions] = useState(options);
-
-  useEffect(() => {
-    const matchedOptions = currentOptions.filter((option) => {
-      return (
-        option.label
-          .trim()
-          .toLowerCase()
-          .indexOf(inputValue.trim().toLowerCase()) !== -1
-      );
-    });
-
-    setMatchingOptions(matchedOptions);
-  }, [inputValue]);
-
-  const renderOptions = () => {
-    if (matchingOptions.length === 0) {
-      return (
-        <>
-          <Item disabled>No matches found</Item>
-          {onCreate ? (
-            <AddableItem
-              onClick={async () => {
-                if (onCreate) {
-                  const newOption = await onCreate(inputValue);
-                  const newSelectedItems = [...currentSelectedItems, newOption];
-                  setMatchingOptions([...matchingOptions, newOption]);
-                  setSelectedItems(newSelectedItems);
-                  setCurrentOptions([...currentOptions, newOption]);
-                  setInputValue("");
-                  onChange && onChange(newSelectedItems);
-                }
-              }}
-            >
-              Want to add {inputValue}?
-            </AddableItem>
-          ) : null}
-        </>
-      );
-    }
-
-    return matchingOptions.map((option) => (
-      <Item key={`${option.label}-${option.id}`} value={option}>
-        <span>{option.label}</span>
-      </Item>
-    ));
-  };
+  const {
+    isLoading,
+    currentSelectedItems,
+    matchingOptions,
+    inputValue,
+    setInputValue,
+    selectItems,
+  } = useOptions({ options, selectedItems, onChange });
 
   return (
-    <Dropdown
-      inputValue={inputValue}
-      selectedItems={currentSelectedItems}
-      onSelect={(items) => {
-        setSelectedItems(items);
-        onChange && onChange(items);
-      }}
-      downshiftProps={{ itemToString: (item: any) => (item ? item.id : "") }}
-      onInputValueChange={(value) => setInputValue(value)}
-    >
-      <Field>
-        <Label hidden>Accessibly hidden label</Label>
-        <Multiselect
-          renderItem={({ value }) => (
-            <Tag>
-              <span>{value.label}</span>
-              <Tag.Close
-                onClick={() => {
-                  setSelectedItems(
-                    currentSelectedItems.filter((item) => item.id !== value.id)
-                  );
-                }}
-              />
-            </Tag>
+    <div style={isLoading ? { pointerEvents: "none", opacity: "0.3" } : {}}>
+      <Dropdown
+        inputValue={inputValue}
+        selectedItems={currentSelectedItems}
+        onSelect={(items) => selectItems(items)}
+        downshiftProps={{
+          itemToString: (item: typeof options[number]) => (item ? item.id : ""),
+        }}
+        onInputValueChange={(value) => setInputValue(value)}
+      >
+        <Field>
+          <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
+          <Multiselect
+            maxItems={maxItems}
+            renderItem={({ value }) => (
+              <Tag>
+                <span>{value.label}</span>
+                <Tag.Close
+                  onClick={() => {
+                    selectItems(
+                      currentSelectedItems.filter(
+                        (item) => item.id !== value.id
+                      )
+                    );
+                  }}
+                />
+              </Tag>
+            )}
+          />
+        </Field>
+        <Menu>
+          {matchingOptions.length === 0 ? (
+            <>
+              <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
+              {creatable && (
+                <>
+                  <Separator />
+                  <AddableItem
+                    onClick={() =>
+                      selectItems(currentSelectedItems, inputValue)
+                    }
+                    label={
+                      i18n?.addNew
+                        ? i18n.addNew(inputValue)
+                        : `Want to add ${inputValue}?`
+                    }
+                  />
+                </>
+              )}
+            </>
+          ) : (
+            matchingOptions.map((option) => <Item option={option} />)
           )}
-        />
-      </Field>
-      <Menu>{renderOptions()}</Menu>
-    </Dropdown>
+        </Menu>
+      </Dropdown>
+    </div>
   );
 };
