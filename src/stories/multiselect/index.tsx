@@ -71,28 +71,29 @@ export const MultiSelect = ({
           />
         </Field>
         <Menu>
-          {matchingOptions.length === 0 ? (
-            <>
-              <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
-              {creatable && (
-                <>
-                  <Separator />
-                  <AddableItem
-                    onClick={() =>
-                      selectItems(currentSelectedItems, inputValue)
-                    }
-                    label={
-                      i18n?.addNew
-                        ? i18n.addNew(inputValue)
-                        : `Want to add ${inputValue}?`
-                    }
-                  />
-                </>
-              )}
-            </>
-          ) : (
-            matchingOptions.map((option) => <Item option={option} />)
+          {matchingOptions.map((option) => (
+            <Item option={option} />
+          ))}
+          {matchingOptions.length === 0 && (
+            <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
           )}
+          {creatable &&
+          inputValue.length > 0 &&
+          !matchingOptions.find(
+            (item) => item.label.toLowerCase() === inputValue.toLowerCase()
+          ) ? (
+            <>
+              <Separator />
+              <AddableItem
+                onClick={() => selectItems(currentSelectedItems, inputValue)}
+                label={
+                  i18n?.addNew
+                    ? i18n.addNew(inputValue)
+                    : `Want to add ${inputValue}?`
+                }
+              />
+            </>
+          ) : null}
         </Menu>
       </Dropdown>
     </div>
