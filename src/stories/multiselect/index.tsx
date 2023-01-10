@@ -10,13 +10,8 @@ import { Tag } from "@zendeskgarden/react-tags";
 import { MultiSelectProps } from "./_types";
 import { Separator } from "../dropdowns/menu";
 import { AddableItem } from "./AddableItem";
+import { Item } from "./Item";
 import { useOptions } from "./useOptions";
-
-const Item = ({ option }: { option: MultiSelectProps["options"][number] }) => (
-  <ZenDeskItem key={`${option.label}-${option.id}`} value={option}>
-    <span>{option.label}</span>
-  </ZenDeskItem>
-);
 
 const DisabledItem = ({ label }: { label: string }) => (
   <ZenDeskItem disabled>{label}</ZenDeskItem>
@@ -29,6 +24,8 @@ export const MultiSelect = ({
   creatable,
   i18n,
   maxItems,
+  size,
+  menuHeight,
 }: MultiSelectProps) => {
   const {
     isLoading,
@@ -39,23 +36,25 @@ export const MultiSelect = ({
     selectItems,
   } = useOptions({ options, selectedItems, onChange });
 
+  const itemToString = (item: typeof options[number]) => (item ? item.id : "");
+
   return (
     <div style={isLoading ? { pointerEvents: "none", opacity: "0.3" } : {}}>
       <Dropdown
         inputValue={inputValue}
         selectedItems={currentSelectedItems}
         onSelect={(items) => selectItems(items)}
-        downshiftProps={{
-          itemToString: (item: typeof options[number]) => (item ? item.id : ""),
-        }}
+        downshiftProps={{ itemToString }}
         onInputValueChange={(value) => setInputValue(value)}
       >
         <Field>
           <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
           <Multiselect
+            placeholder={i18n?.placeholder ?? "Select Items"}
+            isCompact={size !== "medium"}
             maxItems={maxItems}
             renderItem={({ value }) => (
-              <Tag>
+              <Tag isPill>
                 <span>{value.label}</span>
                 <Tag.Close
                   onClick={() => {
@@ -71,12 +70,22 @@ export const MultiSelect = ({
           />
         </Field>
         <Menu>
-          {matchingOptions.map((option) => (
-            <Item option={option} />
-          ))}
-          {matchingOptions.length === 0 && (
-            <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
-          )}
+          <div style={{ maxHeight: menuHeight ?? "200px" }}>
+            {matchingOptions.map((option) => {
+              const items = currentSelectedItems.map((item) =>
+                itemToString(item)
+              );
+              return (
+                <Item
+                  option={option}
+                  checked={items.includes(itemToString(option))}
+                />
+              );
+            })}
+            {matchingOptions.length === 0 && (
+              <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
+            )}
+          </div>
           {creatable &&
           inputValue.length > 0 &&
           !matchingOptions.find(
