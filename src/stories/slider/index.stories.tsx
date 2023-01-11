@@ -19,7 +19,7 @@ const Slide = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: ${({ theme }) => theme.space.xl};
-  background-color: ${({ theme }) => theme.palette.white};
+  background-color: ${({ theme }) => theme.palette.green[100]};
 `;
 
 const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
@@ -68,6 +68,7 @@ const defaultArgs: SliderStoryArg = {
   dots: false,
   adaptiveHeight: true,
   infinite: true,
+  arrows: true,
 };
 
 export const Default = Template.bind({});
