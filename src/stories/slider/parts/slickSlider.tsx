@@ -53,8 +53,11 @@ export const StyledSlick = styled(SlickSlider)<SliderArgs>`
         float: left;
         min-height: 1px;
 
-        img {
+        img, video {
           display: block;
+          height: 100%;
+          width: auto;
+          margin: 0 auto;
         }
 
         &.dragging img {

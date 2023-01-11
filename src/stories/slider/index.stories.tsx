@@ -9,17 +9,23 @@ import { theme } from "../theme";
 
 interface SliderStoryArg extends SliderArgs {
   items: Array<{
-    headerTitle: string;
-    content: string;
+    headerTitle?: string;
+    content?: string;
+    imageUrl?: string;
+    videoUrl?: string;
   }>;
 }
+
+const TextContainer = styled.div`
+  padding: ${({ theme }) => theme.space.xl};
+`;
 
 const Slide = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: ${({ theme }) => theme.space.xl};
   background-color: ${({ theme }) => theme.palette.green[100]};
+  height: 80vh;
 `;
 
 const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
@@ -31,8 +37,14 @@ const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
             {items.map((item) => (
               <div>
                 <Slide>
-                  <XL>{item.headerTitle}</XL>
-                  <MD>{item.content}</MD>
+                  {item.imageUrl && <img src={item.imageUrl} />}
+                  {item.videoUrl && <video src={item.videoUrl} controls />}
+                  {item.headerTitle && item.content && (
+                    <TextContainer>
+                      <XL>{item.headerTitle}</XL>
+                      <MD>{item.content}</MD>
+                    </TextContainer>
+                  )}
                 </Slide>
               </div>
             ))}
@@ -80,6 +92,28 @@ Default.parameters = {
   },
 };
 
+export const Media = Template.bind({});
+Media.args = {
+  ...defaultArgs,
+  items: [
+    {
+      imageUrl:
+        "https://s3.eu-west-1.amazonaws.com/tryber.media.production/media/T6631/CP4462/bugs/8e27a765440482a2b477fdc01d79bf3b5fd6223eb16168dab794f9a385e593af.jpg",
+    },
+    {
+      videoUrl:
+        "https://s3.eu-west-1.amazonaws.com/tryber.media.production/media/T6631/CP4462/bugs/bf2ed159c4c8024a82116a5dfa26ef434180db334304e0372a531592040452e4.mp4",
+    },
+    {
+      imageUrl:
+        "https://s3.eu-west-1.amazonaws.com/tryber.media.production/media/T40658/CP4462/bugs/1c98a61953d036b75265ac0eabaf7064cd7ac555c5a2d46dd40a1362adc5bf8b.jpeg",
+    },
+    {
+      imageUrl:
+        "https://s3.eu-west-1.amazonaws.com/crowd.appq.testbucket/4462/41304/12d9cd4d6c7c43f56939c4e192a3d826.jpg",
+    },
+  ],
+};
 // export const Bare = Template.bind({});
 // Bare.args = {
 //   ...defaultArgs,
@@ -125,5 +159,5 @@ export default {
         disable: true,
       },
     },
-  }
+  },
 } as ComponentMeta<typeof Slider>;
