@@ -5,8 +5,8 @@ import { SM } from "../../typography/typescale";
 
 const StyledTag = styled(Tag)`
   position: absolute;
-  top: 0;
-  right: -${({ theme }) => theme.space.sm};
+  top: ${({ theme }) => theme.space.sm};
+  right: ${({ theme }) => theme.space.md};
   padding: ${({ theme }) => `${theme.space.xs}${theme.space.sm}`};
   z-index: 1;
 `;

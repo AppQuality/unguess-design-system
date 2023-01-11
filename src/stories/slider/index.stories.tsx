@@ -17,7 +17,7 @@ interface SliderStoryArg extends SliderArgs {
 }
 
 const TextContainer = styled.div`
-  padding: ${({ theme }) => theme.space.xl};
+  padding: 0;
 `;
 
 const Slide = styled.div`
@@ -81,6 +81,7 @@ const defaultArgs: SliderStoryArg = {
   adaptiveHeight: true,
   infinite: true,
   arrows: true,
+  counter: true,
 };
 
 export const Default = Template.bind({});
@@ -88,7 +89,7 @@ Default.args = defaultArgs;
 Default.parameters = {
   design: {
     type: "figma",
-    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A80",
+    url: "https://www.figma.com/file/9499khzH66QnptNPSpiaTQ/UNGUESS-%7C-Functional-Dashboard-Handoff?node-id=151%3A57479&t=S8lj7GWdM4CLxyoV-0",
   },
 };
 
@@ -114,37 +115,6 @@ Media.args = {
     },
   ],
 };
-// export const Bare = Template.bind({});
-// Bare.args = {
-//   ...defaultArgs,
-//   isBare: true,
-// };
-
-// Bare.parameters = {
-//   design: {
-//     type: "figma",
-//     url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A86",
-//   },
-// };
-
-// export const Expandable = Template.bind({});
-// Expandable.args = {
-//   ...defaultArgs,
-//   isExpandable: true,
-// };
-
-// export const Compact = Template.bind({});
-// Compact.args = {
-//   ...defaultArgs,
-//   isCompact: true,
-// };
-
-// Compact.parameters = {
-//   design: {
-//     type: "figma",
-//     url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=1510%3A3230",
-//   },
-// };
 
 export default {
   title: "Organisms/Slider",

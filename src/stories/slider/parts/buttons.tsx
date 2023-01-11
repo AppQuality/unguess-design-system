@@ -3,6 +3,7 @@ import { ReactComponent as ChevronLeft } from "../../../assets/icons/chevron-lef
 import { ReactComponent as ChevronRight } from "../../../assets/icons/chevron-right-stroke.svg";
 import { IconButtonArgs } from "../../buttons/icon-button/_types";
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 const NavButton = styled(IconButton)`
   position: absolute;
@@ -12,13 +13,13 @@ const NavButton = styled(IconButton)`
 `;
 
 export const PrevButton = (props: IconButtonArgs) => (
-  <NavButton {...props} style={{ left: "-25px" }}>
+  <NavButton {...props} style={{ left: theme.space.md }}>
     <ChevronLeft />
   </NavButton>
 );
 
 export const NextButton = (props: IconButtonArgs) => (
-  <NavButton {...props} style={{ right: "-25px" }}>
+  <NavButton {...props} style={{ right: theme.space.md }}>
     <ChevronRight />
   </NavButton>
 );
