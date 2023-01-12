@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Modal } from "../../modals";
 
 const StyledBody = styled.div`
   display: flex;
@@ -14,8 +13,8 @@ const MainContent = styled.div`
   flex-direction: column;
   flex: 0 0 auto;
   width: 66.66666667%;
-  padding: ${({ theme }) => theme.space.sm};
-  overflow: auto;
+  padding: 0;
+  background-color: ${({ theme }) => theme.palette.grey["700"]};
 `;
 const Details = styled.div`
   display: flex;

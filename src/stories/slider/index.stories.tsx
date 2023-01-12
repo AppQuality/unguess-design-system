@@ -1,13 +1,11 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Slider } from ".";
-import { Row } from "../grid/row";
-import { Col } from "../grid/col";
 import { XL, MD } from "../typography/typescale";
 import { SliderArgs } from "./_types";
 import styled from "styled-components";
-import { theme } from "../theme";
 
 export interface SliderStoryArg extends SliderArgs {
+  slideHeight?: string;
   items: Array<{
     headerTitle?: string;
     content?: string;
@@ -24,34 +22,28 @@ const Slide = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.palette.green[100]};
-  height: 80vh;
 `;
 
 const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
+  const height = args.slideHeight || "calc(90vh - 161px)";
+
   return (
-    // <Row justifyContent="center">
-    //   <Col sm={10} style={{ backgroundColor: theme.palette.grey[100] }}>
-    //     <div style={{ padding: "12px" }}>
-          <Slider {...args}>
-            {items.map((item) => (
-              <div>
-                <Slide>
-                  {item.imageUrl && <img src={item.imageUrl} />}
-                  {item.videoUrl && <video src={item.videoUrl} controls />}
-                  {item.headerTitle && item.content && (
-                    <TextContainer>
-                      <XL>{item.headerTitle}</XL>
-                      <MD>{item.content}</MD>
-                    </TextContainer>
-                  )}
-                </Slide>
-              </div>
-            ))}
-          </Slider>
-    //     </div>
-    //   </Col>
-    // </Row>
+    <Slider {...args}>
+      {items.map((item) => (
+        <div>
+          <Slide style={{ height }}>
+            {item.imageUrl && <img src={item.imageUrl} />}
+            {item.videoUrl && <video src={item.videoUrl} controls />}
+            {item.headerTitle && item.content && (
+              <TextContainer>
+                <XL>{item.headerTitle}</XL>
+                <MD>{item.content}</MD>
+              </TextContainer>
+            )}
+          </Slide>
+        </div>
+      ))}
+    </Slider>
   );
 };
 

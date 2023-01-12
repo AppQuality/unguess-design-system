@@ -7,7 +7,7 @@ const StyledTag = styled(Tag)`
   position: absolute;
   top: ${({ theme }) => theme.space.sm};
   right: ${({ theme }) => theme.space.md};
-  padding: ${({ theme }) => `${theme.space.xs}${theme.space.sm}`};
+  padding: ${({ theme }) => `${theme.space.xs} ${theme.space.sm}`};
   z-index: 1;
 `;
 

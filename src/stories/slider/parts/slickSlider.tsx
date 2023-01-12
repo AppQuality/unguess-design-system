@@ -23,7 +23,7 @@ export const StyledSlick = styled(SlickSlider)<SliderArgs>`
 
   .slick-list {
     overflow: hidden;
-    margin: ${({ theme }) => theme.space.sm};
+    margin: 0;
     padding: 0;
 
     &.dragging {
