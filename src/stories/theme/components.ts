@@ -66,6 +66,9 @@ export const components = {
             fontWeight: fontWeights.semibold,
           }
         : {}),
+      "&:hover": {
+        backgroundColor: palette.kale[100],
+      },
     };
   },
 };
