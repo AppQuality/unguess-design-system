@@ -24,6 +24,12 @@ export interface ModalArgs extends IModalProps {
    * Applies large styling
    */
   isLarge?: boolean;
+  
+  /**
+   * Applies Extra-large styling
+   */
+  isExtraLarge?: boolean;
+
   /**
    * Directs keyboard focus to the modal on mount
    */

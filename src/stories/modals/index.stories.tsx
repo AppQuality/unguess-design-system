@@ -30,6 +30,7 @@ const defaultArgs: ModalStoryArgs = {
   isDanger: false,
   title: "Cool title",
   isLarge: false,
+  isExtraLarge: false,
   content: longContent,
   onClose: (e) => {
     alert("Close clicked");
