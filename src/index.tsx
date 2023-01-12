@@ -1,4 +1,3 @@
-import exp from "constants";
 import { GlobalStyle } from "./stories/shared/globalStyle";
 
 // -------------- Components --------------
