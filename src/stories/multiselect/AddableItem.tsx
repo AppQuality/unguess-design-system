@@ -1,10 +1,14 @@
-import { StyledItem, IItemProps } from "./Item";
+import {
+  IItemProps as ZenDeskIItemProps,
+  Item as ZenDeskItem,
+} from "@zendeskgarden/react-dropdowns";
 import { ReactComponent as GridAdd } from "../../assets/icons/plus.svg";
 
-const CustomItem: (props: IItemProps & { addable: boolean }) => JSX.Element =
-  StyledItem;
+const CustomItem: React.ForwardRefExoticComponent<
+  ZenDeskIItemProps & { addable: boolean } & React.RefAttributes<HTMLLIElement>
+> = ZenDeskItem;
 
-export const AddableItem = (props: IItemProps & { label: string }) => {
+export const AddableItem = (props: ZenDeskIItemProps & { label: string }) => {
   return (
     <CustomItem onClick={props.onClick} addable disabled>
       <GridAdd
