@@ -7,7 +7,25 @@ import {
   Menu,
 } from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { theme } from "../../theme";
 import { CounterMultiselectArgs } from "./_types";
+
+const StyledAutocomplete = styled(Autocomplete)<{
+  hasSelectedItems: boolean;
+  theme: typeof theme;
+}>`
+  ${(props) =>
+    props.hasSelectedItems &&
+    `
+    border-color: ${props.theme.colors.primaryHue};
+    background-color: ${props.theme.colors.primaryHue};
+    color: white;
+    & > input, & > svg {
+      color: white;
+    }
+  `}
+`;
 
 const CounterMultiselect = ({
   options,
@@ -33,6 +51,8 @@ const CounterMultiselect = ({
     );
   }, [inputValue, options]);
 
+  const hasSelectedItems = selectedItems.length > 0;
+
   return (
     <>
       <Dropdown
@@ -52,13 +72,13 @@ const CounterMultiselect = ({
       >
         <Field>
           {label && <Label>{label}</Label>}
-          <Autocomplete>
-            {selectedItems.length
+          <StyledAutocomplete hasSelectedItems={hasSelectedItems}>
+            {hasSelectedItems
               ? i18n?.counterText
                 ? i18n.counterText(selectedItems.length)
                 : `Items (${selectedItems.length})`
               : i18n?.noItems ?? "No items"}
-          </Autocomplete>
+          </StyledAutocomplete>
         </Field>
         <Menu>
           {matchingOptions.length === 0 ? (
