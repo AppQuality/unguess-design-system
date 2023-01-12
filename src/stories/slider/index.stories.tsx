@@ -7,7 +7,7 @@ import { SliderArgs } from "./_types";
 import styled from "styled-components";
 import { theme } from "../theme";
 
-interface SliderStoryArg extends SliderArgs {
+export interface SliderStoryArg extends SliderArgs {
   items: Array<{
     headerTitle?: string;
     content?: string;
@@ -17,7 +17,7 @@ interface SliderStoryArg extends SliderArgs {
 }
 
 const TextContainer = styled.div`
-  padding: 0;
+  padding: 40px;
 `;
 
 const Slide = styled.div`
@@ -30,9 +30,9 @@ const Slide = styled.div`
 
 const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
   return (
-    <Row justifyContent="center">
-      <Col sm={10} style={{ backgroundColor: theme.palette.grey[100] }}>
-        <div style={{ padding: "12px" }}>
+    // <Row justifyContent="center">
+    //   <Col sm={10} style={{ backgroundColor: theme.palette.grey[100] }}>
+    //     <div style={{ padding: "12px" }}>
           <Slider {...args}>
             {items.map((item) => (
               <div>
@@ -49,9 +49,9 @@ const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
               </div>
             ))}
           </Slider>
-        </div>
-      </Col>
-    </Row>
+    //     </div>
+    //   </Col>
+    // </Row>
   );
 };
 
