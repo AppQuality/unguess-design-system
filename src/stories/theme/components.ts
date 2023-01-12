@@ -1,5 +1,7 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { fontWeights } from "./fontWeights";
+import { colors } from "./colors";
+import { palette } from "./palette";
 
 export const components = {
   ...DEFAULT_THEME.components,
@@ -33,7 +35,40 @@ export const components = {
     thumbSize: "60px",
   },
 
-  "tabs.tab": ({isSelected}: { isSelected: boolean }) => {
+  "tabs.tab": ({ isSelected }: { isSelected: boolean }) => {
     return isSelected ? { fontWeight: fontWeights.semibold } : undefined;
+  },
+  "forms.input": ({ isFocused }: { isFocused: boolean }) => {
+    return isFocused
+      ? {
+          boxShadow: `0 0 0 3px ${palette.kale[200]}}`,
+        }
+      : undefined;
+  },
+  "dropdowns.item": ({
+    addable,
+    checked,
+    ...rest
+  }: {
+    addable: boolean;
+    checked: boolean;
+  }) => {
+    return {
+      ...(addable
+        ? {
+            color: colors.primaryHue,
+            cursor: "pointer",
+          }
+        : {}),
+
+      ...(checked
+        ? {
+            fontWeight: fontWeights.semibold,
+          }
+        : {}),
+      "&:hover": {
+        backgroundColor: palette.kale[100],
+      },
+    };
   },
 };

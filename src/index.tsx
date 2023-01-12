@@ -61,7 +61,6 @@ export * as DropdownField from "./stories/dropdowns/field";
 export * from "./stories/dropdowns/item";
 export * from "./stories/dropdowns/item-content";
 export * from "./stories/dropdowns/menu";
-export * from "./stories/dropdowns/multiselect";
 export * from "./stories/dropdowns/countermultiselect";
 export * from "./stories/dropdowns/select";
 export * from "./stories/dropdowns/autocomplete";
@@ -104,6 +103,9 @@ export * from "./stories/login-form";
 
 // --- Logo ---
 export * from "./stories/logo";
+
+// --- Multiselect ---
+export * from "./stories/multiselect";
 
 // --- Modals ---
 export * from "./stories/modals";

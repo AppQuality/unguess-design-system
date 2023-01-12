@@ -4,6 +4,7 @@ import { gradients } from "./gradients";
 import { components } from "./components";
 import { boxShadow } from "./utils";
 import { fontWeights } from "./fontWeights";
+import { colors } from "./colors";
 
 const theme = {
   ...DEFAULT_THEME,
@@ -11,14 +12,7 @@ const theme = {
     ...DEFAULT_THEME.breakpoints,
     xxl: "1440px",
   },
-  colors: {
-    ...DEFAULT_THEME.colors,
-    primaryHue: palette.blue[600],
-    warningHue: palette.yellow[600],
-    successHue: palette.teal["M600"],
-    dangerHue: palette.red[600],
-    accentHue: palette.water[600],
-  },
+  colors,
   palette: palette,
   fonts: {
     ...DEFAULT_THEME.fonts,
