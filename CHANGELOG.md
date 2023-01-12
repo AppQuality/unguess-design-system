@@ -1,3 +1,23 @@
+# v2.12.53 (Thu Jan 12 2023)
+
+#### 🐛 Bug Fix
+
+- Add extra large modal size, counter select and creatable multiselect [#169](https://github.com/AppQuality/unguess-design-system/pull/169) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@d-beezee](https://github.com/d-beezee))
+- chore: Remove wrong import [#170](https://github.com/AppQuality/unguess-design-system/pull/170) ([@d-beezee](https://github.com/d-beezee))
+- fix: Fix import [#168](https://github.com/AppQuality/unguess-design-system/pull/168) ([@d-beezee](https://github.com/d-beezee))
+- Un 296 creatable multiselect [#165](https://github.com/AppQuality/unguess-design-system/pull/165) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- fix(counter): Style autocomplete with selected item [#167](https://github.com/AppQuality/unguess-design-system/pull/167) ([@d-beezee](https://github.com/d-beezee))
+- feat: Add counter multiselect component [#166](https://github.com/AppQuality/unguess-design-system/pull/166) ([@d-beezee](https://github.com/d-beezee))
+- feat(modal): add extraLarge size [#163](https://github.com/AppQuality/unguess-design-system/pull/163) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.52 (Thu Dec 15 2022)
 
 #### 🐛 Bug Fix
