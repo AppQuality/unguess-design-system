@@ -65,7 +65,8 @@ const Template: Story<LightboxStoryArgs> = (args) => {
       <Row>
         {args.slider?.items.map((media, index) => {
           return (
-            <div
+            <Button
+              isLink
               key={index}
               onClick={() => {
                 setIsOpen(true);
@@ -74,7 +75,7 @@ const Template: Story<LightboxStoryArgs> = (args) => {
               }}
             >
               {JSON.stringify(media)}
-            </div>
+            </Button>
           );
         })}
       </Row>
