@@ -51,6 +51,10 @@ const CounterMultiselect = ({
     );
   }, [inputValue, options]);
 
+  useEffect(() => {
+    setSelectedItems(options.filter((o) => o.selected));
+  }, [options]);
+
   const hasSelectedItems = selectedItems.length > 0;
 
   return (

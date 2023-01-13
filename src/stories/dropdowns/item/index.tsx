@@ -20,10 +20,6 @@ const UgItem = styled(ZendeskItem)`
     opacity: 0.5;
   }
 
-  &:hover {
-    background-color: ${({ theme }) => theme.palette.blue[100]};
-  }
-
   &[disabled]:hover {
     background-color: transparent;
   }
