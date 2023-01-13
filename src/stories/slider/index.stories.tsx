@@ -4,8 +4,13 @@ import { XL, MD } from "../typography/typescale";
 import { SliderArgs } from "./_types";
 import styled from "styled-components";
 
+const slideContent = {
+  headerTitle: "Equum cibum est optimum prandium est",
+  content:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+};
+
 export interface SliderStoryArg extends SliderArgs {
-  slideHeight?: string;
   items: Array<{
     headerTitle?: string;
     content?: string;
@@ -39,12 +44,6 @@ const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
   );
 };
 
-const slideContent = {
-  headerTitle: "Equum cibum est optimum prandium est",
-  content:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-};
-
 const defaultArgs: SliderStoryArg = {
   items: [
     {
@@ -66,6 +65,7 @@ const defaultArgs: SliderStoryArg = {
   infinite: true,
   arrows: true,
   counter: true,
+  onSlideChange: (index) => console.log("onSlideChange", index),
 };
 
 export const Default = Template.bind({});

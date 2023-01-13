@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Lightbox } from ".";
 import { LightboxArgs } from "./_types";
 import styled from "styled-components";
-import { theme } from "../theme";
+import { ReactComponent as DownloadIcon } from "../../assets/icons/download-stroke.svg";
 import { MD } from "../typography/typescale";
 import {
   Media as MediaSliderStory,
@@ -10,6 +10,7 @@ import {
 } from "../slider/index.stories";
 import { useState } from "react";
 import { Row } from "../grid/row";
+import { Button } from "../buttons/button";
 
 const exampleText =
   "L'arancino siciliano comparve molto tardi nei ricettari che oggi conosciamo: nel XIX secolo. Al punto che alcuni dubitano di un reale collegamento con la cucina araba. Nel Dizionario siciliano-italiano di Giuseppe Biundi (1857) compare il termine “arancinu”, definito come “vivanda dolce di riso fatta alla forma della melarancia”. Il passaggio al salato è documentato per la prima volta nel Nuovo vocabolario siciliano-italiano di Antonino Trina (1868), ed è probabilmente a questa variante che si ispirano le “crocchette di riso composte” dell'Artusi, che però non prevedono ancora né la carne, né il pomodoro, probabilmente una introduzione di poco posteriore. Ma se il termine originale è “arancinu”, come tradurlo in italiano? Al maschile o al femminile? Seguiamo il ragionamento della Crusca: “Nel dialetto siciliano, come registrano tutti i dizionari dialettali, il frutto dell'arancio è aranciu e nell'italiano regionale diventa arancio”. Quindi “arancinu” nel dialetto siciliano era ed è declinato al maschile, come attestano entrambi i vocabolari ottocenteschi sopra citati. “Del resto, alla distinzione di genere nell'italiano standard, femminile per i nomi dei frutti e maschile per quelli degli alberi, si giunge solo nella seconda metà del Novecento, e molti parlanti di varie regioni italiane - Toscana inclusa - continuano tuttora a usare arancio per dire arancia”.";
@@ -40,6 +41,20 @@ const defaultArgs: LightboxStoryArgs = {
 const Template: Story<LightboxStoryArgs> = (args) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [visibleItem, setVisibleItem] = useState<number>(0);
+
+  const onSlideChange = (index: number) => {
+    setVisibleItem(index);
+  };
+
+  const getCurrentMediaUrl = () => {
+    if (args.slider?.items && visibleItem in args.slider.items) {
+      const media = args.slider?.items[visibleItem];
+      return media?.imageUrl || media?.videoUrl;
+    }
+
+    return false;
+  };
 
   const handleModalClose = () => {
     setIsOpen(false);
@@ -55,6 +70,7 @@ const Template: Story<LightboxStoryArgs> = (args) => {
               onClick={() => {
                 setIsOpen(true);
                 setCurrentIndex(index);
+                setVisibleItem(index);
               }}
             >
               {JSON.stringify(media)}
@@ -77,6 +93,7 @@ const Template: Story<LightboxStoryArgs> = (args) => {
               {args.slider && (
                 <MediaSliderStory
                   {...args.slider}
+                  onSlideChange={onSlideChange}
                   initialSlide={currentIndex}
                 />
               )}
@@ -85,7 +102,20 @@ const Template: Story<LightboxStoryArgs> = (args) => {
               <MD>{exampleText}</MD>
             </Lightbox.Body.Details>
           </Lightbox.Body>
-          <Lightbox.Footer>Footer contents</Lightbox.Footer>
+          <Lightbox.Footer>
+            <Button
+              isBasic
+              onClick={() => {
+                const fileUrl = getCurrentMediaUrl();
+                if (fileUrl) window.open(fileUrl, "_blank");
+              }}
+            >
+              <Button.StartIcon>
+                <DownloadIcon />
+              </Button.StartIcon>
+              Scarica questo media
+            </Button>
+          </Lightbox.Footer>
           <Lightbox.Close aria-label="Close modal" />
         </Lightbox>
       )}

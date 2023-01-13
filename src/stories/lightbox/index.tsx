@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { Modal, ModalClose } from "../modals";
 import { ModalBody } from "./parts/body";
+import { Footer } from "./parts/footer";
 import { LightboxArgs } from "./_types";
 
 
@@ -11,18 +12,18 @@ import { LightboxArgs } from "./_types";
  */
 
 const LightboxComponent = forwardRef<HTMLDivElement, LightboxArgs>((props, ref) => {
-  return <Modal ref={ref} isExtraLarge {...props}/>;
+  return <Modal ref={ref} isExtraLarge {...props} style={{ overflow: "hidden" }}/>;
 });
 
 export const Lightbox = LightboxComponent as typeof LightboxComponent & {
   Header: typeof Modal.Header;
   Body: typeof ModalBody;
-  Footer: typeof Modal.Footer;
+  Footer: typeof Footer;
   Close: typeof ModalClose;
 };
 
 
 Lightbox.Header = Modal.Header;
 Lightbox.Body = ModalBody; // Includes Main and Details
-Lightbox.Footer = Modal.Footer;
+Lightbox.Footer = Footer;
 Lightbox.Close = ModalClose;
