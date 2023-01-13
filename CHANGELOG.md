@@ -1,3 +1,18 @@
+# v2.12.54 (Fri Jan 13 2023)
+
+#### 🐛 Bug Fix
+
+- Fixes [#174](https://github.com/AppQuality/unguess-design-system/pull/174) ([@d-beezee](https://github.com/d-beezee) [@iacopolea](https://github.com/iacopolea))
+- fix(counterselect): Reload selected options if option changes [#173](https://github.com/AppQuality/unguess-design-system/pull/173) ([@d-beezee](https://github.com/d-beezee))
+- fix: Remove override hover background from custom menu item [#171](https://github.com/AppQuality/unguess-design-system/pull/171) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v2.12.53 (Thu Jan 12 2023)
 
 #### 🐛 Bug Fix
