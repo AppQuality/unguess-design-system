@@ -1,10 +1,14 @@
-import { Children, useState } from "react";
+import { Children, useEffect, useRef, useState } from "react";
 import { useCallback } from "react";
 import { Button } from "../buttons/button";
 import { PrevButton, NextButton } from "./parts/buttons";
 import { SliderContainer } from "./parts/container";
+import {
+  SliderContextProvider,
+} from "./parts/sliderContext";
 import { SliderCounter } from "./parts/counter";
 import { StyledSlick } from "./parts/slickSlider";
+import { Slide } from "./parts/slide";
 import { SliderArgs } from "./_types";
 
 const defaultSettings: SliderArgs = {
@@ -38,9 +42,11 @@ export const Slider = (props: SliderArgs) => {
   );
 
   return (
-    <SliderContainer>
+    <SliderContextProvider>
       {settings.counter && <SliderCounter current={current} total={slides} />}
       <StyledSlick {...settings} beforeChange={updateSlide} />
-    </SliderContainer>
+    </SliderContextProvider>
   );
 };
+
+Slider.Slide = Slide;

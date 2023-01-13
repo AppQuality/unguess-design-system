@@ -18,20 +18,12 @@ const TextContainer = styled.div`
   padding: 40px;
 `;
 
-const Slide = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
 const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
-  const height = args.slideHeight || "calc(90vh - 161px)";
-
   return (
     <Slider {...args}>
       {items.map((item) => (
         <div>
-          <Slide style={{ height }}>
+          <Slider.Slide>
             {item.imageUrl && <img src={item.imageUrl} />}
             {item.videoUrl && <video src={item.videoUrl} controls />}
             {item.headerTitle && item.content && (
@@ -40,7 +32,7 @@ const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
                 <MD>{item.content}</MD>
               </TextContainer>
             )}
-          </Slide>
+          </Slider.Slide>
         </div>
       ))}
     </Slider>
