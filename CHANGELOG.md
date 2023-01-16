@@ -1,3 +1,15 @@
+# v2.12.56 (Mon Jan 16 2023)
+
+#### 🐛 Bug Fix
+
+- Multiselect fixes [#176](https://github.com/AppQuality/unguess-design-system/pull/176) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.55 (Mon Jan 16 2023)
 
 #### 🐛 Bug Fix
