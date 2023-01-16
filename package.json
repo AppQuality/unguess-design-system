@@ -17,6 +17,7 @@
     "@tiptap/extension-typography": "^2.0.0-beta.22",
     "@tiptap/react": "^2.0.0-beta.114",
     "@tiptap/starter-kit": "^2.0.0-beta.191",
+    "@types/react-slick": "^0.23.10",
     "@zendeskgarden/css-bedrock": "^9.0.0",
     "@zendeskgarden/react-accordions": "^8.49.0",
     "@zendeskgarden/react-avatars": "^8.49.0",
@@ -33,6 +34,7 @@
     "@zendeskgarden/react-tags": "^8.49.0",
     "@zendeskgarden/react-tooltips": "^8.49.0",
     "@zendeskgarden/react-typography": "^8.49.0",
+    "react-slick": "^0.29.0",
     "react-spring": "^9.4.4",
     "react-window": "^1.8.6",
     "ua-parser-js": "^1.0.2"

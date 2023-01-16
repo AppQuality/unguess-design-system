@@ -91,6 +91,9 @@ export * from "./stories/icons";
 // --- Label ---
 export * from "./stories/label";
 
+// --- Lightbox ---
+export * from "./stories/lightbox";
+
 // --- Loaders ---
 export * from "./stories/loaders/progress";
 export * from "./stories/loaders/skeleton";
@@ -133,6 +136,9 @@ export * from "./stories/navigation/page-header";
 
 // --- Profile Modal ---
 export * from "./stories/profile-modal";
+
+// --- Slider ---
+export * from "./stories/slider";
 
 // --- Stepper ---
 export * from "./stories/stepper";
