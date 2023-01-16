@@ -1,3 +1,16 @@
+# v2.12.55 (Mon Jan 16 2023)
+
+#### 🐛 Bug Fix
+
+- Add slider and awesome lightbox [#175](https://github.com/AppQuality/unguess-design-system/pull/175) ([@cannarocks](https://github.com/cannarocks))
+- UN-297-lightbox [#172](https://github.com/AppQuality/unguess-design-system/pull/172) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.54 (Fri Jan 13 2023)
 
 #### 🐛 Bug Fix
