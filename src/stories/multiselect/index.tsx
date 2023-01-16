@@ -12,6 +12,7 @@ import { Separator } from "../dropdowns/menu";
 import { AddableItem } from "./AddableItem";
 import { Item } from "./Item";
 import { useOptions } from "./useOptions";
+import { useEffect } from "react";
 
 const DisabledItem = ({ label }: { label: string }) => (
   <ZenDeskItem disabled>{label}</ZenDeskItem>
@@ -35,6 +36,10 @@ export const MultiSelect = ({
     setInputValue,
     selectItems,
   } = useOptions({ options, selectedItems, onChange });
+
+  useEffect(() => {
+    selectItems(selectedItems || []);
+  }, [options, selectedItems]);
 
   const itemToString = (item: typeof options[number]) => (item ? item.id : "");
 
