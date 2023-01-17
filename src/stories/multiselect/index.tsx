@@ -6,13 +6,12 @@ import {
   Item as ZenDeskItem,
   Label,
 } from "@zendeskgarden/react-dropdowns";
+import { useEffect, useState } from "react";
 import { Tag } from "@zendeskgarden/react-tags";
 import { MultiSelectProps } from "./_types";
 import { Separator } from "../dropdowns/menu";
 import { AddableItem } from "./AddableItem";
 import { Item } from "./Item";
-import { useOptions } from "./useOptions";
-import { useEffect } from "react";
 
 const DisabledItem = ({ label }: { label: string }) => (
   <ZenDeskItem disabled>{label}</ZenDeskItem>
@@ -20,7 +19,6 @@ const DisabledItem = ({ label }: { label: string }) => (
 
 export const MultiSelect = ({
   options,
-  selectedItems,
   onChange,
   creatable,
   i18n,
@@ -28,88 +26,100 @@ export const MultiSelect = ({
   size,
   menuHeight,
 }: MultiSelectProps) => {
-  const {
-    isLoading,
-    currentSelectedItems,
-    matchingOptions,
-    inputValue,
-    setInputValue,
-    selectItems,
-  } = useOptions({ options, selectedItems, onChange });
-
-  useEffect(() => {
-    selectItems(selectedItems || []);
-  }, [options, selectedItems]);
-
+  const [inputValue, setInputValue] = useState("");
+  const [matchingOptions, setMatchingOptions] = useState(options);
   const itemToString = (item: typeof options[number]) => (item ? item.id : "");
 
+  useEffect(() => {
+    const matchedOptions = options.filter(
+      (option) =>
+        option.label
+          .trim()
+          .toLowerCase()
+          .indexOf(inputValue.trim().toLowerCase()) !== -1
+    );
+
+    setMatchingOptions(matchedOptions);
+  }, [inputValue, options]);
+
   return (
-    <div style={isLoading ? { pointerEvents: "none", opacity: "0.3" } : {}}>
-      <Dropdown
-        inputValue={inputValue}
-        selectedItems={currentSelectedItems}
-        onSelect={(items) => selectItems(items)}
-        downshiftProps={{ itemToString }}
-        onInputValueChange={(value) => setInputValue(value)}
-      >
-        <Field>
-          <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
-          <Multiselect
-            placeholder={i18n?.placeholder ?? "Select Items"}
-            isCompact={size !== "medium"}
-            maxItems={maxItems}
-            renderItem={({ value }) => (
-              <Tag isPill>
-                <span>{value.label}</span>
-                <Tag.Close
-                  onClick={() => {
-                    selectItems(
-                      currentSelectedItems.filter(
-                        (item) => item.id !== value.id
-                      )
-                    );
-                  }}
-                />
-              </Tag>
-            )}
-          />
-        </Field>
-        <Menu>
-          <div style={{ maxHeight: menuHeight ?? "200px" }}>
-            {matchingOptions.map((option) => {
-              const items = currentSelectedItems.map((item) =>
-                itemToString(item)
-              );
-              return (
-                <Item
-                  option={option}
-                  checked={items.includes(itemToString(option))}
-                />
-              );
-            })}
-            {matchingOptions.length === 0 && (
-              <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
-            )}
-          </div>
-          {creatable &&
-          inputValue.length > 0 &&
-          !matchingOptions.find(
-            (item) => item.label.toLowerCase() === inputValue.toLowerCase()
-          ) ? (
-            <>
-              <Separator />
-              <AddableItem
-                onClick={() => selectItems(currentSelectedItems, inputValue)}
-                label={
-                  i18n?.addNew
-                    ? i18n.addNew(inputValue)
-                    : `Want to add ${inputValue}?`
+    <Dropdown
+      inputValue={inputValue}
+      selectedItems={options.filter((option) => option.selected)}
+      onSelect={(items: typeof options) =>
+        onChange &&
+        onChange(
+          options.map((o) => ({
+            ...o,
+            selected: items.some((i) => i.id === o.id),
+          }))
+        )
+      }
+      downshiftProps={{ itemToString }}
+      onInputValueChange={(value) => setInputValue(value)}
+    >
+      <Field>
+        <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
+        <Multiselect
+          placeholder={i18n?.placeholder ?? "Select Items"}
+          isCompact={size !== "medium"}
+          maxItems={maxItems}
+          renderItem={({ value }) => (
+            <Tag isPill>
+              <span>{value.label}</span>
+              <Tag.Close
+                onClick={() =>
+                  onChange &&
+                  onChange(
+                    options.map((o) => ({
+                      ...o,
+                      selected: o.selected && o.id !== value.id,
+                    }))
+                  )
                 }
               />
-            </>
-          ) : null}
-        </Menu>
-      </Dropdown>
-    </div>
+            </Tag>
+          )}
+        />
+      </Field>
+      <Menu>
+        <div style={{ maxHeight: menuHeight ?? "200px" }}>
+          {matchingOptions.map((option) => {
+            const items = options
+              .filter((o) => o.selected)
+              .map((item) => itemToString(item));
+            return (
+              <Item
+                option={option}
+                checked={items.includes(itemToString(option))}
+              />
+            );
+          })}
+          {matchingOptions.length === 0 && (
+            <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
+          )}
+        </div>
+        {creatable &&
+        inputValue.length > 0 &&
+        !matchingOptions.find(
+          (item) => item.label.toLowerCase() === inputValue.toLowerCase()
+        ) ? (
+          <>
+            <Separator />
+            <AddableItem
+              onClick={async () => {
+                onChange && (await onChange(options, inputValue));
+                setInputValue("");
+              }}
+              label={
+                i18n?.addNew
+                  ? i18n.addNew(inputValue)
+                  : `Want to add ${inputValue}?`
+              }
+            />
+          </>
+        ) : null}
+      </Menu>
+    </Dropdown>
   );
 };

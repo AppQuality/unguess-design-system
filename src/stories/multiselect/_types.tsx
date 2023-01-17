@@ -1,13 +1,14 @@
 type Item = {
-  id: string | number;
+  id: number;
   label: string;
+  selected?: boolean;
 };
 
 export type MultiSelectProps = {
   maxItems?: number;
   options: Item[];
   selectedItems?: Item[];
-  onChange?: (selectedItems: Item[], newItem?: string) => Promise<Item[]>;
+  onChange?: (selectedItems: Item[], newItem?: string) => Promise<void>;
   creatable?: boolean;
   size: "small" | "medium";
   menuHeight?: string;
