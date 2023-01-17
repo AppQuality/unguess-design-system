@@ -1,4 +1,5 @@
 import { ComponentMeta, Story } from "@storybook/react";
+import { useState } from "react";
 import { MultiSelect } from ".";
 import { MultiSelectProps } from "./_types";
 
@@ -7,8 +8,8 @@ const Template: Story<MultiSelectProps> = (args) => {
 };
 
 const options = [
-  { id: 1, label: "Asparagus" },
-  { id: 2, label: "Cauliflower" },
+  { id: 1, label: "Asparagus", selected: true },
+  { id: 2, label: "Cauliflower", selected: true },
   { id: 3, label: "Garlic" },
   { id: 4, label: "Kale" },
   { id: 5, label: "Onion" },
@@ -22,13 +23,13 @@ Default.args = {
   selectedItems: [options[0], options[1]],
   onChange: async (selectedItems) => {
     console.log("selectedItems", selectedItems);
-    return await patchMock(selectedItems);
+    await patchMock(selectedItems);
   },
 };
 
 const patchMock = async (
-  options: { id?: number | string; label: string }[]
-): Promise<{ id: number | string; label: string }[]> => {
+  options: { id?: number; label: string }[]
+): Promise<{ id: number; label: string }[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const newOptions = options.map((option) => ({
@@ -42,18 +43,37 @@ const patchMock = async (
   });
 };
 
-export const WithTagCreation = Template.bind({});
+const WithTagCreationTemplate: Story<MultiSelectProps> = (args) => {
+  const [items, setItems] = useState(options);
+  return (
+    <MultiSelect
+      {...args}
+      options={items}
+      onChange={async (items, newLabel) => {
+        const result = await patchMock([
+          ...items.filter((o) => o.selected),
+          ...(newLabel ? [{ label: newLabel }] : []),
+        ]);
+        const unselectedItems = options.filter(
+          (o) => !result.find((r) => r.id === o.id)
+        );
+
+        setItems([
+          ...unselectedItems,
+          ...result.map((r) => ({ ...r, selected: true })),
+        ]);
+        console.log("result", result);
+        console.log("selectedItems");
+        console.log("newLabel", newLabel);
+      }}
+    />
+  );
+};
+
+export const WithTagCreation = WithTagCreationTemplate.bind({});
 WithTagCreation.args = {
   options,
-  selectedItems: [options[0], options[1]],
   creatable: true,
-  onChange: async (selectedItems, newLabel) => {
-    if (newLabel) {
-      const result = await patchMock([...selectedItems, { label: newLabel }]);
-      return Promise.resolve(result);
-    }
-    return Promise.resolve(await patchMock(selectedItems));
-  },
 };
 
 export default {
