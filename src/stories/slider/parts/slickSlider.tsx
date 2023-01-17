@@ -58,6 +58,7 @@ export const StyledSlick = styled(SlickSlider)<SliderArgs>`
           height: 100%;
           width: auto;
           margin: 0 auto;
+          max-width: 100%;
         }
 
         &.dragging img {
