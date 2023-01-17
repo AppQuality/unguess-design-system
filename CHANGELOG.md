@@ -1,3 +1,16 @@
+# v2.12.57 (Tue Jan 17 2023)
+
+#### 🐛 Bug Fix
+
+- Handle state from outside component in multiselect [#178](https://github.com/AppQuality/unguess-design-system/pull/178) ([@d-beezee](https://github.com/d-beezee))
+- feat(multiselect): Handle state from outside [#177](https://github.com/AppQuality/unguess-design-system/pull/177) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.56 (Mon Jan 16 2023)
 
 #### 🐛 Bug Fix
