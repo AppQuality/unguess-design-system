@@ -32,6 +32,7 @@ const CounterMultiselect = ({
   label,
   i18n,
   onChange,
+  isCompact,
 }: CounterMultiselectArgs) => {
   const [selectedItems, setSelectedItems] = useState(
     options.filter((o) => o.selected)
@@ -76,7 +77,10 @@ const CounterMultiselect = ({
       >
         <Field>
           {label && <Label>{label}</Label>}
-          <StyledAutocomplete hasSelectedItems={hasSelectedItems}>
+          <StyledAutocomplete
+            isCompact={isCompact}
+            hasSelectedItems={hasSelectedItems}
+          >
             {hasSelectedItems
               ? i18n?.counterText
                 ? i18n.counterText(selectedItems.length)
@@ -84,7 +88,7 @@ const CounterMultiselect = ({
               : i18n?.noItems ?? "No items"}
           </StyledAutocomplete>
         </Field>
-        <Menu>
+        <Menu isCompact={isCompact}>
           {matchingOptions.length === 0 ? (
             <Item disabled>{i18n?.noMatches ?? "No matches found"}</Item>
           ) : (
