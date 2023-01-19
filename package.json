@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "2.12.58",
+  "version": "2.12.59",
   "dependencies": {
     "@nivo/bar": "^0.80.0",
     "@nivo/bullet": "^0.80.0",
