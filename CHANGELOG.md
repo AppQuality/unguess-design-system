@@ -1,3 +1,16 @@
+# v2.12.59 (Thu Jan 19 2023)
+
+#### 🐛 Bug Fix
+
+- Allow isCompact on counter multiselect [#181](https://github.com/AppQuality/unguess-design-system/pull/181) ([@d-beezee](https://github.com/d-beezee))
+- feat(countermulti): Allow isCompact [#180](https://github.com/AppQuality/unguess-design-system/pull/180) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.58 (Tue Jan 17 2023)
 
 #### 🐛 Bug Fix
