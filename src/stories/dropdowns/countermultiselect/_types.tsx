@@ -4,6 +4,7 @@ export interface CounterMultiselectArgs {
     label: string;
     selected?: boolean;
   }[];
+  isCompact?: boolean;
   label?: React.ReactNode;
   onChange?: (selectedItems: CounterMultiselectArgs["options"]) => void;
   i18n?: {
