@@ -3,6 +3,7 @@ import { Slider } from ".";
 import { XL, MD } from "../typography/typescale";
 import { SliderArgs } from "./_types";
 import styled from "styled-components";
+import { Player } from "../player";
 
 const slideContent = {
   headerTitle: "Equum cibum est optimum prandium est",
@@ -30,7 +31,11 @@ const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
         <div>
           <Slider.Slide>
             {item.imageUrl && <img src={item.imageUrl} />}
-            {item.videoUrl && <video src={item.videoUrl} controls />}
+            {item.videoUrl && (
+              <Player>
+                <source src={item.videoUrl} type="video/mp4" />
+              </Player>
+            )}
             {item.headerTitle && item.content && (
               <TextContainer>
                 <XL>{item.headerTitle}</XL>
