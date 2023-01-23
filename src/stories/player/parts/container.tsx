@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { ControlsWrapper } from "./controls";
+import { FlotatingContainer } from "./floatingControls";
+import { WrapperProps } from "./types";
 
-export const Container = styled.div<{ isLoaded: boolean }>`
+export const Container = styled.div<WrapperProps>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -9,12 +11,22 @@ export const Container = styled.div<{ isLoaded: boolean }>`
   height: 100%;
   width: 100%;
   video {
-    ${({ isLoaded }) => !isLoaded && "opacity: .5;"}
+    ${({ isLoaded, isPlaying }) => (!isLoaded || !isPlaying) && "opacity: .7;"}
   }
 
   &:hover {
-    ${ControlsWrapper} {
+    ${ControlsWrapper},
+    ${FlotatingContainer} {
       display: block;
+      cursor: pointer;
+    }
+
+    ${FlotatingContainer} {
+      cursor: pointer;
+    }
+
+    video {
+      opacity: 0.7;
     }
   }
 

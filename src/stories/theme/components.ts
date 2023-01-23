@@ -76,18 +76,36 @@ export const components = {
     isPrimary,
     isHovered,
     isNeutral,
+    isBright,
   }: {
     isDanger: boolean;
     isPrimary: boolean;
     isHovered: boolean;
     isNeutral: boolean;
+    isBright: boolean;
   }) => {
-    if(isDanger || isPrimary || isNeutral) return {};
-
+    
+    if (isDanger || isPrimary || isNeutral) return {};
+    
+    if (isBright) {
+      return {
+        backgroundColor: "transparent",
+        color: "white",
+        "&:hover": {
+          backgroundColor: palette.grey[500],
+          color: palette.kale[100],
+        },
+        "&:active": {
+          backgroundColor: palette.grey[600],
+          color: palette.kale[200],
+        },
+      };
+    }
+    
     return {
       backgroundColor: palette.white,
       "&:hover": {
-        backgroundColor: palette.kale[100],
+        backgroundColor: palette.kale[200],
       },
     };
   },

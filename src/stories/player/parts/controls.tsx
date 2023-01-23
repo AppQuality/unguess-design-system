@@ -4,10 +4,18 @@ import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg"
 import styled from "styled-components";
 import { Progress } from "../../loaders/progress";
 import { PlayerTooltip } from "./tooltip";
+import { WrapperProps } from "./types";
+import { ControlsGroupCenter } from "./controlsCenterGroup";
 
-interface WrapperProps {
-  isPlaying?: boolean;
-}
+export const ControlsWrapper = styled.div<WrapperProps>`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: ${({ theme }) => theme.space.xxs} 0;
+  background-color: ${({ theme }) => theme.palette.grey[700]};
+  ${({ isPlaying }) => isPlaying && "display: none;"}
+`;
 
 const StyledProgress = styled(Progress)`
   width: 100%;
@@ -29,23 +37,13 @@ const ProgressContainer = styled.div`
   }
 `;
 
-export const ControlsWrapper = styled.div<WrapperProps>`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: ${({ theme }) => theme.space.xxs} 0;
-  background-color: ${({ theme }) => theme.palette.grey[700]};
-  ${({ isPlaying }) => isPlaying && "display: none;"}
-`;
-
 export const ControlsBar = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const LeftControls = styled.div``;
-const CenterControls = styled.div``;
 const RightControls = styled.div``;
 
 const formatDuration = (durationInSeconds: number) => {
@@ -103,7 +101,7 @@ export const Controls = (props: {
       const marginX = e.clientX - bounds.left;
       const tooltipMargin = marginX >= maxMargin ? maxMargin : marginX;
       const videoTargetDuration = getVideoPositionFromEvent(e.clientX);
-      
+
       setTooltipMargin(tooltipMargin);
       setTooltipLabel(formatDuration(videoTargetDuration));
     }
@@ -121,16 +119,21 @@ export const Controls = (props: {
     };
   }, [videoRef]);
 
-  const handlePlay = useCallback(() => {
-    if (!videoRef) return;
-    if (videoRef.paused) {
-      videoRef.play();
-      onPlayChange?.(true);
-    } else {
-      videoRef.pause();
-      onPlayChange?.(false);
-    }
-  }, [videoRef]);
+  const handlePlay = useCallback(
+    (e: any) => {
+      console.log("Handle play", videoRef);
+      if (!videoRef) return;
+      if (videoRef.paused) {
+        videoRef.play();
+        onPlayChange?.(true);
+      } else {
+        videoRef.pause();
+        onPlayChange?.(false);
+      }
+      e.stopPropagation();
+    },
+    [videoRef, isPlaying]
+  );
 
   return (
     <ControlsWrapper isPlaying={isPlaying}>
@@ -150,17 +153,16 @@ export const Controls = (props: {
       </ProgressContainer>
       <ControlsBar>
         <LeftControls>
-          <IconButton isNeutral onClick={handlePlay}>
+          <IconButton isBright onClick={(e) => handlePlay(e)}>
             <PlayIcon />
           </IconButton>
         </LeftControls>
-        <CenterControls>
-          <IconButton isNeutral onClick={handlePlay}>
-            <PlayIcon />
-          </IconButton>
-        </CenterControls>
+        <ControlsGroupCenter
+          handleClick={(e) => handlePlay(e)}
+          isPlaying={isPlaying}
+        />
         <RightControls>
-          <IconButton isNeutral onClick={handlePlay}>
+          <IconButton isBright onClick={(e) => handlePlay(e)}>
             <PlayIcon />
           </IconButton>
         </RightControls>

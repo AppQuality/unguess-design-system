@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
+import { FloatingControls } from "./parts/floatingControls";
 import { Video } from "./parts/video";
 import { PlayerArgs } from "./_types";
 
@@ -24,16 +25,32 @@ const Player = (props: PlayerArgs) => {
     setDuration(videoRef.current?.duration || 0);
   };
 
+  const handlePlayPause = useCallback(() => {
+    if (!videoRef || !videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [videoRef]);
+
   useEffect(() => {
     console.log(videoRef.current);
   }, [videoRef]);
 
   return (
-    <Container isLoaded={isLoaded}>
+    <Container
+      isLoaded={isLoaded}
+      isPlaying={isPlaying}
+      onClick={handlePlayPause}
+    >
       {!isLoaded && <>Loading...</>}
       <Video ref={videoRef} onLoadedData={handleLoad} preload="auto">
         {props.children}
       </Video>
+      <FloatingControls isPlaying={isPlaying} />
       <Controls
         videoRef={videoRef.current}
         duration={duration}
