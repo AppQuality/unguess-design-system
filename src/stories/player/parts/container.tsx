@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ControlsWrapper } from "./controls";
-import { FlotatingContainer } from "./floatingControls";
+import { FloatingContainer } from "./floatingControls";
 import { WrapperProps } from "./types";
 
 export const Container = styled.div<WrapperProps>`
@@ -16,17 +16,17 @@ export const Container = styled.div<WrapperProps>`
 
   &:hover {
     ${ControlsWrapper},
-    ${FlotatingContainer} {
+    ${FloatingContainer} {
       display: block;
       cursor: pointer;
     }
 
-    ${FlotatingContainer} {
+    ${FloatingContainer} {
       cursor: pointer;
-    }
 
-    video {
-      opacity: 0.7;
+      &:hover & video {
+        opacity: 0.7;
+      }
     }
   }
 

@@ -20,7 +20,6 @@ const Player = (props: PlayerArgs) => {
   const [duration, setDuration] = useState<number>(0);
 
   const handleLoad = () => {
-    console.log("loaded");
     setIsLoaded(true);
     setDuration(videoRef.current?.duration || 0);
   };

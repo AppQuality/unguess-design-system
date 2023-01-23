@@ -5,7 +5,8 @@ interface TooltipArgs extends HTMLAttributes<HTMLDivElement> {}
 
 const Wrapper = styled.div`
   position: absolute;
-  bottom: 64px;
+  bottom: ${({ theme }) => theme.space.sm};
+  z-index: 1;
 `;
 
 const Content = styled.div`

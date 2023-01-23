@@ -1,11 +1,15 @@
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
-import { IconButton } from "../../buttons/icon-button";
-import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
 import styled from "styled-components";
 import { Progress } from "../../loaders/progress";
 import { PlayerTooltip } from "./tooltip";
 import { WrapperProps } from "./types";
 import { ControlsGroupCenter } from "./controlsCenterGroup";
+import { TimeLabel } from "./timeLabel";
+import { AudioButton } from "./audioButton";
+import { formatDuration, getNextPlaybackRate } from "./utils";
+import { FullScreenButton } from "./fullScreenButton";
+import { IconButton } from "../../buttons/icon-button";
+import { MD } from "../../typography/typescale";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -32,6 +36,7 @@ const StyledTooltip = styled(PlayerTooltip)`
 `;
 
 const ProgressContainer = styled.div`
+  position: relative;
   &:hover ${StyledTooltip} {
     display: flex;
   }
@@ -43,19 +48,6 @@ export const ControlsBar = styled.div`
   align-items: center;
 `;
 
-const LeftControls = styled.div``;
-const RightControls = styled.div``;
-
-const formatDuration = (durationInSeconds: number) => {
-  const min = Math.floor(durationInSeconds / 60);
-  const sec = Math.floor(durationInSeconds - min * 60);
-
-  const minutes = `${min}`.padStart(2, "0");
-  const seconds = `${sec}`.padStart(2, "0");
-
-  return `${minutes}:${seconds}`;
-};
-
 export const Controls = (props: {
   videoRef: HTMLVideoElement | null;
   duration: number;
@@ -64,6 +56,7 @@ export const Controls = (props: {
 }) => {
   const { videoRef, onPlayChange, isPlaying, duration } = props;
   const [progress, setProgress] = useState<number>(0);
+  const [playBackRate, setPlayBackRate] = useState<number>(1);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
   const [tooltipLabel, setTooltipLabel] = useState<string>("00:00");
   const progressRef = useRef<HTMLDivElement>(null);
@@ -92,6 +85,11 @@ export const Controls = (props: {
     }
   };
 
+  const StyledDiv = styled.div`
+    display: flex;
+    align-items: center;
+  `;
+
   const onMouseEvent = (e: MouseEvent<HTMLDivElement>) => {
     if (progressRef && progressRef.current) {
       const tooltipWidth = 40;
@@ -107,9 +105,23 @@ export const Controls = (props: {
     }
   };
 
+  const onRewind = () => {
+    if (!videoRef) return;
+    const nextTime = Math.max(0.01, videoRef.currentTime - 10);
+
+    videoRef.currentTime = nextTime;
+  };
+  const onForward = () => {
+    if (!videoRef) return;
+    const nextTime = videoRef.currentTime + 10;
+
+    videoRef.currentTime = nextTime;
+  };
+
   useEffect(() => {
     if (videoRef) {
       videoRef.addEventListener("timeupdate", handleProgressUpdate);
+      setPlayBackRate(videoRef.playbackRate);
     }
 
     return () => {
@@ -145,6 +157,10 @@ export const Controls = (props: {
         <StyledTooltip style={{ marginLeft: tooltipMargin + "px" }}>
           {tooltipLabel}
         </StyledTooltip>
+        <TimeLabel
+          current={formatDuration(videoRef?.currentTime || 0)}
+          duration={formatDuration(duration)}
+        />
         <StyledProgress
           ref={progressRef}
           value={progress}
@@ -152,20 +168,38 @@ export const Controls = (props: {
         />
       </ProgressContainer>
       <ControlsBar>
-        <LeftControls>
-          <IconButton isBright onClick={(e) => handlePlay(e)}>
-            <PlayIcon />
+        <StyledDiv>
+          <IconButton
+            isBright
+            onClick={(e) => {
+              const newSpeed = getNextPlaybackRate(playBackRate);
+              if (videoRef?.playbackRate) {
+                setPlayBackRate(newSpeed);
+                videoRef.playbackRate = newSpeed;
+              }
+              e.stopPropagation();
+            }}
+          >
+            <MD isBold>{playBackRate}x</MD>
           </IconButton>
-        </LeftControls>
+        </StyledDiv>
         <ControlsGroupCenter
+          onRewind={onRewind}
+          onForward={onForward}
+          playBackRate={playBackRate}
+          handlePlayBackRateChange={(rate) => {
+            if (videoRef?.playbackRate) {
+              setPlayBackRate(rate);
+              videoRef.playbackRate = rate;
+            }
+          }}
           handleClick={(e) => handlePlay(e)}
           isPlaying={isPlaying}
         />
-        <RightControls>
-          <IconButton isBright onClick={(e) => handlePlay(e)}>
-            <PlayIcon />
-          </IconButton>
-        </RightControls>
+        <StyledDiv>
+          <AudioButton videoRef={videoRef} />
+          <FullScreenButton videoRef={videoRef} />
+        </StyledDiv>
       </ControlsBar>
     </ControlsWrapper>
   );
