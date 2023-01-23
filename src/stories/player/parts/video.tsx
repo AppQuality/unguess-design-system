@@ -7,4 +7,5 @@ export const Video = styled.video`
   width: auto;
   margin: 0 auto;
   max-width: 100%;
+  background-color: transparent !important;
 `;

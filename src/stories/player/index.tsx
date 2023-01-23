@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Controls } from "./parts/controls";
+import { Controls, ControlsWrapper } from "./parts/controls";
 import { Video } from "./parts/video";
 import { PlayerArgs } from "./_types";
 
@@ -9,9 +9,16 @@ const Container = styled.div<{ isLoaded: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: inherit;
+  height: 100%;
+  width: 100%;
   video {
     ${({ isLoaded }) => !isLoaded && "opacity: .5;"}
+  }
+
+  &:hover {
+    ${ControlsWrapper} {
+      display: flex;
+    }
   }
 
   background-color: ${({ theme }) => theme.palette.grey[700]};
@@ -28,6 +35,7 @@ const Container = styled.div<{ isLoaded: boolean }>`
 const Player = (props: PlayerArgs) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   const handleLoad = () => {
     console.log("loaded");
@@ -38,15 +46,17 @@ const Player = (props: PlayerArgs) => {
     console.log(videoRef.current);
   }, [videoRef]);
 
-  //   if (!isLoaded) return <>Loading...</>;
-
   return (
     <Container isLoaded={isLoaded}>
       {!isLoaded && <>Loading...</>}
       <Video ref={videoRef} onLoadedData={handleLoad} preload="auto">
         {props.children}
       </Video>
-      <Controls videoRef={videoRef.current} />
+      <Controls
+        videoRef={videoRef.current}
+        isPlaying={isPlaying}
+        onPlayChange={(isPlaying) => setIsPlaying(isPlaying)}
+      />
     </Container>
   );
 };
