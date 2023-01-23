@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { PlayerArgs } from "../_types";
 
 export const Video = styled.video`
   display: block;
@@ -8,4 +7,6 @@ export const Video = styled.video`
   margin: 0 auto;
   max-width: 100%;
   background-color: transparent !important;
+  padding-bottom: 1px;
+  padding-top: 1px;
 `;
