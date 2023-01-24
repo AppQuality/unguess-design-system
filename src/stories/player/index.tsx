@@ -43,7 +43,10 @@ const Player = (props: PlayerArgs) => {
     <Container
       isLoaded={isLoaded}
       isPlaying={isPlaying}
-      onClick={handlePlayPause}
+      onClick={(e) => {
+        e.stopPropagation();
+        handlePlayPause();
+      }}
     >
       {!isLoaded && <>Loading...</>}
       <Video ref={videoRef} onLoadedData={handleLoad} preload="auto">
