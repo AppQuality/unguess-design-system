@@ -10,6 +10,7 @@ const defaultArgs: ButtonArgs = {
   isPill: true,
   size: "medium",
   children: "button",
+  disabled: false,
   onClick: () => alert("clicked!"),
 };
 

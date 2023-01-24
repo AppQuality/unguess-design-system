@@ -35,15 +35,39 @@ const Player = (props: PlayerArgs) => {
     }
   }, [videoRef]);
 
-  useEffect(() => {
-    console.log(videoRef.current);
+  const handleExternalPlayPause = useCallback(() => {
+    if (!videoRef || !videoRef.current) return;
+    console.log("External play pause", videoRef.current.paused);
+    if (videoRef.current.paused) {
+      setIsPlaying(false);
+    } else {
+      setIsPlaying(true);
+    }
   }, [videoRef]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.addEventListener("play", handleExternalPlayPause);
+      videoRef.current.addEventListener("pause", handleExternalPlayPause);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.removeEventListener("play", handleExternalPlayPause);
+        videoRef.current.removeEventListener("pause", handleExternalPlayPause);
+        videoRef.current.removeEventListener(
+          "onplaying",
+          handleExternalPlayPause
+        );
+      }
+    };
+  }, [videoRef.current]);
 
   return (
     <Container
       isLoaded={isLoaded}
       isPlaying={isPlaying}
-      onClick={(e) => {
+      onClick={(e: { stopPropagation: () => void }) => {
         e.stopPropagation();
         handlePlayPause();
       }}

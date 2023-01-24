@@ -1,15 +1,13 @@
-import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Progress } from "../../loaders/progress";
 import { PlayerTooltip } from "./tooltip";
-import { WrapperProps } from "./types";
+import { WrapperProps } from "../_types";
 import { ControlsGroupCenter } from "./controlsCenterGroup";
 import { TimeLabel } from "./timeLabel";
 import { AudioButton } from "./audioButton";
-import { formatDuration, getNextPlaybackRate } from "./utils";
+import { formatDuration } from "./utils";
 import { FullScreenButton } from "./fullScreenButton";
-import { IconButton } from "../../buttons/icon-button";
-import { MD } from "../../typography/typescale";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -74,7 +72,6 @@ export const Controls = (props: {
 
   const handleProgressUpdate = () => {
     const currentTime = videoRef?.currentTime || 0;
-    console.log("Handle progress", currentTime, duration);
     setProgress((currentTime / duration) * 100);
   };
 

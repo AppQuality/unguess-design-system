@@ -1,13 +1,14 @@
 import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
 import { ReactComponent as PauseIcon } from "../../../assets/icons/pause-fill.svg";
-import { ReactComponent as ForwardIcon } from "../../../assets/icons/clock-out-fill.svg";
-import { ReactComponent as RewindIcon } from "../../../assets/icons/clock-in-fill.svg";
+import { ReactComponent as ForwardIcon } from "../../../assets/icons/forward-seconds-fill.svg";
+import { ReactComponent as RewindIcon } from "../../../assets/icons/back-seconds-fill.svg";
 import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
 import styled from "styled-components";
 import { IconButton } from "../../buttons/icon-button";
-import { MD } from "../../typography/typescale";
+import { SM } from "../../typography/typescale";
 import { getNextPlaybackRate } from "./utils";
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "../../buttons/button";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -46,7 +47,6 @@ export const ControlsGroupCenter = ({
 
   const handlePlay = useCallback(
     (e: any) => {
-      console.log("Handle play", videoRef);
       if (!videoRef) return;
       if (videoRef.paused) {
         videoRef.play();
@@ -98,8 +98,9 @@ export const ControlsGroupCenter = ({
       >
         <ForwardIcon />
       </IconButton>
-      <IconButton
+      <Button
         isBright
+        isPill
         onClick={(e) => {
           const newSpeed = getNextPlaybackRate(playBackRate);
           if (videoRef?.playbackRate) {
@@ -109,8 +110,10 @@ export const ControlsGroupCenter = ({
           e.stopPropagation();
         }}
       >
-        <MD isBold>{playBackRate}x</MD>
-      </IconButton>
+        <SM isBold style={{ lineHeight: "16px" }}>
+          {playBackRate}x
+        </SM>
+      </Button>
     </StyledDiv>
   );
 };
