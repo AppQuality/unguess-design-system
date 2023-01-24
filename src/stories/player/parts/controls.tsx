@@ -22,7 +22,7 @@ export const ControlsWrapper = styled.div<WrapperProps>`
 const StyledProgress = styled(Progress)`
   width: 100%;
   border-radius: 0;
-  color: ${({ theme }) => theme.colors.accentHue};
+  color: ${({ theme }) => theme.palette.kale[400]};
   cursor: pointer;
   > div {
     border-radius: 0;
