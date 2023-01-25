@@ -1,3 +1,19 @@
+# v2.12.60 (Wed Jan 25 2023)
+
+#### 🐛 Bug Fix
+
+- Change icon button backgrounds, improve types [#186](https://github.com/AppQuality/unguess-design-system/pull/186) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon))
+- feat(countermulti): Allow string as id in counter multiselect [#185](https://github.com/AppQuality/unguess-design-system/pull/185) ([@d-beezee](https://github.com/d-beezee))
+- feat(icon-button): add white background to default iconbutton [#182](https://github.com/AppQuality/unguess-design-system/pull/182) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.59 (Thu Jan 19 2023)
 
 #### 🐛 Bug Fix
