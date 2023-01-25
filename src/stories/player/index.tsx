@@ -36,7 +36,7 @@ const Player = (props: PlayerArgs) => {
 
   const handleExternalPlayPause = useCallback(() => {
     if (!videoRef || !videoRef.current) return;
-    console.log("External play pause", videoRef.current.paused);
+    
     if (videoRef.current.paused) {
       setIsPlaying(false);
     } else {

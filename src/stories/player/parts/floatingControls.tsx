@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { WrapperProps } from "../_types";
 import { IconButton } from "../../buttons/icon-button";
-import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
+import { ReactComponent as PlayIconComponent } from "../../../assets/icons/play-fill.svg";
 
 export const FloatingContainer = styled.div<WrapperProps>`
   position: absolute;
@@ -13,14 +13,15 @@ export const FloatingContainer = styled.div<WrapperProps>`
   z-index: 1;
 `;
 
+const PlayIcon = styled(PlayIconComponent)``;
 const BigButton = styled(IconButton)`
   pointer-events: none;
   min-width: ${({ theme }) => theme.space.base * 15}px;
   width: 80px;
   height: 80px;
-  > svg {
-    width: 90% !important;
-    height: 90% !important;
+  ${PlayIcon} {
+    width: 90%;
+    height: 90%;
   }
 `;
 
