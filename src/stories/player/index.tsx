@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
+import { VideoSpinner } from "./parts/spinner";
 import { Video } from "./parts/video";
 import { PlayerArgs } from "./_types";
 
@@ -70,11 +71,15 @@ const Player = (props: PlayerArgs) => {
         handlePlayPause();
       }}
     >
-      {!isLoaded && <>Loading...</>}
+      {!isLoaded ? (
+        <VideoSpinner />
+      ) : (
+        <FloatingControls isPlaying={isPlaying} />
+      )}
+
       <Video ref={videoRef} onLoadedData={handleLoad} preload="auto">
         {props.children}
       </Video>
-      <FloatingControls isPlaying={isPlaying} />
       <Controls
         videoRef={videoRef.current}
         duration={duration}

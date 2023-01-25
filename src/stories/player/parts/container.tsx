@@ -14,6 +14,8 @@ export const Container = styled.div<WrapperProps>`
     ${({ isLoaded, isPlaying }) => (!isLoaded || !isPlaying) && "opacity: .7;"}
   }
 
+  ${({ isLoaded }) => !isLoaded && `pointer-events: none;`}
+
   &:hover {
     ${ControlsWrapper},
     ${FloatingContainer} {

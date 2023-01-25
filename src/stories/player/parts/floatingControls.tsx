@@ -10,6 +10,7 @@ export const FloatingContainer = styled.div<WrapperProps>`
   left: 0;
   right: 0;
   ${({ isPlaying }) => isPlaying && "display: none;"}
+  z-index: 1;
 `;
 
 const BigButton = styled(IconButton)`
