@@ -6,12 +6,10 @@ import { Video } from "./parts/video";
 import { PlayerArgs } from "./_types";
 
 /**
- * The Anchor is a link that helps users navigate from one location to another.
+ * The Player is a styled media tag with custom controls
  * <hr>
  * Used for this:
-    - To navigate from one page to another
-    - To navigate within a page
-    - To display links alongside text 
+    - To display a video 
  */
 const Player = (props: PlayerArgs) => {
   const videoRef = useRef<HTMLVideoElement>(null);

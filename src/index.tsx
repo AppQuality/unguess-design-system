@@ -134,6 +134,9 @@ export * from "./stories/pagination";
 // --- Page Header ---
 export * from "./stories/navigation/page-header";
 
+// --- Player ---
+export * from "./stories/player";
+
 // --- Profile Modal ---
 export * from "./stories/profile-modal";
 
