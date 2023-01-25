@@ -5,6 +5,7 @@ import { IconButton } from ".";
 import { IconButtonArgs } from "./_types";
 
 const defaultArgs: IconButtonArgs = {
+  disabled: false,
   onClick: () => {
     alert("Clicked!");
   },

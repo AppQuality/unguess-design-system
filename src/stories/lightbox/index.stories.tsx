@@ -41,15 +41,14 @@ const defaultArgs: LightboxStoryArgs = {
 const Template: Story<LightboxStoryArgs> = (args) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [visibleItem, setVisibleItem] = useState<number>(0);
 
   const onSlideChange = (index: number) => {
-    setVisibleItem(index);
+    setCurrentIndex(index);
   };
 
   const getCurrentMediaUrl = () => {
-    if (args.slider?.items && visibleItem in args.slider.items) {
-      const media = args.slider?.items[visibleItem];
+    if (args.slider?.items && currentIndex in args.slider.items) {
+      const media = args.slider?.items[currentIndex];
       return media?.imageUrl || media?.videoUrl;
     }
 
@@ -71,7 +70,6 @@ const Template: Story<LightboxStoryArgs> = (args) => {
               onClick={() => {
                 setIsOpen(true);
                 setCurrentIndex(index);
-                setVisibleItem(index);
               }}
             >
               {JSON.stringify(media)}
