@@ -17,6 +17,7 @@ export const ControlsWrapper = styled.div<WrapperProps>`
   padding: ${({ theme }) => theme.space.xxs} 0;
   background-color: ${({ theme }) => theme.palette.grey[700]};
   ${({ isPlaying }) => isPlaying && "display: none;"}
+  z-index: 2;
 `;
 
 const StyledProgress = styled(Progress)`
