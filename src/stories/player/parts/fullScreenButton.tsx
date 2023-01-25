@@ -38,6 +38,18 @@ export const FullScreenButton = (props: {
     }
   }, [props.videoRef]);
 
+  const canGoFullScreen = useCallback(async () => {
+    if (props.videoRef) {
+      return (
+        requestFullscreen ||
+        webkitRequestFullscreen ||
+        mozRequestFullScreen ||
+        webkitEnterFullscreen ||
+        msRequestFullscreen
+      );
+    }
+  }, [props.videoRef]);
+
   return (
     <IconButton
       isBright
@@ -45,13 +57,7 @@ export const FullScreenButton = (props: {
         handleFullScreen();
         e.stopPropagation();
       }}
-      disabled={
-        !requestFullscreen &&
-        !webkitRequestFullscreen &&
-        !mozRequestFullScreen &&
-        !webkitEnterFullscreen &&
-        !msRequestFullscreen
-      }
+      disabled={!canGoFullScreen()}
     >
       <FullScreenIcon />
     </IconButton>
