@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ControlsWrapper } from "./controls";
 import { FloatingContainer } from "./floatingControls";
-import { WrapperProps } from "./types";
+import { WrapperProps } from "../_types";
 
 export const Container = styled.div<WrapperProps>`
   position: relative;
