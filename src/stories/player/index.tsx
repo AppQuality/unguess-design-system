@@ -77,7 +77,7 @@ const Player = (props: PlayerArgs) => {
         <FloatingControls isPlaying={isPlaying} />
       )}
 
-      <Video ref={videoRef} onLoadedData={handleLoad} preload="auto">
+      <Video ref={videoRef} onLoadedMetadata={handleLoad} preload="auto" playsInline>
         {props.children}
       </Video>
       <Controls
