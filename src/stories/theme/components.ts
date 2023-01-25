@@ -71,4 +71,24 @@ export const components = {
       },
     };
   },
+  "buttons.icon_button": ({
+    isDanger,
+    isPrimary,
+    isHovered,
+    isNeutral,
+  }: {
+    isDanger: boolean;
+    isPrimary: boolean;
+    isHovered: boolean;
+    isNeutral: boolean;
+  }) => {
+    if(isDanger || isPrimary || isNeutral) return {};
+
+    return {
+      backgroundColor: palette.white,
+      "&:hover": {
+        backgroundColor: palette.kale[100],
+      },
+    };
+  },
 };

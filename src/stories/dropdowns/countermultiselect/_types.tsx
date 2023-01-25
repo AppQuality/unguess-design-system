@@ -1,6 +1,6 @@
 export interface CounterMultiselectArgs {
   options: {
-    id: number;
+    id: number | string;
     label: string;
     selected?: boolean;
   }[];
