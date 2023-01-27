@@ -15,6 +15,8 @@ export interface ButtonArgs extends IButtonProps {
   isEndIconRotated?: boolean;
   /** Applies danger styling */
   isDanger?: boolean;
+  /** Applies bright styling, used for dark interfaces */
+  isBright?: boolean;
   /** Specifies the buton size */
   size?: "small" | "medium" | "large";
   /** Stretches the button fill to its container width */

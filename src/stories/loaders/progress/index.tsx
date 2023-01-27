@@ -1,6 +1,7 @@
-import { Progress as ZendeskProgress } from '@zendeskgarden/react-loaders';
+import { Progress as ZendeskProgress } from "@zendeskgarden/react-loaders";
+import { forwardRef } from "react";
 import styled from "styled-components";
-import { ProgressArgs } from './_types';
+import { ProgressArgs } from "./_types";
 
 const UgProgress = styled(ZendeskProgress)``;
 
@@ -14,6 +15,8 @@ const UgProgress = styled(ZendeskProgress)``;
     - When the loading time is unknown, use a Spinner instead
     - When loading page content, use a Skeleton loader instead
  */
-const Progress = (props: ProgressArgs) => <UgProgress {...props}/>;
+const Progress = forwardRef<HTMLDivElement, ProgressArgs>((props, ref) => (
+  <UgProgress ref={ref} {...props} />
+));
 
 export { Progress };

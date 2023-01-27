@@ -73,22 +73,74 @@ export const components = {
   },
   "buttons.icon_button": ({
     isDanger,
+    isBasic,
     isPrimary,
     isHovered,
     isNeutral,
+    isBright,
+    disabled,
+  }: {
+    isBasic: boolean;
+    isDanger: boolean;
+    isPrimary: boolean;
+    isHovered: boolean;
+    isNeutral: boolean;
+    isBright: boolean;
+    disabled: boolean;
+  }) => {
+    if (isNeutral || isPrimary || isDanger) return {};
+
+    return {
+      ...(isBasic && {
+        backgroundColor: palette.white,
+        "&:hover": {
+          backgroundColor: palette.kale[200],
+        },
+      }),
+      ...(isBright && {
+        backgroundColor: "transparent",
+        color: "white",
+        "&:hover": {
+          backgroundColor: palette.grey[500],
+          color: palette.kale[100],
+        },
+        "&:active": {
+          backgroundColor: palette.grey[600],
+          color: palette.kale[200],
+        },
+      }),
+      ...(disabled && { pointerEvents: "none" }),
+    };
+  },
+  "buttons.button": ({
+    isDanger,
+    isPrimary,
+    isHovered,
+    isNeutral,
+    isBright,
   }: {
     isDanger: boolean;
     isPrimary: boolean;
     isHovered: boolean;
     isNeutral: boolean;
+    isBright: boolean;
   }) => {
-    if(isDanger || isPrimary || isNeutral) return {};
+    if (isBright) {
+      return {
+        backgroundColor: "transparent",
+        color: "white",
+        border: "none",
+        "&:hover": {
+          backgroundColor: palette.grey[500],
+          color: palette.kale[100],
+        },
+        "&:active": {
+          backgroundColor: palette.grey[600],
+          color: palette.kale[200],
+        },
+      };
+    }
 
-    return {
-      backgroundColor: palette.white,
-      "&:hover": {
-        backgroundColor: palette.kale[100],
-      },
-    };
+    return {};
   },
 };
