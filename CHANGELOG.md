@@ -1,3 +1,20 @@
+# v2.12.61 (Fri Jan 27 2023)
+
+#### 🐛 Bug Fix
+
+- New video player, new loader [#190](https://github.com/AppQuality/unguess-design-system/pull/190) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- feat(loaders): add dots loader component [#189](https://github.com/AppQuality/unguess-design-system/pull/189) ([@cannarocks](https://github.com/cannarocks))
+- Fix-player-ios [#188](https://github.com/AppQuality/unguess-design-system/pull/188) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(player): add spinner as loading component [#187](https://github.com/AppQuality/unguess-design-system/pull/187) ([@cannarocks](https://github.com/cannarocks))
+- UN-364-player-component [#183](https://github.com/AppQuality/unguess-design-system/pull/183) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.60 (Wed Jan 25 2023)
 
 #### 🐛 Bug Fix
