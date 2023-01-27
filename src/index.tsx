@@ -98,6 +98,7 @@ export * from "./stories/lightbox";
 export * from "./stories/loaders/progress";
 export * from "./stories/loaders/skeleton";
 export * from "./stories/loaders/spinner";
+export * from "./stories/loaders/dots";
 export * from "./stories/page/pageLoader";
 
 // --- Login Form ---
