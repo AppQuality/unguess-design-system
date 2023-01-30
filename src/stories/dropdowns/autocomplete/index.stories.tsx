@@ -4,7 +4,6 @@ import { Item } from "../item";
 import { Menu, Separator, MediaBody, MediaFigure } from "../menu";
 import { Field } from "../field";
 import { Dropdown } from "../select";
-import { Label } from "../../label";
 import { AutocompleteArgs } from "./_types";
 import { ReactComponent as AddIcon } from "../../../assets/icons/grid-add.svg";
 import { useCallback, useEffect, useState } from "react";

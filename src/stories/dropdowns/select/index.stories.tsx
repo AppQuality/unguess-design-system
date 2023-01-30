@@ -3,8 +3,6 @@ import { Dropdown, Select, Message } from ".";
 import { Item } from "../item";
 import { Menu } from "../menu";
 import { Field } from "../field";
-// import { Field } from "../../field";
-import { Label } from "../../label";
 import { DropdownArgs, SelectArgs } from "./_types";
 import { MenuArgs } from "../menu/_types";
 
