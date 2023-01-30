@@ -60,11 +60,12 @@ export const Controls = (props: {
   const progressRef = useRef<HTMLDivElement>(null);
 
   const getVideoPositionFromEvent = (clientX: number) => {
-    if (progressRef && progressRef.current && duration) {
+    const totalTime = videoRef?.duration || duration || 0;
+    if (progressRef && progressRef.current && totalTime) {
       const bounds = progressRef.current.getBoundingClientRect();
       const x = clientX - bounds.left;
       const videoPositionSecs =
-        (x / progressRef.current.clientWidth) * duration;
+        (x / progressRef.current.clientWidth) * totalTime;
       return videoPositionSecs;
     }
 
@@ -72,8 +73,9 @@ export const Controls = (props: {
   };
 
   const handleProgressUpdate = useCallback(() => {
+    const totalTime = videoRef?.duration || duration || 0;
     const currentTime = videoRef?.currentTime || 0;
-    setProgress((currentTime / duration) * 100);
+    setProgress((currentTime / totalTime) * 100);
   }, [duration, videoRef]);
 
   const handleSkipAhead = useCallback(
@@ -98,10 +100,10 @@ export const Controls = (props: {
 
       const bounds = progressRef.current.getBoundingClientRect();
       const marginX = e.clientX - bounds.left;
-      const tooltipMargin = marginX >= maxMargin ? maxMargin : marginX;
+      const newTooltipMargin = marginX >= maxMargin ? maxMargin : marginX;
       const videoTargetDuration = getVideoPositionFromEvent(e.clientX);
 
-      setTooltipMargin(tooltipMargin);
+      setTooltipMargin(newTooltipMargin);
       setTooltipLabel(formatDuration(videoTargetDuration));
     }
   };
@@ -125,7 +127,7 @@ export const Controls = (props: {
         onMouseMove={onMouseEvent}
         onMouseLeave={onMouseEvent}
       >
-        <StyledTooltip style={{ marginLeft: tooltipMargin + "px" }}>
+        <StyledTooltip style={{ marginLeft: `${tooltipMargin}px` }}>
           {tooltipLabel}
         </StyledTooltip>
         <TimeLabel

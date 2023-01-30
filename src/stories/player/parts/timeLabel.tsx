@@ -19,12 +19,10 @@ export const TimeLabel = ({
 }: {
   current: string;
   duration: string;
-}) => {
-  return (
-    <StyledDiv>
-      <SM tag="span">
-        {current}/{duration}
-      </SM>
-    </StyledDiv>
-  );
-};
+}) => (
+  <StyledDiv>
+    <SM tag="span">
+      {current}/{duration}
+    </SM>
+  </StyledDiv>
+);

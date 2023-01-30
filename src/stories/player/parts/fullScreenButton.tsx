@@ -22,24 +22,24 @@ export const FullScreenButton = (props: {
   } = videoRef || {};
 
   const handleFullScreen = useCallback(async () => {
-    if (props.videoRef) {
-      if (props.videoRef.requestFullscreen) {
-        await props.videoRef.requestFullscreen();
-      } else if (props.videoRef.webkitRequestFullscreen) {
-        await props.videoRef.webkitRequestFullscreen();
-      } else if (props.videoRef.mozRequestFullScreen) {
-        await props.videoRef.mozRequestFullScreen();
-      } else if (props.videoRef.webkitEnterFullscreen) {
+    if (videoRef) {
+      if (videoRef.requestFullscreen) {
+        await videoRef.requestFullscreen();
+      } else if (videoRef.webkitRequestFullscreen) {
+        await videoRef.webkitRequestFullscreen();
+      } else if (videoRef.mozRequestFullScreen) {
+        await videoRef.mozRequestFullScreen();
+      } else if (videoRef.webkitEnterFullscreen) {
         // iOS
-        await props.videoRef.webkitEnterFullscreen();
-      } else if (props.videoRef.msRequestFullscreen) {
-        await props.videoRef.msRequestFullscreen();
+        await videoRef.webkitEnterFullscreen();
+      } else if (videoRef.msRequestFullscreen) {
+        await videoRef.msRequestFullscreen();
       }
     }
-  }, [props.videoRef]);
+  }, [videoRef]);
 
   const canGoFullScreen = useCallback(async () => {
-    if (props.videoRef) {
+    if (videoRef) {
       return (
         requestFullscreen ||
         webkitRequestFullscreen ||
@@ -48,7 +48,9 @@ export const FullScreenButton = (props: {
         msRequestFullscreen
       );
     }
-  }, [props.videoRef]);
+
+    return false;
+  }, [videoRef]);
 
   return (
     <IconButton
