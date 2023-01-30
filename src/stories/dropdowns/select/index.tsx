@@ -8,6 +8,10 @@ import { SelectArgs, DropdownArgs, MessageArgs } from "./_types";
 import styled from "styled-components";
 
 const UgSelect = styled(ZendeskSelect)<SelectArgs>`
+  width: auto;
+  min-width: auto;
+  max-width: 100%;
+
   ${(props) =>
     props.isPrimary &&
     `
