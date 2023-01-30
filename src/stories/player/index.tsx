@@ -1,4 +1,11 @@
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
@@ -25,6 +32,10 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
     setDuration(videoRef.current?.duration || 0);
   };
 
+  const handleDuration = useCallback(() => {
+    setDuration(videoRef.current?.duration || 0);
+  }, [videoRef]);
+
   const handlePlayPause = useCallback(() => {
     if (!videoRef || !videoRef.current) return;
     if (videoRef.current.paused) {
@@ -38,7 +49,7 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
 
   const handleExternalPlayPause = useCallback(() => {
     if (!videoRef || !videoRef.current) return;
-    
+
     if (videoRef.current.paused) {
       setIsPlaying(false);
     } else {
@@ -79,7 +90,13 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
         <FloatingControls isPlaying={isPlaying} />
       )}
 
-      <Video ref={videoRef} onLoadedMetadata={handleLoad} preload="auto" playsInline>
+      <Video
+        ref={videoRef}
+        onLoadedMetadata={handleLoad}
+        onLoad={handleDuration}
+        preload="auto"
+        playsInline
+      >
         {props.children}
       </Video>
       <Controls

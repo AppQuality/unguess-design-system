@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Progress } from "../../loaders/progress";
 import { PlayerTooltip } from "./tooltip";
@@ -71,16 +71,20 @@ export const Controls = (props: {
     return 0;
   };
 
-  const handleProgressUpdate = () => {
+  const handleProgressUpdate = useCallback(() => {
     const currentTime = videoRef?.currentTime || 0;
     setProgress((currentTime / duration) * 100);
-  };
+  }, [duration, videoRef]);
 
-  const handleSkipAhead = (pageX: number) => {
-    if (videoRef) {
-      videoRef.currentTime = getVideoPositionFromEvent(pageX);
-    }
-  };
+  const handleSkipAhead = useCallback(
+    (pageX: number) => {
+      if (videoRef) {
+        videoRef.currentTime = getVideoPositionFromEvent(pageX);
+      }
+    },
+    [videoRef]
+  );
+
 
   const StyledDiv = styled.div`
     display: flex;
