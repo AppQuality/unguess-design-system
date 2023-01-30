@@ -1,3 +1,17 @@
+# v2.12.66 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- Fix dropdowns [#197](https://github.com/AppQuality/unguess-design-system/pull/197) ([@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon))
+- Fix dropdowns 2 [#196](https://github.com/AppQuality/unguess-design-system/pull/196) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.65 (Mon Jan 30 2023)
 
 #### 🐛 Bug Fix
