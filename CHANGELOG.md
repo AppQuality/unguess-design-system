@@ -1,3 +1,15 @@
+# v2.12.64 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- refactor(controls): progress update must be attached to any ref change [#193](https://github.com/AppQuality/unguess-design-system/pull/193) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.62 (Mon Jan 30 2023)
 
 #### 🐛 Bug Fix
