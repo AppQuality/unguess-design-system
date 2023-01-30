@@ -76,18 +76,11 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
   }, [videoRef.current]);
 
   return (
-    <Container
-      isLoaded={isLoaded}
-      isPlaying={isPlaying}
-      onClick={(e: { stopPropagation: () => void }) => {
-        e.stopPropagation();
-        handlePlayPause();
-      }}
-    >
+    <Container isLoaded={isLoaded} isPlaying={isPlaying}>
       {!isLoaded ? (
         <VideoSpinner />
       ) : (
-        <FloatingControls isPlaying={isPlaying} />
+        <FloatingControls isPlaying={isPlaying} onClick={handlePlayPause} />
       )}
 
       <Video
@@ -96,6 +89,7 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
         onLoad={handleDuration}
         preload="auto"
         playsInline
+        onClick={handlePlayPause}
       >
         {props.children}
       </Video>
@@ -103,7 +97,7 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
         videoRef={videoRef.current}
         duration={duration}
         isPlaying={isPlaying}
-        onPlayChange={(isPlaying) => setIsPlaying(isPlaying)}
+        onPlayChange={(playing) => setIsPlaying(playing)}
       />
     </Container>
   );

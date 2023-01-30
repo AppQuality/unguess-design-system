@@ -11,33 +11,34 @@ interface VideowithAudio extends HTMLVideoElement {
 
 export const AudioButton = (props: { videoRef: VideowithAudio | null }) => {
   const [isMuted, setIsMuted] = useState<boolean>(false);
+  const { videoRef } = props;
 
   const hasAudio = (video: VideowithAudio) => {
     if (!video) {
       return false;
     }
-    const _hasAudio =
+    const videohasAudio =
       video.mozHasAudio ||
       Boolean(video.webkitAudioDecodedByteCount) ||
       Boolean(video.audioTracks && video.audioTracks.length);
 
-    return _hasAudio;
+    return videohasAudio;
   };
 
   useEffect(() => {
-    if (props.videoRef) {
-      setIsMuted(!hasAudio(props.videoRef) || props.videoRef.muted);
+    if (videoRef) {
+      setIsMuted(!hasAudio(videoRef) || videoRef.muted);
     }
-  }, [props.videoRef]);
+  }, [videoRef]);
 
   return (
     <IconButton
       isBright
-      disabled={!props.videoRef || !hasAudio(props.videoRef)}
+      disabled={!videoRef || !hasAudio(videoRef)}
       onClick={(e) => {
-        if (props.videoRef) {
-          props.videoRef.muted = !props.videoRef.muted;
-          setIsMuted(props.videoRef.muted);
+        if (videoRef) {
+          videoRef.muted = !videoRef.muted;
+          setIsMuted(videoRef.muted);
         }
         e.stopPropagation();
       }}

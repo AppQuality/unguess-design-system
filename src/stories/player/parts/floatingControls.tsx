@@ -32,11 +32,14 @@ const ButtonsContainer = styled.div`
   height: 100%;
 `;
 
-export const FloatingControls = (props: { isPlaying?: boolean }) => {
-  const { isPlaying } = props;
+export const FloatingControls = (props: {
+  isPlaying?: boolean;
+  onClick?: () => void;
+}) => {
+  const { isPlaying, onClick } = props;
 
   return (
-    <FloatingContainer isPlaying={isPlaying}>
+    <FloatingContainer isPlaying={isPlaying} onClick={onClick}>
       <ButtonsContainer>
         {!isPlaying && (
           <BigButton isBright>

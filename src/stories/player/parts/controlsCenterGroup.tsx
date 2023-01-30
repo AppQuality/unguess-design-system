@@ -22,7 +22,7 @@ export const ControlsGroupCenter = ({
 }: {
   videoRef: HTMLVideoElement | null;
   isPlaying?: boolean;
-  onPlayChange?: (isPlaying: boolean) => void;
+  onPlayChange?: (playing: boolean) => void;
 }) => {
   const [playBackRate, setPlayBackRate] = useState<number>(1);
 
