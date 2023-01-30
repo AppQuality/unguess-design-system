@@ -1,3 +1,20 @@
+# v2.12.62 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- Allow external ref for Player component [#192](https://github.com/AppQuality/unguess-design-system/pull/192) ([@cannarocks](https://github.com/cannarocks))
+- feat(player): add forward ref to allow external handling [#191](https://github.com/AppQuality/unguess-design-system/pull/191) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- bump version ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.61 (Fri Jan 27 2023)
 
 #### 🐛 Bug Fix
