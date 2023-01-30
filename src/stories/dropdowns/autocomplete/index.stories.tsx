@@ -74,7 +74,6 @@ const Template: Story<AutocompleteStoryArgs> = (args) => {
       downshiftProps={{ itemToString: (item: IItem) => item && item.label }}
     >
       <Field>
-          <Label>Food Manager</Label>
           <Autocomplete {...args}>{selectedItem.label}</Autocomplete>
       </Field>
       <Menu>
@@ -182,7 +181,6 @@ const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
       }}
     >
       <Field>
-        <Label>Food Manager</Label>
         <Autocomplete {...args}>{selectedItem.label}</Autocomplete>
       </Field>
       <Menu>
