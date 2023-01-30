@@ -1,11 +1,9 @@
-import {
-  Dropdown,
-  Multiselect,
-  Field,
-  Menu,
-  Item as ZenDeskItem,
-  Label,
-} from "@zendeskgarden/react-dropdowns";
+import { Multiselect } from "@zendeskgarden/react-dropdowns";
+import { Dropdown } from "../dropdowns/select";
+import { Field } from "../dropdowns/field";
+import { Menu } from "../dropdowns/menu";
+import { Item as ZenDeskItem } from "../dropdowns/item";
+import { Label } from "../label";
 import { useEffect, useState } from "react";
 import { Tag } from "@zendeskgarden/react-tags";
 import { MultiSelectProps } from "./_types";

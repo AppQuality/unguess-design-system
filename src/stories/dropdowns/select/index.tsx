@@ -4,6 +4,7 @@ import {
   Dropdown as ZendeskDropdown,
   Message as ZendeskMessage,
 } from "@zendeskgarden/react-dropdowns";
+import { StyledLabel } from "../../label";
 import { SelectArgs, DropdownArgs, MessageArgs } from "./_types";
 import styled from "styled-components";
 
@@ -30,8 +31,16 @@ const UgSelect = styled(ZendeskSelect)<SelectArgs>`
     - To select from a list on mobile, use a native Select instead
  */
 const Select = (props: SelectArgs) => <UgSelect {...props} />;
+
+const StyledDropdown = styled.div`
+  ${StyledLabel} {
+    display: block;
+  }
+`;
 const Dropdown = (props: PropsWithChildren<DropdownArgs>) => (
-  <ZendeskDropdown {...props} />
+  <StyledDropdown>
+    <ZendeskDropdown {...props} />
+  </StyledDropdown>
 );
 const Message = (props: MessageArgs) => <ZendeskMessage {...props} />;
 
