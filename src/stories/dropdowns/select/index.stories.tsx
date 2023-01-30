@@ -39,7 +39,11 @@ const Template: Story<MenuStoryArgs> = ({
     <Dropdown {...dropdown}>
       <Field>
         <Label>Food Manager</Label>
-        <Select {...select} validation={args?.validation}>
+        <Select
+          {...select}
+          validation={args?.validation}
+          style={{ width: "100px" }}
+        >
           {items[0].label}
         </Select>
         {args?.hasHelpText && (

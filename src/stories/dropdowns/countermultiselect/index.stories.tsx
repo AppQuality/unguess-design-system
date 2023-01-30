@@ -3,7 +3,7 @@ import { CounterMultiselect } from ".";
 import { CounterMultiselectArgs } from "./_types";
 
 const options = [
-  { id: "asp", label: "Asparagus", selected: true },
+  { id: "asp", label: "Asparagus long text to test if dropdown menu works correctly", selected: true },
   { id: "caul", label: "Cauliflower", selected: true },
   { id: 3, label: "Garlic" },
   { id: 4, label: "Kale" },
