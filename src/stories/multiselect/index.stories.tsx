@@ -4,13 +4,21 @@ import { MultiSelect } from ".";
 import { MultiSelectProps } from "./_types";
 
 const Template: Story<MultiSelectProps> = (args) => {
-  return <MultiSelect {...args} />;
+  return (
+    <div style={{ width: "300px" }}>
+      <MultiSelect {...args} />
+    </div>
+  );
 };
 
 const options = [
-  { id: 1, label: "Asparagus", selected: true },
+  {
+    id: 1,
+    label: "Asparagus",
+    selected: true,
+  },
   { id: 2, label: "Cauliflower", selected: true },
-  { id: 3, label: "Garlic" },
+  { id: 3, label: "Garlic", selected: true },
   { id: 4, label: "Kale" },
   { id: 5, label: "Onion" },
   { id: 6, label: "Mushroom" },
@@ -46,27 +54,29 @@ const patchMock = async (
 const WithTagCreationTemplate: Story<MultiSelectProps> = (args) => {
   const [items, setItems] = useState(options);
   return (
-    <MultiSelect
-      {...args}
-      options={items}
-      onChange={async (items, newLabel) => {
-        const result = await patchMock([
-          ...items.filter((o) => o.selected),
-          ...(newLabel ? [{ label: newLabel }] : []),
-        ]);
-        const unselectedItems = options.filter(
-          (o) => !result.find((r) => r.id === o.id)
-        );
+    <div style={{ width: "300px" }}>
+      <MultiSelect
+        {...args}
+        options={items}
+        onChange={async (items, newLabel) => {
+          const result = await patchMock([
+            ...items.filter((o) => o.selected),
+            ...(newLabel ? [{ label: newLabel }] : []),
+          ]);
+          const unselectedItems = options.filter(
+            (o) => !result.find((r) => r.id === o.id)
+          );
 
-        setItems([
-          ...unselectedItems,
-          ...result.map((r) => ({ ...r, selected: true })),
-        ]);
-        console.log("result", result);
-        console.log("selectedItems");
-        console.log("newLabel", newLabel);
-      }}
-    />
+          setItems([
+            ...unselectedItems,
+            ...result.map((r) => ({ ...r, selected: true })),
+          ]);
+          console.log("result", result);
+          console.log("selectedItems");
+          console.log("newLabel", newLabel);
+        }}
+      />
+    </div>
   );
 };
 

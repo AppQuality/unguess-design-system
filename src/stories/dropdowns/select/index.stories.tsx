@@ -36,28 +36,26 @@ const Template: Story<MenuStoryArgs> = ({
   ...args
 }) => {
   return (
-    <Dropdown {...dropdown}>
-      <Field>
-        <Label>Food Manager</Label>
-        <Select
-          {...select}
-          validation={args?.validation}
-          style={{ width: "100px" }}
-        >
-          {items[0].label}
-        </Select>
-        {args?.hasHelpText && (
-          <Message validation={args.validation}>
-            Validation message will apppear here
-          </Message>
-        )}
-      </Field>
-      <Menu {...menu}>
-        {items.map((item) => (
-          <Item value={item.value}>{item.label}</Item>
-        ))}
-      </Menu>
-    </Dropdown>
+    <div style={{ width: "300px" }}>
+      <Dropdown {...dropdown}>
+        <Field>
+          <Label>Food Manager</Label>
+          <Select {...select} validation={args?.validation}>
+            {items[0].label}
+          </Select>
+          {args?.hasHelpText && (
+            <Message validation={args.validation}>
+              Validation message will apppear here
+            </Message>
+          )}
+        </Field>
+        <Menu {...menu}>
+          {items.map((item) => (
+            <Item value={item.value}>{item.label}</Item>
+          ))}
+        </Menu>
+      </Dropdown>
+    </div>
   );
 };
 

@@ -62,58 +62,60 @@ const Template: Story<AutocompleteStoryArgs> = (args) => {
   console.log("Selected item: ", selectedItem);
 
   return (
-    <Dropdown
-      inputValue={inputValue}
-      selectedItem={selectedItem}
-      onSelect={(item: IItem) => {
-        setInputValue("");
-        setSelectedItem(item);
-      }}
-      onInputValueChange={(value) => {
-        setInputValue(value);
-      }}
-      downshiftProps={{ itemToString: (item: IItem) => item && item.label }}
-    >
-      <Field>
-        <Label>Food Manager</Label>
-        <Autocomplete {...args}>{selectedItem.label}</Autocomplete>
-      </Field>
-      <Menu>
-        {matchingOptions.length ? (
-          matchingOptions.map((item) => (
-            <Item key={item.value} value={item}>
-              <span>{item.label}</span>
+    <div style={{ width: "300px" }}>
+      <Dropdown
+        inputValue={inputValue}
+        selectedItem={selectedItem}
+        onSelect={(item: IItem) => {
+          setInputValue("");
+          setSelectedItem(item);
+        }}
+        onInputValueChange={(value) => {
+          setInputValue(value);
+        }}
+        downshiftProps={{ itemToString: (item: IItem) => item && item.label }}
+      >
+        <Field>
+          <Label>Food Manager</Label>
+          <Autocomplete {...args}>{selectedItem.label}</Autocomplete>
+        </Field>
+        <Menu>
+          {matchingOptions.length ? (
+            matchingOptions.map((item) => (
+              <Item key={item.value} value={item}>
+                <span>{item.label}</span>
+              </Item>
+            ))
+          ) : (
+            <Item disabled>
+              <span>No matches found</span>
             </Item>
-          ))
-        ) : (
-          <Item disabled>
-            <span>No matches found</span>
-          </Item>
-        )}
-        {args.allowNew && inputValue && (
-          <>
-            <Separator />
-            <Item key="new" value={inputValue}>
-              <MediaFigure>
-                <AddIcon />
-              </MediaFigure>
-              <MediaBody>Add {inputValue}</MediaBody>
-            </Item>
-          </>
-        )}
-      </Menu>
-      <Menu>
-        {matchingOptions.length ? (
-          matchingOptions.map((item) => (
-            <Item key={item.value} value={item}>
-              <span>{item.label}</span>
-            </Item>
-          ))
-        ) : (
-          <Item disabled>No matches found</Item>
-        )}
-      </Menu>
-    </Dropdown>
+          )}
+          {args.allowNew && inputValue && (
+            <>
+              <Separator />
+              <Item key="new" value={inputValue}>
+                <MediaFigure>
+                  <AddIcon />
+                </MediaFigure>
+                <MediaBody>Add {inputValue}</MediaBody>
+              </Item>
+            </>
+          )}
+        </Menu>
+        <Menu>
+          {matchingOptions.length ? (
+            matchingOptions.map((item) => (
+              <Item key={item.value} value={item}>
+                <span>{item.label}</span>
+              </Item>
+            ))
+          ) : (
+            <Item disabled>No matches found</Item>
+          )}
+        </Menu>
+      </Dropdown>
+    </div>
   );
 };
 

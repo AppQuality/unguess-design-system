@@ -3,9 +3,7 @@ import styled from "styled-components";
 import { AutocompleteArgs } from "./_types";
 
 const StyledAutocomplete = styled(ZendeskAutocomplete)`
-  width: auto;
-  min-width: auto;
-  max-width: 100%;
+  width: 100%;
 `;
 
 /**
