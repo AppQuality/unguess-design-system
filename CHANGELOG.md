@@ -1,3 +1,15 @@
+# v2.12.65 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- Player fixes [#194](https://github.com/AppQuality/unguess-design-system/pull/194) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.64 (Mon Jan 30 2023)
 
 #### 🐛 Bug Fix
