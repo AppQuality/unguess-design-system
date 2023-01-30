@@ -1,15 +1,13 @@
-import {
-  Autocomplete,
-  Dropdown,
-  Field,
-  Item,
-  Label,
-  Menu,
-} from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { CounterMultiselectArgs } from "./_types";
+import { Menu } from "../menu";
+import { Autocomplete } from "../autocomplete";
+import { Dropdown } from "../select";
+import { Field } from "../field";
+import { Label } from "../../label";
+import { Item } from "../item";
 
 const StyledAutocomplete = styled(Autocomplete)<{
   hasSelectedItems: boolean;
