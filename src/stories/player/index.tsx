@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
@@ -12,11 +12,13 @@ import { PlayerArgs } from "./_types";
  * Used for this:
     - To display a video 
  */
-const Player = (props: PlayerArgs) => {
+const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
+
+  useImperativeHandle(forwardRef, () => videoRef.current as HTMLVideoElement);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -88,6 +90,6 @@ const Player = (props: PlayerArgs) => {
       />
     </Container>
   );
-};
+});
 
 export { Player };
