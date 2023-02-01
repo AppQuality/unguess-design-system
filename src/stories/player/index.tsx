@@ -67,10 +67,6 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
       if (videoRef.current) {
         videoRef.current.removeEventListener("play", handleExternalPlayPause);
         videoRef.current.removeEventListener("pause", handleExternalPlayPause);
-        videoRef.current.removeEventListener(
-          "onplaying",
-          handleExternalPlayPause
-        );
       }
     };
   }, [videoRef.current]);

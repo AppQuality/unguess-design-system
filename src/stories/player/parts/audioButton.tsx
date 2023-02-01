@@ -29,18 +29,17 @@ export const AudioButton = (props: { videoRef: VideowithAudio | null }) => {
     if (videoRef) {
       setIsMuted(!hasAudio(videoRef) || videoRef.muted);
     }
-  }, [videoRef]);
+  }, [videoRef, isMuted]);
 
   return (
     <IconButton
       isBright
       disabled={!videoRef || !hasAudio(videoRef)}
-      onClick={(e) => {
+      onClick={() => {
         if (videoRef) {
           videoRef.muted = !videoRef.muted;
           setIsMuted(videoRef.muted);
         }
-        e.stopPropagation();
       }}
     >
       {isMuted ? <MutedIcon /> : <UnMutedIcon />}

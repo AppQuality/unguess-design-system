@@ -47,6 +47,11 @@ export const ControlsBar = styled.div`
   align-items: center;
 `;
 
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const Controls = (props: {
   videoRef: HTMLVideoElement | null;
   duration: number;
@@ -86,12 +91,6 @@ export const Controls = (props: {
     },
     [videoRef]
   );
-
-
-  const StyledDiv = styled.div`
-    display: flex;
-    align-items: center;
-  `;
 
   const onMouseEvent = (e: MouseEvent<HTMLDivElement>) => {
     if (progressRef && progressRef.current) {
@@ -140,8 +139,8 @@ export const Controls = (props: {
           onClick={(e) => handleSkipAhead(e.clientX)}
         />
       </ProgressContainer>
-      <ControlsBar>
-        <StyledDiv>
+      <ControlsBar id="controls_bar">
+        <StyledDiv id="audio_container">
           <AudioButton videoRef={videoRef} />
         </StyledDiv>
         <ControlsGroupCenter
