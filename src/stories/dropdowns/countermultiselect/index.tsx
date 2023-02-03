@@ -69,7 +69,10 @@ const CounterMultiselect = ({
         }}
         downshiftProps={{
           itemToString: (item: CounterMultiselectArgs["options"][number]) =>
-            item && item.id,
+            item && item.itemId,
+        }}
+        onStateChange={(changes) => {
+          if (changes.isOpen === false) setInputValue("");
         }}
         onInputValueChange={(value) => setInputValue(value)}
       >
@@ -91,7 +94,7 @@ const CounterMultiselect = ({
             <Item disabled>{i18n?.noMatches ?? "No matches found"}</Item>
           ) : (
             matchingOptions.map((option) => (
-              <Item key={option.id} value={option}>
+              <Item key={option.itemId} value={option} {...option}>
                 <span>{option.label}</span>
               </Item>
             ))

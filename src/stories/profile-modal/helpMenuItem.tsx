@@ -136,7 +136,7 @@ export const HelpItem = (props: HelpItemProps) => {
           style={{ paddingLeft: theme.space.xxs }}
         >
           <StyledFooterButton.StartIcon>
-            <InfoFill fill={theme.palette.blue[600]} />
+            <InfoFill color={theme.palette.blue[600]} />
           </StyledFooterButton.StartIcon>
           {props.chatSupportLabel ?? "Report a technical issue"}
         </StyledFooterButton>
@@ -151,7 +151,7 @@ export const HelpItem = (props: HelpItemProps) => {
         value={props.value}
         selectedItem={props.selectedItem}
         setActive={props.setActive}
-        icon={<QuestionMark fill={theme.palette.grey[600]} />}
+        icon={<QuestionMark color={theme.palette.blue[600]} />}
       >
         {props.title}
       </MenuItem>

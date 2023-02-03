@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UserMenuArgs } from "./_types";
 import { ReactComponent as ExitIcon } from "../../assets/icons/exit.svg";
 import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
+import { ReactComponent as LockIcon } from "../../assets/icons/lock-locked-fill.svg";
 import { MenuItem, MenuItemBody } from "./menuItem";
 import styled from "styled-components";
 import { HelpItem } from "./helpMenuItem";
@@ -32,7 +33,11 @@ export const UserMenu = (props: UserMenuArgs) => {
           <MenuItem
             selectedItem={item}
             icon={<ThumbsUp />}
-            setActive={() => props.onFeedbackClick ? props.onFeedbackClick() : console.log("feedback fired")}
+            setActive={() =>
+              props.onFeedbackClick
+                ? props.onFeedbackClick()
+                : console.log("feedback fired")
+            }
           >
             <MenuItemBody>
               {props.feedbackTitle || "Give us your feedback"}
@@ -64,10 +69,16 @@ export const UserMenu = (props: UserMenuArgs) => {
           currentLanguageLabel={props.currentLanguageLabel}
           onSelectLanguage={(lang) => props.onSelectLanguage(lang)}
         />
-
         <MenuItem
           selectedItem={item}
-          icon={<ExitIcon fill={theme.palette.red[600]} />}
+          icon={<LockIcon color={theme.palette.blue[600]} />}
+          setActive={() => window.open(props.privacy?.url || "#")}
+        >
+          {props.privacy?.title || "Privacy settings"}
+        </MenuItem>
+        <MenuItem
+          selectedItem={item}
+          icon={<ExitIcon color={theme.palette.red[600]} />}
           setActive={() => props.onLogout()}
         >
           {props.logoutTitle || "Log out"}
