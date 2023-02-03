@@ -50,7 +50,11 @@ const defaultArgs: UserMenuArgs = {
   currentLanguage: "en",
   onSelectLanguage: (lang) => { alert ("Selected language: " + lang); },
   onToggleChat: () => { alert ("Toggle chat clicked"); },
-  onLogout: () => { alert ("Logout clicked"); }
+  onLogout: () => { alert ("Logout clicked"); },
+  privacy: {
+    url: "https://www.iubenda.com/privacy-policy/12345678",
+    title: "Privacy Policy",
+  },
 };
 
 export const Default = Template.bind({});
