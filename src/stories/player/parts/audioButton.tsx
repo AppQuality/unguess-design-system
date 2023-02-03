@@ -9,11 +9,13 @@ interface VideowithAudio extends HTMLVideoElement {
   audioTracks?: any[];
 }
 
-export const AudioButton = (props: { videoRef: VideowithAudio | null }) => {
+export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
   const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [hasAudio, setHasAudio] = useState<boolean>(false);
+
   const { videoRef } = props;
 
-  const hasAudio = (video: VideowithAudio) => {
+  const checkAudio = (video: VideowithAudio | null) => {
     if (!video) {
       return false;
     }
@@ -25,25 +27,43 @@ export const AudioButton = (props: { videoRef: VideowithAudio | null }) => {
     return videohasAudio;
   };
 
+  const hasVolume = (video: HTMLVideoElement | null) => {
+    if (!video) {
+      return false;
+    }
+    return video.volume > 0;
+  };
+
+  const handleAudio = () => {
+    setHasAudio(checkAudio(videoRef));
+  };
+
   useEffect(() => {
     if (videoRef) {
-      setIsMuted(!hasAudio(videoRef) || videoRef.muted);
+      setIsMuted(!hasVolume(videoRef));
+
+      videoRef.addEventListener("loadeddata", handleAudio);
     }
+
+    return () => {
+      if (videoRef) {
+        videoRef.removeEventListener("loadeddata", handleAudio);
+      }
+    };
   }, [videoRef]);
 
   return (
     <IconButton
       isBright
-      disabled={!videoRef || !hasAudio(videoRef)}
-      onClick={(e) => {
+      disabled={!checkAudio(videoRef || null)}
+      onClick={() => {
         if (videoRef) {
-          videoRef.muted = !videoRef.muted;
-          setIsMuted(videoRef.muted);
+          videoRef.volume = videoRef.volume > 0 ? 0 : 1;
+          setIsMuted(!videoRef.volume);
         }
-        e.stopPropagation();
       }}
     >
-      {isMuted ? <MutedIcon /> : <UnMutedIcon />}
+      {isMuted || !hasAudio ? <MutedIcon /> : <UnMutedIcon />}
     </IconButton>
   );
 };

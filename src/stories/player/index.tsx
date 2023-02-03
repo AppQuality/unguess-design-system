@@ -32,10 +32,6 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
     setDuration(videoRef.current?.duration || 0);
   };
 
-  const handleDuration = useCallback(() => {
-    setDuration(videoRef.current?.duration || 0);
-  }, [videoRef]);
-
   const handlePlayPause = useCallback(() => {
     if (!videoRef || !videoRef.current) return;
     if (videoRef.current.paused) {
@@ -67,10 +63,6 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
       if (videoRef.current) {
         videoRef.current.removeEventListener("play", handleExternalPlayPause);
         videoRef.current.removeEventListener("pause", handleExternalPlayPause);
-        videoRef.current.removeEventListener(
-          "onplaying",
-          handleExternalPlayPause
-        );
       }
     };
   }, [videoRef.current]);
@@ -86,7 +78,6 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
       <Video
         ref={videoRef}
         onLoadedMetadata={handleLoad}
-        onLoad={handleDuration}
         preload="auto"
         playsInline
         onClick={handlePlayPause}
