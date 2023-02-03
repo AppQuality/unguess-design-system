@@ -81,7 +81,7 @@ export const UserMenu = (props: UserMenuArgs) => {
           icon={<LockIcon color={theme.palette.blue[600]} />}
           setActive={() => {}}
         >
-          <StyledAnchor onClick={() => window.open(props.privacy?.url || "#")} style={{}}>
+          <StyledAnchor className="iubenda-cs-preferences-link" onClick={() => window.open(props.privacy?.url || "#")} style={{}}>
             {props.privacy?.title || "Privacy settings"}
           </StyledAnchor>
         </MenuItem>
