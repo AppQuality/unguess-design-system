@@ -11,10 +11,11 @@ interface VideowithAudio extends HTMLVideoElement {
 
 export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
   const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [hasAudio, setHasAudio] = useState<boolean>(false);
 
   const { videoRef } = props;
 
-  const hasAudio = (video: VideowithAudio | null) => {
+  const checkAudio = (video: VideowithAudio | null) => {
     if (!video) {
       return false;
     }
@@ -33,16 +34,28 @@ export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
     return video.volume > 0;
   };
 
+  const handleAudio = () => {
+    setHasAudio(checkAudio(videoRef));
+  };
+
   useEffect(() => {
     if (videoRef) {
       setIsMuted(!hasVolume(videoRef));
+
+      videoRef.addEventListener("loadeddata", handleAudio);
     }
+
+    return () => {
+      if (videoRef) {
+        videoRef.removeEventListener("loadeddata", handleAudio);
+      }
+    };
   }, [videoRef]);
 
   return (
     <IconButton
       isBright
-      disabled={!hasAudio(videoRef || null)}
+      disabled={!checkAudio(videoRef || null)}
       onClick={() => {
         if (videoRef) {
           videoRef.volume = videoRef.volume > 0 ? 0 : 1;
@@ -50,7 +63,7 @@ export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
         }
       }}
     >
-      {isMuted || !hasAudio(videoRef || null) ? <MutedIcon /> : <UnMutedIcon />}
+      {isMuted || !hasAudio ? <MutedIcon /> : <UnMutedIcon />}
     </IconButton>
   );
 };
