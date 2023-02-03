@@ -79,11 +79,19 @@ export const UserMenu = (props: UserMenuArgs) => {
         <MenuItem
           selectedItem={item}
           icon={<LockIcon color={theme.palette.blue[600]} />}
-          setActive={() => {}}
+          setActive={() => {
+            if (document.querySelector(".iubenda-cs-preferences-link")) {
+              const iubendaBtn: HTMLElement | null = document.querySelector(
+                ".iubenda-cs-preferences-link"
+              );
+
+              if (iubendaBtn) {
+                iubendaBtn.click();
+              }
+            }
+          }}
         >
-          <StyledAnchor className="iubenda-cs-preferences-link" onClick={() => window.open(props.privacy?.url || "#")} style={{}}>
-            {props.privacy?.title || "Privacy settings"}
-          </StyledAnchor>
+          {props.privacy?.title || "Privacy settings"}
         </MenuItem>
         <MenuItem
           selectedItem={item}
