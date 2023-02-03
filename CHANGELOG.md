@@ -1,3 +1,15 @@
+# v2.12.70 (Fri Feb 03 2023)
+
+#### 🐛 Bug Fix
+
+- Iubenda issues [#203](https://github.com/AppQuality/unguess-design-system/pull/203) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.69 (Fri Feb 03 2023)
 
 #### 🐛 Bug Fix
