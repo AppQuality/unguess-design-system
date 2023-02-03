@@ -35,7 +35,7 @@ export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
 
   useEffect(() => {
     if (videoRef) {
-      setIsMuted(!hasVolume(videoRef) || !videoRef.volume);
+      setIsMuted(!hasVolume(videoRef));
     }
   }, [videoRef]);
 
@@ -50,7 +50,7 @@ export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
         }
       }}
     >
-      {isMuted ? <MutedIcon /> : <UnMutedIcon />}
+      {isMuted || !hasAudio(videoRef || null) ? <MutedIcon /> : <UnMutedIcon />}
     </IconButton>
   );
 };
