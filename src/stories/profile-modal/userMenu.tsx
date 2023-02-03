@@ -11,10 +11,17 @@ import { theme } from "../theme";
 import { Separator } from "../dropdowns/menu";
 import { MD } from "../typography/typescale";
 import { UserContainer } from "./UserContainer";
+import { Anchor } from "../buttons/anchor";
 
 const StyledList = styled.ul`
   padding: 0;
   margin: 0;
+`;
+
+const StyledAnchor = styled(Anchor)`
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 export const UserMenu = (props: UserMenuArgs) => {
@@ -72,9 +79,11 @@ export const UserMenu = (props: UserMenuArgs) => {
         <MenuItem
           selectedItem={item}
           icon={<LockIcon color={theme.palette.blue[600]} />}
-          setActive={() => window.open(props.privacy?.url || "#")}
+          setActive={() => {}}
         >
-          {props.privacy?.title || "Privacy settings"}
+          <StyledAnchor onClick={() => window.open(props.privacy?.url || "#")} style={{}}>
+            {props.privacy?.title || "Privacy settings"}
+          </StyledAnchor>
         </MenuItem>
         <MenuItem
           selectedItem={item}
