@@ -139,8 +139,8 @@ export const Controls = (props: {
           onClick={(e) => handleSkipAhead(e.clientX)}
         />
       </ProgressContainer>
-      <ControlsBar id="controls_bar">
-        <StyledDiv id="audio_container">
+      <ControlsBar>
+        <StyledDiv>
           <AudioButton videoRef={videoRef} />
         </StyledDiv>
         <ControlsGroupCenter
