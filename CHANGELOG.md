@@ -1,3 +1,17 @@
+# v2.12.67 (Fri Feb 03 2023)
+
+#### 🐛 Bug Fix
+
+- Player audio improvements, counter multiselect includes now itemArgs props [#200](https://github.com/AppQuality/unguess-design-system/pull/200) ([@cannarocks](https://github.com/cannarocks))
+- refactor(player): move out styledDiv from component [#198](https://github.com/AppQuality/unguess-design-system/pull/198) ([@cannarocks](https://github.com/cannarocks))
+- feat(profile-modal): add privacy item [#199](https://github.com/AppQuality/unguess-design-system/pull/199) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.66 (Mon Jan 30 2023)
 
 #### 🐛 Bug Fix
