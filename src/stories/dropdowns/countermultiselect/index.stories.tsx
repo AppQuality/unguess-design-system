@@ -4,16 +4,16 @@ import { CounterMultiselectArgs } from "./_types";
 
 const options = [
   {
-    id: "asp",
+    itemId: "asp",
     label: "Asparagus long text to test if dropdown menu works correctly",
     selected: true,
   },
-  { id: "caul", label: "Cauliflower", selected: true },
-  { id: 3, label: "Garlic" },
-  { id: 4, label: "Kale" },
-  { id: 5, label: "Onion" },
-  { id: 6, label: "Mushroom" },
-  { id: 7, label: "Potato" },
+  { itemId: "caul", label: "Cauliflower", selected: true },
+  { itemId: 3, label: "Garlic" },
+  { itemId: 4, label: "Kale" },
+  { itemId: 5, label: "Onion" },
+  { itemId: 6, label: "Mushroom" },
+  { itemId: 7, label: "Potato" },
 ];
 
 const Template: Story<CounterMultiselectArgs> = ({ ...args }) => (
