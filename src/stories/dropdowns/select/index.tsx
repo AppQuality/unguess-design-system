@@ -7,7 +7,8 @@ import {
 import { StyledLabel } from "../../label";
 import { SelectArgs, DropdownArgs, MessageArgs } from "./_types";
 import styled from "styled-components";
-import { HeaderItem, Separator } from "../../..";
+import { MenuHeaderItem } from "../menuheader";
+import { Separator } from "../menu";
 
 const UgSelect = styled(ZendeskSelect)<SelectArgs>`
   ${(props) =>
@@ -38,6 +39,11 @@ const StyledDropdown = styled.div`
     display: block;
   }
 `;
+
+const StyledMenuHeaderItem = styled(MenuHeaderItem)`
+  pointer-events: none;
+`;
+
 const Dropdown = (props: PropsWithChildren<DropdownArgs>) => (
   <StyledDropdown>
     <ZendeskDropdown {...props} />
@@ -45,7 +51,7 @@ const Dropdown = (props: PropsWithChildren<DropdownArgs>) => (
 );
 const Message = (props: MessageArgs) => <ZendeskMessage {...props} />;
 
-Dropdown.HeaderItem = HeaderItem;
+Dropdown.HeaderItem = StyledMenuHeaderItem;
 Dropdown.Separator = Separator;
 
 export { Select, Dropdown, Message };
