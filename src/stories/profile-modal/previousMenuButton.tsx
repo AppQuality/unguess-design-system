@@ -5,7 +5,7 @@ import { ButtonArgs } from "../buttons/button/_types";
 
 const StyledButton = styled(Button)`
   color: ${(props) => props.theme.palette.grey[800]};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
+  font-weight: ${(props) => props.theme.fontWeights.semibold};
   padding-left: 0;
   justify-content: flex-start;
 

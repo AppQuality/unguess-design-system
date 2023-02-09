@@ -7,6 +7,7 @@ import {
 import { StyledLabel } from "../../label";
 import { SelectArgs, DropdownArgs, MessageArgs } from "./_types";
 import styled from "styled-components";
+import { HeaderItem, Separator } from "../../..";
 
 const UgSelect = styled(ZendeskSelect)<SelectArgs>`
   ${(props) =>
@@ -43,5 +44,8 @@ const Dropdown = (props: PropsWithChildren<DropdownArgs>) => (
   </StyledDropdown>
 );
 const Message = (props: MessageArgs) => <ZendeskMessage {...props} />;
+
+Dropdown.HeaderItem = HeaderItem;
+Dropdown.Separator = Separator;
 
 export { Select, Dropdown, Message };
