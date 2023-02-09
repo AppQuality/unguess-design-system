@@ -1,3 +1,16 @@
+# v2.12.71 (Thu Feb 09 2023)
+
+#### 🐛 Bug Fix
+
+- Add dropdown header item and separator [#205](https://github.com/AppQuality/unguess-design-system/pull/205) ([@cannarocks](https://github.com/cannarocks))
+- feat(dropdown): export header item and separator (skip ci) [#204](https://github.com/AppQuality/unguess-design-system/pull/204) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.70 (Fri Feb 03 2023)
 
 #### 🐛 Bug Fix
