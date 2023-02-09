@@ -1,3 +1,15 @@
+# v2.12.72 (Thu Feb 09 2023)
+
+#### 🐛 Bug Fix
+
+- Fix dropdown header item [#206](https://github.com/AppQuality/unguess-design-system/pull/206) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.71 (Thu Feb 09 2023)
 
 #### 🐛 Bug Fix
