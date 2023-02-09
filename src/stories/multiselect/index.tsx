@@ -60,6 +60,7 @@ export const MultiSelect = ({
         <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
         <Multiselect
           placeholder={i18n?.placeholder ?? "Select Items"}
+          renderShowMore={i18n?.showMore}
           isCompact={size !== "medium"}
           maxItems={maxItems}
           renderItem={({ value }) => (

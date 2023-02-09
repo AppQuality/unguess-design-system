@@ -17,5 +17,6 @@ export type MultiSelectProps = {
     label?: string;
     noMatches?: string;
     addNew?: (value: string) => string;
+    showMore?: (value: number) => string;
   };
 };
