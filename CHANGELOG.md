@@ -1,3 +1,15 @@
+# v2.12.73 (Thu Feb 09 2023)
+
+#### 🐛 Bug Fix
+
+- i18n: Allow translating showmore in multiselect [#207](https://github.com/AppQuality/unguess-design-system/pull/207) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v2.12.72 (Thu Feb 09 2023)
 
 #### 🐛 Bug Fix
