@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { PageHeaderProps } from "./_types";
 import { Breadcrumb } from "../../breadcrumbs";
-import { Main, MainCounters, MainDescription, MainOverline, MainTitle } from "./styled/main";
+import {
+  Main,
+  MainCounters,
+  MainDescription,
+  MainOverline,
+  MainTitle,
+} from "./styled/main";
 import { BreadcrumbArgs } from "../../breadcrumbs/_types";
 import { PropsWithChildren } from "react";
 
@@ -15,21 +21,9 @@ const StyledPageHeader = styled.div<PageHeaderProps>`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: ${({ theme }) =>
-    `${theme.space.xxl} ${theme.space.xxl} ${theme.space.md}`};
+  padding: ${({ theme }) => `${theme.space.md} 0`};
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) =>
-      `${theme.space.md} ${theme.space.md} ${theme.space.xs}`};
-  }
-
-  max-width: ${({ theme }) => theme.breakpoints.xxl};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.xxl}) {
-    margin: 0 auto;
-  }
 `;
 
 const PullLeft = styled.div`
