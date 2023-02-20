@@ -9,7 +9,6 @@ const MainContainer = styled.div`
 `;
 
 const InformationContainer = styled.div`
-  padding: ${({ theme }) => theme.space.xs}; 0;
   display: flex;
   align-items: flex-start;
   justify-content: center;

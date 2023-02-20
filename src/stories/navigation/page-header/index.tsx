@@ -11,17 +11,13 @@ import {
 import { BreadcrumbArgs } from "../../breadcrumbs/_types";
 import { PropsWithChildren } from "react";
 
-const PageContainer = styled.div`
-  background-color: ${({ theme }) => theme.palette.white};
-`;
-
 const StyledPageHeader = styled.div<PageHeaderProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: ${({ theme }) => `${theme.space.md} 0`};
+  padding: ${({ theme }) => theme.space.sm} 0;
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
 `;
@@ -33,8 +29,7 @@ const PullLeft = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  padding: ${({ theme }) => `${theme.space.xs} 10px`};
-  margin-bottom: ${({ theme }) => theme.space.xs};
+  margin-bottom: ${({ theme }) => theme.space.sm};
 `;
 
 const ButtonContainer = styled.div`
@@ -66,13 +61,8 @@ const Buttons = (props: PropsWithChildren<{}>) => (
     - Display page informations and meta data
     - As a container for the top part of the page
  */
-const PageHeader = (props: PageHeaderProps) => {
-  return (
-    <PageContainer>
-      <StyledPageHeader {...props} />
-    </PageContainer>
-  );
-};
+const PageHeader = (props: PageHeaderProps) => <StyledPageHeader {...props} />;
+
 PageHeader.Breadcrumb = StyledBreadcrumb;
 PageHeader.Main = Main;
 PageHeader.Buttons = Buttons;

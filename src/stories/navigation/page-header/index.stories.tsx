@@ -14,6 +14,16 @@ const FakeBody = styled.div`
   background-color: ${({ theme }) => theme.palette.grey[100]};
 `;
 
+const HeaderContainer = styled.div`
+  background-color: white;
+  width: 100%;
+`;
+
+const StyledInputToggle = styled(InputToggle)`
+  padding: 0;
+  margin: 0;
+`;
+
 interface PageHeaderStoryProps {
   pageHeaderArgs: {
     buttons: Array<React.ReactNode>;
@@ -26,36 +36,40 @@ const Template: Story<PageHeaderStoryProps> = (args) => {
 
   return (
     <FakeBody>
-      <PageHeader>
-        <PageHeader.Breadcrumb>
-          <Anchor href="#">Home</Anchor>
-          <Anchor href="#">Page</Anchor>
-        </PageHeader.Breadcrumb>
-        <PageHeader.Main {...pageHeaderMainArgs}>
-          {pageHeaderMainArgs.infoOverline && (
-            <PageHeader.Overline>
-              {pageHeaderMainArgs.infoOverline}
-            </PageHeader.Overline>
-          )}
-          {pageHeaderMainArgs.infoTitle && (
-            <PageHeader.Title>{pageHeaderMainArgs.infoTitle}</PageHeader.Title>
-          )}
-          {pageHeaderMainArgs.infoDescription && (
-            <PageHeader.Description>
-              {pageHeaderMainArgs.infoDescription}
-            </PageHeader.Description>
-          )}
-          {pageHeaderMainArgs.infoCounters && (
-            <PageHeader.Counters>
-              {pageHeaderMainArgs.infoCounters}
-            </PageHeader.Counters>
-          )}
-        </PageHeader.Main>
-        <PageHeader.Buttons>
-          <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
-        </PageHeader.Buttons>
-      </PageHeader>
-      <Paragraph style={{ marginTop: "24px" }}>
+      <HeaderContainer>
+        <PageHeader>
+          <PageHeader.Breadcrumb>
+            <Anchor href="#">Home</Anchor>
+            <Anchor href="#">Page</Anchor>
+          </PageHeader.Breadcrumb>
+          <PageHeader.Main {...pageHeaderMainArgs}>
+            {pageHeaderMainArgs.infoOverline && (
+              <PageHeader.Overline>
+                {pageHeaderMainArgs.infoOverline}
+              </PageHeader.Overline>
+            )}
+            {pageHeaderMainArgs.infoTitle && (
+              <PageHeader.Title>
+                {pageHeaderMainArgs.infoTitle}
+              </PageHeader.Title>
+            )}
+            {pageHeaderMainArgs.infoDescription && (
+              <PageHeader.Description>
+                {pageHeaderMainArgs.infoDescription}
+              </PageHeader.Description>
+            )}
+            {pageHeaderMainArgs.infoCounters && (
+              <PageHeader.Counters>
+                {pageHeaderMainArgs.infoCounters}
+              </PageHeader.Counters>
+            )}
+          </PageHeader.Main>
+          <PageHeader.Buttons>
+            <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
+          </PageHeader.Buttons>
+        </PageHeader>
+      </HeaderContainer>
+      <Paragraph style={{ padding: `${theme.space.md} 0` }}>
         This is a long paragraph, please ignore the style. It's not the object
         of this story, and it's useful to non-design purposes. Lorem ipsum dolor
         sit amet, consectetur adipiscing elit. Donec eu nunc eget nisi egestas
@@ -74,6 +88,7 @@ const TemplateEditable: Story<PageHeaderStoryProps> = (args) => {
 
   return (
     <FakeBody>
+      <HeaderContainer>
       <PageHeader>
         <PageHeader.Breadcrumb>
           <Anchor href="#">Home</Anchor>
@@ -87,15 +102,15 @@ const TemplateEditable: Story<PageHeaderStoryProps> = (args) => {
           )}
           {pageHeaderMainArgs.infoTitle && (
             <PageHeader.Title>
-              <InputToggle>
-                <InputToggle.Item
+              <StyledInputToggle>
+                <StyledInputToggle.Item
                   textSize={"xxxl"}
                   maxLength={64}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.currentTarget.value)}
                   style={{ paddingLeft: 0 }}
                 />
-              </InputToggle>
+              </StyledInputToggle>
             </PageHeader.Title>
           )}
           {pageHeaderMainArgs.infoDescription && (
@@ -113,7 +128,8 @@ const TemplateEditable: Story<PageHeaderStoryProps> = (args) => {
           <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
         </PageHeader.Buttons>
       </PageHeader>
-      <Paragraph style={{ marginTop: "24px" }}>
+      </HeaderContainer>
+      <Paragraph style={{ padding: `${theme.space.md} 0` }}>
         This is a long paragraph, please ignore the style. It's not the object
         of this story, and it's useful to non-design purposes. Lorem ipsum dolor
         sit amet, consectetur adipiscing elit. Donec eu nunc eget nisi egestas
