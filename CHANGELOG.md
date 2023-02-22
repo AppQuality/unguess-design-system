@@ -1,3 +1,18 @@
+# v2.12.74 (Wed Feb 22 2023)
+
+#### 🐛 Bug Fix
+
+- Tag colors & Page Header layout [#210](https://github.com/AppQuality/unguess-design-system/pull/210) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea))
+- Un 532 page layout [#209](https://github.com/AppQuality/unguess-design-system/pull/209) ([@marcbon](https://github.com/marcbon))
+- feat(Tag): add color prop and some default style [#208](https://github.com/AppQuality/unguess-design-system/pull/208) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.73 (Thu Feb 09 2023)
 
 #### 🐛 Bug Fix
