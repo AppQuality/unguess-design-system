@@ -25,7 +25,6 @@ const Template: Story<GridProps> = ({ rows, ...args }) => {
 
 const defaultArgs = {
   debug: true,
-  gutters: "md",
   rows: [{ ...BasicRow.args }, { ...BasicRow.args }, { ...BasicRow.args }],
 } as GridProps;
 

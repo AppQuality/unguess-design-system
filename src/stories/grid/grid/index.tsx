@@ -1,5 +1,5 @@
-import { Grid as ZendeskGrid } from '@zendeskgarden/react-grid';
-import { GridArgs } from './_types';
+import { Grid as ZendeskGrid } from "@zendeskgarden/react-grid";
+import { GridArgs } from "./_types";
 
 /**
  * The Grid component is a framework for building modular layouts.
@@ -7,6 +7,8 @@ import { GridArgs } from './_types';
  * Used for this:
     - To structure the layout of a page
  */
-const Grid = (props: GridArgs) => <ZendeskGrid {...props}/>;
+const Grid = ({ gutters = false, ...props }: GridArgs) => (
+  <ZendeskGrid gutters={gutters} {...props} />
+);
 
 export { Grid };
