@@ -60,18 +60,15 @@ export default {
   title: "Atoms/Tag",
   component: Tag,
   parameters: {
-    controls: {
-      matchers: {
-        color: /(hue)$/i,
-      },
-    },
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-  // argTypes: {
-  //   hue: {
-  //     options: ['primary', 'secondary'],
-  //     control: { type: 'radio' },
-  //   },
-  // },
+  argTypes: {
+    color: {
+      control: { type: 'color' },
+    },
+    hue: {
+      control: { type: 'color' },
+    },
+  },
 } as ComponentMeta<typeof Tag>;
