@@ -1,3 +1,16 @@
+# v2.12.75 (Wed Feb 22 2023)
+
+#### 🐛 Bug Fix
+
+- Grid [#212](https://github.com/AppQuality/unguess-design-system/pull/212) ([@marcbon](https://github.com/marcbon))
+- fix(grid): set default gutter false [#211](https://github.com/AppQuality/unguess-design-system/pull/211) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.74 (Wed Feb 22 2023)
 
 #### 🐛 Bug Fix
