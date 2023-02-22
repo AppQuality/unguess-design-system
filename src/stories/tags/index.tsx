@@ -1,4 +1,6 @@
 import { Tag as ZendeskTag } from '@zendeskgarden/react-tags';
+import { theme } from "../theme";
+import styled from 'styled-components';
 import { TagArgs } from "./_types";
 
 /**
@@ -12,9 +14,47 @@ import { TagArgs } from "./_types";
  * Not for this:
     - To prompt an action by the user, use a Button instead
  */
-const Tag = (props: TagArgs) => <ZendeskTag {...props} />;
 
-Tag.Avatar = ZendeskTag.Avatar;
-Tag.Close = ZendeskTag.Close;
-
-export { Tag };
+    const StyledAvatar = styled(ZendeskTag.Avatar)``;
+    const StyledClose = styled(ZendeskTag.Close)``;
+    
+    const StyledTag = styled(ZendeskTag)<TagArgs>`
+      ${(p) =>
+        p.color &&
+        `
+          color: ${p.color};
+          ${StyledClose} {
+             color: ${p.color};
+          }
+          &:hover {
+            color: ${p.color};
+             ${StyledClose} {
+                color: ${p.color};
+             }
+          }
+       `}
+      ${StyledAvatar} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    `;
+    
+    const Tag = ({
+      isPill = true,
+      hue = theme.palette.grey[200],
+      color = theme.palette.grey[700],
+      ...props
+    }: TagArgs) => (
+      <StyledTag
+        isPill={props.isRound ? false : isPill}
+        hue={hue}
+        color={color}
+        {...props}
+      />
+    );
+    
+    Tag.Avatar = StyledAvatar;
+    Tag.Close = StyledClose;
+    
+    export { Tag };
