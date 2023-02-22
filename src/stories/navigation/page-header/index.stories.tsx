@@ -19,11 +19,6 @@ const HeaderContainer = styled.div`
   width: 100%;
 `;
 
-const StyledInputToggle = styled(InputToggle)`
-  padding: 0;
-  margin: 0;
-`;
-
 interface PageHeaderStoryProps {
   pageHeaderArgs: {
     buttons: Array<React.ReactNode>;
@@ -102,15 +97,15 @@ const TemplateEditable: Story<PageHeaderStoryProps> = (args) => {
           )}
           {pageHeaderMainArgs.infoTitle && (
             <PageHeader.Title>
-              <StyledInputToggle>
-                <StyledInputToggle.Item
+              <InputToggle>
+                <InputToggle.Item
                   textSize={"xxxl"}
                   maxLength={64}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.currentTarget.value)}
                   style={{ paddingLeft: 0 }}
                 />
-              </StyledInputToggle>
+              </InputToggle>
             </PageHeader.Title>
           )}
           {pageHeaderMainArgs.infoDescription && (
