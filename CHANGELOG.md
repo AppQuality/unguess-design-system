@@ -1,3 +1,16 @@
+# v2.12.76 (Thu Feb 23 2023)
+
+#### 🐛 Bug Fix
+
+- Grid [#214](https://github.com/AppQuality/unguess-design-system/pull/214) ([@marcbon](https://github.com/marcbon))
+- fix(grid): restore default gutter + remove side padding [#213](https://github.com/AppQuality/unguess-design-system/pull/213) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.75 (Wed Feb 22 2023)
 
 #### 🐛 Bug Fix
