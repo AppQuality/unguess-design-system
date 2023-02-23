@@ -5,7 +5,6 @@ import { Row } from "../grid/row";
 import { TagArgs } from "./_types";
 import { KEY_CODES } from "@zendeskgarden/container-utilities";
 import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
-import { ReactComponent as ClockIcon } from "../../assets/icons/copy-stroke.svg";
 
 
 interface TagStoryProps extends TagArgs {
