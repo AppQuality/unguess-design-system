@@ -9,6 +9,9 @@ import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
 interface TagStoryProps extends TagArgs {
   canBeClosed: boolean;
   hasAvatar: boolean;
+  secondaryText: string;
+  secondaryTextIsRegular: boolean;
+  secondaryTextColor: string;
 }
 
 const handleKeyDown = (e: React.KeyboardEvent<any>) => {
@@ -20,6 +23,9 @@ const handleKeyDown = (e: React.KeyboardEvent<any>) => {
 const Template: Story<TagStoryProps> = ({
   hasAvatar,
   canBeClosed,
+  secondaryText,
+  secondaryTextIsRegular = false,
+  secondaryTextColor = "inherit",
   ...args
 }) => (
   <Row>
@@ -30,7 +36,10 @@ const Template: Story<TagStoryProps> = ({
             <LeafIcon />
           </Tag.Avatar>
         )}
-        <span>{args.title}</span>
+        {args.title}
+        {secondaryText && (
+          <Tag.SecondaryText color={secondaryTextColor} isRegular={secondaryTextIsRegular}>{secondaryText}</Tag.SecondaryText>
+        )}
         {canBeClosed && (
           <Tag.Close onClick={() => alert("Tag dismissed via mouse")} />
         )}
@@ -56,6 +65,16 @@ Close.args = {
   canBeClosed: true,
 };
 
+export const Counter = Template.bind({});
+Counter.args = {
+  title: "Tag counter",
+  canBeClosed: false,
+  hasAvatar: false,
+  secondaryText: "14",
+  secondaryTextColor: "#000000",
+  secondaryTextIsRegular: false,
+};
+
 export default {
   title: "Atoms/Tag",
   component: Tag,
@@ -68,6 +87,9 @@ export default {
       control: { type: 'color' },
     },
     hue: {
+      control: { type: 'color' },
+    },
+    secondaryTextColor: {
       control: { type: 'color' },
     },
   },
