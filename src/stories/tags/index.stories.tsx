@@ -5,6 +5,8 @@ import { Row } from "../grid/row";
 import { TagArgs } from "./_types";
 import { KEY_CODES } from "@zendeskgarden/container-utilities";
 import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
+import { ReactComponent as ClockIcon } from "../../assets/icons/copy-stroke.svg";
+
 
 interface TagStoryProps extends TagArgs {
   canBeClosed: boolean;
@@ -26,6 +28,7 @@ const Template: Story<TagStoryProps> = ({
   secondaryText,
   secondaryTextIsRegular = false,
   secondaryTextColor = "inherit",
+  children,
   ...args
 }) => (
   <Row>
@@ -36,7 +39,7 @@ const Template: Story<TagStoryProps> = ({
             <LeafIcon />
           </Tag.Avatar>
         )}
-        {args.title}
+        {children}
         {secondaryText && (
           <Tag.SecondaryText color={secondaryTextColor} isRegular={secondaryTextIsRegular}>{secondaryText}</Tag.SecondaryText>
         )}
@@ -50,24 +53,33 @@ const Template: Story<TagStoryProps> = ({
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "Questo è un tag",
+  children: "Questo è un tag",
 };
 
 export const Avatar = Template.bind({});
 Avatar.args = {
-  title: "Tag con avatar",
+  children: "Tag con avatar",
   hasAvatar: true,
 };
 
 export const Close = Template.bind({});
 Close.args = {
-  title: "Tag rimovibile",
+  children: "Tag rimovibile",
   canBeClosed: true,
+};
+
+export const Round = Template.bind({});
+Round.args = {
+  children: 12,
+  size: "large",
+  isRound: true,
+  canBeClosed: false,
+  hasAvatar: false,
 };
 
 export const Counter = Template.bind({});
 Counter.args = {
-  title: "Tag counter",
+  children: "Tag counter",
   canBeClosed: false,
   hasAvatar: false,
   secondaryText: "14",
