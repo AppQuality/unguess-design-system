@@ -19,11 +19,12 @@ import { Span } from '../typography/span';
 const StyledAvatar = styled(ZendeskTag.Avatar)``;
 const StyledClose = styled(ZendeskTag.Close)``;
 const StyledSpan = styled(Span) <{ color?: string; isRegular?: boolean }>`
-      margin-left: ${(p) => p.theme.space.xxs};
-      font-weight: ${(p) =>
-    p.isRegular ? p.theme.fontWeights.regular : p.theme.fontWeights.bold};
-      ${(p) => p.color && `color: ${p.color};`}
-    `;
+    min-width: 1ch;
+    margin-left: ${(p) => p.theme.space.xxs};
+    font-weight: ${(p) =>
+    p.isRegular ? p.theme.fontWeights.regular : p.theme.fontWeights.medium};
+    ${(p) => p.color && `color: ${p.color};`}
+  `;
 
 const StyledTag = styled(ZendeskTag)<TagArgs>`
     margin-right: ${(p) => p.theme.space.xs};
@@ -45,7 +46,7 @@ const StyledTag = styled(ZendeskTag)<TagArgs>`
           }
        `}
       ${StyledAvatar} {
-        border-radius: 0%;
+        border-radius: 0;
       }
 
       /* Large */
@@ -64,14 +65,16 @@ const StyledTag = styled(ZendeskTag)<TagArgs>`
 
 const Tag = ({
   isPill = true,
-  hue = theme.palette.grey[200],
+  hue = theme.palette.grey[100],
   color = theme.palette.grey[700],
+  size = 'medium',
   ...props
 }: TagArgs) => (
   <StyledTag
     isPill={props.isRound ? false : isPill}
     hue={hue}
     color={color}
+    size={size}
     {...props}
   />
 );
