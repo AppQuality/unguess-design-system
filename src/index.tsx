@@ -49,9 +49,6 @@ export { CHARTS_COLOR_PALETTE } from "./stories/theme/charts";
 // --- Close ---
 export * from "./stories/close";
 
-// --- Counter ---
-export * from "./stories/counter";
-
 // --- Drawers ---
 export * from "./stories/drawers";
 
