@@ -2,11 +2,7 @@ import { CampaignCardsProps } from "./_types";
 import { Tag } from "../tags";
 import { theme } from "../theme";
 import styled from "styled-components";
-import { ReactComponent as FunctionalTestIcon } from "../../assets/icons/campaign-functional.svg";
-import { ReactComponent as RegressionTestIcon } from "../../assets/icons/campaign-experiential.svg";
-import { ReactComponent as CompletedIcon } from "../../assets/icons/campaign-completed.svg";
-import { ReactComponent as ProgressIcon } from "../../assets/icons/campaign-progress.svg";
-import { ReactComponent as IncomingIcon } from "../../assets/icons/campaign-incoming.svg";
+import {StatusCompletedIcon, StatusIncomingIcon, StatusRunningIcon, CampaignExperientialIcon, CampaignFunctionalIcon} from "../icons";
 import { CampaignCardSkeleton } from "./skeleton";
 import { SpecialCard } from "../special-cards";
 import { SM } from "../typography/typescale";
@@ -15,24 +11,24 @@ import { Ellipsis } from "../typography/ellipsis";
 const getStatusIcon = (status: string) => {
   switch (status) {
     case "COMPLETED":
-      return CompletedIcon;
+      return StatusCompletedIcon;
     case "PROGRESS":
-      return ProgressIcon;
+      return StatusRunningIcon;
     case "INCOMING":
-      return IncomingIcon;
+      return StatusIncomingIcon;
     default:
-      return ProgressIcon;
+      return StatusRunningIcon;
   }
 };
 
 const getTypeDataIcon = (type?: string) => {
   switch (type) {
     case "EXPERIENTIAL":
-      return RegressionTestIcon;
+      return CampaignExperientialIcon;
     case "FUNCTIONAL":
-      return FunctionalTestIcon;
+      return CampaignFunctionalIcon;
     default:
-      return FunctionalTestIcon;
+      return CampaignFunctionalIcon;
   }
 };
 
