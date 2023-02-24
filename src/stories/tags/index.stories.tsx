@@ -6,9 +6,13 @@ import { TagArgs } from "./_types";
 import { KEY_CODES } from "@zendeskgarden/container-utilities";
 import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
 
+
 interface TagStoryProps extends TagArgs {
   canBeClosed: boolean;
   hasAvatar: boolean;
+  secondaryText: string;
+  secondaryTextBold: boolean;
+  secondaryTextColor: string;
 }
 
 const handleKeyDown = (e: React.KeyboardEvent<any>) => {
@@ -20,6 +24,10 @@ const handleKeyDown = (e: React.KeyboardEvent<any>) => {
 const Template: Story<TagStoryProps> = ({
   hasAvatar,
   canBeClosed,
+  secondaryText,
+  secondaryTextBold,
+  secondaryTextColor = "inherit",
+  children,
   ...args
 }) => (
   <Row>
@@ -30,7 +38,10 @@ const Template: Story<TagStoryProps> = ({
             <LeafIcon />
           </Tag.Avatar>
         )}
-        <span>{args.title}</span>
+        {children}
+        {secondaryText && (
+          <Tag.SecondaryText color={secondaryTextColor} isBold={secondaryTextBold}>{secondaryText}</Tag.SecondaryText>
+        )}
         {canBeClosed && (
           <Tag.Close onClick={() => alert("Tag dismissed via mouse")} />
         )}
@@ -41,19 +52,38 @@ const Template: Story<TagStoryProps> = ({
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "Questo è un tag",
+  children: "Questo è un tag",
 };
 
 export const Avatar = Template.bind({});
 Avatar.args = {
-  title: "Tag con avatar",
+  children: "Tag con avatar",
   hasAvatar: true,
 };
 
 export const Close = Template.bind({});
 Close.args = {
-  title: "Tag rimovibile",
+  children: "Tag rimovibile",
   canBeClosed: true,
+};
+
+export const Round = Template.bind({});
+Round.args = {
+  children: 12,
+  size: "large",
+  isRound: true,
+  canBeClosed: false,
+  hasAvatar: false,
+};
+
+export const Counter = Template.bind({});
+Counter.args = {
+  children: "Tag counter",
+  canBeClosed: false,
+  hasAvatar: false,
+  secondaryText: "14",
+  secondaryTextColor: "#000000",
+  secondaryTextBold: true,
 };
 
 export default {
@@ -69,6 +99,12 @@ export default {
     },
     hue: {
       control: { type: 'color' },
+    },
+    secondaryTextColor: {
+      control: { type: 'color' },
+    },
+    secondaryTextBold: {
+      control: { type: 'boolean' },
     },
   },
 } as ComponentMeta<typeof Tag>;

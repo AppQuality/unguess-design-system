@@ -3,7 +3,6 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { CampaignCard } from "./index";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
-import { Grid as PageGrid } from "../grid/grid";
 import { theme } from "../theme";
 import styled from "styled-components";
 
