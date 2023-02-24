@@ -1,3 +1,18 @@
+# v2.12.77 (Fri Feb 24 2023)
+
+#### 🐛 Bug Fix
+
+- New tag component [#217](https://github.com/AppQuality/unguess-design-system/pull/217) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- fix(counter): remove counter component (not used anymore) [#216](https://github.com/AppQuality/unguess-design-system/pull/216) ([@marcbon](https://github.com/marcbon))
+- Un 522 tag component [#215](https://github.com/AppQuality/unguess-design-system/pull/215) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.76 (Thu Feb 23 2023)
 
 #### 🐛 Bug Fix
