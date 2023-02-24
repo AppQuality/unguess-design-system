@@ -18,11 +18,9 @@ import { Span } from '../typography/span';
 
 const StyledAvatar = styled(ZendeskTag.Avatar)``;
 const StyledClose = styled(ZendeskTag.Close)``;
-const StyledSpan = styled(Span) <{ color?: string; isRegular?: boolean }>`
+const StyledSpan = styled(Span) <{ color?: string; }>`
     min-width: 1ch;
     margin-left: ${(p) => p.theme.space.xxs};
-    font-weight: ${(p) =>
-    p.isRegular ? p.theme.fontWeights.regular : p.theme.fontWeights.medium};
     ${(p) => p.color && `color: ${p.color};`}
   `;
 

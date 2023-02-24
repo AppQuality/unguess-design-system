@@ -11,7 +11,7 @@ interface TagStoryProps extends TagArgs {
   canBeClosed: boolean;
   hasAvatar: boolean;
   secondaryText: string;
-  secondaryTextIsRegular: boolean;
+  secondaryTextBold: boolean;
   secondaryTextColor: string;
 }
 
@@ -25,7 +25,7 @@ const Template: Story<TagStoryProps> = ({
   hasAvatar,
   canBeClosed,
   secondaryText,
-  secondaryTextIsRegular = false,
+  secondaryTextBold,
   secondaryTextColor = "inherit",
   children,
   ...args
@@ -40,7 +40,7 @@ const Template: Story<TagStoryProps> = ({
         )}
         {children}
         {secondaryText && (
-          <Tag.SecondaryText color={secondaryTextColor} isRegular={secondaryTextIsRegular}>{secondaryText}</Tag.SecondaryText>
+          <Tag.SecondaryText color={secondaryTextColor} isBold={secondaryTextBold}>{secondaryText}</Tag.SecondaryText>
         )}
         {canBeClosed && (
           <Tag.Close onClick={() => alert("Tag dismissed via mouse")} />
@@ -83,7 +83,7 @@ Counter.args = {
   hasAvatar: false,
   secondaryText: "14",
   secondaryTextColor: "#000000",
-  secondaryTextIsRegular: false,
+  secondaryTextBold: true,
 };
 
 export default {
@@ -102,6 +102,9 @@ export default {
     },
     secondaryTextColor: {
       control: { type: 'color' },
+    },
+    secondaryTextBold: {
+      control: { type: 'boolean' },
     },
   },
 } as ComponentMeta<typeof Tag>;
