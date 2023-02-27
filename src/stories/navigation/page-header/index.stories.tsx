@@ -2,13 +2,14 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { PageHeaderMainProps } from "./_types";
 import { PageHeader } from ".";
 import { Anchor } from "../../buttons/anchor";
-import { Counter } from "../../counter";
 import { Button } from "../../buttons/button";
 import React, { useState } from "react";
 import { theme } from "../../theme";
 import styled from "styled-components";
 import { Paragraph } from "../../typography/paragraph";
 import { InputToggle } from "../../forms/input-toggle";
+import { Tag } from "../../tags";
+import { CampaignFunctionalIcon, StatusCompletedIcon, StatusRunningIcon } from "../../icons";
 
 const FakeBody = styled.div`
   background-color: ${({ theme }) => theme.palette.grey[100]};
@@ -157,17 +158,46 @@ const defaultArgs: PageHeaderStoryProps = {
     infoOverline: "OVERLINE",
     infoDescription: "Description",
     infoCounters: (
-      <>
-        <Counter status="completed" counter={1}>
+      <div>
+        <Tag
+          size="large"
+          color={theme.palette.green[800]}
+          hue="rgba(0,0,0,0)"
+        >
+          <Tag.Avatar>
+            <StatusCompletedIcon />
+          </Tag.Avatar>
           Completed
-        </Counter>
-        <Counter status="progress" counter={2}>
-          In Progress
-        </Counter>
-        <Counter status="functional" counter={3}>
+          <Tag.SecondaryText color={theme.palette.grey[700]}>
+            1
+          </Tag.SecondaryText>
+        </Tag>
+        <Tag
+          size="large"
+          color={theme.palette.yellow[700]}
+          hue="rgba(0,0,0,0)"
+        >
+          <Tag.Avatar>
+            <StatusRunningIcon />
+          </Tag.Avatar>
+          In progress
+          <Tag.SecondaryText color={theme.palette.grey[700]}>
+            1
+          </Tag.SecondaryText>
+        </Tag>
+        <Tag
+          size="large"
+          hue="rgba(0,0,0,0)"
+        >
+          <Tag.Avatar>
+            <CampaignFunctionalIcon />
+          </Tag.Avatar>
           Functional
-        </Counter>
-      </>
+          <Tag.SecondaryText color={theme.palette.grey[700]}>
+            1
+          </Tag.SecondaryText>
+        </Tag>
+      </div>
     ),
     metaImage: "https://s3.eu-west-1.amazonaws.com/appq.static/nature.jpg",
   },
