@@ -1,3 +1,17 @@
+# v2.12.78 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Remove counter [#219](https://github.com/AppQuality/unguess-design-system/pull/219) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- fix(Counter): remove component from page header [#218](https://github.com/AppQuality/unguess-design-system/pull/218) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.77 (Fri Feb 24 2023)
 
 #### 🐛 Bug Fix
