@@ -1,6 +1,5 @@
 import { LG, SM } from "../typography/typescale";
 import { Tag } from "../tags";
-import { theme } from "../theme";
 import { ServiceCardsProps } from "./_types";
 import styled from "styled-components";
 import { SpecialCard } from "../special-cards";
