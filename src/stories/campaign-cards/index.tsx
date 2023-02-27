@@ -33,7 +33,7 @@ const getTypeDataIcon = (type?: string) => {
 };
 
 const StyledTag = styled(Tag)`
-  color: ${({ theme }) => theme.palette.grey["700"]};
+  max-width: 85%;
   cursor: pointer;
 `;
 
@@ -41,7 +41,6 @@ const StyledTagNew = styled(Tag)`
   height: ${({ theme }) => theme.space.base * 6}px;
   padding: ${({ theme }) => theme.space.base}px
     ${({ theme }) => theme.space.base * 2}px;
-  color: ${({ theme }) => theme.palette.white};
 `;
 
 const StyledLabel = styled(SM)`
@@ -70,6 +69,7 @@ const CampaignCard = ({
         {isNew && (
           <StyledTagNew
             hue={theme.palette.fuschia["600"]}
+            color={theme.palette.white}
             isPill
             size="medium"
             title={labelNew ? labelNew : "New!"}
@@ -88,14 +88,11 @@ const CampaignCard = ({
         {props.pillText && (
           <StyledTag
             size="large"
-            isPill
-            isRegular
-            hue={theme.palette.grey[100]}
           >
             <Tag.Avatar>
               <PillIcon />
             </Tag.Avatar>
-            <Ellipsis style={{maxWidth: "180px"}}>{props.pillText}</Ellipsis>
+            <Ellipsis>{props.pillText}</Ellipsis>
           </StyledTag>
         )}
         <StatusIcon />
