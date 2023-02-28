@@ -3,7 +3,7 @@ import { PageHeaderProps } from "./_types";
 import { Breadcrumb } from "../../breadcrumbs";
 import {
   Main,
-  MainCounters,
+  MainMeta,
   MainDescription,
   MainOverline,
   MainTitle,
@@ -17,9 +17,10 @@ const StyledPageHeader = styled.div<PageHeaderProps>`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: ${({ theme }) => theme.space.sm} 0;
   box-sizing: border-box;
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey[200]};
+  padding-top: ${({ theme }) => theme.space.lg};
+  padding-bottom: ${({ theme }) => theme.space.md};
 `;
 
 const PullLeft = styled.div`
@@ -32,7 +33,7 @@ const PullLeft = styled.div`
   margin-bottom: ${({ theme }) => theme.space.sm};
 `;
 
-const ButtonContainer = styled.div`
+const FooterContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -40,9 +41,10 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
   width: 100%;
   margin: ${({ theme }) => theme.space.md} 0;
+  padding: ${({ theme }) => theme.space.xxs} 0;
 `;
 
-const StyledBreadcrumb = (props: BreadcrumbArgs) => {
+const StyledBreadcrumbs = (props: BreadcrumbArgs) => {
   return (
     <PullLeft>
       <Breadcrumb {...props} />
@@ -50,8 +52,8 @@ const StyledBreadcrumb = (props: BreadcrumbArgs) => {
   );
 };
 
-const Buttons = (props: PropsWithChildren<{}>) => (
-  <ButtonContainer {...props} />
+const StyledFooter = (props: PropsWithChildren<{}>) => (
+  <FooterContainer {...props} />
 );
 
 /**
@@ -63,12 +65,12 @@ const Buttons = (props: PropsWithChildren<{}>) => (
  */
 const PageHeader = (props: PageHeaderProps) => <StyledPageHeader {...props} />;
 
-PageHeader.Breadcrumb = StyledBreadcrumb;
+PageHeader.Breadcrumbs = StyledBreadcrumbs;
 PageHeader.Main = Main;
-PageHeader.Buttons = Buttons;
 PageHeader.Overline = MainOverline;
 PageHeader.Title = MainTitle;
 PageHeader.Description = MainDescription;
-PageHeader.Counters = MainCounters;
+PageHeader.Meta = MainMeta;
+PageHeader.Footer = StyledFooter;
 
 export { PageHeader };

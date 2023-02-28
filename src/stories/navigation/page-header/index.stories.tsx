@@ -34,35 +34,35 @@ const Template: Story<PageHeaderStoryProps> = (args) => {
     <FakeBody>
       <HeaderContainer>
         <PageHeader>
-          <PageHeader.Breadcrumb>
+          <PageHeader.Breadcrumbs>
             <Anchor href="#">Home</Anchor>
             <Anchor href="#">Page</Anchor>
-          </PageHeader.Breadcrumb>
+          </PageHeader.Breadcrumbs>
           <PageHeader.Main {...pageHeaderMainArgs}>
-            {pageHeaderMainArgs.infoOverline && (
+            {pageHeaderMainArgs.mainOverline && (
               <PageHeader.Overline>
-                {pageHeaderMainArgs.infoOverline}
+                {pageHeaderMainArgs.mainOverline}
               </PageHeader.Overline>
             )}
-            {pageHeaderMainArgs.infoTitle && (
+            {pageHeaderMainArgs.mainTitle && (
               <PageHeader.Title>
-                {pageHeaderMainArgs.infoTitle}
+                {pageHeaderMainArgs.mainTitle}
               </PageHeader.Title>
             )}
-            {pageHeaderMainArgs.infoDescription && (
+            {pageHeaderMainArgs.mainDescription && (
               <PageHeader.Description>
-                {pageHeaderMainArgs.infoDescription}
+                {pageHeaderMainArgs.mainDescription}
               </PageHeader.Description>
             )}
-            {pageHeaderMainArgs.infoCounters && (
-              <PageHeader.Counters>
-                {pageHeaderMainArgs.infoCounters}
-              </PageHeader.Counters>
+            {pageHeaderMainArgs.mainMeta && (
+              <PageHeader.Meta>
+                {pageHeaderMainArgs.mainMeta}
+              </PageHeader.Meta>
             )}
           </PageHeader.Main>
-          <PageHeader.Buttons>
+          <PageHeader.Footer>
             <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
-          </PageHeader.Buttons>
+          </PageHeader.Footer>
         </PageHeader>
       </HeaderContainer>
       <Paragraph style={{ padding: `${theme.space.md} 0` }}>
@@ -86,17 +86,17 @@ const TemplateEditable: Story<PageHeaderStoryProps> = (args) => {
     <FakeBody>
       <HeaderContainer>
       <PageHeader>
-        <PageHeader.Breadcrumb>
+        <PageHeader.Breadcrumbs>
           <Anchor href="#">Home</Anchor>
           <Anchor href="#">Page</Anchor>
-        </PageHeader.Breadcrumb>
+        </PageHeader.Breadcrumbs>
         <PageHeader.Main {...pageHeaderMainArgs}>
-          {pageHeaderMainArgs.infoOverline && (
+          {pageHeaderMainArgs.mainOverline && (
             <PageHeader.Overline>
-              {pageHeaderMainArgs.infoOverline}
+              {pageHeaderMainArgs.mainOverline}
             </PageHeader.Overline>
           )}
-          {pageHeaderMainArgs.infoTitle && (
+          {pageHeaderMainArgs.mainTitle && (
             <PageHeader.Title>
               <InputToggle>
                 <InputToggle.Item
@@ -109,20 +109,20 @@ const TemplateEditable: Story<PageHeaderStoryProps> = (args) => {
               </InputToggle>
             </PageHeader.Title>
           )}
-          {pageHeaderMainArgs.infoDescription && (
+          {pageHeaderMainArgs.mainDescription && (
             <PageHeader.Description>
-              {pageHeaderMainArgs.infoDescription}
+              {pageHeaderMainArgs.mainDescription}
             </PageHeader.Description>
           )}
-          {pageHeaderMainArgs.infoCounters && (
-            <PageHeader.Counters>
-              {pageHeaderMainArgs.infoCounters}
-            </PageHeader.Counters>
+          {pageHeaderMainArgs.mainMeta && (
+            <PageHeader.Meta>
+              {pageHeaderMainArgs.mainMeta}
+            </PageHeader.Meta>
           )}
         </PageHeader.Main>
-        <PageHeader.Buttons>
+        <PageHeader.Footer>
           <>{args.pageHeaderArgs.buttons.map((button) => button)}</>
-        </PageHeader.Buttons>
+        </PageHeader.Footer>
       </PageHeader>
       </HeaderContainer>
       <Paragraph style={{ padding: `${theme.space.md} 0` }}>
@@ -154,11 +154,11 @@ const defaultArgs: PageHeaderStoryProps = {
     ],
   },
   pageHeaderMainArgs: {
-    infoTitle: "Title H1",
-    infoOverline: "OVERLINE",
-    infoDescription: "Description",
-    infoCounters: (
-      <div>
+    mainTitle: "Title H1",
+    mainOverline: "OVERLINE",
+    mainDescription: "Description",
+    mainMeta: (
+      <>
         <Tag
           size="large"
           color={theme.palette.green[800]}
@@ -197,9 +197,9 @@ const defaultArgs: PageHeaderStoryProps = {
             1
           </Tag.SecondaryText>
         </Tag>
-      </div>
+      </>
     ),
-    metaImage: "https://s3.eu-west-1.amazonaws.com/appq.static/nature.jpg",
+    mainImageUrl: "https://s3.eu-west-1.amazonaws.com/appq.static/nature.jpg",
   },
 };
 
@@ -216,4 +216,17 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
+  argTypes:
+    {
+      pageHeaderArgs: {
+        table: {
+          disable: true
+        }
+      },
+      pageHeaderMainArgs: {
+        table: {
+          disable: true
+        }
+      },
+    }
 } as ComponentMeta<typeof PageHeader>;

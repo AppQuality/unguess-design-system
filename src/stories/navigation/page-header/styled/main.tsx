@@ -34,9 +34,9 @@ const MetaContainer = styled.div`
 
 export const MainOverline = styled(MD)`
   color: ${({ theme }) => theme.palette.grey[600]};
-  margin-bottom: ${({ theme }) => theme.space.md};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   line-height: ${({ theme }) => theme.lineHeights.md};
+  margin-bottom: ${({ theme }) => theme.space.md};
 `;
 
 export const MainTitle = styled.h1`
@@ -45,30 +45,25 @@ export const MainTitle = styled.h1`
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   line-height: ${({ theme }) => theme.lineHeights.xxxl};
   width: 100%;
+  margin-bottom: ${({ theme }) => theme.space.sm};
 `;
 
 export const MainDescription = styled(LG)`
   color: ${({ theme }) => theme.palette.grey[600]};
-  margin: ${({ theme }) => theme.space.md} 0;
   line-height: ${({ theme }) => theme.lineHeights.lg};
+  margin-bottom: ${({ theme }) => theme.space.md};
 `;
 
-export const MainCounters = styled.div`
+export const MainMeta = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: ${({ theme }) => theme.space.md};
-
-  > div {
-    padding: 0;
-    margin-right: ${({ theme }) => theme.space.sm};
-  }
 `;
 
 const StyledCol = styled(Col)`
-  margin: 0;
+  margin-bottom: 0;
 `;
 
 const Image = styled.img`
@@ -81,16 +76,16 @@ export const Main = (props: PageHeaderMainProps) => {
   return (
     <MainContainer>
       <Row>
-        <StyledCol xs={12} sm={props.metaImage ? 6 : 12}>
+        <StyledCol xs={12} sm={props.mainImageUrl ? 6 : 12}>
           <InformationContainer>{props.children}</InformationContainer>
         </StyledCol>
-        {props.metaImage && (
-          <StyledCol xs={12} sm={props.metaImage ? 6 : 12}>
+        {props.mainImageUrl && (
+          <StyledCol xs={12} sm={props.mainImageUrl ? 6 : 12}>
             <MetaContainer>
               <Image
-                src={props.metaImage}
-                title={props.infoTitle}
-                alt={props.infoTitle}
+                src={props.mainImageUrl}
+                title={props.mainTitle}
+                alt={props.mainTitle}
               />
             </MetaContainer>
           </StyledCol>
