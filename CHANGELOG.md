@@ -1,3 +1,17 @@
+# v2.12.79 (Tue Feb 28 2023)
+
+#### 🐛 Bug Fix
+
+- New version with Tag fixes [#221](https://github.com/AppQuality/unguess-design-system/pull/221) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- Fix-cards-tags [#220](https://github.com/AppQuality/unguess-design-system/pull/220) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.78 (Mon Feb 27 2023)
 
 #### 🐛 Bug Fix
