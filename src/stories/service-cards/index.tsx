@@ -1,6 +1,5 @@
 import { LG, SM } from "../typography/typescale";
 import { Tag } from "../tags";
-import { theme } from "../theme";
 import { ServiceCardsProps } from "./_types";
 import styled from "styled-components";
 import { SpecialCard } from "../special-cards";
@@ -125,9 +124,6 @@ const ServiceCard = (props: ServiceCardsProps) => {
               <StyledTag
                 key={index}
                 size="large"
-                isPill
-                isRegular
-                hue={theme.palette.grey[100]}
               >
                 <StyledTag.Avatar>{tag.icon}</StyledTag.Avatar>
                 {tag.label}
