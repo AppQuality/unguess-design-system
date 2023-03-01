@@ -1,3 +1,16 @@
+# v2.12.80 (Wed Mar 01 2023)
+
+#### 🐛 Bug Fix
+
+- New page header [#223](https://github.com/AppQuality/unguess-design-system/pull/223) ([@marcbon](https://github.com/marcbon))
+- Un 524 page header [#222](https://github.com/AppQuality/unguess-design-system/pull/222) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.79 (Tue Feb 28 2023)
 
 #### 🐛 Bug Fix
