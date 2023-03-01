@@ -60,6 +60,7 @@ export const MainMeta = styled.div`
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
 `;
 
 const StyledCol = styled(Col)`
