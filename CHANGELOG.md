@@ -1,3 +1,17 @@
+# v2.12.81 (Thu Mar 09 2023)
+
+#### 🐛 Bug Fix
+
+- Hide sidebar below md breakpoint [#225](https://github.com/AppQuality/unguess-design-system/pull/225) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- fix(nav): change mobile breakpoint and mobile first [#224](https://github.com/AppQuality/unguess-design-system/pull/224) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.80 (Wed Mar 01 2023)
 
 #### 🐛 Bug Fix
