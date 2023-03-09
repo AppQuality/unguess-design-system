@@ -4,30 +4,23 @@ import { getColor } from "@zendeskgarden/react-theming";
 import { NavArgs } from "./_types";
 
 const UgNav = styled(ZendeskNav)`
-  border-right: ${({ theme }) => theme.borders.sm};
-  border-color: ${({ theme }) => getColor(theme.colors.neutralHue, 300)};
-  transition: all 0.25s ease;
-  ${(props) =>
-    `
-    margin-left: ${
-      props.isExpanded
-        ? 0
-        : -(
-            props.theme.components.chrome.nav.openWidth -
-            props.theme.components.chrome.nav.closedWidth
-          )
-    }px;
-    width: ${props.theme.components.chrome.nav.openWidth}px;
-      
-      @media (max-width: ${props.theme.breakpoints.sm}) {
-         width: ${props.isExpanded ? "100%" : "0"};
-         margin-left: 0;
-         border-right: none;
-      }
-  `}
-  // transition: width 0.25s ease-in-out;
+  width: ${p => p.isExpanded ? "100%" : "0"};
   padding-top: ${({ theme }) => theme.space.sm};
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+  margin-left: 0;
+  border-right: none;
+  transition: all 0.25s ease;
+  
+  @media (min-width: ${p => p.theme.breakpoints.md}) {
+    border-right: ${({ theme }) => theme.borders.sm};
+    border-color: ${({ theme }) => getColor(theme.colors.neutralHue, 300)};
+    width: ${p => p.theme.components.chrome.nav.openWidth}px;
+    margin-left: ${p => p.isExpanded
+                        ? 0
+                        : -(
+                            p.theme.components.chrome.nav.openWidth -
+                            p.theme.components.chrome.nav.closedWidth
+                          )
+    }px;
     padding-left: ${({ theme }) => theme.space.xs};
   }
 `;
