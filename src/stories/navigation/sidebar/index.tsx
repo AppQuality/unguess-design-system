@@ -25,7 +25,6 @@ import { LoadingSidebar } from "./skeleton";
 import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
 import { AccordionItem } from "../nav/nav-item/accordionItem";
 import { SM } from "../../typography/typescale";
-import useDebounce from "../../../hooks/useDebounce";
 
 const TokenContainer = styled.div`
   display: flex;

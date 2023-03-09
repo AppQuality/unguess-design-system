@@ -5,6 +5,7 @@ import { NavToggleArgs } from "./_types";
 import styled from "styled-components";
 
 const StyledToggle = styled(IconButton)`
+  display: none;
   width: ${({ theme }) => theme.space.base * 6}px;
   height: ${({ theme }) => theme.space.base * 6}px;
   min-width: ${({ theme }) => theme.space.md};
@@ -13,8 +14,8 @@ const StyledToggle = styled(IconButton)`
   right: -${({ theme }) => theme.space.base * 3}px;
   background: ${({ theme }) => theme.gradients.dark}};
   z-index: 1;
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    display: none;
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
   }
 `;
 
