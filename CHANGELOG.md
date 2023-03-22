@@ -1,3 +1,17 @@
+# v2.12.82 (Wed Mar 22 2023)
+
+#### 🐛 Bug Fix
+
+- z-index fix [#227](https://github.com/AppQuality/unguess-design-system/pull/227) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- feat(nav): higher z-index to nav toggle [#226](https://github.com/AppQuality/unguess-design-system/pull/226) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.81 (Thu Mar 09 2023)
 
 #### 🐛 Bug Fix
