@@ -1,3 +1,16 @@
+# v2.12.83 (Tue Mar 28 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#229](https://github.com/AppQuality/unguess-design-system/pull/229) ([@marcbon](https://github.com/marcbon))
+- fix(app-header): add zIndex front to prevent issues [#228](https://github.com/AppQuality/unguess-design-system/pull/228) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.82 (Wed Mar 22 2023)
 
 #### 🐛 Bug Fix
