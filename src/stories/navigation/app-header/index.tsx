@@ -1,4 +1,3 @@
-
 import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import styled from "styled-components";
 import { theme } from "../../theme";
@@ -19,17 +18,27 @@ const ChevronButton = styled(IconButton)`
  * An Header is a visual way to display general information.
  * This can include navList Items, modal, profile settings.
  */
-const AppHeader = ({ brand, avatar, isLoading, ...args }: AppHeaderArgs) => {
-  return isLoading ? <HeaderSkeleton /> : (
-    <Header {...args}>
+const AppHeader = ({
+  brand,
+  avatar,
+  isLoading,
+  style,
+  ...args
+}: AppHeaderArgs) => {
+  return isLoading ? (
+    <HeaderSkeleton />
+  ) : (
+    <Header
+      {...args}
+      style={{
+        ...style,
+        zIndex: style?.zIndex || theme.levels.front,
+      }}
+    >
       <BrandItem {...brand} toggleMenu={args.onSidebarMenuToggle} />
       {args.hasChangelog && args.changelogItem && (
-        <HeaderItem
-          style={{ marginRight: "-" + theme.space.xs }}
-        >
-          <HeaderItemIcon>
-            {args.changelogItem}
-          </HeaderItemIcon>
+        <HeaderItem style={{ marginRight: "-" + theme.space.xs }}>
+          <HeaderItemIcon>{args.changelogItem}</HeaderItemIcon>
         </HeaderItem>
       )}
 
