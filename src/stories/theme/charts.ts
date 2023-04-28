@@ -141,60 +141,15 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
 };
 
-export const CHARTS_COLOR_PALETTE = {
-  darkPine: theme.palette.teal[900],
-  lightGrey: theme.palette.grey[200],
-  darkGrey: theme.palette.grey[600],
-  mattone: "#800208",
-  gubbioLight: "#C78430",
-  blueRoyal: "#024780",
-  greenLight: "#5FA41C",
-  blue: "#020880",
-  fucsia: "#CE2A7A",
-  violet: "#573ECF",
-  orchidea: "#B75CAD",
-  sky: "#3392CE",
-};
-
 export const CHARTS_COLOR_SCHEME_MONO = [
-  CHARTS_COLOR_PALETTE.darkPine,
-  CHARTS_COLOR_PALETTE.lightGrey,
+  theme.palette.teal[900],
+  theme.palette.grey[200],
 ];
 
 export const CHARTS_COLOR_SCHEME_SEMANTIC = [
-  CHARTS_COLOR_PALETTE.mattone, // Mattone 900
-  CHARTS_COLOR_PALETTE.gubbioLight, // Gubbio light 600
-  CHARTS_COLOR_PALETTE.blueRoyal, // Blue royal 900
-  CHARTS_COLOR_PALETTE.darkPine, // Dark pine 900
-  CHARTS_COLOR_PALETTE.lightGrey,
-];
-
-export const CHARTS_COLOR_SCHEME_CATEGORICAL_5 = [
-  CHARTS_COLOR_PALETTE.greenLight, // Green light 700
-  CHARTS_COLOR_PALETTE.blue, // Blue 900
-  CHARTS_COLOR_PALETTE.fucsia, // Fucsia 700
-  CHARTS_COLOR_PALETTE.violet, // Violet 500
-  CHARTS_COLOR_PALETTE.orchidea, // Orchidea 300
-];
-
-export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_A = [
-  CHARTS_COLOR_PALETTE.darkPine, // Dark pine 900
-  CHARTS_COLOR_PALETTE.fucsia, // Fucsia 700
-  CHARTS_COLOR_PALETTE.violet, // Violet 500
-  CHARTS_COLOR_PALETTE.greenLight, // Green light 700
-  CHARTS_COLOR_PALETTE.mattone, // Mattone 900
-  CHARTS_COLOR_PALETTE.sky, // Sky 500
-  CHARTS_COLOR_PALETTE.orchidea, // Orchidea 300
-  CHARTS_COLOR_PALETTE.blue, // Blue 900
-];
-
-export const CHARTS_COLOR_SCHEME_CATEGORICAL_8_B = [
-  CHARTS_COLOR_PALETTE.sky, // Sky 500
-  CHARTS_COLOR_PALETTE.orchidea, // Orchidea 300
-  CHARTS_COLOR_PALETTE.blue, // Blue 900
-  CHARTS_COLOR_PALETTE.darkPine, // Dark pine 900
-  CHARTS_COLOR_PALETTE.fucsia, // Fucsia 700
-  CHARTS_COLOR_PALETTE.violet, // Violet 500
-  CHARTS_COLOR_PALETTE.greenLight, // Green light 700
-  CHARTS_COLOR_PALETTE.mattone, // Mattone 900
+  theme.palette.red[900],
+  theme.palette.yellow[700],
+  theme.palette.azure[900],
+  theme.palette.teal[900],
+  theme.palette.grey[200],
 ];

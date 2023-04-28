@@ -1,4 +1,4 @@
-import { CHARTS_COLOR_SCHEME_CATEGORICAL_8_A } from "../../theme/charts";
+import { CHARTS_COLOR_SCHEME_SEMANTIC } from "../../theme/charts";
 import { PieChartProps } from "./_types";
 import { ThemeContext } from "styled-components";
 import { useContext, useState } from "react";
@@ -15,7 +15,7 @@ const HalfPieChart = ({
 }: PieChartProps) => {
   const themeContext = useContext(ThemeContext as React.Context<any>);
 
-  const activeColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A;
+  const activeColors = colors ?? CHARTS_COLOR_SCHEME_SEMANTIC;
 
   while (activeColors.length < data.length) {
     activeColors.push(...activeColors);

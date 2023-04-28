@@ -1,6 +1,6 @@
 import { ResponsivePie } from "@nivo/pie";
 import {
-  CHARTS_COLOR_SCHEME_CATEGORICAL_8_A,
+  CHARTS_COLOR_SCHEME_SEMANTIC,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { ChartContainer, ChartContainerProps } from "../ChartContainer";
@@ -46,7 +46,7 @@ const HalfPieChartComponent = ({
           ...theme,
           background: mode === "front" ? "transparent" : undefined,
         }}
-        colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+        colors={colors ?? CHARTS_COLOR_SCHEME_SEMANTIC}
         enableArcLabels={false}
         arcLinkLabelsColor={{ from: "color" }}
         padAngle={2}

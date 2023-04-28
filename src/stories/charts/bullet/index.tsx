@@ -1,11 +1,12 @@
 import { BulletMarkersItemProps, ResponsiveBullet } from "@nivo/bullet";
 import styled from "styled-components";
 import { BulletChartProps } from "./_types";
-import { CHARTS_COLOR_PALETTE, DEFAULT_CHARTS_THEME } from "../../theme/charts";
+import { DEFAULT_CHARTS_THEME } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
 import { CustomBulletChartMarkers } from "./CustomBulletChartMarker";
 import { CustomMeasure } from "./CustomBulletChartMeasure";
 import { CustomTooltip } from "./CustomTooltip";
+import { theme } from "../../theme";
 
 const UgBulletChart = styled(ResponsiveBullet)`
   width: 100%;
@@ -29,7 +30,7 @@ const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
           ]}
           animate={false}
           measureComponent={CustomMeasure}
-          markerColors={CHARTS_COLOR_PALETTE.darkPine}
+          markerColors={theme.palette.teal[900]}
           markerComponent={({
             size,
             ...markerProps
@@ -37,7 +38,7 @@ const BulletChart = ({ width, height, ranges, values }: BulletChartProps) => {
             <CustomBulletChartMarkers {...markerProps} size={4} />
           )}
           tooltip={CustomTooltip}
-          rangeColors={CHARTS_COLOR_PALETTE.lightGrey}
+          rangeColors={theme.palette.grey[200]}
           rangeBorderColor="white"
           rangeBorderWidth={2}
           margin={{ top: 0, right: 5, bottom: -1, left: 0 }}

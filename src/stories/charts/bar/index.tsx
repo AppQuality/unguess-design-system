@@ -1,7 +1,7 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { BarChartProps } from "./_types";
 import {
-  CHARTS_COLOR_SCHEME_CATEGORICAL_8_A,
+  CHARTS_COLOR_SCHEME_SEMANTIC,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
@@ -34,7 +34,7 @@ export const BarChart = ({
   const theme = useContext(ThemeContext as React.Context<any>);
 
   const keys = [...new Set(data.map(({ keys }) => Object.keys(keys)).flat())];
-  const actualColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A;
+  const actualColors = colors ?? CHARTS_COLOR_SCHEME_SEMANTIC;
   return (
     <>
       <ChartContainer width={width} height={height}>

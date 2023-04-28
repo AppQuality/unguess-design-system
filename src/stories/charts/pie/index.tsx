@@ -1,6 +1,6 @@
 import { ResponsivePie } from "@nivo/pie";
 import {
-  CHARTS_COLOR_SCHEME_CATEGORICAL_8_A,
+  CHARTS_COLOR_SCHEME_SEMANTIC,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { PieChartProps } from "./_types";
@@ -43,7 +43,7 @@ const PieChart = ({
               },
             },
           }}
-          colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+          colors={colors ?? CHARTS_COLOR_SCHEME_SEMANTIC}
           enableArcLabels={false}
           arcLinkLabelsColor={{ from: "color" }}
           arcLinkLabelsSkipAngle={arcLinkLabelsSkipAngle ?? 10}
@@ -105,7 +105,7 @@ const PieChart = ({
       <ChartContainer width={width} height="auto">
         {legend ? (
           <Legend
-            colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+            colors={colors ?? CHARTS_COLOR_SCHEME_SEMANTIC}
             data={data.map((d) =>
               labelFormatter
                 ? labelFormatter({

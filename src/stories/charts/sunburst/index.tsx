@@ -1,6 +1,6 @@
 import { ResponsiveSunburst } from "@nivo/sunburst";
 import {
-  CHARTS_COLOR_SCHEME_CATEGORICAL_8_A,
+  CHARTS_COLOR_SCHEME_SEMANTIC,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { SunburstChartProps } from "./_types";
@@ -74,7 +74,7 @@ const SunburstChart = ({
           colors={
             currentColor
               ? () => currentColor
-              : colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A
+              : colors ?? CHARTS_COLOR_SCHEME_SEMANTIC
           }
           borderWidth={4}
           cornerRadius={4}
@@ -163,7 +163,7 @@ const SunburstChart = ({
       <ChartContainer width={width} height="auto">
         {legend ? (
           <Legend
-            colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+            colors={colors ?? CHARTS_COLOR_SCHEME_SEMANTIC}
             data={data.children.map((d) => d.label || d.name)}
             {...(typeof legend === "object" && legend)}
           />
