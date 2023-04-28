@@ -46,6 +46,7 @@ const SunburstChart = ({
 
   useEffect(() => {
     if (onChange) onChange(currentData);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentData]);
 
   if (!data.children) return <>No data</>;

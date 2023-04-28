@@ -7,8 +7,8 @@ import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 
 export const palette = {
   ...DEFAULT_THEME.palette, // we are overwriting this but want to keep the original palette component as reference
-  "black": "#000",
-  "white": "#fff",
+  "black": "#000000",
+  "white": "#FFFFFF",
   "product": {
     "support": "#00a656",
     "message": "#37b8af",
@@ -78,8 +78,8 @@ export const palette = {
     "100": "#D4FFF7",
     "200": "#ABEBDF",
     "300": "#6FD1BE",
-    "400": "#6FD1BE", // we don't have 400
-    "500": "#2B8473", // we don't have 500
+    // "400": "#6FD1BE", // we don't have 400
+    // "500": "#2B8473", // we don't have 500
     "600": "#2B8473",
     "700": "#206E6A",
     "800": "#0C4D5E",

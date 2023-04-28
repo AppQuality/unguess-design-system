@@ -1,40 +1,72 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Story } from "@storybook/react";
 import { HTMLAttributes } from "react";
 import { theme } from ".";
-import { Card } from "../cards";
 import { Title } from "../title";
-import { Paragraph } from "@zendeskgarden/react-typography";
+import styled from "styled-components";
 
 const { palette } = theme;
 
 interface Variant {
-  colorName: string;
-  color: string;
+  name: string;
+  hex: string;
 }
 
 interface PaletteProps extends HTMLAttributes<HTMLDivElement> {
-  cards: Array<{
+  colors: Array<{
     title: string;
-    colors: Array<Variant>;
+    variants: Array<Variant>;
   }>;
 }
 
+const Ul = styled.ul`
+  border-radius: ${p => p.theme.borderRadii.lg};
+  overflow: hidden;
+  height: fit-content;
+`;
+
+const Li = styled.li<{ hex: string }>`
+  background-color: ${({ hex }) => hex};
+  color: ${({ hex }) => getTextColor(hex)};
+  padding: ${p => p.theme.space.sm};
+`;
+
+const PaletteLayout = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: ${p => p.theme.space.xl} ${p => p.theme.space.lg};
+  margin-top: ${p => p.theme.space.xxl};
+  padding-left: ${p => p.theme.space.xl};
+  padding-right: ${p => p.theme.space.xl};
+`;
+
+const ColorSpec = styled(Title) <{ color: string }>`
+  color: ${({ color }) => color};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Template: Story<PaletteProps> = (props) => {
-  console.log(props);
   return (
-    <>
-      {props.cards.map((card) => (
-        <Paragraph {...props}>
-          <Title>{card.title}</Title>
-          {card.colors.map(({ colorName, color }) => (
-            <Card style={{ backgroundColor: color, color: contrast(color) }}>
-              <Title style={{ color: contrast(color) }}>{colorName}</Title>
-              {color}
-            </Card>
-          ))}
-        </Paragraph>
-      ))}
-    </>
+    <div>
+      <Title>Reference:</Title>
+      <p><small>Design principles <a href="https://garden.zendesk.com/design/color" target="_blank" rel="noreferrer">https://garden.zendesk.com/design/color (accessed 28 apr 2023)</a></small></p>
+      <p><small>Palette: <a href="https://garden.zendesk.com/components/palette" target="_blank" rel="noreferrer">https://garden.zendesk.com/components/palette (accessed 28 apr 2023)</a></small></p>
+      <PaletteLayout>
+        {props.colors.map((color) => (
+          <Ul>
+            {color.variants.map(({ name, hex }) => (
+              <Li hex={hex}>
+                <ColorSpec color={getTextColor(hex)}>
+                  <span>{color.title}{name !== color.title && `-${name}`}</span>
+                  <span>{hex.toUpperCase()}</span>
+                </ColorSpec>
+              </Li>
+            ))}
+          </Ul>
+        ))}
+      </PaletteLayout>
+    </div>
   );
 };
 
@@ -45,29 +77,29 @@ let colors = Object.keys(palette).map((key) => {
     Object.keys(color).map((variants) => {
       let variant = color[variants as keyof typeof color];
       return colorsVariants.push({
-        colorName: variants,
-        color: variant,
+        name: variants,
+        hex: variant,
       });
     });
   } else {
     colorsVariants[0] = {
-      colorName: key,
-      color: color,
+      name: key,
+      hex: color,
     };
   }
 
   return {
     title: key,
-    colors: colorsVariants,
+    variants: colorsVariants,
   };
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  cards: colors,
+  colors,
 };
 
-const contrast = (hex: string) => {
+const getTextColor = (hex: string) => {
   if (hex.indexOf("#") === 0) {
     hex = hex.slice(1);
   }
@@ -88,7 +120,6 @@ const contrast = (hex: string) => {
 
 export default {
   title: "Theme/Palette",
-  component: Paragraph,
   argTypes: {
     cards: {
       table: {
@@ -100,4 +131,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Paragraph>;
+};
