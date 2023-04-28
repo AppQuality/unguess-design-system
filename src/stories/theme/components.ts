@@ -41,7 +41,7 @@ export const components = {
   "forms.input": ({ isFocused }: { isFocused: boolean }) => {
     return isFocused
       ? {
-          boxShadow: `0 0 0 3px ${palette.kale[200]}}`,
+          boxShadow: `0 0 0 3px ${palette.green[200]}}`,
         }
       : undefined;
   },
@@ -67,7 +67,7 @@ export const components = {
           }
         : {}),
       "&:hover": {
-        backgroundColor: palette.kale[100],
+        backgroundColor: palette.green[100],
       },
     };
   },
@@ -94,7 +94,7 @@ export const components = {
       ...(isBasic && {
         backgroundColor: palette.white,
         "&:hover": {
-          backgroundColor: palette.kale[200],
+          backgroundColor: palette.green[200],
         },
       }),
       ...(isBright && {
@@ -102,11 +102,11 @@ export const components = {
         color: "white",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.kale[100],
+          color: palette.green[100],
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.kale[200],
+          color: palette.green[200],
         },
       }),
       ...(disabled && { pointerEvents: "none" }),
@@ -132,11 +132,11 @@ export const components = {
         border: "none",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.kale[100],
+          color: palette.green[100],
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.kale[200],
+          color: palette.green[200],
         },
       };
     }

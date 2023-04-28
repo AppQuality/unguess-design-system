@@ -2,6 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { BarChart } from ".";
 import { BarChartProps } from "./_types";
 import { data } from "./_data";
+import { theme } from "../../theme";
 
 const Template: Story<BarChartProps> = (args) => (
   <BarChart
@@ -10,7 +11,7 @@ const Template: Story<BarChartProps> = (args) => (
     axisBottomLabel="Bugs (Tot: 82)"
     axisLeftLabel="Typology"
     margin={{ top: 25, right: 25, bottom: 50, left: 150 }}
-    colors={["#02807a", "#024780", "#c78430", "#800208"]}
+    colors={[theme.palette.teal[900], "#024780", "#c78430", "#800208"]}
     {...args}
   />
 );

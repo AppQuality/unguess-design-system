@@ -8,7 +8,7 @@ import {
 import { forwardRef } from "react";
 
 const SelectedItemStyle = css`
-  background-color: ${({ theme }) => theme.palette.kale["100"]};
+  background-color: ${({ theme }) => theme.palette.green["100"]};
 `;
 
 const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
@@ -22,7 +22,7 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
     ${SelectedItemStyle}
   }
   &:hover {
-    background-color: ${({ theme }) => theme.palette.kale["200"]};
+    background-color: ${({ theme }) => theme.palette.green["200"]};
   }
   color: ${(props) => props.theme.colors.primaryHue};
   font-weight: ${(props) => props.theme.fontWeights.medium};

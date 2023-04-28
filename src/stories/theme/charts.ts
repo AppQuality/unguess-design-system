@@ -142,7 +142,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
 };
 
 export const CHARTS_COLOR_PALETTE = {
-  darkPine: "#02807A",
+  darkPine: theme.palette.teal[900],
   lightGrey: theme.palette.grey[200],
   darkGrey: theme.palette.grey[600],
   mattone: "#800208",

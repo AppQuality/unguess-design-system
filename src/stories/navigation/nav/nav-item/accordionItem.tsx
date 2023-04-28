@@ -31,7 +31,7 @@ const AccordionItemHeader = styled(Accordion.Header)<
   }
 
   &:hover {
-    background-color: ${(props) => props.theme.palette.kale["200"]};
+    background-color: ${(props) => props.theme.palette.green["200"]};
   }
 `;
 

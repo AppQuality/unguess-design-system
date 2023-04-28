@@ -45,7 +45,7 @@ const StyledItem = styled.li<MenuItemProps>`
   &:hover,
   &:focus,
   &:active {
-    background-color: ${theme.palette.kale[100]};
+    background-color: ${theme.palette.green[100]};
     color: ${props.isDanger ? theme.palette.red[500] : theme.palette.grey[800]};
   }`};
 

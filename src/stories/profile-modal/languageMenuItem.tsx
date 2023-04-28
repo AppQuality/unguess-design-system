@@ -40,7 +40,7 @@ const StyledButton = styled(Button)`
   &:hover,
   &:focus,
   &:active {
-    background-color: ${props.theme.palette.kale[100]};
+    background-color: ${props.theme.palette.green[100]};
     color: ${props.isDanger ? props.theme.palette.red[500] : props.theme.palette.grey[800]};
   }`};
 `; 
