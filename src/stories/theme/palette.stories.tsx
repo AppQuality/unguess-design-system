@@ -1,10 +1,8 @@
 import { Story } from "@storybook/react";
 import { HTMLAttributes } from "react";
 import { theme } from ".";
-import { Title } from "../title";
 import styled from "styled-components";
-
-const { palette } = theme;
+import { LG, MD } from "@zendeskgarden/react-typography";
 
 interface Variant {
   name: string;
@@ -12,12 +10,24 @@ interface Variant {
 }
 
 interface PaletteProps extends HTMLAttributes<HTMLDivElement> {
-  colors: Array<{
+  palette: Array<{
     title: string;
     variants: Array<Variant>;
-  }>;
+  }>,
+  colors: {
+    title: string;
+    semanticColors: Array<Variant>;
+  };
 }
 
+
+
+const Section = styled.section`
+  margin-bottom: ${p => p.theme.space.xl};
+  .sectionTitle {
+    margin-bottom: ${p => p.theme.space.md};
+  }
+`;
 const Ul = styled.ul`
   border-radius: ${p => p.theme.borderRadii.lg};
   overflow: hidden;
@@ -30,16 +40,14 @@ const Li = styled.li<{ hex: string }>`
   padding: ${p => p.theme.space.sm};
 `;
 
-const PaletteLayout = styled.div`
+const ColorsLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: ${p => p.theme.space.xl} ${p => p.theme.space.lg};
-  margin-top: ${p => p.theme.space.xxl};
-  padding-left: ${p => p.theme.space.xl};
-  padding-right: ${p => p.theme.space.xl};
+  max-width: 768px;
 `;
 
-const ColorSpec = styled(Title) <{ color: string }>`
+const ColorSpec = styled(MD) <{ color: string }>`
   color: ${({ color }) => color};
   display: flex;
   justify-content: space-between;
@@ -49,29 +57,56 @@ const ColorSpec = styled(Title) <{ color: string }>`
 const Template: Story<PaletteProps> = (props) => {
   return (
     <div>
-      <Title>Reference:</Title>
-      <p><small>Design principles <a href="https://garden.zendesk.com/design/color" target="_blank" rel="noreferrer">https://garden.zendesk.com/design/color (accessed 28 apr 2023)</a></small></p>
-      <p><small>Palette: <a href="https://garden.zendesk.com/components/palette" target="_blank" rel="noreferrer">https://garden.zendesk.com/components/palette (accessed 28 apr 2023)</a></small></p>
-      <PaletteLayout>
-        {props.colors.map((color) => (
+      <Section>
+        <div className="sectionTitle">
+          <LG>Reference:</LG>
+        </div>
+        <p><small>Design principles <a href="https://garden.zendesk.com/design/color" target="_blank" rel="noreferrer">https://garden.zendesk.com/design/color (accessed 28 apr 2023)</a></small></p>
+        <p><small>Palette: <a href="https://garden.zendesk.com/components/palette" target="_blank" rel="noreferrer">https://garden.zendesk.com/components/palette (accessed 28 apr 2023)</a></small></p>
+      </Section>
+      <Section>
+        <div className="sectionTitle">
+          <LG>Semantic Colors</LG>
+          <MD>Base: {props.colors.title}</MD>
+        </div>
+        <ColorsLayout>
           <Ul>
-            {color.variants.map(({ name, hex }) => (
+            {props.colors.semanticColors.map(({ name, hex }) => (
               <Li hex={hex}>
                 <ColorSpec color={getTextColor(hex)}>
-                  <span>{color.title}{name !== color.title && `-${name}`}</span>
+                  <span>{name}</span>
                   <span>{hex.toUpperCase()}</span>
                 </ColorSpec>
               </Li>
             ))}
           </Ul>
-        ))}
-      </PaletteLayout>
+        </ColorsLayout>
+      </Section>
+      <Section>
+        <div className="sectionTitle">
+          <LG>Palette</LG>
+        </div>
+        <ColorsLayout>
+          {props.palette.map((color) => (
+            <Ul>
+              {color.variants.map(({ name, hex }) => (
+                <Li hex={hex}>
+                  <ColorSpec color={getTextColor(hex)}>
+                    <span>{color.title}{name !== color.title && `-${name}`}</span>
+                    <span>{hex.toUpperCase()}</span>
+                  </ColorSpec>
+                </Li>
+              ))}
+            </Ul>
+          ))}
+        </ColorsLayout>
+      </Section>
     </div>
   );
 };
 
-let colors = Object.keys(palette).map((key) => {
-  let color = palette[key as keyof typeof palette];
+const palette = Object.keys(theme.palette).map((key) => {
+  let color = theme.palette[key as keyof typeof theme.palette];
   let colorsVariants: Array<Variant> = [];
   if (typeof color === "object") {
     Object.keys(color).map((variants) => {
@@ -94,9 +129,22 @@ let colors = Object.keys(palette).map((key) => {
   };
 });
 
+let themeColors = Object.keys(theme.colors).filter(key => key !== 'base');
+const colors = themeColors.map((key) => {
+  let color = theme.colors[key as keyof typeof theme.colors];
+  return {
+    name: key,
+    hex: (color !== 'light') ? color : theme.palette.white,
+  };
+});
+
 export const Default = Template.bind({});
 Default.args = {
-  colors,
+  palette,
+  colors: {
+    title: theme.colors.base,
+    semanticColors: colors,
+  },
 };
 
 const getTextColor = (hex: string) => {
