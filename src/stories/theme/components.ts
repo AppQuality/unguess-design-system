@@ -67,7 +67,7 @@ export const components = {
           }
         : {}),
       "&:hover": {
-        backgroundColor: palette.green[100],
+        backgroundColor: palette.blue[50],
       },
     };
   },
@@ -94,7 +94,7 @@ export const components = {
       ...(isBasic && {
         backgroundColor: palette.white,
         "&:hover": {
-          backgroundColor: palette.green[200],
+          backgroundColor: palette.blue[50],
         },
       }),
       ...(isBright && {
@@ -102,11 +102,11 @@ export const components = {
         color: "white",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.green[100],
+          color: palette.blue[50],
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.green[200],
+          color: palette.blue[50],
         },
       }),
       ...(disabled && { pointerEvents: "none" }),
@@ -132,11 +132,11 @@ export const components = {
         border: "none",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.green[100],
+          color: palette.blue[50],
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.green[200],
+          color: palette.blue[50],
         },
       };
     }
