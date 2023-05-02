@@ -36,11 +36,11 @@ const StyledButtonContainer = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  ${(props) => `
+  ${props => `
   &:hover,
   &:focus,
   &:active {
-    background-color: ${props.theme.palette.green[100]};
+    background-color: ${props.theme.palette.blue[50]};
     color: ${props.isDanger ? props.theme.palette.red[500] : props.theme.palette.grey[800]};
   }`};
 `; 
