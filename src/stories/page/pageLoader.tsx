@@ -22,7 +22,7 @@ export const PageLoader = () => {
     `only screen and (min-width: 576px)`
   ).matches;
   return (
-    <Chrome isFluid hue={theme.palette.white}>
+    <Chrome isFluid hue={theme.palette.white.toString()}>
       <Body>
         <AppHeader isLoading/>
         <Content>

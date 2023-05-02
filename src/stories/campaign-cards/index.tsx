@@ -69,7 +69,7 @@ const CampaignCard = ({
         {isNew && (
           <StyledTagNew
             hue={theme.palette.fuschia["600"]}
-            color={theme.palette.white}
+            color={theme.palette.white.toString()}
             isPill
             size="medium"
             title={labelNew ? labelNew : "New!"}

@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import { DEFAULT_THEME, IGardenTheme } from "@zendeskgarden/react-theming";
 import { palette } from "./palette";
 import { gradients } from "./gradients";
 import { components } from "./components";
@@ -6,7 +6,32 @@ import { boxShadow } from "./utils";
 import { fontWeights } from "./fontWeights";
 import { colors } from "./colors";
 
-const theme = {
+type UgTheme = IGardenTheme & { 
+  breakpoints: {
+    xxl: string;
+  };
+  colors: typeof colors;
+  borderRadii: {
+    lg: string;
+    xl: string;
+    xxl: string;
+  }
+  lineHeights: {
+    xs: string;
+  }
+  shadows: {
+    boxShadow: typeof boxShadow;
+  }
+  gradients: typeof gradients;
+  levels: {
+    back: number;
+    base: number;
+    front: number;
+    modal: number;
+  }
+}
+
+const theme: UgTheme = {
   ...DEFAULT_THEME,
   breakpoints: {
     ...DEFAULT_THEME.breakpoints,

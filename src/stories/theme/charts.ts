@@ -4,7 +4,7 @@ import { theme } from ".";
 interface UnguessChartsTheme extends CompleteTheme {}
 
 export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
-  background: theme.palette.white,
+  background: theme.palette.white.toString(),
   fontSize: Number(theme.fontSizes.sm), // Not used
   fontFamily: theme.fonts.system,
   textColor: theme.palette.grey[600],
@@ -13,27 +13,27 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
       fontSize: Number(theme.fontSizes.sm),
       fill: theme.colors.primaryHue,
       outlineWidth: 2,
-      outlineColor: theme.palette.white,
+      outlineColor: theme.palette.white.toString(),
       outlineOpacity: 1,
     },
     link: {
       stroke: theme.colors.primaryHue,
       strokeWidth: 1,
       outlineWidth: 2,
-      outlineColor: theme.palette.white,
+      outlineColor: theme.palette.white.toString(),
       outlineOpacity: 1,
     },
     outline: {
       stroke: theme.colors.primaryHue,
       strokeWidth: 2,
       outlineWidth: 2,
-      outlineColor: theme.palette.white,
+      outlineColor: theme.palette.white.toString(),
       outlineOpacity: 1,
     },
     symbol: {
       fill: theme.colors.primaryHue,
       outlineWidth: 2,
-      outlineColor: theme.palette.white,
+      outlineColor: theme.palette.white.toString(),
       outlineOpacity: 1,
     },
   },
@@ -129,7 +129,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
   tooltip: {
     container: {
-      background: theme.palette.white,
+      background: theme.palette.white.toString().toString(),
       color: theme.colors.primaryHue,
       fontSize: Number(theme.fontSizes.sm),
     },

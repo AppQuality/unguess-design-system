@@ -113,7 +113,7 @@ const palette = Object.keys(theme.palette).map((key) => {
       let variant = color[variants as keyof typeof color];
       return colorsVariants.push({
         name: variants,
-        hex: variant,
+        hex: variant.toString(),
       });
     });
   } else {
@@ -131,10 +131,10 @@ const palette = Object.keys(theme.palette).map((key) => {
 
 let themeColors = Object.keys(theme.colors).filter(key => key !== 'base');
 const colors = themeColors.map((key) => {
-  let color = theme.colors[key as keyof typeof theme.colors];
+  let color: string = theme.colors[key as keyof typeof theme.colors];
   return {
     name: key,
-    hex: (color !== 'light') ? color : theme.palette.white,
+    hex: (color !== 'light') ? color : theme.palette.white.toString(),
   };
 });
 

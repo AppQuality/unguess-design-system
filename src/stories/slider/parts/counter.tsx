@@ -26,7 +26,7 @@ export const SliderCounter = ({
   total: number;
 }) => {
   return (
-    <StyledTag isPill hue={theme.palette.white}>
+    <StyledTag isPill hue={theme.palette.white.toString()}>
       <StyledSM>
         <span>{current + 1}</span>/{total}
       </StyledSM>
