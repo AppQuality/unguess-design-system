@@ -1,11 +1,12 @@
 import { INotificationProps, IToastProviderProps } from "@zendeskgarden/react-notifications";
 
 export interface NotificationArgs extends INotificationProps {
-  /** Applies notification type styles */
-  type?: "success" | "warning" | "error" | "info";
+  type?: "success" | "error" | "warning" | "info";
+  isPrimary?: boolean;
+  isRegular?: boolean;
+  message?: string;
+  onClose?: () => void;
+  closeText?: string;
 }
 
-export interface ToastProviderArgs extends IToastProviderProps {
-  /** Applies regular (non-bold) font weight */
-  isRegular?: boolean;
-}
+export interface ToastProviderArgs extends IToastProviderProps {}
