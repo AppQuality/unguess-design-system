@@ -19,7 +19,7 @@ interface NotificationStoryProps {
 
 const defaultArgs: NotificationStoryProps = {
   notificationArgs: {
-    type: "warning",
+    type: "info",
     children: <Title isRegular>Action completed</Title>,
     onClose: () => alert("Close"),
   },
