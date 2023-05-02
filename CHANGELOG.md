@@ -1,3 +1,16 @@
+# v2.12.84 (Tue May 02 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#232](https://github.com/AppQuality/unguess-design-system/pull/232) ([@marcbon](https://github.com/marcbon))
+- 🔨 refactor(notifications): change Notification component to use styled-components [#231](https://github.com/AppQuality/unguess-design-system/pull/231) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.83 (Tue Mar 28 2023)
 
 #### 🐛 Bug Fix
