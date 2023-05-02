@@ -4,7 +4,6 @@ import {
   ToastProvider as UgToastProvider,
   useToast,
 } from ".";
-import { Title } from "../title";
 import { NotificationArgs, ToastProviderArgs } from "./_types";
 import { useCallback } from "react";
 import { Grid } from "../grid/grid";
@@ -20,7 +19,7 @@ interface NotificationStoryProps {
 const defaultArgs: NotificationStoryProps = {
   notificationArgs: {
     type: "info",
-    children: <Title isRegular>Action completed</Title>,
+    message: "Action completed",
     onClose: () => alert("Close"),
   },
   toastProviderArgs: {
@@ -99,10 +98,8 @@ export const ToastProvider = Template.bind({});
 ToastProvider.args = defaultArgs;
 
 const NotificationTemplate: Story<NotificationArgs> = ({
-  children,
-  onClose,
   ...props
-}) => <UgNotification {...props}>{children}</UgNotification>;
+}) => <UgNotification {...props} />;
 
 export const Notification = NotificationTemplate.bind({});
 Notification.args = defaultArgs.notificationArgs;

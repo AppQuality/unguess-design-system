@@ -27,6 +27,122 @@ export const components = {
     },
   },
 
+  "notifications.notification": ({
+    type,
+    isPrimary,
+  }: {
+    type: string;
+    isPrimary: boolean;
+  }) => {
+    return {
+      "svg": {
+        marginTop: "-1px",
+      },
+      ...(type === "success" &&
+        isPrimary && {
+          backgroundColor: palette.green[700],
+          svg: {
+            color: palette.white,
+          },
+        }),
+      ...(type === "warning" &&
+        isPrimary && {
+          backgroundColor: palette.yellow[700],
+          svg: {
+            color: palette.white,
+          },
+        }),
+      ...(type === "error" &&
+        isPrimary && {
+          backgroundColor: palette.red[700],
+          svg: {
+            color: palette.white,
+          },
+        }),
+      ...(type === "info" &&
+        isPrimary && {
+          backgroundColor: palette.blue[700],
+          svg: {
+            color: palette.white,
+          },
+        }),
+    };
+  },
+  "notifications.notification.close": ({
+    type,
+    isPrimary,
+  }: {
+    type: string;
+    isPrimary: boolean;
+  }) => {
+    return {
+      cursor: "pointer",
+      ...(type === "success" &&
+        isPrimary && {
+          color: palette.white,
+          ":hover": {
+            color: palette.white,
+          },
+        }),
+      ...(type === "warning" &&
+        isPrimary && {
+          color: palette.white,
+          ":hover": {
+            color: palette.white,
+          },
+        }),
+      ...(type === "error" &&
+        isPrimary && {
+          color: palette.white,
+          ":hover": {
+            color: palette.white,
+          },
+        }),
+      ...(type === "info" &&
+        isPrimary && {
+          color: palette.white,
+          ":hover": {
+            color: palette.white,
+          },
+        }),
+    };
+  },
+  "notifications.notification.close-icon": () => {
+    return {
+      "position": "relative",
+      "top": "unset",
+      "right": "unset",
+      "width": "auto",
+      "height": "auto",
+    }
+  },
+  "notifications.notification.title": ({
+    type,
+    isPrimary,
+  }: {
+    type: string;
+    isPrimary: boolean;
+  }) => {
+    return {
+      ...(type === "success" &&
+        isPrimary && {
+          color: palette.white + " !important",
+        }),
+      ...(type === "warning" &&
+        isPrimary && {
+          color: palette.white + " !important",
+        }),
+      ...(type === "error" &&
+        isPrimary && {
+          color: palette.white + " !important",
+        }),
+      ...(type === "info" &&
+        isPrimary && {
+          color: palette.white + " !important",
+        }),
+    };
+  },
+
   pageHeader: {
     imgMaxHeight: "214px",
   },

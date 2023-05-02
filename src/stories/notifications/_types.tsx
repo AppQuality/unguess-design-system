@@ -3,7 +3,8 @@ import { INotificationProps, IToastProviderProps } from "@zendeskgarden/react-no
 export interface NotificationArgs extends INotificationProps {
   type?: "success" | "error" | "warning" | "info";
   isPrimary?: boolean;
-  children?: React.ReactNode | React.ReactNode[];
+  isRegular?: boolean;
+  message?: string;
   onClose?: () => void;
   closeText?: string;
 }

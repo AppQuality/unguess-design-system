@@ -6,14 +6,42 @@ import {
 import { NotificationArgs, ToastProviderArgs } from "./_types";
 import styled from "styled-components";
 import { Anchor } from "@zendeskgarden/react-buttons";
+import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
+import { Title } from "../title";
+import { Close } from "../close";
 
-const UgAnchor = styled(Anchor)`
-  cursor: pointer;
+const NOTIFICATION_COMPONENT_ID = "notifications.notification";
+const CLOSE_COMPONENT_ID = "notifications.notification.close";
+const CLOSE_ICON_COMPONENT_ID = "notifications.notification.close-icon";
+const TITLE_COMPONENT_ID = "notifications.notification.title";
+
+const UgClose = styled(Close).attrs({
+  "data-custom-id": CLOSE_ICON_COMPONENT_ID,
+})`
+  ${(props) => retrieveComponentStyles(CLOSE_ICON_COMPONENT_ID, props)};
+`;
+
+const UgAnchor = styled(Anchor).attrs({
+  "data-custom-id": CLOSE_COMPONENT_ID,
+})<{
+  type: NotificationArgs["type"];
+  isPrimary?: boolean;
+}>`
+  ${(props) => retrieveComponentStyles(CLOSE_COMPONENT_ID, props)};
+`;
+
+const UgTitle = styled(Title).attrs({
+  "data-custom-id": TITLE_COMPONENT_ID,
+})<{
+  type: NotificationArgs["type"];
+  isPrimary?: boolean;
+}>`
+  ${(props) => retrieveComponentStyles(TITLE_COMPONENT_ID, props)};
 `;
 
 const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 
   > svg {
@@ -25,50 +53,7 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
     margin-left: ${({ theme }) => theme.space.md};
   }
 
-  ${(props) =>
-    props.type === ("success" as NotificationArgs["type"]) &&
-    `
-    background-color: ${props.theme.palette.green[700]};
-    color: ${props.theme.palette.white};
-
-    *, *:hover, *:focus, *:active {
-      color: ${props.theme.palette.white} !important;
-    }
-  `}
-
-  ${(props) =>
-    props.type === ("error" as NotificationArgs["type"]) &&
-    `
-    background-color: ${props.theme.palette.red[600]};
-    color: ${props.theme.palette.white};
-
-    *, *:hover, *:focus, *:active {
-      color: ${props.theme.palette.white} !important;
-    }
-  `}
-
-  ${(props) =>
-    props.type === ("warning" as NotificationArgs["type"]) &&
-    `
-    background-color: ${props.theme.palette.yellow[600]};
-    color: ${props.theme.palette.white};
-
-    *, *:hover, *:focus, *:active {
-      color: ${props.theme.palette.white} !important;
-    }
-  `}
-
-  ${(props) =>
-    props.type === ("info" as NotificationArgs["type"]) &&
-    props.isPrimary &&
-    `
-    background-color: ${props.theme.palette.blue[600]};
-    color: ${props.theme.palette.white};
-
-    *, *:hover, *:focus, *:active {
-      color: ${props.theme.palette.white} !important;
-    }
-  `}
+  ${(props) => retrieveComponentStyles(NOTIFICATION_COMPONENT_ID, props)};
 `;
 
 /**
@@ -78,14 +63,21 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
     - For a passive status update about user or system activity
  */
 const Notification = ({
-  children,
   closeText,
+  message,
   onClose,
+  type,
+  isPrimary,
+  isRegular,
   ...props
 }: NotificationArgs) => (
-  <UgNotification {...props}>
-    {children}
-    <UgAnchor onClick={onClose}>{closeText ?? "Dismiss"}</UgAnchor>
+  <UgNotification type={type} isPrimary={isPrimary} {...props}>
+    <UgTitle isRegular={isRegular} type={type} isPrimary={isPrimary}>
+      {message}
+    </UgTitle>
+    <UgAnchor type={type} isPrimary={isPrimary} onClick={onClose}>
+      {closeText ?? <UgClose />}
+    </UgAnchor>
   </UgNotification>
 );
 
