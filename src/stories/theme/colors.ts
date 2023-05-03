@@ -13,7 +13,7 @@ export const colors = {
   infoHue: palette.azure[600],
   neutralHue: palette.grey[600],
   chromeHue: palette.grey[200],
-  hover: palette.blue[50],
-  hoverInput: palette.blue[100],
+  menuHover: palette.blue[50],
+  menuSelected: palette.blue[100],
   border: palette.grey[300],
 };

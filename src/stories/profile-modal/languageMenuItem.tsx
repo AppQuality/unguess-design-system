@@ -37,10 +37,8 @@ const StyledButtonContainer = styled.div`
 
 const StyledButton = styled(Button)`
   ${props => `
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: ${props.theme.palette.blue[50]};
+  &:hover {
+    background-color: ${props.theme.colors.menuHover};
     color: ${props.isDanger ? props.theme.palette.red[500] : props.theme.palette.grey[800]};
   }`};
 `; 

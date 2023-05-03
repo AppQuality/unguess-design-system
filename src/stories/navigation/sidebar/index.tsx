@@ -49,7 +49,7 @@ const StyledNavItem = styled(NavItem)`
 
   &:hover,
   &:focus {
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.menuHover};
   }
 `;
 
