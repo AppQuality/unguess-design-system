@@ -38,13 +38,6 @@ export const components = {
   "tabs.tab": ({ isSelected }: { isSelected: boolean }) => {
     return isSelected ? { fontWeight: fontWeights.semibold } : undefined;
   },
-  "forms.input": ({ isFocused }: { isFocused: boolean }) => {
-    return isFocused
-      ? {
-          boxShadow: `0 0 0 3px ${palette.green[200]}}`,
-        }
-      : undefined;
-  },
   "dropdowns.item": ({
     addable,
     checked,
@@ -56,15 +49,15 @@ export const components = {
     return {
       ...(addable
         ? {
-            color: colors.primaryHue,
-            cursor: "pointer",
-          }
+          color: colors.primaryHue,
+          cursor: "pointer",
+        }
         : {}),
 
       ...(checked
         ? {
-            fontWeight: fontWeights.semibold,
-          }
+          fontWeight: fontWeights.semibold,
+        }
         : {}),
       "&:hover": {
         backgroundColor: palette.blue[50],
