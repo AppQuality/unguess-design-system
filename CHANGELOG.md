@@ -1,3 +1,15 @@
+# v2.12.85 (Wed May 03 2023)
+
+#### 🐛 Bug Fix
+
+- fix(toast): add props with children [#233](https://github.com/AppQuality/unguess-design-system/pull/233) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v2.12.84 (Tue May 02 2023)
 
 #### 🐛 Bug Fix
