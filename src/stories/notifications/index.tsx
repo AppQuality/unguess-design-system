@@ -9,6 +9,7 @@ import { Anchor } from "@zendeskgarden/react-buttons";
 import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 import { Title } from "../title";
 import { Close } from "../close";
+import { PropsWithChildren } from "react";
 
 const NOTIFICATION_COMPONENT_ID = "notifications.notification";
 const CLOSE_COMPONENT_ID = "notifications.notification.close";
@@ -78,7 +79,7 @@ const Notification = ({
 );
 
 // ToastProvider
-const ToastProvider = (props: ToastProviderArgs) => (
+const ToastProvider = (props: PropsWithChildren<ToastProviderArgs>) => (
   <ZendeskToastProvider {...props} />
 );
 const useToast = ZendeskUseToast;
