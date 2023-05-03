@@ -9,7 +9,11 @@ export const colors = {
   accentHue: palette.kale[600],
   warningHue: palette.yellow[600],
   successHue: palette.green[700],
-  dangerHue: palette.red[600],
+  dangerHue: palette.red[700],
+  infoHue: palette.azure[600],
   neutralHue: palette.grey[600],
   chromeHue: palette.grey[200],
+  hover: palette.blue[50],
+  hoverInput: palette.blue[100],
+  border: palette.grey[300],
 };
