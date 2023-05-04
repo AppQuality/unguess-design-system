@@ -13,11 +13,7 @@ interface PaletteProps extends HTMLAttributes<HTMLDivElement> {
   palette: Array<{
     title: string;
     variants: Array<Variant>;
-  }>,
-  colors: {
-    title: string;
-    semanticColors: Array<Variant>;
-  };
+  }>
 }
 
 
@@ -66,24 +62,6 @@ const Template: Story<PaletteProps> = (props) => {
       </Section>
       <Section>
         <div className="sectionTitle">
-          <LG>Semantic Colors</LG>
-          <MD>Base: {props.colors.title}</MD>
-        </div>
-        <ColorsLayout>
-          <Ul>
-            {props.colors.semanticColors.map(({ name, hex }) => (
-              <Li hex={hex}>
-                <ColorSpec color={getTextColor(hex)}>
-                  <span>{name}</span>
-                  <span>{hex.toUpperCase()}</span>
-                </ColorSpec>
-              </Li>
-            ))}
-          </Ul>
-        </ColorsLayout>
-      </Section>
-      <Section>
-        <div className="sectionTitle">
           <LG>Palette</LG>
         </div>
         <ColorsLayout>
@@ -129,21 +107,11 @@ const palette = Object.keys(theme.palette).map((key) => {
   };
 });
 
-let themeColors = Object.keys(theme.colors).filter(key => key !== 'base');
-const colors = themeColors.map((key) => {
-  let color: string = theme.colors[key as keyof typeof theme.colors];
-  return {
-    name: key,
-    hex: (color !== 'light') ? color : theme.palette.white.toString(),
-  };
-});
-
 export const Default = Template.bind({});
 Default.args = {
   palette,
   colors: {
     title: theme.colors.base,
-    semanticColors: colors,
   },
 };
 
