@@ -110,9 +110,6 @@ const palette = Object.keys(theme.palette).map((key) => {
 export const Default = Template.bind({});
 Default.args = {
   palette,
-  colors: {
-    title: theme.colors.base,
-  },
 };
 
 const getTextColor = (hex: string) => {
