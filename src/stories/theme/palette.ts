@@ -1,31 +1,37 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 
+/*
+ * Design principles https://garden.zendesk.com/design/color (accessed 28 apr 2023)
+ * Full DEFAULT_THEME.palette copied here to force the type, reference https://garden.zendesk.com/components/palette (accessed 28 apr 2023)
+ */
+
 export const palette = {
-  ...DEFAULT_THEME.palette,
-  black: "#000",
-  white: "#fff",
-  product: {
-    support: "#00a656",
-    message: "#37b8af",
-    explore: "#30aabc",
-    gather: "#f6c8be",
-    guide: "#ff6224",
-    connect: "#ff6224",
-    chat: "#f79a3e",
-    talk: "#efc93d",
-    sell: "#c38f00",
+  ...DEFAULT_THEME.palette, // we are overwriting this but want to keep the original palette component as reference
+  "black": "#000000",
+  "white": "#FFFFFF",
+  "product": {
+    "support": "#00a656",
+    "message": "#37b8af",
+    "explore": "#30aabc",
+    "gather": "#f6c8be",
+    "guide": "#ff6224",
+    "connect": "#ff6224",
+    "chat": "#f79a3e",
+    "talk": "#efc93d",
+    "sell": "#c38f00"
   },
-  grey: {
-    "100": "#F6F6F8",
+  "grey": {
+    "100": "#f8f9f9",
     "200": "#e9ebed",
     "300": "#d8dcde",
     "400": "#c2c8cc",
     "500": "#87929d",
     "600": "#68737d",
     "700": "#49545c",
-    "800": "#2f3941",
+    "800": "#2f3941"
   },
-  blue: {
+  "blue": {
+    "50": "#F0F3F5",
     "100": "#E6EBEE",
     "200": "#B0C2CB",
     "300": "#8AA4B2",
@@ -35,118 +41,131 @@ export const palette = {
     "700": "#00293E",
     "800": "#001825",
   },
-  red: {
-    "100": "#F9E2E1",
-    "200": "#F3C5C4",
-    "300": "#EA9B99",
-    "400": "#E2716F",
-    "500": "#DB4D50",
-    "600": "#D53032",
-    "700": "#A92329",
-    "800": "#771823",
+  "red": { // previously mattone
+    "100": "#FFEEEE",
+    "200": "#FFCFD1",
+    "300": "#FFB0B4",
+    "400": "#FF9297",
+    "500": "#FF7379",
+    "600": "#FA535B",
+    "700": "#D22F37",
+    "800": "#A9141B",
+    "900": "#800208",
   },
-  yellow: {
-    "100": "#FEF6E7",
-    "200": "#FDEDCE",
-    "300": "#FBE1AC",
-    "400": "#F9CF7B",
-    "500": "#F7BF50",
-    "600": "#F4AC1A",
-    "700": "#D1820A",
-    "800": "#A15908",
+  "yellow": { // previously gubbio
+    "100": "#FFF7EE",
+    "200": "#FFE7C9",
+    "300": "#FFD7A4",
+    "400": "#FFC67F",
+    "500": "#FFB65A",
+    "600": "#E9A045",
+    "700": "#C78430",
+    "800": "#A5691E",
+    "900": "#835011",
   },
-  green: {
-    "100": "#D7F9E5",
-    "200": "#ABF2C7",
-    "300": "#7FEBAA",
-    "400": "#53E48D",
-    "500": "#27DD70",
-    "600": "#1CB559",
-    "700": "#158944",
-    "800": "#0E5D2E",
+  "green": {
+    "50": "#E2F4EC",
+    "100": "#b8e3d0",
+    "200": "#88d0b3",
+    "300": "#50BF95",
+    "400": "#00b280",
+    "500": "#00a56a",
+    "600": "#00965F",
+    "700": "#008452",
+    "800": "#007345",
   },
-  kale: {
-    "100": "#f1f9f3",
-    "200": "#d3ecdb",
-    "300": "#9fd7b1",
-    "400": "#70c38a",
-    "500": "#66b17e",
-    "600": "#508a62",
-    "700": "#3e6b4c",
-    "800": "#2f523a",
+  "kale": { // previously water
+    "100": "#D4FFF7",
+    "200": "#ABEBDF",
+    "300": "#6FD1BE",
+    // "400": "#6FD1BE", // we don't have 400
+    // "500": "#2B8473", // we don't have 500
+    "600": "#2B8473",
+    "700": "#206E6A",
+    "800": "#0C4D5E",
   },
-  fuschia: {
+  "fuschia": {
     "400": "#d653c2",
     "600": "#a81897",
-    M400: "#cf62a8",
-    M600: "#a8458c",
+    "M400": "#cf62a8",
+    "M600": "#a8458c"
   },
-  pink: {
+  "pink": {
     "400": "#ec4d63",
     "600": "#d42054",
-    M400: "#d57287",
-    M600: "#b23a5d",
+    "800": "#8A0C49",
+    "M400": "#d57287",
+    "M600": "#b23a5d"
   },
-  crimson: {
+  "crimson": {
     "400": "#e34f32",
     "600": "#c72a1c",
-    M400: "#cc6c5b",
-    M600: "#b24a3c",
+    "500": "#E34F32",
+    "M400": "#cc6c5b",
+    "M600": "#b24a3c"
   },
-  orange: {
+  "orange": {
     "400": "#de701d",
     "600": "#bf5000",
-    M400: "#d4772c",
-    M600: "#b35827",
+    "M400": "#d4772c",
+    "M600": "#b35827"
   },
-  lemon: {
+  "lemon": {
     "400": "#ffd424",
     "600": "#ffbb10",
-    M400: "#e7a500",
-    M600: "#c38f00",
+    "M400": "#e7a500",
+    "M500": "#D6AD13",
+    "M600": "#c38f00"
   },
-  lime: {
+  "lime": {
     "400": "#43b324",
     "600": "#2e8200",
-    M400: "#519e2d",
-    M600: "#47782c",
+    "M400": "#519e2d",
+    "M600": "#47782c"
   },
-  mint: {
+  "mint": {
     "400": "#00a656",
     "600": "#058541",
-    M400: "#299c66",
-    M600: "#2e8057",
+    "M400": "#299c66",
+    "M600": "#2e8057"
   },
-  teal: {
-    "400": "#02a191",
-    "600": "#028079",
-    M400: "#2d9e8f",
-    M600: "#3c7873",
+  "teal": { // previously darkPine
+    "100": "#E6F4F1",
+    "200": "#CFFFFD",
+    "300": "#B0FFFB",
+    "400": "#92FFFA",
+    "500": "#73FFF8",
+    "600": "#53FAF2",
+    "700": "#2FD2CA",
+    "800": "#14A9A2",
+    "900": "#02807A",
+    "M400": "#2d9e8f",
+    "M600": "#3c7873"
   },
-  azure: {
-    "400": "#3091ec",
-    "600": "#1371d6",
-    M400: "#5f8dcf",
-    M600: "#3a70b2",
+  "azure": { // previously royal blue
+    "100": "#EEF7FF",
+    "200": "#CFE9FF",
+    "300": "#B0DBFF",
+    "400": "#92CDFF",
+    "500": "#73BFFF",
+    "600": "#53AFFA",
+    "700": "#2F88D2",
+    "800": "#1466A9",
+    "900": "#024780",
+    "M400": "#5f8dcf",
+    "M600": "#3a70b2"
   },
-  royal: {
+  "royal": {
     "400": "#5d7df5",
     "600": "#3353e2",
-    M400: "#7986d8",
-    M600: "#4b61c3",
+    "900": "#1F0F69",
+    "M400": "#7986d8",
+    "M600": "#4b61c3"
   },
-  purple: {
+  "purple": {
     "400": "#b552e2",
     "600": "#6a27b8",
-    M400: "#b072cc",
-    M600: "#9358b0",
-  },
-  water: {
-    100: "#D4FFF7",
-    200: "#ABEBDF",
-    300: "#6FD1BE",
-    600: "#2B8473",
-    700: "#206E6A",
-    800: "#0C4D5E",
-  },
+    "M400": "#b072cc",
+    "M600": "#9358b0"
+  }
 };

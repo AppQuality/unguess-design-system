@@ -162,13 +162,6 @@ export const components = {
   "tabs.tab": ({ isSelected }: { isSelected: boolean }) => {
     return isSelected ? { fontWeight: fontWeights.semibold } : undefined;
   },
-  "forms.input": ({ isFocused }: { isFocused: boolean }) => {
-    return isFocused
-      ? {
-          boxShadow: `0 0 0 3px ${palette.kale[200]}}`,
-        }
-      : undefined;
-  },
   "dropdowns.item": ({
     addable,
     checked,
