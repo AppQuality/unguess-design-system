@@ -1,4 +1,4 @@
-import { getColor as zendeskGetColor, IGardenTheme } from "@zendeskgarden/react-theming";
+import { getColor as zendeskGetColor } from "@zendeskgarden/react-theming";
 import { DefaultTheme, css } from "styled-components";
 import { theme as unguessTheme } from ".";
 import UAParser from "ua-parser-js";
@@ -16,7 +16,7 @@ export const hex2rgba = (hex: string, alpha = 1) => {
   return `rgba(${r},${g},${b},${alpha})`;
 };
 
-export const boxShadow = (theme: IGardenTheme) => {
+export const boxShadow = (theme: DefaultTheme) => {
   const { space, shadows, palette } = theme;
   const offsetY = `${space.base}px`;
   const blurRadius = `${space.base * 2}px`;
