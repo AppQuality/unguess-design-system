@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MD } from "../typography/typescale";
 import { EditorHeaderArgs } from "./_types";
+import { getColor } from "../theme/utils";
 
 const Header = styled.div`
   display: flex;
@@ -12,13 +13,13 @@ const Header = styled.div`
 const Title = styled(MD)<EditorHeaderArgs>`
   ${({ validation, theme }) => {
     if (validation === "success") {
-      return `color: ${theme.colors.successHue};`;
+      return `color: ${getColor(theme.colors.successHue)};`;
     } else if (validation === "warning") {
-      return `color: ${theme.colors.warningHue};`;
+      return `color: ${getColor(theme.colors.warningHue)};`;
     } else if (validation === "error") {
-      return `color: ${theme.palette.dangerHue};`;
+      return `color: ${getColor(theme.colors.dangerHue)};`;
     } else {
-      return `color: ${theme.colors.primaryHue};`;
+      return `color: ${getColor(theme.colors.primaryHue)};`;
     }
   }}
 `;
