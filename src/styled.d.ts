@@ -1,7 +1,7 @@
 import "styled-components";
-import theme from "./stories/theme";
+import { theme } from "./stories/theme";
 
 declare module "styled-components" {
-  const Theme = typeof theme;
-  export interface DefaultTheme extends Theme {}
+  type UgTheme = typeof theme;
+  export interface DefaultTheme extends UgTheme {}
 }
