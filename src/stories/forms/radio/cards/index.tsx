@@ -1,6 +1,4 @@
 import { RadioCardArgs } from "./_types";
-import { Card } from "../../../cards";
-import { cardStyle } from "../../../theme/mixins";
 import { ReactComponent as CheckIcon } from "../../../../assets/icons/check-lg.svg";
 import { LG } from "@zendeskgarden/react-typography";
 import styled from "styled-components";

@@ -28,7 +28,7 @@ const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
     <SpecialCard {...args}>
       <SpecialCard.Meta justifyContent={"end"}>
         <StyledTagNew
-          hue={theme.palette.fuschia["600"]}
+          hue={theme.palette.pink["600"]}
           isPill
           size="medium"
           title={"New!"}

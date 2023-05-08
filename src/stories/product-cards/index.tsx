@@ -26,7 +26,7 @@ const ProductCard = (props: ProductCardProps) => {
       <SpecialCard.Meta>
         {isNew && (
           <StyledTagNew
-            hue={globalTheme.palette.fuschia["600"]}
+            hue={globalTheme.palette.pink["600"]}
             isPill
             size="medium"
             title={labelNew ? labelNew : "New!"}
