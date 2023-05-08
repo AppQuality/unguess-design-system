@@ -1,3 +1,16 @@
+# v2.12.86 (Mon May 08 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#235](https://github.com/AppQuality/unguess-design-system/pull/235) ([@marcbon](https://github.com/marcbon))
+- 🚀 feat(profile-modal): add onCopyEmail and chatSupport props to UserMenuArgs [#234](https://github.com/AppQuality/unguess-design-system/pull/234) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.85 (Wed May 03 2023)
 
 #### 🐛 Bug Fix
