@@ -65,6 +65,8 @@ export const UserMenu = (props: UserMenuArgs) => {
           toggleChat={props.onToggleChat}
           chatSupportLabel={props?.chatSupportLabel}
           copyLabel={props?.copyLabel}
+          onCopyEmail={props?.onCopyEmail}
+          chatSupport={props?.chatSupport}
         />
         <LanguageItem
           title={props.languageTitle || "Change Language"}

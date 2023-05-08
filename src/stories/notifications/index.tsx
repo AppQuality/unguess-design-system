@@ -44,6 +44,7 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-right: ${({ theme }) => theme.space.md};
 
   ${UgAnchor} {
     flex-shrink: 0;
