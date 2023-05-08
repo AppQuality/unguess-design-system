@@ -28,6 +28,8 @@ interface HelpItemProps extends MenuItemProps {
     email: string;
     picture?: string;
   };
+  onCopyEmail?: () => void;
+  chatSupport?: boolean;
 }
 
 const StyledButton = styled(Button)`
@@ -36,7 +38,11 @@ const StyledButton = styled(Button)`
   &:focus,
   &:active {
     background-color: ${props.theme.palette.kale[100]};
-    color: ${props.isDanger ? props.theme.palette.red[500] : props.theme.palette.grey[800]};
+    color: ${
+      props.isDanger
+        ? props.theme.palette.red[500]
+        : props.theme.palette.grey[800]
+    };
   }`};
 `;
 
@@ -113,7 +119,10 @@ export const HelpItem = (props: HelpItemProps) => {
             </Anchor>
             <StyledButton
               isBasic
-              onClick={copyToClipBoard}
+              onClick={() => {
+                copyToClipBoard();
+                props.onCopyEmail?.();
+              }}
               size="small"
               variant="isBasic"
             >
@@ -126,7 +135,8 @@ export const HelpItem = (props: HelpItemProps) => {
         </StyledParagraph>
       </StyledBody>
 
-      <Footer>
+      {props.chatSupport && (
+        <Footer>
         <Separator />
         {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
         <StyledFooterButton
@@ -141,6 +151,7 @@ export const HelpItem = (props: HelpItemProps) => {
           {props.chatSupportLabel ?? "Report a technical issue"}
         </StyledFooterButton>
       </Footer>
+      )}
     </>
   );
 
