@@ -48,4 +48,6 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
   onFeedbackClick?: () => void;
   onToggleChat: () => void;
   onLogout: () => void;
+  onCopyEmail?: () => void;
+  chatSupport?: boolean;
 }

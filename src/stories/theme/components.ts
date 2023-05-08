@@ -34,14 +34,16 @@ export const components = {
     type: string;
     isPrimary: boolean;
   }) => {
+    const svgCss = {
+      marginTop: "-1px",
+    };
+
     return {
-      "svg": {
-        marginTop: "-1px",
-      },
       ...(type === "success" &&
         isPrimary && {
           backgroundColor: palette.green[700],
           svg: {
+            ...svgCss,
             color: palette.white,
           },
         }),
@@ -49,6 +51,7 @@ export const components = {
         isPrimary && {
           backgroundColor: palette.yellow[700],
           svg: {
+            ...svgCss,
             color: palette.white,
           },
         }),
@@ -56,6 +59,7 @@ export const components = {
         isPrimary && {
           backgroundColor: palette.red[700],
           svg: {
+            ...svgCss,
             color: palette.white,
           },
         }),
@@ -63,9 +67,13 @@ export const components = {
         isPrimary && {
           backgroundColor: palette.blue[700],
           svg: {
+            ...svgCss,
             color: palette.white,
           },
         }),
+      ...!isPrimary && {
+        svg: svgCss,
+      },
     };
   },
   "notifications.notification.close": ({
@@ -109,12 +117,12 @@ export const components = {
   },
   "notifications.notification.close-icon": () => {
     return {
-      "position": "relative",
-      "top": "unset",
-      "right": "unset",
-      "width": "auto",
-      "height": "auto",
-    }
+      position: "relative",
+      top: "unset",
+      right: "unset",
+      width: "auto",
+      height: "auto",
+    };
   },
   "notifications.notification.title": ({
     type,
