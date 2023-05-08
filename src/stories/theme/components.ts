@@ -2,8 +2,9 @@ import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { fontWeights } from "./fontWeights";
 import { colors } from "./colors";
 import { palette } from "./palette";
+import {cardCmponentStyle} from "../cards/index";
 
-export const components = {
+export const components: Record<string, any> = {
   ...DEFAULT_THEME.components,
   chrome: {
     ...DEFAULT_THEME.components?.chrome,
@@ -26,6 +27,7 @@ export const components = {
       padding: "16px",
     },
   },
+  ...cardCmponentStyle,
 
   "notifications.notification": ({
     type,

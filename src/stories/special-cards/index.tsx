@@ -5,11 +5,12 @@ import { CardMeta } from "./styled/meta";
 import { CardThumbnail } from "./styled/thumbnail";
 import { CardHeader } from "./styled/header";
 import { CardFooter } from "./styled/footer";
+import { CARD_COMPONENT_ID } from "../cards";
+import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
   padding: ${({ theme }) => `${theme.space.sm} ${theme.space.base * 4}px`};
-  border: 1px solid ${({ theme }) => theme.palette.grey["200"]};
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@ const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
     pointer-events: none;
     opacity: 0.7;
     `}
+    ${(props) => retrieveComponentStyles(CARD_COMPONENT_ID, props)};
 `;
 
 /**

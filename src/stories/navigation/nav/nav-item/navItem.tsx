@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import {
   sidebarNavItemExpanded,
   sidebarNavItemHidden,
+  getColor,
 } from "../../../theme/utils";
 import { forwardRef } from "react";
 
@@ -24,7 +25,7 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   &:hover {
     background-color: ${({ theme }) => theme.palette.kale["200"]};
   }
-  color: ${(props) => props.theme.colors.primaryHue};
+  color: ${(props) => getColor(props.theme.colors.primaryHue, 600)};
   font-weight: ${(props) => props.theme.fontWeights.medium};
   ${(props) =>
     props.isCurrent &&

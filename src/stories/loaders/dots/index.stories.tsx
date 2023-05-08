@@ -2,6 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { theme } from '../../theme';
 import { Dots } from ".";
 import { DotsArgs } from "./_types";
+import { getColor } from "../../theme/utils";
 
 const defaultArgs: DotsArgs = {
   size: '50'
@@ -12,7 +13,7 @@ const Template: Story<DotsArgs> = (args) => <Dots {...args} />
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  color: theme.colors.primaryHue
+  color: getColor(theme.colors.primaryHue, 600)
 };
 
 export default {

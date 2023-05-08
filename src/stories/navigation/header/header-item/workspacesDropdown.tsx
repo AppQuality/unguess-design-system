@@ -7,6 +7,7 @@ import { MenuHeaderItem } from "../../../dropdowns/menuheader";
 import { useState } from "react";
 import { Workspace, WorkspaceDropdownArgs } from "./_types";
 import { theme } from "../../../theme";
+import { getColor } from "../../../theme/utils";
 import { MD } from "../../../typography/typescale";
 import { Ellipsis } from "../../../typography/ellipsis";
 import styled from "styled-components";
@@ -35,7 +36,7 @@ export const WorkspacesDropdown = (props: WorkspaceDropdownArgs) => {
       }}
     >
       <Field>
-        <Select style={{ color: theme.colors.primaryHue }}>
+        <Select style={{ color: getColor(theme.colors.primaryHue, 600) }}>
           <StyledEllipsis isCompact={props.isCompact}>
             {selectedWorkspace
               ? selectedWorkspace.company + "'s workspace"

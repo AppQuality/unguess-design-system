@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Col } from "../../../grid/col";
 import { Row } from "../../../grid/row";
+import { getColor } from "../../../theme/utils";
 import { LG, MD } from "../../../typography/typescale";
 import { PageHeaderMainProps } from "../_types";
 
@@ -40,7 +41,7 @@ export const MainOverline = styled(MD)`
 `;
 
 export const MainTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.primaryHue};
+  color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
   font-size: ${({ theme }) => theme.fontSizes.xxxl};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   line-height: ${({ theme }) => theme.lineHeights.xxxl};

@@ -1,4 +1,5 @@
 import { CompleteTheme } from "@nivo/core";
+import {getColor} from "../theme/utils";
 import { theme } from ".";
 
 interface UnguessChartsTheme extends CompleteTheme {}
@@ -11,27 +12,27 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   annotations: {
     text: {
       fontSize: Number(theme.fontSizes.sm),
-      fill: theme.colors.primaryHue,
+      fill: getColor(theme.colors.primaryHue, 600) || theme.palette.blue[600],
       outlineWidth: 2,
       outlineColor: theme.palette.white,
       outlineOpacity: 1,
     },
     link: {
-      stroke: theme.colors.primaryHue,
+      stroke: getColor(theme.colors.primaryHue, 600) || theme.palette.blue[600],
       strokeWidth: 1,
       outlineWidth: 2,
       outlineColor: theme.palette.white,
       outlineOpacity: 1,
     },
     outline: {
-      stroke: theme.colors.primaryHue,
+      stroke: getColor(theme.colors.primaryHue, 600) || theme.palette.blue[600],
       strokeWidth: 2,
       outlineWidth: 2,
       outlineColor: theme.palette.white,
       outlineOpacity: 1,
     },
     symbol: {
-      fill: theme.colors.primaryHue,
+      fill: getColor(theme.colors.primaryHue, 600) || theme.palette.blue[600],
       outlineWidth: 2,
       outlineColor: theme.palette.white,
       outlineOpacity: 1,
@@ -130,7 +131,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   tooltip: {
     container: {
       background: theme.palette.white,
-      color: theme.colors.primaryHue,
+      color: getColor(theme.colors.primaryHue, 600),
       fontSize: Number(theme.fontSizes.sm),
     },
     basic: {},

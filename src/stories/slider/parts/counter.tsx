@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Tag } from "../../tags";
 import { theme } from "../../theme";
 import { SM } from "../../typography/typescale";
+import { getColor } from "../../theme/utils";
 
 const StyledTag = styled(Tag)`
   position: absolute;
@@ -14,7 +15,7 @@ const StyledTag = styled(Tag)`
 const StyledSM = styled(SM)`
   color: ${({ theme }) => theme.palette.grey[600]};
   span {
-    color: ${({ theme }) => theme.colors.primaryHue};
+    color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
   }
 `;
 

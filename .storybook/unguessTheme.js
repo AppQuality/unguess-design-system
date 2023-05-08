@@ -8,7 +8,7 @@ export default create({
   brandUrl: "https://app.unguess.io",
   brandImage:
     "https://app.unguess.io/wp-content/themes/unguess/assets/img/logo.svg",
-  colorPrimary: theme.colors.primaryHue,
+  colorPrimary: getColor(theme.colors.primaryHue, 600),
   colorSecondary: theme.palette.blue['500'],
 
   //   // UI

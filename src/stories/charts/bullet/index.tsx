@@ -1,7 +1,6 @@
 import { BulletMarkersItemProps, ResponsiveBullet } from "@nivo/bullet";
 import styled from "styled-components";
 import { BulletChartProps } from "./_types";
-import { CHARTS_COLOR_PALETTE } from "../../theme/charts";
 import { theme } from "../../theme";
 import { ChartContainer } from "../ChartContainer";
 import { CustomBulletChartMarkers } from "./CustomBulletChartMarker";

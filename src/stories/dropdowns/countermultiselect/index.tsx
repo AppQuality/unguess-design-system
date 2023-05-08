@@ -8,6 +8,7 @@ import { Dropdown } from "../select";
 import { Field } from "../field";
 import { Label } from "../../label";
 import { Item } from "../item";
+import { getColor } from "../../theme/utils";
 
 const StyledAutocomplete = styled(Autocomplete)<{
   hasSelectedItems: boolean;
@@ -16,11 +17,11 @@ const StyledAutocomplete = styled(Autocomplete)<{
   ${(props) =>
     props.hasSelectedItems &&
     `
-    border-color: ${props.theme.colors.primaryHue};
-    background-color: ${props.theme.colors.primaryHue};
+    border-color: ${getColor(theme.colors.primaryHue, 600)};
+    background-color: ${getColor(theme.colors.primaryHue, 600)};
     color: white;
     & > input, & > svg {
-      color: white;
+      color: ${props.theme.palette.white};
     }
   `}
 `;

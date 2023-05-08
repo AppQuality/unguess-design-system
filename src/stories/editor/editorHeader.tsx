@@ -19,7 +19,7 @@ const Title = styled(MD)<EditorHeaderArgs>`
     } else if (validation === "error") {
       return `color: ${getColor(theme.colors.dangerHue)};`;
     } else {
-      return `color: ${getColor(theme.colors.primaryHue)};`;
+      return `color: ${getColor(theme.colors.primaryHue, 600)};`;
     }
   }}
 `;

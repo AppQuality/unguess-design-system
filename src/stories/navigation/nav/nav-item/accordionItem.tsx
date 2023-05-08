@@ -5,6 +5,7 @@ import {
   sidebarNavItemExpanded,
   sidebarNavItemHidden,
 } from "../../../theme/utils";
+import {getColor} from "../../../theme/utils";
 import { NavItemArgs } from "./_types";
 
 const AccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
@@ -49,8 +50,8 @@ const AccordionItemPanel = styled(Accordion.Panel)<AccordionArgs & NavItemArgs>`
 const AccordionItemLabel = styled(Accordion.Label)<AccordionArgs & NavItemArgs>`
   padding: 12px 9px;
   ${({ theme }) => `
-    color: ${theme.colors.primaryHue};
-    fill: ${theme.colors.primaryHue};
+    color: ${getColor(theme.colors.primaryHue, 600)};
+    fill: ${getColor(theme.colors.primaryHue, 600)};
     font-weight: ${theme.fontWeights.medium};
   `}
 `;

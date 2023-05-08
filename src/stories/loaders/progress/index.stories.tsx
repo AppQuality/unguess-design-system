@@ -2,9 +2,10 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { theme } from '../../theme';
 import { Progress } from ".";
 import { ProgressArgs } from "./_types";
+import { getColor } from "../../theme/utils";
 
 const defaultArgs: ProgressArgs = {
-  color: theme.colors.primaryHue,
+  color: getColor(theme.colors.primaryHue, 600),
   value: 50,
   size: 'medium'
 };

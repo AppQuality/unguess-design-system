@@ -5,6 +5,7 @@ import { flexColumnCenter } from "../theme/mixins";
 import { MD, SM } from "../typography/typescale";
 import { getInitials } from "./utils";
 import { UserProfileProps } from "./_types";
+import { getColor } from "../theme/utils";
 
 const ProfileContainer = styled.div`
   ${flexColumnCenter}
@@ -16,7 +17,7 @@ const CompanyHolder = styled(SM)`
   text-transform: uppercase;
   margin-top: ${({ theme }) => theme.space.base * 2}px;
   margin-bottom: ${({ theme }) => theme.space.base * 4}px;
-  color: ${({ theme }) => theme.colors.primaryHue};
+  color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
 `;
 
 const UserDetails = styled.div`
