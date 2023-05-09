@@ -1,3 +1,22 @@
+# v2.12.87 (Tue May 09 2023)
+
+#### 🐛 Bug Fix
+
+- Restore release command [#242](https://github.com/AppQuality/unguess-design-system/pull/242) ([@d-beezee](https://github.com/d-beezee))
+- chore: Restore release command [#241](https://github.com/AppQuality/unguess-design-system/pull/241) ([@d-beezee](https://github.com/d-beezee))
+- Update actions [#240](https://github.com/AppQuality/unguess-design-system/pull/240) ([@d-beezee](https://github.com/d-beezee))
+- ci: Update node version on workflows [#239](https://github.com/AppQuality/unguess-design-system/pull/239) ([@d-beezee](https://github.com/d-beezee))
+- Storybook 7 [#238](https://github.com/AppQuality/unguess-design-system/pull/238) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@d-beezee](https://github.com/d-beezee))
+- Storybook-7 [#237](https://github.com/AppQuality/unguess-design-system/pull/237) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.86 (Mon May 08 2023)
 
 #### 🐛 Bug Fix
