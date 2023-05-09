@@ -1,7 +1,7 @@
-import { Modal } from "../.";
+import { Modal } from "..";
 import { ModalArgs } from "../_types";
 import styled from "styled-components";
-import { ModalClose, FooterItem } from "../.";
+import { ModalClose, FooterItem } from "..";
 
 const StyledModal = styled(Modal)`
   width: 100%;

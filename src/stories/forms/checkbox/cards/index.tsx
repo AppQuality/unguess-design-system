@@ -1,4 +1,4 @@
-import { Checkbox } from "../.";
+import { Checkbox } from "..";
 import { CheckboxCardArgs } from "./_types";
 import { Card } from "../../../cards";
 import { Label } from "../../../label";

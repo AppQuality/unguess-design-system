@@ -2,7 +2,13 @@ import { CampaignCardsProps } from "./_types";
 import { Tag } from "../tags";
 import { theme } from "../theme";
 import styled from "styled-components";
-import {StatusCompletedIcon, StatusIncomingIcon, StatusRunningIcon, CampaignExperientialIcon, CampaignFunctionalIcon} from "../icons";
+import {
+  StatusCompletedIcon,
+  StatusIncomingIcon,
+  StatusRunningIcon,
+  CampaignExperientialIcon,
+  CampaignFunctionalIcon,
+} from "../icons";
 import { CampaignCardSkeleton } from "./skeleton";
 import { SpecialCard } from "../special-cards";
 import { SM } from "../typography/typescale";
@@ -86,9 +92,7 @@ const CampaignCard = ({
 
       <SpecialCard.Footer>
         {props.pillText && (
-          <StyledTag
-            size="large"
-          >
+          <StyledTag size="large">
             <Tag.Avatar>
               <PillIcon />
             </Tag.Avatar>
