@@ -1,0 +1,2486 @@
+# v2.12.37 (Thu Nov 24 2022)
+
+#### 🐛 Bug Fix
+
+- Pull request develop master [#113](https://github.com/AppQuality/unguess-design-system/pull/113) ([@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon))
+- feat(charts): export charts colors [#112](https://github.com/AppQuality/unguess-design-system/pull/112) ([@marcbon](https://github.com/marcbon))
+- ci: Use develop branch for storybook publish [#111](https://github.com/AppQuality/unguess-design-system/pull/111) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.36 (Mon Nov 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(bullet chart): adjust margins ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
+# v2.12.35 (Mon Nov 21 2022)
+
+#### 🐛 Bug Fix
+
+- Un 64 last fixes bullet chart [#110](https://github.com/AppQuality/unguess-design-system/pull/110) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
+# v2.12.34 (Mon Nov 21 2022)
+
+#### 🐛 Bug Fix
+
+- Un 64 bullet graph [#109](https://github.com/AppQuality/unguess-design-system/pull/109) ([@iacopolea](https://github.com/iacopolea) gianpaolo.sinatra@app-quality.com [@marcbon](https://github.com/marcbon) runner@fv-az201-795.yo4stti0dhyudgyjg01iu2obqd.jx.internal.cloudapp.net [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 10
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra (gianpaolo.sinatra@app-quality.com)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo (runner@fv-az133-182.ac31hddj4phu5ocom5smqd4hkf.cx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az201-795.yo4stti0dhyudgyjg01iu2obqd.jx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az220-111.shdwizndlbjulinwhzhdmup5sb.jx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az241-131.2tfxs3cvuluejhi1wdm4o5ef4c.bx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az241-855.2tfxs3cvuluejhi1wdm4o5ef4c.bx.internal.cloudapp.net)
+- Luca Cannarozzo (runner@fv-az83-745.pawgbth4qraerhbqawdeo1jfng.dx.internal.cloudapp.net)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.33 (Wed Nov 16 2022)
+
+#### 🐛 Bug Fix
+
+- feat(waffle): Use 6 rows instead of 8 [#108](https://github.com/AppQuality/unguess-design-system/pull/108) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.32 (Wed Nov 16 2022)
+
+#### 🐛 Bug Fix
+
+- Add custom tooltip to waffle and fix pie padangle [#107](https://github.com/AppQuality/unguess-design-system/pull/107) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.31 (Tue Nov 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(bullet chart): tooltip & theme [#105](https://github.com/AppQuality/unguess-design-system/pull/105) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.30 (Tue Nov 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(halfpie): Make toplevel component relative instead of absolute [#106](https://github.com/AppQuality/unguess-design-system/pull/106) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.29 (Tue Nov 15 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(halfpie): Make toplevel component relative instead of absolute ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.28 (Tue Nov 15 2022)
+
+#### 🐛 Bug Fix
+
+- Waffle refactor [#104](https://github.com/AppQuality/unguess-design-system/pull/104) (gianpaolo.sinatra@app-quality.com [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.22 (Mon Nov 14 2022)
+
+#### 🐛 Bug Fix
+
+- chore: Export tooltip component [#103](https://github.com/AppQuality/unguess-design-system/pull/103) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.18 (Fri Nov 11 2022)
+
+#### 🐛 Bug Fix
+
+- fix(bullet-chart): use only the compact component + insert handful props [#101](https://github.com/AppQuality/unguess-design-system/pull/101) ([@marcbon](https://github.com/marcbon))
+- Remove line chart and update types [#102](https://github.com/AppQuality/unguess-design-system/pull/102) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- Setup pie charts [#100](https://github.com/AppQuality/unguess-design-system/pull/100) ([@d-beezee](https://github.com/d-beezee))
+- Cup 1372 charts [#94](https://github.com/AppQuality/unguess-design-system/pull/94) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks))
+- feat(tooltip): add tooltip component [#99](https://github.com/AppQuality/unguess-design-system/pull/99) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(charts): add sunburst chart [#98](https://github.com/AppQuality/unguess-design-system/pull/98) ([@iacopolea](https://github.com/iacopolea))
+- Un 55 Bullet [#97](https://github.com/AppQuality/unguess-design-system/pull/97) ([@iacopolea](https://github.com/iacopolea))
+- feat: waffle chart [#96](https://github.com/AppQuality/unguess-design-system/pull/96) ([@iacopolea](https://github.com/iacopolea))
+- [UN-32] Line chart and wrapper interface [#95](https://github.com/AppQuality/unguess-design-system/pull/95) ([@iacopolea](https://github.com/iacopolea))
+
+#### ⚠️ Pushed to `master`
+
+- chore(workflows): update node version from 12.x to 14.x for "Release on NPM" action ([@marcbon](https://github.com/marcbon))
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@marcbon](https://github.com/marcbon))
+- feat(bullet-chart): refactor component for widget ([@marcbon](https://github.com/marcbon))
+- chore(modules): update yarn.lock ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.17 (Fri Oct 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(sidebar): fix duplicated key for skeleton items [#93](https://github.com/AppQuality/unguess-design-system/pull/93) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.16 (Thu Oct 06 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): remove margin-left on sm breakpoint ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.15 (Thu Sep 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- chore(export): export special-cards ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.14 (Wed Sep 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): disable animation on accordion ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.13 (Wed Sep 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Create codeql-analysis.yml ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.12 (Tue Sep 27 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(sidebar): add projectAccordion scroll ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.11 (Wed Sep 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- feat(page-header): allow complex child on main sub-component ([@cannarocks](https://github.com/cannarocks))
+- feat(inputToggle): keep ratio between textSize and lineHeight costant ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.10 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): move out prj accordion panel setting ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.9 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- add ref to accordion component ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.8 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- minor fix ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.7 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): add internal state to handle prj accordion panels ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.6 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): check prj array length check ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.5 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- test(sidebar): hide accordion when there are no projects ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.4 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): set default expanded section of accordion ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.3 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- minor fix ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.2 (Tue Sep 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(sidebar): overflow hidden without reason ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.1 (Mon Sep 19 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 1300 restyle sidebar [#92](https://github.com/AppQuality/unguess-design-system/pull/92) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.0 (Mon Sep 19 2022)
+
+#### 🚀 Enhancement
+
+- CUP-1300-restyle-sidebar [#91](https://github.com/AppQuality/unguess-design-system/pull/91) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.19 (Wed Sep 14 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(images): remove random images ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.18 (Tue Sep 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(input-toggle): show edit icon always when isn't editing ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.17 (Tue Sep 13 2022)
+
+#### 🐛 Bug Fix
+
+- fix(cards): fix cursor hover for all type of cards [#90](https://github.com/AppQuality/unguess-design-system/pull/90) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.16 (Tue Sep 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- refactor(toggle-input): update text size prop ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.15 (Mon Sep 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- minor fix ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.14 (Mon Sep 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(input-toggle): fix initialFocus props ignored ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.13 (Mon Sep 12 2022)
+
+#### 🐛 Bug Fix
+
+- refactor(input-toggle): simplify component [#89](https://github.com/AppQuality/unguess-design-system/pull/89) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.12 (Thu Sep 08 2022)
+
+#### 🐛 Bug Fix
+
+- feat(input-toggle): add auto focus props [#88](https://github.com/AppQuality/unguess-design-system/pull/88) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.11 (Thu Sep 08 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): fix icon click + set endicon optional [#87](https://github.com/AppQuality/unguess-design-system/pull/87) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.10 (Thu Sep 08 2022)
+
+#### 🐛 Bug Fix
+
+- Fix/input toggle [#86](https://github.com/AppQuality/unguess-design-system/pull/86) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.9 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): fix input padding + container props [#85](https://github.com/AppQuality/unguess-design-system/pull/85) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.8 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): fix different height if toggled [#84](https://github.com/AppQuality/unguess-design-system/pull/84) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.7 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(input-toggle): add missing export for input-toggle component [#83](https://github.com/AppQuality/unguess-design-system/pull/83) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.6 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- feat(input-toggle): add new component behavior [#82](https://github.com/AppQuality/unguess-design-system/pull/82) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.11.5 (Wed Sep 07 2022)
+
+#### 🐛 Bug Fix
+
+- Add tooltip modal (skip-ci) [#81](https://github.com/AppQuality/unguess-design-system/pull/81) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.4 (Thu Aug 18 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(layout): add new breakpoint and move boxed to xxl ([@cannarocks](https://github.com/cannarocks))
+- fix(page-header): keep paddings even on large screen ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.3 (Wed Aug 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(page-header): remove padding on large breakpoints ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.2 (Wed Aug 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(page-header): only the content MUST be boxed,keep the background ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.1 (Wed Aug 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(page-header): add boxed layout support ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.11.0 (Tue Aug 16 2022)
+
+#### 🚀 Enhancement
+
+- feat(editor): add headings buttons [#80](https://github.com/AppQuality/unguess-design-system/pull/80) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.71 (Mon Aug 08 2022)
+
+#### 🐛 Bug Fix
+
+- Add disabled state to checkbox card [#79](https://github.com/AppQuality/unguess-design-system/pull/79) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.70 (Thu Aug 04 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(item-container): Update label color ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.69 (Tue Aug 02 2022)
+
+#### 🐛 Bug Fix
+
+- feat(item-with-media): add new item content to handle media [#78](https://github.com/AppQuality/unguess-design-system/pull/78) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.68 (Tue Aug 02 2022)
+
+#### 🐛 Bug Fix
+
+- feat(item-with-media): add new item content to handle media ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.67 (Fri Jul 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(editor): Add characters count feature ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.66 (Fri Jul 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- chore(theme): update dangerHue shade ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.65 (Fri Jul 29 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- feat(editor): Add validation support ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.64 (Wed Jul 27 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(editor): remove min height when editable is false ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.63 (Wed Jul 27 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(editor): add read only style ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.62 (Fri Jul 22 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(editor): Trigger save on ctrl+click or cmd+click ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.61 (Fri Jul 22 2022)
+
+#### 🐛 Bug Fix
+
+- Add a new customizable editor component [#77](https://github.com/AppQuality/unguess-design-system/pull/77) ([@cannarocks](https://github.com/cannarocks))
+- feat(editor-ui): Add header and footer [#76](https://github.com/AppQuality/unguess-design-system/pull/76) ([@cannarocks](https://github.com/cannarocks))
+- Cup 1042 setup wygiwys editor [#75](https://github.com/AppQuality/unguess-design-system/pull/75) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🔩 Dependency Updates
+
+- chore(deps): bump terser from 4.8.0 to 4.8.1 [#74](https://github.com/AppQuality/unguess-design-system/pull/74) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.60 (Tue Jun 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(page-header): hide metaImage on mobile ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.59 (Tue Jun 21 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@marcbon](https://github.com/marcbon))
+- refactor(navigation): fix page-header spacings + remove sidebar feature check ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.58 (Tue Jun 21 2022)
+
+#### 🐛 Bug Fix
+
+- Fix/page header [#73](https://github.com/AppQuality/unguess-design-system/pull/73) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.57 (Mon Jun 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(page-header): remove typos from story ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.56 (Mon Jun 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(page-header): transform counter prop from array of counter to generic React Node ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.55 (Mon Jun 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(page-header): export page-header component ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.54 (Mon Jun 20 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(page-header): add responsive order to main columns ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.53 (Mon Jun 20 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 823 page header [#72](https://github.com/AppQuality/unguess-design-system/pull/72) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.49 (Mon Jun 20 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 634 mobile [#71](https://github.com/AppQuality/unguess-design-system/pull/71) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Cup 634 mobile view [#68](https://github.com/AppQuality/unguess-design-system/pull/68) ([@marcbon](https://github.com/marcbon))
+
+#### ⚠️ Pushed to `master`
+
+- chore(repo): Add dependabot.yml ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.48 (Thu Jun 09 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(sidebar): update catalog url from /templates to /services ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.47 (Wed Jun 08 2022)
+
+#### 🐛 Bug Fix
+
+- fix(service-card): add wrap option to footer [#70](https://github.com/AppQuality/unguess-design-system/pull/70) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.46 (Wed Jun 08 2022)
+
+#### 🐛 Bug Fix
+
+- fix(special-card): update base card padding [#69](https://github.com/AppQuality/unguess-design-system/pull/69) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.45 (Tue Jun 07 2022)
+
+#### 🐛 Bug Fix
+
+- fix(card-footer): update space between divider [#67](https://github.com/AppQuality/unguess-design-system/pull/67) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.44 (Mon Jun 06 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 720 refactor card component [#66](https://github.com/AppQuality/unguess-design-system/pull/66) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.43 (Wed Jun 01 2022)
+
+#### 🐛 Bug Fix
+
+- fix(avatar): set text uppercase + cleanings [#65](https://github.com/AppQuality/unguess-design-system/pull/65) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.42 (Mon May 30 2022)
+
+#### 🐛 Bug Fix
+
+- fix(buttons): fix close positioning + fix login button isPill + fix buttons themeColor [#64](https://github.com/AppQuality/unguess-design-system/pull/64) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.41 (Fri May 27 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 786 fix components [#63](https://github.com/AppQuality/unguess-design-system/pull/63) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.40 (Wed May 25 2022)
+
+#### 🐛 Bug Fix
+
+- fix(login): fix "Spread types may only be created from object types" … [#62](https://github.com/AppQuality/unguess-design-system/pull/62) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- build(package.json): update peer ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.39 (Wed May 25 2022)
+
+#### ⚠️ Pushed to `master`
+
+- refactor(sidebar): update feature schema in order as defined on stoplight ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.38 (Mon May 23 2022)
+
+#### 🐛 Bug Fix
+
+- feat(sidebar): add features flag to sidebar item [#61](https://github.com/AppQuality/unguess-design-system/pull/61) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.37 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- fix(sidebar): fix route for navigation [#60](https://github.com/AppQuality/unguess-design-system/pull/60) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.36 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 721 service cards + info cards [#58](https://github.com/AppQuality/unguess-design-system/pull/58) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.35 (Wed May 18 2022)
+
+#### 🐛 Bug Fix
+
+- feat(sidebar): add templates menu item [#59](https://github.com/AppQuality/unguess-design-system/pull/59) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.34 (Wed May 18 2022)
+
+#### 🐛 Bug Fix
+
+- fix(timeline): update component padding [#57](https://github.com/AppQuality/unguess-design-system/pull/57) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.33 (Tue May 17 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 739 timeline component [#56](https://github.com/AppQuality/unguess-design-system/pull/56) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.32 (Tue May 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(stepper): remove useless console.log ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.31 (Tue May 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@marcbon](https://github.com/marcbon))
+- fix(global): remove useless main style + insert html overflow auto in global style ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.30 (Tue May 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(main): hide white space for hidden scrollbar ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.29 (Tue May 17 2022)
+
+#### 🐛 Bug Fix
+
+- fix(campaign-cards): fix wrong icons for type props [#55](https://github.com/AppQuality/unguess-design-system/pull/55) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.28 (Fri May 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(sidebar): hide dropdown on desktop ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.27 (Fri May 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(sidebar): show dropdown only on small viewport ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.26 (Fri May 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): remove padding only with tokens ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.25 (Fri May 13 2022)
+
+#### 🐛 Bug Fix
+
+- refactor(workspace-dropdown): refactor component in order to use it o… [#54](https://github.com/AppQuality/unguess-design-system/pull/54) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(page-loader): refactor types and fix build errors ([@cannarocks](https://github.com/cannarocks))
+- fix(token-card): uI improvements on token card ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.24 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(table): type error ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.23 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(counter): update counter behaviour based on screen size ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.22 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(app-header): fix stories type error ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.21 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(tables): fix borders for grouped tables + fix story for virtual scrolling tables" ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.20 (Thu May 12 2022)
+
+#### 🐛 Bug Fix
+
+- fix(tables): restore borders + border-radius [#53](https://github.com/AppQuality/unguess-design-system/pull/53) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.19 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(header-dropdown): fix z-index issues ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.18 (Thu May 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(brand-item): update ws schema ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.17 (Thu May 12 2022)
+
+#### 🐛 Bug Fix
+
+- feat(brand-item): add workspaces selector when there is more then one… [#52](https://github.com/AppQuality/unguess-design-system/pull/52) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.16 (Fri May 06 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(alerts): add missing export ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.15 (Fri May 06 2022)
+
+#### 🐛 Bug Fix
+
+- feat(alerts): add alerts component + styling [#51](https://github.com/AppQuality/unguess-design-system/pull/51) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.14 (Fri May 06 2022)
+
+#### 🐛 Bug Fix
+
+- style(stepper): update spaces and content color [#50](https://github.com/AppQuality/unguess-design-system/pull/50) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.13 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(hint): add hint component ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.12 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(checkbox-card): fix toggle callback ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.11 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(checkbox-card): add onToggle callback ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.10 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- test checkbox value ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.9 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- test(checkbox): test onChange callback ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.8 (Thu May 05 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(contentcard): update content card padding ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.7 (Wed May 04 2022)
+
+#### 🐛 Bug Fix
+
+- feat(card): add Container variant with different border-radius [#49](https://github.com/AppQuality/unguess-design-system/pull/49) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.6 (Wed May 04 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(palette): add `water` palette ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.5 (Wed May 04 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(dropdowns-menu): remove width auto for all dropdowns menu ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.4 (Tue May 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(product-card): add onClick on card body too ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.3 (Tue May 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(drawers): remove duplicated component ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.2 (Tue May 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- build(components): add full screen modal and radio card to main export ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.10.1 (Mon May 02 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 647 radio cards [#48](https://github.com/AppQuality/unguess-design-system/pull/48) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.10.0 (Mon May 02 2022)
+
+#### 🚀 Enhancement
+
+- feat(stepper): add stepper component with unguess color scheme [#47](https://github.com/AppQuality/unguess-design-system/pull/47) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🐛 Bug Fix
+
+- Cup 648 checkbox cards [#46](https://github.com/AppQuality/unguess-design-system/pull/46) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.9.0 (Fri Apr 29 2022)
+
+#### 🚀 Enhancement
+
+- Cup 646 allow creation on select [#45](https://github.com/AppQuality/unguess-design-system/pull/45) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.37 (Thu Apr 28 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 642 modal fullscreen [#44](https://github.com/AppQuality/unguess-design-system/pull/44) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.8.36 (Thu Apr 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(campaignscard): pillIcon cannot be used as JSX component ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.35 (Wed Apr 27 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(counter): only if undefined the counter value MUST disappear ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.34 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 631 typography update [#43](https://github.com/AppQuality/unguess-design-system/pull/43) ([@cicababba](https://github.com/cicababba) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.33 (Tue Apr 26 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(avatar): remove background if avatarType is Image ([@cannarocks](https://github.com/cannarocks))
+- fix(navigationfootericon): add padding to UNGUESS footer icon ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.32 (Tue Apr 26 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(counter): fix 0 value issue ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.31 (Tue Apr 26 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(counter): remove counter required props ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.30 (Fri Apr 22 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(body): remove margin ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.29 (Fri Apr 22 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(main): fix Main component interface ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.28 (Fri Apr 22 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 627 new scrollbar design [#41](https://github.com/AppQuality/unguess-design-system/pull/41) ([@cicababba](https://github.com/cicababba) [@cannarocks](https://github.com/cannarocks))
+- Add express card [#42](https://github.com/AppQuality/unguess-design-system/pull/42) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(mainexport): rename drawer folder ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.27 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- Cup 604 skeleton [#40](https://github.com/AppQuality/unguess-design-system/pull/40) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.26 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(profilemodal): remove useless imports ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.25 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(dropdown-menu): fix width auto important to override inline width [#39](https://github.com/AppQuality/unguess-design-system/pull/39) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.8.24 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(profilemodal): fix wrong theme background color in sub menu-item [#38](https://github.com/AppQuality/unguess-design-system/pull/38) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.23 (Fri Apr 15 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(campaigncard): add cursor:pointer to card item and label ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.22 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- feat(app-header): add onclick to be used for logo item click [#37](https://github.com/AppQuality/unguess-design-system/pull/37) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.8.21 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(dropdown-menu): set auto width for dropdown menu list detached fr… [#36](https://github.com/AppQuality/unguess-design-system/pull/36) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.8.20 (Fri Apr 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix(campaign-cards): add tag max-width [#35](https://github.com/AppQuality/unguess-design-system/pull/35) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.8.19 (Thu Apr 14 2022)
+
+#### 🐛 Bug Fix
+
+- feat(sidebar): add vertical scroll [#33](https://github.com/AppQuality/unguess-design-system/pull/33) ([@marcbon](https://github.com/marcbon))
+- feat(mediainput): add rich input component with mediaIcon support [#34](https://github.com/AppQuality/unguess-design-system/pull/34) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.8.18 (Thu Apr 14 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(menuitem): fix disabled style to svg icons ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.17 (Thu Apr 14 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- feat(dropdown): add opacity on svg when an item is disabled ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.16 (Thu Apr 14 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+- fix(dropdown): if primary the color must be applied only on component svgs ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.9 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- build(action): update Create Release step ([@cannarocks](https://github.com/cannarocks))
+- feat(dropdown): add primary props to select component ([@cannarocks](https://github.com/cannarocks))
+- fix(header): force header item to use theme font family ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'fix-sidebar-font' ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): force theme font in menuItem ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.9 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'fix-sidebar-font' ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): force theme font in menuItem ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.9 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'fix-sidebar-font' ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): force theme font in menuItem ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.9 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'fix-sidebar-font' ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): force theme font in menuItem ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'master' of github.com:AppQuality/unguess-design-system ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.8 (Wed Apr 13 2022)
+
+
+
+---
+
+# v2.8.6 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(menuitem): force hover background color ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.6 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(menuitem): force hover background color ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.5 (Wed Apr 13 2022)
+
+#### ⚠️ Pushed to `master`
+
+- minor fixes (cannarozzoluca@live.it)
+
+#### Authors: 1
+
+- Luca Cannarozzo (cannarozzoluca@live.it)
+
+---
+
+# v2.8.4 (Tue Apr 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(profilemodal): add translatable props ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.3 (Tue Apr 12 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat(changelog): add any ReactNode ad changelog item (cannarozzoluca@live.it)
+
+#### Authors: 1
+
+- Luca Cannarozzo (cannarozzoluca@live.it)
+
+---
+
+# v2.8.2 (Tue Apr 12 2022)
+
+
+
+---
+
+# v2.8.1 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- fix(sidebar): add navToggle callback [#32](https://github.com/AppQuality/unguess-design-system/pull/32) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.8.0 (Tue Apr 12 2022)
+
+#### 🚀 Enhancement
+
+- Fix/components for release [#31](https://github.com/AppQuality/unguess-design-system/pull/31) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.7.1 (Fri Apr 08 2022)
+
+
+
+---
+
+# v2.7.0 (Fri Apr 08 2022)
+
+#### 🚀 Enhancement
+
+- fix(campaign cards): add card props [#29](https://github.com/AppQuality/unguess-design-system/pull/29) ([@marcbon](https://github.com/marcbon))
+- Cup 523 profile modal [#26](https://github.com/AppQuality/unguess-design-system/pull/26) ([@antoninojob](https://github.com/antoninojob) [@cannarocks](https://github.com/cannarocks))
+- Refactor/table accordion [#30](https://github.com/AppQuality/unguess-design-system/pull/30) ([@antoninojob](https://github.com/antoninojob) [@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(profilemodal): minor spaces fixes on modal ([@cannarocks](https://github.com/cannarocks))
+- feat(navigation): add rotation to profile header chevron based on modal ([@cannarocks](https://github.com/cannarocks))
+- Update storybook.yml ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- Antonino ([@antoninojob](https://github.com/antoninojob))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.6.2 (Thu Mar 31 2022)
+
+
+
+---
+
+# v2.6.1 (Thu Mar 31 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(login): add generic error message ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.6.0 (Tue Mar 29 2022)
+
+#### 🚀 Enhancement
+
+- Feature/cup 500 campaign card [#27](https://github.com/AppQuality/unguess-design-system/pull/27) ([@cicababba](https://github.com/cicababba) [@marcbon](https://github.com/marcbon))
+
+#### 🐛 Bug Fix
+
+- Fix/campaign cards [#28](https://github.com/AppQuality/unguess-design-system/pull/28) ([@marcbon](https://github.com/marcbon))
+
+#### ⚠️ Pushed to `master`
+
+- fix(campaigncard): add html props to campaign card ([@cannarocks](https://github.com/cannarocks))
+- fix(scroll): hide <Main /> scroll ([@cannarocks](https://github.com/cannarocks))
+- fix(counter): fix error on zero counter values ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.5.7 (Mon Mar 28 2022)
+
+
+
+---
+
+# v2.5.6 (Mon Mar 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(spaces): fix spaces between main, body and page title ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.5 (Mon Mar 28 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(main): add spaces as described by dressBerry ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+#### ⚠️ Pushed to `master`
+
+- build(auto-it): update auto package ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.3 (Fri Mar 25 2022)
+
+
+
+---
+
+# v2.5.2 (Fri Mar 25 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix(nav): update header and sidebar sizes ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.1 (Thu Mar 24 2022)
+
+#### 🐛 Bug Fix
+
+- feat(counter): add Counter component [#25](https://github.com/AppQuality/unguess-design-system/pull/25) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(navigation): export Chrome component ([@cannarocks](https://github.com/cannarocks))
+- build(chromatic): add delay to prevent blank snapshot ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.5.0 (Thu Mar 24 2022)
+
+#### 🚀 Enhancement
+
+- build(components): add component to index [#24](https://github.com/AppQuality/unguess-design-system/pull/24) ([@cannarocks](https://github.com/cannarocks))
+- feat(table): add Sort component variant [#16](https://github.com/AppQuality/unguess-design-system/pull/16) ([@antoninojob](https://github.com/antoninojob) [@cannarocks](https://github.com/cannarocks))
+- Cup 488 chrome navigation [#21](https://github.com/AppQuality/unguess-design-system/pull/21) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🐛 Bug Fix
+
+- refactor(icons): move used icon inside prj assets folder and remove @zendesk/svg-icons as dep [#23](https://github.com/AppQuality/unguess-design-system/pull/23) ([@cannarocks](https://github.com/cannarocks))
+- Cup 501 table accordion [#19](https://github.com/AppQuality/unguess-design-system/pull/19) ([@antoninojob](https://github.com/antoninojob) [@marcbon](https://github.com/marcbon))
+- Feature/cup 473 modal [#20](https://github.com/AppQuality/unguess-design-system/pull/20) ([@cicababba](https://github.com/cicababba))
+- feat(sidebar): add test fashion icon [#22](https://github.com/AppQuality/unguess-design-system/pull/22) ([@cannarocks](https://github.com/cannarocks))
+- Fix storybook issues [#18](https://github.com/AppQuality/unguess-design-system/pull/18) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- fix(brandurl): fix BrandUrl domain ([@cannarocks](https://github.com/cannarocks))
+- fix(sidebar): add space from header even if there are no tokens ([@cannarocks](https://github.com/cannarocks))
+- fix(loginform): remove debug text ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 4
+
+- Antonino ([@antoninojob](https://github.com/antoninojob))
+- cicababba ([@cicababba](https://github.com/cicababba))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.4.1 (Fri Mar 18 2022)
+
+
+
+---
+
+# v2.4.0 (Fri Mar 18 2022)
+
+#### 🚀 Enhancement
+
+- add logo component + fix login-form component issues [#17](https://github.com/AppQuality/unguess-design-system/pull/17) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.3.1 (Tue Mar 15 2022)
+
+
+
+---
+
+# v2.2.0 (Tue Mar 15 2022)
+
+#### 🚀 Enhancement
+
+- feat(tiles): add tiles component [#12](https://github.com/AppQuality/unguess-design-system/pull/12) ([@antoninojob](https://github.com/antoninojob))
+- Login form [#15](https://github.com/AppQuality/unguess-design-system/pull/15) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Feat/improve storybook experience [#14](https://github.com/AppQuality/unguess-design-system/pull/14) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🐛 Bug Fix
+
+- fix(table): changed types definition for extras elements [#13](https://github.com/AppQuality/unguess-design-system/pull/13) ([@antoninojob](https://github.com/antoninojob))
+- Cup 438 table [#10](https://github.com/AppQuality/unguess-design-system/pull/10) ([@antoninojob](https://github.com/antoninojob))
+- feat(tag): add tag component [#11](https://github.com/AppQuality/unguess-design-system/pull/11) ([@antoninojob](https://github.com/antoninojob))
+
+#### ⚠️ Pushed to `master`
+
+- fix(export): prevent naming conflicts ([@cannarocks](https://github.com/cannarocks))
+- feat(loginform): add basic Login Form ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- Antonino ([@antoninojob](https://github.com/antoninojob))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.2.0 (Tue Mar 15 2022)
+
+#### 🚀 Enhancement
+
+- feat(tiles): add tiles component [#12](https://github.com/AppQuality/unguess-design-system/pull/12) ([@antoninojob](https://github.com/antoninojob))
+- Login form [#15](https://github.com/AppQuality/unguess-design-system/pull/15) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Feat/improve storybook experience [#14](https://github.com/AppQuality/unguess-design-system/pull/14) ([@cannarocks](https://github.com/cannarocks))
+
+#### 🐛 Bug Fix
+
+- fix(table): changed types definition for extras elements [#13](https://github.com/AppQuality/unguess-design-system/pull/13) ([@antoninojob](https://github.com/antoninojob))
+- Cup 438 table [#10](https://github.com/AppQuality/unguess-design-system/pull/10) ([@antoninojob](https://github.com/antoninojob))
+- feat(tag): add tag component [#11](https://github.com/AppQuality/unguess-design-system/pull/11) ([@antoninojob](https://github.com/antoninojob))
+
+#### ⚠️ Pushed to `master`
+
+- fix(export): prevent naming conflicts ([@cannarocks](https://github.com/cannarocks))
+- feat(loginform): add basic Login Form ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@marcbon](https://github.com/marcbon)
+- Antonino ([@antoninojob](https://github.com/antoninojob))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.1.0 (Fri Mar 11 2022)
+
+#### 🚀 Enhancement
+
+- Cup 431 form [#8](https://github.com/AppQuality/unguess-design-system/pull/8) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(multiselect): add multiselect and palette story [#9](https://github.com/AppQuality/unguess-design-system/pull/9) ([@cannarocks](https://github.com/cannarocks))
+- Cup 433 loaders [#7](https://github.com/AppQuality/unguess-design-system/pull/7) ([@marcbon](https://github.com/marcbon))
+- Cup 446 wells [#6](https://github.com/AppQuality/unguess-design-system/pull/6) ([@cannarocks](https://github.com/cannarocks))
+- add avatar component [#5](https://github.com/AppQuality/unguess-design-system/pull/5) ([@marcbon](https://github.com/marcbon))
+- Cup 424 accordion [#4](https://github.com/AppQuality/unguess-design-system/pull/4) ([@cannarocks](https://github.com/cannarocks))
+- Typography components [#3](https://github.com/AppQuality/unguess-design-system/pull/3) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- feat(storybook): add Unguess theme ([@cannarocks](https://github.com/cannarocks))
+- feat(intro): add intro page story ([@cannarocks](https://github.com/cannarocks))
+- fix(field): fix wrong import for form field component ([@cannarocks](https://github.com/cannarocks))
+- fix(field): restore form field component ([@cannarocks](https://github.com/cannarocks))
+- build(storybook): update Github action used to publish component build ([@cannarocks](https://github.com/cannarocks))
+- refactor(stories): move molecules under right group ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'CUP-430-dropdowns' ([@cannarocks](https://github.com/cannarocks))
+- fix(palette): remove useless import ([@cannarocks](https://github.com/cannarocks))
+- Create storybook.yml ([@cannarocks](https://github.com/cannarocks))
+- refactor(notifications): remove unused imports ([@cannarocks](https://github.com/cannarocks))
+- feat(notifications): add notification component ([@cannarocks](https://github.com/cannarocks))
+- fix avatars description ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- [@marcbon](https://github.com/marcbon)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.1.0 (Fri Mar 11 2022)
+
+#### 🚀 Enhancement
+
+- Cup 431 form [#8](https://github.com/AppQuality/unguess-design-system/pull/8) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(multiselect): add multiselect and palette story [#9](https://github.com/AppQuality/unguess-design-system/pull/9) ([@cannarocks](https://github.com/cannarocks))
+- Cup 433 loaders [#7](https://github.com/AppQuality/unguess-design-system/pull/7) ([@marcbon](https://github.com/marcbon))
+- Cup 446 wells [#6](https://github.com/AppQuality/unguess-design-system/pull/6) ([@cannarocks](https://github.com/cannarocks))
+- add avatar component [#5](https://github.com/AppQuality/unguess-design-system/pull/5) ([@marcbon](https://github.com/marcbon))
+- Cup 424 accordion [#4](https://github.com/AppQuality/unguess-design-system/pull/4) ([@cannarocks](https://github.com/cannarocks))
+- Typography components [#3](https://github.com/AppQuality/unguess-design-system/pull/3) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- feat(storybook): add Unguess theme ([@cannarocks](https://github.com/cannarocks))
+- feat(intro): add intro page story ([@cannarocks](https://github.com/cannarocks))
+- fix(field): fix wrong import for form field component ([@cannarocks](https://github.com/cannarocks))
+- fix(field): restore form field component ([@cannarocks](https://github.com/cannarocks))
+- build(storybook): update Github action used to publish component build ([@cannarocks](https://github.com/cannarocks))
+- refactor(stories): move molecules under right group ([@cannarocks](https://github.com/cannarocks))
+- Merge branch 'CUP-430-dropdowns' ([@cannarocks](https://github.com/cannarocks))
+- fix(palette): remove useless import ([@cannarocks](https://github.com/cannarocks))
+- Create storybook.yml ([@cannarocks](https://github.com/cannarocks))
+- refactor(notifications): remove unused imports ([@cannarocks](https://github.com/cannarocks))
+- feat(notifications): add notification component ([@cannarocks](https://github.com/cannarocks))
+- fix avatars description ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- [@marcbon](https://github.com/marcbon)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v1.0.0 (Fri Mar 04 2022)
+
+#### 💥 Breaking Change
+
+- Cup 427 ds buttons [#2](https://github.com/AppQuality/unguess-design-system/pull/2) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- update .npmignore ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v1.0.0 (Fri Mar 04 2022)
+
+#### 💥 Breaking Change
+
+- Cup 427 ds buttons [#2](https://github.com/AppQuality/unguess-design-system/pull/2) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- update .npmignore ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v1.0.0 (Fri Mar 04 2022)
+
+#### 💥 Breaking Change
+
+- Cup 427 ds buttons [#2](https://github.com/AppQuality/unguess-design-system/pull/2) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- update .npmignore ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.3.5 (Thu Mar 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- fix wrong globalStyleExport ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.3.5 (Thu Mar 03 2022)
+
+
+
+---
+
+# v0.3.4 (Thu Mar 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- export global style ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.3.3 (Thu Mar 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- update .npmignore ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.3.2 (Thu Mar 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- chore: add .npmignore ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.3.1 (Thu Mar 03 2022)
+
+#### ⚠️ Pushed to `master`
+
+- feat: change theme export ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.2.0 (Thu Mar 03 2022)
+
+#### 🚀 Enhancement
+
+- Cup 422 setup theme [#1](https://github.com/AppQuality/unguess-design-system/pull/1) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.2.0 (Wed Mar 02 2022)
+
+#### 🚀 Enhancement
+
+- Cup 422 setup theme [#1](https://github.com/AppQuality/unguess-design-system/pull/1) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.1.2 (Tue Mar 01 2022)
+
+#### ⚠️ Pushed to `master`
+
+- chore: move @zendeskgarden/react-theming to dependency ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.1.1 (Tue Mar 01 2022)
+
+#### ⚠️ Pushed to `master`
+
+- update .gitignore ([@cannarocks](https://github.com/cannarocks))
+- update package.json ([@cannarocks](https://github.com/cannarocks))
+- Initial commit ([@cannarocks](https://github.com/cannarocks))
+- Initialize project using Create React App ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v0.1.1 (Tue Mar 01 2022)
+
+#### ⚠️ Pushed to `master`
+
+- update package.json ([@cannarocks](https://github.com/cannarocks))
+- Initial commit ([@cannarocks](https://github.com/cannarocks))
+- Initialize project using Create React App ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
