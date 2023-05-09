@@ -2,7 +2,7 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Lightbox } from ".";
 import { LightboxArgs } from "./_types";
 import styled from "styled-components";
-import { ReactComponent as DownloadIcon } from "../../assets/icons/download-stroke.svg";
+// import { ReactComponent as DownloadIcon } from "../../assets/icons/download-stroke.svg";
 import { MD } from "../typography/typescale";
 import {
   Media as MediaSliderStory,
@@ -110,7 +110,8 @@ const Template: Story<LightboxStoryArgs> = (args) => {
               }}
             >
               <Button.StartIcon>
-                <DownloadIcon />
+                {/* <DownloadIcon /> */}
+                <>CIOlla</>
               </Button.StartIcon>
               Scarica questo media
             </Button>

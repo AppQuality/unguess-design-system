@@ -1,4 +1,5 @@
-import { ComponentMeta, Story } from "@storybook/react";
+// import { ComponentMeta, Story } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
 import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { Button } from ".";
@@ -14,44 +15,43 @@ const defaultArgs: ButtonArgs = {
   onClick: () => alert("clicked!"),
 };
 
-const Template: Story<ButtonArgs> = ({
-  hasStartIcon,
-  hasEndIcon,
-  isStartIconRotated,
-  isEndIconRotated,
-  ...args
-}) => {
-  const variant = getButtonVariant(args);
-  return (
-    <Button {...args} {...variant}>
-      {hasStartIcon && (
-        <Button.StartIcon isRotated={isStartIconRotated}>
-          <LeafIcon />
-        </Button.StartIcon>
-      )}
-      {args.children}
-      {hasEndIcon && (
-        <Button.EndIcon isRotated={isEndIconRotated}>
-          <ChevronIcon />
-        </Button.EndIcon>
-      )}
-    </Button>
-  );
+type Story = StoryObj<ButtonArgs>;
+
+const Template: Story = {
+  args: defaultArgs,
+  render: (args) => {
+    const variant = getButtonVariant(args);
+    return (
+      <Button {...args} {...variant}>
+        {args.hasStartIcon && (
+          <Button.StartIcon isRotated={args.isStartIconRotated}>
+            <LeafIcon />
+          </Button.StartIcon>
+        )}
+        {args.children}
+        {args.hasEndIcon && (
+          <Button.EndIcon isRotated={args.isEndIconRotated}>
+            <ChevronIcon />
+          </Button.EndIcon>
+        )}
+      </Button>
+    );
+  },
 };
 
-export const Default = Template.bind({});
+export const Default = { ...Template };
 Default.args = {
   ...defaultArgs,
 };
 
 Default.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9271',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9271",
   },
 };
 
-export const Basic = Template.bind({});
+export const Basic =  { ...Template };
 Basic.args = {
   ...defaultArgs,
   isBasic: true,
@@ -60,12 +60,12 @@ Basic.args = {
 
 Basic.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9341',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9341",
   },
 };
 
-export const Primary = Template.bind({});
+export const Primary = { ...Template };
 Primary.args = {
   ...defaultArgs,
   variant: "isPrimary",
@@ -73,12 +73,12 @@ Primary.args = {
 
 Primary.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9410',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9410",
   },
 };
 
-export const WithIcon = Template.bind({});
+export const WithIcon =  { ...Template };
 WithIcon.args = {
   ...defaultArgs,
   hasStartIcon: true,
@@ -120,4 +120,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;

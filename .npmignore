@@ -1,5 +1,6 @@
 .env
 .storybook
+.cache
 public
 src
 storybook-static
