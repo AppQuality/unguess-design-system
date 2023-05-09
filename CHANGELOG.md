@@ -1,3 +1,682 @@
+# v2.12.86 (Mon May 08 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#235](https://github.com/AppQuality/unguess-design-system/pull/235) ([@marcbon](https://github.com/marcbon))
+- 🚀 feat(profile-modal): add onCopyEmail and chatSupport props to UserMenuArgs [#234](https://github.com/AppQuality/unguess-design-system/pull/234) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.85 (Wed May 03 2023)
+
+#### 🐛 Bug Fix
+
+- fix(toast): add props with children [#233](https://github.com/AppQuality/unguess-design-system/pull/233) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.84 (Tue May 02 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#232](https://github.com/AppQuality/unguess-design-system/pull/232) ([@marcbon](https://github.com/marcbon))
+- 🔨 refactor(notifications): change Notification component to use styled-components [#231](https://github.com/AppQuality/unguess-design-system/pull/231) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.83 (Tue Mar 28 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#229](https://github.com/AppQuality/unguess-design-system/pull/229) ([@marcbon](https://github.com/marcbon))
+- fix(app-header): add zIndex front to prevent issues [#228](https://github.com/AppQuality/unguess-design-system/pull/228) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.82 (Wed Mar 22 2023)
+
+#### 🐛 Bug Fix
+
+- z-index fix [#227](https://github.com/AppQuality/unguess-design-system/pull/227) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- feat(nav): higher z-index to nav toggle [#226](https://github.com/AppQuality/unguess-design-system/pull/226) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.81 (Thu Mar 09 2023)
+
+#### 🐛 Bug Fix
+
+- Hide sidebar below md breakpoint [#225](https://github.com/AppQuality/unguess-design-system/pull/225) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- fix(nav): change mobile breakpoint and mobile first [#224](https://github.com/AppQuality/unguess-design-system/pull/224) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.80 (Wed Mar 01 2023)
+
+#### 🐛 Bug Fix
+
+- New page header [#223](https://github.com/AppQuality/unguess-design-system/pull/223) ([@marcbon](https://github.com/marcbon))
+- Un 524 page header [#222](https://github.com/AppQuality/unguess-design-system/pull/222) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.79 (Tue Feb 28 2023)
+
+#### 🐛 Bug Fix
+
+- New version with Tag fixes [#221](https://github.com/AppQuality/unguess-design-system/pull/221) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- Fix-cards-tags [#220](https://github.com/AppQuality/unguess-design-system/pull/220) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.78 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Remove counter [#219](https://github.com/AppQuality/unguess-design-system/pull/219) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- fix(Counter): remove component from page header [#218](https://github.com/AppQuality/unguess-design-system/pull/218) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.77 (Fri Feb 24 2023)
+
+#### 🐛 Bug Fix
+
+- New tag component [#217](https://github.com/AppQuality/unguess-design-system/pull/217) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- fix(counter): remove counter component (not used anymore) [#216](https://github.com/AppQuality/unguess-design-system/pull/216) ([@marcbon](https://github.com/marcbon))
+- Un 522 tag component [#215](https://github.com/AppQuality/unguess-design-system/pull/215) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.76 (Thu Feb 23 2023)
+
+#### 🐛 Bug Fix
+
+- Grid [#214](https://github.com/AppQuality/unguess-design-system/pull/214) ([@marcbon](https://github.com/marcbon))
+- fix(grid): restore default gutter + remove side padding [#213](https://github.com/AppQuality/unguess-design-system/pull/213) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.75 (Wed Feb 22 2023)
+
+#### 🐛 Bug Fix
+
+- Grid [#212](https://github.com/AppQuality/unguess-design-system/pull/212) ([@marcbon](https://github.com/marcbon))
+- fix(grid): set default gutter false [#211](https://github.com/AppQuality/unguess-design-system/pull/211) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.74 (Wed Feb 22 2023)
+
+#### 🐛 Bug Fix
+
+- Tag colors & Page Header layout [#210](https://github.com/AppQuality/unguess-design-system/pull/210) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea))
+- Un 532 page layout [#209](https://github.com/AppQuality/unguess-design-system/pull/209) ([@marcbon](https://github.com/marcbon))
+- feat(Tag): add color prop and some default style [#208](https://github.com/AppQuality/unguess-design-system/pull/208) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.73 (Thu Feb 09 2023)
+
+#### 🐛 Bug Fix
+
+- i18n: Allow translating showmore in multiselect [#207](https://github.com/AppQuality/unguess-design-system/pull/207) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.72 (Thu Feb 09 2023)
+
+#### 🐛 Bug Fix
+
+- Fix dropdown header item [#206](https://github.com/AppQuality/unguess-design-system/pull/206) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.71 (Thu Feb 09 2023)
+
+#### 🐛 Bug Fix
+
+- Add dropdown header item and separator [#205](https://github.com/AppQuality/unguess-design-system/pull/205) ([@cannarocks](https://github.com/cannarocks))
+- feat(dropdown): export header item and separator (skip ci) [#204](https://github.com/AppQuality/unguess-design-system/pull/204) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.70 (Fri Feb 03 2023)
+
+#### 🐛 Bug Fix
+
+- Iubenda issues [#203](https://github.com/AppQuality/unguess-design-system/pull/203) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.69 (Fri Feb 03 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#202](https://github.com/AppQuality/unguess-design-system/pull/202) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.68 (Fri Feb 03 2023)
+
+#### 🐛 Bug Fix
+
+- Iubenda support [#201](https://github.com/AppQuality/unguess-design-system/pull/201) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.67 (Fri Feb 03 2023)
+
+#### 🐛 Bug Fix
+
+- Player audio improvements, counter multiselect includes now itemArgs props [#200](https://github.com/AppQuality/unguess-design-system/pull/200) ([@cannarocks](https://github.com/cannarocks))
+- refactor(player): move out styledDiv from component [#198](https://github.com/AppQuality/unguess-design-system/pull/198) ([@cannarocks](https://github.com/cannarocks))
+- feat(profile-modal): add privacy item [#199](https://github.com/AppQuality/unguess-design-system/pull/199) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.66 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- Fix dropdowns [#197](https://github.com/AppQuality/unguess-design-system/pull/197) ([@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon))
+- Fix dropdowns 2 [#196](https://github.com/AppQuality/unguess-design-system/pull/196) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.65 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- Player fixes [#194](https://github.com/AppQuality/unguess-design-system/pull/194) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.64 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- refactor(controls): progress update must be attached to any ref change [#193](https://github.com/AppQuality/unguess-design-system/pull/193) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.62 (Mon Jan 30 2023)
+
+#### 🐛 Bug Fix
+
+- Allow external ref for Player component [#192](https://github.com/AppQuality/unguess-design-system/pull/192) ([@cannarocks](https://github.com/cannarocks))
+- feat(player): add forward ref to allow external handling [#191](https://github.com/AppQuality/unguess-design-system/pull/191) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- bump version ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.61 (Fri Jan 27 2023)
+
+#### 🐛 Bug Fix
+
+- New video player, new loader [#190](https://github.com/AppQuality/unguess-design-system/pull/190) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- feat(loaders): add dots loader component [#189](https://github.com/AppQuality/unguess-design-system/pull/189) ([@cannarocks](https://github.com/cannarocks))
+- Fix-player-ios [#188](https://github.com/AppQuality/unguess-design-system/pull/188) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(player): add spinner as loading component [#187](https://github.com/AppQuality/unguess-design-system/pull/187) ([@cannarocks](https://github.com/cannarocks))
+- UN-364-player-component [#183](https://github.com/AppQuality/unguess-design-system/pull/183) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.60 (Wed Jan 25 2023)
+
+#### 🐛 Bug Fix
+
+- Change icon button backgrounds, improve types [#186](https://github.com/AppQuality/unguess-design-system/pull/186) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon))
+- feat(countermulti): Allow string as id in counter multiselect [#185](https://github.com/AppQuality/unguess-design-system/pull/185) ([@d-beezee](https://github.com/d-beezee))
+- feat(icon-button): add white background to default iconbutton [#182](https://github.com/AppQuality/unguess-design-system/pull/182) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.59 (Thu Jan 19 2023)
+
+#### 🐛 Bug Fix
+
+- Allow isCompact on counter multiselect [#181](https://github.com/AppQuality/unguess-design-system/pull/181) ([@d-beezee](https://github.com/d-beezee))
+- feat(countermulti): Allow isCompact [#180](https://github.com/AppQuality/unguess-design-system/pull/180) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.58 (Tue Jan 17 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#179](https://github.com/AppQuality/unguess-design-system/pull/179) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.57 (Tue Jan 17 2023)
+
+#### 🐛 Bug Fix
+
+- Handle state from outside component in multiselect [#178](https://github.com/AppQuality/unguess-design-system/pull/178) ([@d-beezee](https://github.com/d-beezee))
+- feat(multiselect): Handle state from outside [#177](https://github.com/AppQuality/unguess-design-system/pull/177) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.56 (Mon Jan 16 2023)
+
+#### 🐛 Bug Fix
+
+- Multiselect fixes [#176](https://github.com/AppQuality/unguess-design-system/pull/176) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.55 (Mon Jan 16 2023)
+
+#### 🐛 Bug Fix
+
+- Add slider and awesome lightbox [#175](https://github.com/AppQuality/unguess-design-system/pull/175) ([@cannarocks](https://github.com/cannarocks))
+- UN-297-lightbox [#172](https://github.com/AppQuality/unguess-design-system/pull/172) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.54 (Fri Jan 13 2023)
+
+#### 🐛 Bug Fix
+
+- Fixes [#174](https://github.com/AppQuality/unguess-design-system/pull/174) ([@d-beezee](https://github.com/d-beezee) [@iacopolea](https://github.com/iacopolea))
+- fix(counterselect): Reload selected options if option changes [#173](https://github.com/AppQuality/unguess-design-system/pull/173) ([@d-beezee](https://github.com/d-beezee))
+- fix: Remove override hover background from custom menu item [#171](https://github.com/AppQuality/unguess-design-system/pull/171) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
+# v2.12.53 (Thu Jan 12 2023)
+
+#### 🐛 Bug Fix
+
+- Add extra large modal size, counter select and creatable multiselect [#169](https://github.com/AppQuality/unguess-design-system/pull/169) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@d-beezee](https://github.com/d-beezee))
+- chore: Remove wrong import [#170](https://github.com/AppQuality/unguess-design-system/pull/170) ([@d-beezee](https://github.com/d-beezee))
+- fix: Fix import [#168](https://github.com/AppQuality/unguess-design-system/pull/168) ([@d-beezee](https://github.com/d-beezee))
+- Un 296 creatable multiselect [#165](https://github.com/AppQuality/unguess-design-system/pull/165) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- fix(counter): Style autocomplete with selected item [#167](https://github.com/AppQuality/unguess-design-system/pull/167) ([@d-beezee](https://github.com/d-beezee))
+- feat: Add counter multiselect component [#166](https://github.com/AppQuality/unguess-design-system/pull/166) ([@d-beezee](https://github.com/d-beezee))
+- feat(modal): add extraLarge size [#163](https://github.com/AppQuality/unguess-design-system/pull/163) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.52 (Thu Dec 15 2022)
+
+#### 🐛 Bug Fix
+
+- Release responsive [#161](https://github.com/AppQuality/unguess-design-system/pull/161) ([@marcbon](https://github.com/marcbon))
+- Un 226 responsive [#160](https://github.com/AppQuality/unguess-design-system/pull/160) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.51 (Thu Dec 15 2022)
+
+#### 🐛 Bug Fix
+
+- new version [#159](https://github.com/AppQuality/unguess-design-system/pull/159) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea) gianpaolo.sinatra@app-quality.com [@d-beezee](https://github.com/d-beezee))
+- ci: Comment on pr on missing export [#157](https://github.com/AppQuality/unguess-design-system/pull/157) ([@d-beezee](https://github.com/d-beezee))
+- feat(legend): Allow overriding legend margin top [#158](https://github.com/AppQuality/unguess-design-system/pull/158) ([@d-beezee](https://github.com/d-beezee))
+- UN-184 Bar Chart [#153](https://github.com/AppQuality/unguess-design-system/pull/153) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@d-beezee](https://github.com/d-beezee))
+- feat(icon-toggle-nav): add class [#156](https://github.com/AppQuality/unguess-design-system/pull/156) (gianpaolo.sinatra@app-quality.com)
+- feat(tabs): add support to className and id props [#155](https://github.com/AppQuality/unguess-design-system/pull/155) ([@marcbon](https://github.com/marcbon))
+- feat(pie): optimize arc link labels [#154](https://github.com/AppQuality/unguess-design-system/pull/154) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.50 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Minor change on sunburst story [#152](https://github.com/AppQuality/unguess-design-system/pull/152) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- fix(sunburst): remove tot state math random [#151](https://github.com/AppQuality/unguess-design-system/pull/151) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.49 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Update Breadcrumb children type in order to support single children cases [#150](https://github.com/AppQuality/unguess-design-system/pull/150) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.48 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Fix bullet charts and improve responsiveness on breadcrumbs [#149](https://github.com/AppQuality/unguess-design-system/pull/149) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- feat(app-header): add onclick on header item icon [#148](https://github.com/AppQuality/unguess-design-system/pull/148) ([@marcbon](https://github.com/marcbon))
+- feat(breadcrumbs): add responsive behavior + remove last item from story (new desktop behavior) [#147](https://github.com/AppQuality/unguess-design-system/pull/147) ([@marcbon](https://github.com/marcbon))
+- fix(bullet): UN-209 animate measue component [#146](https://github.com/AppQuality/unguess-design-system/pull/146) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 3
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.47 (Wed Dec 07 2022)
+
+#### 🐛 Bug Fix
+
+- Allow custom label on pie [#144](https://github.com/AppQuality/unguess-design-system/pull/144) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- feat: Allow custom label for arclink and legend [#143](https://github.com/AppQuality/unguess-design-system/pull/143) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.46 (Tue Dec 06 2022)
+
+#### 🐛 Bug Fix
+
+- Revert bullet fix [#142](https://github.com/AppQuality/unguess-design-system/pull/142) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- revert: Remove resize from bullet chart [#141](https://github.com/AppQuality/unguess-design-system/pull/141) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v2.12.45 (Mon Dec 05 2022)
+
+#### 🐛 Bug Fix
+
+- Change sunburst and pie cornerradius, expose skiparclabel and rerender bullet on resize [#140](https://github.com/AppQuality/unguess-design-system/pull/140) ([@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea))
+- feat: Rerender bullet on resize to prevent invalid positioning [#139](https://github.com/AppQuality/unguess-design-system/pull/139) ([@d-beezee](https://github.com/d-beezee))
+- feat: Change pie and sunburst corner radius [#137](https://github.com/AppQuality/unguess-design-system/pull/137) ([@d-beezee](https://github.com/d-beezee))
+- feat(pie): add arcLinkLabelsSkipAngle props [#138](https://github.com/AppQuality/unguess-design-system/pull/138) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.44 (Fri Dec 02 2022)
+
+#### 🐛 Bug Fix
+
+- Update sunburst [#136](https://github.com/AppQuality/unguess-design-system/pull/136) ([@d-beezee](https://github.com/d-beezee))
+- feat(sunburst): Allow passing custom data to tooltip [#135](https://github.com/AppQuality/unguess-design-system/pull/135) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.43 (Fri Dec 02 2022)
+
+#### 🐛 Bug Fix
+
+- Add zindex default to tooltip [#134](https://github.com/AppQuality/unguess-design-system/pull/134) ([@marcbon](https://github.com/marcbon) [@d-beezee](https://github.com/d-beezee))
+- fix(tooltip): add zIndex default props + add levels attribute on theme object [#133](https://github.com/AppQuality/unguess-design-system/pull/133) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.42 (Thu Dec 01 2022)
+
+#### 🐛 Bug Fix
+
+- Allow centering and resizing legend [#132](https://github.com/AppQuality/unguess-design-system/pull/132) ([@d-beezee](https://github.com/d-beezee))
+- feat: Allow styling legend width and move legend to specific container [#131](https://github.com/AppQuality/unguess-design-system/pull/131) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.41 (Thu Dec 01 2022)
+
+#### 🐛 Bug Fix
+
+- Fix tabs and allow scroll [#130](https://github.com/AppQuality/unguess-design-system/pull/130) ([@d-beezee](https://github.com/d-beezee))
+- fix: Type fix [#129](https://github.com/AppQuality/unguess-design-system/pull/129) ([@d-beezee](https://github.com/d-beezee))
+- fix: Add scroll to tabs if heigth is set to container [#128](https://github.com/AppQuality/unguess-design-system/pull/128) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v2.12.40 (Thu Dec 01 2022)
+
+#### 🐛 Bug Fix
+
+- Legend component, custom tooltips and tabs rework [#126](https://github.com/AppQuality/unguess-design-system/pull/126) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- fix: Use correct styles [#127](https://github.com/AppQuality/unguess-design-system/pull/127) ([@d-beezee](https://github.com/d-beezee))
+- Add legend component [#120](https://github.com/AppQuality/unguess-design-system/pull/120) ([@d-beezee](https://github.com/d-beezee))
+- Replace zendesk tab with the new shine handmade awesome customTabs [#125](https://github.com/AppQuality/unguess-design-system/pull/125) ([@cannarocks](https://github.com/cannarocks))
+- feat: Allow setting custom tooltip on pie and sunburst [#122](https://github.com/AppQuality/unguess-design-system/pull/122) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.39 (Wed Nov 30 2022)
+
+#### 🐛 Bug Fix
+
+- Export tabs component [#124](https://github.com/AppQuality/unguess-design-system/pull/124) ([@marcbon](https://github.com/marcbon))
+- fix(tabs): export component [#123](https://github.com/AppQuality/unguess-design-system/pull/123) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v2.12.38 (Tue Nov 29 2022)
+
+#### 🐛 Bug Fix
+
+- Update Design System [#121](https://github.com/AppQuality/unguess-design-system/pull/121) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Sunburst component - design fixes [#119](https://github.com/AppQuality/unguess-design-system/pull/119) ([@d-beezee](https://github.com/d-beezee))
+- Sunburst-component [#116](https://github.com/AppQuality/unguess-design-system/pull/116) ([@d-beezee](https://github.com/d-beezee))
+- Design fixes [#118](https://github.com/AppQuality/unguess-design-system/pull/118) ([@d-beezee](https://github.com/d-beezee))
+- Design fixes [#117](https://github.com/AppQuality/unguess-design-system/pull/117) ([@d-beezee](https://github.com/d-beezee))
+- Bullet-remove-animation [#115](https://github.com/AppQuality/unguess-design-system/pull/115) ([@cannarocks](https://github.com/cannarocks) [@iacopolea](https://github.com/iacopolea))
+- Un 153 tabs [#114](https://github.com/AppQuality/unguess-design-system/pull/114) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 5
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.37 (Thu Nov 24 2022)
 
 #### 🐛 Bug Fix
