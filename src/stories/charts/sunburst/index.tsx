@@ -145,7 +145,7 @@ const SunburstChart = ({
             ...margin,
           }}
           data={currentData}
-          childColor={{ from: "color", modifiers: [["brighter", 0.5]] }}
+          childColor={{ from: "color", modifiers: [["brighter", 0.6]] }}
           onClick={(clickedData) => {
             const foundObject = findChildrenByName(
               currentData,
