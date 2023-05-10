@@ -74,7 +74,7 @@ const CampaignCard = ({
         <StyledLabel>{date}</StyledLabel>
         {isNew && (
           <StyledTagNew
-            hue={theme.palette.pink["600"]}
+            hue={theme.palette.fuschia["600"]}
             color={theme.palette.white}
             isPill
             size="medium"
