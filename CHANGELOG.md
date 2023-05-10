@@ -1,3 +1,16 @@
+# v3.0.2 (Wed May 10 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#244](https://github.com/AppQuality/unguess-design-system/pull/244) ([@marcbon](https://github.com/marcbon))
+- 🔥 chore(package.json): remove react-spring dependency [#243](https://github.com/AppQuality/unguess-design-system/pull/243) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v2.12.87 (Tue May 09 2023)
 
 #### 🐛 Bug Fix
