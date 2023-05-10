@@ -8,14 +8,6 @@ const StyledButton = styled(Button)`
   font-weight: ${(props) => props.theme.fontWeights.semibold};
   padding-left: 0;
   justify-content: flex-start;
-
-  ${(props) => `
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: ${props.theme.palette.kale[100]};
-    color: ${props.isDanger ? props.theme.palette.red[500] : props.theme.palette.grey[800]};
-  }`};
 `;
 
 export const PreviousButton = (props: ButtonArgs) => (

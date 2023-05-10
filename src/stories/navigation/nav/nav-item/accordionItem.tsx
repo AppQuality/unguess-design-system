@@ -30,10 +30,6 @@ const AccordionItemHeader = styled(Accordion.Header)<
   svg {
     width: 26px;
   }
-
-  &:hover {
-    background-color: ${(props) => props.theme.palette.kale["200"]};
-  }
 `;
 
 const AccordionItemPanel = styled(Accordion.Panel)<AccordionArgs & NavItemArgs>`

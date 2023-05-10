@@ -9,7 +9,7 @@ import {
 import { forwardRef } from "react";
 
 const SelectedItemStyle = css`
-  background-color: ${({ theme }) => theme.palette.kale["100"]};
+  background-color: ${({ theme }) => getColor(theme.colors.primaryHue, 600, theme, 0.08)};
 `;
 
 const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
@@ -19,11 +19,8 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   ${sidebarNavItemExpanded}
   ${(props) => !props.isExpanded && sidebarNavItemHidden}
   ${(props) => props.isCurrent && SelectedItemStyle}
-  &:focus {
+  &:focus, &:hover {
     ${SelectedItemStyle}
-  }
-  &:hover {
-    background-color: ${({ theme }) => theme.palette.kale["200"]};
   }
   color: ${(props) => getColor(props.theme.colors.primaryHue, 600)};
   font-weight: ${(props) => props.theme.fontWeights.medium};

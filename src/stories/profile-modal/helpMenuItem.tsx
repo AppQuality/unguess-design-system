@@ -14,6 +14,7 @@ import { Button } from "../buttons/button";
 import { Anchor } from "../buttons/anchor";
 import { MenuItemProps } from "./_types";
 import { getInitials } from "./utils";
+import { getColor } from "../theme/utils";
 
 interface HelpItemProps extends MenuItemProps {
   title: string;
@@ -37,7 +38,7 @@ const StyledButton = styled(Button)`
   &:hover,
   &:focus,
   &:active {
-    background-color: ${props.theme.palette.kale[100]};
+    background-color: ${getColor(props.theme.colors.primaryHue, 600, undefined, 0.08)};
     color: ${
       props.isDanger
         ? props.theme.palette.red[500]
