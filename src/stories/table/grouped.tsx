@@ -4,12 +4,11 @@ import { FunctionComponent, useState } from "react";
 import { Label } from "../label";
 import { theme } from "../theme";
 import { Group, RowArgs, TableProps } from "./_types";
-import { animated, useSpring } from "react-spring";
 import { Icon } from "../icons";
 import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down-stroke.svg";
 import styled from "styled-components";
 
-const StyledAnimatedToggle = styled(animated.div)`
+const StyledAnimatedToggle = styled.div`
   display: inline-block;
   float: right;
 `;
@@ -56,16 +55,6 @@ const GroupRow = (props: RowArgs) => <UgGroupRow {...props} />;
 const GroupRowComponent: FunctionComponent<GroupRowProps> = (
   props: GroupRowProps
 ) => {
-  const toggleIconAnimation = useSpring({
-    config: { duration: 120 },
-    transform:
-      props.group.items.length > 0
-        ? props.open
-          ? "rotate(180deg)"
-          : "rotate(0deg)"
-        : "rotate(0deg)",
-  });
-
   return (
     <GroupRow
       {...(props && props.group.items.length === 0 && { className: "empty" })}
@@ -80,7 +69,9 @@ const GroupRowComponent: FunctionComponent<GroupRowProps> = (
         <Label isRegular className="title">
           {props.group.groupName} <b>({props.group.items.length})</b>
         </Label>
-        <StyledAnimatedToggle style={toggleIconAnimation}>
+        <StyledAnimatedToggle
+          style={{ transform: props.open ? "rotate(180deg)" : "none" }}
+        >
           <ChevronIcon />
         </StyledAnimatedToggle>
       </Cell>
