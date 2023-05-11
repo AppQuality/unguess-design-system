@@ -125,7 +125,6 @@ export const HelpItem = (props: HelpItemProps) => {
                 props.onCopyEmail?.();
               }}
               size="small"
-              variant="isBasic"
             >
               <StyledButton.StartIcon>
                 <CopyIcon />

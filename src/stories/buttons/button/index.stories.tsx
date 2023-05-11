@@ -1,48 +1,96 @@
 // import { ComponentMeta, Story } from "@storybook/react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, Story } from "@storybook/react";
 import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
 import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { Button } from ".";
-import { getButtonVariant } from "../utils/useButtonVariant";
 import { ButtonArgs } from "./_types";
+import { Col as ZendeskCol, Grid, Row as ZendeskRow } from "@zendeskgarden/react-grid";
+import styled from "styled-components";
 
-const defaultArgs: ButtonArgs = {
-  variant: "isDefault",
-  isPill: true,
-  size: "medium",
-  children: "button",
-  disabled: false,
-  onClick: () => alert("clicked!"),
+const Row = styled(ZendeskRow)`
+  margin-bottom: 10px;
+  max-width: 768px;
+`;
+
+const Col = styled(ZendeskCol)`
+  display: flex;
+  justify-content: center;
+`;
+
+const sizes = ["small", "medium", "large"] as const;
+const variants = [
+  {},
+  { isDanger: true },
+  { isAccent: true },
+] as const;
+
+const Template: Story<ButtonArgs> = (args) => {
+  return (
+    <Grid>
+      {variants.map((variant, i) => (
+        <Row key={i}>
+          {sizes.map((size, i) => (
+            <Col size={3} key={i}>
+              <Button {...args} size={size} {...variant}>
+                {size}
+              </Button>
+            </Col>
+          ))}
+        </Row>
+      ))}
+    </Grid>
+  );
 };
 
-type Story = StoryObj<ButtonArgs>;
-
-const Template: Story = {
-  args: defaultArgs,
-  render: (args) => {
-    const variant = getButtonVariant(args);
-    return (
-      <Button {...args} {...variant}>
-        {args.hasStartIcon && (
-          <Button.StartIcon isRotated={args.isStartIconRotated}>
-            <LeafIcon />
-          </Button.StartIcon>
-        )}
-        {args.children}
-        {args.hasEndIcon && (
-          <Button.EndIcon isRotated={args.isEndIconRotated}>
-            <ChevronIcon />
-          </Button.EndIcon>
-        )}
-      </Button>
-    );
-  },
+const TemplateIcon: Story<ButtonArgs> = (args) => {
+  return (
+    <Grid>
+        <Row>
+          {sizes.map((size, j) => (
+            <Col size={3} key={j}>
+              <Button {...args} size={size}>
+                <Button.StartIcon>
+                  <LeafIcon />
+                </Button.StartIcon>
+                {size}
+              </Button>
+            </Col>
+          ))}
+        </Row>
+        <Row>
+          {sizes.map((size, k) => (
+            <Col size={3} key={k}>
+              <Button {...args} size={size}>
+                {size}
+                <Button.EndIcon>
+                  <ChevronIcon />
+                </Button.EndIcon>
+              </Button>
+            </Col>
+          ))}
+        </Row>
+    </Grid>
+  );
 };
 
-export const Default = { ...Template };
-Default.args = {
-  ...defaultArgs,
+const TemplateDisabled: Story<ButtonArgs> = (args) => {
+  return (
+    <Grid>
+      <Row>
+        {sizes.map((size, j) => (
+          <Col size={3} key={j}>
+            <Button {...args} disabled size={size}>
+              {size}
+            </Button>
+          </Col>
+        ))}
+      </Row>
+    </Grid>
+  );
 };
+
+
+export const Default = Template.bind({});
 
 Default.parameters = {
   design: {
@@ -53,9 +101,7 @@ Default.parameters = {
 
 export const Basic =  { ...Template };
 Basic.args = {
-  ...defaultArgs,
   isBasic: true,
-  variant: "isBasic",
 };
 
 Basic.parameters = {
@@ -67,8 +113,7 @@ Basic.parameters = {
 
 export const Primary = { ...Template };
 Primary.args = {
-  ...defaultArgs,
-  variant: "isPrimary",
+  isPrimary: true,
 };
 
 Primary.parameters = {
@@ -78,11 +123,19 @@ Primary.parameters = {
   },
 };
 
-export const WithIcon =  { ...Template };
-WithIcon.args = {
-  ...defaultArgs,
-  hasStartIcon: true,
-  hasEndIcon: false,
+
+export const WithIcon = TemplateIcon.bind({});
+
+WithIcon.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A9410',
+  },
+};
+
+export const Disabled = TemplateDisabled.bind({});
+Disabled.args = {
+  disabled: true,
 };
 
 export default {
@@ -93,27 +146,10 @@ export default {
     "Button.EndIcon": Button.EndIcon,
   },
   argTypes: {
-    variant: {
-      control: {
-        type: "select",
-        options: ["isDefault", "isBasic", "isPrimary", "isLink"],
-      },
-    },
-    size: {
-      control: {
-        type: "select",
-        options: ["small", "medium", "large"],
-      },
-    },
     onClick: {
       table: {
         category: "Events",
       },
-    },
-    children: {
-      name: "Button text",
-      description: "The example text of button",
-      control: "text",
     },
   },
   parameters: {

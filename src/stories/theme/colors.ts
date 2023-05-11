@@ -10,6 +10,7 @@ export const colors = {
   warningHue: "yellow",
   successHue: "green",
   neutralHue: "grey",
+  infoHue: "azure",
   chromeHue: "blue",
   accentHue: "kale",
 };

@@ -2,29 +2,6 @@ import { forwardRef } from "react";
 import { Button as ZendeskButton } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { ButtonArgs } from "./_types";
-import { theme } from "../../theme";
-
-let customTheme = {
-  ...theme,
-};
-
-// Define theme override
-const getThemeStyle = (props: ButtonArgs) => {
-  const { themeColor } = props;
-  if (themeColor) {
-    customTheme = {
-      ...theme,
-      colors: {
-        ...theme.colors,
-        primaryHue: themeColor,
-      },
-    };
-
-    return customTheme;
-  }
-
-  return theme;
-};
 
 const UgButton = styled(ZendeskButton)``;
 
@@ -38,12 +15,7 @@ const UgButton = styled(ZendeskButton)``;
  */
 const ButtonComponent = forwardRef<HTMLButtonElement, ButtonArgs>(
   (props, ref) => {
-    if (props.themeColor) {
-      const currentTheme = getThemeStyle(props);
-      return <UgButton {...props} ref={ref} theme={currentTheme} />;
-    }
-
-    return <UgButton ref={ref} {...props} />;
+    return <UgButton ref={ref} isPill {...props} />;
   }
 );
 
