@@ -99,7 +99,7 @@ Default.parameters = {
   },
 };
 
-export const Basic =  { ...Template };
+export const Basic =  Template.bind({});
 Basic.args = {
   isBasic: true,
 };
@@ -111,7 +111,7 @@ Basic.parameters = {
   },
 };
 
-export const Primary = { ...Template };
+export const Primary = Template.bind({});
 Primary.args = {
   isPrimary: true,
 };
