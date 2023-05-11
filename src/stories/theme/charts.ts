@@ -167,7 +167,7 @@ export const CHARTS_COLOR_SCHEME_SEMANTIC = [
 export const CHARTS_COLOR_SCHEME_CATEGORICAL = [
   theme.palette.teal[700],
   theme.palette.pink[900],
-  theme.palette.purple[400],
+  theme.palette.purple[300],
   theme.palette.crimson[500],
   theme.palette.royal[900],
   theme.palette.lemon[700],
