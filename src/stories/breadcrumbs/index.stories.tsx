@@ -1,11 +1,11 @@
 import { ComponentMeta, Story } from "@storybook/react";
+import { IAnchorProps } from "@zendeskgarden/react-buttons";
 import { Breadcrumb } from ".";
 import { Anchor } from "../buttons/anchor";
-import { AnchorArgs } from "../buttons/anchor/_types";
 import { Basic } from "../buttons/anchor/index.stories";
 import { BreadcrumbArgs } from "./_types";
 interface StoryArgs extends BreadcrumbArgs {
-  items: AnchorArgs &
+  items: IAnchorProps &
     {
       children: string;
       onClick: () => void;

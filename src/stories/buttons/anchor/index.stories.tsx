@@ -1,14 +1,14 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Anchor } from ".";
-import { AnchorArgs } from "./_types";
+import { IAnchorProps } from "@zendeskgarden/react-buttons";
 
-const defaultArgs: AnchorArgs = {
+const defaultArgs: IAnchorProps = {
   isDanger: false,
   isExternal: false,
   children: "Leave without watering",
 };
 
-const Template: Story<AnchorArgs> = (args) => <Anchor {...args} />;
+const Template: Story<IAnchorProps> = (args) => <Anchor {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
