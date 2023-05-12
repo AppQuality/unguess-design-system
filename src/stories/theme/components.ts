@@ -192,33 +192,57 @@ export const components: Record<string, any> = {
   "buttons.icon_button": ({
     disabled,
     isBright,
-    isAccent
-  }: {
-    disabled: boolean;
-    isBright: boolean;
-    isAccent: boolean;
-  }) => {
+    isAccent,
+    isPrimary,
+    isBasic,
+  }: ButtonArgs) => {
     return {
-      ...(isAccent && {
+      ...(isAccent && !isPrimary && !isBasic && {
+        borderColor: getColor(colors.accentHue, 700),
+        color: getColor(colors.accentHue, 700),
         "&:hover": {
-          backgroundColor: palette.grey[500],
-          color: palette.kale[100],
-          },
-          "&:active": {
-            backgroundColor: palette.grey[600],
-            color: palette.kale[200],
-            },
+          borderColor: getColor(colors.accentHue, 800),
+          color: getColor(colors.accentHue, 800),
+          backgroundColor: palette.blue[50],
+        },
+        "&:active": {
+          borderColor: getColor(colors.accentHue, 800),
+          color: getColor(colors.accentHue, 800),
+          backgroundColor: palette.blue[100],
+        },
+      }),
+      ...(isAccent && isBasic && {
+        color: getColor(colors.accentHue, 700),
+        "&:hover": {
+          backgroundColor: palette.blue[50],
+          color: getColor(colors.accentHue, 800),
+        },
+        "&:active": {
+          backgroundColor: palette.blue[100],
+          color: getColor(colors.accentHue, 800),
+        },
+      }),
+      ...(isAccent && isPrimary && {
+        backgroundColor: getColor(colors.accentHue, 600),
+        color: "white",
+        "&:hover": {
+          backgroundColor: getColor(colors.accentHue, 700),
+          color: "white",
+        },
+        "&:active": {
+          backgroundColor: getColor(colors.accentHue, 800),
+          color: "white",
+        },
       }),
       ...(isBright && {
         backgroundColor: "transparent",
         color: "white",
+        border: "none",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.kale[100],
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.kale[200],
         },
       }),
       ...(disabled && { pointerEvents: "none" }),
@@ -229,9 +253,10 @@ export const components: Record<string, any> = {
     isBright,
     isPrimary,
     isBasic,
+    isLink,
   }: ButtonArgs) => {
     return {
-      ...(isAccent && !isPrimary && !isBasic && {
+      ...(isAccent && !isPrimary && !isBasic && !isLink && {
         borderColor: getColor(colors.accentHue, 700),
         color: getColor(colors.accentHue, 700),
         "&:hover": {
@@ -265,17 +290,24 @@ export const components: Record<string, any> = {
           color: getColor(colors.accentHue, 800),
         },
       }),
-      ...(isBright && {
+      ...(isAccent && isLink && {
+        color: getColor(colors.accentHue, 700),
+        "&:hover": {
+          color: getColor(colors.accentHue, 800),
+        },
+        "&:active": {
+          color: getColor(colors.accentHue, 800),
+        },
+      }),
+        ...(isBright && {
         backgroundColor: "transparent",
         color: "white",
         border: "none",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.kale[100],
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.kale[200],
         },
       }),
     };

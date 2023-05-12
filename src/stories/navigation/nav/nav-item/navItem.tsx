@@ -9,7 +9,7 @@ import {
 import { forwardRef } from "react";
 
 const SelectedItemStyle = css`
-  background-color: ${({ theme }) => getColor(theme.colors.primaryHue, 600, theme, 0.08)};
+  background-color: ${({ theme }) => getColor(theme.colors.primaryHue, 600, undefined, 0.08)};
 `;
 
 const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
@@ -21,6 +21,9 @@ const UgNavItem = styled(ZendeskNavItem)<NavItemArgs>`
   ${(props) => props.isCurrent && SelectedItemStyle}
   &:focus, &:hover {
     ${SelectedItemStyle}
+  }
+  &:active {
+    background-color: ${({ theme }) => getColor(theme.colors.primaryHue, 600, undefined, 0.2)};
   }
   color: ${(props) => getColor(props.theme.colors.primaryHue, 600)};
   font-weight: ${(props) => props.theme.fontWeights.medium};
