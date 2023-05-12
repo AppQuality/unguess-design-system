@@ -1,3 +1,17 @@
+# v3.0.3 (Fri May 12 2023)
+
+#### 🐛 Bug Fix
+
+- Fix sidebar toggle WIDTH [#246](https://github.com/AppQuality/unguess-design-system/pull/246) ([@sanchayan721](https://github.com/sanchayan721) [@cannarocks](https://github.com/cannarocks))
+- Fix(SideBar): Sidebar Icon positioning [#245](https://github.com/AppQuality/unguess-design-system/pull/245) ([@sanchayan721](https://github.com/sanchayan721))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Sanchayan Bhunia ([@sanchayan721](https://github.com/sanchayan721))
+
+---
+
 # v3.0.2 (Wed May 10 2023)
 
 #### 🐛 Bug Fix
