@@ -232,17 +232,17 @@ export const components: Record<string, any> = {
   }: ButtonArgs) => {
     return {
       ...(isAccent && !isPrimary && !isBasic && {
-        borderColor: getColor(colors.accentHue, 600),
-        color: getColor(colors.accentHue, 600),
+        borderColor: getColor(colors.accentHue, 700),
+        color: getColor(colors.accentHue, 700),
         "&:hover": {
-          borderColor: getColor(colors.accentHue, 700),
-          color: getColor(colors.accentHue, 700),
-          backgroundColor: getColor(colors.accentHue, 600, undefined, 0.08),
+          borderColor: getColor(colors.accentHue, 800),
+          color: getColor(colors.accentHue, 800),
+          backgroundColor: palette.blue[50],
         },
         "&:active": {
           borderColor: getColor(colors.accentHue, 800),
           color: getColor(colors.accentHue, 800),
-          backgroundColor: getColor(colors.accentHue, 700, undefined, 0.2),
+          backgroundColor: palette.blue[100],
         },
       }),
       ...(isAccent && isPrimary && {
@@ -255,13 +255,13 @@ export const components: Record<string, any> = {
         },
       }),
       ...(isAccent && isBasic && {
-        color: getColor(colors.accentHue, 600),
+        color: getColor(colors.accentHue, 700),
         "&:hover": {
-          backgroundColor: getColor(colors.accentHue, 600, undefined, 0.08),
-          color: getColor(colors.accentHue, 700),
+          backgroundColor: palette.blue[50],
+          color: getColor(colors.accentHue, 800),
         },
         "&:active": {
-          backgroundColor: getColor(colors.accentHue, 600, undefined, 0.2),
+          backgroundColor: palette.blue[100],
           color: getColor(colors.accentHue, 800),
         },
       }),
