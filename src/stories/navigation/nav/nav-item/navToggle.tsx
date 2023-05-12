@@ -23,9 +23,9 @@ const NavToggle = (props: NavToggleArgs) => {
   return (
     <StyledToggle {...props} className="toggle-navigation" isPrimary size={"small"}>
       {props.isExpanded ? (
-        <ChevronLeftIcon style={{ width: "100%" }} />
+        <ChevronLeftIcon />
       ) : (
-        <ChevronRightIcon style={{ width: "100%" }} />
+        <ChevronRightIcon />
       )}
     </StyledToggle>
   );
