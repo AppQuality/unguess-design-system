@@ -6,7 +6,7 @@ import { getColor } from "./utils";
 import {cardCmponentStyle} from "../cards/index";
 import { ButtonArgs } from "../buttons/button/_types";
 
-export const components: Record<string, any> = {
+export const components = {
   ...DEFAULT_THEME.components,
   chrome: {
     ...DEFAULT_THEME.components?.chrome,
