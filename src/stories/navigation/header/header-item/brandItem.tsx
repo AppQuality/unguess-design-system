@@ -4,7 +4,6 @@ import { BrandItemArgs } from "./_types";
 import { HeaderItemIcon } from "./headerItemIcon";
 import { HeaderItemText } from "./headerItemText";
 import { Logo } from "../../../logo";
-import { getColor } from "../../../theme/utils";
 import { ReactComponent as MenuIcon } from "../../../../assets/icons/menu-stroke.svg";
 import { WorkspacesDropdown } from "./workspacesDropdown";
 

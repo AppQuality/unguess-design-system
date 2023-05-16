@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Col } from "../../../grid/col";
 import { Row } from "../../../grid/row";
-import { getColor } from "../../../theme/utils";
 import { LG, MD } from "../../../typography/typescale";
 import { PageHeaderMainProps } from "../_types";
 
