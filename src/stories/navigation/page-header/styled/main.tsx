@@ -41,7 +41,7 @@ export const MainOverline = styled(MD)`
 `;
 
 export const MainTitle = styled.h1`
-  color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
+  color: ${({ theme }) => theme.components.colors.primaryText};
   font-size: ${({ theme }) => theme.fontSizes.xxxl};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   line-height: ${({ theme }) => theme.lineHeights.xxxl};

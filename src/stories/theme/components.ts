@@ -21,7 +21,9 @@ export const components: Record<string, any> = {
       workspaceDropdownWidth: 192,
     },
   },
-
+  colors: {
+    primaryText: () => getColor(colors.primaryHue, 600),
+  },
   notification: {
     ...DEFAULT_THEME.components?.notification,
     card: {
@@ -177,7 +179,7 @@ export const components: Record<string, any> = {
     return {
       ...(addable
         ? {
-            color: colors.primaryHue,
+            color: getColor(colors.primaryHue, 600),
             cursor: "pointer",
           }
         : {}),

@@ -15,7 +15,7 @@ const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
   ${({ theme, isSelected }) =>
     isSelected &&
     `
-        color: ${getColor(theme.colors.primaryHue, 600)};
+        color: ${theme.components.colors.primaryText};
         background-color: transparent;
         
         border-color: ${getColor(theme.colors.primaryHue, 600)};
@@ -31,7 +31,7 @@ const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
 
   &:hover {
     background-color: transparent;
-    color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
+    color: ${({ theme }) => theme.components.colors.primaryText};
   }
 `;
 

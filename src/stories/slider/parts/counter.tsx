@@ -15,7 +15,7 @@ const StyledTag = styled(Tag)`
 const StyledSM = styled(SM)`
   color: ${({ theme }) => theme.palette.grey[600]};
   span {
-    color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
+    color: ${({ theme }) => theme.components.colors.primaryText};
   }
 `;
 

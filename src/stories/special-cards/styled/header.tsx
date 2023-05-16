@@ -8,7 +8,7 @@ const Label = styled(SM)`
 `;
 
 const Title = styled(LG)`
-  color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
+  color: ${({ theme }) => theme.components.colors.primaryText};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   margin-top: ${({ theme }) => theme.space.xxs};
 `;

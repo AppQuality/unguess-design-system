@@ -13,13 +13,13 @@ const Header = styled.div`
 const Title = styled(MD)<EditorHeaderArgs>`
   ${({ validation, theme }) => {
     if (validation === "success") {
-      return `color: ${getColor(theme.colors.successHue)};`;
+      return `color: ${getColor(theme.colors.successHue, 600)};`;
     } else if (validation === "warning") {
-      return `color: ${getColor(theme.colors.warningHue)};`;
+      return `color: ${getColor(theme.colors.warningHue, 600)};`;
     } else if (validation === "error") {
-      return `color: ${getColor(theme.colors.dangerHue)};`;
+      return `color: ${getColor(theme.colors.dangerHue, 600)};`;
     } else {
-      return `color: ${getColor(theme.colors.primaryHue, 600)};`;
+      return `color: ${theme.components.colors.primaryText};`;
     }
   }}
 `;

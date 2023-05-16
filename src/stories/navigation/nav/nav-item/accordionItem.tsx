@@ -46,7 +46,7 @@ const AccordionItemPanel = styled(Accordion.Panel)<AccordionArgs & NavItemArgs>`
 const AccordionItemLabel = styled(Accordion.Label)<AccordionArgs & NavItemArgs>`
   padding: 12px 9px;
   ${({ theme }) => `
-    color: ${getColor(theme.colors.primaryHue, 600)};
+    color: ${theme.components.colors.primaryText};
     fill: ${getColor(theme.colors.primaryHue, 600)};
     font-weight: ${theme.fontWeights.medium};
   `}
