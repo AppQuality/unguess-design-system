@@ -5,7 +5,6 @@ import { flexColumnCenter } from "../theme/mixins";
 import { MD, SM } from "../typography/typescale";
 import { getInitials } from "./utils";
 import { UserProfileProps } from "./_types";
-import { getColor } from "../theme/utils";
 
 const ProfileContainer = styled.div`
   ${flexColumnCenter}

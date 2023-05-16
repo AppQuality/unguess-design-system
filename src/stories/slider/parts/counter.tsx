@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Tag } from "../../tags";
 import { theme } from "../../theme";
 import { SM } from "../../typography/typescale";
-import { getColor } from "../../theme/utils";
 
 const StyledTag = styled(Tag)`
   position: absolute;

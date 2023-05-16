@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { LG, MD, SM } from "../../typography/typescale";
 import { CardHeaderProps } from "../_types";
-import { getColor } from "../../theme/utils";
 
 const Label = styled(SM)`
   color: ${({ theme }) => theme.palette.grey[500]};
