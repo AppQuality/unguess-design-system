@@ -31,8 +31,8 @@ const XXL = styled(ZendeskXXL)<{color?: string}>`
 const XXXL = styled(ZendeskXXXL)<{color?: string}>`
   color: ${p => p.color || p.theme.palette.blue[600]};
 `;
-const TextLabel = styled(ZendeskSM)<{color?: string}>`
-  color: ${ p => p.color || p.theme.palette.grey[600]};
+const TextLabel = styled(ZendeskSM)`
+  color: ${ p => p.theme.palette.grey[600]};
 `;
 interface TextDescriptionProps extends ITypescaleMonospaceProps {
   isSmall?: boolean;
