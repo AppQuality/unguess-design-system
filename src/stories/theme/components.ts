@@ -32,7 +32,25 @@ export const components = {
     },
   },
   ...cardCmponentStyle,
-
+  "navigation.hoverableItem": ({isCurrent}: {isCurrent: boolean}) => {
+    return {
+      "border-top-left-radius": "24px",
+      "border-bottom-left-radius": "24px",
+      color: getColor(colors.primaryHue, 600),
+      "font-weight": fontWeights.medium,
+      "&:hover": {
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.08),
+      },
+      "&:active": {
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.2),
+      },
+      ...(isCurrent && {
+        color: getColor(colors.primaryHue, 700),
+        "font-weight": fontWeights.semibold,
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.08),
+      }),
+    };
+  },
   "notifications.notification": ({
     type,
     isPrimary,

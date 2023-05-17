@@ -142,15 +142,6 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
 };
 
-export const CHARTS_COLOR_PALETTE = {
-  greenLight: "#5FA41C",
-  blue: "#020880",
-  fucsia: "#CE2A7A",
-  violet: "#573ECF",
-  orchidea: "#B75CAD",
-  sky: "#3392CE",
-};
-
 export const CHARTS_COLOR_SCHEME_MONO = [
   theme.palette.teal[700],
   theme.palette.grey[200],
