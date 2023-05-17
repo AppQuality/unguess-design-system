@@ -22,7 +22,7 @@ export const components = {
     },
   },
   colors: {
-    primaryText: () => getColor(colors.primaryHue, 600),
+    primaryText: palette.blue[600],
   },
   notification: {
     ...DEFAULT_THEME.components?.notification,
