@@ -32,19 +32,26 @@ export const components = {
     },
   },
   ...cardCmponentStyle,
-  "navigation.hoverableItem": ({isCurrent}: {isCurrent: boolean}) => {
+  "navigation.hoverableItem": ({isCurrent}: {isCurrent: boolean}) => { // used for chrome nav and sidebar scroll nav in unguess-react
     return {
       "border-top-left-radius": "24px",
       "border-bottom-left-radius": "24px",
       color: getColor(colors.primaryHue, 600),
       "font-weight": fontWeights.medium,
-      "&:hover": {
+      "&:hover, &.hover": {
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.08), // zendesk garden default hover color
+        color: getColor(colors.primaryHue, 700),
+      },
+      "&:active, &.active": {
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.2), // zendesk garden default active color
+        color: getColor(colors.primaryHue, 700),
+      },
+      "&.isCurrent": { // class approach
+        color: getColor(colors.primaryHue, 700),
+        "font-weight": fontWeights.semibold,
         "background-color": getColor(colors.primaryHue, 600, undefined, 0.08),
       },
-      "&:active": {
-        "background-color": getColor(colors.primaryHue, 600, undefined, 0.2),
-      },
-      ...(isCurrent && {
+      ...(isCurrent && { // props approach
         color: getColor(colors.primaryHue, 700),
         "font-weight": fontWeights.semibold,
         "background-color": getColor(colors.primaryHue, 600, undefined, 0.08),

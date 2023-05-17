@@ -4,7 +4,6 @@ import styled from "styled-components";
 import {
   sidebarNavItemExpanded,
   sidebarNavItemHidden,
-  getColor,
 } from "../../../theme/utils";
 import { forwardRef } from "react";
 import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
