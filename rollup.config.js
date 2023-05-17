@@ -13,7 +13,7 @@ export default {
   plugins: [
     image(),
     svgr({
-        dimensions: true,
+      icon: true,
     }),
     typescript(),
   ],

@@ -43,6 +43,7 @@ const StyledTabPanel = styled.div<{ hidden?: boolean }>`
   display: ${({ hidden }) => (hidden ? "none" : "block")};
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const TabPanel = ({ hidden, children, ...rest }: TabPanelProps) => (
