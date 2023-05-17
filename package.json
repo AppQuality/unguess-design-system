@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.0.1-svgr-beta",
+  "version": "3.0.2-svgr-beta",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
