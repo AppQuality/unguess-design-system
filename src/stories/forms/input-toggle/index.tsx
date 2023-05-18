@@ -55,6 +55,7 @@ const Wrapper = styled.div<InputToggleArgs>`
 
     svg {
       margin-left: ${({ theme }) => theme.space.xs};
+      flex-shrink: 0;
     }
   }
 `;
@@ -127,7 +128,7 @@ const InputItem = (props: InputToggleArgs) => {
     />
   ) : (
     <StyledText isBold style={{ fontWeight: 500, ...size, ...style }}>
-      {!value ? placeholder : value} <EditIcon width={50} />
+      {!value ? placeholder : value} <EditIcon />
     </StyledText>
   );
 };
