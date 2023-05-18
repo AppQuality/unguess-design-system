@@ -4,10 +4,12 @@ import {
 } from "@zendeskgarden/react-typography";
 import styled from "styled-components";
 
-const UgParagraph = styled(ZendeskParagraph)`
-  > div, p {
-    color: ${p => p.color || p.theme.palette.grey[700]};
-  }
+const UgParagraph = styled(ZendeskParagraph)<{color?: string}>`
+  ${p => p.color && `
+    > div {
+      color: ${p.color};
+    }
+  `};
 `;
 
 /**

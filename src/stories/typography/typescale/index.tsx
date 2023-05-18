@@ -14,24 +14,24 @@ import { theme } from "../../theme";
  *  Type components come in small, medium, large, extra-large, extra-extra-large, and extra-extra-extra-large.
  */
 const SM = styled(ZendeskSM)<{color?: string}>`
-  color: ${p => p.color || p.theme.palette.grey[800]};
+  ${p => p.color && `color: ${p.color}`};
 `;
 const MD = styled(ZendeskMD)<{color?: string}>`
-  color: ${p => p.color || p.theme.palette.grey[800]};
+  ${p => p.color && `color: ${p.color}`};
 `;
 const LG = styled(ZendeskLG)<{color?: string}>`
-  color: ${p => p.color || p.theme.palette.grey[800]};
+  ${p => p.color && `color: ${p.color}`};
 `;
 const XL = styled(ZendeskXL)<{color?: string}>`
-  color: ${p => p.color || p.theme.palette.grey[800]};
+${p => p.color && `color: ${p.color}`};
 `;
 const XXL = styled(ZendeskXXL)<{color?: string}>`
-  color: ${p => p.color || p.theme.palette.grey[800]};
+${p => p.color && `color: ${p.color}`};
 `;
 const XXXL = styled(ZendeskXXXL)<{color?: string}>`
   color: ${p => p.color || p.theme.palette.blue[600]};
 `;
-const TextLabel = styled(ZendeskSM)`
+const TextLabel = () => styled(ZendeskSM)`
   color: ${ p => p.theme.palette.grey[600]};
 `;
 interface TextDescriptionProps extends ITypescaleMonospaceProps {
