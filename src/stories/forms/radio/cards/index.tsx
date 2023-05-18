@@ -26,7 +26,7 @@ const Circle = styled.div<CircleProps>`
   height: ${({ theme }) => theme.space.base * 6}px;
   padding: ${({ theme }) => theme.space.base * 1.25}px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.components.colors.primaryText};
+  background-color: ${({ theme }) => theme.palette.blue[600]};
   display: flex;
   flex-direction: column;
   justify-content: center;

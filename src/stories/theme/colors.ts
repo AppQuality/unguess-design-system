@@ -1,8 +1,8 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { palette } from "./palette";
 type ThemeColors = typeof DEFAULT_THEME.colors & {
-  infoHue: string;
-  accentHue: string;
+  infoHue: string
+  accentHue: string
 };
 
 export const colors: ThemeColors = {

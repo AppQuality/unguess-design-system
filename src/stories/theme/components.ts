@@ -21,9 +21,6 @@ export const components = {
       workspaceDropdownWidth: 192,
     },
   },
-  colors: {
-    primaryText: palette.blue[600],
-  },
   notification: {
     ...DEFAULT_THEME.components?.notification,
     card: {
@@ -32,6 +29,18 @@ export const components = {
     },
   },
   ...cardCmponentStyle,
+  "text.primary": () => ({
+    color: getColor(colors.primaryHue, 600),
+  }),
+  "text.success": () => ({
+    color: getColor(colors.successHue, 700),
+  }),
+  "text.warning": () => ({
+    color: getColor(colors.warningHue, 700),
+  }),
+  "text.danger": () => ({
+    color: getColor(colors.dangerHue, 700),
+  }),
   "navigation.hoverableItem": ({isCurrent}: {isCurrent: boolean}) => { // used for chrome nav and sidebar scroll nav in unguess-react
     return {
       "border-top-left-radius": "24px",
