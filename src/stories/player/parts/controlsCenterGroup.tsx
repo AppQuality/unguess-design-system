@@ -8,7 +8,6 @@ import { IconButton } from "../../buttons/icon-button";
 import { SM } from "../../typography/typescale";
 import { getNextPlaybackRate } from "./utils";
 import { useCallback, useEffect, useState } from "react";
-import { Button } from "../../buttons/button";
 
 const StyledDiv = styled.div`
   display: flex;
