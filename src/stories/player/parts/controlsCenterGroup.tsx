@@ -98,7 +98,7 @@ export const ControlsGroupCenter = ({
       >
         <ForwardIcon />
       </IconButton>
-      <Button
+      <IconButton
         isBright
         isPill
         onClick={(e) => {
@@ -113,7 +113,7 @@ export const ControlsGroupCenter = ({
         <SM isBold style={{ lineHeight: "16px" }}>
           {playBackRate}x
         </SM>
-      </Button>
+      </IconButton>
     </StyledDiv>
   );
 };
