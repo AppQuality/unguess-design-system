@@ -276,12 +276,14 @@ export const components = {
         border: "none",
         "&:hover": {
           backgroundColor: palette.grey[500],
+          color: "white",
           "& svg": {
             color: "white",
           },
         },
         "&:active": {
           backgroundColor: palette.grey[600],
+          color: "white",
           "& svg": {
             color: "white",
           },
