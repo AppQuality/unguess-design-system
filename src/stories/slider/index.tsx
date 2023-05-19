@@ -50,3 +50,5 @@ export const Slider = (props: SliderArgs) => {
 };
 
 Slider.Slide = Slide;
+Slider.PrevButton = PrevButton;
+Slider.NextButton = NextButton;
