@@ -25,4 +25,11 @@ export const Icon = (props: IconArgs) => {
   );
 };
 
-export {StatusCompletedIcon, StatusLockedIcon, StatusIncomingIcon, StatusRunningIcon, CampaignExperientialIcon, CampaignFunctionalIcon}
+export {
+  StatusCompletedIcon,
+  StatusLockedIcon,
+  StatusIncomingIcon,
+  StatusRunningIcon,
+  CampaignExperientialIcon,
+  CampaignFunctionalIcon,
+};

@@ -53,6 +53,13 @@ const StyledLabel = styled(SM)`
   color: ${({ theme }) => theme.palette.grey["500"]};
 `;
 
+const StyledFooter = styled(SpecialCard.Footer)`
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
 const CampaignCard = ({
   isNew,
   date,
@@ -90,7 +97,7 @@ const CampaignCard = ({
         <SpecialCard.Header.Title>{campaignTitle}</SpecialCard.Header.Title>
       </SpecialCard.Header>
 
-      <SpecialCard.Footer>
+      <StyledFooter>
         {props.pillText && (
           <StyledTag size="large">
             <Tag.Avatar>
@@ -100,7 +107,7 @@ const CampaignCard = ({
           </StyledTag>
         )}
         <StatusIcon />
-      </SpecialCard.Footer>
+      </StyledFooter>
     </SpecialCard>
   );
 };
