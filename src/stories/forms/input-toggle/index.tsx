@@ -55,7 +55,6 @@ const Wrapper = styled.div<InputToggleArgs>`
 
     svg {
       margin-left: ${({ theme }) => theme.space.xs};
-      flex-shrink: 0;
     }
   }
 `;
