@@ -2,6 +2,7 @@ import { Button } from "@zendeskgarden/react-buttons";
 import React, { Children, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ButtonArgs } from "../buttons/button/_types";
+import { getColor } from "../theme/utils";
 import { TabsArgs, TabItemProps, TabPanelProps } from "./_types";
 
 const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
@@ -14,10 +15,10 @@ const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
   ${({ theme, isSelected }) =>
     isSelected &&
     `
-        color: ${theme.colors.primaryHue};
+        color: ${getColor(theme.colors.primaryHue, 600)};
         background-color: transparent;
         
-        border-color: ${theme.colors.primaryHue};
+        border-color: ${getColor(theme.colors.primaryHue, 600)};
         font-weight: ${theme.fontWeights.semibold};
     `}
 
@@ -30,7 +31,7 @@ const StyledNavButton = styled(Button)<ButtonArgs & { isSelected?: boolean }>`
 
   &:hover {
     background-color: transparent;
-    color: ${({ theme }) => theme.colors.primaryHue};
+    $
   }
 `;
 

@@ -8,6 +8,7 @@ import { useState } from "react";
 import { theme } from "../../../theme";
 import { SpecialCard } from "../../../special-cards";
 import { MD } from "../../../typography/typescale";
+import { getColor } from "../../../theme/utils";
 
 const StyledLabel = styled(Label)`
   margin: ${({ theme }) => theme.space.base}px auto;
@@ -34,7 +35,7 @@ const CheckboxCard = (props: CheckboxCardArgs) => {
 
       <SpecialCard.Header align="center">
         <SpecialCard.Header.Text>
-          <MD isBold style={checked ? { color: theme.colors.primaryHue } : {}}>
+          <MD isBold style={checked ? { color: getColor(theme.colors.primaryHue, 600) } : {}}>
             {props.label}
           </MD>
         </SpecialCard.Header.Text>

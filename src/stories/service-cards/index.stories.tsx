@@ -28,19 +28,17 @@ const defaultArgs: ServiceCardsProps = {
     "We assign our experienced testers test cases, such as purchasing with a credit card or creating an account, and they will detect the bugs.",
   hoverButtons: [
     <Button
-      isPill
       isStretched
       size="small"
-      themeColor={theme.colors.accentHue}
+      isAccent
     >
       Come funziona
     </Button>,
     <Button
-      isPill
       isPrimary
       isStretched
       size="small"
-      themeColor={theme.colors.accentHue}
+      isAccent
     >
       Lancia campagna
     </Button>,

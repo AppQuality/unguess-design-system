@@ -1,4 +1,4 @@
-import { CHARTS_COLOR_PALETTE } from "../../theme/charts";
+import { theme } from "../../theme";
 import { animated } from "@react-spring/web";
 
 export interface CustomBulletChartMeasureProps {
@@ -15,6 +15,6 @@ export const CustomMeasure = ({ x, y, width, height }: CustomBulletChartMeasureP
     y={y + 2}
     width={width - 4}
     height={height - 4}
-    fill={CHARTS_COLOR_PALETTE.darkGrey}
+    fill={theme.palette.grey[600]}
   />
 )

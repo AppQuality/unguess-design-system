@@ -22,27 +22,10 @@ import {
 import { FloatingMenu } from "./floatingMenu";
 import { EditorHeader } from "./editorHeader";
 import { EditorFooter } from "./editorFooter";
+import { FauxInput } from "@zendeskgarden/react-forms";
 
-const EditorContainer = styled.div<EditorArgs>`
-  border: 2px solid;
-  border-radius: ${({ theme }) => theme.borderRadii.md};
-  &:focus-within {
-    outline: ${({ theme }) => theme.palette.blue["300"]};
-    outline-style: solid;
-  }
-
-  ${({ validation, theme }) => {
-    if (validation === "success") {
-      return `border-color: ${theme.colors.successHue};`;
-    } else if (validation === "warning") {
-      return `border-color: ${theme.colors.warningHue};`;
-    } else if (validation === "error") {
-      return `border-color: ${theme.colors.dangerHue};`;
-    } else {
-      return `border-color: ${theme.colors.primaryHue};`;
-    }
-  }}
-
+const EditorContainer = styled(FauxInput)<EditorArgs>`
+  
   ${({ editable }) =>
     !editable &&
     `

@@ -8,7 +8,6 @@ import { IconButton } from "../../buttons/icon-button";
 import { SM } from "../../typography/typescale";
 import { getNextPlaybackRate } from "./utils";
 import { useCallback, useEffect, useState } from "react";
-import { Button } from "../../buttons/button";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -98,7 +97,7 @@ export const ControlsGroupCenter = ({
       >
         <ForwardIcon />
       </IconButton>
-      <Button
+      <IconButton
         isBright
         isPill
         onClick={(e) => {
@@ -113,7 +112,7 @@ export const ControlsGroupCenter = ({
         <SM isBold style={{ lineHeight: "16px" }}>
           {playBackRate}x
         </SM>
-      </Button>
+      </IconButton>
     </StyledDiv>
   );
 };

@@ -216,15 +216,14 @@ const completeArgs: PageHeaderStoryProps = {
   pageHeaderArgs: {
     buttons: [
       <Button
-        isPill
         size="large"
         isPrimary
-        themeColor={theme.colors.accentHue}
+        isAccent
         style={{ marginRight: theme.space.xs }}
       >
         Button
       </Button>,
-      <Button isPill size="large">
+      <Button size="large">
         Please dress ignore me
       </Button>,
     ],
@@ -374,10 +373,10 @@ const SecondThirdLevelArgs: PageHeaderStoryProps = {
           </Tag>
         </>
         <div style={{ marginLeft: "auto" }}>
-          <Button isPill size="large" style={{ marginRight: theme.space.xs }}>
+          <Button size="large" style={{ marginRight: theme.space.xs }}>
             Button 1
           </Button>
-          <Button isPill size="large">
+          <Button size="large">
             Button 2
           </Button>
         </div>

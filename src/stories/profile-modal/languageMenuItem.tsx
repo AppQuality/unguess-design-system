@@ -35,16 +35,6 @@ const StyledButtonContainer = styled.div`
   }
 `;
 
-const StyledButton = styled(Button)`
-  ${(props) => `
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: ${props.theme.palette.kale[100]};
-    color: ${props.isDanger ? props.theme.palette.red[500] : props.theme.palette.grey[800]};
-  }`};
-`; 
-
 export const LanguageItem = (props: LanguagesProps) => {
 
   const content = (
@@ -56,17 +46,17 @@ export const LanguageItem = (props: LanguagesProps) => {
       <StyledBody>
         <StyledButtonContainer>
           {Object.keys(props.languages).map((key) => (
-            <StyledButton
+            <Button
               isBasic
               isStretched
               value={key}
               onClick={() => props.onSelectLanguage(key)}
             >
-              <StyledButton.StartIcon>
+              <Button.StartIcon>
                 {props.currentLanguage === key ? <CheckIcon /> : <EmptyIcon />}
-              </StyledButton.StartIcon>
+              </Button.StartIcon>
               <Span isBold={props.currentLanguage === key}>{props.languages[key].label}</Span>
-            </StyledButton>
+            </Button>
           ))}
         </StyledButtonContainer>
       </StyledBody>

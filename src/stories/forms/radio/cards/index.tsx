@@ -1,11 +1,10 @@
 import { RadioCardArgs } from "./_types";
-import { Card } from "../../../cards";
-import { cardStyle } from "../../../theme/mixins";
 import { ReactComponent as CheckIcon } from "../../../../assets/icons/check-lg.svg";
 import { LG } from "@zendeskgarden/react-typography";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import { SpecialCard } from "../../../special-cards";
+import { getColor } from "../../../theme/utils";
 
 interface CircleProps {
   checked: boolean;
@@ -27,7 +26,7 @@ const Circle = styled.div<CircleProps>`
   height: ${({ theme }) => theme.space.base * 6}px;
   padding: ${({ theme }) => theme.space.base * 1.25}px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.primaryHue};
+  background-color: ${({ theme }) => getColor(theme.colors.primaryHue, 600)};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +69,7 @@ const RadioCard = ({ card, icon, iconActive, ...props }: RadioCardArgs) => {
       />
       <SpecialCard.Footer direction="column" justifyContent="center">
         <StyledText
-          style={props.checked ? { color: theme.colors.primaryHue } : {}}
+          style={props.checked ? { color: getColor(theme.colors.primaryHue, 600) } : {}}
         >
           {props.label}
         </StyledText>

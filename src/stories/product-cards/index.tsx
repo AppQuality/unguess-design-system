@@ -48,7 +48,7 @@ const ProductCard = (props: ProductCardProps) => {
           isPill
           isPrimary
           onClick={props.onCtaClick}
-          themeColor={globalTheme.colors.accentHue}
+          isAccent
           size={"small"}
         >
           {props.ctaLabel}

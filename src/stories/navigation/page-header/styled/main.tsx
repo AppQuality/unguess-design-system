@@ -3,6 +3,7 @@ import { Col } from "../../../grid/col";
 import { Row } from "../../../grid/row";
 import { LG, MD } from "../../../typography/typescale";
 import { PageHeaderMainProps } from "../_types";
+import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 const MainContainer = styled.div`
   width: 100%;
@@ -40,12 +41,12 @@ export const MainOverline = styled(MD)`
 `;
 
 export const MainTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.primaryHue};
   font-size: ${({ theme }) => theme.fontSizes.xxxl};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   line-height: ${({ theme }) => theme.lineHeights.xxxl};
   width: 100%;
   margin-bottom: ${({ theme }) => theme.space.sm};
+  ${props => retrieveComponentStyles("text.primary", props)}
 `;
 
 export const MainDescription = styled(LG)`
