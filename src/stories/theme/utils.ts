@@ -1,6 +1,14 @@
-import { getColor, IGardenTheme } from "@zendeskgarden/react-theming";
-import { css } from "styled-components";
+import { getColor as zendeskGetColor } from "@zendeskgarden/react-theming";
+import { DefaultTheme, css } from "styled-components";
+import { theme as unguessTheme } from ".";
 import UAParser from "ua-parser-js";
+
+declare type Hue = Record<number | string, string> | string;
+declare type GetColorFunction = (hue: Hue, shade?: number, theme?: DefaultTheme, transparency?: number) => string | undefined;
+
+export const getColor: GetColorFunction = (hue, shade, theme = unguessTheme, transparency) => {
+  return zendeskGetColor(hue, shade, theme, transparency);
+};
 
 export const hex2rgba = (hex: string, alpha = 1) => {
   const rgb = hex.match(/\w\w/g);
@@ -8,11 +16,11 @@ export const hex2rgba = (hex: string, alpha = 1) => {
   return `rgba(${r},${g},${b},${alpha})`;
 };
 
-export const boxShadow = (theme: IGardenTheme) => {
+export const boxShadow = (theme: DefaultTheme) => {
   const { space, shadows, palette } = theme;
   const offsetY = `${space.base}px`;
   const blurRadius = `${space.base * 2}px`;
-  const shadowColor = getColor(palette.grey, 800, theme, 0.15);
+  const shadowColor = getColor(palette.grey, 800, unguessTheme, 0.15);
 
   return shadows.lg(offsetY, blurRadius, shadowColor as string);
 };
@@ -38,3 +46,5 @@ export const sidebarNavItemHidden = css`
   pointer-events: none;
   color: transparent;
 `;
+
+

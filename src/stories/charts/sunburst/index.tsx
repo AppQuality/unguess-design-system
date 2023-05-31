@@ -1,6 +1,6 @@
 import { ResponsiveSunburst } from "@nivo/sunburst";
 import {
-  CHARTS_COLOR_SCHEME_CATEGORICAL_8_A,
+  CHARTS_COLOR_SCHEME_CATEGORICAL,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { SunburstChartProps } from "./_types";
@@ -74,7 +74,7 @@ const SunburstChart = ({
           colors={
             currentColor
               ? () => currentColor
-              : colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A
+              : colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL
           }
           borderWidth={4}
           cornerRadius={4}
@@ -145,7 +145,7 @@ const SunburstChart = ({
             ...margin,
           }}
           data={currentData}
-          childColor={{ from: "color", modifiers: [["brighter", 0.5]] }}
+          childColor={{ from: "color", modifiers: [["brighter", 0.6]] }}
           onClick={(clickedData) => {
             const foundObject = findChildrenByName(
               currentData,
@@ -163,7 +163,7 @@ const SunburstChart = ({
       <ChartContainer width={width} height="auto">
         {legend ? (
           <Legend
-            colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL_8_A}
+            colors={colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL}
             data={data.children.map((d) => d.label || d.name)}
             {...(typeof legend === "object" && legend)}
           />

@@ -2,24 +2,9 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { ButtonGroup } from ".";
 import { Button } from "../button";
 import { Default, Basic } from "../button/index.stories";
-import { ButtonGroupArgs } from "./_types";
+import { IButtonGroupProps } from "@zendeskgarden/react-buttons";
 
-interface ButtonGroupProps extends ButtonGroupArgs {
-  /**
-   The children of the button group.
-   @default []
-  */ 
-  items: any[];
-}
-
-const defaultArgs: ButtonGroupProps = {
-  items: [],
-  onSelect: (e) => {
-    console.log("Item selected:", e);
-  },
-};
-
-const Template: Story<ButtonGroupProps> = ({ items, ...args }) => {
+const Template: Story<IButtonGroupProps & {items: any[];}> = ({ items, ...args }) => {
   return (
     <ButtonGroup {...args}>
       {items.map((item) => (
@@ -32,7 +17,6 @@ const Template: Story<ButtonGroupProps> = ({ items, ...args }) => {
 export const TwoItems = Template.bind({});
 
 TwoItems.args = {
-  ...defaultArgs,
   items: [
     {
       ...Basic.args,
@@ -51,7 +35,6 @@ TwoItems.args = {
 
 export const WithBorders = Template.bind({});
 WithBorders.args = {
-  ...defaultArgs,
   items: [
     {
       ...Default.args,
@@ -70,7 +53,6 @@ WithBorders.args = {
 
 export const RoundedItems = Template.bind({});
 RoundedItems.args = {
-  ...defaultArgs,
   items: [
     {
       ...Basic.args,
@@ -94,7 +76,6 @@ RoundedItems.args = {
       onClick: () => {}
     }
   ]
-
 };
 
 

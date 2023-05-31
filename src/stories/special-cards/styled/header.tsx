@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { LG, MD, SM } from "../../typography/typescale";
 import { CardHeaderProps } from "../_types";
+import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 const Label = styled(SM)`
   color: ${({ theme }) => theme.palette.grey[500]};
 `;
 
 const Title = styled(LG)`
-  color: ${({ theme }) => theme.colors.primaryHue};
+  ${props => retrieveComponentStyles("text.primary", props)}
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   margin-top: ${({ theme }) => theme.space.xxs};
 `;

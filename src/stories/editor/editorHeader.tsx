@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MD } from "../typography/typescale";
 import { EditorHeaderArgs } from "./_types";
+import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 const Header = styled.div`
   display: flex;
@@ -10,17 +11,10 @@ const Header = styled.div`
 `;
 
 const Title = styled(MD)<EditorHeaderArgs>`
-  ${({ validation, theme }) => {
-    if (validation === "success") {
-      return `color: ${theme.colors.successHue};`;
-    } else if (validation === "warning") {
-      return `color: ${theme.colors.warningHue};`;
-    } else if (validation === "error") {
-      return `color: ${theme.palette.dangerHue};`;
-    } else {
-      return `color: ${theme.colors.primaryHue};`;
-    }
-  }}
+  ${props => retrieveComponentStyles("text.primary", props)}
+  ${props => props.validation === "success" && retrieveComponentStyles("text.success", props)}
+  ${props => props.validation === "warning" && retrieveComponentStyles("text.warning", props)}
+  ${props => props.validation === "error" && retrieveComponentStyles("text.danger", props)}
 `;
 
 export const EditorHeader = (props: EditorHeaderArgs) => {

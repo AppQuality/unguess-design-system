@@ -120,8 +120,7 @@ const LoginForm = (props: LoginFormArgs) => {
                       : false
                   }
                   isPrimary
-                  isPill
-                  themeColor={theme.colors.accentHue}
+                  isAccent
                   style={{ marginBottom: theme.space.md }}
                 >
                   {props.buttonText}

@@ -1,6 +1,6 @@
 import { Nav as ZendeskNav } from "@zendeskgarden/react-chrome";
 import styled from "styled-components";
-import { getColor } from "@zendeskgarden/react-theming";
+import { getColor } from "../../theme/utils";
 import { NavArgs } from "./_types";
 
 const UgNav = styled(ZendeskNav)`

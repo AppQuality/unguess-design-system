@@ -49,7 +49,7 @@ const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
 
       <SpecialCard.Footer direction="column" justifyContent="center">
         <Button
-          themeColor={theme.colors.accentHue}
+          isAccent
           isPrimary
           isPill
           isStretched
@@ -60,7 +60,7 @@ const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
       </SpecialCard.Footer>
       <SpecialCard.Footer direction="column" justifyContent="center" noDivider>
         <Button
-          themeColor={theme.colors.accentHue}
+          isAccent
           isPrimary
           isPill
           isStretched

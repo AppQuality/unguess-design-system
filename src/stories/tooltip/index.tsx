@@ -1,5 +1,5 @@
 import { Tooltip as ZendeskTooltip } from "@zendeskgarden/react-tooltips";
-import { getColor } from "@zendeskgarden/react-theming";
+import { getColor } from "../theme/utils";
 import { useContext } from "react";
 import { TooltipArgs } from "./_types";
 import styled, { ThemeContext } from "styled-components";

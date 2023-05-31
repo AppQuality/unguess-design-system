@@ -5,14 +5,13 @@ import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { ReactComponent as InfoImg } from "../../assets/icons/info-image.svg";
 import { Button } from "../buttons/button";
-import { theme } from "../theme";
 
 const defaultArgs: InfoCardProps = {
     infoImg: <InfoImg />,
     infoSubtitle: "TIP",
     infoTitle: "Can't find what you're looking for?",
     infoButtons: [
-        <Button isPill isPrimary size="small" themeColor={theme.colors.accentHue}>Get in touch with your CSM</Button>,
+        <Button isPrimary size="small" isAccent>Get in touch with your CSM</Button>,
     ]
 }
 

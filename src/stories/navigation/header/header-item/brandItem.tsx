@@ -6,6 +6,7 @@ import { HeaderItemText } from "./headerItemText";
 import { Logo } from "../../../logo";
 import { ReactComponent as MenuIcon } from "../../../../assets/icons/menu-stroke.svg";
 import { WorkspacesDropdown } from "./workspacesDropdown";
+import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 export const LogoIconContainer = styled(ZendeskHeaderItem)`
   margin-right: 2px;
@@ -23,32 +24,32 @@ export const LogoIconContainer = styled(ZendeskHeaderItem)`
 const BrandName = styled(ZendeskHeaderItem)`
   margin-right: auto;
   margin-left: -8px;
-  color: ${({ theme }) => theme.colors.primaryHue};
   pointer-events: none;
   font-family: ${({ theme }) => theme.fonts.system};
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
+  ${props => retrieveComponentStyles("text.primary", props)}
 `;
 
 const DropdownItem = styled(ZendeskHeaderItem)`
   margin-right: auto;
   margin-left: -8px;
-  color: ${({ theme }) => theme.colors.primaryHue};
   font-family: ${({ theme }) => theme.fonts.system};
   z-index: 2;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
+  ${props => retrieveComponentStyles("text.primary", props)}
 `;
 
 const MenuItem = styled(ZendeskHeaderItem)`
-  color: ${({ theme }) => theme.colors.primaryHue};
   position: absolute;
   left: 0;
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
+  ${props => retrieveComponentStyles("text.primary", props)}
 `;
 
 const BrandItem = (props: BrandItemArgs) => {

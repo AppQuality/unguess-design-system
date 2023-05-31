@@ -4,6 +4,7 @@ import { flexCenter, flexStart } from "../theme/mixins";
 
 import { theme } from "../theme";
 import { MenuItemProps } from "./_types";
+import { getColor } from "../theme/utils";
 
 export interface IStyledItemProps {
   isFocused?: boolean;
@@ -45,7 +46,7 @@ const StyledItem = styled.li<MenuItemProps>`
   &:hover,
   &:focus,
   &:active {
-    background-color: ${theme.palette.kale[100]};
+    background-color: ${getColor(props.theme.colors.primaryHue, 600, undefined, 0.08)};
     color: ${props.isDanger ? theme.palette.red[500] : theme.palette.grey[800]};
   }`};
 

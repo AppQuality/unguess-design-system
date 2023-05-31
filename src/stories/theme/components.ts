@@ -2,6 +2,9 @@ import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { fontWeights } from "./fontWeights";
 import { colors } from "./colors";
 import { palette } from "./palette";
+import { getColor } from "./utils";
+import {cardCmponentStyle} from "../cards/index";
+import { ButtonArgs } from "../buttons/button/_types";
 
 export const components = {
   ...DEFAULT_THEME.components,
@@ -18,7 +21,6 @@ export const components = {
       workspaceDropdownWidth: 192,
     },
   },
-
   notification: {
     ...DEFAULT_THEME.components?.notification,
     card: {
@@ -26,7 +28,45 @@ export const components = {
       padding: "16px",
     },
   },
-
+  ...cardCmponentStyle,
+  "text.primary": () => ({
+    color: getColor(colors.primaryHue, 600),
+  }),
+  "text.success": () => ({
+    color: getColor(colors.successHue, 700),
+  }),
+  "text.warning": () => ({
+    color: getColor(colors.warningHue, 700),
+  }),
+  "text.danger": () => ({
+    color: getColor(colors.dangerHue, 700),
+  }),
+  "navigation.hoverableItem": ({isCurrent}: {isCurrent: boolean}) => { // used for chrome nav and sidebar scroll nav in unguess-react
+    return {
+      "border-top-left-radius": "24px",
+      "border-bottom-left-radius": "24px",
+      color: getColor(colors.primaryHue, 600),
+      "font-weight": fontWeights.medium,
+      "&:hover, &.hover": {
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.08), // zendesk garden default hover color
+        color: getColor(colors.primaryHue, 700),
+      },
+      "&:active, &.active": {
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.2), // zendesk garden default active color
+        color: getColor(colors.primaryHue, 700),
+      },
+      "&.isCurrent": { // class approach
+        color: getColor(colors.primaryHue, 700),
+        "font-weight": fontWeights.semibold,
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.08),
+      },
+      ...(isCurrent && { // props approach
+        color: getColor(colors.primaryHue, 700),
+        "font-weight": fontWeights.semibold,
+        "background-color": getColor(colors.primaryHue, 600, undefined, 0.08),
+      }),
+    };
+  },
   "notifications.notification": ({
     type,
     isPrimary,
@@ -41,7 +81,7 @@ export const components = {
     return {
       ...(type === "success" &&
         isPrimary && {
-          backgroundColor: palette.green[700],
+          backgroundColor: getColor(colors.successHue, 700),
           svg: {
             ...svgCss,
             color: palette.white,
@@ -49,7 +89,7 @@ export const components = {
         }),
       ...(type === "warning" &&
         isPrimary && {
-          backgroundColor: palette.yellow[700],
+          backgroundColor: getColor(colors.warningHue, 700),
           svg: {
             ...svgCss,
             color: palette.white,
@@ -57,7 +97,7 @@ export const components = {
         }),
       ...(type === "error" &&
         isPrimary && {
-          backgroundColor: palette.red[700],
+          backgroundColor: getColor(colors.dangerHue, 700),
           svg: {
             ...svgCss,
             color: palette.white,
@@ -65,7 +105,7 @@ export const components = {
         }),
       ...(type === "info" &&
         isPrimary && {
-          backgroundColor: palette.blue[700],
+          backgroundColor: getColor(colors.infoHue, 700),
           svg: {
             ...svgCss,
             color: palette.white,
@@ -162,13 +202,6 @@ export const components = {
   "tabs.tab": ({ isSelected }: { isSelected: boolean }) => {
     return isSelected ? { fontWeight: fontWeights.semibold } : undefined;
   },
-  "forms.input": ({ isFocused }: { isFocused: boolean }) => {
-    return isFocused
-      ? {
-          boxShadow: `0 0 0 3px ${palette.kale[200]}}`,
-        }
-      : undefined;
-  },
   "dropdowns.item": ({
     addable,
     checked,
@@ -180,7 +213,7 @@ export const components = {
     return {
       ...(addable
         ? {
-            color: colors.primaryHue,
+            color: getColor(colors.primaryHue, 600),
             cursor: "pointer",
           }
         : {}),
@@ -190,81 +223,137 @@ export const components = {
             fontWeight: fontWeights.semibold,
           }
         : {}),
-      "&:hover": {
-        backgroundColor: palette.kale[100],
-      },
     };
   },
   "buttons.icon_button": ({
-    isDanger,
-    isBasic,
-    isPrimary,
-    isHovered,
-    isNeutral,
-    isBright,
     disabled,
-  }: {
-    isBasic: boolean;
-    isDanger: boolean;
-    isPrimary: boolean;
-    isHovered: boolean;
-    isNeutral: boolean;
-    isBright: boolean;
-    disabled: boolean;
-  }) => {
-    if (isNeutral || isPrimary || isDanger) return {};
-
+    isBright,
+    isAccent,
+    isPrimary,
+    isBasic,
+  }: ButtonArgs) => {
     return {
-      ...(isBasic && {
-        backgroundColor: palette.white,
+      ...(isAccent && !isPrimary && !isBasic && {
+        borderColor: getColor(colors.accentHue, 700),
+        color: getColor(colors.accentHue, 700),
         "&:hover": {
-          backgroundColor: palette.kale[200],
+          borderColor: getColor(colors.accentHue, 800),
+          color: getColor(colors.accentHue, 800),
+          backgroundColor: palette.blue[50],
+        },
+        "&:active": {
+          borderColor: getColor(colors.accentHue, 800),
+          color: getColor(colors.accentHue, 800),
+          backgroundColor: palette.blue[100],
+        },
+      }),
+      ...(isAccent && isBasic && {
+        color: getColor(colors.accentHue, 700),
+        "&:hover": {
+          backgroundColor: palette.blue[50],
+          color: getColor(colors.accentHue, 800),
+        },
+        "&:active": {
+          backgroundColor: palette.blue[100],
+          color: getColor(colors.accentHue, 800),
+        },
+      }),
+      ...(isAccent && isPrimary && {
+        backgroundColor: getColor(colors.accentHue, 600),
+        color: "white",
+        "&:hover": {
+          backgroundColor: getColor(colors.accentHue, 700),
+          color: "white",
+        },
+        "&:active": {
+          backgroundColor: getColor(colors.accentHue, 800),
+          color: "white",
         },
       }),
       ...(isBright && {
         backgroundColor: "transparent",
         color: "white",
+        border: "none",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.kale[100],
+          color: "white",
+          "& svg": {
+            color: "white",
+          },
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.kale[200],
+          color: "white",
+          "& svg": {
+            color: "white",
+          },
         },
       }),
       ...(disabled && { pointerEvents: "none" }),
     };
   },
   "buttons.button": ({
-    isDanger,
-    isPrimary,
-    isHovered,
-    isNeutral,
+    isAccent,
     isBright,
-  }: {
-    isDanger: boolean;
-    isPrimary: boolean;
-    isHovered: boolean;
-    isNeutral: boolean;
-    isBright: boolean;
-  }) => {
-    if (isBright) {
-      return {
+    isPrimary,
+    isBasic,
+    isLink,
+  }: ButtonArgs) => {
+    return {
+      ...(isAccent && !isPrimary && !isBasic && !isLink && {
+        borderColor: getColor(colors.accentHue, 700),
+        color: getColor(colors.accentHue, 700),
+        "&:hover": {
+          borderColor: getColor(colors.accentHue, 800),
+          color: getColor(colors.accentHue, 800),
+          backgroundColor: palette.blue[50],
+        },
+        "&:active": {
+          borderColor: getColor(colors.accentHue, 800),
+          color: getColor(colors.accentHue, 800),
+          backgroundColor: palette.blue[100],
+        },
+      }),
+      ...(isAccent && isPrimary && {
+        backgroundColor: getColor(colors.accentHue, 600),
+        "&:hover": {
+          backgroundColor: getColor(colors.accentHue, 700),
+        },
+        "&:active": {
+          backgroundColor: getColor(colors.accentHue, 800),
+        },
+      }),
+      ...(isAccent && isBasic && {
+        color: getColor(colors.accentHue, 700),
+        "&:hover": {
+          backgroundColor: palette.blue[50],
+          color: getColor(colors.accentHue, 800),
+        },
+        "&:active": {
+          backgroundColor: palette.blue[100],
+          color: getColor(colors.accentHue, 800),
+        },
+      }),
+      ...(isAccent && isLink && {
+        color: getColor(colors.accentHue, 700),
+        "&:hover": {
+          color: getColor(colors.accentHue, 800),
+        },
+        "&:active": {
+          color: getColor(colors.accentHue, 800),
+        },
+      }),
+        ...(isBright && {
         backgroundColor: "transparent",
         color: "white",
         border: "none",
         "&:hover": {
           backgroundColor: palette.grey[500],
-          color: palette.kale[100],
         },
         "&:active": {
           backgroundColor: palette.grey[600],
-          color: palette.kale[200],
         },
-      };
-    }
-
-    return {};
+      }),
+    };
   },
 };

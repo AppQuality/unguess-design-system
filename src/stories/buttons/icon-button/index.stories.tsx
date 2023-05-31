@@ -3,63 +3,57 @@ import { Tooltip } from "@zendeskgarden/react-tooltips";  //TODO: replace with u
 import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
 import { IconButton } from ".";
 import { IconButtonArgs } from "./_types";
+import { Grid } from "@zendeskgarden/react-grid";
+import { Col, MD, Row, sizes, variants } from "../utils";
 
-const defaultArgs: IconButtonArgs = {
-  disabled: false,
-  onClick: () => {
-    alert("Clicked!");
-  },
-};
+const SizeTemplate: Story<IconButtonArgs> = (args) => (
+  <Row>
+    {sizes.map((size, i) => (
+      <Col size={3} key={i}>
+        <Tooltip content="Tooltip content">
+          <IconButton {...args} size={size}>
+            <LeafIcon />
+          </IconButton>
+        </Tooltip>
+      </Col>
+    ))}
+  </Row>
+);
+
 
 const Template: Story<IconButtonArgs> = (args) => {
   return (
-    <Tooltip content="Tooltip content">
-      <IconButton {...args}>
-        <LeafIcon />
-      </IconButton>
-    </Tooltip>
+    <Grid>
+      {variants.map((variant, i) => (
+      <>
+          <MD>
+            {Object.keys(variant)[0]}
+          </MD>
+        <SizeTemplate {...args} {...variant} key={i} />
+      </>
+      ))
+      }
+    </Grid >
   );
 };
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs,
+
+export const Outline = Template.bind({});
+Outline.args = {
+  isBasic: false,
 };
 
-Default.parameters = {
-  design: {
-    type: "figma",
-    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A8637",
-  },
+export const Primary = Template.bind({});
+Primary.args = {
+  isPrimary: true,
 };
-
-export const Danger = Template.bind({});
-Danger.args = {
-  ...defaultArgs,
-  isDanger: true,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  ...defaultArgs,
-  disabled: true,
-};
-
 
 export const Shape = Template.bind({});
 Shape.args = {
-  ...defaultArgs,
-  isBasic: false,
   isPill: false,
+  isBasic: false,
 };
-
-Shape.parameters = {
-  design: {
-    type: "figma",
-    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A8663",
-  },
-};
-
 
 export default {
   title: "Atoms/Buttons/IconButton",
