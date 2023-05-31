@@ -1,3 +1,18 @@
+# v3.0.4 (Wed May 17 2023)
+
+#### 🐛 Bug Fix
+
+- Fix SVGR issues [#249](https://github.com/AppQuality/unguess-design-system/pull/249) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Fix-svgr-viewbox [#248](https://github.com/AppQuality/unguess-design-system/pull/248) ([@marcbon](https://github.com/marcbon))
+- 🎨 style(tabs/index.tsx): add overflow-x hidden to StyledTabPanel [#247](https://github.com/AppQuality/unguess-design-system/pull/247) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.0.3 (Fri May 12 2023)
 
 #### 🐛 Bug Fix
