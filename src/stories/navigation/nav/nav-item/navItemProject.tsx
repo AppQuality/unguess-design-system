@@ -10,11 +10,12 @@ const UgProjectSubtitle = styled(NavItemText)<NavItemArgs>`
 `;
 
 const UgNavItem = styled(NavItem)<NavItemArgs>`
+  display: flex;
   flex-flow: column;
-  align-items: flex-start;
-  padding: 12px 8px;
-  opacity: 1;
-  padding-left: ${({ theme }) => theme.space.xxl}; //Accordion Alingment
+  width: 100%;
+  overflow: hidden;
+  padding: ${({ theme }) => theme.space.sm} ${({ theme }) => theme.space.xs};
+  padding-left: ${({ theme }) => theme.space.xxl};
 `;
 
 const NavItemComponent = forwardRef<HTMLButtonElement, NavItemArgs>(
