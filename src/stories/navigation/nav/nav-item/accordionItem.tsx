@@ -9,7 +9,7 @@ import {getColor} from "../../../theme/utils";
 import { NavItemArgs } from "./_types";
 import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
-const AccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
+const NavAccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
   opacity: 1;
   ${sidebarNavItemExpanded}
   ${(props) => !props.isExpanded && sidebarNavItemHidden}
@@ -20,12 +20,12 @@ const AccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
 const AccordionItemHeader = styled(Accordion.Header)<
   AccordionArgs & NavItemArgs
 >`
-  flex-direction: row-reverse;
+  flex-direction: row;
   border-top-left-radius: ${({ theme }) => theme.space.base * 6}px;
   border-bottom-left-radius: ${({ theme }) => theme.space.base * 6}px;
 
   > button {
-    padding-left: 2px;
+    padding-right: 2px;
   }
 
   svg {
@@ -53,8 +53,8 @@ const AccordionItemLabel = styled(Accordion.Label)<AccordionArgs & NavItemArgs>`
   ${props => retrieveComponentStyles("text.primary", props)}
 `;
 
-AccordionItem.Panel = AccordionItemPanel;
-AccordionItem.Header = AccordionItemHeader;
-AccordionItem.Label = AccordionItemLabel;
+NavAccordionItem.Panel = AccordionItemPanel;
+NavAccordionItem.Header = AccordionItemHeader;
+NavAccordionItem.Label = AccordionItemLabel;
 
-export { AccordionItem };
+export { NavAccordionItem };

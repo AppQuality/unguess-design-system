@@ -10,7 +10,7 @@ import {
 import { ReactComponent as HomeIcon } from "../../../assets/icons/home-fill.svg";
 import { ReactComponent as HomeIconStyled } from "../../../assets/icons/home-fill-styled.svg";
 import { ReactComponent as TokenIcon } from "../../../assets/icons/token.svg";
-import { ReactComponent as FolderIcon } from "../../../assets/icons/folder-icon.svg";
+import { ReactComponent as FolderIcon } from "../../../assets/icons/projects-icon.svg";
 import { ReactComponent as TemplatesIcon } from "../../../assets/icons/templates.svg";
 import { ReactComponent as TemplatesActiveIcon } from "../../../assets/icons/templates-active.svg";
 
@@ -23,7 +23,7 @@ import styled from "styled-components";
 import { Span } from "../../typography/span";
 import { LoadingSidebar } from "./skeleton";
 import { WorkspacesDropdown } from "../header/header-item/workspacesDropdown";
-import { AccordionItem } from "../nav/nav-item/accordionItem";
+import { NavAccordionItem } from "../nav/nav-item/accordionItem";
 import { SM } from "../../typography/typescale";
 
 const TokenContainer = styled.div`
@@ -154,21 +154,21 @@ const Sidebar = ({
 
         {/** Projects Accordion */}
         {projects && projects.length ? (
-          <AccordionItem
+          <NavAccordionItem
             className="sidebar-project-accordion-first-item"
             level={4}
             defaultExpandedSections={defaultAccordionPanels}
             isExpanded={props.isExpanded}
             isAnimated={false}
           >
-            <AccordionItem.Section>
-              <AccordionItem.Header>
-                <AccordionItem.Label>
-                  {props.dividerLabel || ""}{" "}
+            <NavAccordionItem.Section>
+              <NavAccordionItem.Header>
                   <FolderIcon style={{ marginLeft: theme.space.xs }} />
-                </AccordionItem.Label>
-              </AccordionItem.Header>
-              <AccordionItem.Panel>
+                <NavAccordionItem.Label>
+                  {props.dividerLabel || ""}{" "}
+                </NavAccordionItem.Label>
+              </NavAccordionItem.Header>
+              <NavAccordionItem.Panel>
                 {projects.map((project) => (
                   <NavItemProject
                     className="sidebar-project-item"
@@ -185,9 +185,9 @@ const Sidebar = ({
                     <NavItemProject.SubTitle children={project.campaigns} />
                   </NavItemProject>
                 ))}
-              </AccordionItem.Panel>
-            </AccordionItem.Section>
-          </AccordionItem>
+              </NavAccordionItem.Panel>
+            </NavAccordionItem.Section>
+          </NavAccordionItem>
         ) : null}
 
         <NavDivider isExpanded={props.isExpanded} />
