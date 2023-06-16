@@ -1,11 +1,9 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { theme } from "../../theme";
-
 import { SidebarArgs } from "./_types";
 import { Chrome } from "../chrome";
 import { Sidebar } from ".";
 import { useState } from "react";
-import { FEATURE_FLAG_CATALOG } from "../../../constants";
 
 interface SidebarStoryArgs extends SidebarArgs {}
 
@@ -79,69 +77,6 @@ const defaultArgs: SidebarStoryArgs = {
 };
 export const Default = Template.bind({});
 Default.args = defaultArgs;
-
-export const SingleProject = Template.bind({});
-SingleProject.args = {
-  ...defaultArgs,
-  projects: [
-    {
-      id: "1",
-      title: "Enel Premia Wow",
-      campaigns: "there are no campaigns",
-    },
-  ],
-};
-
-export const MultipleWorkspaces = Template.bind({});
-MultipleWorkspaces.args = {
-  ...defaultArgs,
-  workspaces: [
-    {
-      company: "Enel",
-      id: 1,
-    },
-    {
-      company: "Amazon",
-      id: 2,
-    },
-    {
-      company: "One upon a time there was an insanely long company name",
-      id: 3,
-    },
-  ],
-};
-
-export const WithTokens = Template.bind({});
-WithTokens.args = {
-  ...defaultArgs,
-  isExpanded: true,
-  tokens: "24",
-};
-
-export const WithAll = Template.bind({});
-WithAll.args = {
-  ...WithTokens.args,
-  workspaces: [
-    {
-      company: "Enel",
-      id: 1,
-    },
-    {
-      company: "Amazon",
-      id: 2,
-    },
-    {
-      company: "One upon a time there was an insanely long company name",
-      id: 3,
-    },
-  ],
-  features: [
-    {
-      slug: FEATURE_FLAG_CATALOG,
-      name: "Catalog",
-    },
-  ],
-};
 
 Default.parameters = {
   design: {
