@@ -53,7 +53,7 @@ const StyledNavItem = styled(NavItem)`
   }
 `;
 
-const SidebarLabel = styled(SM)<SidebarArgs>`
+const SidebarLabel = styled(SM) <SidebarArgs>`
   color: ${({ theme }) => theme.palette.grey["500"]};
   margin: ${({ theme }) => theme.space.xxs} 0 16px;
   padding-left: 16px;
@@ -95,8 +95,8 @@ const Sidebar = ({
 
   const padding = props.tokens
     ? {
-        paddingBottom: 0,
-      }
+      paddingBottom: 0,
+    }
     : {};
 
   useEffect(() => {
@@ -163,12 +163,12 @@ const Sidebar = ({
           >
             <NavAccordionItem.Section>
               <NavAccordionItem.Header>
-                  <FolderIcon style={{ marginLeft: theme.space.xs }} />
+                <FolderIcon />
                 <NavAccordionItem.Label>
                   {props.dividerLabel || ""}{" "}
                 </NavAccordionItem.Label>
               </NavAccordionItem.Header>
-              <NavAccordionItem.Panel>
+              <NavAccordionItem.Panel style={{ padding: 0 }}>
                 {projects.map((project) => (
                   <NavItemProject
                     className="sidebar-project-item"
