@@ -1,3 +1,17 @@
+# v3.1.2 (Fri Jun 16 2023)
+
+#### 🐛 Bug Fix
+
+- Update sidebar items [#255](https://github.com/AppQuality/unguess-design-system/pull/255) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- Reverse project accordion item [#254](https://github.com/AppQuality/unguess-design-system/pull/254) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.0.5 (Wed May 31 2023)
 
 #### 🐛 Bug Fix
