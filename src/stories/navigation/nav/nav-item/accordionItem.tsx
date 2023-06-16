@@ -5,52 +5,39 @@ import {
   sidebarNavItemExpanded,
   sidebarNavItemHidden,
 } from "../../../theme/utils";
-import {getColor} from "../../../theme/utils";
 import { NavItemArgs } from "./_types";
 import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 const NavAccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
-  opacity: 1;
   ${sidebarNavItemExpanded}
-  ${(props) => !props.isExpanded && sidebarNavItemHidden}
+  ${props => !props.isExpanded && sidebarNavItemHidden}
   order: 1;
-  margin-top: ${({ theme }) => theme.space.xs}px;
+  margin: ${({ theme }) => theme.space.xs} 0;
+  padding-left: 8.5px;
 `;
 
 const AccordionItemHeader = styled(Accordion.Header)<
   AccordionArgs & NavItemArgs
 >`
-  flex-direction: row;
-  border-top-left-radius: ${({ theme }) => theme.space.base * 6}px;
-  border-bottom-left-radius: ${({ theme }) => theme.space.base * 6}px;
-
-  > button {
-    padding-right: 2px;
-  }
-
-  svg {
-    width: 26px;
+  > svg {
+    flex-shrink: 0;
+    
+    &:first-of-type {
+      margin: 0 8.5px;
+    }
   }
 `;
 
 const AccordionItemPanel = styled(Accordion.Panel)<AccordionArgs & NavItemArgs>`
   max-height: 180px;
-  padding: 0;
-  padding-left: 5px;
-  overflow-y: hidden;
-  opacity: 1;
-  &:hover {
-    overflow-y: auto;
-  }
+  overflow-y: auto;
 `;
 
 const AccordionItemLabel = styled(Accordion.Label)<AccordionArgs & NavItemArgs>`
-  padding: 12px 9px;
-  ${({ theme }) => `
-    fill: ${getColor(theme.colors.primaryHue, 600)};
-    font-weight: ${theme.fontWeights.medium};
-  `}
   ${props => retrieveComponentStyles("text.primary", props)}
+  font-weight: ${({ theme }) => theme.fontWeights.regular};
+  padding: 0;
+  margin: 0 8.5px;
 `;
 
 NavAccordionItem.Panel = AccordionItemPanel;
