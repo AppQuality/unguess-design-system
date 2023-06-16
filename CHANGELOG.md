@@ -1,3 +1,35 @@
+# v3.0.5 (Wed May 31 2023)
+
+#### 🐛 Bug Fix
+
+- Colors [#253](https://github.com/AppQuality/unguess-design-system/pull/253) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks) [@iacopolea](https://github.com/iacopolea))
+- Un 616 colors [#236](https://github.com/AppQuality/unguess-design-system/pull/236) ([@iacopolea](https://github.com/iacopolea))
+- Update rollup configuration [#252](https://github.com/AppQuality/unguess-design-system/pull/252) ([@cannarocks](https://github.com/cannarocks))
+- 🎨 style(input-toggle): remove width property from EditIcon component to allow for dynamic sizing [#250](https://github.com/AppQuality/unguess-design-system/pull/250) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.0.4 (Wed May 17 2023)
+
+#### 🐛 Bug Fix
+
+- Fix SVGR issues [#249](https://github.com/AppQuality/unguess-design-system/pull/249) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Fix-svgr-viewbox [#248](https://github.com/AppQuality/unguess-design-system/pull/248) ([@marcbon](https://github.com/marcbon))
+- 🎨 style(tabs/index.tsx): add overflow-x hidden to StyledTabPanel [#247](https://github.com/AppQuality/unguess-design-system/pull/247) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.0.3 (Fri May 12 2023)
 
 #### 🐛 Bug Fix
