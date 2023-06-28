@@ -239,7 +239,7 @@ export const components = {
         "&:hover": {
           borderColor: getColor(colors.accentHue, 800),
           color: getColor(colors.accentHue, 800),
-          backgroundColor: palette.blue[50],
+          backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
         },
         "&:active": {
           borderColor: getColor(colors.accentHue, 800),
@@ -250,7 +250,7 @@ export const components = {
       ...(isAccent && isBasic && {
         color: getColor(colors.accentHue, 700),
         "&:hover": {
-          backgroundColor: palette.blue[50],
+          backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
           color: getColor(colors.accentHue, 800),
         },
         "&:active": {
@@ -306,7 +306,7 @@ export const components = {
         "&:hover": {
           borderColor: getColor(colors.accentHue, 800),
           color: getColor(colors.accentHue, 800),
-          backgroundColor: palette.blue[50],
+          backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
         },
         "&:active": {
           borderColor: getColor(colors.accentHue, 800),
@@ -326,7 +326,7 @@ export const components = {
       ...(isAccent && isBasic && {
         color: getColor(colors.accentHue, 700),
         "&:hover": {
-          backgroundColor: palette.blue[50],
+          backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
           color: getColor(colors.accentHue, 800),
         },
         "&:active": {
