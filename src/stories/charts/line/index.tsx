@@ -1,4 +1,4 @@
-import { ResponsiveLine, Line } from "@nivo/line";
+import { ResponsiveLine } from "@nivo/line";
 import { LineChartProps } from "./_types";
 import {
   CHARTS_COLOR_SCHEME_CATEGORICAL,
@@ -8,15 +8,17 @@ import { ChartContainer } from "../ChartContainer";
 import styled, { ThemeContext } from "styled-components";
 import { MD } from "../../typography/typescale";
 import { useContext } from "react";
-import Legend from "../Legend";
 import { ReactComponent as S0 } from "./assets/sentiment_0.svg";
 import { ReactComponent as S1 } from "./assets/sentiment_1.svg";
 import { ReactComponent as S2 } from "./assets/sentiment_2.svg";
 import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { DatumValue } from "@nivo/core";
-import { Button } from "../../buttons/button";
-import { Ellipsis } from "../../typography/ellipsis";
+import { getColor } from "../../theme/utils";
+
+const Point = styled.g`
+  transform: translate(-13px, -13px);
+`;
 
 const Tooltip = styled.div`
   padding: ${({ theme }) => theme.space.base * 3}px;
@@ -25,19 +27,34 @@ const Tooltip = styled.div`
   max-width: 216px;
 `;
 
+const ScrollingContainer = styled.div<{
+  isScrollable?: boolean;
+}>`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  ${({ isScrollable }) =>
+    isScrollable &&
+    `
+    overflow-x: scroll;
+  `}
+`;
+
 const DEFAULT_CHART_MARGINS = { top: 0, right: 0, bottom: 30, left: 30 };
 
 const formatSentiment = (value: DatumValue) => {
   switch (value as number) {
-    case 0:
-      return "Molto Negativo";
     case 1:
-      return "Negativo";
+      return "Molto Negativo";
     case 2:
-      return "Neutrale";
+      return "Negativo";
     case 3:
-      return "Positivo";
+      return "Neutrale";
     case 4:
+      return "Positivo";
+    case 5:
       return "Molto Positivo";
     default:
       return "";
@@ -62,109 +79,114 @@ const formatPoint = (value: DatumValue) => {
 };
 
 const formatAxisX = (value: DatumValue) => {
+  // This is to avoid printing the first and last value of the axis to make room for the chart (2 empty columns)
+  if (!value || value === "start" || value === "end") return "";
+
   //Print only the first 10 characters
   return (
     <>
-      {value.toString().substring(0, 5) + "..."}
+      {value.toString().length > 15 ? value.toString().substring(0, 15) + "..." : value.toString()}
       <title>{value as string}</title>
     </>
   );
 };
 
-const StyledLine = styled(Line)`
-  width: 100%;
-  height: 200px;
-`;
-
 export const LineChart = ({
   data,
   width,
   height,
-  padding,
   margin,
   axisLeftLabel,
   axisBottomLabel,
   colors,
   tooltip,
-  legend,
+  isScrollable,
 }: LineChartProps) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
   const actualColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL;
   return (
-    <>
+    <ScrollingContainer {...(isScrollable && {
+      isScrollable: isScrollable
+    })}>
       <ChartContainer
         width={width}
         height={height}
-        style={{ overflow: "scroll" }}
+        style={{ overflowX: "scroll", overflowY: "hidden" }}
       >
-       
         <ResponsiveLine
-          data={data}
-          
+          theme={{
+            ...DEFAULT_CHARTS_THEME,
+            fontSize: theme.fontSizes.sm,
+            axis: {
+              domain: {
+                line: {
+                  fill: theme.palette.grey[200],
+                  strokeWidth: 0,
+                },
+              },
+              legend: {
+                text: {
+                  fill: getColor(theme.colors.primaryHue, 600),
+                  fontSize: theme.fontSizes.md,
+                },
+              },
+            },
+            grid: {
+              line: {
+                stroke: theme.palette.grey[200],
+                strokeWidth: 1,
+              },
+            },
+          }}
           colors={actualColors}
-          // tooltip={
-          //   tooltip
-          //     ? (node) => <>{tooltip(node)}</>
-          //     : ({ id, value, indexValue }) => (
-          //         <Tooltip>
-          //           <MD>
-          //             {indexValue} - {id}:{" "}
-          //             <MD tag="span" isBold>
-          //               {value}
-          //             </MD>
-          //           </MD>
-          //         </Tooltip>
-          //       )
-          // }
+          data={data}
           margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
-          enableGridX
           gridXValues={1}
+          gridYValues={5}
           yScale={{
             type: "linear",
-            min: 1,
+            min: 0,
             max: 5,
-            nice: true,
           }}
-          {...(axisBottomLabel && {
-            axisBottom: {
-              tickSize: 0,
-              tickPadding: 10,
-              tickValues: 3,
-              legend: axisBottomLabel,
-              legendOffset:
-                (margin?.bottom || DEFAULT_CHART_MARGINS.bottom) - 10,
-              legendPosition: "middle",
-              format: (value) => formatAxisX(value),
-            },
-          })}
-          {...(axisLeftLabel && {
-            axisLeft: {
-              tickSize: 0,
-              tickPadding: 20,
-              legend: axisLeftLabel,
-              legendOffset:
-                ((margin?.left || DEFAULT_CHART_MARGINS.left) - 10) * -1,
-              legendPosition: "middle",
-              format: (value) => "",
-            },
-          })}
-          layers={["grid", "axes", "lines", "points", "legends"]}
-          pointSymbol={({ datum, ...props }) => {
-            console.log(props);
-            return formatPoint(datum.y ?? "");
+          axisBottom={{
+            tickSize: 0,
+            tickPadding: 20,
+            legend: axisBottomLabel,
+            legendOffset:
+              (margin?.bottom || DEFAULT_CHART_MARGINS.bottom) - 10,
+            legendPosition: "middle",
+            format: (value) => formatAxisX(value),
           }}
+          axisLeft={{
+            tickSize: 0,
+            tickPadding: 20,
+            legend: axisLeftLabel,
+            legendOffset:
+              ((margin?.left || DEFAULT_CHART_MARGINS.left) - 10) * -1,
+            legendPosition: "middle",
+            format: (value) => "",
+          }}
+          pointSymbol={({ datum }) => {
+            return <Point>{formatPoint(datum.y ?? "")}</Point>;
+          }}
+          tooltip={tooltip ? (node) => <>{tooltip({
+            value: formatSentiment(node.point.data.y),
+            label: node.point.data.x.toString(),
+            data: {
+              custom_data: data[0].data[node.point.index].custom_data ?? undefined,
+            }
+          })}</> : (node) => {
+            return (
+              <Tooltip>
+                <MD>{formatSentiment(node.point.data.y)}</MD>
+              </Tooltip>
+            );
+          }}
+          useMesh
+          enableCrosshair={false}
         />
       </ChartContainer>
-      {/* <ChartContainer width={width} height="auto">
-        {legend ? (
-          <Legend
-            colors={actualColors}
-            data={keys}
-            {...(typeof legend === "object" && legend)}
-          />
-        ) : undefined}
-      </ChartContainer> */}
-    </>
+    </ScrollingContainer>
   );
 };

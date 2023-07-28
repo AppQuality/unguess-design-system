@@ -5,7 +5,8 @@ type LineData = {
   id: string;
   data: {
     x: string;
-    y: number;
+    y?: number;
+    custom_data?: string;
   }[];
 };
 
@@ -25,4 +26,5 @@ export interface LineChartProps {
   axisBottomLabel?: string;
   tooltip?: ChartTooltipFunction;
   legend?: LegendType | true;
+  isScrollable?: boolean;
 }

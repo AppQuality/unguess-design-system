@@ -2,15 +2,16 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { LineChart } from ".";
 import { LineChartProps } from "./_types";
 import { data } from "./_data";
+import { theme } from "../../theme";
 
 const Template: Story<LineChartProps> = (args) => (
   <LineChart
     width="100%"
     height="300px"
     axisBottomLabel={`UseCase (Tot: ${args.data[0].data.length})`}
-    axisLeftLabel=""
-    margin={{ top: 25, right: 25, bottom: 50, left: 150 }}
-    colors={['#68737D']}
+    margin={{ top: 25, right: 75, bottom: 75, left: 75 }}
+    colors={[theme.palette.grey[600]]}
+    isScrollable
     {...args}
   />
 );
@@ -26,14 +27,14 @@ WithCustomTooltip.args = {
   data: data,
   tooltip: (node) => (
     <>
-      <div style={{ width: "500px", background: "red", color: "white" }}>
+      <div style={{ width: "200px", background: "red", color: "white" }}>
         {JSON.stringify(node.value)}
       </div>
-      <div style={{ width: "500px", background: "yellow" }}>
+      <div style={{ width: "200px", background: "yellow" }}>
         {JSON.stringify(node.label)}
       </div>
       {node.data?.custom_data && (
-        <div style={{ width: "500px", background: "purple", color: "white" }}>
+        <div style={{ width: "200px", background: "purple", color: "white" }}>
           {JSON.stringify(node.data.custom_data)}
         </div>
       )}

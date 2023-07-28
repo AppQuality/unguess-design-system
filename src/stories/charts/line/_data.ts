@@ -4,8 +4,12 @@ export const data = [
     "color": "hsl(332, 70%, 50%)",
     "data": [
       {
-        "x": "UC 4:Homepage",
-        "y": 2
+        "x": "start",
+      },
+      {
+        "x": "Homepage",
+        "y": 2,
+        "custom_data": "cazzate"
       },
       {
         "x": "Catalogo",
@@ -19,12 +23,13 @@ export const data = [
         "x": "Check Out",
         "y": 3
       },
-      
       {
         "x": "Conferma Ordine",
         "y": 1
       },
-     
+      {
+        "x": "end",
+      },
     ]
   }
 ];

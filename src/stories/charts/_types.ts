@@ -5,7 +5,7 @@ export type ChartTooltipFunction = ({
   label,
   data,
 }: {
-  value: number;
+  value: string | number;
   label: string | number;
   data?: Record<string, string | number | undefined>;
 }) => React.ReactNode;
