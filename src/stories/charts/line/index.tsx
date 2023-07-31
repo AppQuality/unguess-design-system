@@ -15,6 +15,7 @@ import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { DatumValue } from "@nivo/core";
 import { getColor } from "../../theme/utils";
+import { get } from "http";
 
 const Point = styled.g`
   transform: translate(-13px, -13px);
@@ -139,6 +140,7 @@ export const LineChart = ({
               },
             },
           }}
+          curve="monotoneX"
           colors={actualColors}
           data={data}
           margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
@@ -147,7 +149,7 @@ export const LineChart = ({
           yScale={{
             type: "linear",
             min: 0,
-            max: 5,
+            max: 6,
           }}
           axisBottom={{
             tickSize: 0,
@@ -183,6 +185,58 @@ export const LineChart = ({
               </Tooltip>
             );
           }}
+          markers={[
+            {
+              axis: 'y',
+              legend: 'Neutral',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: theme.palette.grey[600],
+                strokeWidth: 1,
+              },
+              textStyle: {
+                fill: theme.palette.grey[600],
+                fontSize: theme.fontSizes.sm,
+              },
+              value: 3
+            },
+            {
+              axis: 'y',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: 0
+            },
+            {
+              axis: 'y',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: 6
+            },
+            {
+              axis: 'x',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: "start"
+            },
+            {
+              axis: 'x',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: "end"
+            }
+          ]}
           useMesh
           enableCrosshair={false}
         />
