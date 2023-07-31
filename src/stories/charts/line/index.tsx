@@ -15,7 +15,6 @@ import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { DatumValue } from "@nivo/core";
 import { getColor } from "../../theme/utils";
-import { get } from "http";
 
 const Point = styled.g`
   transform: translate(-13px, -13px);
