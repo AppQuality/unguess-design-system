@@ -8,7 +8,6 @@ const Template: Story<LineChartProps> = (args) => (
   <LineChart
     width="100%"
     height="300px"
-    axisBottomLabel={`UseCase (Tot: ${args.data[0].data.length})`}
     margin={{ top: 25, right: 75, bottom: 75, left: 75 }}
     colors={[theme.palette.grey[600]]}
     isScrollable

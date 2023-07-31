@@ -28,6 +28,11 @@ export const data = [
         "y": 1
       },
       {
+        "x": "Carrello",
+        "y": 5,
+        "custom_data": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis tincidunt ultricies, nunc nisl lacinia nunc, quis lacinia nisl nun"
+      },
+      {
         "x": "end",
       },
     ]
