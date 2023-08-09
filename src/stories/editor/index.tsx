@@ -7,6 +7,7 @@ import {
 import styled from "styled-components";
 
 import Typography from "@tiptap/extension-typography";
+import Link from "@tiptap/extension-link";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 import CharacterCount from '@tiptap/extension-character-count'
@@ -88,6 +89,7 @@ const Editor = ({
   const ed = useEditor({
     extensions: [
       Typography,
+      Link,
       StarterKit,
       Placeholder.configure({
         placeholder: ({ node }) => {
