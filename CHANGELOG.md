@@ -1,3 +1,19 @@
+# v3.1.3 (Wed Aug 16 2023)
+
+#### 🐛 Bug Fix
+
+- Add link parse to editor [#259](https://github.com/AppQuality/unguess-design-system/pull/259) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Add link to Editor [#258](https://github.com/AppQuality/unguess-design-system/pull/258) ([@iacopolea](https://github.com/iacopolea))
+- fix: accent button hover color [#256](https://github.com/AppQuality/unguess-design-system/pull/256) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 3
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.2 (Fri Jun 16 2023)
 
 #### 🐛 Bug Fix
