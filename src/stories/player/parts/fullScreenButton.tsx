@@ -1,45 +1,61 @@
 import { IconButton } from "../../buttons/icon-button";
 import { ReactComponent as FullScreenIcon } from "../../../assets/icons/maximize-fill.svg";
 import { useCallback } from "react";
+import { useVideoContext } from "@appquality/stream-player";
 
-interface VideowithFullscreen extends HTMLVideoElement {
+interface ElementWithFullscreen extends HTMLDivElement {
   webkitEnterFullscreen?: () => Promise<void>;
   webkitRequestFullscreen?: () => Promise<void>;
   mozRequestFullScreen?: () => Promise<void>;
   msRequestFullscreen?: () => Promise<void>;
 }
 
-export const FullScreenButton = (props: {
-  videoRef: VideowithFullscreen | null;
+export const FullScreenButton = ({
+  container,
+}: {
+  container: HTMLDivElement | null;
 }) => {
-  const { videoRef } = props;
+  const { setFullScreen, isFullScreen } = useVideoContext();
+
+  const ref = container as ElementWithFullscreen | null;
   const {
     requestFullscreen,
     webkitRequestFullscreen,
     mozRequestFullScreen,
     webkitEnterFullscreen,
     msRequestFullscreen,
-  } = videoRef || {};
+  } = ref || {};
 
   const handleFullScreen = useCallback(async () => {
-    if (videoRef) {
-      if (videoRef.requestFullscreen) {
-        await videoRef.requestFullscreen();
-      } else if (videoRef.webkitRequestFullscreen) {
-        await videoRef.webkitRequestFullscreen();
-      } else if (videoRef.mozRequestFullScreen) {
-        await videoRef.mozRequestFullScreen();
-      } else if (videoRef.webkitEnterFullscreen) {
-        // iOS
-        await videoRef.webkitEnterFullscreen();
-      } else if (videoRef.msRequestFullscreen) {
-        await videoRef.msRequestFullscreen();
+    if (ref) {
+      if (!isFullScreen) {
+        setFullScreen(true);
+        if (ref.requestFullscreen) {
+          await ref.requestFullscreen();
+        } else if (ref.webkitRequestFullscreen) {
+          await ref.webkitRequestFullscreen();
+        } else if (ref.mozRequestFullScreen) {
+          await ref.mozRequestFullScreen();
+        } else if (ref.webkitEnterFullscreen) {
+          // iOS
+          await ref.webkitEnterFullscreen();
+        } else if (ref.msRequestFullscreen) {
+          await ref.msRequestFullscreen();
+        } else {
+          console.error("Fullscreen API is not supported");
+          setFullScreen(false);
+        }
+      } else {
+        if (document.fullscreenElement) {
+          await document.exitFullscreen();
+        }
+        setFullScreen(false);
       }
     }
-  }, [videoRef]);
+  }, [ref, isFullScreen]);
 
   const canGoFullScreen = useCallback(async () => {
-    if (videoRef) {
+    if (ref) {
       return (
         requestFullscreen ||
         webkitRequestFullscreen ||
@@ -50,7 +66,7 @@ export const FullScreenButton = (props: {
     }
 
     return false;
-  }, [videoRef]);
+  }, [ref]);
 
   return (
     <IconButton

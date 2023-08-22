@@ -1,7 +1,10 @@
 import { ComponentMeta, Story } from "@storybook/react";
+import Video, { useVideoContext } from "@appquality/stream-player";
+
 import styled from "styled-components";
 import { Player } from ".";
 import { PlayerArgs } from "./_types";
+import { Button } from "../buttons/button";
 
 const Container = styled.div`
   height: 80vh;
@@ -18,9 +21,7 @@ const defaultArgs: PlayerStoryArgs = {
 
 const Template: Story<PlayerStoryArgs> = (args) => (
   <Container id="player.story.container">
-    <Player {...args}>
-      <source src={args.url} type="video/mp4" />
-    </Player>
+    <Player {...args} />
   </Container>
 );
 

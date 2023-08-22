@@ -8,22 +8,19 @@ import { IconButton } from "../../buttons/icon-button";
 import { SM } from "../../typography/typescale";
 import { getNextPlaybackRate } from "./utils";
 import { useCallback, useEffect, useState } from "react";
+import { useVideoContext } from "@appquality/stream-player";
 
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const ControlsGroupCenter = ({
-  videoRef,
-  isPlaying,
-  onPlayChange,
-}: {
-  videoRef: HTMLVideoElement | null;
-  isPlaying?: boolean;
-  onPlayChange?: (playing: boolean) => void;
-}) => {
+export const ControlsGroupCenter = () => {
   const [playBackRate, setPlayBackRate] = useState<number>(1);
+  const { context, togglePlay } = useVideoContext();
+
+  const videoRef = context.player?.ref.current;
+  const isPlaying = context.isPlaying;
 
   useEffect(() => {
     if (videoRef) {
@@ -43,21 +40,6 @@ export const ControlsGroupCenter = ({
 
     videoRef.currentTime = nextTime;
   };
-
-  const handlePlay = useCallback(
-    (e: any) => {
-      if (!videoRef) return;
-      if (videoRef.paused) {
-        videoRef.play();
-        onPlayChange?.(true);
-      } else {
-        videoRef.pause();
-        onPlayChange?.(false);
-      }
-      e.stopPropagation();
-    },
-    [videoRef, isPlaying]
-  );
 
   return (
     <StyledDiv>
@@ -81,7 +63,7 @@ export const ControlsGroupCenter = ({
       >
         <RewindIcon />
       </IconButton>
-      <IconButton isBright size={"large"} onClick={handlePlay}>
+      <IconButton isBright size={"large"} onClick={togglePlay}>
         {isPlaying ? (
           <PauseIcon style={{ width: "24px", height: "24px" }} />
         ) : (

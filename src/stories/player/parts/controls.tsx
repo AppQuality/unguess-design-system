@@ -1,5 +1,6 @@
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import Video, { useVideoContext } from "@appquality/stream-player";
 import { Progress } from "../../loaders/progress";
 import { PlayerTooltip } from "./tooltip";
 import { WrapperProps } from "../_types";
@@ -8,6 +9,7 @@ import { TimeLabel } from "./timeLabel";
 import { AudioButton } from "./audioButton";
 import { formatDuration } from "./utils";
 import { FullScreenButton } from "./fullScreenButton";
+import { getColor } from "@zendeskgarden/react-theming";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -15,7 +17,8 @@ export const ControlsWrapper = styled.div<WrapperProps>`
   left: 0;
   right: 0;
   padding: ${({ theme }) => theme.space.xxs} 0;
-  background-color: ${({ theme }) => theme.palette.grey[700]};
+  background-color: ${({ theme }) =>
+    getColor(theme.palette.grey, 700, undefined, 0.8)};
   ${({ isPlaying }) => isPlaying && "display: none;"}
   z-index: 2;
 `;
@@ -52,20 +55,19 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
-export const Controls = (props: {
-  videoRef: HTMLVideoElement | null;
-  duration: number;
-  isPlaying?: boolean;
-  onPlayChange?: (isPlaying: boolean) => void;
+export const Controls = ({
+  container,
+}: {
+  container: HTMLDivElement | null;
 }) => {
-  const { videoRef, onPlayChange, isPlaying, duration } = props;
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
   const [tooltipLabel, setTooltipLabel] = useState<string>("00:00");
   const progressRef = useRef<HTMLDivElement>(null);
+  const { context, setCurrentTime } = useVideoContext();
 
   const getVideoPositionFromEvent = (clientX: number) => {
-    const totalTime = videoRef?.duration || duration || 0;
+    const totalTime = context.player?.totalTime || 0;
     if (progressRef && progressRef.current && totalTime) {
       const bounds = progressRef.current.getBoundingClientRect();
       const x = clientX - bounds.left;
@@ -77,19 +79,13 @@ export const Controls = (props: {
     return 0;
   };
 
-  const handleProgressUpdate = useCallback(() => {
-    const totalTime = videoRef?.duration || duration || 0;
-    const currentTime = videoRef?.currentTime || 0;
-    setProgress((currentTime / totalTime) * 100);
-  }, [duration, videoRef]);
-
   const handleSkipAhead = useCallback(
     (pageX: number) => {
-      if (videoRef) {
-        videoRef.currentTime = getVideoPositionFromEvent(pageX);
-      }
+      const time = getVideoPositionFromEvent(pageX);
+      setCurrentTime(time);
+      setProgress(getProgress(time));
     },
-    [videoRef]
+    [context.player]
   );
 
   const onMouseEvent = (e: MouseEvent<HTMLDivElement>) => {
@@ -108,19 +104,23 @@ export const Controls = (props: {
   };
 
   useEffect(() => {
-    if (videoRef) {
-      videoRef.addEventListener("timeupdate", handleProgressUpdate);
-    }
+    const currentTime = context.player?.currentTime || 0;
+    setProgress(getProgress(currentTime));
+  }, [context.player]);
 
-    return () => {
-      if (videoRef) {
-        videoRef.removeEventListener("timeupdate", handleProgressUpdate);
-      }
-    };
-  }, [videoRef]);
+  const getProgress = useCallback(
+    (currentTime: number) => {
+      const totalTime = context.player?.totalTime || 0;
+
+      if (totalTime === 0) return 0;
+
+      return (currentTime / totalTime) * 100;
+    },
+    [context.player]
+  );
 
   return (
-    <ControlsWrapper isPlaying={isPlaying}>
+    <ControlsWrapper isPlaying={context.isPlaying}>
       <ProgressContainer
         onMouseEnter={onMouseEvent}
         onMouseMove={onMouseEvent}
@@ -130,8 +130,8 @@ export const Controls = (props: {
           {tooltipLabel}
         </StyledTooltip>
         <TimeLabel
-          current={formatDuration(videoRef?.currentTime || 0)}
-          duration={formatDuration(duration)}
+          current={formatDuration(context.player?.currentTime || 0)}
+          duration={formatDuration(context.player?.totalTime || 0)}
         />
         <StyledProgress
           ref={progressRef}
@@ -141,15 +141,12 @@ export const Controls = (props: {
       </ProgressContainer>
       <ControlsBar>
         <StyledDiv>
-          <AudioButton videoRef={videoRef} />
+          <AudioButton />
         </StyledDiv>
-        <ControlsGroupCenter
-          videoRef={videoRef}
-          onPlayChange={onPlayChange}
-          isPlaying={isPlaying}
-        />
+        <ControlsGroupCenter />
+
         <StyledDiv>
-          <FullScreenButton videoRef={videoRef} />
+          <FullScreenButton container={container}/>
         </StyledDiv>
       </ControlsBar>
     </ControlsWrapper>
