@@ -30,6 +30,12 @@ Basic.args = {
   ...defaultArgs,
 };
 
+export const Streaming = Template.bind({});
+Streaming.args = {
+  ...defaultArgs,
+  url: "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/db00e97cfb85971e3fa71b7735142e07ab2d1ebf_1605195177.m3u8"
+};
+
 export default {
   title: "Organisms/Player",
   component: Player,
