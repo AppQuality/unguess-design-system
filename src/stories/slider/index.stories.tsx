@@ -32,9 +32,7 @@ const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
           <Slider.Slide>
             {item.imageUrl && <img src={item.imageUrl} />}
             {item.videoUrl && (
-              <Player>
-                <source src={item.videoUrl} type="video/mp4" />
-              </Player>
+              <Player url={item.videoUrl} />
             )}
             {item.headerTitle && item.content && (
               <TextContainer>

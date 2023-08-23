@@ -171,7 +171,7 @@ export * from "./stories/timeline";
 
 // --- Theme ---
 export * from "./stories/theme";
-export {getColor} from "./stories/theme/utils";
+export { getColor } from "./stories/theme/utils";
 
 // --- Title ---
 export * from "./stories/title";
