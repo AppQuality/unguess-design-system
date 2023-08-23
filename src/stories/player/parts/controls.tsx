@@ -66,13 +66,17 @@ export const Controls = ({
   const progressRef = useRef<HTMLDivElement>(null);
   const { context, setCurrentTime } = useVideoContext();
 
+  const relCurrentTime =
+    (context.player?.currentTime || 0) - context.part.start;
+  const duration =
+    context.part.end - context.part.start || context.player?.totalTime || 0; //relative
+
   const getVideoPositionFromEvent = (clientX: number) => {
-    const totalTime = context.player?.totalTime || 0;
-    if (progressRef && progressRef.current && totalTime) {
+    if (progressRef && progressRef.current && duration) {
       const bounds = progressRef.current.getBoundingClientRect();
       const x = clientX - bounds.left;
       const videoPositionSecs =
-        (x / progressRef.current.clientWidth) * totalTime;
+        (x / progressRef.current.clientWidth) * duration;
       return videoPositionSecs;
     }
 
@@ -81,11 +85,11 @@ export const Controls = ({
 
   const handleSkipAhead = useCallback(
     (pageX: number) => {
-      const time = getVideoPositionFromEvent(pageX);
+      const time = getVideoPositionFromEvent(pageX) + (context.part.start || 0);
       setCurrentTime(time);
       setProgress(getProgress(time));
     },
-    [context.player]
+    [context.player, context.part]
   );
 
   const onMouseEvent = (e: MouseEvent<HTMLDivElement>) => {
@@ -110,11 +114,11 @@ export const Controls = ({
 
   const getProgress = useCallback(
     (currentTime: number) => {
-      const totalTime = context.player?.totalTime || 0;
+      const current = currentTime - (context.part.start || 0);
 
-      if (totalTime === 0) return 0;
+      if (duration === 0) return 0;
 
-      return (currentTime / totalTime) * 100;
+      return (current / duration) * 100;
     },
     [context.player]
   );
@@ -130,8 +134,8 @@ export const Controls = ({
           {tooltipLabel}
         </StyledTooltip>
         <TimeLabel
-          current={formatDuration(context.player?.currentTime || 0)}
-          duration={formatDuration(context.player?.totalTime || 0)}
+          current={formatDuration(relCurrentTime)}
+          duration={formatDuration(duration)}
         />
         <StyledProgress
           ref={progressRef}
@@ -146,7 +150,7 @@ export const Controls = ({
         <ControlsGroupCenter />
 
         <StyledDiv>
-          <FullScreenButton container={container}/>
+          <FullScreenButton container={container} />
         </StyledDiv>
       </ControlsBar>
     </ControlsWrapper>

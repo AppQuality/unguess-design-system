@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Player } from ".";
 import { PlayerArgs } from "./_types";
 import { Button } from "../buttons/button";
+import { start } from "repl";
 
 const Container = styled.div`
   height: 80vh;
@@ -33,7 +34,9 @@ Basic.args = {
 export const Streaming = Template.bind({});
 Streaming.args = {
   ...defaultArgs,
-  url: "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/db00e97cfb85971e3fa71b7735142e07ab2d1ebf_1605195177.m3u8"
+  url: "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/db00e97cfb85971e3fa71b7735142e07ab2d1ebf_1605195177.m3u8",
+  start: 10,
+  end: 20,
 };
 
 export default {
