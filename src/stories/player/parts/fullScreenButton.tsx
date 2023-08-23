@@ -1,6 +1,7 @@
 import { IconButton } from "../../buttons/icon-button";
-import { ReactComponent as FullScreenIcon } from "../../../assets/icons/maximize-fill.svg";
-import { useCallback } from "react";
+import { ReactComponent as FullScreenEnter } from "../assets/maximize-stroke.svg";
+import { ReactComponent as FullScreenExit } from "../assets/minimize-stroke.svg";
+import { useCallback, useEffect } from "react";
 import { useVideoContext } from "@appquality/stream-player";
 
 interface ElementWithFullscreen extends HTMLDivElement {
@@ -28,7 +29,7 @@ export const FullScreenButton = ({
 
   const handleFullScreen = useCallback(async () => {
     if (ref) {
-      if (!isFullScreen) {
+      if (!isFullScreen || !document.fullscreenElement) {
         setFullScreen(true);
         if (ref.requestFullscreen) {
           await ref.requestFullscreen();
@@ -77,7 +78,7 @@ export const FullScreenButton = ({
       }}
       disabled={!canGoFullScreen()}
     >
-      <FullScreenIcon />
+      {document.fullscreenElement || isFullScreen ? <FullScreenExit /> : <FullScreenEnter />}
     </IconButton>
   );
 };
