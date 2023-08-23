@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { WrapperProps } from "../_types";
 import { IconButton } from "../../buttons/icon-button";
-import { ReactComponent as PlayIconComponent } from "../../../assets/icons/play-fill.svg";
+import { ReactComponent as PlayIconComponent } from "../assets/play-icon.svg";
 
 export const FloatingContainer = styled.div<WrapperProps>`
   position: absolute;
@@ -16,12 +16,13 @@ export const FloatingContainer = styled.div<WrapperProps>`
 const PlayIcon = styled(PlayIconComponent)``;
 const BigButton = styled(IconButton)`
   pointer-events: none;
+  background-color: ${({ theme }) => theme.palette.white};
   min-width: ${({ theme }) => theme.space.base * 15}px;
   width: 80px;
   height: 80px;
   ${PlayIcon} {
-    width: 90%;
-    height: 90%;
+    width: 60%;
+    height: 60%;
   }
 `;
 
@@ -42,8 +43,8 @@ export const FloatingControls = (props: {
     <FloatingContainer isPlaying={isPlaying} onClick={onClick}>
       <ButtonsContainer>
         {!isPlaying && (
-          <BigButton isBright>
-            <PlayIcon />
+          <BigButton isPrimary size={"large"}>
+            <PlayIcon color="red"/>
           </BigButton>
         )}
       </ButtonsContainer>

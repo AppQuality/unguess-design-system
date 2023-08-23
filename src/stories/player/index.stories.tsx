@@ -1,7 +1,11 @@
 import { ComponentMeta, Story } from "@storybook/react";
+import Video, { useVideoContext } from "@appquality/stream-player";
+
 import styled from "styled-components";
 import { Player } from ".";
 import { PlayerArgs } from "./_types";
+import { Button } from "../buttons/button";
+import { start } from "repl";
 
 const Container = styled.div`
   height: 80vh;
@@ -18,15 +22,21 @@ const defaultArgs: PlayerStoryArgs = {
 
 const Template: Story<PlayerStoryArgs> = (args) => (
   <Container id="player.story.container">
-    <Player {...args}>
-      <source src={args.url} type="video/mp4" />
-    </Player>
+    <Player {...args} />
   </Container>
 );
 
 export const Basic = Template.bind({});
 Basic.args = {
   ...defaultArgs,
+};
+
+export const Streaming = Template.bind({});
+Streaming.args = {
+  ...defaultArgs,
+  url: "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/db00e97cfb85971e3fa71b7735142e07ab2d1ebf_1605195177.m3u8",
+  start: 10,
+  end: 20,
 };
 
 export default {

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ControlsWrapper } from "./controls";
 import { FloatingContainer } from "./floatingControls";
 import { WrapperProps } from "../_types";
+import { VideoStyle } from "./video";
 
 export const Container = styled.div<WrapperProps>`
   position: relative;
@@ -14,6 +15,7 @@ export const Container = styled.div<WrapperProps>`
     ${({ isLoaded, isPlaying }) => (!isLoaded || !isPlaying) && "opacity: .7;"}
   }
 
+  ${VideoStyle}
   ${({ isLoaded }) => !isLoaded && `pointer-events: none;`}
 
   &:hover {

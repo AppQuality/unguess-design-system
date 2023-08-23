@@ -2,6 +2,7 @@ import { IconButton } from "../../buttons/icon-button";
 import { ReactComponent as MutedIcon } from "../../../assets/icons/volume-muted-fill.svg";
 import { ReactComponent as UnMutedIcon } from "../../../assets/icons/volume-unmuted-fill.svg";
 import { useEffect, useState } from "react";
+import { useVideoContext } from "@appquality/stream-player";
 
 interface VideowithAudio extends HTMLVideoElement {
   mozHasAudio?: boolean;
@@ -9,22 +10,24 @@ interface VideowithAudio extends HTMLVideoElement {
   audioTracks?: any[];
 }
 
-export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
-  const [isMuted, setIsMuted] = useState<boolean>(false);
+export const AudioButton = () => {
   const [hasAudio, setHasAudio] = useState<boolean>(false);
+  const { isMuted, setMuted, context } = useVideoContext();
 
-  const { videoRef } = props;
+  const { player } = context;
 
   const checkAudio = (video: VideowithAudio | null) => {
     if (!video) {
       return false;
     }
+
+    console.log("hasAudio?",video);
     const videohasAudio =
       video.mozHasAudio ||
       Boolean(video.webkitAudioDecodedByteCount) ||
       Boolean(video.audioTracks && video.audioTracks.length);
 
-    return videohasAudio;
+    setHasAudio(videohasAudio);
   };
 
   const hasVolume = (video: HTMLVideoElement | null) => {
@@ -34,32 +37,21 @@ export const AudioButton = (props: { videoRef: HTMLVideoElement | null }) => {
     return video.volume > 0;
   };
 
-  const handleAudio = () => {
-    setHasAudio(checkAudio(videoRef));
-  };
-
   useEffect(() => {
-    if (videoRef) {
-      setIsMuted(!hasVolume(videoRef));
-
-      videoRef.addEventListener("loadeddata", handleAudio);
+    if (player && player?.ref) {
+      setMuted(!hasVolume(player.ref.current));
+      checkAudio(player.ref.current);
     }
-
-    return () => {
-      if (videoRef) {
-        videoRef.removeEventListener("loadeddata", handleAudio);
-      }
-    };
-  }, [videoRef]);
+  }, [context.isPlaying, isMuted]);
 
   return (
     <IconButton
       isBright
-      disabled={!checkAudio(videoRef || null)}
+      disabled={!hasAudio}
       onClick={() => {
-        if (videoRef) {
-          videoRef.volume = videoRef.volume > 0 ? 0 : 1;
-          setIsMuted(!videoRef.volume);
+        if (player?.ref.current) {
+          player.ref.current.volume = player.ref.current.volume > 0 ? 0 : 1;
+          setMuted(!player.ref.current.volume);
         }
       }}
     >
