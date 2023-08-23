@@ -1,3 +1,16 @@
+# v3.1.4 (Wed Aug 23 2023)
+
+#### 🐛 Bug Fix
+
+- Add streaming support to player component [#261](https://github.com/AppQuality/unguess-design-system/pull/261) ([@cannarocks](https://github.com/cannarocks))
+- New-player-with-old-skin [#260](https://github.com/AppQuality/unguess-design-system/pull/260) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.3 (Wed Aug 16 2023)
 
 #### 🐛 Bug Fix
