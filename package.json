@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.1.40-player",
+  "version": "3.1.41-player",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
