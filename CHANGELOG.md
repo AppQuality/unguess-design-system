@@ -1,3 +1,16 @@
+# v3.1.42 (Thu Aug 24 2023)
+
+#### 🐛 Bug Fix
+
+- Improve fullscreen experience of player [#263](https://github.com/AppQuality/unguess-design-system/pull/263) ([@cannarocks](https://github.com/cannarocks))
+- New-player-with-old-skin [#262](https://github.com/AppQuality/unguess-design-system/pull/262) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.4 (Wed Aug 23 2023)
 
 #### 🐛 Bug Fix
