@@ -69,6 +69,22 @@ export const FullScreenButton = ({
     return false;
   }, [ref]);
 
+  useEffect(() => {
+    if (ref) {
+      ref.addEventListener("fullscreenchange", () => {
+        setFullScreen(!!document.fullscreenElement);
+      });
+    }
+
+    return () => {
+      if (ref) {
+        ref.removeEventListener("fullscreenchange", () => {
+          setFullScreen(!!document.fullscreenElement);
+        });
+      }
+    };
+  }, [ref]);
+
   return (
     <IconButton
       isBright
@@ -78,7 +94,11 @@ export const FullScreenButton = ({
       }}
       disabled={!canGoFullScreen()}
     >
-      {document.fullscreenElement || isFullScreen ? <FullScreenExit /> : <FullScreenEnter />}
+      {document.fullscreenElement || isFullScreen ? (
+        <FullScreenExit />
+      ) : (
+        <FullScreenEnter />
+      )}
     </IconButton>
   );
 };
