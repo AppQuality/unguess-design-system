@@ -33,12 +33,28 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
 
 const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
   (props, forwardRef) => {
-    const { context, togglePlay } = useVideoContext();
+    const { context, togglePlay, setIsPlaying } = useVideoContext();
     const videoRef = context.player?.ref.current;
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
 
     useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement);
+
+    useEffect(() => {
+      if (videoRef) {
+        videoRef.addEventListener("pause", () => {
+          setIsPlaying(false);
+        });
+      }
+
+      return () => {
+        if (videoRef) {
+          videoRef.removeEventListener("pause", () => {
+            setIsPlaying(false);
+          });
+        }
+      };
+    }, [videoRef]);
 
     return (
       <Container
