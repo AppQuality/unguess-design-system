@@ -26,24 +26,24 @@ const TextContainer = styled.div`
 
 const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
   return (
-    <Slider {...args}>
-      {items.map((item) => (
-        <div>
-          <Slider.Slide>
-            {item.imageUrl && <img src={item.imageUrl} />}
-            {item.videoUrl && (
-              <Player url={item.videoUrl} />
-            )}
-            {item.headerTitle && item.content && (
-              <TextContainer>
-                <XL>{item.headerTitle}</XL>
-                <MD>{item.content}</MD>
-              </TextContainer>
-            )}
-          </Slider.Slide>
-        </div>
-      ))}
-    </Slider>
+    <div style={{ height: "80vh" }}>
+      <Slider {...args}>
+        {items.map((item) => (
+          <div>
+            <Slider.Slide>
+              {item.imageUrl && <img src={item.imageUrl} />}
+              {item.videoUrl && <Player url={item.videoUrl} />}
+              {item.headerTitle && item.content && (
+                <TextContainer>
+                  <XL>{item.headerTitle}</XL>
+                  <MD>{item.content}</MD>
+                </TextContainer>
+              )}
+            </Slider.Slide>
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 
