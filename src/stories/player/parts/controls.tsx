@@ -1,6 +1,6 @@
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Video, { useVideoContext } from "@appquality/stream-player";
+import { useVideoContext } from "@appquality/stream-player";
 import { Progress } from "../../loaders/progress";
 import { PlayerTooltip } from "./tooltip";
 import { WrapperProps } from "../_types";
@@ -66,8 +66,9 @@ export const Controls = ({
   const progressRef = useRef<HTMLDivElement>(null);
   const { context, setCurrentTime } = useVideoContext();
 
-  const relCurrentTime =
-    (context.player?.currentTime || 0) - context.part.start;
+  const relCurrentTime = context.player?.currentTime
+    ? context.player?.currentTime - context.part.start
+    : 0;
   const duration =
     context.part.end - context.part.start || context.player?.totalTime || 0; //relative
 
