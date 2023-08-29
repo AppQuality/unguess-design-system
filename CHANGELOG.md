@@ -1,3 +1,15 @@
+# v3.1.46 (Tue Aug 29 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#264](https://github.com/AppQuality/unguess-design-system/pull/264) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.42 (Thu Aug 24 2023)
 
 #### 🐛 Bug Fix
