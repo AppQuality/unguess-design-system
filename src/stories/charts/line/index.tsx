@@ -231,21 +231,7 @@ export const LineChart = ({
                 })}
               </>
             )
-          } : (e) => {
-            const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
-              custom_data?: string;
-            } = e.slice.points[0].data;
-
-            return (
-              <Tooltip
-                type="light"
-                size="large"
-                content={formatSentiment(point.y)}
-              >
-                <MD>{formatSentiment(point.y)}</MD>
-              </Tooltip>
-            );
-          }}
+          } : undefined}
           markers={[
             {
               axis: 'y',
@@ -301,7 +287,7 @@ export const LineChart = ({
           ]}
           enableCrosshair={false}
           isInteractive
-          enableSlices="y"
+          enableSlices="x"
         />
       </ChartContainer>
     </ScrollingContainer>

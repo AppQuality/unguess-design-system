@@ -8,7 +8,7 @@ export type Data = {
 };
 
 export const data: Data = {
-  id: "sentiment-chart",
+  id: "Sentiment",
   data: [
     {
       "x": "Homepage",
