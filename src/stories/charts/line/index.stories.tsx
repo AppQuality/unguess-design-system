@@ -12,18 +12,17 @@ import { ReactComponent as S2 } from "./assets/sentiment_2.svg";
 import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { Span } from "../../typography/span";
-import { Paragraph } from "../../typography/paragraph";
 import { SM } from "../../typography/typescale";
 
-const Container = styled.div`
+const ScrollingContainer = styled.div`
   width: 100%;
-  padding: 0 ${({ theme }) => theme.space.xxl};
+  overflow-x: scroll;
 `;
 
 const Label = styled.p`
   color: ${({ theme }) => theme.palette.blue[600]};
   font-size: ${({ theme }) => theme.fontSizes.md};
-  padding: ${({ theme }) => theme.space.md};
+  padding: ${({ theme }) => theme.space.sm};
 `;
 
 const VerticalLabel = styled(Label)`
@@ -45,10 +44,8 @@ const Tooltip = styled.div`
   border-radius: ${({ theme }) => theme.borderRadii.md};
   padding: ${({ theme }) => theme.space.sm};
   box-shadow: ${theme.shadows.boxShadow(theme)};
-  max-width: 200px;
-  overflow: hidden;
-  break-word: break-all;
-  white-space: no-wrap;
+  max-width: 230px;
+  white-space: normal;
 `;
 
 const formatPoint = (value: DatumValue) => {
@@ -70,41 +67,28 @@ const formatPoint = (value: DatumValue) => {
 
 const Template: Story<LineChartProps> = (args) => (
   <>
-    <h1>Line Chart</h1>
-    <p>
-      This is a line chart. It is a wrapper around the{" "}
-      <a href="https://nivo.rocks/line/">Nivo Line Chart</a> component.
-    </p>
-    <p>
-      The Nivo Line Chart is a wrapper around the{" "}
-      <a href="">D3 Line Chart</a> component.
-    </p>
-    <LineChart
-      width="100%"
-      height="400px"
-      margin={{ top: 0, right: 0, bottom: 25, left: 0 }}
-      colors={[theme.palette.grey[600]]}
-      isScrollable
-      {...args}
-    />
-  </>
-);
-
-const TemplateScrollable: Story<LineChartProps> = (args) => (
-  <>
-    <ContainerCard style={{ paddingLeft: 0, paddingRight: 0 }}>
-      <Container>
-        <VerticalLabel>Vertical Label</VerticalLabel>
+    <ContainerCard>
+      <h1>Line Chart</h1>
+      <p>
+        This is a line chart. It is a wrapper around the{" "}
+        <a href="https://nivo.rocks/line/">Nivo Line Chart</a> component.
+      </p>
+      <p>
+        The Nivo Line Chart is a wrapper around the{" "}
+        <a href="">D3 Line Chart</a> component.
+      </p>
+      <br />
+      <VerticalLabel>Vertical Label</VerticalLabel>
+      <ScrollingContainer>
         <LineChart
           width={`${data.data.length * 150}px`}
           height="300px"
-          margin={{ top: 0, right: 0, bottom: 50, left: 25 }}
+          margin={{ top: 75, right: 0, bottom: 75, left: 0 }}
           colors={[theme.palette.grey[600]]}
-          isScrollable
           {...args}
         />
-        <HorizontalLabel>Horizontal Label</HorizontalLabel>
-      </Container>
+      </ScrollingContainer>
+      <HorizontalLabel>Horizontal Label</HorizontalLabel>
     </ContainerCard>
   </>
 );
@@ -119,7 +103,7 @@ WithCustomTooltip.args = {
   data: data,
   tooltip: (node) => {
     const { data, label: useCase, value: sentimentText } = node;
-    const sentimentValue = parseInt(data?.yFormatted as string);
+    const sentimentValue = parseInt(data?.yValue as string);
 
     return (
       <Tooltip>
@@ -139,7 +123,7 @@ WithCustomTooltip.args = {
   }
 };
 
-export const Scrollable = TemplateScrollable.bind({});
+export const Scrollable = Template.bind({});
 Scrollable.args = {
   data: data,
 };

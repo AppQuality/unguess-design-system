@@ -19,18 +19,9 @@ const Point = styled.g`
   transform: translate(-13px, -13px);
 `;
 
-const ScrollingContainer = styled.div<{
-  isScrollable?: boolean;
-}>`
+const LineContainer = styled.div`
   width: 100%;
   height: 100%;
-  position: relative;
-
-  ${({ isScrollable }) =>
-    isScrollable &&
-    `
-    overflow-x: scroll;
-  `}
 
   /* Show dotted lines */
   svg > g > g:nth-child(2) > line {
@@ -114,22 +105,17 @@ export const LineChart = ({
   margin,
   colors,
   tooltip,
-  isScrollable,
 }: LineChartProps) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
   const actualColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL;
   return (
-    <ScrollingContainer
-      id="scrolling-container"
-      {...(isScrollable && {
-        isScrollable: isScrollable
-      })}
-    >
+    <LineContainer id="line-container">
       <ChartContainer
         width={width}
         height={height}
-        id={`chart-container-${data.id}`}
+        id={"chart-container"}
+        style={{ overflowY: "hidden" }}
       >
         <ResponsiveLine
           theme={{
@@ -186,32 +172,22 @@ export const LineChart = ({
           pointSymbol={({ datum }) => {
             return <Point>{formatPoint(datum.y ?? "")}</Point>;
           }}
-          // tooltip={tooltip ? (node) => {
-          //   const point = node.point.data;
+          tooltip={tooltip ? (node) => {
+            const point = node.point.data;
 
-          //   return (
-          //     <>
-          //       {tooltip({
-          //         value: formatSentiment(point.y),
-          //         label: point.x.toString(),
-          //         data: {
-          //           custom_data: data.data[node.point.index].custom_data ?? undefined,
-          //           yValue: point.y.toString() ?? "",
-          //         }
-          //       })}
-          //     </>
-          //   )
-          // } : (node) => {
-          //   return (
-          //     <Tooltip
-          //       type="light"
-          //       size="large"
-          //       content={formatSentiment(node.point.data.y)}
-          //     >
-          //       <MD>{formatSentiment(node.point.data.y)}</MD>
-          //     </Tooltip>
-          //   );
-          // }}
+            return (
+              <>
+                {tooltip({
+                  value: formatSentiment(point.y),
+                  label: point.x.toString(),
+                  data: {
+                    customData: data.data[node.point.index].custom_data ?? undefined,
+                    yValue: point.y.toString() ?? "",
+                  }
+                })}
+              </>
+            )
+          } : undefined}
           sliceTooltip={tooltip ? (e) => {
             const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
               custom_data?: string;
@@ -224,7 +200,7 @@ export const LineChart = ({
                   label: point.xFormatted,
                   data: {
                     customData: point.custom_data ?? undefined,
-                    yFormatted: point.yFormatted,
+                    yValue: point.yFormatted,
                   }
                 })}
               </>
@@ -288,6 +264,6 @@ export const LineChart = ({
           enableSlices="x"
         />
       </ChartContainer>
-    </ScrollingContainer>
+    </LineContainer>
   );
 };

@@ -26,5 +26,4 @@ export interface LineChartProps {
   axisBottomLabel?: string;
   tooltip?: ChartTooltipFunction;
   legend?: LegendType | true;
-  isScrollable?: boolean;
 }
