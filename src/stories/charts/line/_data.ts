@@ -23,7 +23,7 @@ export const data: Data = {
     {
       "x": "Scheda Prodotto",
       "y": 3,
-      "custom_data": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis tincidunt ultricies, nunc nisl lacinia nunc, quis lacinia nisl nun"
+      "custom_data": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis tincidunt ultricies, nunc nisl lacinia nunc, quis lacinia nisl nunc"
     },
     {
       "x": "Check Out",

@@ -6,13 +6,15 @@ import { theme } from "../../theme";
 import styled from "styled-components";
 import { ContainerCard } from "../../cards";
 import { DatumValue } from "@nivo/core";
-import { ReactComponent as S0 } from "./assets/sentiment_0.svg";
 import { ReactComponent as S1 } from "./assets/sentiment_1.svg";
 import { ReactComponent as S2 } from "./assets/sentiment_2.svg";
 import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
-import { Span } from "../../typography/span";
-import { SM } from "../../typography/typescale";
+import { ReactComponent as S5 } from "./assets/sentiment_5.svg";
+import { LG, SM } from "../../typography/typescale";
+import { Grid } from "../../grid/grid";
+import { Row } from "../../grid/row";
+import { Col } from "../../grid/col";
 
 const ScrollingContainer = styled.div`
   width: 100%;
@@ -26,12 +28,9 @@ const Label = styled.p`
 `;
 
 const VerticalLabel = styled(Label)`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(0, -50%) rotate(-90deg);
-  transform-origin: 0 0;
-  z-index: 2;
+  writing-mode: vertical-rl;
+  text-align: center;
+  margin: auto;
 `;
 
 const HorizontalLabel = styled(Label)`
@@ -44,22 +43,22 @@ const Tooltip = styled.div`
   border-radius: ${({ theme }) => theme.borderRadii.md};
   padding: ${({ theme }) => theme.space.sm};
   box-shadow: ${theme.shadows.boxShadow(theme)};
-  max-width: 230px;
+  max-width: 270px;
   white-space: normal;
 `;
 
 const formatPoint = (value: DatumValue) => {
   switch (value as number) {
     case 1:
-      return <S0 />;
+      return <S1 style={{ width: "16px" }} />;
     case 2:
-      return <S1 />;
+      return <S2 style={{ width: "16px" }} />;
     case 3:
-      return <S2 />;
+      return <S3 style={{ width: "16px" }} />;
     case 4:
-      return <S3 />;
+      return <S4 style={{ width: "16px" }} />;
     case 5:
-      return <S4 />;
+      return <S5 style={{ width: "16px" }} />;
     default:
       return "";
   }
@@ -67,28 +66,44 @@ const formatPoint = (value: DatumValue) => {
 
 const Template: Story<LineChartProps> = (args) => (
   <>
-    <ContainerCard>
-      <h1>Line Chart</h1>
+    <ContainerCard style={{ padding: theme.space.md }}>
+      <LG isBold>Sentiment Chart</LG>
+      <br />
       <p>
         This is a line chart. It is a wrapper around the{" "}
         <a href="https://nivo.rocks/line/">Nivo Line Chart</a> component.
       </p>
       <p>
         The Nivo Line Chart is a wrapper around the{" "}
-        <a href="">D3 Line Chart</a> component.
+        <a href="https://d3js.org/">D3</a> library.
       </p>
       <br />
-      <VerticalLabel>Vertical Label</VerticalLabel>
-      <ScrollingContainer>
-        <LineChart
-          width={`${data.data.length * 150}px`}
-          height="300px"
-          margin={{ top: 75, right: 0, bottom: 75, left: 0 }}
-          colors={[theme.palette.grey[600]]}
-          {...args}
-        />
-      </ScrollingContainer>
-      <HorizontalLabel>Horizontal Label</HorizontalLabel>
+      <Grid>
+        <Row>
+          <Col xs="1" style={{ display: "flex", alignItems: "center", margin: 0 }}>
+            <VerticalLabel>Vertical Label</VerticalLabel>
+          </Col>
+          <Col xs="11" style={{ margin: 0 }}>
+            <ScrollingContainer>
+              <LineChart
+                width={`${data.data.length * 150}px`}
+                height="350px"
+                margin={{ top: 50, right: 0, bottom: 50, left: 0 }}
+                colors={[theme.palette.grey[600]]}
+                {...args}
+              />
+            </ScrollingContainer>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs="1" style={{ margin: 0 }}></Col>
+          <Col xs="11" style={{ margin: 0 }}>
+            <div style={{ width: data.data.length * 150, maxWidth: "100%", marginTop: theme.space.md }}>
+              <HorizontalLabel>Horizontal Label</HorizontalLabel>
+            </div>
+          </Col>
+        </Row>
+      </Grid>
     </ContainerCard>
   </>
 );
@@ -102,16 +117,14 @@ export const WithCustomTooltip = Template.bind({});
 WithCustomTooltip.args = {
   data: data,
   tooltip: (node) => {
-    const { data, label: useCase, value: sentimentText } = node;
+    const { data, label: cluster } = node;
     const sentimentValue = parseInt(data?.yValue as string);
 
     return (
       <Tooltip>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {formatPoint(sentimentValue)}<SM style={{ marginLeft: theme.space.xs }}>{sentimentText}</SM>
+          {formatPoint(sentimentValue)}<SM style={{ marginLeft: theme.space.xs }}>{cluster}</SM>
         </div>
-        <br />
-        <Span isBold>{useCase}</Span>
         {data?.customData && (
           <SM>
             <br />
@@ -121,11 +134,6 @@ WithCustomTooltip.args = {
       </Tooltip>
     )
   }
-};
-
-export const Scrollable = Template.bind({});
-Scrollable.args = {
-  data: data,
 };
 
 export default {
