@@ -6,7 +6,6 @@ import {
 } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
 import styled, { ThemeContext } from "styled-components";
-import { MD } from "../../typography/typescale";
 import { useContext } from "react";
 import { ReactComponent as S0 } from "./assets/sentiment_0.svg";
 import { ReactComponent as S1 } from "./assets/sentiment_1.svg";
@@ -15,7 +14,6 @@ import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { DatumValue } from "@nivo/core";
 import { getColor } from "../../theme/utils";
-import { Tooltip } from "../../tooltip";
 
 const Point = styled.g`
   transform: translate(-13px, -13px);
