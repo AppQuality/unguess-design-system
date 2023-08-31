@@ -1,4 +1,4 @@
-import { ResponsiveLine } from "@nivo/line";
+import { ResponsiveLine, SliceTooltipProps } from "@nivo/line";
 import { LineChartProps } from "./_types";
 import {
   CHARTS_COLOR_SCHEME_CATEGORICAL,
@@ -15,16 +15,10 @@ import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { DatumValue } from "@nivo/core";
 import { getColor } from "../../theme/utils";
+import { Tooltip } from "../../tooltip";
 
 const Point = styled.g`
   transform: translate(-13px, -13px);
-`;
-
-const Tooltip = styled.div`
-  padding: ${({ theme }) => theme.space.base * 3}px;
-  background: ${({ theme }) => theme.palette.white};
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
-  max-width: 216px;
 `;
 
 const ScrollingContainer = styled.div<{
@@ -33,13 +27,37 @@ const ScrollingContainer = styled.div<{
   width: 100%;
   height: 100%;
   position: relative;
-  overflow: hidden;
 
   ${({ isScrollable }) =>
     isScrollable &&
     `
     overflow-x: scroll;
   `}
+
+  /* Show dotted lines */
+  svg > g > g:nth-child(2) > line {
+    stroke-dasharray: 2;
+  }
+
+  /* Show first and last vertical lines */
+  svg > g > g:first-child > line:first-child {
+    transform: translate(2px, 0);
+    stroke-dasharray: 2;
+  }
+
+  svg > g > g:first-child > line:last-child {
+    transform: translate(-2px, 0);
+    stroke-dasharray: 2;
+  }
+
+  /* Show first and last horizontal lines */
+  svg > g > g:nth-child(2) > line:first-child {
+    transform: translate(0, -6px);
+  }
+
+  svg > g > g:nth-child(2) > line:last-child {
+    transform: translate(0, 2px);
+  }
 `;
 
 const DEFAULT_CHART_MARGINS = { top: 0, right: 0, bottom: 30, left: 30 };
@@ -96,8 +114,6 @@ export const LineChart = ({
   width,
   height,
   margin,
-  axisLeftLabel,
-  axisBottomLabel,
   colors,
   tooltip,
   isScrollable,
@@ -106,25 +122,22 @@ export const LineChart = ({
 
   const actualColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL;
   return (
-    <ScrollingContainer {...(isScrollable && {
-      isScrollable: isScrollable
-    })}>
+    <ScrollingContainer
+      id="scrolling-container"
+      {...(isScrollable && {
+        isScrollable: isScrollable
+      })}
+    >
       <ChartContainer
         width={width}
         height={height}
-        style={{ overflowX: "scroll", overflowY: "hidden" }}
+        id={`chart-container-${data.id}`}
       >
         <ResponsiveLine
           theme={{
             ...DEFAULT_CHARTS_THEME,
             fontSize: theme.fontSizes.sm,
             axis: {
-              domain: {
-                line: {
-                  fill: theme.palette.grey[200],
-                  strokeWidth: 0,
-                },
-              },
               legend: {
                 text: {
                   fill: getColor(theme.colors.primaryHue, 600),
@@ -134,14 +147,26 @@ export const LineChart = ({
             },
             grid: {
               line: {
-                stroke: theme.palette.grey[200],
+                stroke: theme.palette.grey[400],
                 strokeWidth: 1,
               },
             },
           }}
           curve="monotoneX"
           colors={actualColors}
-          data={data}
+          data={[{
+            id: data.id,
+            data: [
+              {
+                x: "start",
+              },
+              ...data.data,
+              {
+                x: "end",
+              }
+            ]
+          }
+          ]}
           margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
           gridXValues={1}
           gridYValues={5}
@@ -152,35 +177,72 @@ export const LineChart = ({
           }}
           axisBottom={{
             tickSize: 0,
-            tickPadding: 20,
-            legend: axisBottomLabel,
-            legendOffset:
-              (margin?.bottom || DEFAULT_CHART_MARGINS.bottom) - 10,
-            legendPosition: "middle",
+            tickPadding: 10,
             format: (value) => formatAxisX(value),
           }}
           axisLeft={{
             tickSize: 0,
-            tickPadding: 20,
-            legend: axisLeftLabel,
-            legendOffset:
-              ((margin?.left || DEFAULT_CHART_MARGINS.left) - 10) * -1,
-            legendPosition: "middle",
-            format: (value) => "",
+            tickPadding: 10,
+            format: () => "",
           }}
           pointSymbol={({ datum }) => {
             return <Point>{formatPoint(datum.y ?? "")}</Point>;
           }}
-          tooltip={tooltip ? (node) => <>{tooltip({
-            value: formatSentiment(node.point.data.y),
-            label: node.point.data.x.toString(),
-            data: {
-              custom_data: data[0].data[node.point.index].custom_data ?? undefined,
-            }
-          })}</> : (node) => {
+          // tooltip={tooltip ? (node) => {
+          //   const point = node.point.data;
+
+          //   return (
+          //     <>
+          //       {tooltip({
+          //         value: formatSentiment(point.y),
+          //         label: point.x.toString(),
+          //         data: {
+          //           custom_data: data.data[node.point.index].custom_data ?? undefined,
+          //           yValue: point.y.toString() ?? "",
+          //         }
+          //       })}
+          //     </>
+          //   )
+          // } : (node) => {
+          //   return (
+          //     <Tooltip
+          //       type="light"
+          //       size="large"
+          //       content={formatSentiment(node.point.data.y)}
+          //     >
+          //       <MD>{formatSentiment(node.point.data.y)}</MD>
+          //     </Tooltip>
+          //   );
+          // }}
+          sliceTooltip={tooltip ? (e) => {
+            const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
+              custom_data?: string;
+            } = e.slice.points[0].data;
+
             return (
-              <Tooltip>
-                <MD>{formatSentiment(node.point.data.y)}</MD>
+              <>
+                {tooltip({
+                  value: formatSentiment(point.y),
+                  label: point.xFormatted,
+                  data: {
+                    customData: point.custom_data ?? undefined,
+                    yFormatted: point.yFormatted,
+                  }
+                })}
+              </>
+            )
+          } : (e) => {
+            const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
+              custom_data?: string;
+            } = e.slice.points[0].data;
+
+            return (
+              <Tooltip
+                type="light"
+                size="large"
+                content={formatSentiment(point.y)}
+              >
+                <MD>{formatSentiment(point.y)}</MD>
               </Tooltip>
             );
           }}
@@ -190,11 +252,12 @@ export const LineChart = ({
               legend: 'Neutral',
               legendPosition: 'bottom-left',
               lineStyle: {
-                stroke: theme.palette.grey[600],
+                stroke: theme.palette.blue[600],
                 strokeWidth: 1,
+                strokeDasharray: 2,
               },
               textStyle: {
-                fill: theme.palette.grey[600],
+                fill: theme.palette.blue[600],
                 fontSize: theme.fontSizes.sm,
               },
               value: 3
@@ -236,8 +299,9 @@ export const LineChart = ({
               value: "end"
             }
           ]}
-          useMesh
           enableCrosshair={false}
+          isInteractive
+          enableSlices="y"
         />
       </ChartContainer>
     </ScrollingContainer>

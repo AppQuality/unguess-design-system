@@ -11,7 +11,7 @@ type LineData = {
 };
 
 export interface LineChartProps {
-  data: LineData[];
+  data: LineData;
   width?: string;
   height?: string;
   padding?: number;
