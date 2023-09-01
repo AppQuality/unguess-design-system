@@ -105,12 +105,10 @@ export const SentimentChart = ({
   width,
   height,
   margin,
-  colors,
   tooltip,
 }: SentimentChartProps) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
-  const actualColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL;
   return (
     <ScrollingContainer>
       <SentimentContainer
@@ -139,7 +137,7 @@ export const SentimentChart = ({
             },
           }}
           curve="monotoneX"
-          colors={actualColors}
+          colors={theme.palette.grey[600]}
           data={[{
             id: data.id,
             data: [

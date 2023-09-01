@@ -84,7 +84,6 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
               width={`${data.data.length * 150}px`}
               height="350px"
               margin={{ top: 50, right: 0, bottom: 50, left: 0 }}
-              colors={[theme.palette.grey[600]]}
               {...args}
             />
           </Col>
