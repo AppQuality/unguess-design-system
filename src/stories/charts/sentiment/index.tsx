@@ -52,18 +52,18 @@ const SentimentContainer = styled(ChartContainer)`
 
 const DEFAULT_CHART_MARGINS = { top: 0, right: 0, bottom: 30, left: 30 };
 
-const formatSentiment = (value: DatumValue) => {
+const formatSentiment = (value: DatumValue, i18n: SentimentChartProps["i18n"]) => {
   switch (value as number) {
     case 1:
-      return "Molto Negativo";
+      return i18n?.sentimentsValues.veryNegative ?? "Very Negative";
     case 2:
-      return "Negativo";
+      return i18n?.sentimentsValues.negative ?? "Negative";
     case 3:
-      return "Neutrale";
+      return i18n?.sentimentsValues.neutral ?? "Neutral";
     case 4:
-      return "Positivo";
+      return i18n?.sentimentsValues.positive ?? "Positive";
     case 5:
-      return "Molto Positivo";
+      return i18n?.sentimentsValues.veryPositive ?? "Very Positive";
     default:
       return "";
   }
@@ -72,17 +72,17 @@ const formatSentiment = (value: DatumValue) => {
 const formatPoint = (value: DatumValue) => {
   switch (value as number) {
     case 1:
-      return <S1 />;
+      return <S1 style={{ width: "16px" }} />;
     case 2:
-      return <S2 />;
+      return <S2 style={{ width: "16px" }} />;
     case 3:
-      return <S3 />;
+      return <S3 style={{ width: "16px" }} />;
     case 4:
-      return <S4 />;
+      return <S4 style={{ width: "16px" }} />;
     case 5:
-      return <S5 />;
+      return <S5 style={{ width: "16px" }} />;
     default:
-      return "";
+      return <></>;
   }
 };
 
@@ -105,6 +105,7 @@ export const SentimentChart = ({
   height,
   margin,
   tooltip,
+  i18n,
 }: SentimentChartProps) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
@@ -171,17 +172,20 @@ export const SentimentChart = ({
           pointSymbol={({ datum }) => {
             return <Point>{formatPoint(datum.y ?? "")}</Point>;
           }}
+          // To use the tooltip, we need to set "useMesh" to true and "enableSlices" to "false"
           tooltip={tooltip ? (node) => {
             const point = node.point.data;
 
             return (
               <>
                 {tooltip({
-                  value: formatSentiment(point.y),
+                  value: formatSentiment(point.y, i18n),
                   label: point.x.toString(),
                   data: {
                     customData: data.data[node.point.index].custom_data ?? undefined,
                     yValue: point.y.toString() ?? "",
+                    icon: formatPoint(point.y),
+                    sentimentText: formatSentiment(point.y, i18n),
                   }
                 })}
               </>
@@ -195,11 +199,13 @@ export const SentimentChart = ({
             return (
               <>
                 {tooltip({
-                  value: formatSentiment(point.y),
+                  value: formatSentiment(point.y, i18n),
                   label: point.xFormatted,
                   data: {
                     customData: point.custom_data ?? undefined,
                     yValue: point.yFormatted,
+                    icon: formatPoint(point.y),
+                    sentimentText: formatSentiment(point.y, i18n),
                   }
                 })}
               </>
@@ -208,7 +214,7 @@ export const SentimentChart = ({
           markers={[
             {
               axis: 'y',
-              legend: 'Neutral',
+              legend: i18n?.sentimentsValues.neutral ?? "Neutral",
               legendPosition: 'bottom-left',
               lineStyle: {
                 stroke: theme.palette.blue[600],
