@@ -1,7 +1,6 @@
 import { ResponsiveLine, SliceTooltipProps } from "@nivo/line";
 import { SentimentChartProps } from "./_types";
 import {
-  CHARTS_COLOR_SCHEME_CATEGORICAL,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
