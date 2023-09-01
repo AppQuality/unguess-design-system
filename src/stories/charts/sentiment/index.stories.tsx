@@ -5,12 +5,6 @@ import { data } from "./_data";
 import { theme } from "../../theme";
 import styled from "styled-components";
 import { ContainerCard } from "../../cards";
-import { DatumValue } from "@nivo/core";
-import { ReactComponent as S1 } from "./assets/sentiment_1.svg";
-import { ReactComponent as S2 } from "./assets/sentiment_2.svg";
-import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
-import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
-import { ReactComponent as S5 } from "./assets/sentiment_5.svg";
 import { LG, MD } from "../../typography/typescale";
 import { Grid } from "../../grid/grid";
 import { Row } from "../../grid/row";
@@ -43,21 +37,20 @@ const Tooltip = styled.div`
   white-space: normal;
 `;
 
-const formatPoint = (value: DatumValue) => {
-  switch (value as number) {
-    case 1:
-      return <S1 style={{ width: "16px" }} />;
-    case 2:
-      return <S2 style={{ width: "16px" }} />;
-    case 3:
-      return <S3 style={{ width: "16px" }} />;
-    case 4:
-      return <S4 style={{ width: "16px" }} />;
-    case 5:
-      return <S5 style={{ width: "16px" }} />;
-    default:
-      return "";
-  }
+const commonArgs = {
+  data: data,
+  width: `${data.data.length * 150}px`,
+  height: "350px",
+  margin: { top: 50, right: 0, bottom: 50, left: 0 },
+  i18n: {
+    sentimentsValues: {
+      veryNegative: "Molto Negativo",
+      negative: "Negativo",
+      neutral: "Neutrale",
+      positive: "Positivo",
+      veryPositive: "Molto Positivo",
+    },
+  },
 };
 
 const Template: StoryFn<SentimentChartProps> = (args) => (
@@ -97,27 +90,18 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  data: data,
-  width: `${data.data.length * 150}px`,
-  height: "350px",
-  margin: { top: 50, right: 0, bottom: 50, left: 0 },
-};
+Default.args = commonArgs;
 
 export const WithCustomTooltip = Template.bind({});
 WithCustomTooltip.args = {
-  data: data,
-  width: `${data.data.length * 150}px`,
-  height: "350px",
-  margin: { top: 50, right: 0, bottom: 50, left: 0 },
+  ...commonArgs,
   tooltip: (node) => {
     const { data, label: cluster } = node;
-    const sentimentValue = parseInt(data?.yValue as string);
 
     return (
       <Tooltip>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {formatPoint(sentimentValue)}<Span isBold style={{ marginLeft: theme.space.xs, color: theme.palette.grey[600] }}>{cluster}</Span>
+          {data?.icon}<Span isBold style={{ marginLeft: theme.space.xs, color: theme.palette.grey[600] }}>{cluster}</Span>
         </div>
         {data?.customData && (
           <MD style={{ marginTop: theme.space.xs }}>
