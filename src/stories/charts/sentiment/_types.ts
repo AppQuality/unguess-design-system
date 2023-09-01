@@ -1,5 +1,4 @@
 import { ChartTooltipFunction } from "../_types";
-import { LegendType } from "../Legend";
 
 type SentimentData = {
   id: string;
@@ -21,4 +20,13 @@ export interface SentimentChartProps {
     left?: number;
   };
   tooltip?: ChartTooltipFunction;
+  i18n?: {
+    sentimentsValues: {
+      veryPositive: string;
+      positive: string;
+      neutral: string;
+      negative: string;
+      veryNegative: string;
+    };
+  };
 }
