@@ -80,12 +80,7 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
             <VerticalLabel>Vertical Label</VerticalLabel>
           </Col>
           <Col xs="11" style={{ margin: 0 }}>
-            <SentimentChart
-              width={`${data.data.length * 150}px`}
-              height="350px"
-              margin={{ top: 50, right: 0, bottom: 50, left: 0 }}
-              {...args}
-            />
+            <SentimentChart {...args} />
           </Col>
         </Row>
         <Row>
@@ -104,11 +99,17 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   data: data,
+  width: `${data.data.length * 150}px`,
+  height: "350px",
+  margin: { top: 50, right: 0, bottom: 50, left: 0 },
 };
 
 export const WithCustomTooltip = Template.bind({});
 WithCustomTooltip.args = {
   data: data,
+  width: `${data.data.length * 150}px`,
+  height: "350px",
+  margin: { top: 50, right: 0, bottom: 50, left: 0 },
   tooltip: (node) => {
     const { data, label: cluster } = node;
     const sentimentValue = parseInt(data?.yValue as string);
