@@ -12,18 +12,13 @@ type SentimentData = {
 
 export interface SentimentChartProps {
   data: SentimentData;
-  width?: string;
-  height?: string;
-  padding?: number;
-  colors?: string[];
+  width: string;
+  height: string;
   margin?: {
     top?: number;
     right?: number;
     bottom?: number;
     left?: number;
   };
-  axisLeftLabel?: string;
-  axisBottomLabel?: string;
   tooltip?: ChartTooltipFunction;
-  legend?: LegendType | true;
 }
