@@ -44,6 +44,7 @@ export * from "./stories/charts/pie";
 export * from "./stories/charts/halfPie";
 export * from "./stories/charts/sunburst";
 export * from "./stories/charts/waffle";
+export * from "./stories/charts/sentiment";
 
 // --- Close ---
 export * from "./stories/close";
