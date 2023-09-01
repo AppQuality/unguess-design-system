@@ -1,7 +1,7 @@
 import { ChartTooltipFunction } from "../_types";
 import { LegendType } from "../Legend";
 
-type LineData = {
+type SentimentData = {
   id: string;
   data: {
     x: string;
@@ -10,8 +10,8 @@ type LineData = {
   }[];
 };
 
-export interface LineChartProps {
-  data: LineData;
+export interface SentimentChartProps {
+  data: SentimentData;
   width?: string;
   height?: string;
   padding?: number;

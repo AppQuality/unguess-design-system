@@ -1,5 +1,5 @@
 import { ResponsiveLine, SliceTooltipProps } from "@nivo/line";
-import { LineChartProps } from "./_types";
+import { SentimentChartProps } from "./_types";
 import {
   CHARTS_COLOR_SCHEME_CATEGORICAL,
   DEFAULT_CHARTS_THEME,
@@ -19,7 +19,12 @@ const Point = styled.g`
   transform: translate(-13px, -13px);
 `;
 
-const LineContainer = styled(ChartContainer)`
+const ScrollingContainer = styled.div`
+  width: 100%;
+  overflow-x: scroll;
+`;
+
+const SentimentContainer = styled(ChartContainer)`
   /* Show dotted lines */
   svg > g > g:nth-child(2) > line {
     stroke-dasharray: 2;
@@ -95,170 +100,172 @@ const formatAxisX = (value: DatumValue) => {
   );
 };
 
-export const LineChart = ({
+export const SentimentChart = ({
   data,
   width,
   height,
   margin,
   colors,
   tooltip,
-}: LineChartProps) => {
+}: SentimentChartProps) => {
   const theme = useContext(ThemeContext as React.Context<any>);
 
   const actualColors = colors ?? CHARTS_COLOR_SCHEME_CATEGORICAL;
   return (
-    <LineContainer
-      width={width}
-      height={height}
-      id="chart-container"
-      style={{ overflow: "hidden" }}
-    >
-      <ResponsiveLine
-        theme={{
-          ...DEFAULT_CHARTS_THEME,
-          fontSize: theme.fontSizes.sm,
-          axis: {
-            legend: {
-              text: {
-                fill: getColor(theme.colors.primaryHue, 600),
-                fontSize: theme.fontSizes.md,
+    <ScrollingContainer>
+      <SentimentContainer
+        width={width}
+        height={height}
+        id="chart-container"
+        style={{ overflow: "hidden" }}
+      >
+        <ResponsiveLine
+          theme={{
+            ...DEFAULT_CHARTS_THEME,
+            fontSize: theme.fontSizes.sm,
+            axis: {
+              legend: {
+                text: {
+                  fill: getColor(theme.colors.primaryHue, 600),
+                  fontSize: theme.fontSizes.md,
+                },
               },
             },
-          },
-          grid: {
-            line: {
-              stroke: theme.palette.grey[400],
-              strokeWidth: 1,
+            grid: {
+              line: {
+                stroke: theme.palette.grey[400],
+                strokeWidth: 1,
+              },
             },
-          },
-        }}
-        curve="monotoneX"
-        colors={actualColors}
-        data={[{
-          id: data.id,
-          data: [
-            {
-              x: "start",
-            },
-            ...data.data,
-            {
-              x: "end",
-            }
-          ]
-        }
-        ]}
-        margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
-        gridXValues={1}
-        gridYValues={5}
-        yScale={{
-          type: "linear",
-          min: 0,
-          max: 6,
-        }}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 10,
-          format: (value) => formatAxisX(value),
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickPadding: 10,
-          format: () => "",
-        }}
-        pointSymbol={({ datum }) => {
-          return <Point>{formatPoint(datum.y ?? "")}</Point>;
-        }}
-        tooltip={tooltip ? (node) => {
-          const point = node.point.data;
-
-          return (
-            <>
-              {tooltip({
-                value: formatSentiment(point.y),
-                label: point.x.toString(),
-                data: {
-                  customData: data.data[node.point.index].custom_data ?? undefined,
-                  yValue: point.y.toString() ?? "",
-                }
-              })}
-            </>
-          )
-        } : undefined}
-        sliceTooltip={tooltip ? (e) => {
-          const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
-            custom_data?: string;
-          } = e.slice.points[0].data;
-
-          return (
-            <>
-              {tooltip({
-                value: formatSentiment(point.y),
-                label: point.xFormatted,
-                data: {
-                  customData: point.custom_data ?? undefined,
-                  yValue: point.yFormatted,
-                }
-              })}
-            </>
-          )
-        } : undefined}
-        markers={[
-          {
-            axis: 'y',
-            legend: 'Neutral',
-            legendPosition: 'bottom-left',
-            lineStyle: {
-              stroke: theme.palette.blue[600],
-              strokeWidth: 1,
-              strokeDasharray: 2,
-            },
-            textStyle: {
-              fill: theme.palette.blue[600],
-              fontSize: theme.fontSizes.sm,
-            },
-            value: 3
-          },
-          {
-            axis: 'y',
-            legendPosition: 'bottom-left',
-            lineStyle: {
-              stroke: "white",
-              strokeWidth: 2,
-            },
-            value: 0
-          },
-          {
-            axis: 'y',
-            legendPosition: 'bottom-left',
-            lineStyle: {
-              stroke: "white",
-              strokeWidth: 2,
-            },
-            value: 6
-          },
-          {
-            axis: 'x',
-            legendPosition: 'bottom-left',
-            lineStyle: {
-              stroke: "white",
-              strokeWidth: 2,
-            },
-            value: "start"
-          },
-          {
-            axis: 'x',
-            legendPosition: 'bottom-left',
-            lineStyle: {
-              stroke: "white",
-              strokeWidth: 2,
-            },
-            value: "end"
+          }}
+          curve="monotoneX"
+          colors={actualColors}
+          data={[{
+            id: data.id,
+            data: [
+              {
+                x: "start",
+              },
+              ...data.data,
+              {
+                x: "end",
+              }
+            ]
           }
-        ]}
-        enableCrosshair={false}
-        isInteractive
-        enableSlices="x"
-      />
-    </LineContainer>
+          ]}
+          margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
+          gridXValues={1}
+          gridYValues={5}
+          yScale={{
+            type: "linear",
+            min: 0,
+            max: 6,
+          }}
+          axisBottom={{
+            tickSize: 0,
+            tickPadding: 10,
+            format: (value) => formatAxisX(value),
+          }}
+          axisLeft={{
+            tickSize: 0,
+            tickPadding: 10,
+            format: () => "",
+          }}
+          pointSymbol={({ datum }) => {
+            return <Point>{formatPoint(datum.y ?? "")}</Point>;
+          }}
+          tooltip={tooltip ? (node) => {
+            const point = node.point.data;
+
+            return (
+              <>
+                {tooltip({
+                  value: formatSentiment(point.y),
+                  label: point.x.toString(),
+                  data: {
+                    customData: data.data[node.point.index].custom_data ?? undefined,
+                    yValue: point.y.toString() ?? "",
+                  }
+                })}
+              </>
+            )
+          } : undefined}
+          sliceTooltip={tooltip ? (e) => {
+            const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
+              custom_data?: string;
+            } = e.slice.points[0].data;
+
+            return (
+              <>
+                {tooltip({
+                  value: formatSentiment(point.y),
+                  label: point.xFormatted,
+                  data: {
+                    customData: point.custom_data ?? undefined,
+                    yValue: point.yFormatted,
+                  }
+                })}
+              </>
+            )
+          } : undefined}
+          markers={[
+            {
+              axis: 'y',
+              legend: 'Neutral',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: theme.palette.blue[600],
+                strokeWidth: 1,
+                strokeDasharray: 2,
+              },
+              textStyle: {
+                fill: theme.palette.blue[600],
+                fontSize: theme.fontSizes.sm,
+              },
+              value: 3
+            },
+            {
+              axis: 'y',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: 0
+            },
+            {
+              axis: 'y',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: 6
+            },
+            {
+              axis: 'x',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: "start"
+            },
+            {
+              axis: 'x',
+              legendPosition: 'bottom-left',
+              lineStyle: {
+                stroke: "white",
+                strokeWidth: 2,
+              },
+              value: "end"
+            }
+          ]}
+          enableCrosshair={false}
+          isInteractive
+          enableSlices="x"
+        />
+      </SentimentContainer>
+    </ScrollingContainer>
   );
 };

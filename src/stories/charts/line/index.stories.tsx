@@ -1,6 +1,6 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { LineChart } from ".";
-import { LineChartProps } from "./_types";
+import { Meta, StoryFn } from "@storybook/react";
+import { SentimentChart } from ".";
+import { SentimentChartProps } from "./_types";
 import { data } from "./_data";
 import { theme } from "../../theme";
 import styled from "styled-components";
@@ -11,15 +11,11 @@ import { ReactComponent as S2 } from "./assets/sentiment_2.svg";
 import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { ReactComponent as S5 } from "./assets/sentiment_5.svg";
-import { LG, SM } from "../../typography/typescale";
+import { LG, MD } from "../../typography/typescale";
 import { Grid } from "../../grid/grid";
 import { Row } from "../../grid/row";
 import { Col } from "../../grid/col";
-
-const ScrollingContainer = styled.div`
-  width: 100%;
-  overflow-x: scroll;
-`;
+import { Span } from "../../typography/span";
 
 const Label = styled.p`
   color: ${({ theme }) => theme.palette.blue[600]};
@@ -64,13 +60,13 @@ const formatPoint = (value: DatumValue) => {
   }
 };
 
-const Template: Story<LineChartProps> = (args) => (
+const Template: StoryFn<SentimentChartProps> = (args) => (
   <>
     <ContainerCard style={{ padding: theme.space.md }}>
       <LG isBold>Sentiment Chart</LG>
       <br />
       <p>
-        This is a line chart. It is a wrapper around the{" "}
+        This is the sentiment chart. It is a wrapper around the{" "}
         <a href="https://nivo.rocks/line/">Nivo Line Chart</a> component.
       </p>
       <p>
@@ -84,15 +80,13 @@ const Template: Story<LineChartProps> = (args) => (
             <VerticalLabel>Vertical Label</VerticalLabel>
           </Col>
           <Col xs="11" style={{ margin: 0 }}>
-            <ScrollingContainer>
-              <LineChart
-                width={`${data.data.length * 150}px`}
-                height="350px"
-                margin={{ top: 50, right: 0, bottom: 50, left: 0 }}
-                colors={[theme.palette.grey[600]]}
-                {...args}
-              />
-            </ScrollingContainer>
+            <SentimentChart
+              width={`${data.data.length * 150}px`}
+              height="350px"
+              margin={{ top: 50, right: 0, bottom: 50, left: 0 }}
+              colors={[theme.palette.grey[600]]}
+              {...args}
+            />
           </Col>
         </Row>
         <Row>
@@ -123,13 +117,12 @@ WithCustomTooltip.args = {
     return (
       <Tooltip>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {formatPoint(sentimentValue)}<SM style={{ marginLeft: theme.space.xs }}>{cluster}</SM>
+          {formatPoint(sentimentValue)}<Span isBold style={{ marginLeft: theme.space.xs, color: theme.palette.grey[600] }}>{cluster}</Span>
         </div>
         {data?.customData && (
-          <SM>
-            <br />
+          <MD style={{ marginTop: theme.space.xs }}>
             {data?.customData}
-          </SM>
+          </MD>
         )}
       </Tooltip>
     )
@@ -138,5 +131,5 @@ WithCustomTooltip.args = {
 
 export default {
   title: "Atoms/Charts/Sentiment",
-  component: LineChart,
-} as ComponentMeta<typeof LineChart>;
+  component: SentimentChart,
+} as Meta<typeof SentimentChart>;
