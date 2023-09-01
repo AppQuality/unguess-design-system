@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 export type ChartTooltipFunction = ({
   value,
   label,
   data,
 }: {
-  value: number;
+  value: string | number;
   label: string | number;
-  data?: Record<string, string | number | undefined>;
+  data?: Record<string, string | number | ReactNode | undefined>;
 }) => React.ReactNode;
