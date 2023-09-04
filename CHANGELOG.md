@@ -1,3 +1,17 @@
+# v3.1.47 (Mon Sep 04 2023)
+
+#### 🐛 Bug Fix
+
+- Sentiment chart [#266](https://github.com/AppQuality/unguess-design-system/pull/266) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- Sentiment chart [#265](https://github.com/AppQuality/unguess-design-system/pull/265) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.46 (Tue Aug 29 2023)
 
 #### 🐛 Bug Fix
