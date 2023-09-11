@@ -21,6 +21,7 @@ const Point = styled.g`
 const ScrollingContainer = styled.div`
   width: 100%;
   overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 `;
 
 const SentimentContainer = styled(ChartContainer)`
