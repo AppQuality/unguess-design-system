@@ -1,3 +1,17 @@
+# v3.1.48 (Mon Sep 11 2023)
+
+#### 🐛 Bug Fix
+
+- Responsive improvements on sentiment charts and modals [#268](https://github.com/AppQuality/unguess-design-system/pull/268) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Fixes-post-release [#267](https://github.com/AppQuality/unguess-design-system/pull/267) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.47 (Mon Sep 04 2023)
 
 #### 🐛 Bug Fix
