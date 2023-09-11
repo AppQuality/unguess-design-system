@@ -93,7 +93,7 @@ const formatAxisX = (value: DatumValue) => {
   //Print only the first 10 characters
   return (
     <>
-      {value.toString().length > 15 ? value.toString().substring(0, 15) + "..." : value.toString()}
+      {value.toString().length > 20 ? value.toString().substring(0, 20) + "..." : value.toString()}
       <title>{value as string}</title>
     </>
   );
