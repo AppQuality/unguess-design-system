@@ -16,6 +16,12 @@ const UgModalBody = styled(ModalBody)`
 
 const UgModal = styled(ZendeskModal)<ModalArgs>`
   ${({ isExtraLarge }) => isExtraLarge && "height: 90%; width: 90%;"}
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 const ModalComponent = forwardRef<HTMLDivElement, ModalArgs>((props, ref) => (
