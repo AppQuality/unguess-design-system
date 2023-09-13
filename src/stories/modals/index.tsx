@@ -15,12 +15,14 @@ const UgModalBody = styled(ModalBody)`
 `;
 
 const UgModal = styled(ZendeskModal)<ModalArgs>`
-  ${({ isExtraLarge }) => isExtraLarge && "height: 90%; width: 90%;"}
+  ${({ isExtraLarge }) => isExtraLarge && "height: 90%; max-height: 90%; width: 90%;"}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     top: 0;
-    height: 100%;
+    left: 0;
     width: 100%;
+    height: 100%;
+    max-height: 100%;
   }
 `;
 
