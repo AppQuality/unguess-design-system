@@ -1,3 +1,17 @@
+# v3.1.49 (Wed Sep 13 2023)
+
+#### 🐛 Bug Fix
+
+- Modal responsive improvements [#270](https://github.com/AppQuality/unguess-design-system/pull/270) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- 🐛 fix(modals/index.tsx): adjust styles for isExtraLarge prop in UgModal component [#269](https://github.com/AppQuality/unguess-design-system/pull/269) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.48 (Mon Sep 11 2023)
 
 #### 🐛 Bug Fix
