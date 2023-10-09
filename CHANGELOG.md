@@ -1,3 +1,16 @@
+# v3.1.50 (Mon Oct 09 2023)
+
+#### 🐛 Bug Fix
+
+- release 20231009 [#272](https://github.com/AppQuality/unguess-design-system/pull/272) ([@marcbon](https://github.com/marcbon))
+- Update-styled-components [#271](https://github.com/AppQuality/unguess-design-system/pull/271) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.49 (Wed Sep 13 2023)
 
 #### 🐛 Bug Fix
