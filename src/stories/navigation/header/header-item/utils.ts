@@ -1,6 +1,5 @@
 import { getValueAndUnit } from 'polished';
-import { ThemeProps } from "styled-components";
-import { theme } from "../../../theme";
+import { DefaultTheme } from "styled-components";
 
 /**
  * Get unitless line height based on the given pixel-valued height and font size.
@@ -26,7 +25,7 @@ const getLineHeight = (height: string | number, fontSize: string | number) => {
   return (heightValue as number) / (fontSizeValue as number);
 }
 
-export const getNavWidth = (props: ThemeProps<typeof theme>) => {
+export const getNavWidth = (props: DefaultTheme) => {
     return `${props.theme.space.base * 15}px`;
   };
 
