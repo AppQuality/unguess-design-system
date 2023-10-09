@@ -16,24 +16,30 @@ const CLOSE_COMPONENT_ID = "notifications.notification.close";
 const CLOSE_ICON_COMPONENT_ID = "notifications.notification.close-icon";
 const TITLE_COMPONENT_ID = "notifications.notification.title";
 
-const UgClose = styled(Close).attrs({
-  "data-custom-id": CLOSE_ICON_COMPONENT_ID,
-})`
+const UgClose = styled(Close).attrs<{
+  "data-custom-id"?: string;
+}>((props) => ({
+  "data-custom-id": props["data-custom-id"] ?? CLOSE_ICON_COMPONENT_ID,
+}))`
   ${(props) => retrieveComponentStyles(CLOSE_ICON_COMPONENT_ID, props)};
 `;
 
-const UgAnchor = styled(Anchor).attrs({
-  "data-custom-id": CLOSE_COMPONENT_ID,
-})<{
+const UgAnchor = styled(Anchor).attrs<{
+  "data-custom-id"?: string;
+}>((props) => ({
+  "data-custom-id": props["data-custom-id"] ?? CLOSE_COMPONENT_ID,
+}))<{
   type: NotificationArgs["type"];
   isPrimary?: boolean;
 }>`
   ${(props) => retrieveComponentStyles(CLOSE_COMPONENT_ID, props)};
 `;
 
-const UgTitle = styled(Title).attrs({
-  "data-custom-id": TITLE_COMPONENT_ID,
-})<{
+const UgTitle = styled(Title).attrs<{ 
+  "data-custom-id"?: string
+}>((props) => ({
+  "data-custom-id": props["data-custom-id"] ?? TITLE_COMPONENT_ID,
+}))<{
   type: NotificationArgs["type"];
   isPrimary?: boolean;
 }>`
