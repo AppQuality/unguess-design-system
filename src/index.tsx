@@ -96,7 +96,6 @@ export * from "./stories/loaders/progress";
 export * from "./stories/loaders/skeleton";
 export * from "./stories/loaders/spinner";
 export * from "./stories/loaders/dots";
-export * from "./stories/page/pageLoader";
 
 // --- Login Form ---
 export * from "./stories/login-form";
@@ -120,7 +119,6 @@ export * from "./stories/navigation/app-header";
 export * from "./stories/navigation/main";
 export * from "./stories/navigation/nav";
 export * from "./stories/navigation/nav/nav-item";
-export * from "./stories/navigation/sidebar";
 export * from "./stories/navigation/chrome";
 
 // --- Notifications ---
