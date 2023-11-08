@@ -1,15 +1,13 @@
-import { IColorSwatchDialogProps } from "@zendeskgarden/react-colorpickers";
-
-export interface ColorSwatchProps extends Omit<IColorSwatchDialogProps, "colors"> {
+export interface ColorSwatchProps {
     colors: { 
         label: string; 
         value: string;
     }[];
     children?: React.ReactNode | React.ReactNode[];
+    onSelect?: (color: string) => void;
 }
 
 export interface ColorSwatchTriggerProps {
-    color: string;
     style?: React.CSSProperties;
     children?: React.ReactNode | React.ReactNode[];
 }
