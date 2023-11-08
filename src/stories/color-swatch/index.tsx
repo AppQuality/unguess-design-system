@@ -1,42 +1,43 @@
 import { convertToMatrix } from "@zendeskgarden/container-utilities";
-import { IconButton } from "@zendeskgarden/react-buttons";
 import { ColorSwatchDialog } from "@zendeskgarden/react-colorpickers";
-import { Col, Row } from "@zendeskgarden/react-grid";
-import { ReactComponent as ColorIndicatorIcon } from "../../assets/icons/circle-full-fill.svg";
 import React, { useState } from "react";
-import { ColorSwatchIconButtonProps, ColorSwatchProps, } from "./_types";
+import { ColorSwatchTriggerProps, ColorSwatchProps, } from "./_types";
+import { ReactComponent as ColorIndicatorIcon } from "../../assets/icons/circle-full-fill.svg";
+import { styled } from "styled-components";
 
+const Trigger = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+`;
 
-
-const ColorSwatchIconButton = React.forwardRef(
+const ColorSwatchTrigger = React.forwardRef(
   (
-    props: ColorSwatchIconButtonProps & React.ComponentPropsWithoutRef<"button">,
-    ref: React.Ref<HTMLButtonElement>
+    props: ColorSwatchTriggerProps & React.ComponentPropsWithoutRef<'div'>,
+    ref: React.Ref<HTMLDivElement>
   ) => (
-      <IconButton
-        aria-label="palette"
-        ref={ref}
-        style={{ color: props.iconColor }}
-        {...props}
-      >
-       <ColorIndicatorIcon />
-      </IconButton>
+    <Trigger ref={ref} {...props} style={{
+      ...props.style,
+      color: props.color,
+    }}>
+      {props.children ?? <ColorIndicatorIcon />}
+    </Trigger>
   )
 );
 
 const ColorSwatch = ({
   colors,
-  initialRowIndex,
-  initialColIndex,
+  children,
 }: ColorSwatchProps) => {
   const matrix = convertToMatrix(colors, 7);
   const [color, setColor] = useState(
-    matrix[initialRowIndex][initialColIndex].value
+    matrix[0][0].value
   );
-  const [rowIndex, setRowIndex] = useState(initialRowIndex);
-  const [colIndex, setColIndex] = useState(initialColIndex);
-  const [selectedRowIndex, setSelectedRowIndex] = useState(initialRowIndex);
-  const [selectedColIndex, setSelectedColIndex] = useState(initialColIndex);
+  const [rowIndex, setRowIndex] = useState(0);
+  const [colIndex, setColIndex] = useState(0);
+  const [selectedRowIndex, setSelectedRowIndex] = useState(0);
+  const [selectedColIndex, setSelectedColIndex] = useState(0);
 
   const onChange = (rowIdx: number, colIdx: number) => {
     setRowIndex(rowIdx);
@@ -50,21 +51,19 @@ const ColorSwatch = ({
   };
 
   return (
-    <Row>
-      <Col textAlign="center">
-        <ColorSwatchDialog
-          colors={matrix}
-          onChange={onChange}
-          onSelect={onSelect}
-          rowIndex={rowIndex}
-          colIndex={colIndex}
-          selectedRowIndex={selectedRowIndex}
-          selectedColIndex={selectedColIndex}
-        >
-          <ColorSwatchIconButton iconColor={color} />
-        </ColorSwatchDialog>
-      </Col>
-    </Row>
+    <ColorSwatchDialog
+      colors={matrix}
+      onChange={onChange}
+      onSelect={onSelect}
+      rowIndex={rowIndex}
+      colIndex={colIndex}
+      selectedRowIndex={selectedRowIndex}
+      selectedColIndex={selectedColIndex}
+    >
+      <ColorSwatchTrigger color={color}>
+        {children}
+      </ColorSwatchTrigger>
+    </ColorSwatchDialog>
   );
 };
 
