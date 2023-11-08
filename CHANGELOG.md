@@ -1,3 +1,15 @@
+# v3.1.52 (Wed Nov 08 2023)
+
+#### 🐛 Bug Fix
+
+- 🔀 chore(color-swatch): update import statement for ColorSwatch component [#275](https://github.com/AppQuality/unguess-design-system/pull/275) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.51 (Wed Nov 08 2023)
 
 #### 🐛 Bug Fix
