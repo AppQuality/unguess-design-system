@@ -2,7 +2,7 @@ import { PALETTE } from "@zendeskgarden/react-theming";
 import { Meta, StoryFn } from "@storybook/react";
 import { ColorSwatchProps } from "./_types";
 import { ReactComponent as ColorIndicatorIcon } from "../../assets/icons/circle-full-fill.svg";
-import ColorSwatch from ".";
+import { ColorSwatch } from ".";
 import { theme } from "../theme";
 
 const colors: ColorSwatchProps["colors"] = [

@@ -72,4 +72,4 @@ const ColorSwatch = ({
   );
 };
 
-export default ColorSwatch;
+export { ColorSwatch };
