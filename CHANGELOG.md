@@ -1,3 +1,17 @@
+# v3.1.51 (Wed Nov 08 2023)
+
+#### 🐛 Bug Fix
+
+- Color swatch [#274](https://github.com/AppQuality/unguess-design-system/pull/274) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- Color swatch [#273](https://github.com/AppQuality/unguess-design-system/pull/273) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.50 (Mon Oct 09 2023)
 
 #### 🐛 Bug Fix
