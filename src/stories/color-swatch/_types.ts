@@ -3,6 +3,7 @@ export interface ColorSwatchProps {
         label: string; 
         value: string;
     }[];
+    rowSize?: number;
     children?: React.ReactNode | React.ReactNode[];
     onSelect?: (color: string) => void;
 }

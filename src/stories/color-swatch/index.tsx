@@ -28,10 +28,11 @@ const ColorSwatchTrigger = React.forwardRef(
 
 const ColorSwatch = ({
   colors,
+  rowSize,
   children,
   onSelect,
 }: ColorSwatchProps) => {
-  const matrix = convertToMatrix(colors, 7);
+  const matrix = convertToMatrix(colors, rowSize ?? 7);
   const [color, setColor] = useState(
     matrix[0][0].value
   );
