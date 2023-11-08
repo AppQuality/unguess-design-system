@@ -49,6 +49,9 @@ export * from "./stories/charts/sentiment";
 // --- Close ---
 export * from "./stories/close";
 
+// --- Color Pickers ---
+export * from "./stories/color-swatch";
+
 // --- Drawers ---
 export * from "./stories/drawers";
 
