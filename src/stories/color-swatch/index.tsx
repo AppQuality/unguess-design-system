@@ -29,6 +29,7 @@ const ColorSwatchTrigger = React.forwardRef(
 const ColorSwatch = ({
   colors,
   children,
+  onSelect,
 }: ColorSwatchProps) => {
   const matrix = convertToMatrix(colors, 7);
   const [color, setColor] = useState(
@@ -39,12 +40,12 @@ const ColorSwatch = ({
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
   const [selectedColIndex, setSelectedColIndex] = useState(0);
 
-  const onChange = (rowIdx: number, colIdx: number) => {
+  const handleChange = (rowIdx: number, colIdx: number) => {
     setRowIndex(rowIdx);
     setColIndex(colIdx);
   };
 
-  const onSelect = (rowIdx: number, colIdx: number) => {
+  const handleSelect = (rowIdx: number, colIdx: number) => {
     setSelectedRowIndex(rowIdx);
     setSelectedColIndex(colIdx);
     setColor(matrix[rowIdx][colIdx].value);
@@ -53,8 +54,11 @@ const ColorSwatch = ({
   return (
     <ColorSwatchDialog
       colors={matrix}
-      onChange={onChange}
-      onSelect={onSelect}
+      onChange={handleChange}
+      onSelect={(rowIdx, colIdx) => {
+        handleSelect(rowIdx, colIdx);
+        if (onSelect) onSelect(color);
+      }}
       rowIndex={rowIndex}
       colIndex={colIndex}
       selectedRowIndex={selectedRowIndex}
