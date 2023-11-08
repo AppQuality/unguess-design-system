@@ -36,8 +36,8 @@ const colors: ColorSwatchProps["colors"] = [
   { label: "Green-800", value: PALETTE.green[800] },
 ];
 
-const Template: StoryFn<ColorSwatchProps> = (args) => (
-  <ColorSwatch colors={colors}>
+const Template: StoryFn<ColorSwatchProps> = () => (
+  <ColorSwatch colors={colors} onSelect={(color) => console.log(color)}>
     <ColorIndicatorIcon style={{ marginRight: theme.space.xs }} />
     <span style={{ color: theme.palette.grey[800] }}>Edit color</span>
   </ColorSwatch>
