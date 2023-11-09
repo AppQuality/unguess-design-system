@@ -49,7 +49,6 @@ const ColorSwatch = ({
   const handleSelect = (rowIdx: number, colIdx: number) => {
     setSelectedRowIndex(rowIdx);
     setSelectedColIndex(colIdx);
-    setColor(matrix[rowIdx][colIdx].value);
   };
 
   return (
@@ -58,7 +57,8 @@ const ColorSwatch = ({
       onChange={handleChange}
       onSelect={(rowIdx, colIdx) => {
         handleSelect(rowIdx, colIdx);
-        if (onSelect) onSelect(color);
+        setColor(matrix[rowIdx][colIdx].value);
+        if (onSelect) onSelect(matrix[rowIdx][colIdx].value)
       }}
       rowIndex={rowIndex}
       colIndex={colIndex}
