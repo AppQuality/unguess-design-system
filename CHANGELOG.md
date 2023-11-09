@@ -1,3 +1,18 @@
+# v3.1.53 (Thu Nov 09 2023)
+
+#### 🐛 Bug Fix
+
+- Fix color swatch [#277](https://github.com/AppQuality/unguess-design-system/pull/277) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+- 🐛 fix(color-swatch): fix color selection bug in handleSelect function [#276](https://github.com/AppQuality/unguess-design-system/pull/276) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.52 (Wed Nov 08 2023)
 
 #### 🐛 Bug Fix
