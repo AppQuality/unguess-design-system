@@ -36,15 +36,25 @@ const colors: ColorSwatchProps["colors"] = [
   { label: "Green-800", value: PALETTE.green[800] },
 ];
 
-const Template: StoryFn<ColorSwatchProps> = () => (
-  <ColorSwatch colors={colors} onSelect={(color) => console.log(color)}>
+const Template: StoryFn<ColorSwatchProps> = (props) => (
+  <ColorSwatch {...props}>
     <ColorIndicatorIcon style={{ marginRight: theme.space.xs }} />
     <span style={{ color: theme.palette.grey[800] }}>Edit color</span>
   </ColorSwatch>
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  colors: colors,
+  onSelect: (color) => console.log(color),
+};
+
+export const WithoutLabels = Template.bind({});
+WithoutLabels.args = {
+  ...Default.args,
+  disableTooltip: true,
+  colors: colors.map(({ value }) => ({ value })),
+};
 
 export default {
   title: "Atoms/ColorPickers/ColorSwatch",
