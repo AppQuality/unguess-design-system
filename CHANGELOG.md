@@ -1,3 +1,15 @@
+# v3.1.54 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- chore(styled-components): update to 6.1.1 [#278](https://github.com/AppQuality/unguess-design-system/pull/278) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.53 (Thu Nov 09 2023)
 
 #### 🐛 Bug Fix
