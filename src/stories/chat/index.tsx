@@ -10,79 +10,67 @@ import Typography from "@tiptap/extension-typography";
 import Link from "@tiptap/extension-link";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
-import CharacterCount from '@tiptap/extension-character-count'
+import CharacterCount from "@tiptap/extension-character-count";
 
-
-import { EditorArgs } from "./_types";
+import { editorStyle } from "../shared/editorStyle";
+import { ChatArgs } from "./_types";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
   useState,
+  useCallback,
 } from "react";
-import { FloatingMenu } from "./floatingMenu";
-import { EditorHeader } from "./editorHeader";
-import { EditorFooter } from "./editorFooter";
+import { FloatingMenu } from "../editor/floatingMenu";
+import { EditorFooter } from "./footer";
 import { FauxInput } from "@zendeskgarden/react-forms";
-import { editorStyle } from "../shared/editorStyle";
+import { Grid } from "../grid/grid";
+import { Row } from "../grid/row";
+import { Col } from "../grid/col";
+import { Avatar } from "../avatar";
+import { ChatContextProvider, useChatContext } from "./context/chatContext";
 
-const EditorContainer = styled(FauxInput)<EditorArgs>`
-  
-  ${({ editable }) =>
-    !editable &&
-    `
-      border: none;
-      outline: none;
-      
-    `}
-
+const EditorContainer = styled(FauxInput)<ChatArgs>`
   .ProseMirror {
-    padding: ${({ theme }) => theme.space.md};
+    padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.xs}`};
     background-color: #fff;
     min-height: 100px;
     outline: none;
 
     ${editorStyle}
-
-    ${({ editable }) =>
-      !editable &&
-      `
-      background: transparent;
-      border: none;
-      outline: none;
-      padding: 0;
-      min-height: 0;
-      `}
   }
 `;
 
+const Chat = ({ onSave, ...props }: PropsWithChildren<ChatArgs>) => (
+  <ChatContextProvider onSave={onSave}>
+    <ChatContent {...props} />
+  </ChatContextProvider>
+);
+
 /**
- * Editor is a wrapper around TipTap/ProseMirror 
+ * CommentBox is a wrapper around Editor component 
  * <br>
  * It's a rich text WYSIWYG editors.
  * <hr>
  * Used for this:
-    - To allow text customization with markup supports
+    - To add chat feature
     - To develop collaborative text editing
    
    Not for this:
     - Simple text input, use textarea instead.
  */
-const Editor = ({
+const ChatContent = ({
   onSave,
-  headerTitle,
   footerSaveText,
   placeholderOptions,
   ...props
-}: PropsWithChildren<EditorArgs>) => {
-  const { children, hasInlineMenu, bubbleOptions, editable } = props;
+}: PropsWithChildren<ChatArgs>) => {
+  const { children, hasInlineMenu, bubbleOptions } = props;
 
-  const isEditable = editable !== undefined ? editable : true;
-
-  const [activeEditor, setActiveEditor] = useState<TipTapEditor | null>();
+  const { editor, setEditor, triggerSave } = useChatContext();
 
   const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-      if (onSave && activeEditor) onSave(activeEditor);
+      triggerSave();
     }
   };
 
@@ -103,7 +91,7 @@ const Editor = ({
       }),
       CharacterCount,
     ],
-    content: children as Content || "",
+    content: (children as Content) || "",
     editorProps: {
       handleKeyDown: (view, event: KeyboardEvent) => {
         if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
@@ -121,22 +109,29 @@ const Editor = ({
   }
 
   // Add here because we want to keep also the listener from the props.
-  ed.on("update", ({ editor }) => setActiveEditor(editor as TipTapEditor));
+  ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
   return (
-    <EditorContainer editable={isEditable} validation={props.validation}>
-      {isEditable && (
-        <>
-          <EditorHeader title={headerTitle} validation={props.validation}/>
-          {hasInlineMenu && (
-            <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
-          )}
-        </>
+    <div>
+      {hasInlineMenu && (
+        <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
       )}
-      <EditorContent editor={ed} onKeyDown={onKeyDown} />
-      {isEditable && <EditorFooter saveText={footerSaveText} />}
-    </EditorContainer>
+      <Grid>
+        <Row>
+          <Col size={"auto"}>
+            <Avatar avatarType={"text"}>LC</Avatar>
+          </Col>
+          <Col style={{ padding: 0 }}>
+            <EditorContainer>
+              <EditorContent editor={ed} onKeyDown={onKeyDown} />
+            </EditorContainer>
+          </Col>
+        </Row>
+      </Grid>
+
+      <EditorFooter saveText={footerSaveText} />
+    </div>
   );
 };
 
-export { Editor };
+export { Chat };

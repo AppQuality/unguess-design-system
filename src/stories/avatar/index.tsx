@@ -19,7 +19,7 @@ const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
     - To visually represent a person, brand, or product
  */
 const Avatar = (props: AvatarArgs) => {
-  const fixedBadge = props.badge && props.badge > 9 ? "9+" : props.badge;
+  const fixedBadge = props.badge && Number(props.badge) > 9 ? "9+" : props.badge;
   const wrapChildren = (type: string) => {
     if (type === "icon") return props.children;
     if (type === "image")
