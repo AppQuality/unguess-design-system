@@ -1,13 +1,16 @@
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { BubbleMenuProps, Editor, EditorOptions } from "@tiptap/react";
 
-type validationStatus=  "success" | "warning" | "error";
+type validationStatus = "success" | "warning" | "error";
 
 export interface ChatArgs extends Partial<EditorOptions> {
   placeholderOptions?: Partial<PlaceholderOptions>;
   hasInlineMenu?: boolean;
   bubbleOptions?: any;
-  footerSaveText?: string;
+  author: {
+    avatar: string;
+    avatarType?: "icon" | "image" | "text" /* default: text */;
+  };
   onSave?: (editor: Editor) => void;
   triggerSave?: () => void;
 }

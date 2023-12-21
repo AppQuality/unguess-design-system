@@ -1,21 +1,46 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { Editor as TipTapEditor } from "@tiptap/react";
-import { Chat } from ".";
+import { Editor as TipTapEditor, deleteProps } from "@tiptap/react";
+import { Chat, ChatProvider, useChatContext } from ".";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { ChatArgs } from "./_types";
+import { Button } from "../buttons/button";
+import { useContext } from "react";
 
 interface EditorStoryArgs extends ChatArgs {
   children?: any;
 }
+
+const ChatPanel = (args: EditorStoryArgs) => {
+  const { triggerSave } = useChatContext();
+  return (
+    <Chat {...args}>
+      <Chat.Header>Titolone</Chat.Header>
+      <Chat.Comments>
+        i commenti della peppina non si vedono la mattina
+      </Chat.Comments>
+      <Chat.Input
+        author={args.author}
+        onSave={(editor) => console.log(editor.getHTML())}
+      >
+        default text if needed
+      </Chat.Input>
+      <Chat.Footer>
+        <Button onClick={triggerSave}>Save</Button>
+      </Chat.Footer>
+    </Chat>
+  );
+};
 
 const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
   return (
     <Grid>
       <Row>
         <Col xs={12} sm={6}>
-          <Chat {...args}>{children}</Chat>
+          <ChatProvider onSave={args.onSave}>
+            <ChatPanel {...args} />
+          </ChatProvider>
         </Col>
       </Row>
     </Grid>
@@ -27,6 +52,9 @@ const defaultArgs: EditorStoryArgs = {
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
   onSave: (editor: TipTapEditor) => {
     console.log("we have to save this", editor.getHTML());
+  },
+  author: {
+    avatar: "LC",
   },
   onUpdate: ({ editor }) => {
     console.log(
