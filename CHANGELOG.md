@@ -1,3 +1,17 @@
+# v3.1.56 (Fri Dec 22 2023)
+
+#### 🐛 Bug Fix
+
+- Added missing export comments [#282](https://github.com/AppQuality/unguess-design-system/pull/282) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- fix:added export [#281](https://github.com/AppQuality/unguess-design-system/pull/281) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.55 (Fri Dec 22 2023)
 
 #### 🐛 Bug Fix
