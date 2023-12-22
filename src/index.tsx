@@ -46,6 +46,8 @@ export * from "./stories/charts/sunburst";
 export * from "./stories/charts/waffle";
 export * from "./stories/charts/sentiment";
 
+// --- Chat ---
+export * from "./stories/chat";
 // --- Close ---
 export * from "./stories/close";
 
