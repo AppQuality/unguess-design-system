@@ -1,15 +1,23 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { Editor as TipTapEditor, deleteProps } from "@tiptap/react";
+import { Editor as TipTapEditor } from "@tiptap/react";
 import { Chat, ChatProvider, useChatContext } from ".";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { ChatArgs } from "./_types";
 import { Button } from "../buttons/button";
-import { useContext } from "react";
+import { Comment } from "./parts/comment";
 
 interface EditorStoryArgs extends ChatArgs {
   children?: any;
+  comments?: {
+    author: {
+      name: string;
+      avatar: string;
+    };
+    message: string;
+    date: string;
+  }[];
 }
 
 const ChatPanel = (args: EditorStoryArgs) => {
@@ -18,7 +26,11 @@ const ChatPanel = (args: EditorStoryArgs) => {
     <Chat {...args}>
       <Chat.Header>Titolone</Chat.Header>
       <Chat.Comments>
-        i commenti della peppina non si vedono la mattina
+        {args.comments?.map((comment, index) => (
+          <Comment author={comment.author.name}>
+            {comment.message}<br/>
+          </Comment>
+        ))}
       </Chat.Comments>
       <Chat.Input
         author={args.author}
@@ -27,6 +39,7 @@ const ChatPanel = (args: EditorStoryArgs) => {
         default text if needed
       </Chat.Input>
       <Chat.Footer>
+        <Button isBasic>Cancel</Button>
         <Button onClick={triggerSave}>Save</Button>
       </Chat.Footer>
     </Chat>
@@ -62,6 +75,24 @@ const defaultArgs: EditorStoryArgs = {
       editor.storage.characterCount.characters()
     );
   },
+  comments: [
+    {
+      message: "Hi, I'm a comment",
+      date: "2021-04-20T11:00:00.000Z",
+      author: {
+        name: "Luca C.",
+        avatar: "LC",
+      },
+    },
+    {
+      message: "Hi, I'm a comment too",
+      date: "2021-04-20T11:02:00.000Z",
+      author: {
+        name: "Marco B.",
+        avatar: "MB",
+      },
+    },
+  ],
 };
 
 export const Default = Template.bind({});

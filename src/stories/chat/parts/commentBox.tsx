@@ -18,13 +18,14 @@ import { KeyboardEvent as ReactKeyboardEvent, PropsWithChildren } from "react";
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { FauxInput } from "@zendeskgarden/react-forms";
 import { Avatar } from "../../avatar";
-import { ChatContextProvider, useChatContext } from "../context/chatContext";
-import {
-  ChatBoxContainer,
-  ChatContainer,
-  MessagesContainer,
-} from "./containers";
-import { ChatTitle } from "./header";
+import { useChatContext } from "../context/chatContext";
+
+const ChatBoxContainer = styled.div`
+  display: flex;
+  border-top: 1px solid ${({ theme }) => theme.palette.grey[200]};
+  margin: ${({ theme }) => `0 -${theme.space.md}`};
+  padding: ${({ theme }) => theme.space.md};
+`;
 
 const EditorContainer = styled(FauxInput)<ChatArgs>`
   margin-left: ${({ theme }) => theme.space.sm};
@@ -121,8 +122,6 @@ export const CommentBox = ({
           <EditorContent editor={ed} onKeyDown={onKeyDown} />
         </EditorContainer>
       </ChatBoxContainer>
-
-      {/* <EditorFooter saveText={footerSaveText} /> */}
     </>
   );
 };

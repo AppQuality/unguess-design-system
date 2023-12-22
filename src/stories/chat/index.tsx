@@ -9,6 +9,7 @@ import {
 import { ChatContainer, MessagesContainer } from "./parts/containers";
 import { ChatTitle } from "./parts/header";
 import { CommentBox } from "./parts/commentBox";
+import { Comment } from "./parts/comment";
 
 /**
  * CommentBox is a wrapper around Editor component 
@@ -33,4 +34,4 @@ Chat.Comments = MessagesContainer;
 Chat.Input = CommentBox;
 Chat.Footer = ChatFooter;
 
-export { Chat, ChatContext, ChatProvider, useChatContext };
+export { Chat, ChatContext, ChatProvider, useChatContext, Comment };
