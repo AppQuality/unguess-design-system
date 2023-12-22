@@ -13,7 +13,6 @@ import Placeholder from "@tiptap/extension-placeholder";
 import CharacterCount from '@tiptap/extension-character-count'
 
 
-import { editorStyle } from "./editorStyle";
 import { EditorArgs } from "./_types";
 import {
   KeyboardEvent as ReactKeyboardEvent,
@@ -24,6 +23,7 @@ import { FloatingMenu } from "./floatingMenu";
 import { EditorHeader } from "./editorHeader";
 import { EditorFooter } from "./editorFooter";
 import { FauxInput } from "@zendeskgarden/react-forms";
+import { editorStyle } from "../shared/editorStyle";
 
 const EditorContainer = styled(FauxInput)<EditorArgs>`
   
