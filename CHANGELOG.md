@@ -1,3 +1,18 @@
+# v3.1.55 (Fri Dec 22 2023)
+
+#### 🐛 Bug Fix
+
+- add-bug-comments-components [#280](https://github.com/AppQuality/unguess-design-system/pull/280) ([@cannarocks](https://github.com/cannarocks) [@iDome89](https://github.com/iDome89))
+- Bugcomments components [#279](https://github.com/AppQuality/unguess-design-system/pull/279) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.54 (Tue Nov 14 2023)
 
 #### 🐛 Bug Fix
