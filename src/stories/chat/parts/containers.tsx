@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Card } from "../../cards";
 import { ChatArgs } from "../_types";
-import defaultBkg from "../defaultBkg.svg";
 
 export const ChatContainer = styled(Card)`
   padding: ${({ theme }) => theme.space.md};
@@ -17,5 +16,5 @@ export const MessagesContainer = styled.div<ChatArgs>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.sm};
-  background: ${({ chatBkg }) => chatBkg ?? `url(${defaultBkg}) repeat center center`};
+  background: ${({ chatBkg }) => chatBkg ?? `#fff`};
 `;
