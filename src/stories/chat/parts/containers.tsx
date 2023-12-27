@@ -24,5 +24,6 @@ export const MessagesContainer = styled.div<ChatArgs>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.sm};
-  background: ${({ chatBkg }) => `${parseBackground(chatBkg ?? defaultBkg)}`};
-`;
+  `;
+
+  // background: ${({ chatBkg }) => `${parseBackground(chatBkg ?? defaultBkg)}`};
