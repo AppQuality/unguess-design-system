@@ -4,11 +4,12 @@ import { Chat, ChatProvider, useChatContext } from ".";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatArgs } from "./_types";
+import { ChatArgs, ChatEditorArgs } from "./_types";
 import { Button } from "../buttons/button";
 import { Comment } from "./parts/comment";
+import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 
-interface EditorStoryArgs extends ChatArgs {
+interface EditorStoryArgs extends ChatEditorArgs {
   children?: any;
   comments?: {
     author: {
@@ -18,6 +19,8 @@ interface EditorStoryArgs extends ChatArgs {
     message: string;
     date: string;
   }[];
+  editorText?: string;
+  placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
 const ChatPanel = (args: EditorStoryArgs) => {
@@ -27,17 +30,15 @@ const ChatPanel = (args: EditorStoryArgs) => {
       <Chat.Header>Titolone</Chat.Header>
       <Chat.Comments>
         {args.comments?.map((comment, index) => (
-          <Comment author={comment.author.name}>
-            {comment.message}<br/>
+          <Comment {...comment}>
+            <>
+              <br />
+              altre cose
+            </>
           </Comment>
         ))}
       </Chat.Comments>
-      <Chat.Input
-        author={args.author}
-        onSave={(editor) => console.log(editor.getHTML())}
-      >
-        default text if needed
-      </Chat.Input>
+      <Chat.Input {...args}>{args.editorText}</Chat.Input>
       <Chat.Footer>
         <Button isBasic>Cancel</Button>
         <Button onClick={triggerSave}>Save</Button>
@@ -85,7 +86,7 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: "Hi, I'm a comment too",
+      message: "Hi, I'm a comment too but with <strong>bold</strong>",
       date: "2021-04-20T11:02:00.000Z",
       author: {
         name: "Marco B.",
@@ -108,27 +109,13 @@ Default.parameters = {
 export const Placeholder = Template.bind({});
 Placeholder.args = {
   ...defaultArgs,
-  children: `<h3>Embrace Markdown</h3>
-  <p>
-    Markdown shortcuts make it easy to format the text while typing.
-  </p>
-  <p>
-    To test that, start a new line and type <code>#</code> followed by a space to get a heading. Try <code>#</code>, <code>##</code>, <code>###</code>, <code>####</code>, <code>#####</code>, <code>######</code> for different levels.
-  </p>
-  <h3>Smart Editor</h3>
-  <p>
-   Try <code>></code> for blockquotes, <code>*</code>, <code>-</code> or <code>+</code> for bullet lists, or <code>\`foobar\`</code> to highlight code or <code>~~tildes~~</code> to strike text.
-  </p>
-  <p>
-    Try typing <code>(c)</code> to see how it’s converted to a proper © character. You can also try <code>-></code>, <code>>></code>, <code>1/2</code>, <code>!=</code>, or <code>--</code>.
-  </p>`,
   placeholderOptions: {
     placeholder: ({ node }) => {
       if (node.type.name === "heading") {
         return "What do you want to do?";
       }
 
-      return "Can you add some further context?";
+      return "What do you want to say?";
     },
   },
 };
@@ -136,14 +123,12 @@ Placeholder.args = {
 export const BubbleMenu = Template.bind({});
 BubbleMenu.args = {
   ...defaultArgs,
-  children: `<p>Hey, try to select some text here. There will popup a menu for selecting some inline styles.<br><strong>Remember:</strong> you have full control about content and styling of this menu.</p>`,
   hasInlineMenu: true,
 };
 
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
   ...defaultArgs,
-  children: `<p>Hey, try to select some text here. There will popup a menu for selecting some inline styles.<br><strong>Remember:</strong> you have full control about content and styling of this menu.</p>`,
   editable: false,
 };
 

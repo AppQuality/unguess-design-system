@@ -13,7 +13,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import CharacterCount from "@tiptap/extension-character-count";
 
 import { editorStyle } from "../../shared/editorStyle";
-import { ChatArgs } from "../_types";
+import { ChatArgs, ChatEditorArgs } from "../_types";
 import { KeyboardEvent as ReactKeyboardEvent, PropsWithChildren } from "react";
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { FauxInput } from "@zendeskgarden/react-forms";
@@ -57,7 +57,7 @@ export const CommentBox = ({
   onSave,
   placeholderOptions,
   ...props
-}: PropsWithChildren<ChatArgs>) => {
+}: PropsWithChildren<ChatEditorArgs>) => {
   const { children, hasInlineMenu, bubbleOptions, author } = props;
 
   const { setEditor, triggerSave } = useChatContext();

@@ -3,16 +3,23 @@ import { BubbleMenuProps, Editor, EditorOptions } from "@tiptap/react";
 
 type validationStatus = "success" | "warning" | "error";
 
-export interface ChatArgs extends Partial<EditorOptions> {
+export interface ChatEditorArgs extends Partial<EditorOptions> {
   placeholderOptions?: Partial<PlaceholderOptions>;
   hasInlineMenu?: boolean;
   bubbleOptions?: any;
-  author: {
-    avatar: string;
-    avatarType?: "icon" | "image" | "text" /* default: text */;
-  };
+  author: Author;
   onSave?: (editor: Editor) => void;
   triggerSave?: () => void;
+}
+
+export interface Author {
+  avatar: string;
+  name?: string;
+  avatarType?: "icon" | "image" | "text" /* default: text */;
+}
+
+export interface ChatArgs {
+  background?: string;
 }
 
 export interface EditorHeaderArgs {

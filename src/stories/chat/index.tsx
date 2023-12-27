@@ -24,9 +24,7 @@ import { Comment } from "./parts/comment";
     - Simple text input, use textarea instead.
  */
 const Chat = (props: PropsWithChildren<ChatArgs>) => (
-  // <ChatProvider onSave={onSave}>
   <ChatContainer>{props.children}</ChatContainer>
-  // </ChatProvider>
 );
 
 Chat.Header = ChatTitle;
