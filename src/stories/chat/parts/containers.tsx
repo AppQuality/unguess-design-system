@@ -11,11 +11,17 @@ export const ChatContainer = styled(Card)`
   cursor: default;
 `;
 
-const parseBackground = (bkg: string) => {
-  if (bkg.startsWith("#") || bkg.startsWith("rgb") || bkg.startsWith("hsl")) {
-    return bkg;
+const parseBackground = (props: ChatArgs) => {
+  if (!props.chatBkg) return `url(${defaultBkg}) repeat center center`;
+
+  if (
+    props.chatBkg.startsWith("#") ||
+    props.chatBkg.startsWith("rgb") ||
+    props.chatBkg.startsWith("hsl")
+  ) {
+    return props.chatBkg;
   }
-  return `url(${bkg}) repeat center center`;
+  return `url(${props.chatBkg}) repeat center center`;
 };
 
 export const MessagesContainer = styled.div<ChatArgs>`
@@ -24,6 +30,5 @@ export const MessagesContainer = styled.div<ChatArgs>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.sm};
-  `;
-
-  // background: ${({ chatBkg }) => `${parseBackground(chatBkg ?? defaultBkg)}`};
+  background: ${parseBackground};
+`;
