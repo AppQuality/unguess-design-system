@@ -12,7 +12,7 @@ import { CommentBox } from "./parts/commentBox";
 import { Comment } from "./parts/comment";
 
 /**
- * CommentBox is a wrapper around Editor component 
+ * Chat is a wrapper around Editor component 
  * <br>
  * It's a rich text WYSIWYG editors.
  * <hr>

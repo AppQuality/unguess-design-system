@@ -20,21 +20,20 @@ interface EditorStoryArgs extends ChatEditorArgs {
     date: string;
   }[];
   editorText?: string;
+  background?: string;
+  onSave: (editor: TipTapEditor) => void;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
-const ChatPanel = (args: EditorStoryArgs) => {
+const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
   const { triggerSave } = useChatContext();
   return (
-    <Chat {...args}>
+    <Chat>
       <Chat.Header>Titolone</Chat.Header>
-      <Chat.Comments>
+      <Chat.Comments chatBkg={background}>
         {args.comments?.map((comment, index) => (
           <Comment {...comment}>
-            <>
-              <br />
-              altre cose
-            </>
+            <>altre cose</>
           </Comment>
         ))}
       </Chat.Comments>
@@ -126,10 +125,10 @@ BubbleMenu.args = {
   hasInlineMenu: true,
 };
 
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
+export const CustomBackground = Template.bind({});
+CustomBackground.args = {
   ...defaultArgs,
-  editable: false,
+  background: "#BE3455",
 };
 
 export default {

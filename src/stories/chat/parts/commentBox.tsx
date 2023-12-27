@@ -54,7 +54,6 @@ const EditorContainer = styled(FauxInput)<ChatArgs>`
     - Simple text input, use textarea instead.
  */
 export const CommentBox = ({
-  onSave,
   placeholderOptions,
   ...props
 }: PropsWithChildren<ChatEditorArgs>) => {

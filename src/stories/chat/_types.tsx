@@ -8,8 +8,6 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
   hasInlineMenu?: boolean;
   bubbleOptions?: any;
   author: Author;
-  onSave: (editor: Editor) => void;
-  triggerSave?: () => void;
 }
 
 export interface Author {
@@ -19,7 +17,7 @@ export interface Author {
 }
 
 export interface ChatArgs {
-  background?: string;
+  chatBkg?: string;
 }
 
 export interface EditorHeaderArgs {
