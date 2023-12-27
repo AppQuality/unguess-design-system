@@ -8,7 +8,7 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
   hasInlineMenu?: boolean;
   bubbleOptions?: any;
   author: Author;
-  onSave?: (editor: Editor) => void;
+  onSave: (editor: Editor) => void;
   triggerSave?: () => void;
 }
 
