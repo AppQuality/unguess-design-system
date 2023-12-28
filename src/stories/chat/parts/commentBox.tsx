@@ -59,11 +59,12 @@ export const CommentBox = ({
 }: PropsWithChildren<ChatEditorArgs>) => {
   const { children, hasInlineMenu, bubbleOptions, author } = props;
 
-  const { setEditor, triggerSave } = useChatContext();
+  const { editor, setEditor, triggerSave } = useChatContext();
 
   const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
       triggerSave();
+      editor?.commands.clearContent();
     }
   };
 
