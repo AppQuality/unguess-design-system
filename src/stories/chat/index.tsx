@@ -12,7 +12,7 @@ import { CommentBox } from "./parts/commentBox";
 import { Comment } from "./parts/comment";
 
 /**
- * CommentBox is a wrapper around Editor component 
+ * Chat is a wrapper around Editor component 
  * <br>
  * It's a rich text WYSIWYG editors.
  * <hr>
@@ -24,9 +24,7 @@ import { Comment } from "./parts/comment";
     - Simple text input, use textarea instead.
  */
 const Chat = (props: PropsWithChildren<ChatArgs>) => (
-  // <ChatProvider onSave={onSave}>
   <ChatContainer>{props.children}</ChatContainer>
-  // </ChatProvider>
 );
 
 Chat.Header = ChatTitle;
