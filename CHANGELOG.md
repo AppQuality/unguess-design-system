@@ -1,3 +1,20 @@
+# v3.1.57 (Thu Dec 28 2023)
+
+#### 🐛 Bug Fix
+
+- Add refactored chat component [#284](https://github.com/AppQuality/unguess-design-system/pull/284) ([@cannarocks](https://github.com/cannarocks))
+- Improve-chat-component [#283](https://github.com/AppQuality/unguess-design-system/pull/283) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- ci(release): trigger action ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.56 (Fri Dec 22 2023)
 
 #### 🐛 Bug Fix
