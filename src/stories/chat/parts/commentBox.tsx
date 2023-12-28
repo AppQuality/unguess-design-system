@@ -23,14 +23,14 @@ import { useChatContext } from "../context/chatContext";
 const ChatBoxContainer = styled.div`
   display: flex;
   border-top: 1px solid ${({ theme }) => theme.palette.grey[200]};
-  margin: ${({ theme }) => `0 -${theme.space.md}`};
-  padding: ${({ theme }) => theme.space.md};
+  margin: ${({ theme }) => `0 -${theme.space.base * 4}px`};
+  padding: ${({ theme }) => `${theme.space.base * 4}px ${theme.space.sm} 0`};
 `;
 
 const EditorContainer = styled(FauxInput)<ChatArgs>`
   margin-left: ${({ theme }) => theme.space.sm};
+  padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.xs}`};
   .ProseMirror {
-    padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.xs}`};
     background-color: #fff;
     min-height: 36px;
     outline: none;
