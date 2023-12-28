@@ -31,6 +31,11 @@ const AuthorContainer = styled.div`
   gap: ${({ theme }) => theme.space.sm};
 `;
 
+const CommentDate = styled.span`
+color: ${({ theme }) => theme.palette.grey[500]};
+font-weight: ${({ theme }) => theme.fontWeights.thin};
+`
+
 const Footer = styled.div`
   display: flex;
   flex-direction: row;
@@ -42,7 +47,8 @@ export const Comment = ({
   author,
   message,
   children,
-}: PropsWithChildren<{ author: Author; message: string }>) => {
+  date,
+}: PropsWithChildren<{ author: Author; message: string, date:string }>) => {
   return (
     <CommentCard>
       <AuthorContainer>
@@ -50,7 +56,7 @@ export const Comment = ({
           {author.avatar}
         </Avatar>
         <div>
-          <Title>{author.name ?? "User"}</Title>
+          <Title>{author.name ?? "User"}<CommentDate>{date}</CommentDate></Title>
           <ReadOnly>
             <Editor editable={false}>{message}</Editor>
           </ReadOnly>
