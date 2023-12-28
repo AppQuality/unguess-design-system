@@ -1,3 +1,216 @@
+# v3.1.57 (Thu Dec 28 2023)
+
+#### 🐛 Bug Fix
+
+- Add refactored chat component [#284](https://github.com/AppQuality/unguess-design-system/pull/284) ([@cannarocks](https://github.com/cannarocks))
+- Improve-chat-component [#283](https://github.com/AppQuality/unguess-design-system/pull/283) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- ci(release): trigger action ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.57 (Thu Dec 28 2023)
+
+#### 🐛 Bug Fix
+
+- Add refactored chat component [#284](https://github.com/AppQuality/unguess-design-system/pull/284) ([@cannarocks](https://github.com/cannarocks))
+- Improve-chat-component [#283](https://github.com/AppQuality/unguess-design-system/pull/283) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- ci(release): trigger action ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.57 (Thu Dec 28 2023)
+
+#### 🐛 Bug Fix
+
+- Add refactored chat component [#284](https://github.com/AppQuality/unguess-design-system/pull/284) ([@cannarocks](https://github.com/cannarocks))
+- Improve-chat-component [#283](https://github.com/AppQuality/unguess-design-system/pull/283) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- ci(release): trigger action ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.56 (Fri Dec 22 2023)
+
+#### 🐛 Bug Fix
+
+- Added missing export comments [#282](https://github.com/AppQuality/unguess-design-system/pull/282) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- fix:added export [#281](https://github.com/AppQuality/unguess-design-system/pull/281) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.55 (Fri Dec 22 2023)
+
+#### 🐛 Bug Fix
+
+- add-bug-comments-components [#280](https://github.com/AppQuality/unguess-design-system/pull/280) ([@cannarocks](https://github.com/cannarocks) [@iDome89](https://github.com/iDome89))
+- Bugcomments components [#279](https://github.com/AppQuality/unguess-design-system/pull/279) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.54 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- chore(styled-components): update to 6.1.1 [#278](https://github.com/AppQuality/unguess-design-system/pull/278) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.53 (Thu Nov 09 2023)
+
+#### 🐛 Bug Fix
+
+- Fix color swatch [#277](https://github.com/AppQuality/unguess-design-system/pull/277) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+- 🐛 fix(color-swatch): fix color selection bug in handleSelect function [#276](https://github.com/AppQuality/unguess-design-system/pull/276) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.52 (Wed Nov 08 2023)
+
+#### 🐛 Bug Fix
+
+- 🔀 chore(color-swatch): update import statement for ColorSwatch component [#275](https://github.com/AppQuality/unguess-design-system/pull/275) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.51 (Wed Nov 08 2023)
+
+#### 🐛 Bug Fix
+
+- Color swatch [#274](https://github.com/AppQuality/unguess-design-system/pull/274) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- Color swatch [#273](https://github.com/AppQuality/unguess-design-system/pull/273) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.50 (Mon Oct 09 2023)
+
+#### 🐛 Bug Fix
+
+- release 20231009 [#272](https://github.com/AppQuality/unguess-design-system/pull/272) ([@marcbon](https://github.com/marcbon))
+- Update-styled-components [#271](https://github.com/AppQuality/unguess-design-system/pull/271) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.49 (Wed Sep 13 2023)
+
+#### 🐛 Bug Fix
+
+- Modal responsive improvements [#270](https://github.com/AppQuality/unguess-design-system/pull/270) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- 🐛 fix(modals/index.tsx): adjust styles for isExtraLarge prop in UgModal component [#269](https://github.com/AppQuality/unguess-design-system/pull/269) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.48 (Mon Sep 11 2023)
+
+#### 🐛 Bug Fix
+
+- Responsive improvements on sentiment charts and modals [#268](https://github.com/AppQuality/unguess-design-system/pull/268) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Fixes-post-release [#267](https://github.com/AppQuality/unguess-design-system/pull/267) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.47 (Mon Sep 04 2023)
+
+#### 🐛 Bug Fix
+
+- Sentiment chart [#266](https://github.com/AppQuality/unguess-design-system/pull/266) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- Sentiment chart [#265](https://github.com/AppQuality/unguess-design-system/pull/265) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.46 (Tue Aug 29 2023)
+
+#### 🐛 Bug Fix
+
+- Develop [#264](https://github.com/AppQuality/unguess-design-system/pull/264) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.42 (Thu Aug 24 2023)
+
+#### 🐛 Bug Fix
+
+- Improve fullscreen experience of player [#263](https://github.com/AppQuality/unguess-design-system/pull/263) ([@cannarocks](https://github.com/cannarocks))
+- New-player-with-old-skin [#262](https://github.com/AppQuality/unguess-design-system/pull/262) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.4 (Wed Aug 23 2023)
 
 #### 🐛 Bug Fix

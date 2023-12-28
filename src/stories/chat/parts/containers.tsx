@@ -17,4 +17,5 @@ export const MessagesContainer = styled.div<ChatArgs>`
   flex-direction: column;
   gap: ${({ theme }) => theme.space.sm};
   background: ${({ chatBkg }) => chatBkg ?? `#fff`};
+  overflow-y: auto;
 `;
