@@ -1,13 +1,13 @@
 import { Meta, StoryFn } from "@storybook/react";
+import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { Editor as TipTapEditor } from "@tiptap/react";
 import { Chat, ChatProvider, useChatContext } from ".";
+import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatArgs, ChatEditorArgs } from "./_types";
-import { Button } from "../buttons/button";
+import { ChatEditorArgs } from "./_types";
 import { Comment } from "./parts/comment";
-import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 
 interface EditorStoryArgs extends ChatEditorArgs {
   children?: any;
@@ -78,7 +78,7 @@ const defaultArgs: EditorStoryArgs = {
   comments: [
     {
       message: "Hi, I'm a comment",
-      date: "2021-04-20T11:00:00.000Z",
+      date: " | 27 dic. 2023 | 12:00",
       author: {
         name: "Luca C.",
         avatar: "LC",
@@ -86,7 +86,31 @@ const defaultArgs: EditorStoryArgs = {
     },
     {
       message: "Hi, I'm a comment too but with <strong>bold</strong>",
-      date: "2021-04-20T11:02:00.000Z",
+      date: " | 27 dic. 2023 | 12:00",
+      author: {
+        name: "Marco B.",
+        avatar: "MB",
+      },
+    },
+    {
+      message: "Hi, I'm a comment too but with <strong>bold</strong>",
+      date: " | 27 dic. 2023 | 12:00",
+      author: {
+        name: "Marco B.",
+        avatar: "MB",
+      },
+    },
+    {
+      message: "Hi, I'm a comment too but with <strong>bold</strong>",
+      date: " | 27 dic. 2023 | 12:00",
+      author: {
+        name: "Marco B.",
+        avatar: "MB",
+      },
+    },
+    {
+      message: "Hi, I'm a comment too but with <strong>bold</strong>",
+      date: " | 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",
         avatar: "MB",
