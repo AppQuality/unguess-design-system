@@ -1,3 +1,18 @@
+# v3.1.60 (Fri Dec 29 2023)
+
+#### 🐛 Bug Fix
+
+- Improve chat comments readability [#286](https://github.com/AppQuality/unguess-design-system/pull/286) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Add date comments [#285](https://github.com/AppQuality/unguess-design-system/pull/285) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.57 (Thu Dec 28 2023)
 
 #### 🐛 Bug Fix
