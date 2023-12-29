@@ -3,7 +3,7 @@ import { Card } from "../../cards";
 import { ChatArgs } from "../_types";
 
 export const ChatContainer = styled(Card)`
-  padding: ${({ theme }) => theme.space.md};
+  padding: ${({ theme }) => `0 ${theme.space.base * 4}px`};
   &:hover {
     box-shadow: none;
   }
@@ -11,11 +11,11 @@ export const ChatContainer = styled(Card)`
 `;
 
 export const MessagesContainer = styled.div<ChatArgs>`
-  padding: ${({ theme }) => theme.space.md};
-  margin: ${({ theme }) => `0 -${theme.space.md}`};
+  padding: ${({ theme }) => `${theme.space.md} ${theme.space.sm}`};
+  margin: ${({ theme }) => `0 -${theme.space.base * 4}px`};
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.space.sm};
+  gap: ${({ theme }) => theme.space.xs};
   background: ${({ chatBkg }) => chatBkg ?? `#fff`};
   overflow-y: auto;
 `;
