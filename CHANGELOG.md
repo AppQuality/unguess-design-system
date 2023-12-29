@@ -1,3 +1,16 @@
+# v3.1.61 (Fri Dec 29 2023)
+
+#### 🐛 Bug Fix
+
+- Improve chat spacing and save behaviour [#288](https://github.com/AppQuality/unguess-design-system/pull/288) ([@cannarocks](https://github.com/cannarocks))
+- Update-chat-spaces [#287](https://github.com/AppQuality/unguess-design-system/pull/287) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.60 (Fri Dec 29 2023)
 
 #### 🐛 Bug Fix
