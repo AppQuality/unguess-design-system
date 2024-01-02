@@ -101,7 +101,7 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: "Hi, I'm a comment too but with <strong>bold</strong>",
+      message: "Hi, I'm a comment too but with <strong>bold</strong>. lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl",
       date: " | 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",
