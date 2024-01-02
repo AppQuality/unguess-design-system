@@ -1,3 +1,16 @@
+# v3.1.62 (Tue Jan 02 2024)
+
+#### 🐛 Bug Fix
+
+- [CHAT] Improvements and fixes [#290](https://github.com/AppQuality/unguess-design-system/pull/290) ([@cannarocks](https://github.com/cannarocks))
+- fix(chat): add clear from external save and fix shrinked avat [#289](https://github.com/AppQuality/unguess-design-system/pull/289) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.61 (Fri Dec 29 2023)
 
 #### 🐛 Bug Fix
