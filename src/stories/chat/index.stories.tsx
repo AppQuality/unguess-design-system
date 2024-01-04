@@ -109,7 +109,7 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: "Hi, I'm a comment too but with <strong>bold</strong>",
+      message: "Hi, I'm a comment too but with <strong>bold</strong> askdlhfksadhjfkljafshbcfkjsdhbkjdhfksjdfhabfshdbkfvhksdajhfbvhldsjfvdjshflkvdsbjhfjkvskfhbvasjhfksjbfvsdbvkjshvbkfasjhvfksjhfbkfbvksjhjvfshjvbsdhvdbvskjsdbhfkvsjbfjkvbsdfhwrap",
       date: " | 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",
