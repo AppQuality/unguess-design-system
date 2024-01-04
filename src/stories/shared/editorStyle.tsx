@@ -252,4 +252,6 @@ export const editorStyle = css`
     pointer-events: none;
     height: 0;
   }
+
+  word-break: break-word;
 `;
