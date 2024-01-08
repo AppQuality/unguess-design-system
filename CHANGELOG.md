@@ -1,3 +1,17 @@
+# v3.1.64 (Mon Jan 08 2024)
+
+#### 🐛 Bug Fix
+
+- Chat colors minor changes [#293](https://github.com/AppQuality/unguess-design-system/pull/293) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Chat box border fix [#292](https://github.com/AppQuality/unguess-design-system/pull/292) ([@cannarocks](https://github.com/cannarocks) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.63 (Thu Jan 04 2024)
 
 #### 🐛 Bug Fix
