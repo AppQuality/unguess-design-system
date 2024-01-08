@@ -7,7 +7,6 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${({ theme }) => theme.space.xs} ${({ theme }) => theme.space.md};
-  border-bottom: 1px solid ${({ theme }) => theme.palette.grey[300]};
 `;
 
 const Title = styled(MD)<EditorHeaderArgs>`

@@ -1,3 +1,56 @@
+# v3.1.63 (Thu Jan 04 2024)
+
+#### 🐛 Bug Fix
+
+- Develop [#291](https://github.com/AppQuality/unguess-design-system/pull/291) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.62 (Tue Jan 02 2024)
+
+#### 🐛 Bug Fix
+
+- [CHAT] Improvements and fixes [#290](https://github.com/AppQuality/unguess-design-system/pull/290) ([@cannarocks](https://github.com/cannarocks))
+- fix(chat): add clear from external save and fix shrinked avat [#289](https://github.com/AppQuality/unguess-design-system/pull/289) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.61 (Fri Dec 29 2023)
+
+#### 🐛 Bug Fix
+
+- Improve chat spacing and save behaviour [#288](https://github.com/AppQuality/unguess-design-system/pull/288) ([@cannarocks](https://github.com/cannarocks))
+- Update-chat-spaces [#287](https://github.com/AppQuality/unguess-design-system/pull/287) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.60 (Fri Dec 29 2023)
+
+#### 🐛 Bug Fix
+
+- Improve chat comments readability [#286](https://github.com/AppQuality/unguess-design-system/pull/286) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Add date comments [#285](https://github.com/AppQuality/unguess-design-system/pull/285) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.57 (Thu Dec 28 2023)
 
 #### 🐛 Bug Fix

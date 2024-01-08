@@ -5,5 +5,4 @@ export const ChatTitle = styled(Title)`
   color: ${({ theme }) => theme.palette.blue[600]};
   margin: ${({ theme }) => `0 -${theme.space.md}`};
   padding: ${({ theme }) => `${theme.space.sm} ${theme.space.md}`};
-  border-bottom: ${({ theme }) => `1px solid ${theme.palette.grey[200]}`};
 `;
