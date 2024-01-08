@@ -18,4 +18,5 @@ export const MessagesContainer = styled.div<ChatArgs>`
   gap: ${({ theme }) => theme.space.xs};
   background: ${({ chatBkg }) => chatBkg ?? `#fff`};
   overflow-y: auto;
+  border-top: ${({ theme }) => `1px solid ${theme.palette.grey[200]}`};
 `;

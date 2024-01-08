@@ -42,6 +42,9 @@ const Footer = styled.div`
   justify-content: flex-end;
   gap: ${({ theme }) => theme.space.xs};
 `;
+const CommentTitle = styled(Title)`
+color: ${({ theme }) => theme.palette.blue[600]};
+`
 
 export const Comment = ({
   author,
@@ -59,10 +62,10 @@ export const Comment = ({
           {author.avatar}
         </Avatar>
         <div>
-          <Title>
+          <CommentTitle>
             {author.name ?? "User"}
             <CommentDate>{date}</CommentDate>
-          </Title>
+          </CommentTitle>
           <ReadOnly>
             <Editor editable={false}>{message}</Editor>
           </ReadOnly>
