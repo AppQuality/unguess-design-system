@@ -11,6 +11,8 @@ import Link from "@tiptap/extension-link";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 import CharacterCount from "@tiptap/extension-character-count";
+import Highlight from '@tiptap/extension-highlight'
+import TextAlign from '@tiptap/extension-text-align'
 
 import { editorStyle } from "../../shared/editorStyle";
 import { ChatArgs, ChatEditorArgs } from "../_types";
@@ -84,6 +86,10 @@ export const CommentBox = ({
         ...placeholderOptions,
       }),
       CharacterCount,
+      Highlight,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
     ],
     content: (children as Content) || "",
     editorProps: {
