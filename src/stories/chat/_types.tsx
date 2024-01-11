@@ -8,6 +8,13 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
   hasInlineMenu?: boolean;
   bubbleOptions?: any;
   author: Author;
+  i18n?: {
+    menu?: {
+      bold?: string;
+      italic?: string;
+      mention?: string;
+    };
+  };
 }
 
 export interface Author {
