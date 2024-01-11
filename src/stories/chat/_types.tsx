@@ -6,6 +6,7 @@ type validationStatus = "success" | "warning" | "error";
 export interface ChatEditorArgs extends Partial<EditorOptions> {
   placeholderOptions?: Partial<PlaceholderOptions>;
   hasInlineMenu?: boolean;
+  hasButtonsMenu?: boolean;
   bubbleOptions?: any;
   author: Author;
   i18n?: {
