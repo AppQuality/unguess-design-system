@@ -40,6 +40,7 @@ export const FloatingMenu = (props: FloatingMenuArgs) => {
   if (!editor) {
     return null;
   }
+  
   return (
     <BubbleMenu {...props} editor={editor}>
       <MenuContainer isFloating>

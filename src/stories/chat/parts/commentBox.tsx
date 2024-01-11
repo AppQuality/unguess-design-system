@@ -21,6 +21,7 @@ import { FloatingMenu } from "../../editor/floatingMenu";
 import { FauxInput } from "@zendeskgarden/react-forms";
 import { Avatar } from "../../avatar";
 import { useChatContext } from "../context/chatContext";
+import { CommentBar } from "./bar";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -59,7 +60,7 @@ export const CommentBox = ({
   placeholderOptions,
   ...props
 }: PropsWithChildren<ChatEditorArgs>) => {
-  const { children, hasInlineMenu, bubbleOptions, author } = props;
+  const { children, hasInlineMenu, hasButtonsMenu, bubbleOptions, author } = props;
 
   const { editor, setEditor, triggerSave } = useChatContext();
 
@@ -128,6 +129,9 @@ export const CommentBox = ({
           <EditorContent editor={ed} onKeyDown={onKeyDown} />
         </EditorContainer>
       </ChatBoxContainer>
+      {hasButtonsMenu && (
+        <CommentBar />
+      )}
     </>
   );
 };
