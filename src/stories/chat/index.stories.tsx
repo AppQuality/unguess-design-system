@@ -38,7 +38,6 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
         ))}
       </Chat.Comments>
       <Chat.Input {...args}>{args.editorText}</Chat.Input>
-      <Chat.Menu {...args} />
       <Chat.Footer>
         <Button isBasic>Cancel</Button>
         <Button onClick={triggerSave}>Save</Button>
@@ -148,6 +147,7 @@ export const BubbleMenu = Template.bind({});
 BubbleMenu.args = {
   ...defaultArgs,
   hasInlineMenu: true,
+  hasButtonsMenu: true,
   i18n: {
     menu:{
       bold: "Grassetto",
