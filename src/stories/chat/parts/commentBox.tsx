@@ -45,6 +45,13 @@ const EditorContainer = styled(FauxInput)<ChatArgs>`
     overflow-y: auto;
 
     ${editorStyle}
+
+    span[data-type="mention"] {
+      background-color: ${({ theme }) => theme.palette.kale[100]};
+      border-radius: ${({ theme }) => theme.borderRadii.lg};
+      padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.xs}`};
+      margin: ${({ theme }) => `0 ${theme.space.xxs}`};
+    }
   }
 `;
 
@@ -121,6 +128,16 @@ export const CommentBox = ({
       Mention.configure({
         HTMLAttributes: {
           class: "mention",
+        },
+        renderLabel({ options, node }) {
+          console.log(
+            "🚀 ~ renderLabel ~ options.suggestion:",
+            options.suggestion
+          );
+          console.log("🚀 ~ renderLabel ~ node", node);
+          return `${options.suggestion.char}${
+            node.attrs.label ?? node.attrs.id
+          }`;
         },
         suggestion: {
           items: ({ query }): SuggestedUser[] => {

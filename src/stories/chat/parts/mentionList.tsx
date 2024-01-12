@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
+import { Card } from "../../cards";
 
 export type MentionListRef = {
   onKeyDown: NonNullable<
@@ -19,6 +20,7 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
 
     const selectItem = (index: number) => {
       const item = props.items[index];
+      console.log("🚀 ~ selectItem ~ item:", item);
 
       if (item) {
         props.command(item);
@@ -76,19 +78,23 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
 
     return (
       <div className="items">
-        {props.items.length ? (
-          props.items.map((item, index) => (
-            <button
-              className={`item ${index === selectedIndex ? "is-selected" : ""}`}
-              key={index}
-              onClick={() => selectItem(index)}
-            >
-              {item.name}
-            </button>
-          ))
-        ) : (
-          <div className="item">No result</div>
-        )}
+        <Card>
+          {props.items.length ? (
+            props.items.map((item, index) => (
+              <button
+                className={`item ${
+                  index === selectedIndex ? "is-selected" : ""
+                }`}
+                key={index}
+                onClick={() => selectItem(index)}
+              >
+                {item.name}
+              </button>
+            ))
+          ) : (
+            <div className="item">No result</div>
+          )}
+        </Card>
       </div>
     );
   }
