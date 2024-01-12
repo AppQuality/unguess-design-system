@@ -2,9 +2,9 @@ import { PropsWithChildren } from "react";
 import { Title } from "../../title";
 import { Card } from "../../cards";
 import { styled } from "styled-components";
-import { Editor } from "../../editor";
 import { Author } from "../_types";
 import { Avatar } from "../../avatar";
+import { CommentEditor } from "./editor";
 
 const CommentCard = styled(Card)`
   padding: ${({ theme }) => `${theme.space.base * 3}px ${theme.space.sm}`};
@@ -43,8 +43,8 @@ const Footer = styled.div`
   gap: ${({ theme }) => theme.space.xs};
 `;
 const CommentTitle = styled(Title)`
-color: ${({ theme }) => theme.palette.blue[600]};
-`
+  color: ${({ theme }) => theme.palette.blue[600]};
+`;
 
 export const Comment = ({
   author,
@@ -67,7 +67,7 @@ export const Comment = ({
             <CommentDate>{date}</CommentDate>
           </CommentTitle>
           <ReadOnly>
-            <Editor editable={false}>{message}</Editor>
+            <CommentEditor editable={false}>{message}</CommentEditor>
           </ReadOnly>
         </div>
       </AuthorContainer>

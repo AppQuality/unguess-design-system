@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { Card } from "../../cards";
+import { Button } from "../../buttons/button";
 
 export type MentionListRef = {
   onKeyDown: NonNullable<
@@ -10,7 +11,7 @@ export type MentionListRef = {
   >;
 };
 
-export type SuggestedUser = { id: number; name: string; avatar: string };
+export type SuggestedUser = { id: number; fullName: string; avatar: string };
 
 type MentionListProps = SuggestionProps<SuggestedUser>;
 
@@ -20,7 +21,6 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
 
     const selectItem = (index: number) => {
       const item = props.items[index];
-      console.log("🚀 ~ selectItem ~ item:", item);
 
       if (item) {
         props.command(item);
@@ -28,28 +28,16 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
     };
 
     const upHandler = () => {
-      console.log(
-        "🚀 ~ file: mentionList.tsx:126 ~ upHandler ~ selectedIndex",
-        selectedIndex
-      );
       setSelectedIndex(
         (selectedIndex + props.items.length - 1) % props.items.length
       );
     };
 
     const downHandler = () => {
-      console.log(
-        "🚀 ~ file: mentionList.tsx:133 ~ downHandler ~ selectedIndex",
-        selectedIndex
-      );
       setSelectedIndex((selectedIndex + 1) % props.items.length);
     };
 
     const enterHandler = () => {
-      console.log(
-        "🚀 ~ file: mentionList.tsx:140 ~ enterHandler ~ selectedIndex",
-        selectedIndex
-      );
       selectItem(selectedIndex);
     };
 
@@ -81,15 +69,14 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
         <Card>
           {props.items.length ? (
             props.items.map((item, index) => (
-              <button
-                className={`item ${
-                  index === selectedIndex ? "is-selected" : ""
-                }`}
+              <Button
+                isAccent={index === selectedIndex}
                 key={index}
+                isPrimary
                 onClick={() => selectItem(index)}
               >
-                {item.name}
-              </button>
+                {item.fullName}
+              </Button>
             ))
           ) : (
             <div className="item">No result</div>
