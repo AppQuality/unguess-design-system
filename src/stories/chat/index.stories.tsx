@@ -6,7 +6,7 @@ import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatEditorArgs } from "./_types";
+import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment } from "./parts/comment";
 
 interface EditorStoryArgs extends ChatEditorArgs {
@@ -47,11 +47,64 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
 };
 
 const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
+  const getUsers = async ({ query }: { query: string }) => {
+    return [
+      {
+        id: 1,
+        fullName: "John Doe",
+        avatar: "https://i.pravatar.cc/150?img=1",
+      },
+      {
+        id: 2,
+        fullName: "Jane Doe",
+        avatar: "https://i.pravatar.cc/150?img=2",
+      },
+      {
+        id: 3,
+        fullName: "John Smith",
+        avatar: "https://i.pravatar.cc/150?img=3",
+      },
+      {
+        id: 4,
+        fullName: "Jane Smith",
+        avatar: "https://i.pravatar.cc/150?img=4",
+      },
+      {
+        id: 5,
+        fullName: "Pippo Baudo",
+        avatar: "https://i.pravatar.cc/150?img=5",
+      },
+      {
+        id: 6,
+        fullName: "Pippo Franco",
+        avatar: "https://i.pravatar.cc/150?img=6",
+      },
+      {
+        id: 7,
+        fullName: "Pippo Inzaghi",
+        avatar: "https://i.pravatar.cc/150?img=7",
+      },
+      {
+        id: 8,
+        fullName: "Pippo Civati",
+        avatar: "https://i.pravatar.cc/150?img=8",
+      },
+      {
+        id: 9,
+        fullName: "Pippo Delbono",
+        avatar: "https://i.pravatar.cc/150?img=9",
+      },
+    ].filter((item) => {
+      if (!query) return item;
+      return item.fullName.toLowerCase().startsWith(query.toLowerCase());
+    });
+  };
+
   return (
     <Grid>
       <Row>
         <Col xs={12} sm={8} md={6}>
-          <ChatProvider onSave={args.onSave}>
+          <ChatProvider setMentionableUsers={getUsers} onSave={args.onSave}>
             <ChatPanel {...args} />
           </ChatProvider>
         </Col>
@@ -65,6 +118,16 @@ const defaultArgs: EditorStoryArgs = {
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
   onSave: (editor: TipTapEditor) => {
     console.log("we have to save this", editor.getHTML());
+    const result: any[] = [];
+
+    editor.state.doc.descendants((node) => {
+      if (node.type.name === "mention") {
+        // Add only if it's not already in the array
+        if (!result.some((r) => r.id === node.attrs.id))
+          result.push(node.attrs);
+      }
+    });
+    console.log("mentions", result);
   },
   author: {
     avatar: "LC",

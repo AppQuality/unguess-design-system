@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ChatEditorArgs } from "../_types";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { Avatar } from "../../avatar";
 import { useChatContext } from "../context/chatContext";
@@ -32,7 +32,7 @@ export const CommentBox = ({
 }: PropsWithChildren<ChatEditorArgs>) => {
   const { children, hasInlineMenu, hasButtonsMenu, bubbleOptions, author } =
     props;
-  const { editor } = useChatContext();
+  const { editor, mentionableUsers } = useChatContext();
 
   return (
     <>
@@ -47,6 +47,7 @@ export const CommentBox = ({
         </div>
         <CommentEditor
           placeholderOptions={placeholderOptions}
+          mentionableUsers={mentionableUsers}
           children={children}
           {...props}
         />

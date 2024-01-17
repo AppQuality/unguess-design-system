@@ -1,5 +1,6 @@
 import { Editor } from "@tiptap/react";
 import React, { createContext, useContext, useMemo, useState } from "react";
+import { SuggestedUser } from "../_types";
 
 export type ChatContextType = {
   isEditing: boolean;
@@ -9,16 +10,19 @@ export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
+  mentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
 
 export const ChatContextProvider = ({
   onSave,
+  setMentionableUsers,
   children,
 }: {
   onSave?: (editor: Editor) => void;
   children: React.ReactNode;
+  setMentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
 }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [comment, setComment] = useState<string>("");
@@ -38,6 +42,7 @@ export const ChatContextProvider = ({
           editor.commands.clearContent();
         }
       },
+      mentionableUsers: setMentionableUsers,
     }),
     [comment, setComment, isEditing, setIsEditing, editor, setEditor, onSave]
   );

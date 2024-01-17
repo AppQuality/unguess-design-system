@@ -256,8 +256,9 @@ export const editorStyle = css`
   word-break: break-word;
 
   mention {
-    color: ${({ theme }) => theme.palette.green[500]};
+    color: ${({ theme }) => theme.palette.azure[600]};
     border-radius: ${({ theme }) => theme.borderRadii.xl};
+    font-weight: ${({ theme }) => theme.fontWeights.semibold};
     padding: ${({ theme }) => `${theme.space.xxs} 0`};
   }
 `;

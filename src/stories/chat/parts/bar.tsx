@@ -71,7 +71,10 @@ const CommentBar = ({
         <IconButton
           onClick={() => {
             editor.chain().focus();
-            editor.commands.insertContent("@");
+            const { from } = editor.state.selection;
+
+            const char = from > 1 ? " @" : "@";
+            editor.commands.insertContent(char);
           }}
           isPill={false}
         >

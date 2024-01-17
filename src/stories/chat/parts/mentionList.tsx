@@ -2,6 +2,11 @@ import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { Card } from "../../cards";
 import { Button } from "../../buttons/button";
+import { Menu } from "../../dropdowns/menu";
+import { Item } from "../../dropdowns/item";
+import { styled } from "styled-components";
+import { useChatContext } from "../context/chatContext";
+import { SuggestedUser } from "../_types";
 
 export type MentionListRef = {
   onKeyDown: NonNullable<
@@ -11,7 +16,19 @@ export type MentionListRef = {
   >;
 };
 
-export type SuggestedUser = { id: number; fullName: string; avatar: string };
+const StyledCard = styled(Card)`
+  padding: ${({ theme }) => theme.space.xxs};
+`;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.space.xs};
+
+  & .selected {
+    background-color: ${({ theme }) => theme.palette.grey[100]};
+  }
+`;
 
 type MentionListProps = SuggestionProps<SuggestedUser>;
 
@@ -66,22 +83,27 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
 
     return (
       <div className="items">
-        <Card>
-          {props.items.length ? (
-            props.items.map((item, index) => (
-              <Button
-                isAccent={index === selectedIndex}
-                key={index}
-                isPrimary
-                onClick={() => selectItem(index)}
-              >
-                {item.fullName}
-              </Button>
-            ))
-          ) : (
-            <div className="item">No result</div>
-          )}
-        </Card>
+        <StyledCard>
+          <List>
+            {props.items.length ? (
+              props.items.map((item, index) => (
+                <div className={index === selectedIndex ? 'selected': ''}>
+                  <Button
+                    isBasic
+                    isStretched
+                    isAccent
+                    key={index}
+                    onClick={() => selectItem(index)}
+                  >
+                    {item.fullName}
+                  </Button>
+                </div>
+              ))
+            ) : (
+              <div className="item">No result</div>
+            )}
+          </List>
+        </StyledCard>
       </div>
     );
   }

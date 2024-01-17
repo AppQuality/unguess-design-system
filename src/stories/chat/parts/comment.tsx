@@ -5,6 +5,7 @@ import { styled } from "styled-components";
 import { Author } from "../_types";
 import { Avatar } from "../../avatar";
 import { CommentEditor } from "./editor";
+import { useChatContext } from "../context/chatContext";
 
 const CommentCard = styled(Card)`
   padding: ${({ theme }) => `${theme.space.base * 3}px ${theme.space.sm}`};
@@ -52,6 +53,8 @@ export const Comment = ({
   children,
   date,
 }: PropsWithChildren<{ author: Author; message: string; date: string }>) => {
+  const { mentionableUsers } = useChatContext();
+
   return (
     <CommentCard>
       <AuthorContainer>
@@ -67,7 +70,9 @@ export const Comment = ({
             <CommentDate>{date}</CommentDate>
           </CommentTitle>
           <ReadOnly>
-            <CommentEditor editable={false}>{message}</CommentEditor>
+            <CommentEditor mentionableUsers={mentionableUsers} editable={false}>
+              {message}
+            </CommentEditor>
           </ReadOnly>
         </div>
       </AuthorContainer>

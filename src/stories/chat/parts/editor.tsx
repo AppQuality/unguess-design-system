@@ -17,11 +17,12 @@ import TextAlign from "@tiptap/extension-text-align";
 import { KeyboardEvent as ReactKeyboardEvent, ReactNode } from "react";
 import { useChatContext } from "../context/chatContext";
 import { CustomMention as Mention } from "./mention";
-import { MentionList, MentionListRef, SuggestedUser } from "./mentionList";
+import { MentionList, MentionListRef } from "./mentionList";
 import tippy, { type Instance as TippyInstance } from "tippy.js";
 import { FauxInput } from "@zendeskgarden/react-forms";
 import styled from "styled-components";
 import { editorStyle, readOnlyStyle } from "../../shared/editorStyle";
+import { SuggestedUser } from "../_types";
 
 const EditorContainer = styled(FauxInput)<{ editable: boolean }>`
   ${({ editable, theme }) =>
@@ -82,10 +83,12 @@ const DOM_RECT_FALLBACK: DOMRect = {
 export const CommentEditor = ({
   placeholderOptions,
   children,
+  mentionableUsers,
   ...props
 }: {
   placeholderOptions?: Partial<PlaceholderOptions>;
   children?: ReactNode;
+  mentionableUsers: ({ query }: { query: string }) => Promise<SuggestedUser[]>;
 } & Partial<EditorOptions>) => {
   const { editor, setEditor, triggerSave } = useChatContext();
   const isEditable = props.editable !== false;
@@ -119,60 +122,7 @@ export const CommentEditor = ({
       }),
       Mention.configure({
         suggestion: {
-          items: ({ query }): SuggestedUser[] => {
-            return [
-              {
-                id: 1,
-                fullName: "John Doe",
-                avatar: "https://i.pravatar.cc/150?img=1",
-              },
-              {
-                id: 2,
-                fullName: "Jane Doe",
-                avatar: "https://i.pravatar.cc/150?img=2",
-              },
-              {
-                id: 3,
-                fullName: "John Smith",
-                avatar: "https://i.pravatar.cc/150?img=3",
-              },
-              {
-                id: 4,
-                fullName: "Jane Smith",
-                avatar: "https://i.pravatar.cc/150?img=4",
-              },
-              {
-                id: 5,
-                fullName: "Pippo Baudo",
-                avatar: "https://i.pravatar.cc/150?img=5",
-              },
-              {
-                id: 6,
-                fullName: "Pippo Franco",
-                avatar: "https://i.pravatar.cc/150?img=6",
-              },
-              {
-                id: 7,
-                fullName: "Pippo Inzaghi",
-                avatar: "https://i.pravatar.cc/150?img=7",
-              },
-              {
-                id: 8,
-                fullName: "Pippo Civati",
-                avatar: "https://i.pravatar.cc/150?img=8",
-              },
-              {
-                id: 9,
-                fullName: "Pippo Delbono",
-                avatar: "https://i.pravatar.cc/150?img=9",
-              },
-            ].filter((item) => {
-              if (!query) return item;
-              return item.fullName
-                .toLowerCase()
-                .startsWith(query.toLowerCase());
-            });
-          },
+          items: mentionableUsers,
           render: () => {
             let component: ReactRenderer<MentionListRef> | undefined;
             let popup: TippyInstance | undefined;
@@ -196,7 +146,7 @@ export const CommentEditor = ({
                   showOnCreate: true,
                   interactive: true,
                   trigger: "manual",
-                  placement: "bottom-start",
+                  placement: "auto",
                 })[0];
               },
 
