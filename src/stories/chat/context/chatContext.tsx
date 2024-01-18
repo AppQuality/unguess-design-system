@@ -44,7 +44,7 @@ export const ChatContextProvider = ({
       },
       mentionableUsers: setMentionableUsers,
     }),
-    [comment, setComment, isEditing, setIsEditing, editor, setEditor, onSave]
+    [comment, setComment, isEditing, setIsEditing, editor, setEditor, onSave, setMentionableUsers]
   );
 
   return (

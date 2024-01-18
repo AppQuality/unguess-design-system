@@ -30,7 +30,7 @@ export const CommentBox = ({
   placeholderOptions,
   ...props
 }: PropsWithChildren<ChatEditorArgs>) => {
-  const { children, hasInlineMenu, hasButtonsMenu, bubbleOptions, author } =
+  const { children, hasInlineMenu, hasButtonsMenu, bubbleOptions, author, i18n } =
     props;
   const { editor, mentionableUsers } = useChatContext();
 
@@ -52,7 +52,7 @@ export const CommentBox = ({
           {...props}
         />
       </ChatBoxContainer>
-      {hasButtonsMenu && <CommentBar editor={editor} />}
+      {hasButtonsMenu && <CommentBar editor={editor} i18n={i18n} />}
     </>
   );
 };

@@ -23,9 +23,11 @@ const MenuContainer = styled.div`
 `;
 
 const CommentBar = ({
-  i18n,
   editor,
-}: Partial<ChatEditorArgs> & { editor?: Editor }) => {
+  i18n,
+}: Partial<ChatEditorArgs> & {
+  editor?: Editor;
+}) => {
   if (!editor) {
     return null;
   }
@@ -42,7 +44,6 @@ const CommentBar = ({
           onClick={() => editor.chain().focus().toggleBold().run()}
           isBasic={!editor.isActive("bold")}
           isPrimary={editor.isActive("bold")}
-          isPill={false}
         >
           <BoldIcon />
         </IconButton>
@@ -57,7 +58,6 @@ const CommentBar = ({
           onClick={() => editor.chain().focus().toggleItalic().run()}
           isBasic={!editor.isActive("italic")}
           isPrimary={editor.isActive("italic")}
-          isPill={false}
         >
           <ItalicIcon />
         </IconButton>
@@ -76,7 +76,6 @@ const CommentBar = ({
             const char = from > 1 ? " @" : "@";
             editor.commands.insertContent(char);
           }}
-          isPill={false}
         >
           <MentionIcon>@</MentionIcon>
         </IconButton>

@@ -6,7 +6,7 @@ import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatEditorArgs, SuggestedUser } from "./_types";
+import { ChatEditorArgs } from "./_types";
 import { Comment } from "./parts/comment";
 
 interface EditorStoryArgs extends ChatEditorArgs {
@@ -31,7 +31,7 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
     <Chat>
       <Chat.Header>Titolone</Chat.Header>
       <Chat.Comments chatBkg={background}>
-        {args.comments?.map((comment, index) => (
+        {args.comments?.map((comment) => (
           <Comment {...comment}>
             <>altre cose</>
           </Comment>
@@ -191,8 +191,8 @@ Placeholder.args = {
   },
 };
 
-export const BubbleMenu = Template.bind({});
-BubbleMenu.args = {
+export const Menus = Template.bind({});
+Menus.args = {
   ...defaultArgs,
   hasInlineMenu: true,
   hasButtonsMenu: true,
