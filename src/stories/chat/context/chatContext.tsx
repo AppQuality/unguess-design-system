@@ -3,10 +3,6 @@ import React, { createContext, useContext, useMemo, useState } from "react";
 import { SuggestedUser } from "../_types";
 
 export type ChatContextType = {
-  isEditing: boolean;
-  setIsEditing: (isEditing: boolean) => void;
-  comment: string;
-  setComment: (comment: string) => void;
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
@@ -24,16 +20,10 @@ export const ChatContextProvider = ({
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
 }) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [comment, setComment] = useState<string>("");
   const [editor, setEditor] = useState<Editor | undefined>();
 
   const chatContextValue = useMemo(
     () => ({
-      isEditing,
-      setIsEditing,
-      comment,
-      setComment,
       editor,
       setEditor,
       triggerSave: () => {
@@ -44,7 +34,7 @@ export const ChatContextProvider = ({
       },
       mentionableUsers: setMentionableUsers,
     }),
-    [comment, setComment, isEditing, setIsEditing, editor, setEditor, onSave, setMentionableUsers]
+    [editor, setEditor, onSave, setMentionableUsers]
   );
 
   return (
