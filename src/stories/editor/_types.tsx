@@ -1,7 +1,7 @@
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { BubbleMenuProps, Editor, EditorOptions } from "@tiptap/react";
 
-type validationStatus=  "success" | "warning" | "error";
+type validationStatus = "success" | "warning" | "error";
 
 export interface EditorArgs extends Partial<EditorOptions> {
   placeholderOptions?: Partial<PlaceholderOptions>;

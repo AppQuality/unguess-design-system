@@ -1,45 +1,57 @@
 import { Editor } from "@tiptap/react";
 import React, { createContext, useContext, useMemo, useState } from "react";
+import { SuggestedUser } from "../_types";
 
 export type ChatContextType = {
-  isEditing: boolean;
-  setIsEditing: (isEditing: boolean) => void;
-  comment: string;
-  setComment: (comment: string) => void;
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
+  mentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
 
 export const ChatContextProvider = ({
   onSave,
+  setMentionableUsers,
   children,
 }: {
-  onSave?: (editor: Editor) => void;
+  onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
   children: React.ReactNode;
+  setMentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
 }) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [comment, setComment] = useState<string>("");
   const [editor, setEditor] = useState<Editor | undefined>();
+
+  const getMentions = (editor: Editor) => {
+    const result: SuggestedUser[] = [];
+
+    editor.state.doc.descendants((node) => {
+      if (node.type.name === "mention") {
+        // Add only if it's not already in the array
+        if (!result.some((r) => r.id === node.attrs.id))
+          result.push({
+            id: node.attrs.id,
+            name: node.attrs.name
+          });
+      }
+    });
+
+    return result;
+  };
 
   const chatContextValue = useMemo(
     () => ({
-      isEditing,
-      setIsEditing,
-      comment,
-      setComment,
       editor,
       setEditor,
       triggerSave: () => {
         if (editor && onSave) {
-          onSave(editor);
+          onSave(editor, getMentions(editor));
           editor.commands.clearContent();
         }
       },
+      mentionableUsers: setMentionableUsers,
     }),
-    [comment, setComment, isEditing, setIsEditing, editor, setEditor, onSave]
+    [editor, setEditor, onSave, setMentionableUsers]
   );
 
   return (

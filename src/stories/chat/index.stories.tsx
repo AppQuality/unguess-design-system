@@ -1,14 +1,19 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { Editor as TipTapEditor } from "@tiptap/react";
+import styled from "styled-components";
 import { Chat, ChatProvider, useChatContext } from ".";
 import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatEditorArgs } from "./_types";
+import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment } from "./parts/comment";
 
+const ButtonsContainer = styled.div`
+  padding: 0px 16px;
+  display: flex;
+`;
 interface EditorStoryArgs extends ChatEditorArgs {
   children?: any;
   comments?: {
@@ -21,37 +26,94 @@ interface EditorStoryArgs extends ChatEditorArgs {
   }[];
   editorText?: string;
   background?: string;
-  onSave: (editor: TipTapEditor) => void;
+  onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { triggerSave } = useChatContext();
+  const { editor, triggerSave } = useChatContext();
   return (
     <Chat>
       <Chat.Header>Titolone</Chat.Header>
       <Chat.Comments chatBkg={background}>
-        {args.comments?.map((comment, index) => (
+        {args.comments?.map((comment) => (
           <Comment {...comment}>
             <>altre cose</>
           </Comment>
         ))}
       </Chat.Comments>
       <Chat.Input {...args}>{args.editorText}</Chat.Input>
-      <Chat.Footer>
-        <Button isBasic>Cancel</Button>
-        <Button onClick={triggerSave}>Save</Button>
+      <Chat.Footer showShortcut>
+        <ButtonsContainer>
+          <Button isBasic onClick={() => editor?.commands.clearContent()}>
+            Cancel
+          </Button>
+          <Button onClick={triggerSave}>Save</Button>
+        </ButtonsContainer>
       </Chat.Footer>
     </Chat>
   );
 };
 
 const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
+  const getUsers = async ({ query }: { query: string }) => {
+    return [
+      {
+        id: 1,
+        name: "John Doe",
+        avatar: "https://i.pravatar.cc/150?img=1",
+      },
+      {
+        id: 2,
+        name: "Jane Doe",
+        avatar: "https://i.pravatar.cc/150?img=2",
+      },
+      {
+        id: 3,
+        name: "John Smith",
+        avatar: "https://i.pravatar.cc/150?img=3",
+      },
+      {
+        id: 4,
+        name: "Jane Smith",
+        avatar: "https://i.pravatar.cc/150?img=4",
+      },
+      {
+        id: 5,
+        name: "Pippo Baudo",
+        avatar: "https://i.pravatar.cc/150?img=5",
+      },
+      {
+        id: 6,
+        name: "Pippo Franco",
+        avatar: "https://i.pravatar.cc/150?img=6",
+      },
+      {
+        id: 7,
+        name: "Pippo Inzaghi",
+        avatar: "https://i.pravatar.cc/150?img=7",
+      },
+      {
+        id: 8,
+        name: "Pippo Civati",
+        avatar: "https://i.pravatar.cc/150?img=8",
+      },
+      {
+        id: 9,
+        name: "Pippo Delbono",
+        avatar: "https://i.pravatar.cc/150?img=9",
+      },
+    ].filter((item) => {
+      if (!query) return item;
+      return item.name.toLowerCase().startsWith(query.toLowerCase());
+    });
+  };
+
   return (
     <Grid>
       <Row>
-        <Col xs={12} sm={6}>
-          <ChatProvider onSave={args.onSave}>
+        <Col xs={12} sm={8} md={6}>
+          <ChatProvider setMentionableUsers={getUsers} onSave={args.onSave}>
             <ChatPanel {...args} />
           </ChatProvider>
         </Col>
@@ -63,8 +125,9 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor: TipTapEditor) => {
+  onSave: (editor: TipTapEditor, mentions) => {
     console.log("we have to save this", editor.getHTML());
+    console.log("mentions", mentions);
   },
   author: {
     avatar: "LC",
@@ -85,7 +148,8 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: "Hi, I'm a comment too but with <strong>bold</strong>",
+      message:
+        "Hi, I'm a comment too but with <strong>bold</strong>. lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl",
       date: " | 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",
@@ -93,23 +157,7 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: "Hi, I'm a comment too but with <strong>bold</strong>",
-      date: " | 27 dic. 2023 | 12:00",
-      author: {
-        name: "Marco B.",
-        avatar: "MB",
-      },
-    },
-    {
-      message: "Hi, I'm a comment too but with <strong>bold</strong>. lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl",
-      date: " | 27 dic. 2023 | 12:00",
-      author: {
-        name: "Marco B.",
-        avatar: "MB",
-      },
-    },
-    {
-      message: "Hi, I'm a comment too but with <strong>bold</strong> askdlhfksadhjfkljafshbcfkjsdhbkjdhfksjdfhabfshdbkfvhksdajhfbvhldsjfvdjshflkvdsbjhfjkvskfhbvasjhfksjbfvsdbvkjshvbkfasjhvfksjhfbkfbvksjhjvfshjvbsdhvdbvskjsdbhfkvsjbfjkvbsdfhwrap",
+      message: `Hi <mention data-type="mention" data-mention-id="1" data-mention-name="John Doe">@John Doe</mention>, I'm a comment too but with <strong>bold</strong> askdlhfksadhjfkljafshbcfkjsdhbkjdhfksjdfhabfshdbkfvhksdajhfbvhldsjfvdjshflkvdsbjhfjkvskfhbvasjhfksjbfvsdbvkjshvbkfasjhvfksjhfbkfbvksjhjvfshjvbsdhvdbvskjsdbhfkvsjbfjkvbsdfhwrap`,
       date: " | 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",
@@ -143,10 +191,18 @@ Placeholder.args = {
   },
 };
 
-export const BubbleMenu = Template.bind({});
-BubbleMenu.args = {
+export const Menus = Template.bind({});
+Menus.args = {
   ...defaultArgs,
   hasInlineMenu: true,
+  hasButtonsMenu: true,
+  i18n: {
+    menu: {
+      bold: "Grassetto",
+      italic: "Corsivo",
+      mention: "Menziona",
+    },
+  },
 };
 
 export const CustomBackground = Template.bind({});
