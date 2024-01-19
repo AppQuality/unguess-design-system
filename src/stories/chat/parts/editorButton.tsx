@@ -1,15 +1,9 @@
 import { Editor } from "@tiptap/react";
 import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-fill.svg";
 import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.svg";
-import { styled } from "styled-components";
+import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
 import { IconButton } from "../../buttons/icon-button";
 
-const MentionIcon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-`;
 
 export const EditorButton = ({
   editor,
@@ -28,7 +22,7 @@ export const EditorButton = ({
       case "italic":
         return <ItalicIcon />;
       case "mention":
-        return <MentionIcon>@</MentionIcon>;
+        return <MentionIcon />;
     }
   };
 
