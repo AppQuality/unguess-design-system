@@ -20,6 +20,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
     author: {
       name: string;
       avatar: string;
+      avatarType?: "icon" | "image" | "text" | "system" /* default: text */;
     };
     message: string;
     date: string;
@@ -203,6 +204,23 @@ Menus.args = {
       mention: "Menziona",
     },
   },
+};
+
+export const WithInternals = Template.bind({});
+WithInternals.args = {
+  ...defaultArgs,
+  comments: [
+    ...defaultArgs.comments || [],
+    {
+      message: "Hi, I'm a comment from an internal user",
+      date: " | 27 dic. 2023 | 12:00",
+      author: {
+        name: "Federico M.",
+        avatar: "FM",
+        avatarType: "system",
+      },
+    },
+  ],
 };
 
 export const CustomBackground = Template.bind({});

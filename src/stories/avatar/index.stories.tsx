@@ -49,6 +49,11 @@ Square.parameters = {
   },
 };
 
+export const Internal = Template.bind({});
+Internal.args = {
+  avatarType: "system",
+};
+
 export default {
   title: "Atoms/Avatar",
   component: Avatar,
