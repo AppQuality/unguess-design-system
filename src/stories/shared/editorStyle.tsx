@@ -264,9 +264,9 @@ export const editorStyle = css`
 `;
 
 export const readOnlyStyle = css`
+  pointer-events: none;
   border: none;
-  outline: none;
-
+  
   .ProseMirror {
     background: transparent;
     border: none;

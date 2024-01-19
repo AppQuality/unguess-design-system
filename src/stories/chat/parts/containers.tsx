@@ -30,7 +30,6 @@ export const EditorContainer = styled(FauxInput)<{ editable: boolean }>`
       : `
     margin-left: ${theme.space.sm};
     padding: ${`${theme.space.xxs} ${theme.space.xs}`};
-      
     `}
 
   .ProseMirror {
