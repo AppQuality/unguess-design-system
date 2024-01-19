@@ -16,11 +16,28 @@ export const ChatContextProvider = ({
   setMentionableUsers,
   children,
 }: {
-  onSave?: (editor: Editor) => void;
+  onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
 }) => {
   const [editor, setEditor] = useState<Editor | undefined>();
+
+  const getMentions = (editor: Editor) => {
+    const result: SuggestedUser[] = [];
+
+    editor.state.doc.descendants((node) => {
+      if (node.type.name === "mention") {
+        // Add only if it's not already in the array
+        if (!result.some((r) => r.id === node.attrs.id))
+          result.push({
+            id: node.attrs.id,
+            name: node.attrs.name
+          });
+      }
+    });
+
+    return result;
+  };
 
   const chatContextValue = useMemo(
     () => ({
@@ -28,7 +45,7 @@ export const ChatContextProvider = ({
       setEditor,
       triggerSave: () => {
         if (editor && onSave) {
-          onSave(editor);
+          onSave(editor, getMentions(editor));
           editor.commands.clearContent();
         }
       },

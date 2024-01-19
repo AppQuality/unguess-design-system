@@ -4,8 +4,10 @@ import { Card } from "../../cards";
 import { styled } from "styled-components";
 import { Author } from "../_types";
 import { Avatar } from "../../avatar";
-import { CommentEditor } from "./editor";
 import { useChatContext } from "../context/chatContext";
+import { Content, useEditor, EditorContent } from "@tiptap/react";
+import { editorExtensions } from "./extensions";
+import { EditorContainer } from "./containers";
 
 const CommentCard = styled(Card)`
   padding: ${({ theme }) => `${theme.space.base * 3}px ${theme.space.sm}`};
@@ -55,6 +57,15 @@ export const Comment = ({
 }: PropsWithChildren<{ author: Author; message: string; date: string }>) => {
   const { mentionableUsers } = useChatContext();
 
+  const ext = editorExtensions({ mentionableUsers });
+
+  const ed = useEditor({
+    extensions: ext,
+    content: (message as Content) || "",
+  });
+
+  if (!ed) return null;
+
   return (
     <CommentCard>
       <AuthorContainer>
@@ -70,9 +81,9 @@ export const Comment = ({
             <CommentDate>{date}</CommentDate>
           </CommentTitle>
           <ReadOnly>
-            <CommentEditor mentionableUsers={mentionableUsers} editable={false}>
-              {message}
-            </CommentEditor>
+            <EditorContainer editable={false}>
+              <EditorContent editor={ed} />
+            </EditorContainer>
           </ReadOnly>
         </div>
       </AuthorContainer>

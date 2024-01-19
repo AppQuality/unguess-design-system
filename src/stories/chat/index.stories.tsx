@@ -6,7 +6,7 @@ import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatEditorArgs } from "./_types";
+import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment } from "./parts/comment";
 
 interface EditorStoryArgs extends ChatEditorArgs {
@@ -21,12 +21,12 @@ interface EditorStoryArgs extends ChatEditorArgs {
   }[];
   editorText?: string;
   background?: string;
-  onSave: (editor: TipTapEditor) => void;
+  onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { triggerSave } = useChatContext();
+  const { editor, triggerSave } = useChatContext();
   return (
     <Chat>
       <Chat.Header>Titolone</Chat.Header>
@@ -39,7 +39,7 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
       </Chat.Comments>
       <Chat.Input {...args}>{args.editorText}</Chat.Input>
       <Chat.Footer>
-        <Button isBasic>Cancel</Button>
+        <Button isBasic onClick={() => editor?.commands.clearContent()}>Cancel</Button>
         <Button onClick={triggerSave}>Save</Button>
       </Chat.Footer>
     </Chat>
@@ -51,52 +51,52 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
     return [
       {
         id: 1,
-        fullName: "John Doe",
+        name: "John Doe",
         avatar: "https://i.pravatar.cc/150?img=1",
       },
       {
         id: 2,
-        fullName: "Jane Doe",
+        name: "Jane Doe",
         avatar: "https://i.pravatar.cc/150?img=2",
       },
       {
         id: 3,
-        fullName: "John Smith",
+        name: "John Smith",
         avatar: "https://i.pravatar.cc/150?img=3",
       },
       {
         id: 4,
-        fullName: "Jane Smith",
+        name: "Jane Smith",
         avatar: "https://i.pravatar.cc/150?img=4",
       },
       {
         id: 5,
-        fullName: "Pippo Baudo",
+        name: "Pippo Baudo",
         avatar: "https://i.pravatar.cc/150?img=5",
       },
       {
         id: 6,
-        fullName: "Pippo Franco",
+        name: "Pippo Franco",
         avatar: "https://i.pravatar.cc/150?img=6",
       },
       {
         id: 7,
-        fullName: "Pippo Inzaghi",
+        name: "Pippo Inzaghi",
         avatar: "https://i.pravatar.cc/150?img=7",
       },
       {
         id: 8,
-        fullName: "Pippo Civati",
+        name: "Pippo Civati",
         avatar: "https://i.pravatar.cc/150?img=8",
       },
       {
         id: 9,
-        fullName: "Pippo Delbono",
+        name: "Pippo Delbono",
         avatar: "https://i.pravatar.cc/150?img=9",
       },
     ].filter((item) => {
       if (!query) return item;
-      return item.fullName.toLowerCase().startsWith(query.toLowerCase());
+      return item.name.toLowerCase().startsWith(query.toLowerCase());
     });
   };
 
@@ -116,18 +116,9 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor: TipTapEditor) => {
+  onSave: (editor: TipTapEditor, mentions) => {
     console.log("we have to save this", editor.getHTML());
-    const result: any[] = [];
-
-    editor.state.doc.descendants((node) => {
-      if (node.type.name === "mention") {
-        // Add only if it's not already in the array
-        if (!result.some((r) => r.id === node.attrs.id))
-          result.push(node.attrs);
-      }
-    });
-    console.log("mentions", result);
+    console.log("mentions", mentions);
   },
   author: {
     avatar: "LC",

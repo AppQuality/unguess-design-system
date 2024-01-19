@@ -1,5 +1,6 @@
 import { mergeAttributes } from "@tiptap/core";
 import Mention from "@tiptap/extension-mention";
+import { SuggestedUser } from "../_types";
 
 export const CustomMention = Mention.extend({
   addAttributes() {
@@ -17,16 +18,16 @@ export const CustomMention = Mention.extend({
           };
         },
       },
-      fullName: {
+      name: {
         default: null,
         parseHTML: (element) => element.getAttribute("data-mention-name"),
         renderHTML: (attributes) => {
-          if (!attributes.fullName) {
+          if (!attributes.name) {
             return {};
           }
 
           return {
-            "data-mention-name": attributes.fullName,
+            "data-mention-name": attributes.name,
           };
         },
       },
@@ -42,11 +43,11 @@ export const CustomMention = Mention.extend({
 
   renderHTML({ node, HTMLAttributes }) {
     // In the future we can fetch other user data here, like avatar, user role, etc.
-    const user = node.attrs as { id: string; fullName: string };
+    const user = node.attrs as SuggestedUser;
     let outputText = "unkown";
 
     if (user) {
-      outputText = `${this.options.suggestion.char}${user.fullName}`;
+      outputText = `${this.options.suggestion.char}${user.name}`;
     }
 
     return [
@@ -61,10 +62,10 @@ export const CustomMention = Mention.extend({
   },
 
   renderText({ node }) {
-    const user = node.attrs as { id: string; fullName: string };
+    const user = node.attrs as SuggestedUser;
 
     if (user) {
-      return `${this.options.suggestion.char}${user.fullName}`;
+      return `${this.options.suggestion.char}${user.name}`;
     }
 
     return "unkown";

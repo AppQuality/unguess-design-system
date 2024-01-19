@@ -3,7 +3,7 @@ import { BubbleMenuProps, EditorOptions } from "@tiptap/react";
 
 type validationStatus = "success" | "warning" | "error";
 
-export type SuggestedUser = { id: number; fullName: string; avatar: string };
+export type SuggestedUser = { id: number; name: string; };
 
 export interface ChatEditorArgs extends Partial<EditorOptions> {
   placeholderOptions?: Partial<PlaceholderOptions>;

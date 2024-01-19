@@ -1,25 +1,22 @@
 import styled from "styled-components";
-import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-fill.svg";
-import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.svg";
-import { IconButton } from "../../buttons/icon-button";
 import { Tooltip } from "../../tooltip";
 import { ChatEditorArgs } from "../_types";
-import { useChatContext } from "../context/chatContext";
 import { Editor } from "@tiptap/react";
-
-const MentionIcon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-`;
+import { EditorButton } from "./editorButton";
 
 const MenuContainer = styled.div`
   padding: ${({ theme }) => theme.space.xxs} 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+`;
+
+const VerticalDivider = styled.div`
+  width: 2px;
+  height: 24px;
+  background-color: ${({ theme }) => theme.palette.grey[300]};
+  margin: 0 ${({ theme }) => theme.space.xs};
 `;
 
 const CommentBar = ({
@@ -28,9 +25,8 @@ const CommentBar = ({
 }: Partial<ChatEditorArgs> & {
   editor?: Editor;
 }) => {
-  if (!editor) {
-    return null;
-  }
+
+  if(!editor) return null;
 
   return (
     <MenuContainer>
@@ -40,13 +36,7 @@ const CommentBar = ({
         type="light"
         size="small"
       >
-        <IconButton
-          onClick={() => editor.chain().focus().toggleBold().run()}
-          isBasic={!editor.isActive("bold")}
-          isPrimary={editor.isActive("bold")}
-        >
-          <BoldIcon />
-        </IconButton>
+        <EditorButton editor={editor} type="bold" />
       </Tooltip>
       <Tooltip
         content={i18n?.menu?.italic ?? "Italic text"}
@@ -54,31 +44,16 @@ const CommentBar = ({
         type="light"
         size="small"
       >
-        <IconButton
-          onClick={() => editor.chain().focus().toggleItalic().run()}
-          isBasic={!editor.isActive("italic")}
-          isPrimary={editor.isActive("italic")}
-        >
-          <ItalicIcon />
-        </IconButton>
+        <EditorButton editor={editor} type="italic" />
       </Tooltip>
+      <VerticalDivider />
       <Tooltip
         content={i18n?.menu?.mention ?? "Add a mention"}
         placement="top"
         type="light"
         size="small"
       >
-        <IconButton
-          onClick={() => {
-            editor.chain().focus();
-            const { from } = editor.state.selection;
-
-            const char = from > 1 ? " @" : "@";
-            editor.commands.insertContent(char);
-          }}
-        >
-          <MentionIcon>@</MentionIcon>
-        </IconButton>
+        <EditorButton editor={editor} type="mention" />
       </Tooltip>
     </MenuContainer>
   );

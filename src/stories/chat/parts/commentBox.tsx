@@ -1,11 +1,18 @@
 import styled from "styled-components";
+import {
+  useEditor,
+  EditorContent,
+  Editor as TipTapEditor,
+  Content,
+} from "@tiptap/react";
 import { ChatEditorArgs } from "../_types";
-import { PropsWithChildren } from "react";
+import { KeyboardEvent as ReactKeyboardEvent, PropsWithChildren } from "react";
+
 import { FloatingMenu } from "../../editor/floatingMenu";
-import { Avatar } from "../../avatar";
 import { useChatContext } from "../context/chatContext";
 import { CommentBar } from "./bar";
-import { CommentEditor } from "./editor";
+import { editorExtensions } from "./extensions";
+import { EditorContainer } from "./containers";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -30,29 +37,49 @@ export const CommentBox = ({
   placeholderOptions,
   ...props
 }: PropsWithChildren<ChatEditorArgs>) => {
-  const { children, hasInlineMenu, hasButtonsMenu, bubbleOptions, author, i18n } =
+  const { children, hasInlineMenu, hasButtonsMenu, bubbleOptions, i18n } =
     props;
-  const { editor, mentionableUsers } = useChatContext();
+  const { editor, setEditor, mentionableUsers, triggerSave } = useChatContext();
+
+  const ext = editorExtensions({ placeholderOptions, mentionableUsers });
+
+  const ed = useEditor({
+    extensions: ext,
+    content: (children as Content) || "",
+    editorProps: {
+      handleKeyDown: (view, event: KeyboardEvent) => {
+        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+          return true;
+        }
+
+        return false;
+      },
+    },
+    ...props,
+  });
+
+  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+      triggerSave();
+      editor?.commands.clearContent();
+    }
+  };
+
+  if (!ed) return null;
+
+  ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
   return (
     <>
       {hasInlineMenu && (
-        <FloatingMenu editor={editor} tippyOptions={{ ...bubbleOptions }} />
+        <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
       )}
       <ChatBoxContainer>
-        <div>
-          <Avatar avatarType={author.avatarType ?? "text"}>
-            {author.avatar}
-          </Avatar>
-        </div>
-        <CommentEditor
-          placeholderOptions={placeholderOptions}
-          mentionableUsers={mentionableUsers}
-          children={children}
-          {...props}
-        />
+        <EditorContainer editable style={{ marginLeft: 0 }}>
+          <EditorContent editor={ed} onKeyDown={onKeyDown} />
+        </EditorContainer>
       </ChatBoxContainer>
-      {hasButtonsMenu && <CommentBar editor={editor} i18n={i18n} />}
+      {hasButtonsMenu && <CommentBar editor={ed} i18n={i18n} />}
     </>
   );
 };

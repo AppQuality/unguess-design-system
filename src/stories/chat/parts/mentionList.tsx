@@ -2,10 +2,7 @@ import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { Card } from "../../cards";
 import { Button } from "../../buttons/button";
-import { Menu } from "../../dropdowns/menu";
-import { Item } from "../../dropdowns/item";
 import { styled } from "styled-components";
-import { useChatContext } from "../context/chatContext";
 import { SuggestedUser } from "../_types";
 
 export type MentionListRef = {
@@ -95,7 +92,7 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
                     key={index}
                     onClick={() => selectItem(index)}
                   >
-                    {item.fullName}
+                    {item.name}
                   </Button>
                 </div>
               ))
