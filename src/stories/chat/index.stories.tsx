@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { Editor as TipTapEditor } from "@tiptap/react";
+import styled from "styled-components";
 import { Chat, ChatProvider, useChatContext } from ".";
 import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
@@ -9,6 +10,10 @@ import { Row } from "../grid/row";
 import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment } from "./parts/comment";
 
+const ButtonsContainer = styled.div`
+  padding: 0px 16px;
+  display: flex;
+`;
 interface EditorStoryArgs extends ChatEditorArgs {
   children?: any;
   comments?: {
@@ -38,9 +43,13 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
         ))}
       </Chat.Comments>
       <Chat.Input {...args}>{args.editorText}</Chat.Input>
-      <Chat.Footer>
-        <Button isBasic onClick={() => editor?.commands.clearContent()}>Cancel</Button>
-        <Button onClick={triggerSave}>Save</Button>
+      <Chat.Footer showShortcut>
+        <ButtonsContainer>
+          <Button isBasic onClick={() => editor?.commands.clearContent()}>
+            Cancel
+          </Button>
+          <Button onClick={triggerSave}>Save</Button>
+        </ButtonsContainer>
       </Chat.Footer>
     </Chat>
   );
