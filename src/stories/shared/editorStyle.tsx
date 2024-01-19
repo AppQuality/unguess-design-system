@@ -236,7 +236,7 @@ export const editorStyle = css`
   }
 
   /* Placeholder (at the top) */
-    /*p.is-editor-empty:first-child::before {
+  /*p.is-editor-empty:first-child::before {
     content: attr(data-placeholder);
     float: left;
     color: #ced4da;
@@ -254,4 +254,24 @@ export const editorStyle = css`
   }
 
   word-break: break-word;
+
+  mention {
+    color: ${({ theme }) => theme.palette.azure[600]};
+    border-radius: ${({ theme }) => theme.borderRadii.xl};
+    font-weight: ${({ theme }) => theme.fontWeights.semibold};
+    padding: ${({ theme }) => `${theme.space.xxs} 0`};
+  }
+`;
+
+export const readOnlyStyle = css`
+  border: none;
+  outline: none;
+
+  .ProseMirror {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    min-height: 0;
+  }
 `;

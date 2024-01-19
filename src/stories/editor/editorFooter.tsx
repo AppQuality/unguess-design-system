@@ -3,6 +3,7 @@ import { Tag } from "../tags";
 import { isMac } from "../theme/utils";
 import { SM } from "../typography/typescale";
 
+
 const Footer = styled.div`
   display: flex;
   flex-direction: row;
