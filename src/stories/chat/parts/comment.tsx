@@ -19,12 +19,10 @@ const CommentCard = styled(Card)`
 `;
 
 const ReadOnly = styled.div`
+  cursor: text;
+
   > div {
-    background-color: ${({ theme }) => theme.palette.grey[100]};
-    &:focus {
-      box-shadow: none;
-      outline: none;
-    }
+    background-color: transparent;
     padding: 0;
   }
 `;
@@ -65,6 +63,10 @@ export const Comment = ({
   });
 
   if (!ed) return null;
+
+  ed.setOptions({
+    editable: false,
+  });
 
   return (
     <CommentCard>
