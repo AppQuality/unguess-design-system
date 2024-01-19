@@ -1,3 +1,20 @@
+# v3.1.65 (Fri Jan 19 2024)
+
+#### 🐛 Bug Fix
+
+- Add system AvatarType [#298](https://github.com/AppQuality/unguess-design-system/pull/298) ([@cannarocks](https://github.com/cannarocks))
+- docs(chat): add example of system avatar [#297](https://github.com/AppQuality/unguess-design-system/pull/297) ([@cannarocks](https://github.com/cannarocks))
+- Chat mentions [#296](https://github.com/AppQuality/unguess-design-system/pull/296) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Add-suggestions-to-editor [#295](https://github.com/AppQuality/unguess-design-system/pull/295) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.64 (Mon Jan 08 2024)
 
 #### 🐛 Bug Fix
