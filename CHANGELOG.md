@@ -1,3 +1,16 @@
+# v3.1.66 (Fri Jan 19 2024)
+
+#### 🐛 Bug Fix
+
+- Fix editable comments in chat [#300](https://github.com/AppQuality/unguess-design-system/pull/300) ([@marcbon](https://github.com/marcbon))
+- 🎨 style(comment.tsx): update ReadOnly style to make it more readable [#299](https://github.com/AppQuality/unguess-design-system/pull/299) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.65 (Fri Jan 19 2024)
 
 #### 🐛 Bug Fix
