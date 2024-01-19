@@ -4,6 +4,8 @@ import { Card } from "../../cards";
 import { Button } from "../../buttons/button";
 import { styled } from "styled-components";
 import { SuggestedUser } from "../_types";
+import { MD } from "../../typography/typescale";
+import { theme } from "../../theme";
 
 export type MentionListRef = {
   onKeyDown: NonNullable<
@@ -15,17 +17,27 @@ export type MentionListRef = {
 
 const StyledCard = styled(Card)`
   padding: ${({ theme }) => theme.space.xxs};
+
+  ::-webkit-scrollbar {
+    width: ${({ theme }) => theme.space.xs};
+  }
 `;
 
 const List = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.xs};
-
-  & .selected {
-    background-color: ${({ theme }) => theme.palette.grey[100]};
-  }
+  max-height: 200px;
+  overflow-y: auto;
 `;
+
+const Item = styled(Button)`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 
 type MentionListProps = SuggestionProps<SuggestedUser>;
 
@@ -84,16 +96,19 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
           <List>
             {props.items.length ? (
               props.items.map((item, index) => (
-                <div className={index === selectedIndex ? 'selected': ''}>
-                  <Button
+                <div className={index === selectedIndex ? 'selected' : ''}>
+                  <Item
                     isBasic
                     isStretched
                     isAccent
+                    isPill={false}
                     key={index}
                     onClick={() => selectItem(index)}
                   >
-                    {item.name}
-                  </Button>
+                    <MD isBold style={{ color: theme.palette.black }}>
+                      {item.name}
+                    </MD>
+                  </Item>
                 </div>
               ))
             ) : (
