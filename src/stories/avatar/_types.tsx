@@ -16,5 +16,5 @@ export interface AvatarArgs extends IAvatarProps {
   /** Sets the badge text and applies active styling */
   badge?: string | number;
   /** Sets the avatar type */
-  avatarType?: 'icon' | 'image' | 'text';
+  avatarType?: 'icon' | 'image' | 'text' | 'system';
 }

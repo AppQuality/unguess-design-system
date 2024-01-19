@@ -23,8 +23,8 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
 export interface Author {
   avatar: string;
   name?: string;
-  avatarType?: "icon" | "image" | "text" /* default: text */;
-}
+  avatarType?: "icon" | "image" | "text" | "system" /* default: text */;
+} 
 
 export interface ChatArgs {
   chatBkg?: string;
