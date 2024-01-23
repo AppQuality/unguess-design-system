@@ -3,13 +3,15 @@ import { Tooltip } from "../../tooltip";
 import { ChatEditorArgs } from "../_types";
 import { Editor } from "@tiptap/react";
 import { EditorButton } from "./editorButton";
+import { isMac } from "../../theme/utils";
 
 const MenuContainer = styled.div`
-  padding: ${({ theme }) => theme.space.xxs} 0;
+  padding: ${({ theme }) => theme.space.xs} 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  gap: ${({ theme }) => theme.space.xxs};
 `;
 
 const VerticalDivider = styled.div`
@@ -31,7 +33,7 @@ const CommentBar = ({
   return (
     <MenuContainer>
       <Tooltip
-        content={i18n?.menu?.bold ?? "Bold text"}
+        content={`${i18n?.menu?.bold ?? "Bold text"} ${isMac() ? "Cmd" : "Ctrl"} + B`}
         placement="top"
         type="light"
         size="small"
@@ -39,7 +41,7 @@ const CommentBar = ({
         <EditorButton editor={editor} type="bold" />
       </Tooltip>
       <Tooltip
-        content={i18n?.menu?.italic ?? "Italic text"}
+        content={`${i18n?.menu?.italic ?? "Italic text"} ${isMac() ? "Cmd" : "Ctrl"} + I`}
         placement="top"
         type="light"
         size="small"

@@ -9,6 +9,7 @@ import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment } from "./parts/comment";
+import { theme } from "../theme";
 
 const ButtonsContainer = styled.div`
   padding: 0px 16px;
@@ -46,10 +47,10 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
       <Chat.Input {...args}>{args.editorText}</Chat.Input>
       <Chat.Footer showShortcut>
         <ButtonsContainer>
-          <Button isBasic onClick={() => editor?.commands.clearContent()}>
+          <Button size="small" style={{fontSize:theme.fontSizes.sm}} isBasic onClick={() => editor?.commands.clearContent()}>
             Cancel
           </Button>
-          <Button onClick={triggerSave}>Save</Button>
+          <Button size="small" style={{fontSize:theme.fontSizes.sm}} isAccent isPrimary onClick={triggerSave}>Save</Button>
         </ButtonsContainer>
       </Chat.Footer>
     </Chat>

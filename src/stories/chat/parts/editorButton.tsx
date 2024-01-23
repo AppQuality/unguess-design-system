@@ -4,7 +4,6 @@ import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.
 import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
 import { IconButton } from "../../buttons/icon-button";
 
-
 export const EditorButton = ({
   editor,
   type,
@@ -12,7 +11,6 @@ export const EditorButton = ({
   editor: Editor;
   type: "bold" | "italic" | "mention";
 }) => {
-
   const isActive = editor.isActive(type);
 
   const getIcon = () => {
@@ -40,7 +38,13 @@ export const EditorButton = ({
   };
 
   return (
-    <IconButton size={"small"} isBasic={!isActive} isPrimary={isActive} onClick={handleClick}>
+    <IconButton
+      size={"small"}
+      isBasic={!isActive}
+      isPrimary={isActive}
+      isPill={false}
+      onClick={handleClick}
+    >
       {getIcon()}
     </IconButton>
   );
