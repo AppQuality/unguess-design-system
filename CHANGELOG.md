@@ -1,3 +1,21 @@
+# v3.1.67 (Wed Jan 24 2024)
+
+#### 🐛 Bug Fix
+
+- Minor changes [#305](https://github.com/AppQuality/unguess-design-system/pull/305) ([@cannarocks](https://github.com/cannarocks) [@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- fixed behaviour when editor is empty [#304](https://github.com/AppQuality/unguess-design-system/pull/304) ([@iDome89](https://github.com/iDome89))
+- 🔧 fix(chat): fix typo in mentionList.tsx [#303](https://github.com/AppQuality/unguess-design-system/pull/303) ([@marcbon](https://github.com/marcbon))
+- Comments design refinement [#302](https://github.com/AppQuality/unguess-design-system/pull/302) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- chore(storybook): add extension [#301](https://github.com/AppQuality/unguess-design-system/pull/301) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.66 (Fri Jan 19 2024)
 
 #### 🐛 Bug Fix
