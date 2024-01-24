@@ -5,10 +5,11 @@ import { Card } from "../../cards";
 import { Button } from "../../buttons/button";
 import { styled } from "styled-components";
 import { ChatEditorArgs, SuggestedUser } from "../_types";
-import { MD } from "../../typography/typescale";
+import { MD, SM } from "../../typography/typescale";
 import { theme } from "../../theme";
 import { ButtonArgs } from "../../buttons/button/_types";
 import { getColor } from "../../theme/utils";
+
 
 export type MentionListRef = {
   onKeyDown: NonNullable<
@@ -144,6 +145,9 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
                     <MD isBold style={{ color: theme.palette.black }}>
                       {item.name}
                     </MD>
+                    <SM style={{ color: theme.palette.grey[600] }}>
+                      {item.email}
+                      </SM>
                   </Item>
                 </div>
               ))
