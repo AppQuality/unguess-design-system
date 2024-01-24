@@ -9,6 +9,7 @@ import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment } from "./parts/comment";
+import { theme } from "../theme";
 
 const ButtonsContainer = styled.div`
   padding: 0px 16px;
@@ -46,10 +47,10 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
       <Chat.Input {...args}>{args.editorText}</Chat.Input>
       <Chat.Footer showShortcut>
         <ButtonsContainer>
-          <Button isBasic onClick={() => editor?.commands.clearContent()}>
+          <Button size="small" style={{fontSize:theme.fontSizes.sm}} isBasic onClick={() => editor?.commands.clearContent()}>
             Cancel
           </Button>
-          <Button onClick={triggerSave}>Save</Button>
+          <Button size="small" style={{fontSize:theme.fontSizes.sm}} isAccent isPrimary onClick={triggerSave}>Save</Button>
         </ButtonsContainer>
       </Chat.Footer>
     </Chat>
@@ -57,52 +58,61 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
 };
 
 const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
-  const getUsers = async ({ query }: { query: string }) => {
+  const getUsers = ({ query }: { query: string }) => {
     return [
       {
         id: 1,
         name: "John Doe",
         avatar: "https://i.pravatar.cc/150?img=1",
+        email:"test@gmail.com"
       },
       {
         id: 2,
         name: "Jane Doe",
         avatar: "https://i.pravatar.cc/150?img=2",
+        email:"test@gmail.com"
       },
       {
         id: 3,
         name: "John Smith",
         avatar: "https://i.pravatar.cc/150?img=3",
+        email:"test@gmail.com"
       },
       {
         id: 4,
         name: "Jane Smith",
         avatar: "https://i.pravatar.cc/150?img=4",
+        email:"test@gmail.com"
       },
       {
         id: 5,
         name: "Pippo Baudo",
         avatar: "https://i.pravatar.cc/150?img=5",
+        email:"test@gmail.com"
       },
       {
         id: 6,
         name: "Pippo Franco",
         avatar: "https://i.pravatar.cc/150?img=6",
+        email:"test@gmail.com"
       },
       {
         id: 7,
         name: "Pippo Inzaghi",
         avatar: "https://i.pravatar.cc/150?img=7",
+        email:"test@gmail.com"
       },
       {
         id: 8,
         name: "Pippo Civati",
         avatar: "https://i.pravatar.cc/150?img=8",
+        email:"test@gmail.com"
       },
       {
         id: 9,
         name: "Pippo Delbono",
         avatar: "https://i.pravatar.cc/150?img=9",
+        email:"test@gmail.com"
       },
     ].filter((item) => {
       if (!query) return item;
@@ -202,6 +212,9 @@ Menus.args = {
       bold: "Grassetto",
       italic: "Corsivo",
       mention: "Menziona",
+    },
+    mention: {
+      noResults: "Nessun risultato. Vai su \"Invita\" per aggiungere nuove persone alla campagna.",
     },
   },
 };

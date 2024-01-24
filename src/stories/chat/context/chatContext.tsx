@@ -6,7 +6,7 @@ export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
-  mentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
+  mentionableUsers: (props: { query: string }) => SuggestedUser[];
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
@@ -18,7 +18,7 @@ export const ChatContextProvider = ({
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
   children: React.ReactNode;
-  setMentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
+  setMentionableUsers: (props: { query: string }) => SuggestedUser[];
 }) => {
   const [editor, setEditor] = useState<Editor | undefined>();
 
@@ -31,7 +31,8 @@ export const ChatContextProvider = ({
         if (!result.some((r) => r.id === node.attrs.id))
           result.push({
             id: node.attrs.id,
-            name: node.attrs.name
+            name: node.attrs.name,
+            email: node.attrs.email
           });
       }
     });
@@ -44,7 +45,7 @@ export const ChatContextProvider = ({
       editor,
       setEditor,
       triggerSave: () => {
-        if (editor && onSave) {
+        if (editor && onSave && !editor.isEmpty) {
           onSave(editor, getMentions(editor));
           editor.commands.clearContent();
         }

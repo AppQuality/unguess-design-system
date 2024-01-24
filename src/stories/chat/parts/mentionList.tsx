@@ -1,11 +1,14 @@
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+
+import { forwardRef, useEffect, useImperativeHandle, useState, useRef } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { Card } from "../../cards";
 import { Button } from "../../buttons/button";
 import { styled } from "styled-components";
-import { SuggestedUser } from "../_types";
+import { ChatEditorArgs, SuggestedUser } from "../_types";
 import { MD } from "../../typography/typescale";
 import { theme } from "../../theme";
+import { ButtonArgs } from "../../buttons/button/_types";
+import { getColor } from "../../theme/utils";
 
 export type MentionListRef = {
   onKeyDown: NonNullable<
@@ -31,20 +34,46 @@ const List = styled.div`
   overflow-y: auto;
 `;
 
-const Item = styled(Button)`
+const Item = styled(Button) <ButtonArgs & { isActive?: boolean }>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+
+  ${({ isActive }) =>
+    isActive &&
+    `
+    background-color: ${getColor(
+      theme.colors.primaryHue,
+      600,
+      undefined,
+      0.08
+    )};
+  `}
+`;
+const EmptyList = styled.div`
+  max-height: 100px;
+  max-width:280px;
+  padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.md}`};
 `;
 
+const EmptyMention = ({ content }: { content: string }) => {
+  return (
+    <EmptyList>
+      <MD style={{ color: theme.palette.grey[600] }}>{content}</MD>
+    </EmptyList>
+  );
+};
 
 type MentionListProps = SuggestionProps<SuggestedUser>;
 
 export const MentionList = forwardRef<MentionListRef, MentionListProps>(
   (props, ref) => {
+    const { editor } = props;
+    const { options } = editor;
+    const { i18n } = options as ChatEditorArgs;
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
+    const selectedRef = useRef<HTMLButtonElement>(null);
     const selectItem = (index: number) => {
       const item = props.items[index];
 
@@ -68,6 +97,11 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
     };
 
     useEffect(() => setSelectedIndex(0), [props.items]);
+    useEffect(() => {
+      if (selectedRef.current) {
+        selectedRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, [selectedIndex]);
 
     useImperativeHandle(ref, () => ({
       onKeyDown: ({ event }) => {
@@ -96,12 +130,14 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
           <List>
             {props.items.length ? (
               props.items.map((item, index) => (
-                <div className={index === selectedIndex ? 'selected' : ''}>
+                <div>
                   <Item
+                    ref={index === selectedIndex ? selectedRef : undefined}
                     isBasic
                     isStretched
                     isAccent
                     isPill={false}
+                    isActive={index === selectedIndex}
                     key={index}
                     onClick={() => selectItem(index)}
                   >
@@ -112,7 +148,7 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
                 </div>
               ))
             ) : (
-              <div className="item">No result</div>
+              <EmptyMention content={i18n?.mention?.noResults ?? "No results"} />
             )}
           </List>
         </StyledCard>

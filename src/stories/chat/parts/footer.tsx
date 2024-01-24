@@ -5,7 +5,7 @@ import { SendShortcut } from "./sendShortcut";
 const Footer = styled.div<{ showShortcut?: boolean }>`
   display: flex;
   flex-direction: row;
-  padding: ${({ theme }) => `${theme.space.sm} 0px`};
+  padding: ${({ theme }) => `${theme.space.xs} 0px ${theme.space.sm}`};
   align-items: center;
   margin: ${({ theme }) => `0 -${theme.space.base * 4}px`};
   justify-content: ${({ showShortcut }) =>
