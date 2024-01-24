@@ -204,6 +204,9 @@ Menus.args = {
       italic: "Corsivo",
       mention: "Menziona",
     },
+    mention: {
+      noResults: "Nessun risultato. Vai su \"Invita\" per aggiungere nuove persone alla campagna.",
+    },
   },
 };
 

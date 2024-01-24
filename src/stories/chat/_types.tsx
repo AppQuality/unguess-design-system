@@ -17,6 +17,9 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
       italic?: string;
       mention?: string;
     };
+    mention?: {
+      noResults?: string;
+    };
   };
 }
 
