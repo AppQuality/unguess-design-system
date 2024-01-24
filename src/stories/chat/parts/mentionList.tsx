@@ -1,15 +1,10 @@
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+
+import { ReactElement, forwardRef, useEffect, useImperativeHandle, useState, useRef } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { Card } from "../../cards";
 import { Button } from "../../buttons/button";
 import { styled } from "styled-components";
-import { SuggestedUser } from "../_types";
+import { ChatEditorArgs, SuggestedUser } from "../_types";
 import { MD } from "../../typography/typescale";
 import { theme } from "../../theme";
 import { ButtonArgs } from "../../buttons/button/_types";
@@ -56,11 +51,27 @@ const Item = styled(Button)<ButtonArgs & { isActive?: boolean }>`
     )};
   `}
 `;
+const EmptyList = styled.div`
+  max-height: 100px;
+  max-width:280px;
+  padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.md}`};
+`;
+
+const EmptyMention = ({ content }: { content: string }) => {
+  return (
+    <EmptyList>
+      <MD style={{ color: theme.palette.grey[600] }}>{content}</MD>
+    </EmptyList>
+  );
+};
 
 type MentionListProps = SuggestionProps<SuggestedUser>;
 
 export const MentionList = forwardRef<MentionListRef, MentionListProps>(
   (props, ref) => {
+    const { editor } = props;
+    const { options } = editor;
+    const { i18n } = options as ChatEditorArgs;
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
     const selectedRef = useRef<HTMLButtonElement>(null);
     const selectItem = (index: number) => {
@@ -137,7 +148,7 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
                 </div>
               ))
             ) : (
-              <div className="item">No result</div>
+              <EmptyMention content={i18n?.mention?.noResults ?? "No results"} />
             )}
           </List>
         </StyledCard>
