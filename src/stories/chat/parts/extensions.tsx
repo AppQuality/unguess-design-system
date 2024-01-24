@@ -37,7 +37,7 @@ export const editorExtensions = ({
   placeholderOptions,
   mentionableUsers,
 }: {
-  mentionableUsers: (props: { query: string }) => Promise<SuggestedUser[]>;
+  mentionableUsers: (props: { query: string }) => SuggestedUser[];
   placeholderOptions?: Partial<PlaceholderOptions>;
 }) => {
   return [

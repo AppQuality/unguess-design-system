@@ -58,8 +58,8 @@ export const CommentBox = ({
     ...props,
   });
 
-  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => { 
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter" ) {
       triggerSave();
       editor?.commands.clearContent();
     }
