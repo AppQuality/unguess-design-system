@@ -1,5 +1,5 @@
 
-import { ReactElement, forwardRef, useEffect, useImperativeHandle, useState, useRef } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState, useRef } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { Card } from "../../cards";
 import { Button } from "../../buttons/button";
@@ -34,7 +34,7 @@ const List = styled.div`
   overflow-y: auto;
 `;
 
-const Item = styled(Button)<ButtonArgs & { isActive?: boolean }>`
+const Item = styled(Button) <ButtonArgs & { isActive?: boolean }>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
