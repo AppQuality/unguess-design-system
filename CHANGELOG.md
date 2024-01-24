@@ -1,3 +1,17 @@
+# v3.1.68 (Wed Jan 24 2024)
+
+#### 🐛 Bug Fix
+
+- Add email to mentionList ✨ [#307](https://github.com/AppQuality/unguess-design-system/pull/307) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- fix: added email to mention [#306](https://github.com/AppQuality/unguess-design-system/pull/306) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.67 (Wed Jan 24 2024)
 
 #### 🐛 Bug Fix
