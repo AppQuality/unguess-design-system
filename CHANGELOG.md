@@ -1,3 +1,47 @@
+# v3.1.66 (Fri Jan 19 2024)
+
+#### 🐛 Bug Fix
+
+- Fix editable comments in chat [#300](https://github.com/AppQuality/unguess-design-system/pull/300) ([@marcbon](https://github.com/marcbon))
+- 🎨 style(comment.tsx): update ReadOnly style to make it more readable [#299](https://github.com/AppQuality/unguess-design-system/pull/299) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.65 (Fri Jan 19 2024)
+
+#### 🐛 Bug Fix
+
+- Add system AvatarType [#298](https://github.com/AppQuality/unguess-design-system/pull/298) ([@cannarocks](https://github.com/cannarocks))
+- docs(chat): add example of system avatar [#297](https://github.com/AppQuality/unguess-design-system/pull/297) ([@cannarocks](https://github.com/cannarocks))
+- Chat mentions [#296](https://github.com/AppQuality/unguess-design-system/pull/296) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Add-suggestions-to-editor [#295](https://github.com/AppQuality/unguess-design-system/pull/295) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 3
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.64 (Mon Jan 08 2024)
+
+#### 🐛 Bug Fix
+
+- Chat colors minor changes [#293](https://github.com/AppQuality/unguess-design-system/pull/293) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Chat box border fix [#292](https://github.com/AppQuality/unguess-design-system/pull/292) ([@cannarocks](https://github.com/cannarocks) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.63 (Thu Jan 04 2024)
 
 #### 🐛 Bug Fix
