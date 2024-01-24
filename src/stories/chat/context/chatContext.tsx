@@ -45,7 +45,7 @@ export const ChatContextProvider = ({
       editor,
       setEditor,
       triggerSave: () => {
-        if (editor && onSave) {
+        if (editor && onSave && !editor.isEmpty) {
           onSave(editor, getMentions(editor));
           editor.commands.clearContent();
         }
