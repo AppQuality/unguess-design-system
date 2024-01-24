@@ -6,8 +6,9 @@ import { isMac } from "../../theme/utils";
 const ShortcutContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: ${({ theme }) => `${theme.space.sm} ${theme.space.base * 4}px`};
+  padding: ${({ theme }) => `0 ${theme.space.base * 4}px`};
   background-color: ${({ theme }) => theme.palette.grey[100]};
+  font-size: ${({ theme }) => theme.fontSizes.sm};
 `;
 
 const Text = styled(SM)`
