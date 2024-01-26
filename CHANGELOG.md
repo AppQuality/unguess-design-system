@@ -1,3 +1,17 @@
+# v3.1.69 (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- Chat fixes [#309](https://github.com/AppQuality/unguess-design-system/pull/309) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Fix-chat-floating-menu-crash [#308](https://github.com/AppQuality/unguess-design-system/pull/308) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.68 (Wed Jan 24 2024)
 
 #### 🐛 Bug Fix
