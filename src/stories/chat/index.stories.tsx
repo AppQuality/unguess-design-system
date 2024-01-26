@@ -205,7 +205,7 @@ Placeholder.args = {
 export const Menus = Template.bind({});
 Menus.args = {
   ...defaultArgs,
-  hasInlineMenu: true,
+  hasFloatingMenu: true,
   hasButtonsMenu: true,
   i18n: {
     menu: {
