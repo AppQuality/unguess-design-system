@@ -37,7 +37,7 @@ export const CommentBox = ({
   placeholderOptions,
   ...props
 }: PropsWithChildren<ChatEditorArgs>) => {
-  const { children, hasInlineMenu, hasButtonsMenu, bubbleOptions, i18n } =
+  const { children, hasFloatingMenu, hasButtonsMenu, bubbleOptions, i18n } =
     props;
   const { editor, setEditor, mentionableUsers, triggerSave } = useChatContext();
 
@@ -67,15 +67,16 @@ export const CommentBox = ({
 
   if (!ed) return null;
 
+  ed.on("create", ({ editor }) => setEditor(editor as TipTapEditor));
   ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
   return (
     <>
-      {hasInlineMenu && (
-        <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
-      )}
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0 }}>
+          {hasFloatingMenu && (
+            <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
+          )}
           <EditorContent editor={ed} onKeyDown={onKeyDown} />
         </EditorContainer>
       </ChatBoxContainer>

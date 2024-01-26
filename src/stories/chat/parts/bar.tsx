@@ -55,7 +55,7 @@ const CommentBar = ({
       case "mention":
         const { from } = editor.state.selection;
         const char = from > 1 ? " @" : "@";
-        return editor.commands.insertContent(char);
+        return editor.chain().focus().insertContent(char).run();
       default:
         return;
     }
