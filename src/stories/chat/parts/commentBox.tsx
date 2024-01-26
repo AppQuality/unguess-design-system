@@ -72,11 +72,11 @@ export const CommentBox = ({
 
   return (
     <>
-      {hasFloatingMenu && (
-        <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
-      )}
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0 }}>
+          {hasFloatingMenu && (
+            <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
+          )}
           <EditorContent editor={ed} onKeyDown={onKeyDown} />
         </EditorContainer>
       </ChatBoxContainer>
