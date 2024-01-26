@@ -1,3 +1,17 @@
+# v3.1.70 (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- Add supports to very long comments [#311](https://github.com/AppQuality/unguess-design-system/pull/311) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- 🐛 fix(chat): remove unnecessary text in chat message [#310](https://github.com/AppQuality/unguess-design-system/pull/310) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.69 (Fri Jan 26 2024)
 
 #### 🐛 Bug Fix
