@@ -168,7 +168,7 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: `Hi <mention data-type="mention" data-mention-id="1" data-mention-name="John Doe">@John Doe</mention>, I'm a comment too but with <strong>bold</strong> askdlhfksadhjfkljafshbcfkjsdhbkjdhfksjdfhabfshdbkfvhksdajhfbvhldsjfvdjshflkvdsbjhfjkvskfhbvasjhfksjbfvsdbvkjshvbkfasjhvfksjhfbkfbvksjhjvfshjvbsdhvdbvskjsdbhfkvsjbfjkvbsdfhwrap`,
+      message: `Hi <mention data-type="mention" data-mention-id="1" data-mention-name="John Doe">@John Doe</mention>, I'm a comment too but with <strong>bold</strong>`,
       date: " | 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",

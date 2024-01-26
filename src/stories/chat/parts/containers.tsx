@@ -30,14 +30,17 @@ export const EditorContainer = styled(FauxInput)<{ editable: boolean }>`
       : `
     margin-left: ${theme.space.sm};
     padding: ${`${theme.space.xxs} ${theme.space.xs}`};
+
+    .ProseMirror {
+      min-height: 36px;
+      outline: none;
+      max-height: 210px;
+      overflow-y: auto;
+    }
     `}
 
   .ProseMirror {
     background-color: transparent;
-    min-height: 36px;
-    outline: none;
-    max-height: 210px;
-    overflow-y: auto;
 
     ${editorStyle}
   }
