@@ -1,3 +1,16 @@
+# v3.1.71 (Mon Jan 29 2024)
+
+#### 🐛 Bug Fix
+
+- UI fixes pre release [#313](https://github.com/AppQuality/unguess-design-system/pull/313) ([@marcbon](https://github.com/marcbon))
+- Fixes-pre-release [#312](https://github.com/AppQuality/unguess-design-system/pull/312) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.70 (Fri Jan 26 2024)
 
 #### 🐛 Bug Fix
