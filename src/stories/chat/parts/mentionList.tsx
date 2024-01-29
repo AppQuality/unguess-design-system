@@ -142,7 +142,7 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
                     key={index}
                     onClick={() => selectItem(index)}
                   >
-                    <MD isBold style={{ color: theme.palette.black }}>
+                    <MD style={{ color: theme.palette.grey[800] }}>
                       {item.name}
                     </MD>
                     <SM style={{ color: theme.palette.grey[600] }}>
