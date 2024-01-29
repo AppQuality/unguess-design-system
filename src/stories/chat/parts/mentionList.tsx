@@ -48,7 +48,7 @@ const Item = styled(Button) <ButtonArgs & { isActive?: boolean }>`
       theme.colors.primaryHue,
       600,
       undefined,
-      0.08
+      0.2
     )};
   `}
 `;
