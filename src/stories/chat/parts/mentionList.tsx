@@ -48,7 +48,7 @@ const Item = styled(Button) <ButtonArgs & { isActive?: boolean }>`
       theme.colors.primaryHue,
       600,
       undefined,
-      0.08
+      0.2
     )};
   `}
 `;
@@ -142,7 +142,7 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
                     key={index}
                     onClick={() => selectItem(index)}
                   >
-                    <MD isBold style={{ color: theme.palette.black }}>
+                    <MD style={{ color: theme.palette.grey[800] }}>
                       {item.name}
                     </MD>
                     <SM style={{ color: theme.palette.grey[600] }}>
