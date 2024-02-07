@@ -1,3 +1,16 @@
+# v3.1.72 (Wed Feb 07 2024)
+
+#### 🐛 Bug Fix
+
+- Update stream player [#315](https://github.com/AppQuality/unguess-design-system/pull/315) ([@d-beezee](https://github.com/d-beezee))
+- chore: Update stream player [#314](https://github.com/AppQuality/unguess-design-system/pull/314) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v3.1.71 (Mon Jan 29 2024)
 
 #### 🐛 Bug Fix
