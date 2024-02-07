@@ -24,10 +24,10 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@appquality/stream-player@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@appquality/stream-player/-/stream-player-1.0.3.tgz#cd8f1599c37de1edb2162cbce332e356d020b5f8"
-  integrity sha512-kZBmDxb3BokBRKU9k3d9Z04rOCGq0UzK2u/iKilcQxp5wsHyPwweXki+6DaqMcZJMjLxKBfsq3QUCxpOMtZXmw==
+"@appquality/stream-player@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@appquality/stream-player/-/stream-player-1.0.6.tgz#b48d195b77ae0070b4d10384eb28573069b79605"
+  integrity sha512-OuAkU3oX7nsJk7nD4MOce0qJeVPG3xij5gibteD0f/lIgNOMnqhL3azaQ/xdk+1KuA5uKVKORwnKK5m/7CyfDA==
   dependencies:
     hls.js "^1.4.8"
 
