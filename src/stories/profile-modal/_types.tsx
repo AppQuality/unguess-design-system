@@ -1,4 +1,4 @@
-import { LiHTMLAttributes } from "react";
+import { InputHTMLAttributes, LiHTMLAttributes } from "react";
 import { NextItemArgs } from "../dropdowns/menu/_types";
 import { ModalArgs } from "../modals/_types";
 
@@ -50,4 +50,9 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
   onLogout: () => void;
   onCopyEmail?: () => void;
   chatSupport?: boolean;
+  settingValue?: number;
+  settingsTitle?: string;
+  settingsIntroText?: string;
+  settingsOutroText?: string;
+  onSetSettings: InputHTMLAttributes<HTMLInputElement>["onChange"];
 }

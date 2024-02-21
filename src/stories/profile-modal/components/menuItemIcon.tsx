@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme } from "../theme";
+import { theme } from "../../theme";
 
-import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-right-stroke.svg";
+import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-left-stroke.svg";
 
 interface IStyledItemIconProps {
   isCompact?: boolean;

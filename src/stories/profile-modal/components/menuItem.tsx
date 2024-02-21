@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { MenuItemIcon, StyledMenuItemIcon } from "./menuItemIcon";
-import { flexCenter, flexStart } from "../theme/mixins";
+import { flexCenter, flexStart } from "../../theme/mixins";
 
-import { theme } from "../theme";
-import { MenuItemProps } from "./_types";
-import { getColor } from "../theme/utils";
+import { theme } from "../../theme";
+import { MenuItemProps } from "../_types";
+import { getColor } from "../../theme/utils";
 
 export interface IStyledItemProps {
   isFocused?: boolean;

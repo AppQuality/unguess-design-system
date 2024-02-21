@@ -1,7 +1,7 @@
-import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-left-stroke.svg";
-import { Button } from "../buttons/button";
+import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-left-stroke.svg";
+import { Button } from "../../buttons/button";
 import styled from "styled-components";
-import { ButtonArgs } from "../buttons/button/_types";
+import { ButtonArgs } from "../../buttons/button/_types";
 
 const StyledButton = styled(Button)`
   color: ${(props) => props.theme.palette.grey[800]};

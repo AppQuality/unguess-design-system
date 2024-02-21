@@ -100,6 +100,13 @@ const defaultArgs: UserMenuArgs = {
   onCopyEmail: () => {
     alert("Copied to clipboard!");
   },
+  settingsTitle: "Notification settings",
+  settingsIntroText: "Settings intro text",
+  settingsOutroText: "Settings outro text",
+  settingValue: 0,
+  onSetSettings: (e) => {
+    alert("Setting changed: " + e);
+  },
 };
 
 export const Default = Template.bind({});
