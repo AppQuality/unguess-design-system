@@ -66,10 +66,13 @@ export const UserMenu = (props: UserMenuArgs) => {
           value={"settings"}
           selectedItem={item}
           setActive={(i) => toggleItem(i)}
-          title={props.settingsTitle || "Settings"}
+          title={props.i18n?.settingsTitle || "Notifications Settings"}
           settingValue={props.settingValue}
-          settingsIntroText={props.settingsIntroText}
-          settingsOutroText={props.settingsOutroText}
+          i18n={{
+            settingsIntroText: props.i18n?.settingsIntroText,
+            settingsOutroText: props.i18n?.settingsOutroText,
+            settingsToggle: props.i18n?.settingsToggle,
+          }}
           onSetSettings={props.onSetSettings}
         />
         <LanguageItem

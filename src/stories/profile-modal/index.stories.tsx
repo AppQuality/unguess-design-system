@@ -3,9 +3,9 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 
-import { ProfileModalArgs, UserMenuArgs } from "./_types";
 import { ProfileModal } from ".";
-import { ToastProvider, useToast, Notification } from "../notifications";
+import { Notification, ToastProvider, useToast } from "../notifications";
+import { ProfileModalArgs, UserMenuArgs } from "./_types";
 
 const languages = {
   en: {
@@ -28,12 +28,8 @@ const csm = {
   // picture: "https://placeimg.com/300/300/animal",
 };
 
-const ProfileModalComponent = ({
-  menuArgs,
-  ...args
-}: ProfileModalArgs) => {
+const ProfileModalComponent = ({ menuArgs, ...args }: ProfileModalArgs) => {
   const { addToast } = useToast();
-
   return (
     <ProfileModal
       {...args}
@@ -100,12 +96,25 @@ const defaultArgs: UserMenuArgs = {
   onCopyEmail: () => {
     alert("Copied to clipboard!");
   },
-  settingsTitle: "Notification settings",
-  settingsIntroText: "Settings intro text",
-  settingsOutroText: "Settings outro text",
+  i18n: {
+    settingsTitle: "Notifications settings",
+    settingsIntroText: "Manage the notifications we send you by email.",
+    settingsOutroText: {
+      paragraph_1: "By turning on notifications, you will be updated on:",
+      paragraph_2:
+        "a comment, a campaign starting, a campaign ending, a mention and an invitation",
+      paragraph_3:
+        "By turning off notifications, you will be only updated on mentions and invitations.",
+    },
+    settingsToggle: {
+      title: "Allow notifications",
+      on: "Yes",
+      off: "No",
+    },
+  },
   settingValue: 0,
-  onSetSettings: (e) => {
-    alert("Setting changed: " + e);
+  onSetSettings: (value: number) => {
+    alert(value === 1 ? "Notifications enabled" : "Notifications disabled");
   },
 };
 

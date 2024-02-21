@@ -10,13 +10,26 @@ import { theme } from "../../theme";
 import { Field } from "../../forms/field";
 import { Label } from "../../label";
 import { useState } from "react";
+import { MD, SM } from "../../typography/typescale";
 
 interface SettingsProps extends MenuItemProps {
-    settingValue?: number;
+  settingValue?: number;
+
+  onSetSettings?: (value: number) => void;
+  i18n?: {
     settingsTitle?: string;
     settingsIntroText?: string;
-    settingsOutroText?: string;
-    onSetSettings?: React.ChangeEventHandler<HTMLInputElement>;
+    settingsOutroText?: {
+      paragraph_1?: string;
+      paragraph_2?: string;
+      paragraph_3?: string;
+    };
+    settingsToggle?: {
+      title: string;
+      on: string;
+      off: string;
+    };
+  };
 }
 
 const StyledBody = styled.div`
@@ -24,44 +37,82 @@ const StyledBody = styled.div`
     ${({ theme }) => theme.space.base * 4}px;
 `;
 
-export const SettingsItem = (props: SettingsProps) => {
-    const [value, setValue] = useState(props.settingValue || 0);
-    
-    const content = (
-        <>
-            <PreviousButton onClick={() => props.setActive("")} isBasic>
-                {props.title}
-            </PreviousButton>
-            <Separator />
-            <StyledBody>
-                {props.settingsIntroText && <Paragraph>{props.settingsIntroText}</Paragraph>}
-                <Field>
-                    <Toggle 
-                        checked={value === 1}
-                        onChange={(e) => {
-                            props.onSetSettings?.(e);
-                            setValue(value === 1 ? 0 : 1);
-                        }
-                    }>
-                        <Label>{props.settingValue}</Label>
-                    </Toggle>
-                </Field>
-                {props.settingsOutroText && <Paragraph>{props.settingsOutroText}</Paragraph>}
-            </StyledBody>
-        </>
-    );
+const TriggerTitle = styled(MD)`
+  color: ${({ theme }) => theme.palette.blue[700]};
+  margin-bottom: ${({ theme }) => theme.space.xs};
+`;
 
-    return (
-        <>
-          <MenuItem
-            content={content}
-            value={props.value}
-            selectedItem={props.selectedItem}
-            setActive={props.setActive}
-            icon={<GearIcon color={theme.palette.blue[600]} />}
+const SettingsIntroText = styled(Paragraph)`
+  margin-bottom: ${({ theme }) => theme.space.md};
+`;
+
+const SettingsOutroText = styled(Paragraph)`
+  display: flex;
+  flex-direction: column;
+  margin-top: ${({ theme }) => theme.space.md};
+`;
+
+export const SettingsItem = (props: SettingsProps) => {
+  const [value, setValue] = useState(props.settingValue || 0);
+
+  const onToggleSettings = (value: number) => {
+    setValue(value);
+    props.onSetSettings && props.onSetSettings(value);
+  };
+
+  const content = (
+    <>
+      <PreviousButton onClick={() => props.setActive("")} isBasic>
+        {props.i18n?.settingsTitle ?? "Notifications Settings"}
+      </PreviousButton>
+      <Separator />
+      <StyledBody>
+        {props.i18n && props.i18n.settingsIntroText && (
+          <SettingsIntroText>
+            <SM>{props.i18n.settingsIntroText}</SM>
+          </SettingsIntroText>
+        )}
+        <Field>
+          <TriggerTitle isBold>
+            {props.i18n?.settingsToggle?.title ?? "Allow notifications"}
+          </TriggerTitle>
+          <Toggle
+            checked={value === 1}
+            onChange={() => onToggleSettings(value === 1 ? 0 : 1)}
           >
-            {props.title}
-          </MenuItem>
-        </>
-      );
+            <Label>
+              {value === 1
+                ? props.i18n?.settingsToggle?.on ?? "Yes"
+                : props.i18n?.settingsToggle?.off ?? "No"}
+            </Label>
+          </Toggle>
+        </Field>
+        {props.i18n && props.i18n.settingsOutroText && (
+          <>
+            <SettingsOutroText>
+              <SM>{props.i18n.settingsOutroText.paragraph_1}</SM>
+              <SM>{props.i18n.settingsOutroText.paragraph_2}</SM>
+            </SettingsOutroText>
+            <SettingsOutroText>
+              <SM>{props.i18n.settingsOutroText.paragraph_3}</SM>
+            </SettingsOutroText>
+          </>
+        )}
+      </StyledBody>
+    </>
+  );
+
+  return (
+    <>
+      <MenuItem
+        content={content}
+        value={props.value}
+        selectedItem={props.selectedItem}
+        setActive={props.setActive}
+        icon={<GearIcon color={theme.palette.blue[600]} />}
+      >
+        {props.title}
+      </MenuItem>
+    </>
+  );
 };
