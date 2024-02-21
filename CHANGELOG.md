@@ -12,6 +12,20 @@
 
 ---
 
+# v3.1.73 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- profile modal [#317](https://github.com/AppQuality/unguess-design-system/pull/317) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+- Profile modal notifications [#316](https://github.com/AppQuality/unguess-design-system/pull/316) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.72 (Wed Feb 07 2024)
 
 #### 🐛 Bug Fix
