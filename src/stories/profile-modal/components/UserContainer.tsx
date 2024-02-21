@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { Avatar } from "../avatar";
-import { theme } from "../theme";
-import { flexColumnCenter } from "../theme/mixins";
-import { MD, SM } from "../typography/typescale";
-import { getInitials } from "./utils";
-import { UserProfileProps } from "./_types";
+import { Avatar } from "../../avatar";
+import { theme } from "../../theme";
+import { flexColumnCenter } from "../../theme/mixins";
+import { MD, SM } from "../../typography/typescale";
+import { getInitials } from "../utils";
+import { UserProfileProps } from "../_types";
 import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 const ProfileContainer = styled.div`

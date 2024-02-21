@@ -3,14 +3,15 @@ import { UserMenuArgs } from "./_types";
 import { ReactComponent as ExitIcon } from "../../assets/icons/exit.svg";
 import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
 import { ReactComponent as LockIcon } from "../../assets/icons/lock-locked-fill.svg";
-import { MenuItem, MenuItemBody } from "./menuItem";
+import { MenuItem, MenuItemBody } from "./components/menuItem";
 import styled from "styled-components";
-import { HelpItem } from "./helpMenuItem";
-import { LanguageItem } from "./languageMenuItem";
+import { HelpItem } from "./items/helpMenuItem";
+import { LanguageItem } from "./items/languageMenuItem";
 import { theme } from "../theme";
 import { Separator } from "../dropdowns/menu";
 import { MD } from "../typography/typescale";
-import { UserContainer } from "./UserContainer";
+import { UserContainer } from "./components/UserContainer";
+import { SettingsItem } from "./items/settingsMenuItem";
 
 const StyledList = styled.ul`
   padding: 0;
@@ -60,6 +61,19 @@ export const UserMenu = (props: UserMenuArgs) => {
           copyLabel={props?.copyLabel}
           onCopyEmail={props?.onCopyEmail}
           chatSupport={props?.chatSupport}
+        />
+        <SettingsItem
+          value={"settings"}
+          selectedItem={item}
+          setActive={(i) => toggleItem(i)}
+          title={props.i18n?.settingsTitle || "Notifications Settings"}
+          settingValue={props.settingValue}
+          i18n={{
+            settingsIntroText: props.i18n?.settingsIntroText,
+            settingsOutroText: props.i18n?.settingsOutroText,
+            settingsToggle: props.i18n?.settingsToggle,
+          }}
+          onSetSettings={props.onSetSettings}
         />
         <LanguageItem
           title={props.languageTitle || "Change Language"}

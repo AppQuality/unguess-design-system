@@ -1,17 +1,17 @@
-import { MenuItem, MenuItemBody } from "./menuItem";
+import { MenuItem, MenuItemBody } from "../components/menuItem";
 
-import { ReactComponent as CheckIcon } from "../../assets/icons/check-lg.svg";
-import { ReactComponent as EmptyIcon } from "../../assets/icons/empty.svg";
-import { ReactComponent as TranslationIcon } from "../../assets/icons/translation-exists.svg";
-import { PreviousButton } from "./previousMenuButton";
-import { Separator } from "../dropdowns/menu";
-import { MD } from "../typography/typescale";
+import { ReactComponent as CheckIcon } from "../../../assets/icons/check-lg.svg";
+import { ReactComponent as EmptyIcon } from "../../../assets/icons/empty.svg";
+import { ReactComponent as TranslationIcon } from "../../../assets/icons/translation-exists.svg";
+import { PreviousButton } from "../components/previousMenuButton";
+import { Separator } from "../../dropdowns/menu";
+import { MD } from "../../typography/typescale";
 import styled from "styled-components";
-import { theme } from "../theme";
-import { flexStart } from "../theme/mixins";
-import { Button } from "../buttons/button";
-import { Language, MenuItemProps } from "./_types";
-import { Span } from "../typography/span";
+import { theme } from "../../theme";
+import { flexStart } from "../../theme/mixins";
+import { Button } from "../../buttons/button";
+import { Language, MenuItemProps } from "../_types";
+import { Span } from "../../typography/span";
 
 interface LanguagesProps extends MenuItemProps {
   title: string;

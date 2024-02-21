@@ -1,20 +1,20 @@
-import { MenuItem } from "./menuItem";
-import { ReactComponent as QuestionMark } from "../../assets/icons/question-mark.svg";
-import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
-import { ReactComponent as InfoFill } from "../../assets/icons/info-fill.svg";
-import { PreviousButton } from "./previousMenuButton";
-import { Separator } from "../dropdowns/menu";
-import { Paragraph } from "../typography/paragraph";
-import { MD, SM } from "../typography/typescale";
-import { Avatar } from "../avatar";
+import { MenuItem } from "../components/menuItem";
+import { ReactComponent as QuestionMark } from "../../../assets/icons/question-mark.svg";
+import { ReactComponent as CopyIcon } from "../../../assets/icons/copy.svg";
+import { ReactComponent as InfoFill } from "../../../assets/icons/info-fill.svg";
+import { PreviousButton } from "../components/previousMenuButton";
+import { Separator } from "../../dropdowns/menu";
+import { Paragraph } from "../../typography/paragraph";
+import { MD, SM } from "../../typography/typescale";
+import { Avatar } from "../../avatar";
 import styled from "styled-components";
-import { theme } from "../theme";
-import { flexCenter } from "../theme/mixins";
-import { Button } from "../buttons/button";
-import { Anchor } from "../buttons/anchor";
-import { MenuItemProps } from "./_types";
-import { getInitials } from "./utils";
-import { getColor } from "../theme/utils";
+import { theme } from "../../theme";
+import { flexCenter } from "../../theme/mixins";
+import { Button } from "../../buttons/button";
+import { Anchor } from "../../buttons/anchor";
+import { MenuItemProps } from "../_types";
+import { getInitials } from "../utils";
+import { getColor } from "../../theme/utils";
 
 interface HelpItemProps extends MenuItemProps {
   title: string;
