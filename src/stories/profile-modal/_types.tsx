@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, LiHTMLAttributes } from "react";
+import { LiHTMLAttributes } from "react";
 import { NextItemArgs } from "../dropdowns/menu/_types";
 import { ModalArgs } from "../modals/_types";
 

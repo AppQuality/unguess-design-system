@@ -63,7 +63,7 @@ export const SettingsItem = (props: SettingsProps) => {
   const content = (
     <>
       <PreviousButton onClick={() => props.setActive("")} isBasic>
-        {props.i18n?.settingsTitle ?? "Notifications Settings"}
+        {props.i18n?.settingsTitle}
       </PreviousButton>
       <Separator />
       <StyledBody>
@@ -74,7 +74,7 @@ export const SettingsItem = (props: SettingsProps) => {
         )}
         <Field>
           <TriggerTitle isBold>
-            {props.i18n?.settingsToggle?.title ?? "Allow notifications"}
+            {props.i18n?.settingsToggle?.title}
           </TriggerTitle>
           <Toggle
             checked={value === 1}
@@ -82,8 +82,8 @@ export const SettingsItem = (props: SettingsProps) => {
           >
             <Label>
               {value === 1
-                ? props.i18n?.settingsToggle?.on ?? "Yes"
-                : props.i18n?.settingsToggle?.off ?? "No"}
+                ? props.i18n?.settingsToggle?.on
+                : props.i18n?.settingsToggle?.off}
             </Label>
           </Toggle>
         </Field>
@@ -111,7 +111,7 @@ export const SettingsItem = (props: SettingsProps) => {
         setActive={props.setActive}
         icon={<GearIcon color={theme.palette.blue[600]} />}
       >
-        {props.title}
+        {props.i18n?.settingsTitle}
       </MenuItem>
     </>
   );

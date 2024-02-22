@@ -70,7 +70,7 @@ export const UserMenu = (props: UserMenuArgs) => {
           title={props.i18n?.settingsTitle || "Notifications Settings"}
           i18n={{
             settingsTitle:
-              props.i18n?.settingsTitle || "Notifications Settings",
+            props.i18n?.settingsTitle || "Notifications Settings",
             settingsIntroText: props.i18n?.settingsIntroText,
             settingsOutroText: props.i18n?.settingsOutroText,
             settingsToggle: props.i18n?.settingsToggle,
