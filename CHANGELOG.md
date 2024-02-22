@@ -1,3 +1,17 @@
+# v3.1.76 (Thu Feb 22 2024)
+
+#### 🐛 Bug Fix
+
+- profile modal fixes [#319](https://github.com/AppQuality/unguess-design-system/pull/319) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- fixed title translation [#318](https://github.com/AppQuality/unguess-design-system/pull/318) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.73 (Wed Feb 21 2024)
 
 #### 🐛 Bug Fix
