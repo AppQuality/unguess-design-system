@@ -66,9 +66,11 @@ export const UserMenu = (props: UserMenuArgs) => {
           value={"settings"}
           selectedItem={item}
           setActive={(i) => toggleItem(i)}
-          title={props.i18n?.settingsTitle || "Notifications Settings"}
           settingValue={props.settingValue}
+          title={props.i18n?.settingsTitle || "Notifications Settings"}
           i18n={{
+            settingsTitle:
+            props.i18n?.settingsTitle || "Notifications Settings",
             settingsIntroText: props.i18n?.settingsIntroText,
             settingsOutroText: props.i18n?.settingsOutroText,
             settingsToggle: props.i18n?.settingsToggle,
