@@ -8,6 +8,7 @@ const StyledButton = styled(Button)`
   font-weight: ${(props) => props.theme.fontWeights.semibold};
   padding-left: 0;
   justify-content: flex-start;
+  border-radius: 0;
 `;
 
 export const PreviousButton = (props: ButtonArgs) => (
