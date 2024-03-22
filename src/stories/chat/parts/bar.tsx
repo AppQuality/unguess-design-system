@@ -6,6 +6,7 @@ import { isMac } from "../../theme/utils";
 import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-fill.svg";
 import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.svg";
 import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
+import { ReactComponent as AttachmentIcon } from "../../../assets/icons/file-image-stroke.svg";
 import { IconButton } from "../../buttons/icon-button";
 
 const MenuContainer = styled.div`
@@ -30,10 +31,13 @@ const CommentBar = ({
 }: Partial<ChatEditorArgs> & {
   editor?: Editor;
 }) => {
+  if (!editor) return null;
 
-  if(!editor) return null;
+  type MenuItem = {
+    type: "bold" | "italic" | "mention" | "attachment";
+  };
 
-  const getIcon = (type: "bold" | "italic" | "mention") => {
+  const getIcon = (type: MenuItem["type"]) => {
     switch (type) {
       case "bold":
         return <BoldIcon />;
@@ -41,12 +45,14 @@ const CommentBar = ({
         return <ItalicIcon />;
       case "mention":
         return <MentionIcon />;
+      case "attachment":
+        return <AttachmentIcon />;
       default:
         return null;
     }
   };
 
-  const handleClick = (type: "bold" | "italic" | "mention") => {
+  const handleClick = (type: MenuItem["type"]) => {
     switch (type) {
       case "bold":
         return editor.chain().focus().toggleBold().run();
@@ -56,6 +62,26 @@ const CommentBar = ({
         const { from } = editor.state.selection;
         const char = from > 1 ? " @" : "@";
         return editor.chain().focus().insertContent(char).run();
+      case "attachment":
+        //open a file browser to select one or more images
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        fileInput.multiple = true;
+        fileInput.click();
+        fileInput.onchange = () => {
+          const files = fileInput.files;
+          if (files) {
+            Array.from(files).forEach((file) => {
+              editor
+                .chain()
+                .focus()
+                .setImage({ src: URL.createObjectURL(file), alt: file.name })
+                .run();
+            });
+          }
+        };
+        return;
       default:
         return;
     }
@@ -64,7 +90,9 @@ const CommentBar = ({
   return (
     <MenuContainer id="menu-container">
       <Tooltip
-        content={`${i18n?.menu?.bold ?? "Bold text"} ${isMac() ? "Cmd" : "Ctrl"} + B`}
+        content={`${i18n?.menu?.bold ?? "Bold text"} ${
+          isMac() ? "Cmd" : "Ctrl"
+        } + B`}
         placement="top"
         type="light"
         size="small"
@@ -81,7 +109,9 @@ const CommentBar = ({
         </IconButton>
       </Tooltip>
       <Tooltip
-        content={`${i18n?.menu?.italic ?? "Italic text"} ${isMac() ? "Cmd" : "Ctrl"} + I`}
+        content={`${i18n?.menu?.italic ?? "Italic text"} ${
+          isMac() ? "Cmd" : "Ctrl"
+        } + I`}
         placement="top"
         type="light"
         size="small"
@@ -113,6 +143,23 @@ const CommentBar = ({
           onClick={() => handleClick("mention")}
         >
           {getIcon("mention")}
+        </IconButton>
+      </Tooltip>
+      <Tooltip
+        content={i18n?.menu?.attachment ?? "Upload a file"}
+        placement="top"
+        type="light"
+        size="small"
+        hasArrow={false}
+      >
+        <IconButton
+          size={"small"}
+          isBasic={!editor.isActive("attachment")}
+          isPrimary={editor.isActive("attachment")}
+          isPill={false}
+          onClick={() => handleClick("attachment")}
+        >
+          {getIcon("attachment")}
         </IconButton>
       </Tooltip>
     </MenuContainer>

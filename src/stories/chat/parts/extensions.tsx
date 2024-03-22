@@ -9,6 +9,8 @@ import { CustomMention as Mention } from "./mention";
 import { MentionList, MentionListRef } from "./mentionList";
 import tippy, { type Instance as TippyInstance } from "tippy.js";
 import { SuggestedUser } from "../_types";
+import Image from "@tiptap/extension-image";
+import Dropcursor from "@tiptap/extension-dropcursor";
 
 /**
  * Workaround for the current typing incompatibility between Tippy.js and Tiptap
@@ -44,6 +46,17 @@ export const editorExtensions = ({
     Typography,
     Link,
     StarterKit,
+    Image.configure({
+      inline: true,
+      allowBase64: true,
+      HTMLAttributes: {
+        class: "comment-image",
+      },
+    }),
+    Dropcursor.configure({
+      color: "#ff0000",
+      width: 2,
+    }),
     Placeholder.configure({
       placeholder: ({ node }) => {
         if (node.type.name === "heading") {
