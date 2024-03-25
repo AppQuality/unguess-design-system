@@ -55,8 +55,7 @@ export const CommentBox = ({
         return false;
       },
       handleDrop: function (view, event, slice, moved) {
-        if (!moved || !event.dataTransfer || !event.dataTransfer.files)
-          return false;
+        if (!event.dataTransfer || !event.dataTransfer.files) return false;
 
         const files = Array.from(event.dataTransfer.files);
         const imageFiles = files.filter((file) => /^image\//.test(file.type));
