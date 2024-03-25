@@ -55,7 +55,7 @@ export const editorExtensions = ({
     }),
     Dropcursor.configure({
       color: "#ff0000",
-      width: 2,
+      width: 3,
     }),
     Placeholder.configure({
       placeholder: ({ node }) => {
