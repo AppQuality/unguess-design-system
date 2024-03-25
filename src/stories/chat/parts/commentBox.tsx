@@ -54,12 +54,42 @@ export const CommentBox = ({
 
         return false;
       },
+      handleDrop: function (view, event, slice, moved) {
+        if (!moved || !event.dataTransfer || !event.dataTransfer.files)
+          return false;
+
+        const files = Array.from(event.dataTransfer.files);
+        const imageFiles = files.filter((file) => /^image\//.test(file.type));
+
+        if (imageFiles.length === 0) return false;
+
+        event.preventDefault();
+
+        imageFiles.forEach(async (file) => {
+          try {
+            const imageDataUrl = URL.createObjectURL(file);
+            const node = view.state.schema.nodes.image.create({
+              src: imageDataUrl,
+            });
+
+            const transaction = view.state.tr.replaceSelectionWith(node);
+            view.dispatch(transaction);
+          } catch (error) {
+            console.error(
+              "Errore durante il caricamento dell'immagine:",
+              error
+            );
+          }
+        });
+
+        return false;
+      },
     },
     ...props,
   });
 
-  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => { 
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter" ) {
+  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
       triggerSave();
       editor?.commands.clearContent();
     }

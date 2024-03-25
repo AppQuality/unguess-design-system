@@ -112,12 +112,6 @@ const Editor = ({
 
         return false;
       },
-      handleDrop: function (view, event, slice, moved) {
-        // handle the drop event
-      },
-      handlePaste(view, event, slice) {
-        // handle the paste event
-      },
     },
     ...props,
   });
