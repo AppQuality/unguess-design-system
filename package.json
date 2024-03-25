@@ -37,6 +37,8 @@
     "@nivo/waffle": "^0.80.0",
     "@tiptap/extension-bubble-menu": "2.1.16",
     "@tiptap/extension-character-count": "2.1.16",
+    "@tiptap/extension-dropcursor": "^2.2.4",
+    "@tiptap/extension-image": "^2.2.4",
     "@tiptap/extension-link": "2.1.16",
     "@tiptap/extension-mention": "2.1.16",
     "@tiptap/extension-placeholder": "2.1.16",

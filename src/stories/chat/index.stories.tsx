@@ -47,10 +47,23 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
       <Chat.Input {...args}>{args.editorText}</Chat.Input>
       <Chat.Footer showShortcut>
         <ButtonsContainer>
-          <Button size="small" style={{fontSize:theme.fontSizes.sm}} isBasic onClick={() => editor?.commands.clearContent()}>
+          <Button
+            size="small"
+            style={{ fontSize: theme.fontSizes.sm }}
+            isBasic
+            onClick={() => editor?.commands.clearContent()}
+          >
             Cancel
           </Button>
-          <Button size="small" style={{fontSize:theme.fontSizes.sm}} isAccent isPrimary onClick={triggerSave}>Save</Button>
+          <Button
+            size="small"
+            style={{ fontSize: theme.fontSizes.sm }}
+            isAccent
+            isPrimary
+            onClick={triggerSave}
+          >
+            Save
+          </Button>
         </ButtonsContainer>
       </Chat.Footer>
     </Chat>
@@ -64,55 +77,55 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
         id: 1,
         name: "John Doe",
         avatar: "https://i.pravatar.cc/150?img=1",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 2,
         name: "Jane Doe",
         avatar: "https://i.pravatar.cc/150?img=2",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 3,
         name: "John Smith",
         avatar: "https://i.pravatar.cc/150?img=3",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 4,
         name: "Jane Smith",
         avatar: "https://i.pravatar.cc/150?img=4",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 5,
         name: "Pippo Baudo",
         avatar: "https://i.pravatar.cc/150?img=5",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 6,
         name: "Pippo Franco",
         avatar: "https://i.pravatar.cc/150?img=6",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 7,
         name: "Pippo Inzaghi",
         avatar: "https://i.pravatar.cc/150?img=7",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 8,
         name: "Pippo Civati",
         avatar: "https://i.pravatar.cc/150?img=8",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
       {
         id: 9,
         name: "Pippo Delbono",
         avatar: "https://i.pravatar.cc/150?img=9",
-        email:"test@gmail.com"
+        email: "test@gmail.com",
       },
     ].filter((item) => {
       if (!query) return item;
@@ -175,6 +188,14 @@ const defaultArgs: EditorStoryArgs = {
         avatar: "MB",
       },
     },
+    {
+      message: `This is an image: <br /><br /> <img src="https://source.unsplash.com/8xznAGy4HcY/500x250" alt="dune in bianco e nero" />`,
+      date: " | 21 mar. 2024 | 12:00",
+      author: {
+        name: "Marco M.",
+        avatar: "MM",
+      },
+    },
   ],
 };
 
@@ -212,9 +233,11 @@ Menus.args = {
       bold: "Grassetto",
       italic: "Corsivo",
       mention: "Menziona",
+      attachment: "Allega un file",
     },
     mention: {
-      noResults: "Nessun risultato. Vai su \"Invita\" per aggiungere nuove persone alla campagna.",
+      noResults:
+        'Nessun risultato. Vai su "Invita" per aggiungere nuove persone alla campagna.',
     },
   },
 };
@@ -223,7 +246,7 @@ export const WithInternals = Template.bind({});
 WithInternals.args = {
   ...defaultArgs,
   comments: [
-    ...defaultArgs.comments || [],
+    ...(defaultArgs.comments || []),
     {
       message: "Hi, I'm a comment from an internal user",
       date: " | 27 dic. 2023 | 12:00",
