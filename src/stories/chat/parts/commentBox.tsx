@@ -6,8 +6,8 @@ import {
   Content,
 } from "@tiptap/react";
 import { ChatEditorArgs } from "../_types";
-import { createPortal } from "react-dom";
-import { KeyboardEvent as ReactKeyboardEvent, PropsWithChildren } from "react";
+import ReactDOM from "react-dom";
+import { KeyboardEvent as ReactKeyboardEvent, PropsWithChildren, useState } from "react";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
@@ -15,9 +15,8 @@ import { CommentBar } from "./bar";
 import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
 import { EditorView } from "@tiptap/pm/view";
-import { LightboxArgs } from "../../lightbox/_types";
-import { Lightbox } from "../../lightbox";
 import ThumbnailContainer from "./ThumbnailContainer";
+import { Lightbox } from "../../lightbox";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -45,6 +44,7 @@ export const CommentBox = ({
   const { children, hasFloatingMenu, hasButtonsMenu, bubbleOptions, i18n } =
     props;
   const { editor, setEditor, mentionableUsers, triggerSave } = useChatContext();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
 
@@ -72,34 +72,31 @@ export const CommentBox = ({
 
         event.preventDefault();
 
-        view.dom.parentElement?.appendChild(thumbnail_container);
+        // view.dom.parentElement?.appendChild(thumbnail_container);
+        ReactDOM.render(<ThumbnailContainer openLightbox={setIsOpen} imagefiles={imageFiles} />, view.dom.parentElement);
 
-        /*if (view.dom.parentElement) {
-          window.alert("create portal");
-          createPortal(<ThumbnailContainer />, view.dom.parentElement);
-        }*/
-        imageFiles.forEach(async (file) => {
-          try {
-            // create the thumbnail
+        // imageFiles.forEach(async (file) => {
+        //   try {
+        //     // create the thumbnail
 
-            const img = createThumbnailImage(file);
-            const single_thumbnail = createSingleThumbnail(img);
-            const x = deleteThumbnailAction(
-              single_thumbnail,
-              thumbnail_container,
-              img
-            );
+        //     const img = createThumbnailImage(file);
+        //     const single_thumbnail = createSingleThumbnail(img);
+        //     const x = deleteThumbnailAction(
+        //       single_thumbnail,
+        //       thumbnail_container,
+        //       img
+        //     );
 
-            console.log("carico su s3");
+        //     console.log("carico su s3");
 
-            const label = createMediaLabel(file);
-            single_thumbnail.appendChild(x);
-            single_thumbnail.appendChild(label);
-            thumbnail_container?.appendChild(single_thumbnail);
-          } catch (error) {
-            console.error("Error while uploading the image: ", error);
-          }
-        });
+        //     const label = createMediaLabel(file);
+        //     single_thumbnail.appendChild(x);
+        //     single_thumbnail.appendChild(label);
+        //     thumbnail_container?.appendChild(single_thumbnail);
+        //   } catch (error) {
+        //     console.error("Error while uploading the image: ", error);
+        //   }
+        // });
 
         return false;
       },
@@ -158,6 +155,15 @@ export const CommentBox = ({
 
   return (
     <>
+      {isOpen && (
+        <Lightbox>
+          <Lightbox.Header title="Lightbox Title" />
+          <Lightbox.Body>
+            <div>content</div>
+          </Lightbox.Body>
+        </Lightbox>
+        )
+  }
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0 }}>
           {hasFloatingMenu && (
