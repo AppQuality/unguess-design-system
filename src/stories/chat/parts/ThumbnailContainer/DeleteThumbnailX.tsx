@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-//create a red X to the thumbnail to eliminate the thumbnail using the styled component
-
 const StyledDeleteThumbnailX = styled.div`
   position: absolute;
   top: 0;

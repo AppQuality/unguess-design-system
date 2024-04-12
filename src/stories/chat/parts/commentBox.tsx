@@ -79,9 +79,10 @@ export const CommentBox = ({
 
         view.dom.parentElement?.appendChild(thumbnailSection);
 
+        console.log("commentBox imageFiles", imageFiles);
         ReactDOM.render(
           <ThumbnailContainer
-            //openLightbox={setIsOpen}
+            openLightbox={setIsOpen}
             imagefiles={imageFiles}
           />,
 
@@ -97,7 +98,7 @@ export const CommentBox = ({
         return false;
       },
 
-      handlePaste: (view, event, slice) => {
+      /*handlePaste: (view, event, slice) => {
         if (!event.clipboardData || !event.clipboardData.items) return false;
 
         event.preventDefault();
@@ -131,7 +132,7 @@ export const CommentBox = ({
         }
 
         return true;
-      },
+      },*/
     },
     ...props,
   });
@@ -152,10 +153,10 @@ export const CommentBox = ({
   return (
     <>
       {isOpen && (
-        <Lightbox>
+        <Lightbox onClose={() => setIsOpen(false)}>
           <Lightbox.Header title="Lightbox Title" />
           <Lightbox.Body>
-            <div>content</div>
+            <div></div>
           </Lightbox.Body>
         </Lightbox>
       )}
@@ -171,19 +172,6 @@ export const CommentBox = ({
     </>
   );
 };
-function createMediaLabel(file: File) {
-  const label = document.createElement("div");
-  label.style.position = "absolute";
-  label.style.bottom = "0";
-  label.style.left = "0";
-  label.style.color = "black";
-  label.style.marginBottom = "0";
-  label.style.marginLeft = "5px";
-  label.style.fontSize = "10px";
-  label.style.fontWeight = "400";
-  label.innerHTML = file.name;
-  return label;
-}
 
 function deleteThumbnailAction(
   single_thumbnail: HTMLDivElement,

@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
 import Thumbnail from "./Thumbnail";
-import { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import DeleteThumbnailX from "./DeleteThumbnailX";
+import { useCallback, useEffect, useState } from "react";
 
 const StyledThumbnailContainer = styled.div`
   display: grid;
@@ -20,35 +18,41 @@ const StyledThumbnailContainer = styled.div`
 
 interface Props {
   imagefiles: File[];
-  //openLightbox: (isOpen: boolean) => void;
+  openLightbox: (isOpen: boolean) => void;
 }
 
-const ThumbnailContainer = ({ imagefiles /*openLightbox*/ }: Props) => {
+const ThumbnailContainer = ({ imagefiles, openLightbox }: Props) => {
+  const [thumbnails, setThumbnails] = useState<File[]>(imagefiles);
+  const deleteThumbnail = (index: number) => {
+    console.log("delete imageFiles", imagefiles);
+    setThumbnails([...thumbnails.toSpliced(index, 1)]);
+  };
+
   useEffect(() => {
     // todo: upload to s3
-    console.log(imagefiles);
+    setThumbnails(imagefiles);
+    console.log("useEffect imageFiles", imagefiles);
   }, [imagefiles]);
 
-  if (!imagefiles || imagefiles.length === 0) {
+  if (!thumbnails || thumbnails.length === 0) {
     return null;
   }
 
   return (
-    <>
-      <StyledThumbnailContainer className="thumbnailContainer">
-        {imagefiles.map((file, index) => {
-          return (
-            // <div onClick={() => openLightbox(true)}>
-            <Thumbnail
-              key={index}
-              src={URL.createObjectURL(file)}
-              label={file.name}
-            ></Thumbnail>
-            //  </div>
-          );
-        })}
-      </StyledThumbnailContainer>
-    </>
+    <StyledThumbnailContainer className="thumbnailContainer">
+      {thumbnails.map((file, index) => {
+        return (
+          <Thumbnail
+            index={index}
+            removeThumbnail={deleteThumbnail}
+            onClick={() => openLightbox(true)}
+            key={index}
+            src={URL.createObjectURL(file)}
+            label={file.name}
+          ></Thumbnail>
+        );
+      })}
+    </StyledThumbnailContainer>
   );
 };
 

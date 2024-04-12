@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
+import { useState } from "react";
+import { Lightbox } from "../../../lightbox";
 
 const StyledThumbnail = styled.div`
   border-radius: 10px;
@@ -28,20 +30,18 @@ const StyledThumbnail = styled.div`
 interface Props {
   src: string;
   label: string;
+  index: number;
+  removeThumbnail: (index: number) => void;
+  onClick: () => void;
 }
 
-const Thumbnail = ({ src, label }: Props) => {
+const Thumbnail = ({ src, label, index, removeThumbnail }: Props) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleCancel = () => {
     console.log("cancel: ", src);
-    const thumbnailContainer = document.querySelector(".thumbnailContainer")!;
-    const thumbnailToDelete = thumbnailContainer.querySelector(
-      `img[src="${src}"]`
-    )!.parentElement!;
-    thumbnailContainer.removeChild(thumbnailToDelete);
-    if (thumbnailContainer.childElementCount === 0) {
-      thumbnailContainer.remove();
-    }
+    removeThumbnail(index);
   };
+
   return (
     <StyledThumbnail className="singleThumbnail">
       <DeleteThumbnailX
