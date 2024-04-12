@@ -7,7 +7,12 @@ import {
 } from "@tiptap/react";
 import { ChatEditorArgs } from "../_types";
 import ReactDOM from "react-dom";
-import { KeyboardEvent as ReactKeyboardEvent, PropsWithChildren, useState } from "react";
+import {
+  KeyboardEvent as ReactKeyboardEvent,
+  PropsWithChildren,
+  useState,
+  createElement,
+} from "react";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
@@ -62,9 +67,6 @@ export const CommentBox = ({
       handleDrop: function (view, event, slice, moved) {
         if (!event.dataTransfer || !event.dataTransfer.files) return false;
 
-        const thumbnail_container: HTMLElement | null =
-          createThumbnailContainer();
-
         const files = Array.from(event.dataTransfer.files);
         const imageFiles = files.filter((file) => /^image\//.test(file.type));
 
@@ -72,31 +74,25 @@ export const CommentBox = ({
 
         event.preventDefault();
 
-        // view.dom.parentElement?.appendChild(thumbnail_container);
-        ReactDOM.render(<ThumbnailContainer openLightbox={setIsOpen} imagefiles={imageFiles} />, view.dom.parentElement);
+        const thumbnailSection = document.createElement("div");
+        thumbnailSection.className = "thumbnailSection";
 
-        // imageFiles.forEach(async (file) => {
-        //   try {
-        //     // create the thumbnail
+        view.dom.parentElement?.appendChild(thumbnailSection);
 
-        //     const img = createThumbnailImage(file);
-        //     const single_thumbnail = createSingleThumbnail(img);
-        //     const x = deleteThumbnailAction(
-        //       single_thumbnail,
-        //       thumbnail_container,
-        //       img
-        //     );
+        ReactDOM.render(
+          <ThumbnailContainer
+            //openLightbox={setIsOpen}
+            imagefiles={imageFiles}
+          />,
 
-        //     console.log("carico su s3");
+          thumbnailSection
+        );
 
-        //     const label = createMediaLabel(file);
-        //     single_thumbnail.appendChild(x);
-        //     single_thumbnail.appendChild(label);
-        //     thumbnail_container?.appendChild(single_thumbnail);
-        //   } catch (error) {
-        //     console.error("Error while uploading the image: ", error);
-        //   }
-        // });
+        /*const node = view.state.schema.nodes.image.create({
+          src: imageUrl,
+        });
+        const transaction = view.state.tr.replaceSelectionWith(node);
+        view.dispatch(transaction);*/
 
         return false;
       },
@@ -144,7 +140,7 @@ export const CommentBox = ({
     if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
       triggerSave();
       editor?.commands.clearContent();
-      editor?.commands.deleteNode("thumbnail-container");
+      //todo: update the media comment id with the proper comment id
     }
   };
 
@@ -162,8 +158,7 @@ export const CommentBox = ({
             <div>content</div>
           </Lightbox.Body>
         </Lightbox>
-        )
-  }
+      )}
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0 }}>
           {hasFloatingMenu && (
