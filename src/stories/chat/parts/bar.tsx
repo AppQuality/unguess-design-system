@@ -8,7 +8,11 @@ import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.
 import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
 import { ReactComponent as AttachmentIcon } from "../../../assets/icons/clipboard.svg";
 import { IconButton } from "../../buttons/icon-button";
-import { createSingleThumbnail } from "./commentBox";
+import ThumbnailContainer from "./ThumbnailContainer";
+import ReactDOM from "react-dom";
+import { useState } from "react";
+import { Lightbox } from "../../lightbox";
+import { Slider } from "../../slider";
 
 const MenuContainer = styled.div`
   padding: ${({ theme }) => theme.space.xs} 0;
@@ -32,10 +36,25 @@ const CommentBar = ({
 }: Partial<ChatEditorArgs> & {
   editor?: Editor;
 }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<File>({} as File);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
   if (!editor) return null;
 
   type MenuItem = {
     type: "bold" | "italic" | "mention" | "attachment";
+  };
+
+  const handleOpenLightbox = (file: File, index: number) => {
+    if (!file) throw Error("Error with the image");
+
+    setSelectedImage(file);
+    setSelectedImageIndex(index);
+    setIsOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsOpen(false);
   };
 
   const getIcon = (type: MenuItem["type"]) => {
@@ -74,79 +93,18 @@ const CommentBar = ({
         fileInput.onchange = () => {
           const files = fileInput.files;
           if (files) {
-            const thumbnail_container: HTMLElement | null =
-              document.createElement("div");
+            const thumbnailSection = document.createElement("div");
+            thumbnailSection.className = "thumbnailSection";
 
-            thumbnail_container.className = "thumbnail-container";
+            editor.view.dom.parentElement?.appendChild(thumbnailSection);
 
-            thumbnail_container.style.display = "grid";
-            thumbnail_container.style.gridTemplateColumns = "auto auto auto";
-            thumbnail_container.style.overflowY = "scroll";
-            thumbnail_container.style.justifyItems = "center";
-            thumbnail_container.style.gap = "10px";
-            thumbnail_container.style.backgroundColor = "white";
-            thumbnail_container.style.width = "100%";
-
-            Array.from(files).forEach((file) => {
-              try {
-                // create the thumbnail
-                const img = document.createElement("img");
-                img.src = URL.createObjectURL(file);
-                img.style.width = "100%";
-                img.style.height = "100%";
-                img.style.borderRadius = "10%";
-                const single_thumbnail = createSingleThumbnail(img);
-                //add a red X to the thumbnail to eliminate the thumbnail
-                const x = document.createElement("div");
-                x.style.position = "absolute";
-                x.style.top = "0";
-                x.style.right = "0";
-                x.style.color = "white";
-                x.style.cursor = "pointer";
-                x.style.fontSize = "15px";
-                x.style.fontWeight = "100";
-                x.style.opacity = "0";
-                x.innerHTML = "╳";
-
-                x.style.backgroundColor = "gray";
-                x.style.borderRadius = "50%";
-                x.style.width = "35px";
-                x.style.height = "35px";
-                x.style.display = "flex";
-                x.style.justifyContent = "center";
-                x.style.alignItems = "center";
-
-                single_thumbnail.addEventListener("mouseover", () => {
-                  x.style.opacity = "1";
-                });
-                single_thumbnail.addEventListener("mouseleave", () => {
-                  x.style.opacity = "0";
-                });
-
-                x.addEventListener("click", () => {
-                  thumbnail_container?.removeChild(single_thumbnail);
-                  console.log("delete " + img.src);
-                });
-                single_thumbnail.appendChild(x);
-
-                //add a label with the name of the image
-                const label = document.createElement("div");
-                label.style.position = "absolute";
-                label.style.bottom = "0";
-                label.style.left = "0";
-                label.style.color = "black";
-                label.style.marginBottom = "0";
-                label.style.marginLeft = "5px";
-                label.style.fontSize = "10px";
-                label.style.fontWeight = "400";
-                label.innerHTML = file.name;
-                single_thumbnail.appendChild(label);
-                thumbnail_container?.appendChild(single_thumbnail);
-              } catch (error) {
-                console.error("Error while uploading the image: ", error);
-              }
-              editor.view.dom.parentElement?.appendChild(thumbnail_container);
-            });
+            ReactDOM.render(
+              <ThumbnailContainer
+                openLightbox={handleOpenLightbox}
+                imagefiles={Array.from(files)}
+              />,
+              thumbnailSection
+            );
           }
         };
         return;
@@ -230,6 +188,33 @@ const CommentBar = ({
           {getIcon("attachment")}
         </IconButton>
       </Tooltip>
+      {isOpen && selectedImage && (
+        <Lightbox onClose={closeLightbox}>
+          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
+          <Lightbox.Body>
+            <Lightbox.Body.Main style={{ flex: 3 }}>
+              <Slider
+                prevArrow={<Slider.PrevButton isBright />}
+                nextArrow={<Slider.NextButton isBright />}
+                // onSlideChange={slideChange}
+                //initialSlide={currentIndex}
+              >
+                <Slider.Slide>
+                  <img
+                    src={URL.createObjectURL(selectedImage)}
+                    alt={`{{${selectedImage.name}}}`}
+                  />
+                </Slider.Slide>
+              </Slider>
+              <img
+                src={URL.createObjectURL(selectedImage)}
+                alt={selectedImage.name}
+              />
+            </Lightbox.Body.Main>
+          </Lightbox.Body>
+          <Lightbox.Close aria-label="Close modal" />
+        </Lightbox>
+      )}
     </MenuContainer>
   );
 };
