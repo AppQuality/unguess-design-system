@@ -85,8 +85,8 @@ const ThumbnailContainer = ({ imagefiles, openLightbox }: Props) => {
             src={URL.createObjectURL(file)}
             label={file.name}
             index={index}
-            showX={false}
-            showLabel={false}
+            showX={true}
+            showLabel={true}
             removeThumbnail={deleteThumbnail}
             clickThumbnail={() => {
               openLightbox(file, index);
