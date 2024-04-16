@@ -12,6 +12,7 @@ import {
   PropsWithChildren,
   useState,
   createElement,
+  useEffect,
 } from "react";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
@@ -22,6 +23,9 @@ import { EditorContainer } from "./containers";
 import { EditorView } from "@tiptap/pm/view";
 import ThumbnailContainer from "./ThumbnailContainer";
 import { Lightbox } from "../../lightbox";
+import { Slider } from "../../slider";
+import { Player } from "../../player";
+import { Button } from "../../buttons/button";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -50,8 +54,24 @@ export const CommentBox = ({
     props;
   const { editor, setEditor, mentionableUsers, triggerSave } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<File>({} as File);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
+
+  const closeLightbox = () => {
+    setIsOpen(false);
+  };
+
+  const handleOpenLightbox = (file: File, index: number) => {
+    if (!file) throw Error("Error with the image");
+
+    setSelectedImage(file);
+    setSelectedImageIndex(index);
+    setIsOpen(true);
+
+    debugger;
+  };
 
   const ed = useEditor({
     extensions: ext,
@@ -82,8 +102,8 @@ export const CommentBox = ({
         console.log("commentBox imageFiles", imageFiles);
         ReactDOM.render(
           <ThumbnailContainer
-            openLightbox={setIsOpen}
             imagefiles={imageFiles}
+            openLightbox={handleOpenLightbox}
           />,
 
           thumbnailSection
@@ -152,12 +172,31 @@ export const CommentBox = ({
 
   return (
     <>
-      {isOpen && (
-        <Lightbox onClose={() => setIsOpen(false)}>
-          <Lightbox.Header title="Lightbox Title" />
+      {isOpen && selectedImage && (
+        <Lightbox onClose={closeLightbox}>
+          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
           <Lightbox.Body>
-            <div></div>
+            <Lightbox.Body.Main style={{ flex: 3 }}>
+              <Slider
+                prevArrow={<Slider.PrevButton isBright />}
+                nextArrow={<Slider.NextButton isBright />}
+                // onSlideChange={slideChange}
+                //initialSlide={currentIndex}
+              >
+                <Slider.Slide>
+                  <img
+                    src={URL.createObjectURL(selectedImage)}
+                    alt={`{{${selectedImage.name}}}`}
+                  />
+                </Slider.Slide>
+              </Slider>
+              <img
+                src={URL.createObjectURL(selectedImage)}
+                alt={selectedImage.name}
+              />
+            </Lightbox.Body.Main>
           </Lightbox.Body>
+          <Lightbox.Close aria-label="Close modal" />
         </Lightbox>
       )}
       <ChatBoxContainer>
@@ -211,48 +250,6 @@ function deleteThumbnailAction(
   return x;
 }
 
-function createThumbnailImage(file: File) {
-  const img = document.createElement("img");
-  img.src = URL.createObjectURL(file);
-  img.style.width = "100%";
-  img.style.height = "100%";
-  img.style.borderRadius = "10%";
-  return img;
-}
-
-function createThumbnailContainer() {
-  const thumbnail_container = document.createElement("div");
-  thumbnail_container.className = "thumbnail-container";
-
-  thumbnail_container.style.display = "grid";
-  thumbnail_container.style.gridTemplateColumns = "auto auto auto";
-  thumbnail_container.style.overflowY = "scroll";
-  thumbnail_container.style.justifyItems = "center";
-  thumbnail_container.style.gap = "10px";
-  thumbnail_container.style.backgroundColor = "white";
-  thumbnail_container.style.width = "100%";
-  thumbnail_container.style.height = "150px";
-
-  return thumbnail_container;
-}
-
-function createSingleThumbnail(img: HTMLImageElement) {
-  const single_thumbnail = document.createElement("div");
-  single_thumbnail.className = "thumbnail";
-  single_thumbnail.style.position = "relative";
-  single_thumbnail.style.justifyContent = "center";
-  single_thumbnail.style.alignItems = "stretch";
-  single_thumbnail.style.backgroundColor = "rgba(0,0,0,0.1)";
-  single_thumbnail.style.maxHeight = "120px";
-  single_thumbnail.style.maxWidth = "120px";
-  single_thumbnail.style.minHeight = "90px";
-  single_thumbnail.style.minWidth = "90px";
-  single_thumbnail.style.padding = "5px 5px 15px 5px";
-  single_thumbnail.style.borderRadius = "10%";
-  single_thumbnail.appendChild(img);
-  return single_thumbnail;
-}
-
 function showImageInline(file: File, view: EditorView) {
   const imageDataUrl = URL.createObjectURL(file);
   const node = view.state.schema.nodes.image.create({
@@ -262,9 +259,4 @@ function showImageInline(file: File, view: EditorView) {
   view.dispatch(transaction);
 }
 
-export {
-  createSingleThumbnail,
-  createThumbnailContainer,
-  createThumbnailImage,
-  deleteThumbnailAction,
-};
+export { deleteThumbnailAction };

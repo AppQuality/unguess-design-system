@@ -15,6 +15,7 @@ const StyledDeleteThumbnailX = styled.div`
   justify-content: center;
   align-items: center;
   opacity: 0;
+  z-index: 9999;
 `;
 
 interface Props {

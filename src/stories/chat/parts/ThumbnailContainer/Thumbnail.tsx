@@ -32,18 +32,23 @@ interface Props {
   label: string;
   index: number;
   removeThumbnail: (index: number) => void;
-  onClick: () => void;
+  clickThumbnail: () => void;
 }
 
-const Thumbnail = ({ src, label, index, removeThumbnail }: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+const Thumbnail = ({
+  clickThumbnail,
+  src,
+  label,
+  index,
+  removeThumbnail,
+}: Props) => {
   const handleCancel = () => {
     console.log("cancel: ", src);
     removeThumbnail(index);
   };
 
   return (
-    <StyledThumbnail className="singleThumbnail">
+    <StyledThumbnail className="singleThumbnail" onClick={clickThumbnail}>
       <DeleteThumbnailX
         content={"╳"}
         deleteThumbnail={handleCancel}

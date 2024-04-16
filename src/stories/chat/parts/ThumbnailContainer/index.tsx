@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import Thumbnail from "./Thumbnail";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const StyledThumbnailContainer = styled.div`
   display: grid;
@@ -18,41 +18,81 @@ const StyledThumbnailContainer = styled.div`
 
 interface Props {
   imagefiles: File[];
-  openLightbox: (isOpen: boolean) => void;
+  openLightbox: (file: File, index: number) => void;
 }
 
 const ThumbnailContainer = ({ imagefiles, openLightbox }: Props) => {
   const [thumbnails, setThumbnails] = useState<File[]>(imagefiles);
+
+  /*const openLightbox = (file: File, index: number) => {
+    if (!file) throw Error("Error with the image");
+    setSelectedImage(file);
+    setSelectedImageIndex(index);
+    setIsOpenLightbox(true);
+
+    console.log("lightbox opened", file, selectedImageIndex);
+  };
+
+  const closeLightbox = () => {
+    setIsOpenLightbox(false);
+  };*/
   const deleteThumbnail = (index: number) => {
     console.log("delete imageFiles", imagefiles);
-    setThumbnails([...thumbnails.toSpliced(index, 1)]);
+
+    debugger;
+    setThumbnails([
+      ...thumbnails.slice(0, index),
+      ...thumbnails.slice(index + 1),
+    ]);
   };
 
   useEffect(() => {
     // todo: upload to s3
     setThumbnails(imagefiles);
     console.log("useEffect imageFiles", imagefiles);
-  }, [imagefiles]);
+  }, [imagefiles, openLightbox]);
 
   if (!thumbnails || thumbnails.length === 0) {
     return null;
   }
 
+  /*if (isOpenLightbox) {
+    alert(
+      "apro la lightbox con " +
+        selectedImage.name +
+        " all'indice " +
+        selectedImageIndex
+    );
+    return (
+      <>
+        <Lightbox onClose={closeLightbox}>
+          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
+          <Lightbox.Body>
+            <img src={URL.createObjectURL(selectedImage)} />
+          </Lightbox.Body>
+          <Lightbox.Close aria-label="Close modal" />
+        </Lightbox>
+      </>
+    );
+  }*/
+
   return (
-    <StyledThumbnailContainer className="thumbnailContainer">
-      {thumbnails.map((file, index) => {
-        return (
+    <>
+      <StyledThumbnailContainer className="thumbnailContainer">
+        {thumbnails.map((file, index) => (
           <Thumbnail
-            index={index}
-            removeThumbnail={deleteThumbnail}
-            onClick={() => openLightbox(true)}
             key={index}
             src={URL.createObjectURL(file)}
             label={file.name}
-          ></Thumbnail>
-        );
-      })}
-    </StyledThumbnailContainer>
+            index={index}
+            removeThumbnail={deleteThumbnail}
+            clickThumbnail={() => {
+              openLightbox(file, index);
+            }}
+          />
+        ))}
+      </StyledThumbnailContainer>
+    </>
   );
 };
 
