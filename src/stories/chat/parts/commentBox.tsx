@@ -109,12 +109,6 @@ export const CommentBox = ({
           thumbnailSection
         );
 
-        /*const node = view.state.schema.nodes.image.create({
-          src: imageUrl,
-        });
-        const transaction = view.state.tr.replaceSelectionWith(node);
-        view.dispatch(transaction);*/
-
         return false;
       },
 
@@ -211,52 +205,3 @@ export const CommentBox = ({
     </>
   );
 };
-
-function deleteThumbnailAction(
-  single_thumbnail: HTMLDivElement,
-  thumbnail_container: HTMLElement,
-  img: HTMLImageElement
-) {
-  const x = document.createElement("div");
-  x.style.position = "absolute";
-  x.style.top = "0";
-  x.style.right = "0";
-  x.style.color = "white";
-  x.style.cursor = "pointer";
-  x.style.fontSize = "15px";
-  x.style.fontWeight = "100";
-  x.style.opacity = "0";
-  x.innerHTML = "╳";
-
-  x.style.backgroundColor = "gray";
-  x.style.borderRadius = "50%";
-  x.style.width = "35px";
-  x.style.height = "35px";
-  x.style.display = "flex";
-  x.style.justifyContent = "center";
-  x.style.alignItems = "center";
-
-  single_thumbnail.addEventListener("mouseover", () => {
-    x.style.opacity = "1";
-  });
-  single_thumbnail.addEventListener("mouseleave", () => {
-    x.style.opacity = "0";
-  });
-
-  x.addEventListener("click", () => {
-    thumbnail_container?.removeChild(single_thumbnail);
-    console.log("delete " + img.src);
-  });
-  return x;
-}
-
-function showImageInline(file: File, view: EditorView) {
-  const imageDataUrl = URL.createObjectURL(file);
-  const node = view.state.schema.nodes.image.create({
-    src: imageDataUrl,
-  });
-  const transaction = view.state.tr.replaceSelectionWith(node);
-  view.dispatch(transaction);
-}
-
-export { deleteThumbnailAction };
