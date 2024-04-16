@@ -30,31 +30,38 @@ const StyledThumbnail = styled.div`
 interface Props {
   src: string;
   label: string;
-  index: number;
-  removeThumbnail: (index: number) => void;
+  index?: number;
+  removeThumbnail?: (index: number) => void;
   clickThumbnail: () => void;
+  showX?: boolean;
+  showLabel?: boolean;
 }
 
 const Thumbnail = ({
   clickThumbnail,
   src,
   label,
-  index,
+  index = 0,
   removeThumbnail,
+  showX = true,
+  showLabel = true,
 }: Props) => {
   const handleCancel = () => {
     console.log("cancel: ", src);
-    removeThumbnail(index);
+    if (removeThumbnail) removeThumbnail(index);
   };
 
   return (
     <StyledThumbnail className="singleThumbnail" onClick={clickThumbnail}>
-      <DeleteThumbnailX
-        content={"╳"}
-        deleteThumbnail={handleCancel}
-      ></DeleteThumbnailX>
+      {showX && (
+        <DeleteThumbnailX
+          content={"╳"}
+          deleteThumbnail={handleCancel}
+        ></DeleteThumbnailX>
+      )}
+
       <img src={src} />
-      <span className="thumbnailLabel">{label}</span>
+      {showLabel && <span className="thumbnailLabel">{label}</span>}
     </StyledThumbnail>
   );
 };

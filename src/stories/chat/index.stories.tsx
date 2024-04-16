@@ -189,7 +189,7 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: `This is an image: <br /><br /> <img src="https://source.unsplash.com/8xznAGy4HcY/500x250" alt="dune in bianco e nero" />`,
+      message: `This is an attached image: <br /><br />`,
       date: " | 21 mar. 2024 | 12:00",
       author: {
         name: "Marco M.",
