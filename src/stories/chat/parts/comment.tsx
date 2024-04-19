@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useCallback, useRef, useState } from "react";
 import { Title } from "../../title";
 import { Card } from "../../cards";
 import { styled } from "styled-components";
@@ -12,6 +12,10 @@ import Thumbnail from "./ThumbnailContainer/Thumbnail";
 
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
+import { MD } from "@zendeskgarden/react-typography";
+import { Player } from "../../player";
+import { Button } from "../../buttons/button";
+import { ReactComponent as DownloadIcon } from "../../../assets/icons/download-stroke.svg";
 
 const CommentCard = styled(Card)`
   padding: ${({ theme }) => `${theme.space.base * 3}px ${theme.space.sm}`};
@@ -51,6 +55,14 @@ const CommentTitle = styled(Title)`
   color: ${({ theme }) => theme.palette.blue[600]};
 `;
 
+const Grey600Span = styled.span`
+  color: ${({ theme }) => theme.palette.grey[600]};
+`;
+
+const Grey800Span = styled.span`
+  color: ${({ theme }) => theme.palette.grey[800]};
+`;
+
 export const Comment = ({
   author,
   message,
@@ -83,6 +95,20 @@ export const Comment = ({
   const closeLightbox = () => {
     setIsOpen(false);
   };
+
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+
+  const slideChange = useCallback(
+    (index: number) => {
+      setSelectedImageIndex(index);
+      videoRefs.current.forEach((ref) => {
+        if (ref) {
+          ref.pause();
+        }
+      });
+    },
+    [videoRefs]
+  );
 
   const ed = useEditor({
     extensions: ext,
@@ -127,25 +153,39 @@ export const Comment = ({
           }}
         ></Thumbnail>
       )}
-
       {isOpen && selectedImage && author.name === "Marco M." && (
         <Lightbox onClose={closeLightbox}>
-          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
+          <Lightbox.Header>
+            <MD isBold>
+              <Grey600Span>BUG 12345 - </Grey600Span>
+              <Grey800Span>SQL Injection nel form di registrazione</Grey800Span>
+            </MD>
+          </Lightbox.Header>
           <Lightbox.Body>
-            <Lightbox.Body.Main style={{ flex: 3 }}>
+            <Lightbox.Body.Main style={{ flex: 2 }}>
               <Slider
                 prevArrow={<Slider.PrevButton isBright />}
                 nextArrow={<Slider.NextButton isBright />}
-                // onSlideChange={slideChange}
-                //initialSlide={currentIndex}
+                onSlideChange={slideChange}
+                initialSlide={selectedImageIndex}
               >
                 <Slider.Slide>
-                  <img
-                    src={
-                      "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    }
-                    alt={`{{${selectedImage.name}}}`}
-                  />
+                  {selectedImage.type === "image/png" && (
+                    <img
+                      src={
+                        "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      }
+                      alt={`{{${selectedImage.name}}}`}
+                    />
+                  )}
+                  {selectedImage.type === "video" && (
+                    <Player
+                      ref={(ref) => {
+                        videoRefs.current.push(ref);
+                      }}
+                      url={URL.createObjectURL(selectedImage)}
+                    />
+                  )}
                 </Slider.Slide>
               </Slider>
               <img
@@ -155,7 +195,30 @@ export const Comment = ({
                 alt={selectedImage.name}
               />
             </Lightbox.Body.Main>
+            <Lightbox.Body.Details style={{ flex: 1 }}>
+              <Comment
+                author={{
+                  avatar: "MM",
+                  name: "Marco M. ",
+                }}
+                date={"18-04-2024 12:00"}
+                message={message}
+                key={12}
+              >
+                <>
+                  <br />
+                </>
+              </Comment>
+            </Lightbox.Body.Details>
           </Lightbox.Body>
+          <Lightbox.Footer>
+            <Button isBright>
+              Download
+              <Button.StartIcon>
+                <DownloadIcon />
+              </Button.StartIcon>
+            </Button>
+          </Lightbox.Footer>
           <Lightbox.Close aria-label="Close modal" />
         </Lightbox>
       )}
