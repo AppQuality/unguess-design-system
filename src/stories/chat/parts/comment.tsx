@@ -151,7 +151,7 @@ export const Comment = ({
           clickThumbnail={() => {
             handleClickThumbnail(file, index);
           }}
-        ></Thumbnail>
+        />
       )}
       {isOpen && selectedImage && author.name === "Marco M." && (
         <Lightbox onClose={closeLightbox}>
@@ -188,12 +188,6 @@ export const Comment = ({
                   )}
                 </Slider.Slide>
               </Slider>
-              <img
-                src={
-                  "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                }
-                alt={selectedImage.name}
-              />
             </Lightbox.Body.Main>
             <Lightbox.Body.Details style={{ flex: 1 }}>
               <Comment
@@ -212,11 +206,14 @@ export const Comment = ({
             </Lightbox.Body.Details>
           </Lightbox.Body>
           <Lightbox.Footer>
-            <Button isBright>
-              Download
+            <Button
+              isBasic
+              onClick={() => alert("download")}
+            >
               <Button.StartIcon>
                 <DownloadIcon />
               </Button.StartIcon>
+              Download
             </Button>
           </Lightbox.Footer>
           <Lightbox.Close aria-label="Close modal" />

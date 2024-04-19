@@ -206,10 +206,6 @@ const CommentBar = ({
                   />
                 </Slider.Slide>
               </Slider>
-              <img
-                src={URL.createObjectURL(selectedImage)}
-                alt={selectedImage.name}
-              />
             </Lightbox.Body.Main>
           </Lightbox.Body>
           <Lightbox.Close aria-label="Close modal" />

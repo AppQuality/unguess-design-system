@@ -55,26 +55,6 @@ const ThumbnailContainer = ({ imagefiles, openLightbox }: Props) => {
     return null;
   }
 
-  /*if (isOpenLightbox) {
-    alert(
-      "apro la lightbox con " +
-        selectedImage.name +
-        " all'indice " +
-        selectedImageIndex
-    );
-    return (
-      <>
-        <Lightbox onClose={closeLightbox}>
-          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
-          <Lightbox.Body>
-            <img src={URL.createObjectURL(selectedImage)} />
-          </Lightbox.Body>
-          <Lightbox.Close aria-label="Close modal" />
-        </Lightbox>
-      </>
-    );
-  }*/
-
   return (
     <>
       <StyledThumbnailContainer className="thumbnailContainer">
