@@ -39,7 +39,6 @@ const ThumbnailContainer = ({ imagefiles, openLightbox }: Props) => {
   const deleteThumbnail = (index: number) => {
     console.log("delete imageFiles", imagefiles);
 
-    debugger;
     setThumbnails([
       ...thumbnails.slice(0, index),
       ...thumbnails.slice(index + 1),
