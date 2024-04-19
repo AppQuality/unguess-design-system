@@ -69,8 +69,6 @@ export const CommentBox = ({
     setSelectedImage(file);
     setSelectedImageIndex(index);
     setIsOpen(true);
-
-    debugger;
   };
 
   const ed = useEditor({
