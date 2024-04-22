@@ -6,35 +6,43 @@ import {
   useCallback,
   useEffect,
   useRef,
-  useState,
 } from "react";
 import { getColor } from "../../theme/utils";
 
-const UgSpan = styled(ZendeskSpan)<WordProps & { observation?: Observation }>`
+const UgSpan = styled(ZendeskSpan) <WordProps & { observation?: Observation }>`
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
 
   ${({ observation, theme }) =>
     observation &&
     `
-      background-color: ${
-        observation.backgroundColor ??
-        getColor(theme.palette.azure, 700, undefined, 0.2)
-      };};
-      color: ${observation.color ?? getColor(theme.palette.azure, 700)}};
+      user-select: none;
+      background-color: ${observation.backgroundColor ??
+    getColor(theme.palette.azure, 700, undefined, 0.5)
+    };
+      color: ${observation.color ?? "white"};
+      padding: 0 2px;
+
+      &:focus {
+        outline: none;
+      }
+
+      + span:not([observation]) {
+        margin-left: 2px;
+      }
     `}
 `;
 
 const ActiveWord = styled.span`
   background-color: ${({ theme }) =>
-    getColor(theme.palette.fuschia, 700, undefined, 0.3)};
+    getColor(theme.palette.fuschia, 700, undefined, 0.5)};
 `;
 
 const StyledDiv = styled.div`
   ${UgSpan} {
     &::selection {
       background-color: ${({ theme }) =>
-        getColor(theme.palette.kale, 700, undefined, 0.2)};
+    getColor(theme.palette.kale, 700, undefined, 0.5)};
       border-radius: 0.25em;
     }
   }
@@ -45,66 +53,62 @@ const StyledDiv = styled.div`
  */
 
 const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
-  const [selection, setSelection] = useState<
-    { from: number; to: number } | undefined
-  >(undefined);
-
   const ref = useRef<HTMLDivElement>(null);
+
+  const handleSelectionChange = useCallback(() => {
+    const activeSelection = document.getSelection();
+    const text = activeSelection?.toString();
+
+    if (!activeSelection || !text) {
+      return;
+    }
+
+    const anchorNode = activeSelection?.anchorNode?.parentElement;
+    const focusNode = activeSelection?.focusNode?.parentElement;
+
+    if (
+      anchorNode &&
+      focusNode &&
+      ref.current?.contains(anchorNode) && // Selection starts inside the ref
+      ref.current?.contains(focusNode) // Selection ends inside the ref
+    ) {
+      const selectionPart = {
+        from: Math.min(
+          Number.parseFloat(anchorNode.getAttribute("data-start") ?? "0"),
+          Number.parseFloat(focusNode.getAttribute("data-start") ?? "0")
+        ),
+        to: Math.max(
+          Number.parseFloat(anchorNode.getAttribute("data-end") ?? "0"),
+          Number.parseFloat(focusNode.getAttribute("data-end") ?? "0")
+        ),
+      };
+
+      props?.handleSelection?.({ ...selectionPart, text });
+    }
+  }, [props]);
 
   useEffect(() => {
     if (ref.current === null) return;
-    document.addEventListener("selectionchange", () => {
-      const activeSelection = document.getSelection();
-      const text = activeSelection?.toString();
-
-      if (!activeSelection || !text) {
-        setSelection(undefined);
-        return;
-      }
-
-      const anchorNode = activeSelection?.anchorNode?.parentElement;
-      const focusNode = activeSelection?.focusNode?.parentElement;
-
-      if (
-        anchorNode &&
-        focusNode &&
-        ref.current?.contains(anchorNode) && // Selection starts inside the ref
-        ref.current?.contains(focusNode) // Selection ends inside the ref
-      ) {
-        const selectionPart = {
-          from: Math.min(
-            Number.parseFloat(anchorNode.getAttribute("data-start") ?? "0"),
-            Number.parseFloat(focusNode.getAttribute("data-start") ?? "0")
-          ),
-          to: Math.max(
-            Number.parseFloat(anchorNode.getAttribute("data-end") ?? "0"),
-            Number.parseFloat(focusNode.getAttribute("data-end") ?? "0")
-          ),
-        };
-
-        setSelection(selectionPart);
-        props?.handleSelection?.({ ...selectionPart, text });
-      }
-    });
+    document.addEventListener("selectionchange", handleSelectionChange);
 
     return () => {
-      document.removeEventListener("selectionchange", () => {});
+      document.removeEventListener("selectionchange", handleSelectionChange);
     };
-  }, [ref]);
+  }, [ref, props, handleSelectionChange]);
 
   return <StyledDiv ref={ref}>{props.children}</StyledDiv>;
 };
 
 const Word = (props: WordProps) => {
   const isActive =
-  props.currentTime &&
-  props.currentTime >= props.start &&
-  props.currentTime < props.end;
+    props.currentTime &&
+    props.currentTime >= props.start &&
+    props.currentTime < props.end;
   // Is there an observation that contains this word?
   const observation = props.observations?.find(
     (obs) => props.start >= obs.start && props.end <= obs.end
   );
-  
+
   return (
     <UgSpan
       {...props}
@@ -112,8 +116,8 @@ const Word = (props: WordProps) => {
       data-start={props.start}
       data-end={props.end}
     >
-      {props.start > 0 && " "}
       {isActive ? <ActiveWord>{props.children}</ActiveWord> : props.children}
+      {!observation && " "}
     </UgSpan>
   );
 };

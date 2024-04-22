@@ -3,7 +3,6 @@ import { Highlight } from ".";
 import { HighlightArgs, Observation } from "./_types";
 import { theme } from "../../theme";
 import { getColor } from "../../theme/utils";
-import { Span } from "../span";
 import { useState } from "react";
 import { Paragraph } from "../paragraph";
 import { Button } from "../../buttons/button";
@@ -39,11 +38,15 @@ const Template: StoryFn<StoryArgs> = (args) => {
 
   return (
     <>
+      <b>Testo non selezionabile</b>
+      <br />
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam
       magni debitis saepe placeat quis optio hic similique ratione
       exercitationem quasi illo, perferendis quidem atque. Accusamus optio quae
       tempora a.
-      <hr />
+      <hr style={{ margin: `10px 0`}} />
+      <b>Testo selezionabile</b>
+      <br />
       <Highlight {...args} handleSelection={(part) => setSelection(part)}>
         {args.words.map((item, index) => (
           <>
@@ -61,10 +64,13 @@ const Template: StoryFn<StoryArgs> = (args) => {
       </Highlight>
       {selection && (
         <>
+          <hr style={{ margin: `10px 0`}} />
+          <b>Testo selezionato</b>
           <Paragraph>
-            Selected: {selection.text} from {selection.from} to {selection.to}
+            <i>{selection.text}</i> ({selection.from} - {selection.to})
           </Paragraph>
-          <Button onClick={handleAddObservation}>Add observation</Button>
+          <br />
+          <Button isPrimary onClick={handleAddObservation}>Add observation</Button>
         </>
       )}
     </>
