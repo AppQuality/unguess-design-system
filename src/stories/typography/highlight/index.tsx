@@ -21,7 +21,7 @@ const UgSpan = styled(ZendeskSpan) <WordProps & { observation?: Observation }>`
     getColor(theme.palette.azure, 700, undefined, 0.5)
     };
       color: ${observation.color ?? "white"};
-      padding: 0 2px;
+      padding: 2px;
 
       &:focus {
         outline: none;
