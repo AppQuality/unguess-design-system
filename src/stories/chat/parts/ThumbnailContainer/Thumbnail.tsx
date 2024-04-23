@@ -46,7 +46,8 @@ const Thumbnail = ({
   showX = true,
   showLabel = true,
 }: Props) => {
-  const handleCancel = () => {
+  const handleCancel = (e: any) => {
+    e.stopPropagation();
     console.log("cancel: ", src);
     if (removeThumbnail) removeThumbnail(index);
   };
@@ -56,7 +57,7 @@ const Thumbnail = ({
       {showX && (
         <DeleteThumbnailX
           content={"╳"}
-          deleteThumbnail={handleCancel}
+          deleteThumbnail={(e) => handleCancel(e)}
         ></DeleteThumbnailX>
       )}
 
