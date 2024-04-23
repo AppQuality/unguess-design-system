@@ -6,13 +6,11 @@ import {
   Content,
 } from "@tiptap/react";
 import { ChatEditorArgs } from "../_types";
-import ReactDOM from "react-dom";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
   useState,
-  createElement,
-  useEffect,
+  useReducer,
 } from "react";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
@@ -20,12 +18,9 @@ import { useChatContext } from "../context/chatContext";
 import { CommentBar } from "./bar";
 import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
-import { EditorView } from "@tiptap/pm/view";
 import ThumbnailContainer from "./ThumbnailContainer";
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
-import { Player } from "../../player";
-import { Button } from "../../buttons/button";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -33,6 +28,25 @@ const ChatBoxContainer = styled.div`
   margin: ${({ theme }) => `0 -${theme.space.base * 4}px`};
   padding: ${({ theme }) => `${theme.space.base * 4}px ${theme.space.sm} 0`};
 `;
+
+export function thumbnailReducer(
+  state: File[],
+  action: { type: string; payload?: { file: File[]; index?: number } }
+) {
+  switch (action.type) {
+    case "add": {
+      if (!action.payload) return state;
+      console.log("chiuamato", action.payload.file);
+      return [...state, ...action.payload.file];
+    }
+    case "remove":
+      return state.filter((item, index) => index !== action.payload?.index);
+    case "reset":
+      return [];
+    default:
+      return state;
+  }
+}
 
 /**
  * CommentBox is a wrapper around Editor component 
@@ -56,6 +70,10 @@ export const CommentBox = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+
+  const [thumbnails, updateThumbnails] = useReducer<
+    (prevState: File[], action: any) => File[]
+  >(thumbnailReducer, []);
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
 
@@ -92,20 +110,7 @@ export const CommentBox = ({
 
         event.preventDefault();
 
-        const thumbnailSection = document.createElement("div");
-        thumbnailSection.className = "thumbnailSection";
-
-        view.dom.parentElement?.appendChild(thumbnailSection);
-
-        console.log("commentBox imageFiles", imageFiles);
-        ReactDOM.render(
-          <ThumbnailContainer
-            imagefiles={imageFiles}
-            openLightbox={handleOpenLightbox}
-          />,
-
-          thumbnailSection
-        );
+        updateThumbnails({ type: "add", payload: { file: imageFiles } });
 
         return false;
       },
@@ -192,10 +197,21 @@ export const CommentBox = ({
           {hasFloatingMenu && (
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}
-          <EditorContent editor={ed} onKeyDown={onKeyDown} />
+          <EditorContent editor={ed} onKeyDown={onKeyDown}></EditorContent>
+          <ThumbnailContainer
+            imagefiles={thumbnails}
+            openLightbox={handleOpenLightbox}
+            updateThumbnails={updateThumbnails}
+          />
         </EditorContainer>
       </ChatBoxContainer>
-      {hasButtonsMenu && <CommentBar editor={ed} i18n={i18n} />}
+      {hasButtonsMenu && (
+        <CommentBar
+          addFilesToThumbnail={updateThumbnails}
+          editor={ed}
+          i18n={i18n}
+        />
+      )}
     </>
   );
 };

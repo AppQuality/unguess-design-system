@@ -10,32 +10,30 @@ const StyledThumbnailContainer = styled.div`
   gap: 10px;
   background-color: white;
   width: 100%;
+  margin-top: 10px;
   height: 150px;
   .singleThumbnail:hover .deleteThumbnail {
     opacity: 1 !important;
+    z-index: 9999;
   }
 `;
 
 interface Props {
   imagefiles: File[];
   openLightbox: (file: File, index: number) => void;
+  updateThumbnails: (payload: {
+    type: string;
+    payload: { file: File[]; index?: number };
+  }) => void;
 }
 
-const ThumbnailContainer = ({ imagefiles, openLightbox }: Props) => {
+const ThumbnailContainer = ({
+  imagefiles,
+  openLightbox,
+  updateThumbnails,
+}: Props) => {
   const [thumbnails, setThumbnails] = useState<File[]>(imagefiles);
 
-  /*const openLightbox = (file: File, index: number) => {
-    if (!file) throw Error("Error with the image");
-    setSelectedImage(file);
-    setSelectedImageIndex(index);
-    setIsOpenLightbox(true);
-
-    console.log("lightbox opened", file, selectedImageIndex);
-  };
-
-  const closeLightbox = () => {
-    setIsOpenLightbox(false);
-  };*/
   const deleteThumbnail = (index: number) => {
     console.log("delete imageFiles", imagefiles);
 
@@ -66,7 +64,12 @@ const ThumbnailContainer = ({ imagefiles, openLightbox }: Props) => {
             index={index}
             showX={true}
             showLabel={true}
-            removeThumbnail={deleteThumbnail}
+            removeThumbnail={() =>
+              updateThumbnails({
+                type: "remove",
+                payload: { file: thumbnails, index: index },
+              })
+            }
             clickThumbnail={() => {
               openLightbox(file, index);
             }}

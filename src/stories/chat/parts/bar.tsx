@@ -8,11 +8,7 @@ import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.
 import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
 import { ReactComponent as AttachmentIcon } from "../../../assets/icons/clipboard.svg";
 import { IconButton } from "../../buttons/icon-button";
-import ThumbnailContainer from "./ThumbnailContainer";
-import ReactDOM from "react-dom";
 import { useState } from "react";
-import { Lightbox } from "../../lightbox";
-import { Slider } from "../../slider";
 
 const MenuContainer = styled.div`
   padding: ${({ theme }) => theme.space.xs} 0;
@@ -33,12 +29,18 @@ const VerticalDivider = styled.div`
 const CommentBar = ({
   editor,
   i18n,
+  addFilesToThumbnail,
 }: Partial<ChatEditorArgs> & {
+  addFilesToThumbnail: (payload: {
+    type: string;
+    payload: { file: File[]; index?: number };
+  }) => void;
   editor?: Editor;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+
   if (!editor) return null;
 
   type MenuItem = {
@@ -93,18 +95,11 @@ const CommentBar = ({
         fileInput.onchange = () => {
           const files = fileInput.files;
           if (files) {
-            const thumbnailSection = document.createElement("div");
-            thumbnailSection.className = "thumbnailSection";
+            const imageFiles = Array.from(files);
 
-            editor.view.dom.parentElement?.appendChild(thumbnailSection);
+            if (imageFiles.length === 0) return;
 
-            ReactDOM.render(
-              <ThumbnailContainer
-                openLightbox={handleOpenLightbox}
-                imagefiles={Array.from(files)}
-              />,
-              thumbnailSection
-            );
+            addFilesToThumbnail({ type: "add", payload: { file: imageFiles } });
           }
         };
         return;
@@ -114,104 +109,83 @@ const CommentBar = ({
   };
 
   return (
-    <MenuContainer id="menu-container">
-      <Tooltip
-        content={`${i18n?.menu?.bold ?? "Bold text"} ${
-          isMac() ? "Cmd" : "Ctrl"
-        } + B`}
-        placement="top"
-        type="light"
-        size="small"
-        hasArrow={false}
-      >
-        <IconButton
-          size={"small"}
-          isBasic={!editor.isActive("bold")}
-          isPrimary={editor.isActive("bold")}
-          isPill={false}
-          onClick={() => handleClick("bold")}
+    <>
+      <MenuContainer id="menu-container">
+        <Tooltip
+          content={`${i18n?.menu?.bold ?? "Bold text"} ${
+            isMac() ? "Cmd" : "Ctrl"
+          } + B`}
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={false}
         >
-          {getIcon("bold")}
-        </IconButton>
-      </Tooltip>
-      <Tooltip
-        content={`${i18n?.menu?.italic ?? "Italic text"} ${
-          isMac() ? "Cmd" : "Ctrl"
-        } + I`}
-        placement="top"
-        type="light"
-        size="small"
-        hasArrow={false}
-      >
-        <IconButton
-          size={"small"}
-          isBasic={!editor.isActive("italic")}
-          isPrimary={editor.isActive("italic")}
-          isPill={false}
-          onClick={() => handleClick("italic")}
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("bold")}
+            isPrimary={editor.isActive("bold")}
+            isPill={false}
+            onClick={() => handleClick("bold")}
+          >
+            {getIcon("bold")}
+          </IconButton>
+        </Tooltip>
+        <Tooltip
+          content={`${i18n?.menu?.italic ?? "Italic text"} ${
+            isMac() ? "Cmd" : "Ctrl"
+          } + I`}
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={false}
         >
-          {getIcon("italic")}
-        </IconButton>
-      </Tooltip>
-      <VerticalDivider />
-      <Tooltip
-        content={i18n?.menu?.mention ?? "Add a mention"}
-        placement="top"
-        type="light"
-        size="small"
-        hasArrow={false}
-      >
-        <IconButton
-          size={"small"}
-          isBasic={!editor.isActive("mention")}
-          isPrimary={editor.isActive("mention")}
-          isPill={false}
-          onClick={() => handleClick("mention")}
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("italic")}
+            isPrimary={editor.isActive("italic")}
+            isPill={false}
+            onClick={() => handleClick("italic")}
+          >
+            {getIcon("italic")}
+          </IconButton>
+        </Tooltip>
+        <VerticalDivider />
+        <Tooltip
+          content={i18n?.menu?.mention ?? "Add a mention"}
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={false}
         >
-          {getIcon("mention")}
-        </IconButton>
-      </Tooltip>
-      <Tooltip
-        content={i18n?.menu?.attachment ?? "Upload a file (max size: ...)"}
-        placement="top"
-        type="light"
-        size="small"
-        hasArrow={false}
-      >
-        <IconButton
-          size={"small"}
-          isBasic={!editor.isActive("attachment")}
-          isPrimary={editor.isActive("attachment")}
-          isPill={false}
-          onClick={() => handleClick("attachment")}
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("mention")}
+            isPrimary={editor.isActive("mention")}
+            isPill={false}
+            onClick={() => handleClick("mention")}
+          >
+            {getIcon("mention")}
+          </IconButton>
+        </Tooltip>
+        <Tooltip
+          content={i18n?.menu?.attachment ?? "Upload a file (max size: ...)"}
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={false}
         >
-          {getIcon("attachment")}
-        </IconButton>
-      </Tooltip>
-      {isOpen && selectedImage && (
-        <Lightbox onClose={closeLightbox}>
-          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
-          <Lightbox.Body>
-            <Lightbox.Body.Main style={{ flex: 3 }}>
-              <Slider
-                prevArrow={<Slider.PrevButton isBright />}
-                nextArrow={<Slider.NextButton isBright />}
-                // onSlideChange={slideChange}
-                //initialSlide={currentIndex}
-              >
-                <Slider.Slide>
-                  <img
-                    src={URL.createObjectURL(selectedImage)}
-                    alt={`{{${selectedImage.name}}}`}
-                  />
-                </Slider.Slide>
-              </Slider>
-            </Lightbox.Body.Main>
-          </Lightbox.Body>
-          <Lightbox.Close aria-label="Close modal" />
-        </Lightbox>
-      )}
-    </MenuContainer>
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("attachment")}
+            isPrimary={editor.isActive("attachment")}
+            isPill={false}
+            onClick={() => handleClick("attachment")}
+          >
+            {getIcon("attachment")}
+          </IconButton>
+        </Tooltip>
+      </MenuContainer>
+    </>
   );
 };
 
