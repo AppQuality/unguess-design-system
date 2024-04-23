@@ -15,19 +15,18 @@ const StyledDeleteThumbnailX = styled.div`
   justify-content: center;
   align-items: center;
   opacity: 0;
-  z-index: 9999;
 `;
 
 interface Props {
   content: string;
-  deleteThumbnail: () => void;
+  deleteThumbnail: (e: any) => void;
 }
 
 const DeleteThumbnailX = ({ content, deleteThumbnail }: Props) => {
   return (
     <StyledDeleteThumbnailX
       className="deleteThumbnail"
-      onClick={deleteThumbnail}
+      onClick={(e) => deleteThumbnail(e)}
     >
       <span>{content}</span>
     </StyledDeleteThumbnailX>
