@@ -104,7 +104,9 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
 
     return () => {
       if (videoRef.current) {
-        videoRef.current.removeEventListener("timeupdate");
+        videoRef.current.removeEventListener("timeupdate", () => {
+          setCurrentTime(videoRef.current?.currentTime || 0);
+        });
       }
     };
   }, [videoRef]);
