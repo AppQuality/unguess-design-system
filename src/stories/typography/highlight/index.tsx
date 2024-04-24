@@ -1,15 +1,12 @@
 import { Span as ZendeskSpan } from "@zendeskgarden/react-typography";
 import styled from "styled-components";
 import { HighlightArgs, Observation, WordProps } from "./_types";
-import {
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react";
+import { PropsWithChildren, useCallback, useEffect, useRef } from "react";
 import { getColor } from "../../theme/utils";
 
-const UgSpan = styled(ZendeskSpan) <WordProps & { observation?: Observation }>`
+const StyledWord = styled(ZendeskSpan)<
+  WordProps & { observation?: Observation }
+>`
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
 
@@ -17,9 +14,10 @@ const UgSpan = styled(ZendeskSpan) <WordProps & { observation?: Observation }>`
     observation &&
     `
       user-select: none;
-      background-color: ${observation.backgroundColor ??
-    getColor(theme.palette.azure, 700, undefined, 0.5)
-    };
+      background-color: ${
+        observation.backgroundColor ??
+        getColor(theme.palette.azure, 700, undefined, 0.5)
+      };
       color: ${observation.color ?? "white"};
       padding: 2px;
 
@@ -38,13 +36,22 @@ const ActiveWord = styled.span`
     getColor(theme.palette.fuschia, 700, undefined, 0.5)};
 `;
 
-const StyledDiv = styled.div`
-  ${UgSpan} {
+const WordsContainer = styled.div`
+  ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
-    getColor(theme.palette.kale, 700, undefined, 0.5)};
-      border-radius: 0.25em;
+        getColor(theme.palette.kale, 700, undefined, 0.5)};
     }
+  }
+
+  observation:first-of-type {
+    border-top-left-radius: ${({ theme }) => theme.borderRadii.lg};
+    border-bottom-left-radius: ${({ theme }) => theme.borderRadii.lg};
+  }
+
+  observation:last-of-type {
+    border-top-right-radius: ${({ theme }) => theme.borderRadii.lg};
+    border-bottom-right-radius: ${({ theme }) => theme.borderRadii.lg};
   }
 `;
 
@@ -96,7 +103,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
     };
   }, [ref, props, handleSelectionChange]);
 
-  return <StyledDiv ref={ref}>{props.children}</StyledDiv>;
+  return <WordsContainer ref={ref}>{props.children}</WordsContainer>;
 };
 
 const Word = (props: WordProps) => {
@@ -110,15 +117,17 @@ const Word = (props: WordProps) => {
   );
 
   return (
-    <UgSpan
+    <StyledWord
       {...props}
       observation={observation}
       data-start={props.start}
       data-end={props.end}
+      className={!!observation ? "highlighted" : ""}
+      {...(!!observation ? { tag: "observation" } : {})}
     >
       {isActive ? <ActiveWord>{props.children}</ActiveWord> : props.children}
       {!observation && " "}
-    </UgSpan>
+    </StyledWord>
   );
 };
 
