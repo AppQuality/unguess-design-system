@@ -68,21 +68,19 @@ export const Comment = ({
   message,
   children,
   date,
-}: PropsWithChildren<{ author: Author; message: string; date: string }>) => {
+  media = [],
+}: PropsWithChildren<{
+  author: Author;
+  message: string;
+  date: string;
+  media?: File[];
+}>) => {
   const { mentionableUsers } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const ext = editorExtensions({ mentionableUsers });
-
-  const file = {
-    name: "image.png",
-    type: "image/png",
-    size: 45454,
-  } as File;
-
-  const index = 0;
 
   const handleClickThumbnail = (file: File, index: number) => {
     if (!file) throw Error("Error with the image");
@@ -142,18 +140,18 @@ export const Comment = ({
           </ReadOnly>
         </div>
       </AuthorContainer>
-      {author.name === "Marco M." && (
+      {media.map((item, index) => (
         <Thumbnail
-          src="https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src={item.name}
           label=""
           showLabel={false}
           showX={false}
           clickThumbnail={() => {
-            handleClickThumbnail(file, index);
+            handleClickThumbnail(item, index);
           }}
         />
-      )}
-      {isOpen && selectedImage && author.name === "Marco M." && (
+      ))}
+      {isOpen && selectedImage && (
         <Lightbox onClose={closeLightbox}>
           <Lightbox.Header>
             <MD isBold>
@@ -172,9 +170,7 @@ export const Comment = ({
                 <Slider.Slide>
                   {selectedImage.type === "image/png" && (
                     <img
-                      src={
-                        "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      }
+                      src={media[selectedImageIndex].name}
                       alt={`{{${selectedImage.name}}}`}
                     />
                   )}
@@ -192,10 +188,10 @@ export const Comment = ({
             <Lightbox.Body.Details style={{ flex: 1 }}>
               <Comment
                 author={{
-                  avatar: "MM",
-                  name: "Marco M. ",
+                  avatar: author.avatar,
+                  name: author.name,
                 }}
-                date={"18-04-2024 12:00"}
+                date={date}
                 message={message}
                 key={12}
               >
@@ -206,10 +202,7 @@ export const Comment = ({
             </Lightbox.Body.Details>
           </Lightbox.Body>
           <Lightbox.Footer>
-            <Button
-              isBasic
-              onClick={() => alert("download")}
-            >
+            <Button isBasic onClick={() => alert("download")}>
               <Button.StartIcon>
                 <DownloadIcon />
               </Button.StartIcon>

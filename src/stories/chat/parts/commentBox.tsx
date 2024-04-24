@@ -103,14 +103,16 @@ export const CommentBox = ({
       handleDrop: function (view, event, slice, moved) {
         if (!event.dataTransfer || !event.dataTransfer.files) return false;
 
-        const files = Array.from(event.dataTransfer.files);
-        const imageFiles = files.filter((file) => /^image\//.test(file.type));
-
-        if (imageFiles.length === 0) return false;
-
         event.preventDefault();
 
-        updateThumbnails({ type: "add", payload: { file: imageFiles } });
+        const files = Array.from(event.dataTransfer.files);
+        const mediaFiles = files.filter((file) =>
+          /^(image|video)\//.test(file.type)
+        );
+
+        if (mediaFiles.length === 0) return false;
+
+        updateThumbnails({ type: "add", payload: { file: mediaFiles } });
 
         return false;
       },
@@ -199,7 +201,7 @@ export const CommentBox = ({
           )}
           <EditorContent editor={ed} onKeyDown={onKeyDown}></EditorContent>
           <ThumbnailContainer
-            imagefiles={thumbnails}
+            mediaFiles={thumbnails}
             openLightbox={handleOpenLightbox}
             updateThumbnails={updateThumbnails}
           />

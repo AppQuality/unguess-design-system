@@ -19,7 +19,7 @@ const StyledThumbnailContainer = styled.div`
 `;
 
 interface Props {
-  imagefiles: File[];
+  mediaFiles: File[];
   openLightbox: (file: File, index: number) => void;
   updateThumbnails: (payload: {
     type: string;
@@ -28,14 +28,14 @@ interface Props {
 }
 
 const ThumbnailContainer = ({
-  imagefiles,
+  mediaFiles,
   openLightbox,
   updateThumbnails,
 }: Props) => {
-  const [thumbnails, setThumbnails] = useState<File[]>(imagefiles);
+  const [thumbnails, setThumbnails] = useState<File[]>(mediaFiles);
 
   const deleteThumbnail = (index: number) => {
-    console.log("delete imageFiles", imagefiles);
+    console.log("delete imageFiles", mediaFiles);
 
     setThumbnails([
       ...thumbnails.slice(0, index),
@@ -45,9 +45,10 @@ const ThumbnailContainer = ({
 
   useEffect(() => {
     // todo: upload to s3
-    setThumbnails(imagefiles);
-    console.log("useEffect imageFiles", imagefiles);
-  }, [imagefiles, openLightbox]);
+    setThumbnails(mediaFiles);
+
+    console.log("useEffect mediaFiles", mediaFiles);
+  }, [mediaFiles, openLightbox]);
 
   if (!thumbnails || thumbnails.length === 0) {
     return null;

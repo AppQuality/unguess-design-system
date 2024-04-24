@@ -25,6 +25,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
     };
     message: string;
     date: string;
+    media?: File[];
   }[];
   editorText?: string;
   background?: string;
@@ -152,6 +153,7 @@ const defaultArgs: EditorStoryArgs = {
   onSave: (editor: TipTapEditor, mentions) => {
     console.log("we have to save this", editor.getHTML());
     console.log("mentions", mentions);
+    console.log("aggiungo l'id del commento al file");
   },
   author: {
     avatar: "LC",
@@ -189,12 +191,60 @@ const defaultArgs: EditorStoryArgs = {
       },
     },
     {
-      message: `This is an attached image: <br /><br />`,
+      message: `This is an attached image:`,
       date: " | 21 mar. 2024 | 12:00",
       author: {
         name: "Marco M.",
         avatar: "MM",
       },
+      media: [
+        {
+          name: "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          size: 12345,
+          type: "image/png",
+          lastModified: 1638799692504,
+          webkitRelativePath: "",
+          arrayBuffer: function (): Promise<ArrayBuffer> {
+            throw new Error("Function not implemented.");
+          },
+          slice: function (
+            start?: number | undefined,
+            end?: number | undefined,
+            contentType?: string | undefined
+          ): Blob {
+            throw new Error("Function not implemented.");
+          },
+          stream: function (): ReadableStream<Uint8Array> {
+            throw new Error("Function not implemented.");
+          },
+          text: function (): Promise<string> {
+            throw new Error("Function not implemented.");
+          },
+        },
+        {
+          name: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          size: 9000,
+          type: "image/png",
+          lastModified: 1638799692504,
+          webkitRelativePath: "",
+          arrayBuffer: function (): Promise<ArrayBuffer> {
+            throw new Error("Function not implemented.");
+          },
+          slice: function (
+            start?: number | undefined,
+            end?: number | undefined,
+            contentType?: string | undefined
+          ): Blob {
+            throw new Error("Function not implemented.");
+          },
+          stream: function (): ReadableStream<Uint8Array> {
+            throw new Error("Function not implemented.");
+          },
+          text: function (): Promise<string> {
+            throw new Error("Function not implemented.");
+          },
+        },
+      ],
     },
   ],
 };

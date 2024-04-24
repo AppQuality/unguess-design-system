@@ -2,6 +2,8 @@ import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
 import { useState } from "react";
 import { Lightbox } from "../../../lightbox";
+import Video from "@appquality/stream-player";
+import { Player } from "../../../player";
 
 const StyledThumbnail = styled.div`
   border-radius: 10px;

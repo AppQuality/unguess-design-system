@@ -88,18 +88,18 @@ const CommentBar = ({
         //open a file browser to select one or more images
         const fileInput = document.createElement("input");
         fileInput.type = "file";
-        fileInput.accept = "image/*";
+        fileInput.accept = "image/*,video/*";
         fileInput.multiple = true;
         fileInput.click();
 
         fileInput.onchange = () => {
           const files = fileInput.files;
           if (files) {
-            const imageFiles = Array.from(files);
+            const mediaFiles = Array.from(files);
 
-            if (imageFiles.length === 0) return;
+            if (mediaFiles.length === 0) return;
 
-            addFilesToThumbnail({ type: "add", payload: { file: imageFiles } });
+            addFilesToThumbnail({ type: "add", payload: { file: mediaFiles } });
           }
         };
         return;
