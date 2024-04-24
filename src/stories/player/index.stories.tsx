@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import styled from "styled-components";
 import { Player } from ".";
 import { PlayerArgs } from "./_types";
@@ -7,9 +7,7 @@ const Container = styled.div`
   height: 80vh;
 `;
 
-interface PlayerStoryArgs extends PlayerArgs {
-  url: string;
-}
+interface PlayerStoryArgs extends PlayerArgs {}
 
 const defaultArgs: PlayerStoryArgs = {
   //   url: "https://s3.eu-west-1.amazonaws.com/tryber.media.production/media/T6631/CP4462/bugs/bf2ed159c4c8024a82116a5dfa26ef434180db334304e0372a531592040452e4.mp4",

@@ -1,17 +1,10 @@
-import {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
 import Video, { useVideoContext } from "@appquality/stream-player";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import { PlayerArgs } from "./_types";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
-import { PlayerArgs } from "./_types";
 
 /**
  * The Player is a styled media tag with custom controls

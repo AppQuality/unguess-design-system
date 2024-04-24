@@ -31,7 +31,9 @@ const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
         {items.map((item) => (
           <div>
             <Slider.Slide>
-              {item.imageUrl && <img src={item.imageUrl} />}
+              {item.imageUrl && (
+                <img src={item.imageUrl} alt={item.headerTitle} />
+              )}
               {item.videoUrl && <Player url={item.videoUrl} />}
               {item.headerTitle && item.content && (
                 <TextContainer>
