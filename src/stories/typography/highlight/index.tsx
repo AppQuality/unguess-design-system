@@ -19,7 +19,7 @@ const StyledWord = styled(ZendeskSpan)<
         getColor(theme.palette.azure, 700, undefined, 0.5)
       };
       color: ${observation.color ?? "white"};
-      padding: 2px;
+      padding: 0 2px;
 
       &:focus {
         outline: none;
@@ -34,6 +34,8 @@ const StyledWord = styled(ZendeskSpan)<
 const ActiveWord = styled.span`
   background-color: ${({ theme }) =>
     getColor(theme.palette.fuschia, 700, undefined, 0.5)};
+  border-radius: ${({ theme }) => theme.borderRadii.lg};
+  padding: 0 2px;
 `;
 
 const WordsContainer = styled.div`

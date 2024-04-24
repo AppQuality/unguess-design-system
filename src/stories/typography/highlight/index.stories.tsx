@@ -1,11 +1,15 @@
 import { Meta, StoryFn } from "@storybook/react";
+import { useEffect, useRef, useState } from "react";
 import { Highlight } from ".";
-import { HighlightArgs, Observation } from "./_types";
+import { Button } from "../../buttons/button";
+import { Col } from "../../grid/col";
+import { Grid } from "../../grid/grid";
+import { Row } from "../../grid/row";
+import { Player } from "../../player";
 import { theme } from "../../theme";
 import { getColor } from "../../theme/utils";
-import { useState } from "react";
 import { Paragraph } from "../paragraph";
-import { Button } from "../../buttons/button";
+import { HighlightArgs, Observation } from "./_types";
 
 interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
@@ -44,7 +48,7 @@ const Template: StoryFn<StoryArgs> = (args) => {
       magni debitis saepe placeat quis optio hic similique ratione
       exercitationem quasi illo, perferendis quidem atque. Accusamus optio quae
       tempora a.
-      <hr style={{ margin: `10px 0`}} />
+      <hr style={{ margin: `10px 0` }} />
       <b>Testo selezionabile</b>
       <br />
       <Highlight {...args} handleSelection={(part) => setSelection(part)}>
@@ -64,15 +68,111 @@ const Template: StoryFn<StoryArgs> = (args) => {
       </Highlight>
       {selection && (
         <>
-          <hr style={{ margin: `10px 0`}} />
+          <hr style={{ margin: `10px 0` }} />
           <b>Testo selezionato</b>
           <Paragraph>
             <i>{selection.text}</i> ({selection.from} - {selection.to})
           </Paragraph>
           <br />
-          <Button isPrimary onClick={handleAddObservation}>Add observation</Button>
+          <Button isPrimary onClick={handleAddObservation}>
+            Add observation
+          </Button>
         </>
       )}
+    </>
+  );
+};
+
+const VideoTemplate: StoryFn<StoryArgs> = (args) => {
+  const [selection, setSelection] = useState<{
+    from: number;
+    to: number;
+    text: string;
+  }>();
+
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+  console.log("🚀 ~ FROM HIGHLIGHT:", videoRef);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.addEventListener("timeupdate", () => {
+        setCurrentTime(videoRef.current?.currentTime || 0);
+      });
+    }
+
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.removeEventListener("timeupdate");
+      }
+    };
+  }, [videoRef]);
+
+  const [observations, setObservations] = useState<Observation[]>([]);
+  console.log("🚀 ~ observations:", observations);
+
+  const handleAddObservation = () => {
+    if (selection) {
+      console.log("🚀 ~ handleAddObservation ~ selection:", selection);
+      setObservations([
+        ...observations,
+        {
+          id: observations.length,
+          start: selection.from,
+          end: selection.to,
+        },
+      ]);
+    }
+  };
+
+  return (
+    <>
+      <Grid>
+        <Row>
+          <Col>
+            <Highlight {...args} handleSelection={(part) => setSelection(part)}>
+              {args.words.map((item, index) => (
+                <>
+                  <Highlight.Word
+                    key={index}
+                    start={item.start}
+                    end={item.end}
+                    observations={observations}
+                    currentTime={currentTime}
+                  >
+                    {item.word}
+                  </Highlight.Word>
+                </>
+              ))}
+            </Highlight>
+          </Col>
+          <Col>
+            <video
+              ref={videoRef}
+              controls
+              src="https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {selection && (
+              <>
+                <hr style={{ margin: `10px 0` }} />
+                <b>Testo selezionato</b>
+                <Paragraph>
+                  <i>{selection.text}</i> ({selection.from} - {selection.to})
+                </Paragraph>
+                <br />
+                <Button isPrimary onClick={handleAddObservation}>
+                  Add observation
+                </Button>
+              </>
+            )}
+          </Col>
+        </Row>
+      </Grid>
     </>
   );
 };
@@ -423,6 +523,11 @@ const defaultArgs: StoryArgs = {
 
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+
+export const VideoSync = VideoTemplate.bind({});
+VideoSync.args = {
+  ...defaultArgs,
+};
 
 export const Size = Template.bind({});
 Size.args = {
