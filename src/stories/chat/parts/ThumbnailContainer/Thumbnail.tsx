@@ -37,6 +37,7 @@ interface Props {
   clickThumbnail: () => void;
   showX?: boolean;
   showLabel?: boolean;
+  mediaType: string;
 }
 
 const Thumbnail = ({
@@ -47,6 +48,7 @@ const Thumbnail = ({
   removeThumbnail,
   showX = true,
   showLabel = true,
+  mediaType,
 }: Props) => {
   const handleCancel = (e: any) => {
     e.stopPropagation();
@@ -62,8 +64,12 @@ const Thumbnail = ({
           deleteThumbnail={(e) => handleCancel(e)}
         ></DeleteThumbnailX>
       )}
-
-      <img src={src} />
+      {mediaType.includes("image") && <img src={src} alt={label} />}
+      {mediaType.includes("video") && (
+        <video width="100" height="100">
+          <source src={src} type="video/mp4" />
+        </video>
+      )}
       {showLabel && <span className="thumbnailLabel">{label}</span>}
     </StyledThumbnail>
   );

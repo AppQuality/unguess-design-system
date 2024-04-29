@@ -11,6 +11,9 @@ import {
   PropsWithChildren,
   useState,
   useReducer,
+  useRef,
+  useCallback,
+  useEffect,
 } from "react";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
@@ -21,6 +24,7 @@ import { EditorContainer } from "./containers";
 import ThumbnailContainer from "./ThumbnailContainer";
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
+import { Player } from "../../player";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -81,6 +85,19 @@ export const CommentBox = ({
     setIsOpen(false);
   };
 
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+
+  const slideChange = useCallback(
+    (index: number) => {
+      setSelectedImageIndex(index);
+      videoRefs.current.forEach((ref) => {
+        if (ref) {
+          ref.pause();
+        }
+      });
+    },
+    [videoRefs]
+  );
   const handleOpenLightbox = (file: File, index: number) => {
     if (!file) throw Error("Error with the image");
 
@@ -179,15 +196,27 @@ export const CommentBox = ({
               <Slider
                 prevArrow={<Slider.PrevButton isBright />}
                 nextArrow={<Slider.NextButton isBright />}
-                // onSlideChange={slideChange}
-                //initialSlide={currentIndex}
+                onSlideChange={slideChange}
+                initialSlide={selectedImageIndex}
               >
-                <Slider.Slide>
-                  <img
-                    src={URL.createObjectURL(selectedImage)}
-                    alt={`{{${selectedImage.name}}}`}
-                  />
-                </Slider.Slide>
+                {thumbnails.map((item) => (
+                  <Slider.Slide>
+                    {item.type === "image" && (
+                      <img
+                        src={URL.createObjectURL(item)}
+                        alt={`media ${item.name}`}
+                      />
+                    )}
+                    {item.type === "video" && (
+                      <Player
+                        ref={(ref) => {
+                          videoRefs.current.push(ref);
+                        }}
+                        url={URL.createObjectURL(item)}
+                      />
+                    )}
+                  </Slider.Slide>
+                ))}
               </Slider>
             </Lightbox.Body.Main>
           </Lightbox.Body>

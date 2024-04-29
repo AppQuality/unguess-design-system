@@ -146,6 +146,7 @@ export const Comment = ({
           label=""
           showLabel={false}
           showX={false}
+          mediaType={item.type}
           clickThumbnail={() => {
             handleClickThumbnail(item, index);
           }}
@@ -167,22 +168,21 @@ export const Comment = ({
                 onSlideChange={slideChange}
                 initialSlide={selectedImageIndex}
               >
-                <Slider.Slide>
-                  {selectedImage.type === "image/png" && (
-                    <img
-                      src={media[selectedImageIndex].name}
-                      alt={`{{${selectedImage.name}}}`}
-                    />
-                  )}
-                  {selectedImage.type === "video" && (
-                    <Player
-                      ref={(ref) => {
-                        videoRefs.current.push(ref);
-                      }}
-                      url={URL.createObjectURL(selectedImage)}
-                    />
-                  )}
-                </Slider.Slide>
+                {media.map((item, index) => (
+                  <Slider.Slide>
+                    {item.type === "image/png" && (
+                      <img src={item.name} alt={`{{${item.name}}}`} />
+                    )}
+                    {item.type === "video" && (
+                      <Player
+                        ref={(ref) => {
+                          videoRefs.current.push(ref);
+                        }}
+                        url={URL.createObjectURL(item)}
+                      />
+                    )}
+                  </Slider.Slide>
+                ))}
               </Slider>
             </Lightbox.Body.Main>
             <Lightbox.Body.Details style={{ flex: 1 }}>

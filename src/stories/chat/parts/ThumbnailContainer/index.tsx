@@ -45,6 +45,7 @@ const ThumbnailContainer = ({
 
   useEffect(() => {
     // todo: upload to s3
+    console.log("started uploading to s3", mediaFiles);
     setThumbnails(mediaFiles);
 
     console.log("useEffect mediaFiles", mediaFiles);
@@ -65,6 +66,7 @@ const ThumbnailContainer = ({
             index={index}
             showX={true}
             showLabel={true}
+            mediaType={file.type}
             removeThumbnail={() =>
               updateThumbnails({
                 type: "remove",
