@@ -1,11 +1,7 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import Video, { useVideoContext } from "@appquality/stream-player";
-
+import { StoryFn, Meta } from "@storybook/react";
 import styled from "styled-components";
 import { Player } from ".";
 import { PlayerArgs } from "./_types";
-import { Button } from "../buttons/button";
-import { start } from "repl";
 
 const Container = styled.div`
   height: 80vh;
@@ -20,7 +16,7 @@ const defaultArgs: PlayerStoryArgs = {
   url: "https://s3-eu-west-1.amazonaws.com/appq.use-case-media/CP3461/UC8794/T19095/ebf00412a1bc3fd33fddd52962cf80e6853a10d5_1625090207.mp4",
 };
 
-const Template: Story<PlayerStoryArgs> = (args) => (
+const Template: StoryFn<PlayerStoryArgs> = (args) => (
   <Container id="player.story.container">
     <Player {...args} />
   </Container>
@@ -49,4 +45,4 @@ export default {
       control: "text",
     },
   },
-} as ComponentMeta<typeof Player>;
+} as Meta<typeof Player>;

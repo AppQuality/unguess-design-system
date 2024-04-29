@@ -3,10 +3,10 @@ import { GlobalStyle } from "../src/stories/shared/globalStyle";
 import { theme } from "../src/stories/theme";
 
 export const decorators = [
-  (story) => (
+  (Story) => (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      {story()}
+      <Story />
     </ThemeProvider>
   ),
 ];

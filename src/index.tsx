@@ -87,6 +87,9 @@ export * from "./stories/grid/col";
 export * from "./stories/grid/row";
 export * from "./stories/grid/grid";
 
+// --- Highlight ---
+export * from "./stories/highlight";
+
 // --- Icons ---
 export * from "./stories/icons";
 
