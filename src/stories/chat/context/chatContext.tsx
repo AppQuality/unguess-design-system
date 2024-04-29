@@ -6,6 +6,11 @@ export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
+  addThumbnails: (props: {
+    files: File[];
+  }) => void;
+  removeThumbnail: (index: number) => void;
+  thumbnails: File[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
 };
 
@@ -13,14 +18,17 @@ export const ChatContext = createContext<ChatContextType | null>(null);
 
 export const ChatContextProvider = ({
   onSave,
+  onFileUpload,
   setMentionableUsers,
   children,
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
+  onFileUpload?: (files: File[]) => Promise<void>;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
 }) => {
   const [editor, setEditor] = useState<Editor | undefined>();
+  const [thumbnails, setThumbnails] = useState<File[]>([]);
 
   const getMentions = (editor: Editor) => {
     const result: SuggestedUser[] = [];
@@ -32,7 +40,7 @@ export const ChatContextProvider = ({
           result.push({
             id: node.attrs.id,
             name: node.attrs.name,
-            email: node.attrs.email
+            email: node.attrs.email,
           });
       }
     });
@@ -44,6 +52,17 @@ export const ChatContextProvider = ({
     () => ({
       editor,
       setEditor,
+      thumbnails,
+      addThumbnails: ({
+        files,
+      }: {
+        files: File[];
+      }) => {
+        onFileUpload && onFileUpload(files);
+        setThumbnails((prev) => [...prev, ...files]);
+      },
+      removeThumbnail: (index: number) =>
+        setThumbnails(thumbnails.filter((_, i) => i !== index)),
       triggerSave: () => {
         if (editor && onSave && !editor.isEmpty) {
           onSave(editor, getMentions(editor));
@@ -52,7 +71,7 @@ export const ChatContextProvider = ({
       },
       mentionableUsers: setMentionableUsers,
     }),
-    [editor, setEditor, onSave, setMentionableUsers]
+    [editor, setEditor, onSave, setMentionableUsers, thumbnails, setThumbnails,onFileUpload]
   );
 
   return (

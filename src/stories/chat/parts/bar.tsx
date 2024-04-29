@@ -8,7 +8,7 @@ import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.
 import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
 import { ReactComponent as AttachmentIcon } from "../../../assets/icons/clipboard.svg";
 import { IconButton } from "../../buttons/icon-button";
-import { useState } from "react";
+import { useChatContext } from "../context/chatContext";
 
 const MenuContainer = styled.div`
   padding: ${({ theme }) => theme.space.xs} 0;
@@ -29,34 +29,15 @@ const VerticalDivider = styled.div`
 const CommentBar = ({
   editor,
   i18n,
-  addFilesToThumbnail,
 }: Partial<ChatEditorArgs> & {
-  addFilesToThumbnail: (payload: {
-    type: string;
-    payload: { file: File[]; index?: number };
-  }) => void;
   editor?: Editor;
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<File>({} as File);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+  const {addThumbnails} = useChatContext()
 
   if (!editor) return null;
 
   type MenuItem = {
     type: "bold" | "italic" | "mention" | "attachment";
-  };
-
-  const handleOpenLightbox = (file: File, index: number) => {
-    if (!file) throw Error("Error with the image");
-
-    setSelectedImage(file);
-    setSelectedImageIndex(index);
-    setIsOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setIsOpen(false);
   };
 
   const getIcon = (type: MenuItem["type"]) => {
@@ -99,7 +80,7 @@ const CommentBar = ({
 
             if (mediaFiles.length === 0) return;
 
-            addFilesToThumbnail({ type: "add", payload: { file: mediaFiles } });
+            addThumbnails({files:mediaFiles})
           }
         };
         return;

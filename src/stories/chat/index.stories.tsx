@@ -30,6 +30,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
   editorText?: string;
   background?: string;
   onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
+  onFileUpload?: (files:File[]) => Promise<void>,
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
@@ -138,7 +139,7 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
     <Grid>
       <Row>
         <Col xs={12} sm={8} md={6}>
-          <ChatProvider setMentionableUsers={getUsers} onSave={args.onSave}>
+          <ChatProvider setMentionableUsers={getUsers} onSave={args.onSave} onFileUpload={args.onFileUpload}>
             <ChatPanel {...args} />
           </ChatProvider>
         </Col>
@@ -278,6 +279,7 @@ Menus.args = {
   ...defaultArgs,
   hasFloatingMenu: true,
   hasButtonsMenu: true,
+  onFileUpload: async(files)=> {console.log("uploaded",files)},
   i18n: {
     menu: {
       bold: "Grassetto",

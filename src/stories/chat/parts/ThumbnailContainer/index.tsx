@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import Thumbnail from "./Thumbnail";
 import { useEffect, useState } from "react";
+import { useChatContext } from "../../context/chatContext";
 
 const StyledThumbnailContainer = styled.div`
   display: grid;
@@ -19,37 +20,13 @@ const StyledThumbnailContainer = styled.div`
 `;
 
 interface Props {
-  mediaFiles: File[];
   openLightbox: (file: File, index: number) => void;
-  updateThumbnails: (payload: {
-    type: string;
-    payload: { file: File[]; index?: number };
-  }) => void;
 }
 
 const ThumbnailContainer = ({
-  mediaFiles,
   openLightbox,
-  updateThumbnails,
 }: Props) => {
-  const [thumbnails, setThumbnails] = useState<File[]>(mediaFiles);
-
-  const deleteThumbnail = (index: number) => {
-    console.log("delete imageFiles", mediaFiles);
-
-    setThumbnails([
-      ...thumbnails.slice(0, index),
-      ...thumbnails.slice(index + 1),
-    ]);
-  };
-
-  useEffect(() => {
-    // todo: upload to s3
-    console.log("started uploading to s3", mediaFiles);
-    setThumbnails(mediaFiles);
-
-    console.log("useEffect mediaFiles", mediaFiles);
-  }, [mediaFiles, openLightbox]);
+  const {thumbnails, removeThumbnail} = useChatContext()
 
   if (!thumbnails || thumbnails.length === 0) {
     return null;
@@ -67,11 +44,8 @@ const ThumbnailContainer = ({
             showX={true}
             showLabel={true}
             mediaType={file.type}
-            removeThumbnail={() =>
-              updateThumbnails({
-                type: "remove",
-                payload: { file: thumbnails, index: index },
-              })
+            removeThumbnail={() =>              
+              removeThumbnail(index)
             }
             clickThumbnail={() => {
               openLightbox(file, index);

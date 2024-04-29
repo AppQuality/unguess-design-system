@@ -13,7 +13,6 @@ import {
   useReducer,
   useRef,
   useCallback,
-  useEffect,
 } from "react";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
@@ -33,25 +32,6 @@ const ChatBoxContainer = styled.div`
   padding: ${({ theme }) => `${theme.space.base * 4}px ${theme.space.sm} 0`};
 `;
 
-export function thumbnailReducer(
-  state: File[],
-  action: { type: string; payload?: { file: File[]; index?: number } }
-) {
-  switch (action.type) {
-    case "add": {
-      if (!action.payload) return state;
-      console.log("chiuamato", action.payload.file);
-      return [...state, ...action.payload.file];
-    }
-    case "remove":
-      return state.filter((item, index) => index !== action.payload?.index);
-    case "reset":
-      return [];
-    default:
-      return state;
-  }
-}
-
 /**
  * CommentBox is a wrapper around Editor component 
  * <br>
@@ -70,14 +50,12 @@ export const CommentBox = ({
 }: PropsWithChildren<ChatEditorArgs>) => {
   const { children, hasFloatingMenu, hasButtonsMenu, bubbleOptions, i18n } =
     props;
-  const { editor, setEditor, mentionableUsers, triggerSave } = useChatContext();
+  const { editor, setEditor, mentionableUsers, triggerSave, 
+    thumbnails, addThumbnails, removeThumbnail } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
-  const [thumbnails, updateThumbnails] = useReducer<
-    (prevState: File[], action: any) => File[]
-  >(thumbnailReducer, []);
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
 
@@ -129,7 +107,7 @@ export const CommentBox = ({
 
         if (mediaFiles.length === 0) return false;
 
-        updateThumbnails({ type: "add", payload: { file: mediaFiles } });
+        addThumbnails({files:mediaFiles})
 
         return false;
       },
@@ -230,15 +208,12 @@ export const CommentBox = ({
           )}
           <EditorContent editor={ed} onKeyDown={onKeyDown}></EditorContent>
           <ThumbnailContainer
-            mediaFiles={thumbnails}
             openLightbox={handleOpenLightbox}
-            updateThumbnails={updateThumbnails}
           />
         </EditorContainer>
       </ChatBoxContainer>
       {hasButtonsMenu && (
         <CommentBar
-          addFilesToThumbnail={updateThumbnails}
           editor={ed}
           i18n={i18n}
         />
