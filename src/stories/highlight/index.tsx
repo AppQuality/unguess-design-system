@@ -2,7 +2,7 @@ import { Span as ZendeskSpan } from "@zendeskgarden/react-typography";
 import styled from "styled-components";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { PropsWithChildren, useCallback, useEffect, useRef } from "react";
-import { getColor } from "../../theme/utils";
+import { getColor } from "../theme/utils";
 
 const StyledWord = styled(ZendeskSpan)<
   WordProps & { observation?: Observation }

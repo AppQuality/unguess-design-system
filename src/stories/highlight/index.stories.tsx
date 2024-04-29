@@ -1,14 +1,13 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useEffect, useRef, useState } from "react";
 import { Highlight } from ".";
-import { Button } from "../../buttons/button";
-import { Col } from "../../grid/col";
-import { Grid } from "../../grid/grid";
-import { Row } from "../../grid/row";
-import { Player } from "../../player";
-import { theme } from "../../theme";
-import { getColor } from "../../theme/utils";
-import { Paragraph } from "../paragraph";
+import { Button } from "../buttons/button";
+import { Col } from "../grid/col";
+import { Grid } from "../grid/grid";
+import { Row } from "../grid/row";
+import { theme } from "../theme";
+import { getColor } from "../theme/utils";
+import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation } from "./_types";
 
 interface StoryArgs extends HighlightArgs {
@@ -91,9 +90,7 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
   }>();
 
   const [currentTime, setCurrentTime] = useState(0);
-
   const videoRef = useRef<HTMLVideoElement>(null);
-  console.log("🚀 ~ FROM HIGHLIGHT:", videoRef);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -105,6 +102,7 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
     return () => {
       if (videoRef.current) {
         videoRef.current.removeEventListener("timeupdate", () => {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           setCurrentTime(videoRef.current?.currentTime || 0);
         });
       }
@@ -531,14 +529,8 @@ VideoSync.args = {
   ...defaultArgs,
 };
 
-export const Size = Template.bind({});
-Size.args = {
-  ...defaultArgs,
-  size: "xxl",
-};
-
 export default {
-  title: "Atoms/Typography/Highlight",
+  title: "Molecules/Highlight",
   component: Highlight,
   argTypes: {
     hue: {
