@@ -4,6 +4,17 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   url: string;
   start?: number;
   end?: number;
+  enablePipOnScroll?: boolean;
+  onCutHandler?: (time: number) => void;
+  bookmarks?: IBookmark[];
+}
+
+export interface IBookmark {
+  start: number;
+  end?: number;
+  hue?: string;
+  label?: string;
+  onClick?: () => void;
 }
 
 export interface WrapperProps {
