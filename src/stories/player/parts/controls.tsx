@@ -1,15 +1,16 @@
+import { useVideoContext } from "@appquality/stream-player";
+import { getColor } from "@zendeskgarden/react-theming";
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { useVideoContext } from "@appquality/stream-player";
 import { Progress } from "../../loaders/progress";
-import { PlayerTooltip } from "./tooltip";
-import { WrapperProps } from "../_types";
-import { ControlsGroupCenter } from "./controlsCenterGroup";
-import { TimeLabel } from "./timeLabel";
+import { IBookmark, WrapperProps } from "../_types";
 import { AudioButton } from "./audioButton";
-import { formatDuration } from "./utils";
+import { ControlsGroupCenter } from "./controlsCenterGroup";
 import { FullScreenButton } from "./fullScreenButton";
-import { getColor } from "@zendeskgarden/react-theming";
+import { TimeLabel } from "./timeLabel";
+import { PlayerTooltip } from "./tooltip";
+import { formatDuration } from "./utils";
+import { Bookmark } from "./bookmark";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -57,8 +58,12 @@ const StyledDiv = styled.div`
 
 export const Controls = ({
   container,
+  onCutHandler,
+  bookmarks,
 }: {
   container: HTMLDivElement | null;
+  onCutHandler?: (time: number) => void;
+  bookmarks?: IBookmark[];
 }) => {
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
@@ -72,17 +77,31 @@ export const Controls = ({
   const duration =
     context.part.end - context.part.start || context.player?.totalTime || 0; //relative
 
-  const getVideoPositionFromEvent = (clientX: number) => {
-    if (progressRef && progressRef.current && duration) {
-      const bounds = progressRef.current.getBoundingClientRect();
-      const x = clientX - bounds.left;
-      const videoPositionSecs =
-        (x / progressRef.current.clientWidth) * duration;
-      return videoPositionSecs;
-    }
+  const getVideoPositionFromEvent = useCallback(
+    (clientX: number) => {
+      if (progressRef && progressRef.current && duration) {
+        const bounds = progressRef.current.getBoundingClientRect();
+        const x = clientX - bounds.left;
+        const videoPositionSecs =
+          (x / progressRef.current.clientWidth) * duration;
+        return videoPositionSecs;
+      }
 
-    return 0;
-  };
+      return 0;
+    },
+    [progressRef, duration]
+  );
+
+  const getProgress = useCallback(
+    (currentTime: number) => {
+      const current = currentTime - (context.part.start || 0);
+
+      if (duration === 0) return 0;
+
+      return (current / duration) * 100;
+    },
+    [context.part.start, duration]
+  );
 
   const handleSkipAhead = useCallback(
     (pageX: number) => {
@@ -90,7 +109,7 @@ export const Controls = ({
       setCurrentTime(time);
       setProgress(getProgress(time));
     },
-    [context.player, context.part]
+    [getVideoPositionFromEvent, context.part.start, setCurrentTime, getProgress]
   );
 
   const onMouseEvent = (e: MouseEvent<HTMLDivElement>) => {
@@ -111,18 +130,7 @@ export const Controls = ({
   useEffect(() => {
     const currentTime = context.player?.currentTime || 0;
     setProgress(getProgress(currentTime));
-  }, [context.player]);
-
-  const getProgress = useCallback(
-    (currentTime: number) => {
-      const current = currentTime - (context.part.start || 0);
-
-      if (duration === 0) return 0;
-
-      return (current / duration) * 100;
-    },
-    [context.player]
-  );
+  }, [context.player, getProgress]);
 
   return (
     <ControlsWrapper isPlaying={context.isPlaying}>
@@ -138,6 +146,13 @@ export const Controls = ({
           current={formatDuration(relCurrentTime)}
           duration={formatDuration(duration)}
         />
+        {!!duration && bookmarks?.map((bookmark, index) => (
+          <Bookmark
+            key={index}
+            {...bookmark}
+            start={(bookmark.start / duration) * 100}
+          />
+        ))}
         <StyledProgress
           ref={progressRef}
           value={progress}
@@ -148,7 +163,7 @@ export const Controls = ({
         <StyledDiv>
           <AudioButton />
         </StyledDiv>
-        <ControlsGroupCenter />
+        <ControlsGroupCenter onCutHandler={onCutHandler} />
 
         <StyledDiv>
           <FullScreenButton container={container} />

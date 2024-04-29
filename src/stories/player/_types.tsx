@@ -4,15 +4,15 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   url: string;
   start?: number;
   end?: number;
-  onCutHandler?: boolean;
   enablePipOnScroll?: boolean;
-  bookmarks?: Bookmark[];
+  onCutHandler?: (time: number) => void;
+  bookmarks?: IBookmark[];
 }
 
-export interface Bookmark {
-  time: number;
-  hue: string;
-  color: string;
+export interface IBookmark {
+  start: number;
+  end?: number;
+  hue?: string;
   label?: string;
   onClick?: () => void;
 }
