@@ -6,9 +6,7 @@ export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
-  addThumbnails: (props: {
-    files: File[];
-  }) => void;
+  addThumbnails: (props: { files: File[] }) => void;
   removeThumbnail: (index: number) => void;
   thumbnails: File[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
@@ -53,11 +51,7 @@ export const ChatContextProvider = ({
       editor,
       setEditor,
       thumbnails,
-      addThumbnails: ({
-        files,
-      }: {
-        files: File[];
-      }) => {
+      addThumbnails: ({ files }: { files: File[] }) => {
         onFileUpload && onFileUpload(files);
         setThumbnails((prev) => [...prev, ...files]);
       },
@@ -67,11 +61,20 @@ export const ChatContextProvider = ({
         if (editor && onSave && !editor.isEmpty) {
           onSave(editor, getMentions(editor));
           editor.commands.clearContent();
+          setThumbnails([]);
         }
       },
       mentionableUsers: setMentionableUsers,
     }),
-    [editor, setEditor, onSave, setMentionableUsers, thumbnails, setThumbnails,onFileUpload]
+    [
+      editor,
+      setEditor,
+      onSave,
+      setMentionableUsers,
+      thumbnails,
+      setThumbnails,
+      onFileUpload,
+    ]
   );
 
   return (
