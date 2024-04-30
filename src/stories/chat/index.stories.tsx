@@ -8,7 +8,7 @@ import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { ChatEditorArgs, SuggestedUser } from "./_types";
-import { Comment } from "./parts/comment";
+import { Comment, MediaType } from "./parts/comment";
 import { theme } from "../theme";
 
 const ButtonsContainer = styled.div`
@@ -25,12 +25,12 @@ interface EditorStoryArgs extends ChatEditorArgs {
     };
     message: string;
     date: string;
-    media?: File[];
+    media?: MediaType[];
   }[];
   editorText?: string;
   background?: string;
   onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files:File[]) => Promise<void>,
+  onFileUpload?: (files: File[]) => Promise<void>;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
@@ -139,7 +139,11 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
     <Grid>
       <Row>
         <Col xs={12} sm={8} md={6}>
-          <ChatProvider setMentionableUsers={getUsers} onSave={args.onSave} onFileUpload={args.onFileUpload}>
+          <ChatProvider
+            setMentionableUsers={getUsers}
+            onSave={args.onSave}
+            onFileUpload={args.onFileUpload}
+          >
             <ChatPanel {...args} />
           </ChatProvider>
         </Col>
@@ -200,50 +204,14 @@ const defaultArgs: EditorStoryArgs = {
       },
       media: [
         {
-          name: "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-          size: 12345,
-          type: "image/png",
-          lastModified: 1638799692504,
-          webkitRelativePath: "",
-          arrayBuffer: function (): Promise<ArrayBuffer> {
-            throw new Error("Function not implemented.");
-          },
-          slice: function (
-            start?: number | undefined,
-            end?: number | undefined,
-            contentType?: string | undefined
-          ): Blob {
-            throw new Error("Function not implemented.");
-          },
-          stream: function (): ReadableStream<Uint8Array> {
-            throw new Error("Function not implemented.");
-          },
-          text: function (): Promise<string> {
-            throw new Error("Function not implemented.");
-          },
+          url: "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          type: "image",
+          id: 1,
         },
         {
-          name: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-          size: 9000,
-          type: "image/png",
-          lastModified: 1638799692504,
-          webkitRelativePath: "",
-          arrayBuffer: function (): Promise<ArrayBuffer> {
-            throw new Error("Function not implemented.");
-          },
-          slice: function (
-            start?: number | undefined,
-            end?: number | undefined,
-            contentType?: string | undefined
-          ): Blob {
-            throw new Error("Function not implemented.");
-          },
-          stream: function (): ReadableStream<Uint8Array> {
-            throw new Error("Function not implemented.");
-          },
-          text: function (): Promise<string> {
-            throw new Error("Function not implemented.");
-          },
+          url: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          type: "image",
+          id: 2,
         },
       ],
     },
@@ -279,7 +247,9 @@ Menus.args = {
   ...defaultArgs,
   hasFloatingMenu: true,
   hasButtonsMenu: true,
-  onFileUpload: async(files)=> {console.log("uploaded",files)},
+  onFileUpload: async (files) => {
+    console.log("uploaded", files);
+  },
   i18n: {
     menu: {
       bold: "Grassetto",

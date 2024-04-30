@@ -63,6 +63,12 @@ const Grey800Span = styled.span`
   color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
+export type MediaType = {
+  url: string;
+  id: number;
+  type: "image" | "video";
+};
+
 export const Comment = ({
   author,
   message,
@@ -73,16 +79,18 @@ export const Comment = ({
   author: Author;
   message: string;
   date: string;
-  media?: File[];
+  media?: MediaType[];
 }>) => {
   const { mentionableUsers } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<File>({} as File);
+  const [selectedImage, setSelectedImage] = useState<MediaType>(
+    {} as MediaType
+  );
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const ext = editorExtensions({ mentionableUsers });
 
-  const handleClickThumbnail = (file: File, index: number) => {
+  const handleClickThumbnail = (file: MediaType, index: number) => {
     if (!file) throw Error("Error with the image");
 
     setSelectedImage(file);
@@ -142,7 +150,7 @@ export const Comment = ({
       </AuthorContainer>
       {media.map((item, index) => (
         <Thumbnail
-          src={item.name}
+          src={item.url}
           label=""
           showLabel={false}
           showX={false}
@@ -170,15 +178,15 @@ export const Comment = ({
               >
                 {media.map((item, index) => (
                   <Slider.Slide>
-                    {item.type === "image/png" && (
-                      <img src={item.name} alt={`{{${item.name}}}`} />
+                    {item.type === "image" && (
+                      <img src={item.url} alt={`{{${item.url}}}`} />
                     )}
                     {item.type === "video" && (
                       <Player
                         ref={(ref) => {
                           videoRefs.current.push(ref);
                         }}
-                        url={URL.createObjectURL(item)}
+                        url={item.url}
                       />
                     )}
                   </Slider.Slide>
