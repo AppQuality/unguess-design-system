@@ -50,12 +50,18 @@ export const CommentBox = ({
 }: PropsWithChildren<ChatEditorArgs>) => {
   const { children, hasFloatingMenu, hasButtonsMenu, bubbleOptions, i18n } =
     props;
-  const { editor, setEditor, mentionableUsers, triggerSave, 
-    thumbnails, addThumbnails, removeThumbnail } = useChatContext();
+  const {
+    editor,
+    setEditor,
+    mentionableUsers,
+    triggerSave,
+    thumbnails,
+    addThumbnails,
+    removeThumbnail,
+  } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
 
@@ -107,7 +113,7 @@ export const CommentBox = ({
 
         if (mediaFiles.length === 0) return false;
 
-        addThumbnails({files:mediaFiles})
+        addThumbnails({ files: mediaFiles });
 
         return false;
       },
@@ -155,7 +161,6 @@ export const CommentBox = ({
     if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
       triggerSave();
       editor?.commands.clearContent();
-      //todo: update the media comment id with the proper comment id
     }
   };
 
@@ -207,17 +212,10 @@ export const CommentBox = ({
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}
           <EditorContent editor={ed} onKeyDown={onKeyDown}></EditorContent>
-          <ThumbnailContainer
-            openLightbox={handleOpenLightbox}
-          />
+          <ThumbnailContainer openLightbox={handleOpenLightbox} />
         </EditorContainer>
       </ChatBoxContainer>
-      {hasButtonsMenu && (
-        <CommentBar
-          editor={ed}
-          i18n={i18n}
-        />
-      )}
+      {hasButtonsMenu && <CommentBar editor={ed} i18n={i18n} />}
     </>
   );
 };
