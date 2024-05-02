@@ -156,18 +156,11 @@ const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
   onSave: (editor: TipTapEditor, mentions) => {
-    console.log("we have to save this", editor.getHTML());
-    console.log("mentions", mentions);
-    console.log("aggiungo l'id del commento al file");
   },
   author: {
     avatar: "LC",
   },
   onUpdate: ({ editor }) => {
-    console.log(
-      "Characters count:",
-      editor.storage.characterCount.characters()
-    );
   },
   comments: [
     {
@@ -248,7 +241,6 @@ Menus.args = {
   hasFloatingMenu: true,
   hasButtonsMenu: true,
   onFileUpload: async (files) => {
-    console.log("uploaded", files);
   },
   i18n: {
     menu: {
