@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import Thumbnail from "./Thumbnail";
-import { useEffect, useState } from "react";
 import { useChatContext } from "../../context/chatContext";
 
 const StyledThumbnailContainer = styled.div`
