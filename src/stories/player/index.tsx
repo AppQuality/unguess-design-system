@@ -27,7 +27,7 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
 const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
   (props, forwardRef) => {
     const { context, togglePlay, setIsPlaying } = useVideoContext();
-    const { onCutHandler, bookmarks } = props;
+    const { onCutHandler, bookmarks, isCutting } = props;
     const videoRef = context.player?.ref.current;
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
@@ -69,6 +69,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
           container={containerRef.current}
           onCutHandler={onCutHandler}
           bookmarks={bookmarks}
+          isCutting={isCutting}
         />
       </Container>
     );

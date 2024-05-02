@@ -6,6 +6,7 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   end?: number;
   enablePipOnScroll?: boolean;
   onCutHandler?: (time: number) => void;
+  isCutting?: boolean;
   bookmarks?: IBookmark[];
 }
 

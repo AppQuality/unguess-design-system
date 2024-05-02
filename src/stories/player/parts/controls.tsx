@@ -60,10 +60,12 @@ export const Controls = ({
   container,
   onCutHandler,
   bookmarks,
+  isCutting,
 }: {
   container: HTMLDivElement | null;
   onCutHandler?: (time: number) => void;
   bookmarks?: IBookmark[];
+  isCutting?: boolean;
 }) => {
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
@@ -132,6 +134,8 @@ export const Controls = ({
     setProgress(getProgress(currentTime));
   }, [context.player, getProgress]);
 
+  console.log("duration", duration);
+
   return (
     <ControlsWrapper isPlaying={context.isPlaying}>
       <ProgressContainer
@@ -146,13 +150,10 @@ export const Controls = ({
           current={formatDuration(relCurrentTime)}
           duration={formatDuration(duration)}
         />
-        {!!duration && bookmarks?.map((bookmark, index) => (
-          <Bookmark
-            key={index}
-            {...bookmark}
-            start={(bookmark.start / duration) * 100}
-          />
-        ))}
+        {!!duration &&
+          bookmarks?.map((bookmark, index) => (
+            <Bookmark key={index} {...bookmark} start={bookmark.start} />
+          ))}
         <StyledProgress
           ref={progressRef}
           value={progress}
@@ -163,7 +164,10 @@ export const Controls = ({
         <StyledDiv>
           <AudioButton />
         </StyledDiv>
-        <ControlsGroupCenter onCutHandler={onCutHandler} />
+        <ControlsGroupCenter
+          onCutHandler={onCutHandler}
+          isCutting={isCutting}
+        />
 
         <StyledDiv>
           <FullScreenButton container={container} />

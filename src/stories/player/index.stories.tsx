@@ -55,7 +55,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
   );
   return (
     <Container id="player.story.container">
-      <Player {...args} onCutHandler={handleCut} bookmarks={observations} />
+      <Player {...args} onCutHandler={handleCut} bookmarks={observations} isCutting={!!start} />
       {start && (
         <div>
           Click again to set the end time for observation
@@ -82,13 +82,14 @@ Streaming.args = {
 
 export const WithBookmarks = TemplateWithCutter.bind({});
 WithBookmarks.args = {
-  ...defaultArgs,
+  ...Streaming.args,
+  end: 200,
   bookmarks: [
-    { start: 10, hue: theme.colors.dangerHue, label: "10s" },
-    { start: 20, hue: theme.colors.foreground, label: "20s" },
-    { start: 30, hue: theme.colors.successHue, label: "30s" },
-    { start: 40, hue: theme.colors.dangerHue, label: "40s" },
-    { start: 50, hue: theme.colors.accentHue, label: "50s" },
+    { start: 20, hue: theme.colors.dangerHue, label: "20s" },
+    { start: 30, hue: theme.colors.foreground, label: "30s" },
+    { start: 40, hue: theme.colors.successHue, label: "40s" },
+    { start: 50, hue: theme.colors.dangerHue, label: "50s" },
+    { start: 120, hue: theme.colors.accentHue, label: "120s" },
   ],
 };
 
