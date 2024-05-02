@@ -184,13 +184,13 @@ export const CommentBox = ({
               >
                 {thumbnails.map((item) => (
                   <Slider.Slide>
-                    {item.type === "image" && (
+                    {item.type.includes("image") && (
                       <img
                         src={URL.createObjectURL(item)}
                         alt={`media ${item.name}`}
                       />
                     )}
-                    {item.type === "video" && (
+                    {item.type.includes("video") && (
                       <Player
                         ref={(ref) => {
                           videoRefs.current.push(ref);
