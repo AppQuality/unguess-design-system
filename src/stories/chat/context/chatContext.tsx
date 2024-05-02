@@ -61,6 +61,7 @@ export const ChatContextProvider = ({
         if (editor && onSave && !editor.isEmpty) {
           onSave(editor, getMentions(editor));
           editor.commands.clearContent();
+          setThumbnails([]);
         }
       },
       mentionableUsers: setMentionableUsers,
