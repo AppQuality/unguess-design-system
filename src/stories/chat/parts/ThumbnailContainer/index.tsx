@@ -4,10 +4,10 @@ import { useChatContext } from "../../context/chatContext";
 
 const StyledThumbnailContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   overflow-y: scroll;
   justify-items: center;
-  gap: 10px;
+  gap: 9px;
   background-color: white;
   width: 100%;
   margin-top: 10px;
@@ -22,10 +22,8 @@ interface Props {
   openLightbox: (file: File, index: number) => void;
 }
 
-const ThumbnailContainer = ({
-  openLightbox,
-}: Props) => {
-  const {thumbnails, removeThumbnail} = useChatContext()
+const ThumbnailContainer = ({ openLightbox }: Props) => {
+  const { thumbnails, removeThumbnail } = useChatContext();
 
   if (!thumbnails || thumbnails.length === 0) {
     return null;
@@ -41,11 +39,9 @@ const ThumbnailContainer = ({
             label={file.name}
             index={index}
             showX={true}
-            showLabel={true}
+            showLabel={false}
             mediaType={file.type}
-            removeThumbnail={() =>              
-              removeThumbnail(index)
-            }
+            removeThumbnail={() => removeThumbnail(index)}
             clickThumbnail={() => {
               openLightbox(file, index);
             }}

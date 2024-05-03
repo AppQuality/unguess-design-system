@@ -2,11 +2,11 @@ import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
 
 const StyledThumbnail = styled.div`
-  border-radius: 10px;
-  height: 120px;
-  width: 120px;
+  border-radius: 5px;
+  height: 90px;
+  width: 80px;
   justify-content: center;
-  padding: 5px 5px 15px 5px;
+  padding: 1px;
   position: relative;
   cursor: pointer;
   background-color: rgb(209, 207, 207);
@@ -43,7 +43,7 @@ const Thumbnail = ({
   index = 0,
   removeThumbnail,
   showX = true,
-  showLabel = true,
+  showLabel = false,
   mediaType,
 }: Props) => {
   const handleCancel = (e: any) => {
