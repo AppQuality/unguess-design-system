@@ -5,6 +5,7 @@ import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
+import { ProgressContextProvider } from "./parts/progressContext";
 
 /**
  * The Player is a styled media tag with custom controls
@@ -65,12 +66,15 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
           />
         )}
         <Video.Player className="player-container" />
-        <Controls
-          container={containerRef.current}
-          onCutHandler={onCutHandler}
-          bookmarks={bookmarks}
-          isCutting={isCutting}
-        />
+        <ProgressContextProvider>
+          <Controls
+            container={containerRef.current}
+            onCutHandler={onCutHandler}
+            bookmarks={bookmarks}
+            isCutting={isCutting}
+            onBookMarkUpdated={props.handleBookmarkUpdate}
+          />
+        </ProgressContextProvider>
       </Container>
     );
   }

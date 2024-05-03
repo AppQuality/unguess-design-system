@@ -8,14 +8,17 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   onCutHandler?: (time: number) => void;
   isCutting?: boolean;
   bookmarks?: IBookmark[];
+  handleBookmarkUpdate?: (bookmark: IBookmark) => void;
 }
 
 export interface IBookmark {
+  id: number;
   start: number;
-  end?: number;
+  end: number;
   hue?: string;
   label?: string;
   onClick?: () => void;
+  resetAttributesHandler?: () => void;
 }
 
 export interface WrapperProps {

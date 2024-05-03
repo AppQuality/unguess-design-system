@@ -2,15 +2,16 @@ import { useVideoContext } from "@appquality/stream-player";
 import { getColor } from "@zendeskgarden/react-theming";
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Progress } from "../../loaders/progress";
 import { IBookmark, WrapperProps } from "../_types";
 import { AudioButton } from "./audioButton";
+import { Bookmark } from "./bookmark";
 import { ControlsGroupCenter } from "./controlsCenterGroup";
 import { FullScreenButton } from "./fullScreenButton";
+import { ProgressBar } from "./progress";
+import { useProgressContext } from "./progressContext";
 import { TimeLabel } from "./timeLabel";
 import { PlayerTooltip } from "./tooltip";
 import { formatDuration } from "./utils";
-import { Bookmark } from "./bookmark";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -22,16 +23,6 @@ export const ControlsWrapper = styled.div<WrapperProps>`
     getColor(theme.palette.grey, 700, undefined, 0.8)};
   ${({ isPlaying }) => isPlaying && "display: none;"}
   z-index: 2;
-`;
-
-const StyledProgress = styled(Progress)`
-  width: 100%;
-  border-radius: 0;
-  color: ${({ theme }) => theme.palette.kale[700]};
-  cursor: pointer;
-  > div {
-    border-radius: 0;
-  }
 `;
 
 const StyledTooltip = styled(PlayerTooltip)`
@@ -61,17 +52,22 @@ export const Controls = ({
   onCutHandler,
   bookmarks,
   isCutting,
+  onBookMarkUpdated,
 }: {
   container: HTMLDivElement | null;
   onCutHandler?: (time: number) => void;
   bookmarks?: IBookmark[];
   isCutting?: boolean;
+  onBookMarkUpdated?: (bookmark: IBookmark) => void;
 }) => {
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
   const [tooltipLabel, setTooltipLabel] = useState<string>("00:00");
+  const [marks, setMarks] = useState<IBookmark[] | undefined>(bookmarks);
   const progressRef = useRef<HTMLDivElement>(null);
   const { context, setCurrentTime } = useVideoContext();
+
+  const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
 
   const relCurrentTime = context.player?.currentTime
     ? context.player?.currentTime - context.part.start
@@ -126,15 +122,51 @@ export const Controls = ({
 
       setTooltipMargin(newTooltipMargin);
       setTooltipLabel(formatDuration(videoTargetDuration));
+
+      if (isGrabbing) {
+        handleBookmarkUpdate(marginX, progressRef.current.clientWidth);
+      }
     }
   };
+
+  const handleBookmarkUpdate = useCallback(
+    (newX: number, clientW: number) => {
+      if (!activeBookmark || !marks) return;
+
+      const currentObsIndex = marks.findIndex(
+        (mark) => mark.id === activeBookmark.id
+      );
+      const value = (newX / clientW) * duration + context.part.start;
+
+      const updatedMark = {
+        ...marks[currentObsIndex],
+        ...(!!fromEnd ? { end: value } : { start: value }),
+      };
+
+      const newMarks = [
+        ...marks.slice(0, currentObsIndex),
+        updatedMark,
+        ...marks.slice(currentObsIndex + 1),
+      ];
+      setMarks(newMarks);
+      onBookMarkUpdated?.(updatedMark);
+    },
+    [activeBookmark, context.part.start, duration, fromEnd, onBookMarkUpdated, marks]
+  );
 
   useEffect(() => {
     const currentTime = context.player?.currentTime || 0;
     setProgress(getProgress(currentTime));
   }, [context.player, getProgress]);
 
-  console.log("duration", duration);
+  useEffect(() => {
+    if (!marks) return;
+    document.addEventListener("mouseup", reset);
+
+    return () => {
+      document.removeEventListener("mouseup", reset);
+    };
+  }, [reset, marks]);
 
   return (
     <ControlsWrapper isPlaying={context.isPlaying}>
@@ -151,15 +183,17 @@ export const Controls = ({
           duration={formatDuration(duration)}
         />
         {!!duration &&
-          bookmarks?.map((bookmark, index) => (
-            <Bookmark key={index} {...bookmark} start={bookmark.start} />
+          marks?.map((bookmark, index) => (
+            <Bookmark key={`${index}${bookmark.start}`} {...bookmark} />
           ))}
-        <StyledProgress
+        <ProgressBar
           ref={progressRef}
-          value={progress}
-          onClick={(e) => handleSkipAhead(e.clientX)}
+          progress={progress}
+          handleSkipAhead={handleSkipAhead}
+          duration={duration}
         />
       </ProgressContainer>
+
       <ControlsBar>
         <StyledDiv>
           <AudioButton />

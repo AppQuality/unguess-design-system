@@ -32,7 +32,6 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
   );
   const [start, setStart] = useState<number | undefined>(undefined);
 
-  console.log("🚀 ~ observations:", observations);
   const handleCut = useCallback(
     (time: number) => {
       if (!start) {
@@ -43,6 +42,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
       setObservations([
         ...observations,
         {
+          id: observations.length + 10,
           start,
           end: time,
           hue: theme.colors.neutralHue,
@@ -55,7 +55,12 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
   );
   return (
     <Container id="player.story.container">
-      <Player {...args} onCutHandler={handleCut} bookmarks={observations} isCutting={!!start} />
+      <Player
+        {...args}
+        onCutHandler={handleCut}
+        bookmarks={observations}
+        isCutting={!!start}
+      />
       {start && (
         <div>
           Click again to set the end time for observation
@@ -85,12 +90,48 @@ WithBookmarks.args = {
   ...Streaming.args,
   end: 200,
   bookmarks: [
-    { start: 20, hue: theme.colors.dangerHue, label: "20s" },
-    { start: 30, hue: theme.colors.foreground, label: "30s" },
-    { start: 40, hue: theme.colors.successHue, label: "40s" },
-    { start: 50, hue: theme.colors.dangerHue, label: "50s" },
-    { start: 120, hue: theme.colors.accentHue, label: "120s" },
+    // the observation time is relative to the video start,
+    // so in this case a start from 20s is actually 10s in the video
+    {
+      id: 2,
+      start: 20,
+      end: 25,
+      hue: theme.colors.dangerHue,
+      label: "10s - 15s ",
+    },
+    {
+      id: 3,
+      start: 30,
+      end: 38,
+      hue: theme.colors.foreground,
+      label: "20s - 28s",
+    },
+    {
+      id: 4,
+      start: 40,
+      end: 45,
+      hue: theme.colors.successHue,
+      label: "30s - 35s",
+    },
+    {
+      id: 5,
+      start: 50,
+      end: 70,
+      hue: theme.colors.dangerHue,
+      label: "40s - 60s",
+    },
+    {
+      id: 6,
+      start: 120,
+      end: 170,
+      hue: theme.colors.chromeHue,
+      label: "110s - 160s",
+    },
   ],
+
+  handleBookmarkUpdate: (bookmark: IBookmark) => {
+    console.log("Bookmark updated", bookmark);
+  },
 };
 
 export default {
