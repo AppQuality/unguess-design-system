@@ -207,7 +207,7 @@ export const CommentBox = ({
         </Lightbox>
       )}
       <ChatBoxContainer>
-        <EditorContainer editable style={{ marginLeft: 0 }}>
+        <EditorContainer editable style={{ marginLeft: 0, paddingBottom:12 }}>
           {hasFloatingMenu && (
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}
