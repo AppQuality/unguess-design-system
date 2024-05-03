@@ -247,7 +247,10 @@ Menus.args = {
       bold: "Grassetto",
       italic: "Corsivo",
       mention: "Menziona",
-      attachment: "Allega un file",
+      attachment: <>
+        <span style={{color:theme.palette.grey[800]}}>Allega immegini e video.</span> <br /> 
+        <span style={{color:theme.palette.grey[600]}}>Peso max: 5GB</span>
+        </>,
     },
     mention: {
       noResults:

@@ -16,7 +16,8 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
       bold?: string;
       italic?: string;
       mention?: string;
-      attachment?: string;
+      //react node
+      attachment?: string | React.ReactNode;
     };
     mention?: {
       noResults?: string;

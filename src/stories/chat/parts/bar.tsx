@@ -149,11 +149,11 @@ const CommentBar = ({
           </IconButton>
         </Tooltip>
         <Tooltip
-          content={i18n?.menu?.attachment ?? "Upload a file (max size: ...)"}
+          content={i18n?.menu?.attachment ?? "Upload images and video. Max size: 5GB"}
           placement="top"
           type="light"
           size="small"
-          hasArrow={false}
+          hasArrow={true}
         >
           <IconButton
             size={"small"}
