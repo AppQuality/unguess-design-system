@@ -3,9 +3,9 @@ import { Tooltip } from "../../tooltip";
 import { ChatEditorArgs } from "../_types";
 import { Editor } from "@tiptap/react";
 import { isMac } from "../../theme/utils";
-import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-fill.svg";
-import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.svg";
-import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
+import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-stroke.svg";
+import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-stroke.svg";
+import { ReactComponent as MentionIcon } from "../../../assets/icons/at-stroke.svg";
 import { ReactComponent as AttachmentIcon } from "../../../assets/icons/clipboard.svg";
 import { IconButton } from "../../buttons/icon-button";
 import { useChatContext } from "../context/chatContext";
@@ -32,7 +32,7 @@ const CommentBar = ({
 }: Partial<ChatEditorArgs> & {
   editor?: Editor;
 }) => {
-  const {addThumbnails} = useChatContext()
+  const { addThumbnails } = useChatContext();
 
   if (!editor) return null;
 
@@ -80,7 +80,7 @@ const CommentBar = ({
 
             if (mediaFiles.length === 0) return;
 
-            addThumbnails({files:mediaFiles})
+            addThumbnails({ files: mediaFiles });
           }
         };
         return;
