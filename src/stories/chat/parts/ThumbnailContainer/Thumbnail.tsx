@@ -48,7 +48,6 @@ const Thumbnail = ({
 }: Props) => {
   const handleCancel = (e: any) => {
     e.stopPropagation();
-    console.log("cancel: ", src);
     if (removeThumbnail) removeThumbnail(index);
   };
 
