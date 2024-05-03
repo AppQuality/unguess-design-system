@@ -2,7 +2,7 @@ import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
 
 const StyledThumbnail = styled.div`
-  border-radius: 5px;
+  border-radius: 4%;
   height: 90px;
   width: 80px;
   justify-content: center;
@@ -13,7 +13,7 @@ const StyledThumbnail = styled.div`
   img {
     width: 100%;
     height: 100%;
-    border-radius: 10%;
+    border-radius: 4%;
   }
   .thumbnailLabel {
     position: absolute;
@@ -61,7 +61,7 @@ const Thumbnail = ({
       )}
       {mediaType.includes("image") && <img src={src} alt={label} />}
       {mediaType.includes("video") && (
-        <video width="100" height="100">
+        <video width="80" height="89">
           <source src={src} type="video/mp4" />
         </video>
       )}
