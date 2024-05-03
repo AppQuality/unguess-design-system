@@ -86,11 +86,16 @@ export const Comment = ({
   children,
   date,
   media = [],
+  header,
 }: PropsWithChildren<{
   author: Author;
   message: string;
   date: string;
   media?: MediaType[];
+  header: {
+    title: string;
+    message?: string;
+  };
 }>) => {
   const { mentionableUsers } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -177,8 +182,10 @@ export const Comment = ({
         <Lightbox onClose={closeLightbox}>
           <Lightbox.Header>
             <MD isBold>
-              <Grey600Span>BUG 12345 - </Grey600Span>
-              <Grey800Span>SQL Injection nel form di registrazione</Grey800Span>
+              <Grey600Span>{header && header.title}</Grey600Span>
+              {header && header.message && (
+                <Grey800Span> | {header.message}</Grey800Span>
+              )}
             </MD>
           </Lightbox.Header>
           <Lightbox.Body>
@@ -208,6 +215,7 @@ export const Comment = ({
             </Lightbox.Body.Main>
             <Lightbox.Body.Details style={{ flex: 1 }}>
               <Comment
+                header={header}
                 author={{
                   avatar: author.avatar,
                   name: author.name,

@@ -41,7 +41,10 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
       <Chat.Header>Titolone</Chat.Header>
       <Chat.Comments chatBkg={background}>
         {args.comments?.map((comment) => (
-          <Comment {...comment}>
+          <Comment
+            {...comment}
+            header={{ title: "BUG1", message: "Attachment" }}
+          >
             <>altre cose</>
           </Comment>
         ))}
@@ -155,13 +158,11 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor: TipTapEditor, mentions) => {
-  },
+  onSave: (editor: TipTapEditor, mentions) => {},
   author: {
     avatar: "LC",
   },
-  onUpdate: ({ editor }) => {
-  },
+  onUpdate: ({ editor }) => {},
   comments: [
     {
       message: "Hi, I'm a comment",
@@ -240,17 +241,21 @@ Menus.args = {
   ...defaultArgs,
   hasFloatingMenu: true,
   hasButtonsMenu: true,
-  onFileUpload: async (files) => {
-  },
+  onFileUpload: async (files) => {},
   i18n: {
     menu: {
       bold: "Grassetto",
       italic: "Corsivo",
       mention: "Menziona",
-      attachment: <>
-        <span style={{color:theme.palette.grey[800]}}>Allega immegini e video.</span> <br /> 
-        <span style={{color:theme.palette.grey[600]}}>Peso max: 5GB</span>
-        </>,
+      attachment: (
+        <>
+          <span style={{ color: theme.palette.grey[800] }}>
+            Allega immegini e video.
+          </span>{" "}
+          <br />
+          <span style={{ color: theme.palette.grey[600] }}>Peso max: 5GB</span>
+        </>
+      ),
     },
     mention: {
       noResults:
