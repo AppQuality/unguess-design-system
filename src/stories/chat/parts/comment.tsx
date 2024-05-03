@@ -63,6 +63,17 @@ const Grey800Span = styled.span`
   color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
+const StyledThumbnailContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow-y: scroll;
+  justify-items: center;
+  gap: 9px;
+  background-color: inherit;
+  margin-top: 10px;
+  height: 120px;
+`;
+
 export type MediaType = {
   url: string;
   id: number;
@@ -148,18 +159,20 @@ export const Comment = ({
           </ReadOnly>
         </div>
       </AuthorContainer>
-      {media.map((item, index) => (
-        <Thumbnail
-          src={item.url}
-          label=""
-          showLabel={false}
-          showX={false}
-          mediaType={item.type}
-          clickThumbnail={() => {
-            handleClickThumbnail(item, index);
-          }}
-        />
-      ))}
+      <StyledThumbnailContainer>
+        {media.map((item, index) => (
+          <Thumbnail
+            src={item.url}
+            label=""
+            showLabel={false}
+            showX={false}
+            mediaType={item.type}
+            clickThumbnail={() => {
+              handleClickThumbnail(item, index);
+            }}
+          />
+        ))}
+      </StyledThumbnailContainer>
       {isOpen && selectedImage && (
         <Lightbox onClose={closeLightbox}>
           <Lightbox.Header>
