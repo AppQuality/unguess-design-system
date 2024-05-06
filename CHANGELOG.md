@@ -1,3 +1,139 @@
+# v3.1.77 (Mon Feb 26 2024)
+
+
+
+---
+
+# v3.1.77 (Mon Feb 26 2024)
+
+
+
+---
+
+# v3.1.76 (Thu Feb 22 2024)
+
+#### 🐛 Bug Fix
+
+- profile modal fixes [#319](https://github.com/AppQuality/unguess-design-system/pull/319) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- fixed title translation [#318](https://github.com/AppQuality/unguess-design-system/pull/318) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.73 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- profile modal [#317](https://github.com/AppQuality/unguess-design-system/pull/317) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+- Profile modal notifications [#316](https://github.com/AppQuality/unguess-design-system/pull/316) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.73 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- profile modal [#317](https://github.com/AppQuality/unguess-design-system/pull/317) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+- Profile modal notifications [#316](https://github.com/AppQuality/unguess-design-system/pull/316) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.73 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- profile modal [#317](https://github.com/AppQuality/unguess-design-system/pull/317) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+- Profile modal notifications [#316](https://github.com/AppQuality/unguess-design-system/pull/316) ([@marcbon](https://github.com/marcbon) [@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.72 (Wed Feb 07 2024)
+
+#### 🐛 Bug Fix
+
+- Update stream player [#315](https://github.com/AppQuality/unguess-design-system/pull/315) ([@d-beezee](https://github.com/d-beezee))
+- chore: Update stream player [#314](https://github.com/AppQuality/unguess-design-system/pull/314) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v3.1.71 (Mon Jan 29 2024)
+
+#### 🐛 Bug Fix
+
+- UI fixes pre release [#313](https://github.com/AppQuality/unguess-design-system/pull/313) ([@marcbon](https://github.com/marcbon))
+- Fixes-pre-release [#312](https://github.com/AppQuality/unguess-design-system/pull/312) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.70 (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- Add supports to very long comments [#311](https://github.com/AppQuality/unguess-design-system/pull/311) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- 🐛 fix(chat): remove unnecessary text in chat message [#310](https://github.com/AppQuality/unguess-design-system/pull/310) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.69 (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- Chat fixes [#309](https://github.com/AppQuality/unguess-design-system/pull/309) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Fix-chat-floating-menu-crash [#308](https://github.com/AppQuality/unguess-design-system/pull/308) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.68 (Wed Jan 24 2024)
+
+#### 🐛 Bug Fix
+
+- Add email to mentionList ✨ [#307](https://github.com/AppQuality/unguess-design-system/pull/307) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- fix: added email to mention [#306](https://github.com/AppQuality/unguess-design-system/pull/306) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.67 (Wed Jan 24 2024)
 
 #### 🐛 Bug Fix
