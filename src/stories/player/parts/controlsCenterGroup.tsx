@@ -17,8 +17,10 @@ const StyledDiv = styled.div`
 
 export const ControlsGroupCenter = ({
   onCutHandler,
+  isCutting,
 }: {
   onCutHandler?: (time: number) => void;
+  isCutting?: boolean;
 }) => {
   const [playBackRate, setPlayBackRate] = useState<number>(1);
   const { context, togglePlay } = useVideoContext();
@@ -109,7 +111,7 @@ export const ControlsGroupCenter = ({
             e.stopPropagation();
           }}
         >
-          <SM isBold>✂️</SM>
+          <SM isBold>{isCutting ? '🛑': '✂️'}</SM>
         </IconButton>
       )}
     </StyledDiv>
