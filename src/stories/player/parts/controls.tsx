@@ -69,6 +69,10 @@ export const Controls = ({
 
   const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
 
+  useEffect(() => {
+    setMarks(bookmarks);
+  }, [bookmarks]);
+
   const relCurrentTime = context.player?.currentTime
     ? context.player?.currentTime - context.part.start
     : 0;
@@ -151,7 +155,14 @@ export const Controls = ({
       setMarks(newMarks);
       onBookMarkUpdated?.(updatedMark);
     },
-    [activeBookmark, context.part.start, duration, fromEnd, onBookMarkUpdated, marks]
+    [
+      activeBookmark,
+      context.part.start,
+      duration,
+      fromEnd,
+      onBookMarkUpdated,
+      marks,
+    ]
   );
 
   useEffect(() => {
