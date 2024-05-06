@@ -76,7 +76,9 @@ const CommentBar = ({
         fileInput.onchange = () => {
           const files = fileInput.files;
           if (files) {
-            const mediaFiles = Array.from(files);
+            const mediaFiles = Array.from(files).map((file) => {
+              return Object.assign(file, { isLoadingMedia: false });
+            });
 
             if (mediaFiles.length === 0) return;
 
@@ -149,7 +151,9 @@ const CommentBar = ({
           </IconButton>
         </Tooltip>
         <Tooltip
-          content={i18n?.menu?.attachment ?? "Upload images and video. Max size: 5GB"}
+          content={
+            i18n?.menu?.attachment ?? "Upload images and video. Max size: 5GB"
+          }
           placement="top"
           type="light"
           size="small"

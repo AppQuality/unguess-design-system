@@ -35,7 +35,9 @@ interface EditorStoryArgs extends ChatEditorArgs {
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { editor, triggerSave } = useChatContext();
+  const { editor, triggerSave /*isMediaUploading, setIsMediaUploading */ } =
+    useChatContext();
+
   return (
     <Chat>
       <Chat.Header>Titolone</Chat.Header>
@@ -146,6 +148,9 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
             setMentionableUsers={getUsers}
             onSave={args.onSave}
             onFileUpload={args.onFileUpload}
+            /*setIsMediaUploading={function (value: boolean): void {
+              throw new Error("Function not implemented.");
+            }}*/
           >
             <ChatPanel {...args} />
           </ChatProvider>
@@ -159,6 +164,7 @@ const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
   onSave: (editor: TipTapEditor, mentions) => {},
+  isNewMedia: false,
   author: {
     avatar: "LC",
   },
@@ -193,7 +199,7 @@ const defaultArgs: EditorStoryArgs = {
       message: `This is an attached image:`,
       date: " | 21 mar. 2024 | 12:00",
       author: {
-        name: "Marco M.",
+        name: "Marco Minucci",
         avatar: "MM",
       },
       media: [

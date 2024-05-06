@@ -41,6 +41,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
             showX={true}
             showLabel={false}
             mediaType={file.type}
+            isLoadingMedia={file.isLoadingMedia}
             removeThumbnail={() => removeThumbnail(index)}
             clickThumbnail={() => {
               openLightbox(file, index);

@@ -15,6 +15,9 @@ import {
   useCallback,
 } from "react";
 
+import { Notification } from "../../notifications";
+import { useToast } from "../../notifications";
+
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
 import { CommentBar } from "./bar";
@@ -24,6 +27,9 @@ import ThumbnailContainer from "./ThumbnailContainer";
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
 import { Player } from "../../player";
+import { ToastProvider } from "@zendeskgarden/react-notifications";
+import { ToastProviderArgs } from "../../notifications/_types";
+import { Spinner } from "../../loaders/spinner";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -58,6 +64,7 @@ export const CommentBox = ({
     thumbnails,
     addThumbnails,
     removeThumbnail,
+    //setIsMediaUploading,
   } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
@@ -101,14 +108,33 @@ export const CommentBox = ({
 
         return false;
       },
+
       handleDrop: function (view, event, slice, moved) {
         if (!event.dataTransfer || !event.dataTransfer.files) return false;
 
         event.preventDefault();
 
-        const files = Array.from(event.dataTransfer.files);
-        const mediaFiles = files.filter((file) =>
-          /^(image|video)\//.test(file.type)
+        const files = Array.from(event.dataTransfer.files).map((file) => {
+          return Object.assign(file, { isLoadingMedia: false });
+        });
+        /*for (const f of files) {
+          if (!/^(image|video)\//.test(f.type)) {
+            addToast(
+              ({ close }) => (
+                <Notification
+                  onClose={close}
+                  type="error"
+                  message={"File type not supported"}
+                  closeText={"Close"}
+                  isPrimary
+                />
+              ),
+              { placement: "top" }
+            );
+          }
+        }*/
+        const mediaFiles: (File & { isLoadingMedia: boolean })[] = files.filter(
+          (file) => /^(image|video)\//.test(file.type)
         );
 
         if (mediaFiles.length === 0) return false;
@@ -207,7 +233,7 @@ export const CommentBox = ({
         </Lightbox>
       )}
       <ChatBoxContainer>
-        <EditorContainer editable style={{ marginLeft: 0, paddingBottom:12 }}>
+        <EditorContainer editable style={{ marginLeft: 0, paddingBottom: 12 }}>
           {hasFloatingMenu && (
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}

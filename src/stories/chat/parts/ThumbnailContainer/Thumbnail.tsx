@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
+import { Spinner } from "@zendeskgarden/react-loaders";
+import { useChatContext } from "../../context/chatContext";
+import { useState } from "react";
 
 const StyledThumbnail = styled.div`
   border-radius: 4%;
@@ -34,6 +37,7 @@ interface Props {
   showX?: boolean;
   showLabel?: boolean;
   mediaType: string;
+  isLoadingMedia: boolean;
 }
 
 const Thumbnail = ({
@@ -45,7 +49,10 @@ const Thumbnail = ({
   showX = true,
   showLabel = false,
   mediaType,
+  isLoadingMedia = true,
 }: Props) => {
+  //const { isMediaUploading, setIsMediaUploading } = useChatContext();
+
   const handleCancel = (e: any) => {
     e.stopPropagation();
     if (removeThumbnail) removeThumbnail(index);
@@ -59,8 +66,16 @@ const Thumbnail = ({
           deleteThumbnail={(e) => handleCancel(e)}
         ></DeleteThumbnailX>
       )}
-      {mediaType.includes("image") && <img src={src} alt={label} />}
-      {mediaType.includes("video") && (
+      {isLoadingMedia && (
+        <Spinner
+          style={{ position: "absolute", top: "39%", left: "37%" }}
+          size="large"
+        />
+      )}
+      {!isLoadingMedia && mediaType.includes("image") && (
+        <img src={src} alt={label} />
+      )}
+      {!isLoadingMedia && mediaType.includes("video") && (
         <video width="80" height="89">
           <source src={src} type="video/mp4" />
         </video>

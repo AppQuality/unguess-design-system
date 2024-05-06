@@ -6,10 +6,14 @@ export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
-  addThumbnails: (props: { files: File[] }) => void;
+  addThumbnails: (props: {
+    files: (File & { isLoadingMedia: boolean })[];
+  }) => void;
   removeThumbnail: (index: number) => void;
-  thumbnails: File[];
+  thumbnails: (File & { isLoadingMedia: boolean })[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
+  //isMediaUploading: boolean; // Aggiunto il flag di caricamento dei media
+  //setIsMediaUploading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
@@ -21,12 +25,18 @@ export const ChatContextProvider = ({
   children,
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: File[]) => Promise<void>;
+  onFileUpload?: (
+    files: (File & { isLoadingMedia: boolean })[]
+  ) => Promise<void>;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
+  //setIsMediaUploading: (value: boolean) => void;
 }) => {
   const [editor, setEditor] = useState<Editor | undefined>();
-  const [thumbnails, setThumbnails] = useState<File[]>([]);
+  const [thumbnails, setThumbnails] = useState<
+    (File & { isLoadingMedia: boolean })[]
+  >([]);
+  //const [isMediaUploading, setIsMediaUploading] = useState<boolean>(false);
 
   const getMentions = (editor: Editor) => {
     const result: SuggestedUser[] = [];
@@ -51,9 +61,17 @@ export const ChatContextProvider = ({
       editor,
       setEditor,
       thumbnails,
-      addThumbnails: ({ files }: { files: File[] }) => {
+      //isMediaUploading, // Incluso nel valore del contesto
+      //setIsMediaUploading, // Incluso nel valore del contesto
+      addThumbnails: ({
+        files,
+      }: {
+        files: (File & { isLoadingMedia: boolean })[];
+      }) => {
         onFileUpload && onFileUpload(files);
+        //setIsMediaUploading(true);
         setThumbnails((prev) => [...prev, ...files]);
+        //setIsMediaUploading(false);
       },
       removeThumbnail: (index: number) =>
         setThumbnails(thumbnails.filter((_, i) => i !== index)),
@@ -74,6 +92,8 @@ export const ChatContextProvider = ({
       thumbnails,
       setThumbnails,
       onFileUpload,
+      //setIsMediaUploading,
+      //isMediaUploading,
     ]
   );
 
