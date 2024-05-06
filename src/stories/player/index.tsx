@@ -1,17 +1,11 @@
-import {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
 import Video, { useVideoContext } from "@appquality/stream-player";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import { PlayerArgs } from "./_types";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
-import { PlayerArgs } from "./_types";
+import { ProgressContextProvider } from "./parts/progressContext";
 
 /**
  * The Player is a styled media tag with custom controls
@@ -34,6 +28,7 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
 const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
   (props, forwardRef) => {
     const { context, togglePlay, setIsPlaying } = useVideoContext();
+    const { onCutHandler, bookmarks, isCutting } = props;
     const videoRef = context.player?.ref.current;
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
@@ -54,7 +49,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
           });
         }
       };
-    }, [videoRef]);
+    }, [setIsPlaying, videoRef]);
 
     return (
       <Container
@@ -71,7 +66,15 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
           />
         )}
         <Video.Player className="player-container" />
-        <Controls container={containerRef.current} />
+        <ProgressContextProvider>
+          <Controls
+            container={containerRef.current}
+            onCutHandler={onCutHandler}
+            bookmarks={bookmarks}
+            isCutting={isCutting}
+            onBookMarkUpdated={props.handleBookmarkUpdate}
+          />
+        </ProgressContextProvider>
       </Container>
     );
   }

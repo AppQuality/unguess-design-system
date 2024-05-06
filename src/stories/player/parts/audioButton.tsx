@@ -20,8 +20,7 @@ export const AudioButton = () => {
     if (!video) {
       return false;
     }
-
-    console.log("hasAudio?",video);
+    
     const videohasAudio =
       video.mozHasAudio ||
       Boolean(video.webkitAudioDecodedByteCount) ||

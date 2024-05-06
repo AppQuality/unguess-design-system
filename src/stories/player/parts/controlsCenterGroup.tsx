@@ -1,21 +1,27 @@
-import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
-import { ReactComponent as PauseIcon } from "../../../assets/icons/pause-fill.svg";
-import { ReactComponent as ForwardIcon } from "../../../assets/icons/forward-seconds-fill.svg";
-import { ReactComponent as RewindIcon } from "../../../assets/icons/back-seconds-fill.svg";
-import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
+import { useVideoContext } from "@appquality/stream-player";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { ReactComponent as RewindIcon } from "../../../assets/icons/back-seconds-fill.svg";
+import { ReactComponent as ForwardIcon } from "../../../assets/icons/forward-seconds-fill.svg";
+import { ReactComponent as PauseIcon } from "../../../assets/icons/pause-fill.svg";
+import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
+import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
 import { IconButton } from "../../buttons/icon-button";
 import { SM } from "../../typography/typescale";
 import { getNextPlaybackRate } from "./utils";
-import { useCallback, useEffect, useState } from "react";
-import { useVideoContext } from "@appquality/stream-player";
 
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const ControlsGroupCenter = () => {
+export const ControlsGroupCenter = ({
+  onCutHandler,
+  isCutting,
+}: {
+  onCutHandler?: (time: number) => void;
+  isCutting?: boolean;
+}) => {
   const [playBackRate, setPlayBackRate] = useState<number>(1);
   const { context, togglePlay } = useVideoContext();
 
@@ -95,6 +101,19 @@ export const ControlsGroupCenter = () => {
           {playBackRate}x
         </SM>
       </IconButton>
+      {onCutHandler && (
+        <IconButton
+          isBright
+          onClick={(e) => {
+            if (videoRef) {
+              onCutHandler(videoRef.currentTime);
+            }
+            e.stopPropagation();
+          }}
+        >
+          <SM isBold>{isCutting ? '🛑': '✂️'}</SM>
+        </IconButton>
+      )}
     </StyledDiv>
   );
 };
