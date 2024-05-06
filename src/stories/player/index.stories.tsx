@@ -53,6 +53,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
     },
     [observations, start]
   );
+
   return (
     <Container id="player.story.container">
       <Player

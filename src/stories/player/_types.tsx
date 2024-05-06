@@ -18,7 +18,6 @@ export interface IBookmark {
   hue?: string;
   label?: string;
   onClick?: () => void;
-  resetAttributesHandler?: () => void;
 }
 
 export interface WrapperProps {
