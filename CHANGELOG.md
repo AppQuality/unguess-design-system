@@ -1,3 +1,19 @@
+# v3.1.79 (Mon May 06 2024)
+
+#### 🐛 Bug Fix
+
+- release 20240506 [#324](https://github.com/AppQuality/unguess-design-system/pull/324) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- Add resizeble observation in player progress [#323](https://github.com/AppQuality/unguess-design-system/pull/323) ([@cannarocks](https://github.com/cannarocks))
+- Add-cutting-edge-functionalities-to-player [#322](https://github.com/AppQuality/unguess-design-system/pull/322) ([@cannarocks](https://github.com/cannarocks))
+- Add Highlight component [#321](https://github.com/AppQuality/unguess-design-system/pull/321) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.77 (Mon Feb 26 2024)
 
 
