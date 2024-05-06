@@ -101,20 +101,22 @@ export const Bookmark = (props: IBookmark) => {
   if (start > videoEnd || start < videoStart) return null;
 
   return (
-    <Tooltip content={label} type={"light"} size={"large"}>
-      <>
-        <Rect
-          isActive={activeBookmark && activeBookmark.id === props.id}
-          hue={hue}
-          style={{
-            left: `${((start - videoStart) / duration) * 100}%`,
-            width: `${((end - start) / duration) * 100}%`,
-          }}
-        >
-          <Grabber observation={props} />
-          <Grabber isEnd observation={props} />
-        </Rect>
-      </>
+    <Tooltip
+      content={label}
+      type={"light"}
+      size={"large"}
+    >
+      <Rect
+        isActive={activeBookmark && activeBookmark.id === props.id}
+        hue={hue}
+        style={{
+          left: `${((start - videoStart) / duration) * 100}%`,
+          width: `${((end - start) / duration) * 100}%`,
+        }}
+      >
+        <Grabber observation={props} />
+        <Grabber isEnd observation={props} />
+      </Rect>
     </Tooltip>
   );
 };
