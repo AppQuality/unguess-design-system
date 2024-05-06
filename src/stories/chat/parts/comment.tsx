@@ -222,7 +222,6 @@ export const Comment = ({
                 }}
                 date={date}
                 message={message}
-                key={12}
               >
                 <>
                   <br />
