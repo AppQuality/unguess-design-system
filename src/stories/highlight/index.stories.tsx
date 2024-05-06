@@ -9,10 +9,12 @@ import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation } from "./_types";
+import useDebounce from "../../hooks/useDebounce";
 
 interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
   currentTime: number;
+  includeSearch?: boolean;
 }
 
 const Template: StoryFn<StoryArgs> = (args) => {
@@ -21,9 +23,10 @@ const Template: StoryFn<StoryArgs> = (args) => {
     to: number;
     text: string;
   }>();
-
+  const [searchValue, setSearchValue] = useState<string>("");
   const [observations, setObservations] = useState<Observation[]>([]);
-  console.log("🚀 ~ observations:", observations);
+
+  const debauncedValue = useDebounce(searchValue, 300);
 
   const handleAddObservation = () => {
     if (selection) {
@@ -41,16 +44,26 @@ const Template: StoryFn<StoryArgs> = (args) => {
 
   return (
     <>
-      <b>Testo non selezionabile</b>
+      <b>Unselectable text:</b>
       <br />
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam
-      magni debitis saepe placeat quis optio hic similique ratione
-      exercitationem quasi illo, perferendis quidem atque. Accusamus optio quae
-      tempora a.
+      Listed below are the words that will be highlighted when selected. Not
+      every paragraph can be selected, like this one.
       <hr style={{ margin: `10px 0` }} />
-      <b>Testo selezionabile</b>
-      <br />
-      <Highlight {...args} handleSelection={(part) => setSelection(part)}>
+      {args.includeSearch && (
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+      )}
+      <p>
+        <b>Selectable text:</b>
+      </p>
+      <Highlight
+        {...args}
+        search={debauncedValue}
+        handleSelection={(part) => setSelection(part)}
+      >
         {args.words.map((item, index) => (
           <>
             <Highlight.Word
@@ -59,9 +72,8 @@ const Template: StoryFn<StoryArgs> = (args) => {
               end={item.end}
               observations={observations}
               currentTime={args.currentTime}
-            >
-              {item.word}
-            </Highlight.Word>
+              text={item.word}
+            />
           </>
         ))}
       </Highlight>
@@ -110,7 +122,6 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
   }, [videoRef]);
 
   const [observations, setObservations] = useState<Observation[]>([]);
-  console.log("🚀 ~ observations:", observations);
 
   const handleAddObservation = () => {
     if (selection) {
@@ -140,9 +151,8 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
                     end={item.end}
                     observations={observations}
                     currentTime={currentTime}
-                  >
-                    {item.word}
-                  </Highlight.Word>
+                    text={item.word}
+                  />
                 </>
               ))}
             </Highlight>
@@ -527,6 +537,12 @@ Default.args = defaultArgs;
 export const VideoSync = VideoTemplate.bind({});
 VideoSync.args = {
   ...defaultArgs,
+};
+
+export const WithSearch = Template.bind({});
+WithSearch.args = {
+  ...defaultArgs,
+  includeSearch: true,
 };
 
 export default {

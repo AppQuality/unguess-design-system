@@ -17,6 +17,8 @@ export interface HighlightArgs {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
 
   handleSelection?: (part: { from: number; to: number; text: string }) => void;
+
+  search?: string;
 }
 
 export interface Observation {
@@ -32,7 +34,7 @@ export interface WordProps extends ISpanProps {
   end: number;
   currentTime?: number;
   observations?: Observation[];
-
+  text: string;
   /** Adjusts the font size. By default font size is medium */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
 }
