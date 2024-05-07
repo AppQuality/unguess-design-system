@@ -1,8 +1,10 @@
 import { Span as ZendeskSpan } from "@zendeskgarden/react-typography";
-import styled from "styled-components";
-import { HighlightArgs, Observation, WordProps } from "./_types";
 import { PropsWithChildren, useCallback, useEffect, useRef } from "react";
+import styled from "styled-components";
 import { getColor } from "../theme/utils";
+import { HighlightArgs, Observation, WordProps } from "./_types";
+import { HighlightContextProvider } from "./highlightContext";
+import { Searchable } from "./searchable";
 
 const StyledWord = styled(ZendeskSpan)<
   WordProps & { observation?: Observation }
@@ -105,7 +107,11 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
     };
   }, [ref, props, handleSelectionChange]);
 
-  return <WordsContainer ref={ref}>{props.children}</WordsContainer>;
+  return (
+    <HighlightContextProvider term={props.search}>
+      <WordsContainer ref={ref}>{props.children}</WordsContainer>;
+    </HighlightContextProvider>
+  );
 };
 
 const Word = (props: WordProps) => {
@@ -113,6 +119,7 @@ const Word = (props: WordProps) => {
     props.currentTime &&
     props.currentTime >= props.start &&
     props.currentTime < props.end;
+
   // Is there an observation that contains this word?
   const observation = props.observations?.find(
     (obs) => props.start >= obs.start && props.end <= obs.end
@@ -127,7 +134,13 @@ const Word = (props: WordProps) => {
       className={!!observation ? "highlighted" : ""}
       {...(!!observation ? { tag: "observation" } : {})}
     >
-      {isActive ? <ActiveWord>{props.children}</ActiveWord> : props.children}
+      {isActive ? (
+        <ActiveWord>
+          <Searchable start={props.start} text={props.text} />
+        </ActiveWord>
+      ) : (
+        <Searchable start={props.start} text={props.text} />
+      )}
       {!observation && " "}
     </StyledWord>
   );
