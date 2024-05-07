@@ -18,6 +18,14 @@ const StyledThumbnailContainer = styled.div`
   }
 `;
 
+export interface FileElement {
+  fileName: string;
+  fileType: string;
+  status: "success" | "failed" | "uploading";
+  errorCode?: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
+  previewUrl: string;
+}
+
 interface Props {
   openLightbox: (file: File, index: number) => void;
 }
@@ -29,22 +37,44 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
     return null;
   }
 
+  /* const mediaFiles: File[] = thumbnails.map((file) => {
+    // Crea un nuovo oggetto File senza la proprietà isLoadingMedia
+    const blob = new Blob([file], { type: file.type });
+
+    // Creiamo un nuovo File utilizzando il Blob e mantenendo il nome del file originale
+    const nf = new File([blob], file.name, { type: file.type });
+
+    return nf;
+  });*/
+
+  const mediaFiles: FileElement[] = [];
+  thumbnails.forEach((file) => {
+    mediaFiles.push({
+      fileName: file.name,
+      fileType: file.type,
+      status: file.isLoadingMedia ? "uploading" : "success",
+      previewUrl: URL.createObjectURL(file),
+    });
+  });
+
+  console.log("mediafiles", mediaFiles);
+
   return (
     <>
       <StyledThumbnailContainer className="thumbnailContainer">
-        {thumbnails.map((file, index) => (
+        {mediaFiles.map((file, index) => (
           <Thumbnail
             key={index}
-            src={URL.createObjectURL(file)}
-            label={file.name}
+            src={file.previewUrl}
+            label={file.fileName}
             index={index}
             showX={true}
             showLabel={false}
-            mediaType={file.type}
-            isLoadingMedia={file.isLoadingMedia}
+            mediaType={file.fileType}
+            isLoadingMedia={file.status === "uploading"}
             removeThumbnail={() => removeThumbnail(index)}
             clickThumbnail={() => {
-              openLightbox(file, index);
+              openLightbox(thumbnails[index], index);
             }}
           />
         ))}

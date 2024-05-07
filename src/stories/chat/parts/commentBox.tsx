@@ -64,6 +64,7 @@ export const CommentBox = ({
     thumbnails,
     addThumbnails,
     removeThumbnail,
+    setMediaStatus,
     //setIsMediaUploading,
   } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -195,6 +196,10 @@ export const CommentBox = ({
   ed.on("create", ({ editor }) => setEditor(editor as TipTapEditor));
   ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
+  const mediaFiles = thumbnails.map((file) => {
+    return Object.assign(file, { isLoadingMedia: false });
+  });
+
   return (
     <>
       {isOpen && selectedImage && (
@@ -208,11 +213,11 @@ export const CommentBox = ({
                 onSlideChange={slideChange}
                 initialSlide={selectedImageIndex}
               >
-                {thumbnails.map((item) => (
+                {mediaFiles.map((item, index) => (
                   <Slider.Slide>
                     {item.type.includes("image") && (
                       <img
-                        src={URL.createObjectURL(item)}
+                        src={URL.createObjectURL(thumbnails[index])}
                         alt={`media ${item.name}`}
                       />
                     )}
@@ -221,7 +226,7 @@ export const CommentBox = ({
                         ref={(ref) => {
                           videoRefs.current.push(ref);
                         }}
-                        url={URL.createObjectURL(item)}
+                        url={URL.createObjectURL(thumbnails[index])}
                       />
                     )}
                   </Slider.Slide>

@@ -35,8 +35,11 @@ interface EditorStoryArgs extends ChatEditorArgs {
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { editor, triggerSave /*isMediaUploading, setIsMediaUploading */ } =
-    useChatContext();
+  const {
+    editor,
+    triggerSave,
+    setMediaStatus /*isMediaUploading, setIsMediaUploading */,
+  } = useChatContext();
 
   return (
     <Chat>

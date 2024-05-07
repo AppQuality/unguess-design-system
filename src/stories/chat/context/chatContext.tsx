@@ -12,6 +12,10 @@ export type ChatContextType = {
   removeThumbnail: (index: number) => void;
   thumbnails: (File & { isLoadingMedia: boolean })[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
+  setMediaStatus: (
+    files: (File & { isLoadingMedia: boolean })[],
+    index: number
+  ) => void;
   //isMediaUploading: boolean; // Aggiunto il flag di caricamento dei media
   //setIsMediaUploading: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -61,6 +65,12 @@ export const ChatContextProvider = ({
       editor,
       setEditor,
       thumbnails,
+      setMediaStatus: (
+        files: (File & { isLoadingMedia: boolean })[],
+        index: number
+      ) => {
+        files[index].isLoadingMedia = false;
+      },
       //isMediaUploading, // Incluso nel valore del contesto
       //setIsMediaUploading, // Incluso nel valore del contesto
       addThumbnails: ({
@@ -69,10 +79,17 @@ export const ChatContextProvider = ({
         files: (File & { isLoadingMedia: boolean })[];
       }) => {
         onFileUpload && onFileUpload(files);
+        /* const media = files.map((file) => ({
+            ...file,
+            isLoadingMedia: false,
+          }));
+          media[0].isLoadingMedia = false;*/
         //setIsMediaUploading(true);
+        files.forEach((file) => (file.isLoadingMedia = false));
         setThumbnails((prev) => [...prev, ...files]);
         //setIsMediaUploading(false);
       },
+
       removeThumbnail: (index: number) =>
         setThumbnails(thumbnails.filter((_, i) => i !== index)),
       triggerSave: () => {
@@ -96,6 +113,8 @@ export const ChatContextProvider = ({
       //isMediaUploading,
     ]
   );
+
+  console.log("thumbnails: ", thumbnails);
 
   return (
     <ChatContext.Provider value={chatContextValue}>
