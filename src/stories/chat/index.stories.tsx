@@ -10,6 +10,7 @@ import { Row } from "../grid/row";
 import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment, MediaType } from "./parts/comment";
 import { theme } from "../theme";
+import { Data } from "./context/chatContext";
 
 const ButtonsContainer = styled.div`
   padding: 0px 16px;
@@ -30,7 +31,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
   editorText?: string;
   background?: string;
   onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: File[]) => Promise<void>;
+  onFileUpload?: (files: File[]) => Promise<Data>;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
@@ -166,7 +167,6 @@ const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
   onSave: (editor: TipTapEditor, mentions) => {},
-  isNewMedia: false,
   author: {
     avatar: "LC",
   },
@@ -249,7 +249,7 @@ Menus.args = {
   ...defaultArgs,
   hasFloatingMenu: true,
   hasButtonsMenu: true,
-  onFileUpload: async (files) => {},
+  onFileUpload: async (files) => ({failed: [], uploaded_ids: []}),
   i18n: {
     menu: {
       bold: "Grassetto",

@@ -20,6 +20,10 @@ export type ChatContextType = {
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
+export interface Data {
+  uploaded_ids?: number[],
+  failed?: {name: string, errorCode: string}[]
+}
 
 export const ChatContextProvider = ({
   onSave,
@@ -30,7 +34,7 @@ export const ChatContextProvider = ({
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
   onFileUpload?: (
     files: (File & { isLoadingMedia: boolean })[]
-  ) => Promise<void>;
+  ) => Promise<Data>;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
   //setIsMediaUploading: (value: boolean) => void;
@@ -83,15 +87,31 @@ export const ChatContextProvider = ({
       }: {
         files: (File & { isLoadingMedia: boolean })[];
       }) => {
-        onFileUpload && onFileUpload(files);
+        files.forEach((file) => (file.isLoadingMedia = true));
+        setThumbnails((prev) => [...prev, ...files]);
+
+        if(onFileUpload) {
+          onFileUpload(files).then((data: Data) => {
+            
+            const failed = data.failed?.map(f => f.name);
+            setThumbnails(thumbnails.map((file) => {
+              file.isLoadingMedia = false;
+              if (failed?.length && failed.includes(file.name)) {
+                //file.isError = true;
+              } else {
+                //file.isError = false
+              }
+              return file;
+            }));
+          });
+        }
         /* const media = files.map((file) => ({
             ...file,
             isLoadingMedia: false,
           }));
           media[0].isLoadingMedia = false;*/
         //setIsMediaUploading(true);
-        files.forEach((file) => (file.isLoadingMedia = true));
-        setThumbnails((prev) => [...prev, ...files]);
+        
         //setIsMediaUploading(false);
       },
 

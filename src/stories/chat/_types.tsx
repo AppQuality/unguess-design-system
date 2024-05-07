@@ -8,7 +8,6 @@ export type SuggestedUser = { id: number; name: string; email: string };
 export interface ChatEditorArgs extends Partial<EditorOptions> {
   placeholderOptions?: Partial<PlaceholderOptions>;
   hasFloatingMenu?: boolean;
-  isNewMedia: boolean;
   hasButtonsMenu?: boolean;
   bubbleOptions?: any;
   author: Author;
