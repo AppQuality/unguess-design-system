@@ -1,3 +1,16 @@
+# v3.1.80 (Tue May 07 2024)
+
+#### 🐛 Bug Fix
+
+- Allow search in trascript [#326](https://github.com/AppQuality/unguess-design-system/pull/326) ([@cannarocks](https://github.com/cannarocks))
+- feat: Add search functionality to highlight component [#325](https://github.com/AppQuality/unguess-design-system/pull/325) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.79 (Mon May 06 2024)
 
 #### 🐛 Bug Fix
