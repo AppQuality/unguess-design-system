@@ -62,10 +62,7 @@ export const CommentBox = ({
     mentionableUsers,
     triggerSave,
     thumbnails,
-    addThumbnails,
-    removeThumbnail,
-    setMediaStatus,
-    //setIsMediaUploading,
+    addThumbnails
   } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
