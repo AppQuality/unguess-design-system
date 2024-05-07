@@ -197,7 +197,7 @@ export const CommentBox = ({
   ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
   const mediaFiles = thumbnails.map((file) => {
-    return Object.assign(file, { isLoadingMedia: false });
+    return Object.assign(file, { isLoadingMedia: file.isLoadingMedia });
   });
 
   return (

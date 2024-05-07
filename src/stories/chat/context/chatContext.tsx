@@ -85,7 +85,7 @@ export const ChatContextProvider = ({
           }));
           media[0].isLoadingMedia = false;*/
         //setIsMediaUploading(true);
-        files.forEach((file) => (file.isLoadingMedia = false));
+        files.forEach((file) => (file.isLoadingMedia = true));
         setThumbnails((prev) => [...prev, ...files]);
         //setIsMediaUploading(false);
       },
