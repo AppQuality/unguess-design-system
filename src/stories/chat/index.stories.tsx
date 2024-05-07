@@ -38,7 +38,6 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
   const {
     editor,
     triggerSave,
-    setMediaStatus /*isMediaUploading, setIsMediaUploading */,
   } = useChatContext();
 
   return (
