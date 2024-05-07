@@ -5,7 +5,7 @@ import {
   Editor as TipTapEditor,
   Content,
 } from "@tiptap/react";
-import { ChatEditorArgs } from "../_types";
+import { ChatEditorArgs, FileItem } from "../_types";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
@@ -131,7 +131,7 @@ export const CommentBox = ({
             );
           }
         }*/
-        const mediaFiles: (File & { isLoadingMedia: boolean })[] = files.filter(
+        const mediaFiles: (FileItem)[] = files.filter(
           (file) => /^(image|video)\//.test(file.type)
         );
 

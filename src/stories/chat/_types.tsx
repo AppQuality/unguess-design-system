@@ -1,5 +1,6 @@
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { BubbleMenuProps, EditorOptions } from "@tiptap/react";
+import { isError } from "util";
 
 type validationStatus = "success" | "warning" | "error";
 
@@ -38,6 +39,11 @@ export interface ChatArgs {
 export interface EditorHeaderArgs {
   title?: string;
   validation?: validationStatus;
+}
+
+export interface FileItem extends File {
+  isLoadingMedia?: boolean;
+  isError?: boolean;
 }
 
 export interface FloatingMenuArgs extends Partial<BubbleMenuProps> {}

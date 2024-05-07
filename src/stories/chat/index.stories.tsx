@@ -249,7 +249,13 @@ Menus.args = {
   ...defaultArgs,
   hasFloatingMenu: true,
   hasButtonsMenu: true,
-  onFileUpload: async (files) => ({failed: [], uploaded_ids: []}),
+  onFileUpload: async (files) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({failed: [], uploaded_ids: []});
+      }, 3000);
+    })
+  },
   i18n: {
     menu: {
       bold: "Grassetto",

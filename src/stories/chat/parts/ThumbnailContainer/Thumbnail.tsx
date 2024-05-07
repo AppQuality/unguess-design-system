@@ -39,6 +39,7 @@ interface Props {
   showLabel?: boolean;
   mediaType: string;
   isLoadingMedia: boolean;
+  isError?: boolean;
 }
 
 const Thumbnail = ({
@@ -51,6 +52,7 @@ const Thumbnail = ({
   showLabel = false,
   mediaType,
   isLoadingMedia = false,
+  isError = false,
 }: Props) => {
   //const { isMediaUploading, setIsMediaUploading } = useChatContext();
 
@@ -72,6 +74,10 @@ const Thumbnail = ({
           style={{ position: "absolute", top: "39%", left: "37%" }}
           size="large"
         />
+      )}
+      {isError && (
+        // todo: add error icon
+        <span>error uploading media</span>
       )}
       {!isLoadingMedia && mediaType.includes("image") && (
         <img src={src} alt={label} />

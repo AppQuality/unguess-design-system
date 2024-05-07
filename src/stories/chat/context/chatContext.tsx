@@ -1,16 +1,16 @@
 import { Editor } from "@tiptap/react";
 import React, { createContext, useContext, useMemo, useState } from "react";
-import { SuggestedUser } from "../_types";
+import { FileItem, SuggestedUser } from "../_types";
 
 export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
   addThumbnails: (props: {
-    files: (File & { isLoadingMedia: boolean })[];
+    files: (FileItem)[];
   }) => void;
   removeThumbnail: (index: number) => void;
-  thumbnails: (File & { isLoadingMedia: boolean })[];
+  thumbnails: (FileItem)[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
   afterUploadCallback: (
     failed: string[]
@@ -33,7 +33,7 @@ export const ChatContextProvider = ({
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
   onFileUpload?: (
-    files: (File & { isLoadingMedia: boolean })[]
+    files: (FileItem)[]
   ) => Promise<Data>;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
@@ -41,7 +41,7 @@ export const ChatContextProvider = ({
 }) => {
   const [editor, setEditor] = useState<Editor | undefined>();
   const [thumbnails, setThumbnails] = useState<
-    (File & { isLoadingMedia: boolean })[]
+    (FileItem)[]
   >([]);
   //const [isMediaUploading, setIsMediaUploading] = useState<boolean>(false);
 
@@ -85,34 +85,28 @@ export const ChatContextProvider = ({
       addThumbnails: ({
         files,
       }: {
-        files: (File & { isLoadingMedia: boolean })[];
+        files: (FileItem)[];
       }) => {
         files.forEach((file) => (file.isLoadingMedia = true));
         setThumbnails((prev) => [...prev, ...files]);
 
         if(onFileUpload) {
           onFileUpload(files).then((data: Data) => {
-            
             const failed = data.failed?.map(f => f.name);
-            setThumbnails(thumbnails.map((file) => {
-              file.isLoadingMedia = false;
-              if (failed?.length && failed.includes(file.name)) {
-                //file.isError = true;
-              } else {
-                //file.isError = false
-              }
-              return file;
-            }));
+            
+            setThumbnails((prev) => {
+              return prev.map((file) => {
+                file.isLoadingMedia = false;
+                if (failed?.length && failed.includes(file.name)) {
+                  file.isError = true;
+                } else {
+                  file.isError = false
+                }
+                return file;
+              });
+            });
           });
         }
-        /* const media = files.map((file) => ({
-            ...file,
-            isLoadingMedia: false,
-          }));
-          media[0].isLoadingMedia = false;*/
-        //setIsMediaUploading(true);
-        
-        //setIsMediaUploading(false);
       },
 
       removeThumbnail: (index: number) =>
@@ -133,13 +127,9 @@ export const ChatContextProvider = ({
       setMentionableUsers,
       thumbnails,
       setThumbnails,
-      onFileUpload,
-      //setIsMediaUploading,
-      //isMediaUploading,
+      onFileUpload
     ]
   );
-
-  console.log("thumbnails: ", thumbnails);
 
   return (
     <ChatContext.Provider value={chatContextValue}>
