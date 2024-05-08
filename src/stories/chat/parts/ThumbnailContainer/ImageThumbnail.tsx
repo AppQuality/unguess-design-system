@@ -25,7 +25,6 @@ const Preview = styled.div<{
   background-repeat: no-repeat;
 `;
 
-
 interface Props {
   src: string;
   index?: number;
@@ -45,35 +44,40 @@ const ImageThumbnail = ({
   isLoadingMedia = false,
   isError = false,
 }: Props) => {
-
   const handleCancel = (e: any) => {
     e.stopPropagation();
     if (removeThumbnail) removeThumbnail(index);
   };
 
   return (
-
     <ImageCard onClick={clickThumbnail}>
-      <Preview url={src}>
-        {showX && (
-          <DeleteThumbnailX
-            content={"╳"}
-            deleteThumbnail={(e) => handleCancel(e)}
-          ></DeleteThumbnailX>
-        )}
-        {isLoadingMedia && (
+      {isLoadingMedia && (
+        <Preview url="">
           <Spinner
-            style={{ position: "absolute", top: "39%", left: "37%" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
             size="large"
           />
-        )}
-        {isError && (
-          // todo: add error icon
-          <span>error uploading media</span>
-        )}
-      </Preview>
+        </Preview>
+      )}
+      {isError && (
+        // todo: add error icon
+        <span>error uploading media</span>
+      )}
+      {!isLoadingMedia && (
+        <Preview url={src}>
+          {showX && (
+            <DeleteThumbnailX
+              content={"╳"}
+              deleteThumbnail={(e) => handleCancel(e)}
+            ></DeleteThumbnailX>
+          )}
+        </Preview>
+      )}
     </ImageCard>
-
   );
 };
 
