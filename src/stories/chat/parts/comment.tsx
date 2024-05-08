@@ -71,7 +71,7 @@ const StyledThumbnailContainer = styled.div`
   gap: 9px;
   background-color: inherit;
   margin-top: 10px;
-  height: 120px;
+  height: auto;
 `;
 
 export type MediaType = {
@@ -167,6 +167,7 @@ export const Comment = ({
       <StyledThumbnailContainer>
         {media.map((item, index) => (
           <Thumbnail
+            isLoadingMedia={false}
             src={item.url}
             label=""
             showLabel={false}

@@ -5,7 +5,7 @@ import {
   Editor as TipTapEditor,
   Content,
 } from "@tiptap/react";
-import { ChatEditorArgs } from "../_types";
+import { ChatEditorArgs, FileItem } from "../_types";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
@@ -14,6 +14,9 @@ import {
   useRef,
   useCallback,
 } from "react";
+
+import { Notification } from "../../notifications";
+import { useToast } from "../../notifications";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
@@ -24,6 +27,9 @@ import ThumbnailContainer from "./ThumbnailContainer";
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
 import { Player } from "../../player";
+import { ToastProvider } from "@zendeskgarden/react-notifications";
+import { ToastProviderArgs } from "../../notifications/_types";
+import { Spinner } from "../../loaders/spinner";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -56,8 +62,7 @@ export const CommentBox = ({
     mentionableUsers,
     triggerSave,
     thumbnails,
-    addThumbnails,
-    removeThumbnail,
+    addThumbnails
   } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
@@ -101,14 +106,18 @@ export const CommentBox = ({
 
         return false;
       },
+
       handleDrop: function (view, event, slice, moved) {
         if (!event.dataTransfer || !event.dataTransfer.files) return false;
 
         event.preventDefault();
 
-        const files = Array.from(event.dataTransfer.files);
-        const mediaFiles = files.filter((file) =>
-          /^(image|video)\//.test(file.type)
+        const files = Array.from(event.dataTransfer.files).map((file) => {
+          return Object.assign(file, { isLoadingMedia: false });
+        });
+        
+        const mediaFiles: (FileItem)[] = files.filter(
+          (file) => /^(image|video)\//.test(file.type)
         );
 
         if (mediaFiles.length === 0) return false;
@@ -169,6 +178,10 @@ export const CommentBox = ({
   ed.on("create", ({ editor }) => setEditor(editor as TipTapEditor));
   ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
+  const mediaFiles = thumbnails.map((file) => {
+    return Object.assign(file, { isLoadingMedia: file.isLoadingMedia });
+  });
+
   return (
     <>
       {isOpen && selectedImage && (
@@ -182,11 +195,11 @@ export const CommentBox = ({
                 onSlideChange={slideChange}
                 initialSlide={selectedImageIndex}
               >
-                {thumbnails.map((item) => (
+                {mediaFiles.map((item, index) => (
                   <Slider.Slide>
                     {item.type.includes("image") && (
                       <img
-                        src={URL.createObjectURL(item)}
+                        src={URL.createObjectURL(thumbnails[index])}
                         alt={`media ${item.name}`}
                       />
                     )}
@@ -195,7 +208,7 @@ export const CommentBox = ({
                         ref={(ref) => {
                           videoRefs.current.push(ref);
                         }}
-                        url={URL.createObjectURL(item)}
+                        url={URL.createObjectURL(thumbnails[index])}
                       />
                     )}
                   </Slider.Slide>
@@ -207,7 +220,7 @@ export const CommentBox = ({
         </Lightbox>
       )}
       <ChatBoxContainer>
-        <EditorContainer editable style={{ marginLeft: 0, paddingBottom:12 }}>
+        <EditorContainer editable style={{ marginLeft: 0, paddingBottom: 12 }}>
           {hasFloatingMenu && (
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}

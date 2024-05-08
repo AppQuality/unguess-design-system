@@ -10,6 +10,7 @@ import { Row } from "../grid/row";
 import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment, MediaType } from "./parts/comment";
 import { theme } from "../theme";
+import { Data } from "./context/chatContext";
 
 const ButtonsContainer = styled.div`
   padding: 0px 16px;
@@ -30,12 +31,16 @@ interface EditorStoryArgs extends ChatEditorArgs {
   editorText?: string;
   background?: string;
   onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: File[]) => Promise<void>;
+  onFileUpload?: (files: File[]) => Promise<Data>;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { editor, triggerSave } = useChatContext();
+  const {
+    editor,
+    triggerSave,
+  } = useChatContext();
+
   return (
     <Chat>
       <Chat.Header>Titolone</Chat.Header>
@@ -146,6 +151,9 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
             setMentionableUsers={getUsers}
             onSave={args.onSave}
             onFileUpload={args.onFileUpload}
+            /*setIsMediaUploading={function (value: boolean): void {
+              throw new Error("Function not implemented.");
+            }}*/
           >
             <ChatPanel {...args} />
           </ChatProvider>
@@ -193,7 +201,7 @@ const defaultArgs: EditorStoryArgs = {
       message: `This is an attached image:`,
       date: " | 21 mar. 2024 | 12:00",
       author: {
-        name: "Marco M.",
+        name: "Marco Minucci",
         avatar: "MM",
       },
       media: [
@@ -241,7 +249,13 @@ Menus.args = {
   ...defaultArgs,
   hasFloatingMenu: true,
   hasButtonsMenu: true,
-  onFileUpload: async (files) => {},
+  onFileUpload: async (files) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({failed: [], uploaded_ids: []});
+      }, 3000);
+    })
+  },
   i18n: {
     menu: {
       bold: "Grassetto",
