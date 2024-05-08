@@ -11,6 +11,7 @@ import { ChatEditorArgs, SuggestedUser } from "./_types";
 import { Comment, MediaType } from "./parts/comment";
 import { theme } from "../theme";
 import { Data } from "./context/chatContext";
+import { ToastProvider } from "@zendeskgarden/react-notifications";
 
 const ButtonsContainer = styled.div`
   padding: 0px 16px;
@@ -147,6 +148,7 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
     <Grid>
       <Row>
         <Col xs={12} sm={8} md={6}>
+        <ToastProvider zIndex={9999}>
           <ChatProvider
             setMentionableUsers={getUsers}
             onSave={args.onSave}
@@ -157,6 +159,7 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
           >
             <ChatPanel {...args} />
           </ChatProvider>
+          </ToastProvider>
         </Col>
       </Row>
     </Grid>
@@ -218,6 +221,7 @@ const defaultArgs: EditorStoryArgs = {
       ],
     },
   ],
+  messageBadFileFormat: "Format not supported, please upload video or image",
 };
 
 export const Default = Template.bind({});

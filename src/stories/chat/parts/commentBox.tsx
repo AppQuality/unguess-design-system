@@ -10,7 +10,6 @@ import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
   useState,
-  useReducer,
   useRef,
   useCallback,
 } from "react";
@@ -27,9 +26,6 @@ import ThumbnailContainer from "./ThumbnailContainer";
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
 import { Player } from "../../player";
-import { ToastProvider } from "@zendeskgarden/react-notifications";
-import { ToastProviderArgs } from "../../notifications/_types";
-import { Spinner } from "../../loaders/spinner";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -64,6 +60,8 @@ export const CommentBox = ({
     thumbnails,
     addThumbnails
   } = useChatContext();
+
+  const { addToast } = useToast();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
@@ -116,6 +114,24 @@ export const CommentBox = ({
           return Object.assign(file, { isLoadingMedia: false });
         });
         
+        const wronfFiles = files.filter(
+          (file) => !/^(image|video)\//.test(file.type)
+        );
+        if (wronfFiles.length > 0) {
+         for (const file of wronfFiles) {
+          addToast(
+            ({ close }) => (
+              <Notification
+                onClose={close}
+                type="error"
+                message={`${props.messageBadFileFormat} - ${file.name}`}
+                isPrimary
+              />
+            ),
+            { placement: 'top' }
+          );
+         }
+        }
         const mediaFiles: (FileItem)[] = files.filter(
           (file) => /^(image|video)\//.test(file.type)
         );
@@ -219,6 +235,7 @@ export const CommentBox = ({
           <Lightbox.Close aria-label="Close modal" />
         </Lightbox>
       )}
+
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0, paddingBottom: 12 }}>
           {hasFloatingMenu && (

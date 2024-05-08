@@ -7,11 +7,13 @@ type validationStatus = "success" | "warning" | "error";
 export type SuggestedUser = { id: number; name: string; email: string };
 
 export interface ChatEditorArgs extends Partial<EditorOptions> {
+  author: Author;
+  messageBadFileFormat: string;
+
   placeholderOptions?: Partial<PlaceholderOptions>;
   hasFloatingMenu?: boolean;
   hasButtonsMenu?: boolean;
   bubbleOptions?: any;
-  author: Author;
   i18n?: {
     menu?: {
       bold?: string;
