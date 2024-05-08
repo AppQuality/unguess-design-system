@@ -15,6 +15,7 @@ export type ChatContextType = {
   afterUploadCallback: (
     failed: string[]
   ) => void;
+  clearThumbnails: () => void;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
@@ -102,6 +103,9 @@ export const ChatContextProvider = ({
             });
           });
         }
+      },
+      clearThumbnails: () => {
+        setThumbnails([]);
       },
 
       removeThumbnail: (index: number) =>

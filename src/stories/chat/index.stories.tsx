@@ -40,6 +40,7 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
   const {
     editor,
     triggerSave,
+    clearThumbnails,
   } = useChatContext();
 
   return (
@@ -62,7 +63,11 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
             size="small"
             style={{ fontSize: theme.fontSizes.sm }}
             isBasic
-            onClick={() => editor?.commands.clearContent()}
+            onClick={() => {
+              editor?.commands.clearContent();
+              clearThumbnails();
+              }
+            }
           >
             Cancel
           </Button>
