@@ -38,14 +38,13 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
   console.log("mediafiles", mediaFiles);
 
   return (
-    <>
-      <Grid>
+    <Grid>
       <Row className="responsive-container">
         {mediaFiles.map((file, index) => {
           // Check if item is an image or a video
           if (file.fileType.includes('image'))
             return (
-              <Col xs={12} sm={6} className="flex-3-sm">
+              <Col xs={12} sm={3} className="flex-3-sm">
                 <ImageThumbnail
                   key={index}
                   src={file.previewUrl}
@@ -61,7 +60,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
             );
           if (file.fileType.includes('video'))
             return (
-              <Col xs={12} sm={6} className="flex-3-sm">
+              <Col xs={12} sm={3} className="flex-3-sm">
                 <VideoThumbnail
                   key={index}
                   src={file.previewUrl}
@@ -78,8 +77,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
           return null;
         })}
       </Row>
-      </Grid>
-    </>
+    </Grid>
   );
 };
 

@@ -8,7 +8,6 @@ import { useChatContext } from "../context/chatContext";
 import { Content, useEditor, EditorContent } from "@tiptap/react";
 import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
-import Thumbnail from "./ThumbnailContainer/Thumbnail";
 
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
@@ -16,6 +15,11 @@ import { MD } from "@zendeskgarden/react-typography";
 import { Player } from "../../player";
 import { Button } from "../../buttons/button";
 import { ReactComponent as DownloadIcon } from "../../../assets/icons/download-stroke.svg";
+import { Grid } from "../../grid/grid";
+import { Row } from "../../grid/row";
+import { Col } from "../../grid/col";
+import ImageThumbnail from "./ThumbnailContainer/ImageThumbnail";
+import VideoThumbnail from "./ThumbnailContainer/VideoThumbnail";
 
 const CommentCard = styled(Card)`
   padding: ${({ theme }) => `${theme.space.base * 3}px ${theme.space.sm}`};
@@ -164,21 +168,44 @@ export const Comment = ({
           </ReadOnly>
         </div>
       </AuthorContainer>
-      <StyledThumbnailContainer>
-        {media.map((item, index) => (
-          <Thumbnail
-            isLoadingMedia={false}
-            src={item.url}
-            label=""
-            showLabel={false}
-            showX={false}
-            mediaType={item.type}
-            clickThumbnail={() => {
-              handleClickThumbnail(item, index);
-            }}
-          />
-        ))}
-      </StyledThumbnailContainer>
+      <Grid>
+        <Row className="responsive-container">
+          {media.map((file, index) => {
+            // Check if item is an image or a video
+            if (file.type.includes('image'))
+              return (
+                <Col xs={12} sm={4} className="flex-3-sm">
+                  <ImageThumbnail
+                    key={index}
+                    src={file.url}
+                    index={index}
+                    showX={true}
+                    isLoadingMedia={false}
+                    clickThumbnail={() => {
+                      handleClickThumbnail(file, index);
+                    }}
+                  />
+                </Col>
+              );
+            if (file.type.includes('video'))
+              return (
+                <Col xs={12} sm={4} className="flex-3-sm">
+                  <VideoThumbnail
+                    key={index}
+                    src={file.url}
+                    index={index}
+                    showX={true}
+                    isLoadingMedia={false}
+                    clickThumbnail={() => {
+                      handleClickThumbnail(file, index);
+                    }}
+                  />
+                </Col>
+              );
+            return null;
+          })}
+        </Row>
+      </Grid>
       {isOpen && selectedImage && (
         <Lightbox onClose={closeLightbox}>
           <Lightbox.Header>

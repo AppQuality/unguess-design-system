@@ -9,8 +9,9 @@ const VideoCard = styled(SpecialCard)`
   position: relative;
   overflow: hidden;
 
-  :hover .deleteThumbnail {
+  &:hover .deleteThumbnail {
     opacity: 1;
+    z-index: 9999;
   }
 
   &:before {
@@ -73,7 +74,7 @@ const VideoThumbnail = ({
   };
 
   return (
-    <VideoCard className="singleThumbnail" onClick={clickThumbnail}>
+    <VideoCard onClick={clickThumbnail}>
       {isLoadingMedia && (
         <Preview>
           <Spinner
@@ -91,21 +92,20 @@ const VideoThumbnail = ({
         <span>error uploading media</span>
       )}
       {!isLoadingMedia && (
-        <>
+        <> 
+         {showX && (
+          <DeleteThumbnailX deleteThumbnail={(e) => handleCancel(e)}/>
+        )}
           <Preview>
             <video src={src}>
               <track kind="captions" />
             </video>
           </Preview>
           <VideoPlayIcon />
-          {showX && (
-            <DeleteThumbnailX
-              content={"╳"}
-              deleteThumbnail={(e) => handleCancel(e)}
-            ></DeleteThumbnailX>
-          )}
+        
         </>
       )}
+      
     </VideoCard>
   );
 };
