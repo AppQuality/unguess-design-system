@@ -31,6 +31,8 @@ const VideoCard = styled(SpecialCard)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
     z-index: 2;
   }
 `;
