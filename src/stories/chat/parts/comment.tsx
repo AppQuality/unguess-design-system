@@ -67,17 +67,6 @@ const Grey800Span = styled.span`
   color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
-const StyledThumbnailContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  overflow-y: scroll;
-  justify-items: center;
-  gap: 9px;
-  background-color: inherit;
-  margin-top: 10px;
-  height: auto;
-`;
-
 export type MediaType = {
   url: string;
   id: number;
@@ -126,6 +115,7 @@ export const Comment = ({
 
   const slideChange = useCallback(
     (index: number) => {
+      setSelectedImage(media[index]);
       setSelectedImageIndex(index);
       videoRefs.current.forEach((ref) => {
         if (ref) {
@@ -146,6 +136,24 @@ export const Comment = ({
   ed.setOptions({
     editable: false,
   });
+
+  const dowloadSelectedMedia = async () => {
+      try {
+        const response = await fetch(selectedImage.url);
+        const blob = await response.blob();
+
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "media_" + selectedImage.id.toString() || 'downloadedFile';
+        document.body.appendChild(link);
+        link.click();
+
+        window.URL.revokeObjectURL(link.href);
+        document.body.removeChild(link);
+      } catch (error) {
+        console.error('An error occurred while downloading: ', error);
+      }
+  }
 
   return (
     <CommentCard>
@@ -258,7 +266,7 @@ export const Comment = ({
             </Lightbox.Body.Details>
           </Lightbox.Body>
           <Lightbox.Footer>
-            <Button isBasic onClick={() => alert("download")}>
+            <Button isBasic onClick={dowloadSelectedMedia}>
               <Button.StartIcon>
                 <DownloadIcon />
               </Button.StartIcon>
