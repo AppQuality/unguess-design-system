@@ -1,22 +1,10 @@
-import { styled } from "styled-components";
-import Thumbnail from "./Thumbnail";
+import ImageThumbnail from "./ImageThumbnail";
+import VideoThumbnail from "./VideoThumbnail";
 import { useChatContext } from "../../context/chatContext";
+import { Grid } from "../../../grid/grid";
+import { Row } from "../../../grid/row";
+import { Col } from "../../../grid/col";
 
-const StyledThumbnailContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  overflow-y: scroll;
-  justify-items: center;
-  gap: 9px;
-  background-color: white;
-  width: 100%;
-  margin-top: 10px;
-  height: 150px;
-  .singleThumbnail:hover .deleteThumbnail {
-    opacity: 1 !important;
-    z-index: 9999;
-  }
-`;
 
 export interface FileElement {
   fileName: string;
@@ -37,16 +25,6 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
     return null;
   }
 
-  /* const mediaFiles: File[] = thumbnails.map((file) => {
-    // Crea un nuovo oggetto File senza la proprietà isLoadingMedia
-    const blob = new Blob([file], { type: file.type });
-
-    // Creiamo un nuovo File utilizzando il Blob e mantenendo il nome del file originale
-    const nf = new File([blob], file.name, { type: file.type });
-
-    return nf;
-  });*/
-
   const mediaFiles: FileElement[] = [];
   thumbnails.forEach((file) => {
     mediaFiles.push({
@@ -61,26 +39,50 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
 
   return (
     <>
-      <StyledThumbnailContainer className="thumbnailContainer">
-        {mediaFiles.map((file, index) => (
-          <Thumbnail
-            key={index}
-            src={file.previewUrl}
-            label={file.fileName}
-            index={index}
-            showX={true}
-            showLabel={false}
-            mediaType={file.fileType}
-            isLoadingMedia={file.status === "uploading"}
-            removeThumbnail={() => removeThumbnail(index)}
-            clickThumbnail={() => {
-              openLightbox(thumbnails[index], index);
-            }}
-          />
-        ))}
-      </StyledThumbnailContainer>
+      <Grid>
+      <Row className="responsive-container">
+        {mediaFiles.map((file, index) => {
+          // Check if item is an image or a video
+          if (file.fileType.includes('image'))
+            return (
+              <Col xs={12} sm={6} className="flex-3-sm">
+                <ImageThumbnail
+                  key={index}
+                  src={file.previewUrl}
+                  index={index}
+                  showX={true}
+                  isLoadingMedia={file.status === "uploading"}
+                  removeThumbnail={() => removeThumbnail(index)}
+                  clickThumbnail={() => {
+                    openLightbox(thumbnails[index], index);
+                  }}
+                />
+              </Col>
+            );
+          if (file.fileType.includes('video'))
+            return (
+              <Col xs={12} sm={6} className="flex-3-sm">
+                <VideoThumbnail
+                  key={index}
+                  src={file.previewUrl}
+                  index={index}
+                  showX={true}
+                  isLoadingMedia={file.status === "uploading"}
+                  removeThumbnail={() => removeThumbnail(index)}
+                  clickThumbnail={() => {
+                    openLightbox(thumbnails[index], index);
+                  }}
+                />
+              </Col>
+            );
+          return null;
+        })}
+      </Row>
+      </Grid>
     </>
   );
 };
 
 export default ThumbnailContainer;
+
+

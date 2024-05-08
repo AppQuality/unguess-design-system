@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
 import { Spinner } from "@zendeskgarden/react-loaders";
-import { useChatContext } from "../../context/chatContext";
 import { ReactComponent as PlayIcon } from "../../../../assets/icons/play-fill.svg";
-import { useState } from "react";
 
 const StyledThumbnail = styled.div`
   border-radius: 4%;
