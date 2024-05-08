@@ -15,8 +15,6 @@ export type ChatContextType = {
   afterUploadCallback: (
     failed: string[]
   ) => void;
-  //isMediaUploading: boolean; // Aggiunto il flag di caricamento dei media
-  //setIsMediaUploading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
@@ -37,13 +35,11 @@ export const ChatContextProvider = ({
   ) => Promise<Data>;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
-  //setIsMediaUploading: (value: boolean) => void;
 }) => {
   const [editor, setEditor] = useState<Editor | undefined>();
   const [thumbnails, setThumbnails] = useState<
     (FileItem)[]
   >([]);
-  //const [isMediaUploading, setIsMediaUploading] = useState<boolean>(false);
 
   const getMentions = (editor: Editor) => {
     const result: SuggestedUser[] = [];
@@ -80,8 +76,7 @@ export const ChatContextProvider = ({
           return file;
         }));
       },
-      //isMediaUploading, // Incluso nel valore del contesto
-      //setIsMediaUploading, // Incluso nel valore del contesto
+      
       addThumbnails: ({
         files,
       }: {

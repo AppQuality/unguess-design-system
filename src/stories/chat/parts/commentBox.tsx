@@ -115,22 +115,7 @@ export const CommentBox = ({
         const files = Array.from(event.dataTransfer.files).map((file) => {
           return Object.assign(file, { isLoadingMedia: false });
         });
-        /*for (const f of files) {
-          if (!/^(image|video)\//.test(f.type)) {
-            addToast(
-              ({ close }) => (
-                <Notification
-                  onClose={close}
-                  type="error"
-                  message={"File type not supported"}
-                  closeText={"Close"}
-                  isPrimary
-                />
-              ),
-              { placement: "top" }
-            );
-          }
-        }*/
+        
         const mediaFiles: (FileItem)[] = files.filter(
           (file) => /^(image|video)\//.test(file.type)
         );
