@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
 import { Spinner } from "@zendeskgarden/react-loaders";
-import { ReactComponent as PlayIcon } from "../../../../assets/icons/play-fill.svg";
 import { SpecialCard } from "../../../special-cards";
-import { ReactComponent as VideoPlayIcon } from 'src/assets/icons/video-play-icon.svg';
-
+import { ReactComponent as VideoPlayIcon } from "../../../../assets/icons/video-play-icon.svg";
 
 const VideoCard = styled(SpecialCard)`
   padding: 0;
@@ -12,7 +10,7 @@ const VideoCard = styled(SpecialCard)`
   overflow: hidden;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -46,7 +44,6 @@ const Preview = styled.div`
   }
 `;
 
-
 interface Props {
   src: string;
   index?: number;
@@ -66,7 +63,6 @@ const VideoThumbnail = ({
   isLoadingMedia = false,
   isError = false,
 }: Props) => {
-
   const handleCancel = (e: any) => {
     e.stopPropagation();
     if (removeThumbnail) removeThumbnail(index);
@@ -74,10 +70,8 @@ const VideoThumbnail = ({
 
   return (
     <VideoCard className="singleThumbnail" onClick={clickThumbnail}>
-       <Preview>
-        <video
-          src={src}
-        >
+      <Preview>
+        <video src={src}>
           <track kind="captions" />
         </video>
       </Preview>
