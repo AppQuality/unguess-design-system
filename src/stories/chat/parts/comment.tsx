@@ -139,7 +139,7 @@ export const Comment = ({
 
   const dowloadSelectedMedia = async () => {
       try {
-        const response = await fetch(selectedImage.url);
+        const response = await fetch(`${selectedImage.url}?download`);
         const blob = await response.blob();
 
         const link = document.createElement('a');
