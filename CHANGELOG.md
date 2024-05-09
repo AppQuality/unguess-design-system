@@ -1,3 +1,18 @@
+# v3.1.81 (Thu May 09 2024)
+
+#### 🐛 Bug Fix
+
+- Fix highlight for long selections [#331](https://github.com/AppQuality/unguess-design-system/pull/331) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- removed border radius from highlighted word [#332](https://github.com/AppQuality/unguess-design-system/pull/332) ([@iDome89](https://github.com/iDome89))
+- fixees for searched term and break word [#330](https://github.com/AppQuality/unguess-design-system/pull/330) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.80 (Tue May 07 2024)
 
 #### 🐛 Bug Fix
