@@ -138,22 +138,23 @@ export const Comment = ({
   });
 
   const downloadSelectedMedia = async () => {
-      try {
-        const response = await fetch(`${selectedImage.url}?antiCors`);
-        const blob = await response.blob();
+    try {
+      const response = await fetch(`${selectedImage.url}?antiCors`);
+      const blob = await response.blob();
 
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = "media_" + selectedImage.id.toString() || 'downloadedFile';
-        document.body.appendChild(link);
-        link.click();
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download =
+        "media_" + selectedImage.id.toString() || "downloadedFile";
+      document.body.appendChild(link);
+      link.click();
 
-        window.URL.revokeObjectURL(link.href);
-        document.body.removeChild(link);
-      } catch (error) {
-        console.error('An error occurred while downloading: ', error);
-      }
-  }
+      window.URL.revokeObjectURL(link.href);
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("An error occurred while downloading: ", error);
+    }
+  };
 
   return (
     <CommentCard>
@@ -180,14 +181,14 @@ export const Comment = ({
         <Row className="responsive-container">
           {media.map((file, index) => {
             // Check if item is an image or a video
-            if (file.type.includes('image'))
+            if (file.type.includes("image"))
               return (
                 <Col xs={12} sm={4} className="flex-3-sm">
                   <ImageThumbnail
                     key={index}
                     src={file.url}
                     index={index}
-                    showX={true}
+                    showX={false}
                     isLoadingMedia={false}
                     clickThumbnail={() => {
                       handleClickThumbnail(file, index);
@@ -195,14 +196,14 @@ export const Comment = ({
                   />
                 </Col>
               );
-            if (file.type.includes('video'))
+            if (file.type.includes("video"))
               return (
                 <Col xs={12} sm={4} className="flex-3-sm">
                   <VideoThumbnail
                     key={index}
                     src={file.url}
                     index={index}
-                    showX={true}
+                    showX={false}
                     isLoadingMedia={false}
                     clickThumbnail={() => {
                       handleClickThumbnail(file, index);
