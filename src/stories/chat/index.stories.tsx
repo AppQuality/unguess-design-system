@@ -7,7 +7,7 @@ import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatEditorArgs, SuggestedUser } from "./_types";
+import { ChatEditorArgs, FileItem, SuggestedUser } from "./_types";
 import { Comment, MediaType } from "./parts/comment";
 import { theme } from "../theme";
 import { Data } from "./context/chatContext";
@@ -32,7 +32,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
   editorText?: string;
   background?: string;
   onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: File[]) => Promise<Data>;
+  onFileUpload?: (files: FileItem[]) => Promise<Data>;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
