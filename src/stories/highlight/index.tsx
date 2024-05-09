@@ -36,26 +36,16 @@ const StyledWord = styled(ZendeskSpan)<
 const ActiveWord = styled.span`
   background-color: ${({ theme }) =>
     getColor(theme.palette.fuschia, 700, undefined, 0.5)};
-  border-radius: ${({ theme }) => theme.borderRadii.lg};
   padding: 0 2px;
 `;
 
 const WordsContainer = styled.div`
+  word-wrap: break-word;
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
         getColor(theme.palette.kale, 700, undefined, 0.5)};
     }
-  }
-
-  observation:first-of-type {
-    border-top-left-radius: ${({ theme }) => theme.borderRadii.lg};
-    border-bottom-left-radius: ${({ theme }) => theme.borderRadii.lg};
-  }
-
-  observation:last-of-type {
-    border-top-right-radius: ${({ theme }) => theme.borderRadii.lg};
-    border-bottom-right-radius: ${({ theme }) => theme.borderRadii.lg};
   }
 `;
 
