@@ -139,7 +139,7 @@ export const Comment = ({
 
   const downloadSelectedMedia = async () => {
       try {
-        const response = await fetch(`${selectedImage.url}?download`);
+        const response = await fetch(`${selectedImage.url}?antiCors`);
         const blob = await response.blob();
 
         const link = document.createElement('a');
@@ -266,12 +266,12 @@ export const Comment = ({
             </Lightbox.Body.Details>
           </Lightbox.Body>
           <Lightbox.Footer>
-            <Button isBasic onClick={downloadSelectedMedia}>
+            {/* <Button isBasic onClick={downloadSelectedMedia}>
               <Button.StartIcon>
                 <DownloadIcon />
               </Button.StartIcon>
               Download
-            </Button>
+            </Button> */}
           </Lightbox.Footer>
           <Lightbox.Close aria-label="Close modal" />
         </Lightbox>
