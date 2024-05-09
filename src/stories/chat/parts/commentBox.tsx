@@ -58,7 +58,7 @@ export const CommentBox = ({
     mentionableUsers,
     triggerSave,
     thumbnails,
-    addThumbnails
+    addThumbnails,
   } = useChatContext();
 
   const { addToast } = useToast();
@@ -113,27 +113,27 @@ export const CommentBox = ({
         const files = Array.from(event.dataTransfer.files).map((file) => {
           return Object.assign(file, { isLoadingMedia: false });
         });
-        
+
         const wronfFiles = files.filter(
           (file) => !/^(image|video)\//.test(file.type)
         );
         if (wronfFiles.length > 0) {
-         for (const file of wronfFiles) {
-          addToast(
-            ({ close }) => (
-              <Notification
-                onClose={close}
-                type="error"
-                message={`${props.messageBadFileFormat} - ${file.name}`}
-                isPrimary
-              />
-            ),
-            { placement: 'top' }
-          );
-         }
+          for (const file of wronfFiles) {
+            addToast(
+              ({ close }) => (
+                <Notification
+                  onClose={close}
+                  type="error"
+                  message={`${props.messageBadFileFormat} - ${file.name}`}
+                  isPrimary
+                />
+              ),
+              { placement: "top" }
+            );
+          }
         }
-        const mediaFiles: (FileItem)[] = files.filter(
-          (file) => /^(image|video)\//.test(file.type)
+        const mediaFiles: FileItem[] = files.filter((file) =>
+          /^(image|video)\//.test(file.type)
         );
 
         if (mediaFiles.length === 0) return false;
@@ -215,7 +215,7 @@ export const CommentBox = ({
                   <Slider.Slide>
                     {item.type.includes("image") && (
                       <img
-                        src={URL.createObjectURL(thumbnails[index])}
+                        src={URL.createObjectURL(item)}
                         alt={`media ${item.name}`}
                       />
                     )}
@@ -224,7 +224,7 @@ export const CommentBox = ({
                         ref={(ref) => {
                           videoRefs.current.push(ref);
                         }}
-                        url={URL.createObjectURL(thumbnails[index])}
+                        url={URL.createObjectURL(item)}
                       />
                     )}
                   </Slider.Slide>

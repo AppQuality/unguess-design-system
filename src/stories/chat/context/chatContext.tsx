@@ -95,7 +95,8 @@ export const ChatContextProvider = ({
         }
       },
       clearThumbnails: () => {
-        setThumbnails([]);
+        if (editor) setThumbnails([]);
+        console.log("thumbnails cleared", thumbnails);
       },
 
       removeThumbnail: (index: number) =>
@@ -105,6 +106,7 @@ export const ChatContextProvider = ({
           onSave(editor, getMentions(editor));
           editor.commands.clearContent();
           setThumbnails([]);
+          console.log("thumbnails cleared", thumbnails);
         }
       },
       mentionableUsers: setMentionableUsers,

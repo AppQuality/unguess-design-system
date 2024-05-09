@@ -37,11 +37,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const {
-    editor,
-    triggerSave,
-    clearThumbnails,
-  } = useChatContext();
+  const { editor, triggerSave, clearThumbnails } = useChatContext();
 
   return (
     <Chat>
@@ -64,10 +60,9 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
             style={{ fontSize: theme.fontSizes.sm }}
             isBasic
             onClick={() => {
-              editor?.commands.clearContent();
               clearThumbnails();
-              }
-            }
+              editor?.commands.clearContent();
+            }}
           >
             Cancel
           </Button>
@@ -153,17 +148,17 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
     <Grid>
       <Row>
         <Col xs={12} sm={8} md={6}>
-        <ToastProvider zIndex={9999}>
-          <ChatProvider
-            setMentionableUsers={getUsers}
-            onSave={args.onSave}
-            onFileUpload={args.onFileUpload}
-            /*setIsMediaUploading={function (value: boolean): void {
+          <ToastProvider zIndex={9999}>
+            <ChatProvider
+              setMentionableUsers={getUsers}
+              onSave={args.onSave}
+              onFileUpload={args.onFileUpload}
+              /*setIsMediaUploading={function (value: boolean): void {
               throw new Error("Function not implemented.");
             }}*/
-          >
-            <ChatPanel {...args} />
-          </ChatProvider>
+            >
+              <ChatPanel {...args} />
+            </ChatProvider>
           </ToastProvider>
         </Col>
       </Row>
@@ -261,9 +256,9 @@ Menus.args = {
   onFileUpload: async (files) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({failed: [], uploaded_ids: []});
+        resolve({ failed: [], uploaded_ids: [] });
       }, 3000);
-    })
+    });
   },
   i18n: {
     menu: {

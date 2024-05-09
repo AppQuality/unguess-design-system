@@ -5,7 +5,6 @@ import { Grid } from "../../../grid/grid";
 import { Row } from "../../../grid/row";
 import { Col } from "../../../grid/col";
 
-
 export interface FileElement {
   fileName: string;
   fileType: string;
@@ -37,14 +36,18 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
 
   console.log("mediafiles", mediaFiles);
 
+  if (!mediaFiles || mediaFiles.length === 0) {
+    return null;
+  }
+
   return (
     <Grid>
       <Row className="responsive-container">
         {mediaFiles.map((file, index) => {
           // Check if item is an image or a video
-          if (file.fileType.includes('image'))
+          if (file.fileType.includes("image"))
             return (
-              <Col xs={12} sm={3} className="flex-3-sm">
+              <Col xs={12} sm={3} xl={3} lg={3} className="flex-3-sm">
                 <ImageThumbnail
                   key={index}
                   src={file.previewUrl}
@@ -58,7 +61,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
                 />
               </Col>
             );
-          if (file.fileType.includes('video'))
+          if (file.fileType.includes("video"))
             return (
               <Col xs={12} sm={3} className="flex-3-sm">
                 <VideoThumbnail
@@ -82,5 +85,3 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
 };
 
 export default ThumbnailContainer;
-
-
