@@ -137,7 +137,7 @@ export const Comment = ({
     editable: false,
   });
 
-  const dowloadSelectedMedia = async () => {
+  const downloadSelectedMedia = async () => {
       try {
         const response = await fetch(`${selectedImage.url}?download`);
         const blob = await response.blob();
@@ -266,7 +266,7 @@ export const Comment = ({
             </Lightbox.Body.Details>
           </Lightbox.Body>
           <Lightbox.Footer>
-            <Button isBasic onClick={dowloadSelectedMedia}>
+            <Button isBasic onClick={downloadSelectedMedia}>
               <Button.StartIcon>
                 <DownloadIcon />
               </Button.StartIcon>
