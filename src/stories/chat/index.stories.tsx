@@ -37,7 +37,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { editor, triggerSave, clearThumbnails } = useChatContext();
+  const { editor, triggerSave, clearInput } = useChatContext();
 
   return (
     <Chat>
@@ -59,10 +59,7 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
             size="small"
             style={{ fontSize: theme.fontSizes.sm }}
             isBasic
-            onClick={() => {
-              clearThumbnails();
-              editor?.commands.clearContent();
-            }}
+            onClick={clearInput}
           >
             Cancel
           </Button>
@@ -153,6 +150,7 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
               setMentionableUsers={getUsers}
               onSave={args.onSave}
               onFileUpload={args.onFileUpload}
+
               /*setIsMediaUploading={function (value: boolean): void {
               throw new Error("Function not implemented.");
             }}*/

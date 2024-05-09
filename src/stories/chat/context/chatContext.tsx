@@ -11,7 +11,7 @@ export type ChatContextType = {
   thumbnails: FileItem[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
   afterUploadCallback: (failed: string[]) => void;
-  clearThumbnails: () => void;
+  clearInput: () => void;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
@@ -94,9 +94,13 @@ export const ChatContextProvider = ({
           });
         }
       },
-      clearThumbnails: () => {
-        if (editor) setThumbnails([]);
-        console.log("thumbnails cleared", thumbnails);
+      clearInput: () => {
+        if (editor && !editor.isEmpty) {
+          editor.commands.clearContent();
+        }
+        if (thumbnails.length > 0) setThumbnails([]);
+
+        console.log("thumbnails clear triggered", thumbnails);
       },
 
       removeThumbnail: (index: number) =>
@@ -106,7 +110,7 @@ export const ChatContextProvider = ({
           onSave(editor, getMentions(editor));
           editor.commands.clearContent();
           setThumbnails([]);
-          console.log("thumbnails cleared", thumbnails);
+          console.log("save triggered", thumbnails);
         }
       },
       mentionableUsers: setMentionableUsers,
