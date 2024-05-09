@@ -41,6 +41,7 @@ const ActiveWord = styled.span`
 `;
 
 const WordsContainer = styled.div`
+  word-break: break-word;
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
