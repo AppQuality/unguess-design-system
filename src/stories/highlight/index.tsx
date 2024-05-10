@@ -14,15 +14,14 @@ const StyledWord = styled(ZendeskSpan)<
 
   ${({ observation, theme }) =>
     observation &&
-    `
-      user-select: none;
+    ` user-select: none;
+      padding: 0;
       background-color: ${
         observation.backgroundColor ??
         getColor(theme.palette.azure, 700, undefined, 0.5)
       };
       color: ${observation.color ?? "white"};
-      padding: 0 2px;
-
+      box-sizing: border-box;
       &:focus {
         outline: none;
       }
@@ -40,7 +39,7 @@ const ActiveWord = styled.span`
 `;
 
 const WordsContainer = styled.div`
-  word-wrap: break-word;
+  box-sizing: border-box;
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
@@ -131,7 +130,7 @@ const Word = (props: WordProps) => {
       ) : (
         <Searchable start={props.start} text={props.text} />
       )}
-      {!observation && " "}
+       {" "}
     </StyledWord>
   );
 };
