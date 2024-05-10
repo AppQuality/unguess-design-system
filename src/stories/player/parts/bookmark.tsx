@@ -5,10 +5,6 @@ import { IBookmark } from "../_types";
 import { useProgressContext } from "./progressContext";
 import { ReactComponent as GripIcon } from "../../../assets/icons/grip.svg";
 
-const activeBookMark = css`
-  height: 250%;
-  transform: translateY(-30%);
-`;
 const StyledGrabber = styled.div<{ isEnd?: boolean }>`
   position: absolute;
   display: none;
@@ -25,8 +21,8 @@ const StyledGrabber = styled.div<{ isEnd?: boolean }>`
     border-bottom-left-radius: 2px;
   `}
   height: 100%;
-  width: 6px;
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  width: 8px;
+  background-color: white;
   z-index: 2;
   cursor: ew-resize;
 
@@ -36,11 +32,20 @@ const StyledGrabber = styled.div<{ isEnd?: boolean }>`
     align-items: center;
     height: 100%;
     width: 100%;
+    color: ${({ theme }) => theme.palette.grey[500]};
     svg {
       width: auto;
       height: 50%;
-      fill: ${({ theme }) => theme.palette.grey[200]};
     }
+  }
+`;
+
+const activeBookMark = css`
+  height: 250%;
+  transform: translateY(-30%);
+
+  ${StyledGrabber} {
+    display: block;
   }
 `;
 
@@ -52,12 +57,12 @@ const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
   border-radius: 2px;
   &:hover {
     ${activeBookMark}
-    ${StyledGrabber} {
-      display: block;
-    }
+    border-radius: 4px;
   }
   color: white;
   ${({ isActive }) => isActive && activeBookMark}
+
+  transition: width 0.1s ease;
 `;
 
 const Grabber = (props: {
