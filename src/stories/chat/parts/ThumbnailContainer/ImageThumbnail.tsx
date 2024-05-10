@@ -70,7 +70,7 @@ const ImageThumbnail = ({
       {!isLoadingMedia && (
         <Preview url={src}>
           {showX && (
-            <DeleteThumbnailX  deleteThumbnail={(e) => handleCancel(e)} />
+            <DeleteThumbnailX deleteThumbnail={(e) => handleCancel(e)} />
           )}
         </Preview>
       )}

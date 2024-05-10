@@ -11,6 +11,7 @@ export interface FileElement {
   status: "success" | "failed" | "uploading";
   errorCode?: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
   previewUrl: string;
+  internal_id: string;
 }
 
 interface Props {
@@ -21,7 +22,7 @@ interface Props {
 const ThumbnailContainer = ({
   /*removeMediaToUpload,*/ openLightbox,
 }: Props) => {
-  const { thumbnails, removeThumbnail } = useChatContext();
+  const { thumbnails, removeThumbnail, onDeleteThumbnail } = useChatContext();
 
   if (!thumbnails || thumbnails.length === 0) {
     return null;
@@ -34,6 +35,7 @@ const ThumbnailContainer = ({
       fileType: file.type,
       status: file.isLoadingMedia ? "uploading" : "success",
       previewUrl: URL.createObjectURL(file),
+      internal_id: file.internal_id,
     });
   });
 
@@ -59,7 +61,7 @@ const ThumbnailContainer = ({
                   isLoadingMedia={file.status === "uploading"}
                   removeThumbnail={() => {
                     removeThumbnail(index);
-                    //removeMediaToUpload(thumbnails[index]);
+                    onDeleteThumbnail(file.internal_id);
                   }}
                   clickThumbnail={() => {
                     openLightbox(thumbnails[index], index);

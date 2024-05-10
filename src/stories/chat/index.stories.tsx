@@ -150,6 +150,9 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
               setMentionableUsers={getUsers}
               onSave={args.onSave}
               onFileUpload={args.onFileUpload}
+              onDeleteThumbnail={(id) => {
+                console.log("internal_id - ", id);
+              }}
 
               /*setIsMediaUploading={function (value: boolean): void {
               throw new Error("Function not implemented.");

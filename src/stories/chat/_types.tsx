@@ -46,7 +46,7 @@ export interface EditorHeaderArgs {
 export interface FileItem extends File {
   isLoadingMedia?: boolean;
   isError?: boolean;
-  id?: number;
+  internal_id: string;
 }
 
 export interface FloatingMenuArgs extends Partial<BubbleMenuProps> {}

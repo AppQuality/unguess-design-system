@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import { Tooltip } from "../../tooltip";
-import { ChatEditorArgs } from "../_types";
+import { ChatEditorArgs, FileItem } from "../_types";
 import { Editor } from "@tiptap/react";
 import { isMac } from "../../theme/utils";
 import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-stroke.svg";
@@ -76,8 +77,11 @@ const CommentBar = ({
         fileInput.onchange = () => {
           const files = fileInput.files;
           if (files) {
-            const mediaFiles = Array.from(files).map((file) => {
-              return Object.assign(file, { isLoadingMedia: false });
+            const mediaFiles: FileItem[] = Array.from(files).map((file) => {
+              return Object.assign(file, {
+                isLoadingMedia: false,
+                internal_id: uuidv4(),
+              });
             });
 
             if (mediaFiles.length === 0) return;

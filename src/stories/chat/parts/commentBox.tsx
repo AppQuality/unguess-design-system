@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import {
   useEditor,
   EditorContent,
@@ -110,9 +111,14 @@ export const CommentBox = ({
 
         event.preventDefault();
 
-        const files = Array.from(event.dataTransfer.files).map((file) => {
-          return Object.assign(file, { isLoadingMedia: false });
-        });
+        const files: FileItem[] = Array.from(event.dataTransfer.files).map(
+          (file) => {
+            return Object.assign(file, {
+              isLoadingMedia: false,
+              internal_id: uuidv4(),
+            });
+          }
+        );
 
         const wrongFiles = files.filter(
           (file) => !/^(image|video)\//.test(file.type)

@@ -18,12 +18,10 @@ interface Props {
 }
 
 const DeleteThumbnailX = ({ deleteThumbnail }: Props) => {
-  return (<StyledDeleteThumbnailX className="deleteThumbnail">
-    <DeleteThumbnailIcon
-          onClick={(e) => deleteThumbnail(e)}
-    />
-  </StyledDeleteThumbnailX>
-    
+  return (
+    <StyledDeleteThumbnailX className="deleteThumbnail">
+      <DeleteThumbnailIcon onClick={(e) => deleteThumbnail(e)} />
+    </StyledDeleteThumbnailX>
   );
 };
 

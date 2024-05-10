@@ -12,6 +12,7 @@ export type ChatContextType = {
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
   afterUploadCallback: (failed: string[]) => void;
   clearInput: () => void;
+  onDeleteThumbnail: (id: string) => void;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);
@@ -29,7 +30,7 @@ export const ChatContextProvider = ({
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
   onFileUpload?: (files: FileItem[]) => Promise<Data>;
-  onDeleteThumbnail?: (map: Map<number, File>) => void;
+  onDeleteThumbnail: (id: string) => void;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
 }) => {
@@ -110,15 +111,11 @@ export const ChatContextProvider = ({
         console.log("thumbnails clear triggered", thumbnails);
       },
 
+      onDeleteThumbnail: (id: string) => {
+        onDeleteThumbnail(id);
+      },
+
       removeThumbnail: (index: number) => {
-        const f = thumbnails[index];
-        /*
-          se rimuovo un file con un certo indice da thumbnails, controllo se quel file esiste ugualmente nella mappa e lo tolgo anche là
-        */
-
-        if (onDeleteThumbnail) {
-        }
-
         setThumbnails(thumbnails.filter((_, i) => i !== index));
       },
       triggerSave: () => {
