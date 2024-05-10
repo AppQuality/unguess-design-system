@@ -137,24 +137,24 @@ export const Comment = ({
     editable: false,
   });
 
-  const downloadSelectedMedia = async () => {
-    try {
-      const response = await fetch(`${selectedImage.url}?antiCors`);
-      const blob = await response.blob();
+  // const downloadSelectedMedia = async () => {
+  //   try {
+  //     const response = await fetch(`${selectedImage.url}?antiCors`);
+  //     const blob = await response.blob();
 
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.download =
-        "media_" + selectedImage.id.toString() || "downloadedFile";
-      document.body.appendChild(link);
-      link.click();
+  //     const link = document.createElement("a");
+  //     link.href = window.URL.createObjectURL(blob);
+  //     link.download =
+  //       "media_" + selectedImage.id.toString() || "downloadedFile";
+  //     document.body.appendChild(link);
+  //     link.click();
 
-      window.URL.revokeObjectURL(link.href);
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error("An error occurred while downloading: ", error);
-    }
-  };
+  //     window.URL.revokeObjectURL(link.href);
+  //     document.body.removeChild(link);
+  //   } catch (error) {
+  //     console.error("An error occurred while downloading: ", error);
+  //   }
+  // };
 
   return (
     <CommentCard>
@@ -167,7 +167,7 @@ export const Comment = ({
         </Avatar>
         <div>
           <CommentTitle>
-            {author.name ?? "User"}
+            {author.name ?? "User"}{" "}
             <CommentDate>{date}</CommentDate>
           </CommentTitle>
           <ReadOnly>

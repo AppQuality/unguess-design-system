@@ -178,7 +178,7 @@ const defaultArgs: EditorStoryArgs = {
   comments: [
     {
       message: "Hi, I'm a comment",
-      date: " | 27 dic. 2023 | 12:00",
+      date: "| 27 dic. 2023 | 12:00",
       author: {
         name: "Luca C.",
         avatar: "LC",
@@ -187,7 +187,7 @@ const defaultArgs: EditorStoryArgs = {
     {
       message:
         "Hi, I'm a comment too but with <strong>bold</strong>. lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl nisl eget ultricies ultricies, nunc nisl ultricies nunc, quis ultricies nisl",
-      date: " | 27 dic. 2023 | 12:00",
+      date: "| 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",
         avatar: "MB",
@@ -195,7 +195,7 @@ const defaultArgs: EditorStoryArgs = {
     },
     {
       message: `Hi <mention data-type="mention" data-mention-id="1" data-mention-name="John Doe">@John Doe</mention>, I'm a comment too but with <strong>bold</strong>`,
-      date: " | 27 dic. 2023 | 12:00",
+      date: "| 27 dic. 2023 | 12:00",
       author: {
         name: "Marco B.",
         avatar: "MB",
@@ -203,7 +203,7 @@ const defaultArgs: EditorStoryArgs = {
     },
     {
       message: `This is an attached image:`,
-      date: " | 21 mar. 2024 | 12:00",
+      date: "| 21 mar. 2024 | 12:10",
       author: {
         name: "Marco Minucci",
         avatar: "MM",
@@ -290,7 +290,7 @@ WithInternals.args = {
     ...(defaultArgs.comments || []),
     {
       message: "Hi, I'm a comment from an internal user",
-      date: " | 27 dic. 2023 | 12:00",
+      date: "| 27 dic. 2023 | 12:00",
       author: {
         name: "Federico M.",
         avatar: "FM",
