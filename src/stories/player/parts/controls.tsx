@@ -2,7 +2,7 @@ import { useVideoContext } from "@appquality/stream-player";
 import { getColor } from "@zendeskgarden/react-theming";
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { IBookmark, WrapperProps } from "../_types";
+import { IBookmark, PlayerI18n, WrapperProps } from "../_types";
 import { AudioButton } from "./audioButton";
 import { Bookmark } from "./bookmark";
 import { ControlsGroupCenter } from "./controlsCenterGroup";
@@ -12,6 +12,7 @@ import { useProgressContext } from "./progressContext";
 import { TimeLabel } from "./timeLabel";
 import { PlayerTooltip } from "./tooltip";
 import { formatDuration } from "./utils";
+import { Cutter } from "./cutterButton";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -53,12 +54,14 @@ export const Controls = ({
   bookmarks,
   isCutting,
   onBookMarkUpdated,
+  i18n,
 }: {
   container: HTMLDivElement | null;
   onCutHandler?: (time: number) => void;
   bookmarks?: IBookmark[];
   isCutting?: boolean;
   onBookMarkUpdated?: (bookmark: IBookmark) => void;
+  i18n?: PlayerI18n;
 }) => {
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
@@ -209,12 +212,14 @@ export const Controls = ({
         <StyledDiv>
           <AudioButton />
         </StyledDiv>
-        <ControlsGroupCenter
-          onCutHandler={onCutHandler}
-          isCutting={isCutting}
-        />
+        <ControlsGroupCenter />
 
         <StyledDiv>
+          <Cutter
+            onCutHandler={onCutHandler}
+            isCutting={isCutting}
+            i18n={i18n}
+          />
           <FullScreenButton container={container} />
         </StyledDiv>
       </ControlsBar>

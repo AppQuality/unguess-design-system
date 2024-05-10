@@ -15,13 +15,7 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
-export const ControlsGroupCenter = ({
-  onCutHandler,
-  isCutting,
-}: {
-  onCutHandler?: (time: number) => void;
-  isCutting?: boolean;
-}) => {
+export const ControlsGroupCenter = () => {
   const [playBackRate, setPlayBackRate] = useState<number>(1);
   const { context, togglePlay } = useVideoContext();
 
@@ -101,19 +95,6 @@ export const ControlsGroupCenter = ({
           {playBackRate}x
         </SM>
       </IconButton>
-      {onCutHandler && (
-        <IconButton
-          isBright
-          onClick={(e) => {
-            if (videoRef) {
-              onCutHandler(videoRef.currentTime);
-            }
-            e.stopPropagation();
-          }}
-        >
-          <SM isBold>{isCutting ? '🛑': '✂️'}</SM>
-        </IconButton>
-      )}
     </StyledDiv>
   );
 };
