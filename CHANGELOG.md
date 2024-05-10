@@ -1,3 +1,16 @@
+# v3.1.82 (Fri May 10 2024)
+
+#### 🐛 Bug Fix
+
+- Player controls updated [#336](https://github.com/AppQuality/unguess-design-system/pull/336) ([@cannarocks](https://github.com/cannarocks))
+- Improve-player-bookmarks-usability [#335](https://github.com/AppQuality/unguess-design-system/pull/335) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.81 (Thu May 09 2024)
 
 #### 🐛 Bug Fix
