@@ -129,7 +129,6 @@ WithBookmarks.args = {
       label: "110s - 160s",
     },
   ],
-
   handleBookmarkUpdate: (bookmark: IBookmark) => {
     console.log("Bookmark updated", bookmark);
   },

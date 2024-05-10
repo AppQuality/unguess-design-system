@@ -5,41 +5,24 @@ import { IBookmark } from "../_types";
 import { useProgressContext } from "./progressContext";
 import { ReactComponent as GripIcon } from "../../../assets/icons/grip.svg";
 
-const activeBookMark = css`
-  height: 250%;
-  transform: translateY(-30%);
-`;
-
-const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
-  position: absolute;
-  height: 110%;
-  background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
-  z-index: 1;
-  border-radius: 3px;
-  &:hover {
-    ${activeBookMark}
-  }
-  color: white;
-  ${({ isActive }) => isActive && activeBookMark}
-`;
-
 const StyledGrabber = styled.div<{ isEnd?: boolean }>`
   position: absolute;
+  display: none;
   ${({ isEnd }) =>
     isEnd
       ? `
     right: 0;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
   `
       : `
     left: 0;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
   `}
   height: 100%;
-  width: 6px;
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  width: 8px;
+  background-color: white;
   z-index: 2;
   cursor: ew-resize;
 
@@ -49,12 +32,37 @@ const StyledGrabber = styled.div<{ isEnd?: boolean }>`
     align-items: center;
     height: 100%;
     width: 100%;
+    color: ${({ theme }) => theme.palette.grey[500]};
     svg {
       width: auto;
       height: 50%;
-      fill: ${({ theme }) => theme.palette.grey[200]};
     }
   }
+`;
+
+const activeBookMark = css`
+  height: 250%;
+  transform: translateY(-30%);
+
+  ${StyledGrabber} {
+    display: block;
+  }
+`;
+
+const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
+  position: absolute;
+  height: 110%;
+  background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
+  z-index: 1;
+  border-radius: 2px;
+  &:hover {
+    ${activeBookMark}
+    border-radius: 4px;
+  }
+  color: white;
+  ${({ isActive }) => isActive && activeBookMark}
+
+  transition: width 0.1s ease;
 `;
 
 const Grabber = (props: {
@@ -101,11 +109,7 @@ export const Bookmark = (props: IBookmark) => {
   if (start > videoEnd || start < videoStart) return null;
 
   return (
-    <Tooltip
-      content={label}
-      type={"light"}
-      size={"large"}
-    >
+    <Tooltip content={label} type={"light"} size={"large"}>
       <Rect
         isActive={activeBookmark && activeBookmark.id === props.id}
         hue={hue}

@@ -9,6 +9,12 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   isCutting?: boolean;
   bookmarks?: IBookmark[];
   handleBookmarkUpdate?: (bookmark: IBookmark) => void;
+  i18n?: PlayerI18n;
+}
+
+export interface PlayerI18n {
+  beforeHighlight?: string;
+  onHighlight?: string;
 }
 
 export interface IBookmark {
