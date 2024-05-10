@@ -16,11 +16,10 @@ export interface FileElement {
 
 interface Props {
   openLightbox: (file: File, index: number) => void;
-  //removeMediaToUpload: (file: File) => void;
 }
 
 const ThumbnailContainer = ({
-  /*removeMediaToUpload,*/ openLightbox,
+  openLightbox,
 }: Props) => {
   const { thumbnails, removeThumbnail, onDeleteThumbnail } = useChatContext();
 
@@ -38,8 +37,6 @@ const ThumbnailContainer = ({
       internal_id: file.internal_id,
     });
   });
-
-  console.log("mediafiles", mediaFiles);
 
   if (!mediaFiles || mediaFiles.length === 0) {
     return null;
@@ -80,7 +77,7 @@ const ThumbnailContainer = ({
                   isLoadingMedia={file.status === "uploading"}
                   removeThumbnail={() => {
                     removeThumbnail(index);
-                    //removeMediaToUpload(thumbnails[index]);
+                    onDeleteThumbnail(file.internal_id);
                   }}
                   clickThumbnail={() => {
                     openLightbox(thumbnails[index], index);

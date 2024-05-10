@@ -55,10 +55,6 @@ export const ChatContextProvider = ({
     return result;
   };
 
-  useMemo(() => {
-    console.log("thumbnails", thumbnails);
-  }, [thumbnails]);
-
   const chatContextValue = useMemo(
     () => ({
       editor,
@@ -108,7 +104,6 @@ export const ChatContextProvider = ({
         }
         if (thumbnails.length > 0) setThumbnails([]);
 
-        console.log("thumbnails clear triggered", thumbnails);
       },
 
       onDeleteThumbnail: (id: string) => {
@@ -123,7 +118,6 @@ export const ChatContextProvider = ({
           onSave(editor, getMentions(editor));
           editor.commands.clearContent();
           setThumbnails([]);
-          console.log("save triggered", thumbnails);
         }
       },
       mentionableUsers: setMentionableUsers,
