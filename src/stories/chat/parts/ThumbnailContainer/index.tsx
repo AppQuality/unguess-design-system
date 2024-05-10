@@ -11,6 +11,7 @@ export interface FileElement {
   errorCode?: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
   previewUrl: string;
   internal_id: string;
+  isLoadingMedia: boolean;
 }
 
 interface Props {
@@ -31,6 +32,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
       fileType: file.type,
       previewUrl: URL.createObjectURL(file),
       internal_id: file.internal_id,
+      isLoadingMedia: file.isLoadingMedia,
     });
   });
 
@@ -51,7 +53,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
                   src={file.previewUrl}
                   index={index}
                   showX={true}
-                  isLoadingMedia
+                  isLoadingMedia={file.isLoadingMedia}
                   removeThumbnail={() => {
                     removeThumbnail(index);
                     onDeleteThumbnail(file.internal_id);
@@ -70,7 +72,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
                   src={file.previewUrl}
                   index={index}
                   showX={true}
-                  isLoadingMedia
+                  isLoadingMedia={file.isLoadingMedia}
                   removeThumbnail={() => {
                     removeThumbnail(index);
                     onDeleteThumbnail(file.internal_id);

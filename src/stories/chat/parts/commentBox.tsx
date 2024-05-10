@@ -105,7 +105,7 @@ export const CommentBox = ({
         return false;
       },
 
-      handleDrop: function (view, event) {
+      handleDrop: function (view, event, slice, moved) {
         if (!event.dataTransfer || !event.dataTransfer.files) return false;
 
         event.preventDefault();
@@ -149,7 +149,7 @@ export const CommentBox = ({
         return false;
       },
 
-      handlePaste: (view, event) => {
+      handlePaste: (view, event, slice) => {
 
         if (!event.clipboardData || !event.clipboardData.items) return false;
 

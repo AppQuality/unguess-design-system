@@ -44,7 +44,7 @@ export interface EditorHeaderArgs {
 }
 
 export interface FileItem extends File {
-  isLoadingMedia?: boolean;
+  isLoadingMedia: boolean;
   isError?: boolean;
   internal_id: string;
 }
