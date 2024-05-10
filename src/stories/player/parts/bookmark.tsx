@@ -9,33 +9,20 @@ const activeBookMark = css`
   height: 250%;
   transform: translateY(-30%);
 `;
-
-const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
-  position: absolute;
-  height: 110%;
-  background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
-  z-index: 1;
-  border-radius: 3px;
-  &:hover {
-    ${activeBookMark}
-  }
-  color: white;
-  ${({ isActive }) => isActive && activeBookMark}
-`;
-
 const StyledGrabber = styled.div<{ isEnd?: boolean }>`
   position: absolute;
+  display: none;
   ${({ isEnd }) =>
     isEnd
       ? `
     right: 0;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
   `
       : `
     left: 0;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
   `}
   height: 100%;
   width: 6px;
@@ -55,6 +42,22 @@ const StyledGrabber = styled.div<{ isEnd?: boolean }>`
       fill: ${({ theme }) => theme.palette.grey[200]};
     }
   }
+`;
+
+const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
+  position: absolute;
+  height: 110%;
+  background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
+  z-index: 1;
+  border-radius: 2px;
+  &:hover {
+    ${activeBookMark}
+    ${StyledGrabber} {
+      display: block;
+    }
+  }
+  color: white;
+  ${({ isActive }) => isActive && activeBookMark}
 `;
 
 const Grabber = (props: {
@@ -101,11 +104,7 @@ export const Bookmark = (props: IBookmark) => {
   if (start > videoEnd || start < videoStart) return null;
 
   return (
-    <Tooltip
-      content={label}
-      type={"light"}
-      size={"large"}
-    >
+    <Tooltip content={label} type={"light"} size={"large"}>
       <Rect
         isActive={activeBookmark && activeBookmark.id === props.id}
         hue={hue}
