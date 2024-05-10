@@ -23,11 +23,13 @@ export interface Data {
 export const ChatContextProvider = ({
   onSave,
   onFileUpload,
+  onDeleteThumbnail,
   setMentionableUsers,
   children,
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
   onFileUpload?: (files: FileItem[]) => Promise<Data>;
+  onDeleteThumbnail?: (map: Map<number, File>) => void;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
 }) => {
@@ -52,11 +54,16 @@ export const ChatContextProvider = ({
     return result;
   };
 
+  useMemo(() => {
+    console.log("thumbnails", thumbnails);
+  }, [thumbnails]);
+
   const chatContextValue = useMemo(
     () => ({
       editor,
       setEditor,
       thumbnails,
+      setThumbnails,
       afterUploadCallback: (failed: string[]) => {
         setThumbnails(
           thumbnails.map((file) => {
@@ -103,8 +110,17 @@ export const ChatContextProvider = ({
         console.log("thumbnails clear triggered", thumbnails);
       },
 
-      removeThumbnail: (index: number) =>
-        setThumbnails(thumbnails.filter((_, i) => i !== index)),
+      removeThumbnail: (index: number) => {
+        const f = thumbnails[index];
+        /*
+          se rimuovo un file con un certo indice da thumbnails, controllo se quel file esiste ugualmente nella mappa e lo tolgo anche là
+        */
+
+        if (onDeleteThumbnail) {
+        }
+
+        setThumbnails(thumbnails.filter((_, i) => i !== index));
+      },
       triggerSave: () => {
         if (editor && onSave && !editor.isEmpty) {
           onSave(editor, getMentions(editor));
@@ -123,6 +139,7 @@ export const ChatContextProvider = ({
       thumbnails,
       setThumbnails,
       onFileUpload,
+      onDeleteThumbnail,
     ]
   );
 

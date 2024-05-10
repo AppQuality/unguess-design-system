@@ -114,11 +114,11 @@ export const CommentBox = ({
           return Object.assign(file, { isLoadingMedia: false });
         });
 
-        const wronfFiles = files.filter(
+        const wrongFiles = files.filter(
           (file) => !/^(image|video)\//.test(file.type)
         );
-        if (wronfFiles.length > 0) {
-          for (const file of wronfFiles) {
+        if (wrongFiles.length > 0) {
+          for (const file of wrongFiles) {
             addToast(
               ({ close }) => (
                 <Notification

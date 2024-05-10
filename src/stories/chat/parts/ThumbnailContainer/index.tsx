@@ -15,9 +15,12 @@ export interface FileElement {
 
 interface Props {
   openLightbox: (file: File, index: number) => void;
+  //removeMediaToUpload: (file: File) => void;
 }
 
-const ThumbnailContainer = ({ openLightbox }: Props) => {
+const ThumbnailContainer = ({
+  /*removeMediaToUpload,*/ openLightbox,
+}: Props) => {
   const { thumbnails, removeThumbnail } = useChatContext();
 
   if (!thumbnails || thumbnails.length === 0) {
@@ -54,7 +57,10 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
                   index={index}
                   showX={true}
                   isLoadingMedia={file.status === "uploading"}
-                  removeThumbnail={() => removeThumbnail(index)}
+                  removeThumbnail={() => {
+                    removeThumbnail(index);
+                    //removeMediaToUpload(thumbnails[index]);
+                  }}
                   clickThumbnail={() => {
                     openLightbox(thumbnails[index], index);
                   }}
@@ -70,7 +76,10 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
                   index={index}
                   showX={true}
                   isLoadingMedia={file.status === "uploading"}
-                  removeThumbnail={() => removeThumbnail(index)}
+                  removeThumbnail={() => {
+                    removeThumbnail(index);
+                    //removeMediaToUpload(thumbnails[index]);
+                  }}
                   clickThumbnail={() => {
                     openLightbox(thumbnails[index], index);
                   }}
