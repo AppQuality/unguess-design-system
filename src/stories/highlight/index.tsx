@@ -99,7 +99,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
 
   return (
     <HighlightContextProvider term={props.search}>
-      <WordsContainer ref={ref}>{props.children}</WordsContainer>;
+      <WordsContainer ref={ref}>{props.children}</WordsContainer>
     </HighlightContextProvider>
   );
 };
