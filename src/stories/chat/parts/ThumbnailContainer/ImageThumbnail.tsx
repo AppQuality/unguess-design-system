@@ -41,7 +41,7 @@ const ImageThumbnail = ({
   removeThumbnail,
   clickThumbnail,
   showX = true,
-  isLoadingMedia = false,
+  isLoadingMedia = true,
   isError = false,
 }: Props) => {
   const handleCancel = (e: any) => {

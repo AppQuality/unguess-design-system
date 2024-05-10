@@ -8,7 +8,6 @@ import { Col } from "../../../grid/col";
 export interface FileElement {
   fileName: string;
   fileType: string;
-  status: "success" | "failed" | "uploading";
   errorCode?: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
   previewUrl: string;
   internal_id: string;
@@ -18,9 +17,7 @@ interface Props {
   openLightbox: (file: File, index: number) => void;
 }
 
-const ThumbnailContainer = ({
-  openLightbox,
-}: Props) => {
+const ThumbnailContainer = ({ openLightbox }: Props) => {
   const { thumbnails, removeThumbnail, onDeleteThumbnail } = useChatContext();
 
   if (!thumbnails || thumbnails.length === 0) {
@@ -32,7 +29,6 @@ const ThumbnailContainer = ({
     mediaFiles.push({
       fileName: file.name,
       fileType: file.type,
-      status: file.isLoadingMedia ? "uploading" : "success",
       previewUrl: URL.createObjectURL(file),
       internal_id: file.internal_id,
     });
@@ -55,7 +51,7 @@ const ThumbnailContainer = ({
                   src={file.previewUrl}
                   index={index}
                   showX={true}
-                  isLoadingMedia={file.status === "uploading"}
+                  isLoadingMedia
                   removeThumbnail={() => {
                     removeThumbnail(index);
                     onDeleteThumbnail(file.internal_id);
@@ -74,7 +70,7 @@ const ThumbnailContainer = ({
                   src={file.previewUrl}
                   index={index}
                   showX={true}
-                  isLoadingMedia={file.status === "uploading"}
+                  isLoadingMedia
                   removeThumbnail={() => {
                     removeThumbnail(index);
                     onDeleteThumbnail(file.internal_id);
