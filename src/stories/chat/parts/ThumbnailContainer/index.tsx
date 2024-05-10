@@ -4,6 +4,7 @@ import { useChatContext } from "../../context/chatContext";
 import { Grid } from "../../../grid/grid";
 import { Row } from "../../../grid/row";
 import { Col } from "../../../grid/col";
+import { useMemo } from "react";
 
 export interface FileElement {
   fileName: string;
@@ -21,20 +22,15 @@ interface Props {
 const ThumbnailContainer = ({ openLightbox }: Props) => {
   const { thumbnails, removeThumbnail, onDeleteThumbnail } = useChatContext();
 
-  if (!thumbnails || thumbnails.length === 0) {
-    return null;
-  }
-
-  const mediaFiles: FileElement[] = [];
-  thumbnails.forEach((file) => {
-    mediaFiles.push({
+  const mediaFiles = useMemo(() => {
+    return thumbnails.map((file) => ({
       fileName: file.name,
       fileType: file.type,
       previewUrl: URL.createObjectURL(file),
       internal_id: file.internal_id,
       isLoadingMedia: file.isLoadingMedia,
-    });
-  });
+    }));
+  }, [thumbnails]);
 
   if (!mediaFiles || mediaFiles.length === 0) {
     return null;
