@@ -73,6 +73,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             bookmarks={bookmarks}
             isCutting={isCutting}
             onBookMarkUpdated={props.handleBookmarkUpdate}
+            i18n={props.i18n}
           />
         </ProgressContextProvider>
       </Container>
