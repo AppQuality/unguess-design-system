@@ -13,17 +13,11 @@ import { ProgressContextProvider } from "./parts/progressContext";
  * Used for this:
     - To display a video 
  */
-const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useImperativeHandle(forwardRef, () => videoRef.current as HTMLVideoElement);
-
-  return (
-    <Video src={props.url} {...props}>
-      <PlayerCore ref={videoRef} {...props} />
-    </Video>
-  );
-});
+const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => (
+  <Video src={props.url} {...props}>
+    <PlayerCore ref={forwardRef} {...props} />
+  </Video>
+));
 
 const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
   (props, forwardRef) => {
@@ -33,7 +27,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
 
-    useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement);
+    useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement, [videoRef]);
 
     useEffect(() => {
       if (videoRef) {
