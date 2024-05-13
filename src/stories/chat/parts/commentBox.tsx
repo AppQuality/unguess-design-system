@@ -1,18 +1,32 @@
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import {
   useEditor,
   EditorContent,
   Editor as TipTapEditor,
   Content,
 } from "@tiptap/react";
-import { ChatEditorArgs } from "../_types";
-import { KeyboardEvent as ReactKeyboardEvent, PropsWithChildren } from "react";
+import { ChatEditorArgs, FileItem } from "../_types";
+import {
+  KeyboardEvent as ReactKeyboardEvent,
+  PropsWithChildren,
+  useState,
+  useRef,
+  useCallback,
+} from "react";
+
+import { Notification } from "../../notifications";
+import { useToast } from "../../notifications";
 
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
 import { CommentBar } from "./bar";
 import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
+import ThumbnailContainer from "./ThumbnailContainer";
+import { Lightbox } from "../../lightbox";
+import { Slider } from "../../slider";
+import { Player } from "../../player";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -39,9 +53,46 @@ export const CommentBox = ({
 }: PropsWithChildren<ChatEditorArgs>) => {
   const { children, hasFloatingMenu, hasButtonsMenu, bubbleOptions, i18n } =
     props;
-  const { editor, setEditor, mentionableUsers, triggerSave } = useChatContext();
+  const {
+    editor,
+    setEditor,
+    mentionableUsers,
+    triggerSave,
+    thumbnails,
+    addThumbnails,
+  } = useChatContext();
+
+  const { addToast } = useToast();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<File>({} as File);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
+
+  const closeLightbox = () => {
+    setIsOpen(false);
+  };
+
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+
+  const slideChange = useCallback(
+    (index: number) => {
+      setSelectedImageIndex(index);
+      videoRefs.current.forEach((ref) => {
+        if (ref) {
+          ref.pause();
+        }
+      });
+    },
+    [videoRefs]
+  );
+  const handleOpenLightbox = (file: File, index: number) => {
+    if (!file) throw Error("Error with the image");
+
+    setSelectedImage(file);
+    setSelectedImageIndex(index);
+    setIsOpen(true);
+  };
 
   const ed = useEditor({
     extensions: ext,
@@ -51,6 +102,93 @@ export const CommentBox = ({
         if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
           return true;
         }
+        return false;
+      },
+
+      handleDrop: function (view, event, slice, moved) {
+        if (!event.dataTransfer || !event.dataTransfer.files) return false;
+
+        event.preventDefault();
+
+        const files: FileItem[] = Array.from(event.dataTransfer.files).map(
+          (file) => {
+            return Object.assign(file, {
+              isLoadingMedia: false,
+              internal_id: uuidv4(),
+            });
+          }
+        );
+        const wrongFiles = files.filter(
+          (file) => !/^(image|video)\//.test(file.type)
+        );
+
+        if (wrongFiles.length > 0) {
+          for (const file of wrongFiles) {
+            addToast(
+              ({ close }) => (
+                <Notification
+                  onClose={close}
+                  type="error"
+                  message={`${props.messageBadFileFormat} - ${file.name}`}
+                  isPrimary
+                />
+              ),
+              { placement: "top" }
+            );
+          }
+        }
+
+        const mediaFiles: FileItem[] = files.filter((file) =>
+          /^(image|video)\//.test(file.type)
+        );
+
+        if (mediaFiles.length === 0) return false;
+
+        addThumbnails({ files: mediaFiles });
+
+        return false;
+      },
+
+      handlePaste: (view, event, slice) => {
+
+        if (!event.clipboardData || !event.clipboardData.items) return false;
+
+        event.preventDefault();
+
+        const files: FileItem[] = Array.from(event.clipboardData.files).map(
+          (file) => {
+            return Object.assign(file, {
+              isLoadingMedia: false,
+              internal_id: uuidv4(),
+            });
+          }
+        );
+        const wrongFiles = files.filter(
+          (file) => !/^(image|video)\//.test(file.type)
+        );
+
+        if (wrongFiles.length > 0) {
+          for (const file of wrongFiles) {
+            addToast(
+              ({ close }) => (
+                <Notification
+                  onClose={close}
+                  type="error"
+                  message={`${props.messageBadFileFormat} - ${file.name}`}
+                  isPrimary
+                />
+              ),
+              { placement: "top" }
+            );
+          }
+        }
+
+        const mediaFiles: FileItem[] = files.filter((file) =>
+          /^(image|video)\//.test(file.type)
+        );
+        if (mediaFiles.length === 0) return false;
+        
+        addThumbnails({ files: mediaFiles });
 
         return false;
       },
@@ -58,8 +196,8 @@ export const CommentBox = ({
     ...props,
   });
 
-  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => { 
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter" ) {
+  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
       triggerSave();
       editor?.commands.clearContent();
     }
@@ -70,14 +208,55 @@ export const CommentBox = ({
   ed.on("create", ({ editor }) => setEditor(editor as TipTapEditor));
   ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
+  const mediaFiles = thumbnails.map((file) => {
+    return Object.assign(file, { isLoadingMedia: file.isLoadingMedia });
+  });
+
   return (
     <>
+      {isOpen && selectedImage && (
+        <Lightbox onClose={closeLightbox}>
+          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
+          <Lightbox.Body>
+            <Lightbox.Body.Main style={{ flex: 3 }}>
+              <Slider
+                prevArrow={<Slider.PrevButton isBright />}
+                nextArrow={<Slider.NextButton isBright />}
+                onSlideChange={slideChange}
+                initialSlide={selectedImageIndex}
+              >
+                {mediaFiles.map((item, index) => (
+                  <Slider.Slide>
+                    {item.type.includes("image") && (
+                      <img
+                        src={URL.createObjectURL(item)}
+                        alt={`media ${item.name}`}
+                      />
+                    )}
+                    {item.type.includes("video") && (
+                      <Player
+                        ref={(ref) => {
+                          videoRefs.current.push(ref);
+                        }}
+                        url={URL.createObjectURL(item)}
+                      />
+                    )}
+                  </Slider.Slide>
+                ))}
+              </Slider>
+            </Lightbox.Body.Main>
+          </Lightbox.Body>
+          <Lightbox.Close aria-label="Close modal" />
+        </Lightbox>
+      )}
+
       <ChatBoxContainer>
-        <EditorContainer editable style={{ marginLeft: 0 }}>
+        <EditorContainer editable style={{ marginLeft: 0, paddingBottom: 12 }}>
           {hasFloatingMenu && (
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}
-          <EditorContent editor={ed} onKeyDown={onKeyDown} />
+          <EditorContent editor={ed} onKeyDown={onKeyDown}></EditorContent>
+          <ThumbnailContainer openLightbox={handleOpenLightbox} />
         </EditorContainer>
       </ChatBoxContainer>
       {hasButtonsMenu && <CommentBar editor={ed} i18n={i18n} />}

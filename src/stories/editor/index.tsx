@@ -10,8 +10,7 @@ import Typography from "@tiptap/extension-typography";
 import Link from "@tiptap/extension-link";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
-import CharacterCount from '@tiptap/extension-character-count'
-
+import CharacterCount from "@tiptap/extension-character-count";
 
 import { EditorArgs } from "./_types";
 import {
@@ -24,9 +23,9 @@ import { EditorHeader } from "./editorHeader";
 import { EditorFooter } from "./editorFooter";
 import { FauxInput } from "@zendeskgarden/react-forms";
 import { editorStyle } from "../shared/editorStyle";
+import Dropcursor from "@tiptap/extension-dropcursor";
 
 const EditorContainer = styled(FauxInput)<EditorArgs>`
-  
   ${({ editable }) =>
     !editable &&
     `
@@ -91,6 +90,7 @@ const Editor = ({
       Typography,
       Link,
       StarterKit,
+      Dropcursor,
       Placeholder.configure({
         placeholder: ({ node }) => {
           if (node.type.name === "heading") {
@@ -103,7 +103,7 @@ const Editor = ({
       }),
       CharacterCount,
     ],
-    content: children as Content || "",
+    content: (children as Content) || "",
     editorProps: {
       handleKeyDown: (view, event: KeyboardEvent) => {
         if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
@@ -127,7 +127,7 @@ const Editor = ({
     <EditorContainer editable={isEditable} validation={props.validation}>
       {isEditable && (
         <>
-          <EditorHeader title={headerTitle} validation={props.validation}/>
+          <EditorHeader title={headerTitle} validation={props.validation} />
           {hasInlineMenu && (
             <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
           )}
