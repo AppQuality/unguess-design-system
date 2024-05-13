@@ -1,3 +1,120 @@
+# v3.1.87 (Mon May 13 2024)
+
+#### 🐛 Bug Fix
+
+- feat: chat media upload [#340](https://github.com/AppQuality/unguess-design-system/pull/340) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- fix: package version [#341](https://github.com/AppQuality/unguess-design-system/pull/341) ([@iacopolea](https://github.com/iacopolea))
+- Chat attach media [#320](https://github.com/AppQuality/unguess-design-system/pull/320) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Thumbnails container [#328](https://github.com/AppQuality/unguess-design-system/pull/328) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@Kariamos](https://github.com/Kariamos))
+- Spinner [#327](https://github.com/AppQuality/unguess-design-system/pull/327) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 4
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.82 (Mon May 13 2024)
+
+#### 🐛 Bug Fix
+
+- Player improvements and trans fix [#339](https://github.com/AppQuality/unguess-design-system/pull/339) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Update-controls-layout [#338](https://github.com/AppQuality/unguess-design-system/pull/338) ([@cannarocks](https://github.com/cannarocks))
+- fixed obs breaking text [#334](https://github.com/AppQuality/unguess-design-system/pull/334) ([@iDome89](https://github.com/iDome89))
+- removed ; from component tree [#337](https://github.com/AppQuality/unguess-design-system/pull/337) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Player controls updated [#336](https://github.com/AppQuality/unguess-design-system/pull/336) ([@cannarocks](https://github.com/cannarocks))
+- Improve-player-bookmarks-usability [#335](https://github.com/AppQuality/unguess-design-system/pull/335) ([@cannarocks](https://github.com/cannarocks))
+
+#### ⚠️ Pushed to `master`
+
+- 3.1.85 ([@cannarocks](https://github.com/cannarocks))
+- 3.1.84 ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.82 (Mon May 13 2024)
+
+#### 🐛 Bug Fix
+
+- Player improvements and trans fix [#339](https://github.com/AppQuality/unguess-design-system/pull/339) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Update-controls-layout [#338](https://github.com/AppQuality/unguess-design-system/pull/338) ([@cannarocks](https://github.com/cannarocks))
+- fixed obs breaking text [#334](https://github.com/AppQuality/unguess-design-system/pull/334) ([@iDome89](https://github.com/iDome89))
+- removed ; from component tree [#337](https://github.com/AppQuality/unguess-design-system/pull/337) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Player controls updated [#336](https://github.com/AppQuality/unguess-design-system/pull/336) ([@cannarocks](https://github.com/cannarocks))
+- Improve-player-bookmarks-usability [#335](https://github.com/AppQuality/unguess-design-system/pull/335) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.82 (Fri May 10 2024)
+
+#### 🐛 Bug Fix
+
+- Player controls updated [#336](https://github.com/AppQuality/unguess-design-system/pull/336) ([@cannarocks](https://github.com/cannarocks))
+- Improve-player-bookmarks-usability [#335](https://github.com/AppQuality/unguess-design-system/pull/335) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.81 (Thu May 09 2024)
+
+#### 🐛 Bug Fix
+
+- Fix highlight for long selections [#331](https://github.com/AppQuality/unguess-design-system/pull/331) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- removed border radius from highlighted word [#332](https://github.com/AppQuality/unguess-design-system/pull/332) ([@iDome89](https://github.com/iDome89))
+- fixees for searched term and break word [#330](https://github.com/AppQuality/unguess-design-system/pull/330) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.80 (Tue May 07 2024)
+
+#### 🐛 Bug Fix
+
+- Allow search in trascript [#326](https://github.com/AppQuality/unguess-design-system/pull/326) ([@cannarocks](https://github.com/cannarocks))
+- feat: Add search functionality to highlight component [#325](https://github.com/AppQuality/unguess-design-system/pull/325) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.79 (Mon May 06 2024)
+
+#### 🐛 Bug Fix
+
+- release 20240506 [#324](https://github.com/AppQuality/unguess-design-system/pull/324) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- Add resizeble observation in player progress [#323](https://github.com/AppQuality/unguess-design-system/pull/323) ([@cannarocks](https://github.com/cannarocks))
+- Add-cutting-edge-functionalities-to-player [#322](https://github.com/AppQuality/unguess-design-system/pull/322) ([@cannarocks](https://github.com/cannarocks))
+- Add Highlight component [#321](https://github.com/AppQuality/unguess-design-system/pull/321) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.77 (Mon Feb 26 2024)
 
 
