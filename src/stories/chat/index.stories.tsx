@@ -37,7 +37,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { editor, triggerSave, clearInput } = useChatContext();
+  const { triggerSave, clearInput } = useChatContext();
 
   return (
     <Chat>
@@ -153,10 +153,6 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
               onDeleteThumbnail={(id) => {
                 console.log("internal_id - ", id);
               }}
-
-              /*setIsMediaUploading={function (value: boolean): void {
-              throw new Error("Function not implemented.");
-            }}*/
             >
               <ChatPanel {...args} />
             </ChatProvider>

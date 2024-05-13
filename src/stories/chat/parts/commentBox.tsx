@@ -114,7 +114,7 @@ export const CommentBox = ({
           (file) => {
             return Object.assign(file, {
               isLoadingMedia: false,
-              internal_id: uuidv4(),
+              internalId: uuidv4(),
             });
           }
         );
@@ -159,7 +159,7 @@ export const CommentBox = ({
           (file) => {
             return Object.assign(file, {
               isLoadingMedia: false,
-              internal_id: uuidv4(),
+              internalId: uuidv4(),
             });
           }
         );
