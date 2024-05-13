@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.1.78",
+  "version": "3.1.106",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -37,6 +37,8 @@
     "@nivo/waffle": "^0.80.0",
     "@tiptap/extension-bubble-menu": "2.1.16",
     "@tiptap/extension-character-count": "2.1.16",
+    "@tiptap/extension-dropcursor": "^2.2.4",
+    "@tiptap/extension-image": "^2.2.4",
     "@tiptap/extension-link": "2.1.16",
     "@tiptap/extension-mention": "2.1.16",
     "@tiptap/extension-placeholder": "2.1.16",
@@ -66,7 +68,8 @@
     "react-slick": "^0.29.0",
     "react-window": "^1.8.6",
     "tippy.js": "^6.3.7",
-    "ua-parser-js": "^1.0.2"
+    "ua-parser-js": "^1.0.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.21.5",
@@ -90,6 +93,7 @@
     "@types/react-window": "^1.8.5",
     "@types/styled-components": "^5.1.23",
     "@types/ua-parser-js": "^0.7.36",
+    "@types/uuid": "^9.0.8",
     "@zendeskgarden/react-dropdowns": "^8.49.0",
     "@zendeskgarden/react-forms": "^8.49.0",
     "@zendeskgarden/react-theming": "^8.48.2",

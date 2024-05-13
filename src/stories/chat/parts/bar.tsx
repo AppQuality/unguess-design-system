@@ -1,12 +1,15 @@
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import { Tooltip } from "../../tooltip";
-import { ChatEditorArgs } from "../_types";
+import { ChatEditorArgs, FileItem } from "../_types";
 import { Editor } from "@tiptap/react";
 import { isMac } from "../../theme/utils";
-import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-fill.svg";
-import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-fill.svg";
-import { ReactComponent as MentionIcon } from "../../../assets/icons/at-fill.svg";
+import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-stroke.svg";
+import { ReactComponent as ItalicIcon } from "../../../assets/icons/italic-stroke.svg";
+import { ReactComponent as MentionIcon } from "../../../assets/icons/at-stroke.svg";
+import { ReactComponent as AttachmentIcon } from "../../../assets/icons/clipboard.svg";
 import { IconButton } from "../../buttons/icon-button";
+import { useChatContext } from "../context/chatContext";
 
 const MenuContainer = styled.div`
   padding: ${({ theme }) => theme.space.xs} 0;
@@ -30,10 +33,15 @@ const CommentBar = ({
 }: Partial<ChatEditorArgs> & {
   editor?: Editor;
 }) => {
+  const { addThumbnails } = useChatContext();
 
-  if(!editor) return null;
+  if (!editor) return null;
 
-  const getIcon = (type: "bold" | "italic" | "mention") => {
+  type MenuItem = {
+    type: "bold" | "italic" | "mention" | "attachment";
+  };
+
+  const getIcon = (type: MenuItem["type"]) => {
     switch (type) {
       case "bold":
         return <BoldIcon />;
@@ -41,12 +49,14 @@ const CommentBar = ({
         return <ItalicIcon />;
       case "mention":
         return <MentionIcon />;
+      case "attachment":
+        return <AttachmentIcon />;
       default:
         return null;
     }
   };
 
-  const handleClick = (type: "bold" | "italic" | "mention") => {
+  const handleClick = (type: MenuItem["type"]) => {
     switch (type) {
       case "bold":
         return editor.chain().focus().toggleBold().run();
@@ -56,66 +66,115 @@ const CommentBar = ({
         const { from } = editor.state.selection;
         const char = from > 1 ? " @" : "@";
         return editor.chain().focus().insertContent(char).run();
+      case "attachment":
+        //open a file browser to select one or more images
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*,video/*";
+        fileInput.multiple = true;
+        fileInput.click();
+
+        fileInput.onchange = () => {
+          const files = fileInput.files;
+          if (files) {
+            const mediaFiles: FileItem[] = Array.from(files).map((file) => {
+              return Object.assign(file, {
+                isLoadingMedia: false,
+                internal_id: uuidv4(),
+              });
+            });
+
+            if (mediaFiles.length === 0) return;
+
+            addThumbnails({ files: mediaFiles });
+          }
+        };
+        return;
       default:
         return;
     }
   };
 
   return (
-    <MenuContainer id="menu-container">
-      <Tooltip
-        content={`${i18n?.menu?.bold ?? "Bold text"} ${isMac() ? "Cmd" : "Ctrl"} + B`}
-        placement="top"
-        type="light"
-        size="small"
-        hasArrow={false}
-      >
-        <IconButton
-          size={"small"}
-          isBasic={!editor.isActive("bold")}
-          isPrimary={editor.isActive("bold")}
-          isPill={false}
-          onClick={() => handleClick("bold")}
+    <>
+      <MenuContainer id="menu-container">
+        <Tooltip
+          content={`${i18n?.menu?.bold ?? "Bold text"} ${
+            isMac() ? "Cmd" : "Ctrl"
+          } + B`}
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={false}
         >
-          {getIcon("bold")}
-        </IconButton>
-      </Tooltip>
-      <Tooltip
-        content={`${i18n?.menu?.italic ?? "Italic text"} ${isMac() ? "Cmd" : "Ctrl"} + I`}
-        placement="top"
-        type="light"
-        size="small"
-        hasArrow={false}
-      >
-        <IconButton
-          size={"small"}
-          isBasic={!editor.isActive("italic")}
-          isPrimary={editor.isActive("italic")}
-          isPill={false}
-          onClick={() => handleClick("italic")}
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("bold")}
+            isPrimary={editor.isActive("bold")}
+            isPill={false}
+            onClick={() => handleClick("bold")}
+          >
+            {getIcon("bold")}
+          </IconButton>
+        </Tooltip>
+        <Tooltip
+          content={`${i18n?.menu?.italic ?? "Italic text"} ${
+            isMac() ? "Cmd" : "Ctrl"
+          } + I`}
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={false}
         >
-          {getIcon("italic")}
-        </IconButton>
-      </Tooltip>
-      <VerticalDivider />
-      <Tooltip
-        content={i18n?.menu?.mention ?? "Add a mention"}
-        placement="top"
-        type="light"
-        size="small"
-        hasArrow={false}
-      >
-        <IconButton
-          size={"small"}
-          isBasic={!editor.isActive("mention")}
-          isPrimary={editor.isActive("mention")}
-          isPill={false}
-          onClick={() => handleClick("mention")}
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("italic")}
+            isPrimary={editor.isActive("italic")}
+            isPill={false}
+            onClick={() => handleClick("italic")}
+          >
+            {getIcon("italic")}
+          </IconButton>
+        </Tooltip>
+        <VerticalDivider />
+        <Tooltip
+          content={i18n?.menu?.mention ?? "Add a mention"}
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={false}
         >
-          {getIcon("mention")}
-        </IconButton>
-      </Tooltip>
-    </MenuContainer>
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("mention")}
+            isPrimary={editor.isActive("mention")}
+            isPill={false}
+            onClick={() => handleClick("mention")}
+          >
+            {getIcon("mention")}
+          </IconButton>
+        </Tooltip>
+        <Tooltip
+          content={
+            i18n?.menu?.attachment ?? "Upload images and video. Max size: 5GB"
+          }
+          placement="top"
+          type="light"
+          size="small"
+          hasArrow={true}
+        >
+          <IconButton
+            size={"small"}
+            isBasic={!editor.isActive("attachment")}
+            isPrimary={editor.isActive("attachment")}
+            isPill={false}
+            onClick={() => handleClick("attachment")}
+          >
+            {getIcon("attachment")}
+          </IconButton>
+        </Tooltip>
+      </MenuContainer>
+    </>
   );
 };
 
