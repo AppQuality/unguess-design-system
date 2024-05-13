@@ -1,3 +1,21 @@
+# v3.1.82 (Mon May 13 2024)
+
+#### 🐛 Bug Fix
+
+- Player improvements and trans fix [#339](https://github.com/AppQuality/unguess-design-system/pull/339) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Update-controls-layout [#338](https://github.com/AppQuality/unguess-design-system/pull/338) ([@cannarocks](https://github.com/cannarocks))
+- fixed obs breaking text [#334](https://github.com/AppQuality/unguess-design-system/pull/334) ([@iDome89](https://github.com/iDome89))
+- removed ; from component tree [#337](https://github.com/AppQuality/unguess-design-system/pull/337) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks))
+- Player controls updated [#336](https://github.com/AppQuality/unguess-design-system/pull/336) ([@cannarocks](https://github.com/cannarocks))
+- Improve-player-bookmarks-usability [#335](https://github.com/AppQuality/unguess-design-system/pull/335) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.82 (Fri May 10 2024)
 
 #### 🐛 Bug Fix
