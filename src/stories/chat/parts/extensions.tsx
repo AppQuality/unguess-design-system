@@ -11,6 +11,8 @@ import tippy, { type Instance as TippyInstance } from "tippy.js";
 import { SuggestedUser } from "../_types";
 import Image from "@tiptap/extension-image";
 import Dropcursor from "@tiptap/extension-dropcursor";
+import { getColor } from "../../theme/utils";
+import { colors } from "../../theme/colors";
 
 /**
  * Workaround for the current typing incompatibility between Tippy.js and Tiptap
@@ -54,7 +56,7 @@ export const editorExtensions = ({
       },
     }),
     Dropcursor.configure({
-      color: "#ff0000",
+      color: getColor(colors.accentHue, 700),
       width: 3,
     }),
     Placeholder.configure({
