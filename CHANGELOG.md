@@ -1,3 +1,22 @@
+# v3.1.87 (Mon May 13 2024)
+
+#### 🐛 Bug Fix
+
+- feat: chat media upload [#340](https://github.com/AppQuality/unguess-design-system/pull/340) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- fix: package version [#341](https://github.com/AppQuality/unguess-design-system/pull/341) ([@iacopolea](https://github.com/iacopolea))
+- Chat attach media [#320](https://github.com/AppQuality/unguess-design-system/pull/320) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Thumbnails container [#328](https://github.com/AppQuality/unguess-design-system/pull/328) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@Kariamos](https://github.com/Kariamos))
+- Spinner [#327](https://github.com/AppQuality/unguess-design-system/pull/327) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 4
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.82 (Mon May 13 2024)
 
 #### 🐛 Bug Fix
