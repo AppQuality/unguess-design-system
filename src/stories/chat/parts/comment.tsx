@@ -120,7 +120,7 @@ export const Comment = ({
         }
       });
     },
-    [videoRefs, media]
+    [videoRefs]
   );
 
   const ed = useEditor({
