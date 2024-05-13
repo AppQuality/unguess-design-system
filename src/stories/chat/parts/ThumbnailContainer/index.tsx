@@ -21,33 +21,38 @@ interface Props {
 
 const ThumbnailContainer = ({ openLightbox }: Props) => {
   const { thumbnails, removeThumbnail, onDeleteThumbnail } = useChatContext();
-  const media = useMemo(() => (thumbnails.map((file) => ({
-    src: URL.createObjectURL(file),
-    internalId: file.internalId,
-    type: file.type,
-    isLoadingMedia: file.isLoadingMedia,
-  }))), [thumbnails]);
-  
-  if (!media || media.length === 0) {
+
+  const mediaFiles = useMemo(() => {
+    return thumbnails.map((file) => ({
+      fileName: file.name,
+      fileType: file.type,
+      previewUrl: URL.createObjectURL(file),
+      internal_id: file.internal_id,
+      isLoadingMedia: file.isLoadingMedia,
+    }));
+  }, [thumbnails]);
+
+  if (!mediaFiles || mediaFiles.length === 0) {
     return null;
   }
+
   return (
     <Grid>
       <Row className="responsive-container">
-        {media.map((file, index) => {
+        {mediaFiles.map((file, index) => {
           // Check if item is an image or a video
-          if (file.type.includes("image"))
+          if (file.fileType.includes("image"))
             return (
               <Col xs={12} sm={3} xl={3} lg={3} className="flex-3-sm">
                 <ImageThumbnail
-                  key={file.internalId}
-                  src={file.src}
+                  key={index}
+                  src={file.previewUrl}
                   index={index}
                   showX={true}
                   isLoadingMedia={file.isLoadingMedia}
                   removeThumbnail={() => {
                     removeThumbnail(index);
-                    onDeleteThumbnail(file.internalId);
+                    onDeleteThumbnail(file.internal_id);
                   }}
                   clickThumbnail={() => {
                     openLightbox(thumbnails[index], index);
@@ -55,18 +60,18 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
                 />
               </Col>
             );
-          if (file.type.includes("video"))
+          if (file.fileType.includes("video"))
             return (
               <Col xs={12} sm={3} className="flex-3-sm">
                 <VideoThumbnail
-                  key={file.internalId}
-                  src={file.src}
+                  key={index}
+                  src={file.previewUrl}
                   index={index}
                   showX={true}
                   isLoadingMedia={file.isLoadingMedia}
                   removeThumbnail={() => {
                     removeThumbnail(index);
-                    onDeleteThumbnail(file.internalId);
+                    onDeleteThumbnail(file.internal_id);
                   }}
                   clickThumbnail={() => {
                     openLightbox(thumbnails[index], index);

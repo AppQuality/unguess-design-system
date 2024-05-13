@@ -80,7 +80,7 @@ const CommentBar = ({
             const mediaFiles: FileItem[] = Array.from(files).map((file) => {
               return Object.assign(file, {
                 isLoadingMedia: false,
-                internalId: uuidv4(),
+                internal_id: uuidv4(),
               });
             });
 

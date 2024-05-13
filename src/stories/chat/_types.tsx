@@ -1,5 +1,6 @@
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { BubbleMenuProps, EditorOptions } from "@tiptap/react";
+import { isError } from "util";
 
 type validationStatus = "success" | "warning" | "error";
 
@@ -19,7 +20,7 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
       italic?: string;
       mention?: string;
       //react node
-      attachment?: React.ReactNode;
+      attachment?: string | React.ReactNode;
     };
     mention?: {
       noResults?: string;
@@ -44,10 +45,8 @@ export interface EditorHeaderArgs {
 
 export interface FileItem extends File {
   isLoadingMedia: boolean;
-  internalId: string;
-  type: string;
   isError?: boolean;
-  src?: string;
+  internal_id: string;
 }
 
 export interface FloatingMenuArgs extends Partial<BubbleMenuProps> {}

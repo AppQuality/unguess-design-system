@@ -10,6 +10,7 @@ export type ChatContextType = {
   removeThumbnail: (index: number) => void;
   thumbnails: FileItem[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
+  afterUploadCallback: (failed: string[]) => void;
   clearInput: () => void;
   onDeleteThumbnail: (id: string) => void;
 };
@@ -60,6 +61,21 @@ export const ChatContextProvider = ({
       setEditor,
       thumbnails,
       setThumbnails,
+      afterUploadCallback: (failed: string[]) => {
+        setThumbnails(
+          thumbnails.map((file) => {
+            if (failed.includes(file.name)) {
+              file.isLoadingMedia = false;
+              //file.isError = true;
+            } else {
+              file.isLoadingMedia = false;
+              //file.isError = false
+            }
+            return file;
+          })
+        );
+      },
+
       addThumbnails: ({ files }: { files: FileItem[] }) => {
         files.forEach((file) => (file.isLoadingMedia = true));
         setThumbnails((prev) => [...prev, ...files]);
