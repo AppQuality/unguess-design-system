@@ -117,6 +117,7 @@ export const Bookmark = (props: IBookmark) => {
           left: `${((start - videoStart) / duration) * 100}%`,
           width: `${((end - start) / duration) * 100}%`,
         }}
+        onClick={props.onClick}
       >
         <Grabber observation={props} />
         <Grabber isEnd observation={props} />

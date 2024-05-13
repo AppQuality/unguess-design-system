@@ -105,7 +105,10 @@ WithBookmarks.args = {
       start: 30,
       end: 38,
       hue: theme.colors.foreground,
-      label: "20s - 28s",
+      label: "20s - 28s (click me)",
+      onClick: () => {
+        alert("you clicked me! 😳");
+      },
     },
     {
       id: 4,
