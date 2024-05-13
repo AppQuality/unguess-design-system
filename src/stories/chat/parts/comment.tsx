@@ -8,13 +8,10 @@ import { useChatContext } from "../context/chatContext";
 import { Content, useEditor, EditorContent } from "@tiptap/react";
 import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
-
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
 import { MD } from "@zendeskgarden/react-typography";
 import { Player } from "../../player";
-import { Button } from "../../buttons/button";
-import { ReactComponent as DownloadIcon } from "../../../assets/icons/download-stroke.svg";
 import { Grid } from "../../grid/grid";
 import { Row } from "../../grid/row";
 import { Col } from "../../grid/col";
@@ -123,7 +120,7 @@ export const Comment = ({
         }
       });
     },
-    [videoRefs]
+    [videoRefs, media]
   );
 
   const ed = useEditor({
@@ -136,25 +133,6 @@ export const Comment = ({
   ed.setOptions({
     editable: false,
   });
-
-  // const downloadSelectedMedia = async () => {
-  //   try {
-  //     const response = await fetch(`${selectedImage.url}?antiCors`);
-  //     const blob = await response.blob();
-
-  //     const link = document.createElement("a");
-  //     link.href = window.URL.createObjectURL(blob);
-  //     link.download =
-  //       "media_" + selectedImage.id.toString() || "downloadedFile";
-  //     document.body.appendChild(link);
-  //     link.click();
-
-  //     window.URL.revokeObjectURL(link.href);
-  //     document.body.removeChild(link);
-  //   } catch (error) {
-  //     console.error("An error occurred while downloading: ", error);
-  //   }
-  // };
 
   return (
     <CommentCard>
@@ -267,12 +245,6 @@ export const Comment = ({
             </Lightbox.Body.Details>
           </Lightbox.Body>
           <Lightbox.Footer>
-            {/* <Button isBasic onClick={downloadSelectedMedia}>
-              <Button.StartIcon>
-                <DownloadIcon />
-              </Button.StartIcon>
-              Download
-            </Button> */}
           </Lightbox.Footer>
           <Lightbox.Close aria-label="Close modal" />
         </Lightbox>
