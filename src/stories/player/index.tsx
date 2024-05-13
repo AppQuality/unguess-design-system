@@ -15,8 +15,16 @@ import { ProgressContextProvider } from "./parts/progressContext";
  */
 const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  console.log("🚀 ~ Player ~ videoRef:", videoRef);
 
-  useImperativeHandle(forwardRef, () => videoRef.current as HTMLVideoElement);
+  useImperativeHandle(
+    forwardRef,
+    () => {
+      console.log("imperative", videoRef);
+      return videoRef.current as HTMLVideoElement;
+    },
+    [videoRef]
+  );
 
   return (
     <Video src={props.url} {...props}>
@@ -33,7 +41,10 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
 
-    useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement);
+    useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement, [
+      videoRef,
+      context.player?.ref,
+    ]);
 
     useEffect(() => {
       if (videoRef) {

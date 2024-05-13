@@ -10,6 +10,7 @@ import { getColor } from "../theme/utils";
 import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation } from "./_types";
 import useDebounce from "../../hooks/useDebounce";
+import { Player } from "../player";
 
 interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
@@ -105,6 +106,7 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    console.log("useEffect ref", videoRef)
     if (videoRef.current) {
       videoRef.current.addEventListener("timeupdate", () => {
         setCurrentTime(videoRef.current?.currentTime || 0);
@@ -158,11 +160,12 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
             </Highlight>
           </Col>
           <Col>
-            <video
+            {/* <video
               ref={videoRef}
               controls
               src="https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"
-            />
+            /> */}
+            <Player ref={videoRef} url={"https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"} />
           </Col>
         </Row>
         <Row>
