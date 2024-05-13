@@ -192,10 +192,6 @@ export const Controls = ({
         <StyledTooltip style={{ marginLeft: `${tooltipMargin}px` }}>
           {tooltipLabel}
         </StyledTooltip>
-        <TimeLabel
-          current={formatDuration(relCurrentTime)}
-          duration={formatDuration(duration)}
-        />
         {!!duration &&
           marks?.map((bookmark, index) => (
             <Bookmark key={`${index}${bookmark.start}`} {...bookmark} />
@@ -209,12 +205,16 @@ export const Controls = ({
       </ProgressContainer>
 
       <ControlsBar>
-        <StyledDiv>
+        <StyledDiv style={{ width: "20%", justifyContent: "start" }}>
           <AudioButton />
+          <TimeLabel
+            current={relCurrentTime}
+            duration={duration}
+          />
         </StyledDiv>
-        <ControlsGroupCenter />
+        <ControlsGroupCenter style={{ width: "60%" }} />
 
-        <StyledDiv>
+        <StyledDiv style={{ width: "20%", justifyContent: "end" }}>
           <Cutter
             onCutHandler={onCutHandler}
             isCutting={isCutting}

@@ -1,28 +1,22 @@
 import styled from "styled-components";
 import { SM } from "../../typography/typescale";
+import { formatDuration } from "./utils";
 
 const StyledDiv = styled.div`
-  position: absolute;
-  bottom: ${({ theme }) => theme.space.sm};
-  right: 0;
-
-  padding: 0 ${({ theme }) => theme.space.xs};
-
-  span {
-    color: ${({ theme }) => theme.palette.grey[300]};
-  }
+  display: flex;
+  color: ${({ theme }) => theme.palette.grey[300]};
 `;
 
 export const TimeLabel = ({
   current,
   duration,
 }: {
-  current: string;
-  duration: string;
+  current: number;
+  duration: number;
 }) => (
   <StyledDiv>
     <SM tag="span">
-      {current}/{duration}
+      {formatDuration(current)}/{formatDuration(duration)}
     </SM>
   </StyledDiv>
 );
