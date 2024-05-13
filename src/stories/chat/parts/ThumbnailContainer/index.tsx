@@ -6,6 +6,15 @@ import { Row } from "../../../grid/row";
 import { Col } from "../../../grid/col";
 import { useMemo } from "react";
 
+export interface FileElement {
+  fileName: string;
+  fileType: string;
+  errorCode?: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
+  previewUrl: string;
+  internal_id: string;
+  isLoadingMedia: boolean;
+}
+
 interface Props {
   openLightbox: (file: File, index: number) => void;
 }
@@ -18,6 +27,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
     type: file.type,
     isLoadingMedia: file.isLoadingMedia,
   }))), [thumbnails]);
+  
   if (!media || media.length === 0) {
     return null;
   }
