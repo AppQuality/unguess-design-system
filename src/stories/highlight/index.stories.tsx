@@ -1,16 +1,16 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { Highlight } from ".";
+import useDebounce from "../../hooks/useDebounce";
 import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
+import { Player } from "../player";
 import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation } from "./_types";
-import useDebounce from "../../hooks/useDebounce";
-import { Player } from "../player";
 
 interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
@@ -103,25 +103,23 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
   }>();
 
   const [currentTime, setCurrentTime] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    console.log("useEffect ref", videoRef)
-    if (videoRef.current) {
-      videoRef.current.addEventListener("timeupdate", () => {
-        setCurrentTime(videoRef.current?.currentTime || 0);
+  const handleRef = useCallback((video: HTMLVideoElement) => {
+    if (video) {
+      video.addEventListener("timeupdate", () => {
+        setCurrentTime(video?.currentTime || 0);
       });
     }
 
     return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener("timeupdate", () => {
+      if (video) {
+        video.removeEventListener("timeupdate", () => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
-          setCurrentTime(videoRef.current?.currentTime || 0);
+          setCurrentTime(video?.currentTime || 0);
         });
       }
     };
-  }, [videoRef]);
+  }, []);
 
   const [observations, setObservations] = useState<Observation[]>([]);
 
@@ -165,7 +163,12 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
               controls
               src="https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"
             /> */}
-            <Player ref={videoRef} url={"https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"} />
+            <Player
+              ref={handleRef}
+              url={
+                "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"
+              }
+            />
           </Col>
         </Row>
         <Row>
