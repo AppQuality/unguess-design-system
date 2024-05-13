@@ -1,21 +1,22 @@
-import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
-import { ReactComponent as PauseIcon } from "../../../assets/icons/pause-fill.svg";
-import { ReactComponent as ForwardIcon } from "../../../assets/icons/forward-seconds-fill.svg";
-import { ReactComponent as RewindIcon } from "../../../assets/icons/back-seconds-fill.svg";
-import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
+import { useVideoContext } from "@appquality/stream-player";
+import { HTMLAttributes, useEffect, useState } from "react";
 import styled from "styled-components";
+import { ReactComponent as RewindIcon } from "../../../assets/icons/back-seconds-fill.svg";
+import { ReactComponent as ForwardIcon } from "../../../assets/icons/forward-seconds-fill.svg";
+import { ReactComponent as PauseIcon } from "../../../assets/icons/pause-fill.svg";
+import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
+import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
 import { IconButton } from "../../buttons/icon-button";
 import { SM } from "../../typography/typescale";
 import { getNextPlaybackRate } from "./utils";
-import { useCallback, useEffect, useState } from "react";
-import { useVideoContext } from "@appquality/stream-player";
 
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
-export const ControlsGroupCenter = () => {
+export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
   const [playBackRate, setPlayBackRate] = useState<number>(1);
   const { context, togglePlay } = useVideoContext();
 
@@ -42,7 +43,7 @@ export const ControlsGroupCenter = () => {
   };
 
   return (
-    <StyledDiv>
+    <StyledDiv {...props}>
       <IconButton
         isBright
         onClick={(e) => {
