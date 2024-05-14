@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Highlight } from ".";
 import useDebounce from "../../hooks/useDebounce";
 import { Button } from "../buttons/button";
@@ -11,8 +11,12 @@ import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation } from "./_types";
+import { Tabs } from "../tabs";
+import { Transcript } from "./demo-parts/transcript-base";
+import { TParagraph } from "./demo-parts/transcript-paragraph";
+import { TDiarization } from "./demo-parts/transcript-diarization";
 
-interface StoryArgs extends HighlightArgs {
+export interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
   currentTime: number;
   includeSearch?: boolean;
@@ -547,6 +551,110 @@ VideoSync.args = {
 
 export const WithSearch = Template.bind({});
 WithSearch.args = {
+  ...defaultArgs,
+  includeSearch: true,
+};
+
+const DemoTemplate: StoryFn<StoryArgs> = (args) => {
+  const [selection, setSelection] = useState<{
+    from: number;
+    to: number;
+    text: string;
+  }>();
+
+  const [currentTime, setCurrentTime] = useState(0);
+  
+  const handleVideoRef = useCallback((video: HTMLVideoElement) => {
+    if (video) {
+      video.addEventListener("timeupdate", () => {
+        setCurrentTime(video?.currentTime || 0);
+      });
+    }
+  }, []);
+
+  const [observations, setObservations] = useState<Observation[]>([]);
+
+  const handleAddObservation = () => {
+    if (selection) {
+      console.log("🚀 ~ handleAddObservation ~ selection:", selection);
+      setObservations([
+        ...observations,
+        {
+          id: observations.length,
+          start: selection.from,
+          end: selection.to,
+        },
+      ]);
+    }
+  };
+
+  console.log(currentTime);
+
+  return (
+    <>
+      <Grid>
+        <Row>
+          <Col size={6} style={{ maxHeight: "90vh" }}>
+            {/* <video
+              ref={videoRef}
+              controls
+              src="https://s3.eu-west-1.amazonaws.com/appq.static/demo/segment-5min.mp4"
+              // src="https://s3.eu-west-1.amazonaws.com/appq.static/demo/098648899205a00f8311d929d3073499ef9d664b_1715352138.mp4"
+              style={{ width: "100%" }}
+            /> */}
+            <Player
+              ref={handleVideoRef}
+              start={56}
+              url="https://s3.eu-west-1.amazonaws.com/appq.static/demo/segment-5min.mp4"
+            />
+            {currentTime}
+          </Col>
+          <Col size={6}>
+            <Tabs className="tabs-wrapper">
+              <Tabs.Panel
+                className={"tab-panel-1"}
+                key={"tab-panel-1"}
+                title={"Transcript"}
+              >
+                <Transcript {...args} currentTime={currentTime} />
+              </Tabs.Panel>
+              <Tabs.Panel
+                className={"tab-panel-2"}
+                key={"tab-panel-2"}
+                title={"Paragraph recognition"}
+              >
+                <TParagraph {...args} currentTime={currentTime} />
+              </Tabs.Panel>
+              <Tabs.Panel
+                className={"tab-panel-3"}
+                key={"tab-panel-3"}
+                title={"Diarization"}
+              >
+                <TDiarization {...args} currentTime={currentTime} />
+              </Tabs.Panel>
+            </Tabs>
+            {/* <Highlight {...args} handleSelection={(part) => setSelection(part)}>
+              {args.words.map((item, index) => (
+                <>
+                  <Highlight.Word
+                    key={index}
+                    start={item.start}
+                    end={item.end}
+                    observations={observations}
+                    currentTime={currentTime}
+                    text={item.word}
+                  />
+                </>
+              ))}
+            </Highlight> */}
+          </Col>
+        </Row>
+      </Grid>
+    </>
+  );
+};
+export const Demo = DemoTemplate.bind({});
+Demo.args = {
   ...defaultArgs,
   includeSearch: true,
 };
