@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { Highlight } from ".";
 import useDebounce from "../../hooks/useDebounce";
 import { Button } from "../buttons/button";
@@ -7,15 +7,14 @@ import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { Player } from "../player";
+import { Tabs } from "../tabs";
 import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation } from "./_types";
-import { Tabs } from "../tabs";
 import { Transcript } from "./demo-parts/transcript-base";
-import { TParagraph } from "./demo-parts/transcript-paragraph";
 import { TDiarization } from "./demo-parts/transcript-diarization";
-import { TSentiment } from "./demo-parts/transcript-sentiment";
+import { TParagraph } from "./demo-parts/transcript-paragraph";
 
 export interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
