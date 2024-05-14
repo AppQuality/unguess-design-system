@@ -208,10 +208,6 @@ export const CommentBox = ({
   ed.on("create", ({ editor }) => setEditor(editor as TipTapEditor));
   ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
-  const mediaFiles = thumbnails.map((file) => {
-    return Object.assign(file, { isLoadingMedia: file.isLoadingMedia });
-  });
-
   return (
     <>
       {isOpen && selectedImage && (
@@ -225,7 +221,7 @@ export const CommentBox = ({
                 onSlideChange={slideChange}
                 initialSlide={selectedImageIndex}
               >
-                {mediaFiles.map((item, index) => (
+                {thumbnails.map((item, index) => (
                   <Slider.Slide>
                     {item.type.includes("image") && (
                       <img
