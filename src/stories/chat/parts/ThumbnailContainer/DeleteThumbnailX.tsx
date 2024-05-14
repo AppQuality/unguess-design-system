@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as DeleteThumbnailIcon } from "../../../../assets/icons/remove-media-icon.svg";
+import DeleteThumbnailIcon from "../../../../assets/icons/remove-media-icon.svg";
 
 const StyledDeleteThumbnailX = styled.div`
   position: absolute;
@@ -20,7 +20,9 @@ interface Props {
 const DeleteThumbnailX = ({ deleteThumbnail }: Props) => {
   return (
     <StyledDeleteThumbnailX className="deleteThumbnail">
-      <DeleteThumbnailIcon onClick={(e) => deleteThumbnail(e)} />
+      <span onClick={(e) => deleteThumbnail(e)}>
+        <DeleteThumbnailIcon />
+      </span>
     </StyledDeleteThumbnailX>
   );
 };

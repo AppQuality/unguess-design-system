@@ -2,7 +2,7 @@ import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
 import { Spinner } from "@zendeskgarden/react-loaders";
 import { SpecialCard } from "../../../special-cards";
-import { ReactComponent as VideoPlayIcon } from "../../../../assets/icons/video-play-icon.svg";
+import VideoPlayIcon from "../../../../assets/icons/video-play-icon.svg";
 
 const VideoCard = styled(SpecialCard)`
   padding: 0;
