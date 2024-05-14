@@ -4,7 +4,7 @@ import { SM } from "../../typography/typescale";
 import { StoryArgs } from "../index.stories";
 import { DemoTranscript as demo } from "./data";
 
-export const TParagraph = (args: StoryArgs & { currentTime: number }) => {
+export const TParagraph = (args: StoryArgs & { currentTime: number; offset: number  }) => {
   const words = demo.results.channels[0].alternatives[0].words.map((w) => ({
     word: w.punctuated_word,
     start: w.start,
@@ -24,7 +24,7 @@ export const TParagraph = (args: StoryArgs & { currentTime: number }) => {
       {paragraphs.map((p, index) => (
         <div style={{marginBottom: "8px"}}>
           <SM>
-            {formatDuration(p.start)} - {formatDuration(p.end)}
+            {formatDuration(p.start - args.offset)} - {formatDuration(p.end - args.offset)}
           </SM>
           {p.words.map((w) => (
             <Highlight.Word

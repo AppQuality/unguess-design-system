@@ -2,7 +2,7 @@ import { Highlight } from "..";
 import { StoryArgs } from "../index.stories";
 import { DemoTranscript as demo } from "./data";
 
-export const Transcript = (args: StoryArgs & { currentTime: number }) => {
+export const Transcript = (args: StoryArgs & { currentTime: number; offset: number  }) => {
   const words = demo.results.channels[0].alternatives[0].words.map((w) => ({
     word: w.punctuated_word,
     start: w.start,

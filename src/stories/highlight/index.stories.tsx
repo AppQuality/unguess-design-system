@@ -15,6 +15,7 @@ import { Tabs } from "../tabs";
 import { Transcript } from "./demo-parts/transcript-base";
 import { TParagraph } from "./demo-parts/transcript-paragraph";
 import { TDiarization } from "./demo-parts/transcript-diarization";
+import { TSentiment } from "./demo-parts/transcript-sentiment";
 
 export interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
@@ -556,14 +557,8 @@ WithSearch.args = {
 };
 
 const DemoTemplate: StoryFn<StoryArgs> = (args) => {
-  const [selection, setSelection] = useState<{
-    from: number;
-    to: number;
-    text: string;
-  }>();
-
   const [currentTime, setCurrentTime] = useState(0);
-  
+
   const handleVideoRef = useCallback((video: HTMLVideoElement) => {
     if (video) {
       video.addEventListener("timeupdate", () => {
@@ -572,42 +567,18 @@ const DemoTemplate: StoryFn<StoryArgs> = (args) => {
     }
   }, []);
 
-  const [observations, setObservations] = useState<Observation[]>([]);
-
-  const handleAddObservation = () => {
-    if (selection) {
-      console.log("🚀 ~ handleAddObservation ~ selection:", selection);
-      setObservations([
-        ...observations,
-        {
-          id: observations.length,
-          start: selection.from,
-          end: selection.to,
-        },
-      ]);
-    }
-  };
-
-  console.log(currentTime);
+  const VIDEO_OFFSET = 55.67;
 
   return (
     <>
       <Grid>
         <Row>
           <Col size={6} style={{ maxHeight: "90vh" }}>
-            {/* <video
-              ref={videoRef}
-              controls
-              src="https://s3.eu-west-1.amazonaws.com/appq.static/demo/segment-5min.mp4"
-              // src="https://s3.eu-west-1.amazonaws.com/appq.static/demo/098648899205a00f8311d929d3073499ef9d664b_1715352138.mp4"
-              style={{ width: "100%" }}
-            /> */}
             <Player
               ref={handleVideoRef}
-              start={56}
+              start={VIDEO_OFFSET}
               url="https://s3.eu-west-1.amazonaws.com/appq.static/demo/segment-5min.mp4"
             />
-            {currentTime}
           </Col>
           <Col size={6}>
             <Tabs className="tabs-wrapper">
@@ -616,37 +587,35 @@ const DemoTemplate: StoryFn<StoryArgs> = (args) => {
                 key={"tab-panel-1"}
                 title={"Transcript"}
               >
-                <Transcript {...args} currentTime={currentTime} />
+                <Transcript
+                  {...args}
+                  currentTime={currentTime}
+                  offset={VIDEO_OFFSET}
+                />
               </Tabs.Panel>
               <Tabs.Panel
                 className={"tab-panel-2"}
                 key={"tab-panel-2"}
                 title={"Paragraph recognition"}
               >
-                <TParagraph {...args} currentTime={currentTime} />
+                <TParagraph
+                  {...args}
+                  currentTime={currentTime}
+                  offset={VIDEO_OFFSET}
+                />
               </Tabs.Panel>
               <Tabs.Panel
                 className={"tab-panel-3"}
                 key={"tab-panel-3"}
                 title={"Diarization"}
               >
-                <TDiarization {...args} currentTime={currentTime} />
+                <TDiarization
+                  {...args}
+                  currentTime={currentTime}
+                  offset={VIDEO_OFFSET}
+                />
               </Tabs.Panel>
             </Tabs>
-            {/* <Highlight {...args} handleSelection={(part) => setSelection(part)}>
-              {args.words.map((item, index) => (
-                <>
-                  <Highlight.Word
-                    key={index}
-                    start={item.start}
-                    end={item.end}
-                    observations={observations}
-                    currentTime={currentTime}
-                    text={item.word}
-                  />
-                </>
-              ))}
-            </Highlight> */}
           </Col>
         </Row>
       </Grid>
