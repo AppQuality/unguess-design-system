@@ -27,6 +27,8 @@ import ThumbnailContainer from "./ThumbnailContainer";
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
 import { Player } from "../../player";
+import { Media } from "../../slider/index.stories";
+import MediaLightBox from "./MediaLightbox";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -210,42 +212,15 @@ export const CommentBox = ({
 
   return (
     <>
-      {isOpen && selectedImage && (
-        <Lightbox onClose={closeLightbox}>
-          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
-          <Lightbox.Body>
-            <Lightbox.Body.Main style={{ flex: 3 }}>
-              <Slider
-                prevArrow={<Slider.PrevButton isBright />}
-                nextArrow={<Slider.NextButton isBright />}
-                onSlideChange={slideChange}
-                initialSlide={selectedImageIndex}
-              >
-                {thumbnails.map((item, index) => (
-                  <Slider.Slide>
-                    {item.type.includes("image") && (
-                      <img
-                        src={URL.createObjectURL(item)}
-                        alt={`media ${item.name}`}
-                      />
-                    )}
-                    {item.type.includes("video") && (
-                      <Player
-                        ref={(ref) => {
-                          videoRefs.current.push(ref);
-                        }}
-                        url={URL.createObjectURL(item)}
-                      />
-                    )}
-                  </Slider.Slide>
-                ))}
-              </Slider>
-            </Lightbox.Body.Main>
-          </Lightbox.Body>
-          <Lightbox.Close aria-label="Close modal" />
-        </Lightbox>
-      )}
-
+      <MediaLightBox
+        isOpen={isOpen}
+        header={selectedImage.name}
+        onClose={closeLightbox}
+        slideChange={slideChange}
+        selectedImageIndex={selectedImageIndex}
+        thumbnails={thumbnails}
+        videoRefs={videoRefs}
+      />
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0, paddingBottom: 12 }}>
           {hasFloatingMenu && (

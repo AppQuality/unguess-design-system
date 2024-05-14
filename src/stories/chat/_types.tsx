@@ -47,6 +47,7 @@ export interface FileItem extends File {
   isLoadingMedia: boolean;
   isError?: boolean;
   internal_id: string;
+  url?: string;
 }
 
 export interface FloatingMenuArgs extends Partial<BubbleMenuProps> {}

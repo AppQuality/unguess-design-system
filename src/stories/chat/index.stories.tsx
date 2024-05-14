@@ -8,7 +8,7 @@ import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { ChatEditorArgs, FileItem, SuggestedUser } from "./_types";
-import { Comment, MediaType } from "./parts/comment";
+import { Comment } from "./parts/comment";
 import { theme } from "../theme";
 import { Data } from "./context/chatContext";
 import { ToastProvider } from "@zendeskgarden/react-notifications";
@@ -27,7 +27,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
     };
     message: string;
     date: string;
-    media?: MediaType[];
+    media?: FileItem[];
   }[];
   editorText?: string;
   background?: string;
@@ -37,7 +37,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { editor, triggerSave, clearInput } = useChatContext();
+  const { triggerSave, clearInput } = useChatContext();
 
   return (
     <Chat>
@@ -212,12 +212,46 @@ const defaultArgs: EditorStoryArgs = {
         {
           url: "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           type: "image",
-          id: 1,
+          internal_id: "1",
+          isLoadingMedia: false,
+          lastModified: 0,
+          name: "",
+          webkitRelativePath: "",
+          size: 0,
+          arrayBuffer: function (): Promise<ArrayBuffer> {
+            throw new Error("Function not implemented.");
+          },
+          slice: function (start?: number | undefined, end?: number | undefined, contentType?: string | undefined): Blob {
+            throw new Error("Function not implemented.");
+          },
+          stream: function (): ReadableStream<Uint8Array> {
+            throw new Error("Function not implemented.");
+          },
+          text: function (): Promise<string> {
+            throw new Error("Function not implemented.");
+          }
         },
         {
           url: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           type: "image",
-          id: 2,
+          internal_id: "2",
+          isLoadingMedia: false,
+          lastModified: 0,
+          name: "",
+          webkitRelativePath: "",
+          size: 0,
+          arrayBuffer: function (): Promise<ArrayBuffer> {
+            throw new Error("Function not implemented.");
+          },
+          slice: function (start?: number | undefined, end?: number | undefined, contentType?: string | undefined): Blob {
+            throw new Error("Function not implemented.");
+          },
+          stream: function (): ReadableStream<Uint8Array> {
+            throw new Error("Function not implemented.");
+          },
+          text: function (): Promise<string> {
+            throw new Error("Function not implemented.");
+          }
         },
       ],
     },
