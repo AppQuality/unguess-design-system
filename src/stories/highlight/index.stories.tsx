@@ -15,9 +15,16 @@ import { HighlightArgs, Observation } from "./_types";
 import { Transcript } from "./demo-parts/transcript-base";
 import { TDiarization } from "./demo-parts/transcript-diarization";
 import { TParagraph } from "./demo-parts/transcript-paragraph";
+import { Tag } from "../tags";
 
 export interface StoryArgs extends HighlightArgs {
-  words: { start: number; end: number; word: string; speaker: number }[];
+  words: {
+    start: number;
+    end: number;
+    word: string;
+    speaker: number;
+    tooltip?: React.ReactNode;
+  }[];
   currentTime: number;
   includeSearch?: boolean;
 }
@@ -78,6 +85,7 @@ const Template: StoryFn<StoryArgs> = (args) => {
               observations={observations}
               currentTime={args.currentTime}
               text={item.word}
+              {...(item.tooltip && { tooltipContent: item.tooltip })}
             />
           </>
         ))}
@@ -156,6 +164,7 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
                     observations={observations}
                     currentTime={currentTime}
                     text={item.word}
+                    {...(item.tooltip && { tooltipContent: item.tooltip })}
                   />
                 </>
               ))}
@@ -553,6 +562,15 @@ export const WithSearch = Template.bind({});
 WithSearch.args = {
   ...defaultArgs,
   includeSearch: true,
+};
+
+export const WithTooltip = Template.bind({});
+WithTooltip.args = {
+  ...defaultArgs,
+  words: defaultArgs.words.map((w) => ({
+    ...w,
+    tooltip: <Tag hue={"red"} color="white" onClick={()=>alert("Hey")}>This is a tag</Tag>,
+  })),
 };
 
 const DemoTemplate: StoryFn<StoryArgs> = (args) => {

@@ -1,4 +1,5 @@
 import { ISpanProps } from "@zendeskgarden/react-typography";
+import { ReactNode } from "react";
 
 export interface HighlightArgs {
   /**
@@ -37,4 +38,6 @@ export interface WordProps extends ISpanProps {
   text: string;
   /** Adjusts the font size. By default font size is medium */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
+
+  tooltipContent?: ReactNode;
 }
