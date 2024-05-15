@@ -1,8 +1,8 @@
-import { IconButton } from "../../buttons/icon-button";
+import { useVideoContext } from "@appquality/stream-player";
+import { useEffect, useState } from "react";
 import { ReactComponent as MutedIcon } from "../../../assets/icons/volume-muted-fill.svg";
 import { ReactComponent as UnMutedIcon } from "../../../assets/icons/volume-unmuted-fill.svg";
-import { useEffect, useState } from "react";
-import { useVideoContext } from "@appquality/stream-player";
+import { ControlButton } from "./controlButton";
 
 interface VideowithAudio extends HTMLVideoElement {
   mozHasAudio?: boolean;
@@ -41,11 +41,10 @@ export const AudioButton = () => {
       setMuted(!hasVolume(player.ref.current));
       checkAudio(player.ref.current);
     }
-  }, [context.isPlaying, isMuted]);
+  }, [context.isPlaying, isMuted, player, setMuted]);
 
   return (
-    <IconButton
-      isBright
+    <ControlButton
       disabled={!hasAudio}
       onClick={() => {
         if (player?.ref.current) {
@@ -55,6 +54,6 @@ export const AudioButton = () => {
       }}
     >
       {isMuted || !hasAudio ? <MutedIcon /> : <UnMutedIcon />}
-    </IconButton>
+    </ControlButton>
   );
 };
