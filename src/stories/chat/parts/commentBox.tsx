@@ -24,10 +24,6 @@ import { CommentBar } from "./bar";
 import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
 import ThumbnailContainer from "./ThumbnailContainer";
-import { Lightbox } from "../../lightbox";
-import { Slider } from "../../slider";
-import { Player } from "../../player";
-import { Media } from "../../slider/index.stories";
 import MediaLightBox from "./MediaLightbox";
 
 const ChatBoxContainer = styled.div`
@@ -66,7 +62,6 @@ export const CommentBox = ({
 
   const { addToast } = useToast();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
@@ -91,7 +86,6 @@ export const CommentBox = ({
   const handleOpenLightbox = (file: File, index: number) => {
     if (!file) throw Error("Error with the image");
 
-    setSelectedImage(file);
     setSelectedImageIndex(index);
     setIsOpen(true);
   };
@@ -152,7 +146,6 @@ export const CommentBox = ({
       },
 
       handlePaste: (view, event, slice) => {
-
         if (!event.clipboardData || !event.clipboardData.items) return false;
 
         event.preventDefault();
@@ -189,7 +182,7 @@ export const CommentBox = ({
           /^(image|video)\//.test(file.type)
         );
         if (mediaFiles.length === 0) return false;
-        
+
         addThumbnails({ files: mediaFiles });
 
         return false;
@@ -214,7 +207,7 @@ export const CommentBox = ({
     <>
       <MediaLightBox
         isOpen={isOpen}
-        header={selectedImage.name}
+        header={thumbnails[selectedImageIndex]?.name}
         onClose={closeLightbox}
         slideChange={slideChange}
         selectedImageIndex={selectedImageIndex}
