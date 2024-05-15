@@ -7,12 +7,16 @@ import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { Player } from "../player";
+import { Tabs } from "../tabs";
 import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation } from "./_types";
+import { Transcript } from "./demo-parts/transcript-base";
+import { TDiarization } from "./demo-parts/transcript-diarization";
+import { TParagraph } from "./demo-parts/transcript-paragraph";
 
-interface StoryArgs extends HighlightArgs {
+export interface StoryArgs extends HighlightArgs {
   words: { start: number; end: number; word: string; speaker: number }[];
   currentTime: number;
   includeSearch?: boolean;
@@ -547,6 +551,78 @@ VideoSync.args = {
 
 export const WithSearch = Template.bind({});
 WithSearch.args = {
+  ...defaultArgs,
+  includeSearch: true,
+};
+
+const DemoTemplate: StoryFn<StoryArgs> = (args) => {
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const handleVideoRef = useCallback((video: HTMLVideoElement) => {
+    if (video) {
+      video.addEventListener("timeupdate", () => {
+        setCurrentTime(video?.currentTime || 0);
+      });
+    }
+  }, []);
+
+  const VIDEO_OFFSET = 55.67;
+
+  return (
+    <>
+      <Grid>
+        <Row>
+          <Col size={6} style={{ maxHeight: "90vh" }}>
+            <Player
+              ref={handleVideoRef}
+              start={VIDEO_OFFSET}
+              url="https://s3.eu-west-1.amazonaws.com/appq.static/demo/segment-5min.mp4"
+            />
+          </Col>
+          <Col size={6}>
+            <Tabs className="tabs-wrapper">
+              <Tabs.Panel
+                className={"tab-panel-1"}
+                key={"tab-panel-1"}
+                title={"Transcript"}
+              >
+                <Transcript
+                  {...args}
+                  currentTime={currentTime}
+                  offset={VIDEO_OFFSET}
+                />
+              </Tabs.Panel>
+              <Tabs.Panel
+                className={"tab-panel-2"}
+                key={"tab-panel-2"}
+                title={"Paragraph recognition"}
+              >
+                <TParagraph
+                  {...args}
+                  currentTime={currentTime}
+                  offset={VIDEO_OFFSET}
+                />
+              </Tabs.Panel>
+              <Tabs.Panel
+                className={"tab-panel-3"}
+                key={"tab-panel-3"}
+                title={"Diarization"}
+              >
+                <TDiarization
+                  {...args}
+                  currentTime={currentTime}
+                  offset={VIDEO_OFFSET}
+                />
+              </Tabs.Panel>
+            </Tabs>
+          </Col>
+        </Row>
+      </Grid>
+    </>
+  );
+};
+export const Demo = DemoTemplate.bind({});
+Demo.args = {
   ...defaultArgs,
   includeSearch: true,
 };
