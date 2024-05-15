@@ -66,6 +66,45 @@ export const CommentBox = ({
 
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
 
+  function handleEvent(data: DataTransfer | null) {
+    if (!data || !data.files) return;
+    addThumbnails({ files: createFiles(data.files) });
+  }
+  function checkFiles(data: FileList): File[] {
+    const wrongFiles = Array.from(data).filter(
+      (file) => !/^(image|video)\//.test(file.type)
+    );
+    if (wrongFiles.length > 0) {
+      for (const file of wrongFiles) {
+        addToast(
+          ({ close }) => (
+            <Notification
+              onClose={close}
+              type="error"
+              message={`${props.messageBadFileFormat} - ${file.name}`}
+              isPrimary
+            />
+          ),
+          { placement: "top" }
+        );
+      }
+    }
+
+    return Array.from(data).filter((file) =>
+      /^(image|video)\//.test(file.type)
+    );
+  }
+
+  function createFiles(data: FileList): FileItem[] {
+    const files = checkFiles(data);
+    return files.map((file) => {
+      return Object.assign(file, {
+        isLoadingMedia: false,
+        internal_id: uuidv4(),
+      });
+    });
+  }
+
   const closeLightbox = () => {
     setIsOpen(false);
   };
@@ -102,90 +141,13 @@ export const CommentBox = ({
       },
 
       handleDrop: function (view, event, slice, moved) {
-        if (!event.dataTransfer || !event.dataTransfer.files) return false;
-
         event.preventDefault();
-
-        const files: FileItem[] = Array.from(event.dataTransfer.files).map(
-          (file) => {
-            return Object.assign(file, {
-              isLoadingMedia: false,
-              internal_id: uuidv4(),
-            });
-          }
-        );
-        const wrongFiles = files.filter(
-          (file) => !/^(image|video)\//.test(file.type)
-        );
-
-        if (wrongFiles.length > 0) {
-          for (const file of wrongFiles) {
-            addToast(
-              ({ close }) => (
-                <Notification
-                  onClose={close}
-                  type="error"
-                  message={`${props.messageBadFileFormat} - ${file.name}`}
-                  isPrimary
-                />
-              ),
-              { placement: "top" }
-            );
-          }
-        }
-
-        const mediaFiles: FileItem[] = files.filter((file) =>
-          /^(image|video)\//.test(file.type)
-        );
-
-        if (mediaFiles.length === 0) return false;
-
-        addThumbnails({ files: mediaFiles });
-
-        return false;
+        handleEvent(event.dataTransfer);
       },
 
       handlePaste: (view, event, slice) => {
-        if (!event.clipboardData || !event.clipboardData.items) return false;
-
         event.preventDefault();
-
-        const files: FileItem[] = Array.from(event.clipboardData.files).map(
-          (file) => {
-            return Object.assign(file, {
-              isLoadingMedia: false,
-              internal_id: uuidv4(),
-            });
-          }
-        );
-        const wrongFiles = files.filter(
-          (file) => !/^(image|video)\//.test(file.type)
-        );
-
-        if (wrongFiles.length > 0) {
-          for (const file of wrongFiles) {
-            addToast(
-              ({ close }) => (
-                <Notification
-                  onClose={close}
-                  type="error"
-                  message={`${props.messageBadFileFormat} - ${file.name}`}
-                  isPrimary
-                />
-              ),
-              { placement: "top" }
-            );
-          }
-        }
-
-        const mediaFiles: FileItem[] = files.filter((file) =>
-          /^(image|video)\//.test(file.type)
-        );
-        if (mediaFiles.length === 0) return false;
-
-        addThumbnails({ files: mediaFiles });
-
-        return false;
+        handleEvent(event.clipboardData);
       },
     },
     ...props,
