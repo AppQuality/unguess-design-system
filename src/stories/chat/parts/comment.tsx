@@ -12,8 +12,7 @@ import { MD } from "@zendeskgarden/react-typography";
 import { Grid } from "../../grid/grid";
 import { Row } from "../../grid/row";
 import { Col } from "../../grid/col";
-import ImageThumbnail from "./ThumbnailContainer/ImageThumbnail";
-import VideoThumbnail from "./ThumbnailContainer/VideoThumbnail";
+import Thumbnail from "./ThumbnailContainer/Thumbnail";
 import MediaLightBox from "./MediaLightbox";
 
 const CommentCard = styled(Card)`
@@ -144,40 +143,20 @@ export const Comment = ({
       </AuthorContainer>
       <Grid>
         <Row className="responsive-container">
-          {media.map((file, index) => {
-            // Check if item is an image or a video
-            if (file.type.includes("image"))
-              return (
-                <Col xs={12} sm={4} className="flex-3-sm">
-                  <ImageThumbnail
-                    key={index}
-                    src={file.url || URL.createObjectURL(file)}
-                    index={index}
-                    showX={false}
-                    isLoadingMedia={false}
-                    clickThumbnail={() => {
-                      handleClickThumbnail(file, index);
-                    }}
-                  />
-                </Col>
-              );
-            if (file.type.includes("video"))
-              return (
-                <Col xs={12} sm={4} className="flex-3-sm">
-                  <VideoThumbnail
-                    key={index}
-                    src={file.url || URL.createObjectURL(file)}
-                    index={index}
-                    showX={false}
-                    isLoadingMedia={false}
-                    clickThumbnail={() => {
-                      handleClickThumbnail(file, index);
-                    }}
-                  />
-                </Col>
-              );
-            return null;
-          })}
+          {media.map((file, index) => (
+            <Col xs={12} sm={4} className="flex-3-sm">
+            <Thumbnail
+              key={index}
+              src={file.url || URL.createObjectURL(file)}
+              type={file.type}
+              showX={false}
+              isLoadingMedia={false}
+              clickThumbnail={() => {
+                handleClickThumbnail(file, index);
+              }}
+            />
+          </Col>
+          ))}
         </Row>
       </Grid>
       <MediaLightBox
