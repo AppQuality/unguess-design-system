@@ -1,5 +1,6 @@
 import { ISpanProps } from "@zendeskgarden/react-typography";
 import { ReactNode } from "react";
+import { IBookmark } from "../player/_types";
 
 export interface HighlightArgs {
   /**
@@ -22,11 +23,7 @@ export interface HighlightArgs {
   search?: string;
 }
 
-export interface Observation {
-  id: number;
-  start: number;
-  end: number;
-  backgroundColor?: string;
+export interface Observation extends Omit<IBookmark, "onClick"> {
   color?: string;
 }
 
@@ -39,5 +36,5 @@ export interface WordProps extends ISpanProps {
   /** Adjusts the font size. By default font size is medium */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
 
-  tooltipContent?: ReactNode;
+  tooltipContent?: (observation: Observation) => ReactNode;
 }
