@@ -43,9 +43,10 @@ const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
     <Chat>
       <Chat.Header>Titolone</Chat.Header>
       <Chat.Comments chatBkg={background}>
-        {args.comments?.map((comment) => (
+        {args.comments?.map((comment, index) => (
           <Comment
             {...comment}
+            key={index}
             header={{ title: "BUG1", message: "Attachment" }}
           >
             <>altre cose</>
@@ -154,9 +155,9 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
                 console.log("internal_id - ", id);
               }}
 
-              /*setIsMediaUploading={function (value: boolean): void {
-              throw new Error("Function not implemented.");
-            }}*/
+            /*setIsMediaUploading={function (value: boolean): void {
+            throw new Error("Function not implemented.");
+          }}*/
             >
               <ChatPanel {...args} />
             </ChatProvider>
@@ -170,11 +171,11 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor: TipTapEditor, mentions) => {},
+  onSave: (editor: TipTapEditor, mentions) => { },
   author: {
     avatar: "LC",
   },
-  onUpdate: ({ editor }) => {},
+  onUpdate: ({ editor }) => { },
   comments: [
     {
       message: "Hi, I'm a comment",
