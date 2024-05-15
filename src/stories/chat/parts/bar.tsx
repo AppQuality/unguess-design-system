@@ -75,18 +75,15 @@ const CommentBar = ({
         fileInput.click();
 
         fileInput.onchange = () => {
-          const files = fileInput.files;
-          if (files) {
-            const mediaFiles: FileItem[] = Array.from(files).map((file) => {
-              return Object.assign(file, {
-                isLoadingMedia: false,
-                internal_id: uuidv4(),
-              });
+          if (fileInput.files) {
+            addThumbnails({
+              files: Array.from(fileInput.files).map((file) => {
+                return Object.assign(file, {
+                  isLoadingMedia: false,
+                  internal_id: uuidv4(),
+                });
+              }),
             });
-
-            if (mediaFiles.length === 0) return;
-
-            addThumbnails({ files: mediaFiles });
           }
         };
         return;
