@@ -2,7 +2,6 @@ import { ComponentMeta, Story } from "@storybook/react";
 import { Button } from "@zendeskgarden/react-buttons";
 import { Tooltip } from ".";
 import { TooltipArgs } from "./_types";
-import { MD } from "../typography/typescale";
 
 const defaultArgs: TooltipArgs = {
   content: "This is a tooltip",
