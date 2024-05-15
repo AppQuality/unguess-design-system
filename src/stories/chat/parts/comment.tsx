@@ -81,9 +81,7 @@ export const Comment = ({
 }>) => {
   const { mentionableUsers } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<FileItem>(
-    {} as FileItem
-  );
+
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const ext = editorExtensions({ mentionableUsers });
@@ -91,7 +89,6 @@ export const Comment = ({
   const handleClickThumbnail = (file: FileItem, index: number) => {
     if (!file) throw Error("Error with the image");
 
-    setSelectedImage(file);
     setSelectedImageIndex(index);
     setIsOpen(true);
   };
@@ -104,7 +101,6 @@ export const Comment = ({
 
   const slideChange = useCallback(
     (index: number) => {
-      setSelectedImage(media[index]);
       setSelectedImageIndex(index);
       videoRefs.current.forEach((ref) => {
         if (ref) {
@@ -137,8 +133,7 @@ export const Comment = ({
         </Avatar>
         <div>
           <CommentTitle>
-            {author.name ?? "User"}{" "}
-            <CommentDate>{date}</CommentDate>
+            {author.name ?? "User"} <CommentDate>{date}</CommentDate>
           </CommentTitle>
           <ReadOnly>
             <EditorContainer editable={false}>
@@ -187,30 +182,34 @@ export const Comment = ({
       </Grid>
       <MediaLightBox
         isOpen={isOpen}
-        header={<MD isBold>
-          <Grey600Span>{header && header.title}</Grey600Span>
-          {header && header.message && (
-            <Grey800Span> | {header.message}</Grey800Span>
-          )}
-        </MD>}
+        header={
+          <MD isBold>
+            <Grey600Span>{header && header.title}</Grey600Span>
+            {header && header.message && (
+              <Grey800Span> | {header.message}</Grey800Span>
+            )}
+          </MD>
+        }
         onClose={closeLightbox}
         slideChange={slideChange}
         selectedImageIndex={selectedImageIndex}
         thumbnails={media}
         videoRefs={videoRefs}
-        details={<Comment
-          header={header}
-          author={{
-            avatar: author.avatar,
-            name: author.name,
-          }}
-          date={date}
-          message={message}
-        >
-          <>
-            <br />
-          </>
-        </Comment>}
+        details={
+          <Comment
+            header={header}
+            author={{
+              avatar: author.avatar,
+              name: author.name,
+            }}
+            date={date}
+            message={message}
+          >
+            <>
+              <br />
+            </>
+          </Comment>
+        }
       />
       <Footer>{children}</Footer>
     </CommentCard>
