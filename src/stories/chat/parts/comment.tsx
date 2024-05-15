@@ -144,18 +144,17 @@ export const Comment = ({
       <Grid>
         <Row className="responsive-container">
           {media.map((file, index) => (
-            <Col xs={12} sm={4} className="flex-3-sm">
-            <Thumbnail
-              key={index}
-              src={file.url || URL.createObjectURL(file)}
-              type={file.type}
-              showX={false}
-              isLoadingMedia={false}
-              clickThumbnail={() => {
-                handleClickThumbnail(file, index);
-              }}
-            />
-          </Col>
+            <Col key={index} xs={12} sm={4} className="flex-3-sm">
+              <Thumbnail
+                src={file.url || URL.createObjectURL(file)}
+                type={file.type}
+                showX={false}
+                isLoadingMedia={false}
+                clickThumbnail={() => {
+                  handleClickThumbnail(file, index);
+                }}
+              />
+            </Col>
           ))}
         </Row>
       </Grid>
