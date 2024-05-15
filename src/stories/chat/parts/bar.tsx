@@ -37,52 +37,32 @@ const CommentBar = ({
   const {getMedia} = useMedia();
   if (!editor) return null;
 
-  type MenuItem = {
-    type: "bold" | "italic" | "mention" | "attachment";
+  const handleBoldClick = () => {
+    editor.chain().focus().toggleBold().run();
   };
 
-  const getIcon = (type: MenuItem["type"]) => {
-    switch (type) {
-      case "bold":
-        return <BoldIcon />;
-      case "italic":
-        return <ItalicIcon />;
-      case "mention":
-        return <MentionIcon />;
-      case "attachment":
-        return <AttachmentIcon />;
-      default:
-        return null;
-    }
+  const handleItalicClick = () => {
+    editor.chain().focus().toggleItalic().run();
   };
 
-  const handleClick = (type: MenuItem["type"]) => {
-    switch (type) {
-      case "bold":
-        return editor.chain().focus().toggleBold().run();
-      case "italic":
-        return editor.chain().focus().toggleItalic().run();
-      case "mention":
-        const { from } = editor.state.selection;
-        const char = from > 1 ? " @" : "@";
-        return editor.chain().focus().insertContent(char).run();
-      case "attachment":
-        //open a file browser to select one or more images
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*,video/*";
-        fileInput.multiple = true;
-        fileInput.click();
+  const handleMentionClick = () => {
+    const { from } = editor.state.selection;
+    const char = from > 1 ? " @" : "@";
+    editor.chain().focus().insertContent(char).run();
+  };
 
-        fileInput.onchange = () => {
-          if (fileInput.files) {
-            addThumbnails({ files: getMedia(fileInput.files) });
-          }
-        };
-        return;
-      default:
-        return;
-    }
+  const handleAttachmentClick = () => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*,video/*";
+    fileInput.multiple = true;
+    fileInput.click();
+
+    fileInput.onchange = () => {
+      if (fileInput.files) {
+        addThumbnails({ files: getMedia(fileInput.files) });
+      }
+    };
   };
 
   return (
@@ -102,9 +82,9 @@ const CommentBar = ({
             isBasic={!editor.isActive("bold")}
             isPrimary={editor.isActive("bold")}
             isPill={false}
-            onClick={() => handleClick("bold")}
+            onClick={handleBoldClick}
           >
-            {getIcon("bold")}
+            <BoldIcon />
           </IconButton>
         </Tooltip>
         <Tooltip
@@ -121,9 +101,9 @@ const CommentBar = ({
             isBasic={!editor.isActive("italic")}
             isPrimary={editor.isActive("italic")}
             isPill={false}
-            onClick={() => handleClick("italic")}
+            onClick={handleItalicClick}
           >
-            {getIcon("italic")}
+            <ItalicIcon />
           </IconButton>
         </Tooltip>
         <VerticalDivider />
@@ -139,9 +119,9 @@ const CommentBar = ({
             isBasic={!editor.isActive("mention")}
             isPrimary={editor.isActive("mention")}
             isPill={false}
-            onClick={() => handleClick("mention")}
+            onClick={handleMentionClick}
           >
-            {getIcon("mention")}
+            <MentionIcon />
           </IconButton>
         </Tooltip>
         <Tooltip
@@ -158,9 +138,9 @@ const CommentBar = ({
             isBasic={!editor.isActive("attachment")}
             isPrimary={editor.isActive("attachment")}
             isPill={false}
-            onClick={() => handleClick("attachment")}
+            onClick={handleAttachmentClick}
           >
-            {getIcon("attachment")}
+            <AttachmentIcon />
           </IconButton>
         </Tooltip>
       </MenuContainer>
