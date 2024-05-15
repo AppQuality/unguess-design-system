@@ -35,6 +35,7 @@ const MediaLightBox = ({header, onClose, slideChange, selectedImageIndex, thumbn
                       <img
                         src={item.url || URL.createObjectURL(item)}
                         alt={`media ${item.name}`}
+                        style={{ maxHeight: "100%", height: "auto" }}
                       />
                     )}
                     {item.type.includes("video") && (
