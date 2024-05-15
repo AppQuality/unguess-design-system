@@ -72,7 +72,7 @@ export const CommentBox = ({
     if (!data || !data.files) return;
     addThumbnails({ files: createFiles(data.files) });
   }
-  function checkFiles(data: FileList): File[] {
+  function getValidMedia(data: FileList): File[] {
     const wrongFiles = Array.from(data).filter(
       (file) => !acceptedMediaTypes.test(file.type)
     );
@@ -99,10 +99,9 @@ export const CommentBox = ({
   }
 
   function createFiles(data: FileList): FileItem[] {
-    const files = checkFiles(data);
-    return files.map((file) => {
+    return getValidMedia(data).map((file) => {
       return Object.assign(file, {
-        isLoadingMedia: false,
+        isLoadingMedia: true,
         internal_id: uuidv4(),
       });
     });

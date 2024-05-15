@@ -79,7 +79,7 @@ const CommentBar = ({
             addThumbnails({
               files: Array.from(fileInput.files).map((file) => {
                 return Object.assign(file, {
-                  isLoadingMedia: false,
+                  isLoadingMedia: true,
                   internal_id: uuidv4(),
                 });
               }),

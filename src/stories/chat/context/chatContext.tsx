@@ -1,5 +1,11 @@
 import { Editor } from "@tiptap/react";
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { FileItem, SuggestedUser } from "../_types";
 
 export type ChatContextType = {
@@ -77,13 +83,11 @@ export const ChatContextProvider = ({
       },
 
       addThumbnails: ({ files }: { files: FileItem[] }) => {
-        files.forEach((file) => (file.isLoadingMedia = true));
         setThumbnails((prev) => [...prev, ...files]);
 
         if (onFileUpload) {
           onFileUpload(files).then((data: Data) => {
             const failed = data.failed?.map((f) => f.name);
-
             setThumbnails((prev) => {
               return prev.map((file) => {
                 file.isLoadingMedia = false;
@@ -103,7 +107,6 @@ export const ChatContextProvider = ({
           editor.commands.clearContent();
         }
         if (thumbnails.length > 0) setThumbnails([]);
-
       },
 
       onDeleteThumbnail: (id: string) => {
