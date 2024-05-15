@@ -74,20 +74,31 @@ export const CommentBox = ({
     const wrongFiles = Array.from(data).filter(
       (file) => !/^(image|video)\//.test(file.type)
     );
-    if (wrongFiles.length > 0) {
-      for (const file of wrongFiles) {
-        addToast(
-          ({ close }) => (
-            <Notification
-              onClose={close}
-              type="error"
-              message={`${props.messageBadFileFormat} - ${file.name}`}
-              isPrimary
-            />
-          ),
-          { placement: "top" }
-        );
-      }
+    if (wrongFiles.length === 1) {
+      addToast(
+        ({ close }) => (
+          <Notification
+            onClose={close}
+            type="error"
+            message={`${props.messageBadFileFormat} - ${wrongFiles[0].name}`}
+            isPrimary
+          />
+        ),
+        { placement: "top" }
+      );
+    }
+    if (wrongFiles.length > 1) {
+      addToast(
+        ({ close }) => (
+          <Notification
+            onClose={close}
+            type="error"
+            message={`${props.messageBadFileFormatMultiple}`}
+            isPrimary
+          />
+        ),
+        { placement: "top" }
+      );
     }
 
     return Array.from(data).filter((file) =>

@@ -221,7 +221,11 @@ const defaultArgs: EditorStoryArgs = {
           arrayBuffer: function (): Promise<ArrayBuffer> {
             throw new Error("Function not implemented.");
           },
-          slice: function (start?: number | undefined, end?: number | undefined, contentType?: string | undefined): Blob {
+          slice: function (
+            start?: number | undefined,
+            end?: number | undefined,
+            contentType?: string | undefined
+          ): Blob {
             throw new Error("Function not implemented.");
           },
           stream: function (): ReadableStream<Uint8Array> {
@@ -229,7 +233,7 @@ const defaultArgs: EditorStoryArgs = {
           },
           text: function (): Promise<string> {
             throw new Error("Function not implemented.");
-          }
+          },
         },
         {
           url: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -243,7 +247,11 @@ const defaultArgs: EditorStoryArgs = {
           arrayBuffer: function (): Promise<ArrayBuffer> {
             throw new Error("Function not implemented.");
           },
-          slice: function (start?: number | undefined, end?: number | undefined, contentType?: string | undefined): Blob {
+          slice: function (
+            start?: number | undefined,
+            end?: number | undefined,
+            contentType?: string | undefined
+          ): Blob {
             throw new Error("Function not implemented.");
           },
           stream: function (): ReadableStream<Uint8Array> {
@@ -251,12 +259,13 @@ const defaultArgs: EditorStoryArgs = {
           },
           text: function (): Promise<string> {
             throw new Error("Function not implemented.");
-          }
+          },
         },
       ],
     },
   ],
   messageBadFileFormat: "Format not supported, please upload video or image",
+  messageBadFileFormatMultiple: "Some uploaded files are not supported",
 };
 
 export const Default = Template.bind({});
