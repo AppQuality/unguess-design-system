@@ -26,6 +26,8 @@ import { EditorContainer } from "./containers";
 import ThumbnailContainer from "./ThumbnailContainer";
 import MediaLightBox from "./MediaLightbox";
 
+export const acceptedMediaTypes = /^(image|video)\//;
+
 const ChatBoxContainer = styled.div`
   display: flex;
   border-top: 1px solid ${({ theme }) => theme.palette.grey[200]};
@@ -72,37 +74,27 @@ export const CommentBox = ({
   }
   function checkFiles(data: FileList): File[] {
     const wrongFiles = Array.from(data).filter(
-      (file) => !/^(image|video)\//.test(file.type)
+      (file) => !acceptedMediaTypes.test(file.type)
     );
-    if (wrongFiles.length === 1) {
+    if (wrongFiles.length) {
       addToast(
         ({ close }) => (
           <Notification
             onClose={close}
             type="error"
-            message={`${props.messageBadFileFormat} - ${wrongFiles[0].name}`}
+            message={
+              wrongFiles.length === 1
+                ? `${props.messageBadFileFormat} - ${wrongFiles[0].name}`
+                : `${props.messageBadFileFormatMultiple}`
+            }
             isPrimary
           />
         ),
         { placement: "top" }
       );
     }
-    if (wrongFiles.length > 1) {
-      addToast(
-        ({ close }) => (
-          <Notification
-            onClose={close}
-            type="error"
-            message={`${props.messageBadFileFormatMultiple}`}
-            isPrimary
-          />
-        ),
-        { placement: "top" }
-      );
-    }
-
     return Array.from(data).filter((file) =>
-      /^(image|video)\//.test(file.type)
+      acceptedMediaTypes.test(file.type)
     );
   }
 
