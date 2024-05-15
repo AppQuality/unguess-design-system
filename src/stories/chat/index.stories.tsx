@@ -264,8 +264,6 @@ const defaultArgs: EditorStoryArgs = {
       ],
     },
   ],
-  messageBadFileFormat: "Format not supported, please upload video or image",
-  messageBadFileFormatMultiple: "Some uploaded files are not supported",
 };
 
 export const Default = Template.bind({});

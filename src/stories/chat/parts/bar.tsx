@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
 import { Tooltip } from "../../tooltip";
-import { ChatEditorArgs, FileItem } from "../_types";
+import { ChatEditorArgs } from "../_types";
 import { Editor } from "@tiptap/react";
 import { isMac } from "../../theme/utils";
 import { ReactComponent as BoldIcon } from "../../../assets/icons/bold-stroke.svg";
@@ -10,6 +9,7 @@ import { ReactComponent as MentionIcon } from "../../../assets/icons/at-stroke.s
 import { ReactComponent as AttachmentIcon } from "../../../assets/icons/clipboard.svg";
 import { IconButton } from "../../buttons/icon-button";
 import { useChatContext } from "../context/chatContext";
+import { useMedia } from "../hooks/useMedia";
 
 const MenuContainer = styled.div`
   padding: ${({ theme }) => theme.space.xs} 0;
@@ -34,7 +34,7 @@ const CommentBar = ({
   editor?: Editor;
 }) => {
   const { addThumbnails } = useChatContext();
-
+  const {getMedia} = useMedia();
   if (!editor) return null;
 
   type MenuItem = {
@@ -76,14 +76,7 @@ const CommentBar = ({
 
         fileInput.onchange = () => {
           if (fileInput.files) {
-            addThumbnails({
-              files: Array.from(fileInput.files).map((file) => {
-                return Object.assign(file, {
-                  isLoadingMedia: true,
-                  internal_id: uuidv4(),
-                });
-              }),
-            });
+            addThumbnails({ files: getMedia(fileInput.files) });
           }
         };
         return;

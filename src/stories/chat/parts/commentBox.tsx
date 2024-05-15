@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
 import {
   useEditor,
   EditorContent,
   Editor as TipTapEditor,
   Content,
 } from "@tiptap/react";
-import { ChatEditorArgs, FileItem } from "../_types";
+import { ChatEditorArgs } from "../_types";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
@@ -14,10 +13,6 @@ import {
   useRef,
   useCallback,
 } from "react";
-
-import { Notification } from "../../notifications";
-import { useToast } from "../../notifications";
-
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
 import { CommentBar } from "./bar";
@@ -25,8 +20,7 @@ import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
 import ThumbnailContainer from "./ThumbnailContainer";
 import MediaLightBox from "./MediaLightbox";
-
-export const acceptedMediaTypes = /^(image|video)\//;
+import { useMedia } from "../hooks/useMedia";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -61,50 +55,14 @@ export const CommentBox = ({
     thumbnails,
     addThumbnails,
   } = useChatContext();
-
-  const { addToast } = useToast();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-
+  const {getMedia} = useMedia();
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
 
   function handleEvent(data: DataTransfer | null) {
     if (!data || !data.files) return;
-    addThumbnails({ files: createFiles(data.files) });
-  }
-  function getValidMedia(data: FileList): File[] {
-    const wrongFiles = Array.from(data).filter(
-      (file) => !acceptedMediaTypes.test(file.type)
-    );
-    if (wrongFiles.length) {
-      addToast(
-        ({ close }) => (
-          <Notification
-            onClose={close}
-            type="error"
-            message={
-              wrongFiles.length === 1
-                ? `${props.messageBadFileFormat} - ${wrongFiles[0].name}`
-                : `${props.messageBadFileFormatMultiple}`
-            }
-            isPrimary
-          />
-        ),
-        { placement: "top" }
-      );
-    }
-    return Array.from(data).filter((file) =>
-      acceptedMediaTypes.test(file.type)
-    );
-  }
-
-  function createFiles(data: FileList): FileItem[] {
-    return getValidMedia(data).map((file) => {
-      return Object.assign(file, {
-        isLoadingMedia: true,
-        internal_id: uuidv4(),
-      });
-    });
+    addThumbnails({ files: getMedia(data.files) });
   }
 
   const closeLightbox = () => {
