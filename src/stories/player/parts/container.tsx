@@ -33,5 +33,5 @@ export const Container = styled.div<WrapperProps>`
       }
     }
   }
-  background: ${({ theme }) => theme.palette.grey[100]};
+  background: ${({ theme }) => theme.palette.grey[400]};
 `;
