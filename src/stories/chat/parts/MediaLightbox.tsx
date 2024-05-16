@@ -1,6 +1,6 @@
 import { Lightbox } from "../../lightbox";
 import { Slider } from "../../slider";
-import { FileItem } from "../_types";
+import { CommentMedia } from "../_types";
 import { Player } from "../../player";
 
 interface MediaLightBoxProps {
@@ -9,7 +9,7 @@ interface MediaLightBoxProps {
   onClose: () => void;
   slideChange: (index: number) => void;
   selectedImageIndex: number;
-  thumbnails: FileItem[];
+  thumbnails: CommentMedia[];
   videoRefs: React.MutableRefObject<Array<HTMLVideoElement | null>>;
   details?: React.ReactNode;
 };
@@ -30,20 +30,20 @@ const MediaLightBox = ({header, onClose, slideChange, selectedImageIndex, thumbn
                 initialSlide={selectedImageIndex}
               >
                 {thumbnails.map((item) => (
-                  <Slider.Slide key={item.internal_id}>
+                  <Slider.Slide key={item.id}>
                     {item.type.includes("image") && (
                       <img
-                        src={item.url || URL.createObjectURL(item)}
+                        src={item.url}
                         alt={`media ${item.name}`}
                         style={{ maxHeight: "100%", height: "auto" }}
                       />
                     )}
-                    {item.type.includes("video") && (
+                    {item.type.includes("video") && item.url && (
                       <Player
                         ref={(ref) => {
                           videoRefs.current.push(ref);
                         }}
-                        url={item.url || URL.createObjectURL(item)}
+                        url={item.url}
                       />
                     )}
                   </Slider.Slide>

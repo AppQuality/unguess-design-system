@@ -15,7 +15,7 @@ export interface FileElement {
 }
 
 interface Props {
-  openLightbox: (file: File, index: number) => void;
+  openLightbox: (index: number) => void;
 }
 
 const ThumbnailContainer = ({ openLightbox }: Props) => {
@@ -25,8 +25,8 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
     return thumbnails.map((file) => ({
       fileName: file.name,
       fileType: file.type,
-      previewUrl: URL.createObjectURL(file),
-      internal_id: file.internal_id,
+      previewUrl: file.url,
+      id: file.id,
       isLoadingMedia: file.isLoadingMedia,
     }));
   }, [thumbnails]);
@@ -41,17 +41,17 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
         {mediaFiles.map((file, index) => (
           <Col xs={12} sm={3} className="flex-3-sm">
             <Thumbnail
-              key={file.internal_id}
+              key={file.id}
               src={file.previewUrl}
               showX
               type={file.fileType}
               isLoadingMedia={file.isLoadingMedia}
               removeThumbnail={() => {
                 removeThumbnail(index);
-                onDeleteThumbnail(file.internal_id);
+                onDeleteThumbnail(file.id);
               }}
               clickThumbnail={() => {
-                openLightbox(thumbnails[index], index);
+                openLightbox(index);
               }}
             />
           </Col>

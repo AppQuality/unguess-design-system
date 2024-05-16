@@ -40,10 +40,12 @@ export interface EditorHeaderArgs {
   validation?: validationStatus;
 }
 
-export interface FileItem extends File {
-  isLoadingMedia: boolean;
+export interface CommentMedia {
+  id: string;
+  type: string;
+  name?: string;
+  isLoadingMedia?: boolean;
   isError?: boolean;
-  internal_id: string;
   url?: string;
 }
 

@@ -1,5 +1,5 @@
 import { useToast, Notification } from "../../notifications";
-import { FileItem } from "../_types";
+import { CommentMedia } from "../_types";
 import { v4 as uuidv4 } from "uuid";
 
 export const acceptedMediaTypes = /^(image|video)\//;
@@ -32,11 +32,12 @@ export function useMedia() {
     );
   }
   
-  function getMedia(data: FileList): FileItem[] {
+  function getMedia(data: FileList): CommentMedia[] {
     return getValidMedia(data).map((file) => {
       return Object.assign(file, {
+        url: URL.createObjectURL(file),
         isLoadingMedia: true,
-        internal_id: uuidv4(),
+        id: uuidv4(),
       });
     });
   }

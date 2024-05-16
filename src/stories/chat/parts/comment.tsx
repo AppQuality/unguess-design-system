@@ -2,7 +2,7 @@ import { PropsWithChildren, useCallback, useRef, useState } from "react";
 import { Title } from "../../title";
 import { Card } from "../../cards";
 import { styled } from "styled-components";
-import { Author, FileItem } from "../_types";
+import { Author, CommentMedia } from "../_types";
 import { Avatar } from "../../avatar";
 import { useChatContext } from "../context/chatContext";
 import { Content, useEditor, EditorContent } from "@tiptap/react";
@@ -72,7 +72,7 @@ export const Comment = ({
   author: Author;
   message: string;
   date: string;
-  media?: FileItem[];
+  media?: CommentMedia[];
   header: {
     title: string;
     message?: string;
@@ -85,9 +85,7 @@ export const Comment = ({
 
   const ext = editorExtensions({ mentionableUsers });
 
-  const handleClickThumbnail = (file: FileItem, index: number) => {
-    if (!file) throw Error("Error with the image");
-
+  const handleClickThumbnail = (index: number) => {
     setSelectedImageIndex(index);
     setIsOpen(true);
   };
@@ -146,12 +144,12 @@ export const Comment = ({
           {media.map((file, index) => (
             <Col key={index} xs={12} sm={4} className="flex-3-sm">
               <Thumbnail
-                src={file.url || URL.createObjectURL(file)}
+                src={file.url}
                 type={file.type}
                 showX={false}
                 isLoadingMedia={false}
                 clickThumbnail={() => {
-                  handleClickThumbnail(file, index);
+                  handleClickThumbnail(index);
                 }}
               />
             </Col>

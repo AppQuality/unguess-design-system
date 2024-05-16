@@ -6,15 +6,15 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { FileItem, SuggestedUser } from "../_types";
+import { CommentMedia, SuggestedUser } from "../_types";
 
 export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
-  addThumbnails: (props: { files: FileItem[] }) => void;
+  addThumbnails: (props: { files: CommentMedia[] }) => void;
   removeThumbnail: (index: number) => void;
-  thumbnails: FileItem[];
+  thumbnails: CommentMedia[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
   afterUploadCallback: (failed: string[]) => void;
   clearInput: () => void;
@@ -35,13 +35,13 @@ export const ChatContextProvider = ({
   children,
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: FileItem[]) => Promise<Data>;
+  onFileUpload?: (files: CommentMedia[]) => Promise<Data>;
   onDeleteThumbnail: (id: string) => void;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
 }) => {
   const [editor, setEditor] = useState<Editor | undefined>();
-  const [thumbnails, setThumbnails] = useState<FileItem[]>([]);
+  const [thumbnails, setThumbnails] = useState<CommentMedia[]>([]);
 
   const getMentions = (editor: Editor) => {
     const result: SuggestedUser[] = [];
@@ -70,7 +70,7 @@ export const ChatContextProvider = ({
       afterUploadCallback: (failed: string[]) => {
         setThumbnails(
           thumbnails.map((file) => {
-            if (failed.includes(file.name)) {
+            if (failed.includes(file.id)) {
               file.isLoadingMedia = false;
               //file.isError = true;
             } else {
@@ -82,7 +82,7 @@ export const ChatContextProvider = ({
         );
       },
 
-      addThumbnails: ({ files }: { files: FileItem[] }) => {
+      addThumbnails: ({ files }: { files: CommentMedia[] }) => {
         setThumbnails((prev) => [...prev, ...files]);
 
         if (onFileUpload) {
@@ -91,7 +91,7 @@ export const ChatContextProvider = ({
             setThumbnails((prev) => {
               return prev.map((file) => {
                 file.isLoadingMedia = false;
-                if (failed?.length && failed.includes(file.name)) {
+                if (failed?.length && failed.includes(file.id)) {
                   file.isError = true;
                 } else {
                   file.isError = false;

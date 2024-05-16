@@ -69,7 +69,7 @@ const Preview = styled.div<{
 `;
 
 interface Props {
-  src: string;
+  src?: string;
   type: string;
   clickThumbnail?: () => void;
   isLoadingMedia?: boolean;

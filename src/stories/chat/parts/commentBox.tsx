@@ -82,9 +82,7 @@ export const CommentBox = ({
     },
     [videoRefs]
   );
-  const handleOpenLightbox = (file: File, index: number) => {
-    if (!file) throw Error("Error with the image");
-
+  const handleOpenLightbox = (index: number) => {
     setSelectedImageIndex(index);
     setIsOpen(true);
   };
