@@ -1,3 +1,15 @@
+# v3.1.90 (Thu May 16 2024)
+
+#### 🐛 Bug Fix
+
+- refactor: Update player background color in Container component [#349](https://github.com/AppQuality/unguess-design-system/pull/349) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.89 (Thu May 16 2024)
 
 #### 🐛 Bug Fix
