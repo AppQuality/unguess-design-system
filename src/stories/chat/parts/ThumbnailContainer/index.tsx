@@ -39,7 +39,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
     <Grid>
       <Row className="responsive-container">
         {mediaFiles.map((file, index) => (
-          <Col xs={12} sm={3} className="flex-3-sm">
+          <Col key={file.id} xs={12} sm={3} className="flex-3-sm">
             <Thumbnail
               key={file.id}
               src={file.previewUrl}
