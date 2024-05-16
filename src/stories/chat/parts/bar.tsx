@@ -10,6 +10,7 @@ import { ReactComponent as AttachmentIcon } from "../../../assets/icons/clipboar
 import { IconButton } from "../../buttons/icon-button";
 import { useChatContext } from "../context/chatContext";
 import { useMedia } from "../hooks/useMedia";
+import { theme } from "../../theme";
 
 const MenuContainer = styled.div`
   padding: ${({ theme }) => theme.space.xs} 0;
@@ -34,7 +35,7 @@ const CommentBar = ({
   editor?: Editor;
 }) => {
   const { addThumbnails } = useChatContext();
-  const {getMedia} = useMedia();
+  const { getMedia } = useMedia();
   if (!editor) return null;
 
   const handleBoldClick = () => {
@@ -126,7 +127,15 @@ const CommentBar = ({
         </Tooltip>
         <Tooltip
           content={
-            i18n?.menu?.attachment ?? "Upload images and video. Max size: 5GB"
+            i18n?.menu?.attachment ?? (
+              <span>
+                Upload images and video.{" "}
+                <span style={{ color: theme.palette.grey[600] }}>
+                  {" "}
+                  <br /> Max size: 5GB{" "}
+                </span>
+              </span>
+            )
           }
           placement="top"
           type="light"
