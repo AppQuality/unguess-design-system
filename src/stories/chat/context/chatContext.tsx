@@ -34,7 +34,7 @@ export const ChatContextProvider = ({
   children,
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: File[]) => Promise<Data>;
+  onFileUpload?: (files: (File & CommentMedia)[]) => Promise<Data>;
   onDeleteThumbnail: (id: string) => void;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
