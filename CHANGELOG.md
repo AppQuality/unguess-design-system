@@ -1,3 +1,16 @@
+# v3.1.88 (Mon May 13 2024)
+
+#### 🐛 Bug Fix
+
+- Player fixes [#343](https://github.com/AppQuality/unguess-design-system/pull/343) ([@cannarocks](https://github.com/cannarocks))
+- Fix undefined state in player and reduce renders [#342](https://github.com/AppQuality/unguess-design-system/pull/342) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.87 (Mon May 13 2024)
 
 #### 🐛 Bug Fix
