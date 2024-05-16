@@ -19,6 +19,12 @@ Default.args = {
   ...defaultArgs,
 };
 
+export const Transparent = Template.bind({});
+Transparent.args = {
+  ...defaultArgs,
+  isTransparent: true,
+};
+
 export default {
   title: "Atoms/Tooltip",
   component: Tooltip,

@@ -5,6 +5,7 @@ import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { HighlightContextProvider } from "./highlightContext";
 import { Searchable } from "./searchable";
+import { Tooltip } from "../tooltip";
 
 const StyledWord = styled(ZendeskSpan)<
   WordProps & { observation?: Observation }
@@ -17,7 +18,7 @@ const StyledWord = styled(ZendeskSpan)<
     ` user-select: none;
       padding: 0;
       background-color: ${
-        observation.backgroundColor ??
+        observation.hue ??
         getColor(theme.palette.azure, 700, undefined, 0.5)
       };
       color: ${observation.color ?? "white"};
@@ -114,6 +115,29 @@ const Word = (props: WordProps) => {
     (obs) => props.start >= obs.start && props.end <= obs.end
   );
 
+  if (props.tooltipContent !== undefined && !!observation) {
+    return (
+      <Tooltip content={props.tooltipContent(observation)} isTransparent>
+        <StyledWord
+          {...props}
+          observation={observation}
+          data-start={props.start}
+          data-end={props.end}
+          className={!!observation ? "highlighted" : ""}
+          {...(!!observation ? { tag: "observation" } : {})}
+        >
+          {isActive ? (
+            <ActiveWord>
+              <Searchable start={props.start} text={props.text} />
+            </ActiveWord>
+          ) : (
+            <Searchable start={props.start} text={props.text} />
+          )}{" "}
+        </StyledWord>
+      </Tooltip>
+    );
+  }
+
   return (
     <StyledWord
       {...props}
@@ -129,8 +153,7 @@ const Word = (props: WordProps) => {
         </ActiveWord>
       ) : (
         <Searchable start={props.start} text={props.text} />
-      )}
-       {" "}
+      )}{" "}
     </StyledWord>
   );
 };
