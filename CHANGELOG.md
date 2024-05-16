@@ -1,3 +1,18 @@
+# v3.1.89 (Thu May 16 2024)
+
+#### 🐛 Bug Fix
+
+- Add tooltip to highlights and a brighter new player [#347](https://github.com/AppQuality/unguess-design-system/pull/347) ([@cannarocks](https://github.com/cannarocks))
+- "Add isTransparent prop to TooltipArgs interface and implement transparent style in Tooltip component" [#345](https://github.com/AppQuality/unguess-design-system/pull/345) ([@cannarocks](https://github.com/cannarocks))
+- "Update player controls and refactor styling" [#346](https://github.com/AppQuality/unguess-design-system/pull/346) ([@cannarocks](https://github.com/cannarocks))
+- Demo [#344](https://github.com/AppQuality/unguess-design-system/pull/344) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.88 (Mon May 13 2024)
 
 #### 🐛 Bug Fix
