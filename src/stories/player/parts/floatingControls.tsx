@@ -20,6 +20,10 @@ const BigButton = styled(IconButton)`
   min-width: ${({ theme }) => theme.space.base * 15}px;
   width: 80px;
   height: 80px;
+
+  box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
+  
+
   ${PlayIcon} {
     width: 60%;
     height: 60%;
@@ -44,7 +48,7 @@ export const FloatingControls = (props: {
       <ButtonsContainer>
         {!isPlaying && (
           <BigButton isPrimary size={"large"}>
-            <PlayIcon color="red"/>
+            <PlayIcon color="red" />
           </BigButton>
         )}
       </ButtonsContainer>

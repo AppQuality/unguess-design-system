@@ -1,18 +1,17 @@
 import { useVideoContext } from "@appquality/stream-player";
-import { getColor } from "@zendeskgarden/react-theming";
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { IBookmark, PlayerI18n, WrapperProps } from "../_types";
 import { AudioButton } from "./audioButton";
 import { Bookmark } from "./bookmark";
 import { ControlsGroupCenter } from "./controlsCenterGroup";
+import { Cutter } from "./cutterButton";
 import { FullScreenButton } from "./fullScreenButton";
 import { ProgressBar } from "./progress";
 import { useProgressContext } from "./progressContext";
 import { TimeLabel } from "./timeLabel";
 import { PlayerTooltip } from "./tooltip";
 import { formatDuration } from "./utils";
-import { Cutter } from "./cutterButton";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -20,8 +19,7 @@ export const ControlsWrapper = styled.div<WrapperProps>`
   left: 0;
   right: 0;
   padding: ${({ theme }) => theme.space.xxs} 0;
-  background-color: ${({ theme }) =>
-    getColor(theme.palette.grey, 700, undefined, 0.8)};
+  background-color: ${({ theme }) => theme.palette.grey[100]};
   ${({ isPlaying }) => isPlaying && "display: none;"}
   z-index: 2;
 `;

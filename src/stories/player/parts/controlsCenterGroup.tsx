@@ -6,8 +6,8 @@ import { ReactComponent as ForwardIcon } from "../../../assets/icons/forward-sec
 import { ReactComponent as PauseIcon } from "../../../assets/icons/pause-fill.svg";
 import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
 import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
-import { IconButton } from "../../buttons/icon-button";
 import { SM } from "../../typography/typescale";
+import { ControlButton } from "./controlButton";
 import { getNextPlaybackRate } from "./utils";
 
 const StyledDiv = styled.div`
@@ -44,8 +44,7 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
 
   return (
     <StyledDiv {...props}>
-      <IconButton
-        isBright
+      <ControlButton
         onClick={(e) => {
           if (videoRef) {
             videoRef.currentTime = 0;
@@ -54,34 +53,31 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
         }}
       >
         <PreviousIcon />
-      </IconButton>
-      <IconButton
-        isBright
+      </ControlButton>
+      <ControlButton
         onClick={(e) => {
           onRewind();
           e.stopPropagation();
         }}
       >
         <RewindIcon />
-      </IconButton>
-      <IconButton isBright size={"large"} onClick={togglePlay}>
+      </ControlButton>
+      <ControlButton size={"large"} onClick={togglePlay}>
         {isPlaying ? (
           <PauseIcon style={{ width: "24px", height: "24px" }} />
         ) : (
           <PlayIcon style={{ width: "24px", height: "24px" }} />
         )}
-      </IconButton>
-      <IconButton
-        isBright
+      </ControlButton>
+      <ControlButton
         onClick={(e) => {
           onForward();
           e.stopPropagation();
         }}
       >
         <ForwardIcon />
-      </IconButton>
-      <IconButton
-        isBright
+      </ControlButton>
+      <ControlButton
         isPill
         onClick={(e) => {
           const newSpeed = getNextPlaybackRate(playBackRate);
@@ -95,7 +91,7 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
         <SM isBold style={{ lineHeight: "16px" }}>
           {playBackRate}x
         </SM>
-      </IconButton>
+      </ControlButton>
     </StyledDiv>
   );
 };

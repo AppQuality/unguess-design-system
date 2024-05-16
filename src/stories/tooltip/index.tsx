@@ -17,8 +17,10 @@ import { theme as globalTheme } from "../theme";
  */
 const TooltipComponent = (props: TooltipArgs) => {
   const theme = useContext(ThemeContext as React.Context<typeof globalTheme>);
-  
-  return <ZendeskTooltip {...props} zIndex={props.zIndex ?? theme.levels.front} />
+
+  return (
+    <ZendeskTooltip {...props} zIndex={props.zIndex ?? theme.levels.front} />
+  );
 };
 
 const Tooltip = styled(TooltipComponent)`
@@ -28,6 +30,14 @@ const Tooltip = styled(TooltipComponent)`
       `${theme.space.base * 5}px`,
       getColor("neutralHue", 600, theme, 0.15)!
     )};
+
+  ${({ isTransparent }) =>
+    isTransparent &&
+    `
+      box-shadow: none;
+      background-color: transparent;
+      border: none;
+    `};
 `;
 
 export { Tooltip };

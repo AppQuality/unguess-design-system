@@ -4,7 +4,7 @@ import { formatDuration } from "./utils";
 
 const StyledDiv = styled.div`
   display: flex;
-  color: ${({ theme }) => theme.palette.grey[300]};
+  color: ${({ theme }) => theme.palette.grey[700]};
 `;
 
 export const TimeLabel = ({
