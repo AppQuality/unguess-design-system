@@ -1,9 +1,13 @@
 import Thumbnail from "./Thumbnail";
 import { useChatContext } from "../../context/chatContext";
-import { Grid } from "../../../grid/grid";
-import { Row } from "../../../grid/row";
-import { Col } from "../../../grid/col";
 import { useMemo } from "react";
+import { styled } from "styled-components";
+
+const FlexContainer = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.space.xs};
+  flex-wrap: wrap;
+`;
 
 export interface FileElement {
   fileName: string;
@@ -36,28 +40,24 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
   }
 
   return (
-    <Grid>
-      <Row className="responsive-container">
-        {mediaFiles.map((file, index) => (
-          <Col key={file.id} xs={12} sm={3} className="flex-3-sm">
-            <Thumbnail
-              key={file.id}
-              src={file.previewUrl}
-              showX
-              type={file.fileType}
-              isLoadingMedia={file.isLoadingMedia}
-              removeThumbnail={() => {
-                removeThumbnail(index);
-                onDeleteThumbnail(file.id);
-              }}
-              clickThumbnail={() => {
-                openLightbox(index);
-              }}
-            />
-          </Col>
-        ))}
-      </Row>
-    </Grid>
+    <FlexContainer>
+      {mediaFiles.map((file, index) => (
+        <Thumbnail
+          key={file.id}
+          src={file.previewUrl}
+          showX
+          type={file.fileType}
+          isLoadingMedia={file.isLoadingMedia}
+          removeThumbnail={() => {
+            removeThumbnail(index);
+            onDeleteThumbnail(file.id);
+          }}
+          clickThumbnail={() => {
+            openLightbox(index);
+          }}
+        />
+      ))}
+    </FlexContainer>
   );
 };
 

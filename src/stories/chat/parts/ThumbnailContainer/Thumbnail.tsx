@@ -2,13 +2,14 @@ import styled from "styled-components";
 import DeleteThumbnailX from "./DeleteThumbnailX";
 import { Spinner } from "@zendeskgarden/react-loaders";
 import { SpecialCard } from "../../../special-cards";
-import {ReactComponent as VideoPlayIcon} from "../../../../assets/icons/video-play-icon.svg";
+import { ReactComponent as VideoPlayIcon } from "../../../../assets/icons/video-play-icon.svg";
 
 const ImageCard = styled(SpecialCard)`
   padding: 0;
   position: relative;
   overflow: hidden;
-  
+  min-width: 90px;
+
   &:before {
     content: "";
     position: absolute;
@@ -31,8 +32,7 @@ const ImageCard = styled(SpecialCard)`
     }
   }
 
-  &.video{
-    
+  &.video {
     svg {
       position: absolute;
       top: 50%;
@@ -51,13 +51,15 @@ const Preview = styled.div<{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;
+  height: 100px;
   width: 100%;
 
-  ${p => p.url && `
+  ${(p) =>
+    p.url &&
+    `
     background-image: url(${p.url});
     background-color: ${p.theme.palette.grey[100]};
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   `}
@@ -93,7 +95,10 @@ const Thumbnail = ({
   };
 
   return (
-    <ImageCard onClick={clickThumbnail} className={type.includes('video') ? 'video' : 'image'}>
+    <ImageCard
+      onClick={clickThumbnail}
+      className={type.includes("video") ? "video" : "image"}
+    >
       {isError && (
         // todo: add error icon
         <span>error uploading media</span>
@@ -114,12 +119,14 @@ const Thumbnail = ({
           {showX && (
             <DeleteThumbnailX deleteThumbnail={(e) => handleCancel(e)} />
           )}
-          {type.includes('video') && <>
-            <video src={src}>
-              <track kind="captions" />
-            </video>
-            <VideoPlayIcon />
-          </>}
+          {type.includes("video") && (
+            <>
+              <video src={src}>
+                <track kind="captions" />
+              </video>
+              <VideoPlayIcon />
+            </>
+          )}
         </Preview>
       )}
     </ImageCard>
