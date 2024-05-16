@@ -32,7 +32,7 @@ export function useMedia() {
     );
   }
   
-  function getMedia(data: FileList): CommentMedia[] {
+  function getMedia(data: FileList) {
     return getValidMedia(data).map((file) => {
       return Object.assign(file, {
         url: URL.createObjectURL(file),

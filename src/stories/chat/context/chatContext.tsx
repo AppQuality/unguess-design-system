@@ -2,7 +2,6 @@ import { Editor } from "@tiptap/react";
 import React, {
   createContext,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -12,7 +11,7 @@ export type ChatContextType = {
   triggerSave: () => void;
   editor?: Editor;
   setEditor: React.Dispatch<React.SetStateAction<Editor | undefined>>;
-  addThumbnails: (props: { files: CommentMedia[] }) => void;
+  addThumbnails: (props: { files: (File & CommentMedia)[] }) => void;
   removeThumbnail: (index: number) => void;
   thumbnails: CommentMedia[];
   mentionableUsers: (props: { query: string }) => SuggestedUser[];
@@ -35,7 +34,7 @@ export const ChatContextProvider = ({
   children,
 }: {
   onSave?: (editor: Editor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: CommentMedia[]) => Promise<Data>;
+  onFileUpload?: (files: File[]) => Promise<Data>;
   onDeleteThumbnail: (id: string) => void;
   children: React.ReactNode;
   setMentionableUsers: (props: { query: string }) => SuggestedUser[];
@@ -82,7 +81,7 @@ export const ChatContextProvider = ({
         );
       },
 
-      addThumbnails: ({ files }: { files: CommentMedia[] }) => {
+      addThumbnails: ({ files }: { files: (File & CommentMedia)[] }) => {
         setThumbnails((prev) => [...prev, ...files]);
 
         if (onFileUpload) {

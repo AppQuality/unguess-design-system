@@ -32,7 +32,7 @@ interface EditorStoryArgs extends ChatEditorArgs {
   editorText?: string;
   background?: string;
   onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: CommentMedia[]) => Promise<Data>;
+  onFileUpload?: (files: File[]) => Promise<Data>;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
