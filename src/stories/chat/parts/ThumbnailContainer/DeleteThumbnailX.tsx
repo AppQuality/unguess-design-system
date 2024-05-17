@@ -10,6 +10,7 @@ const StyledDeleteThumbnailX = styled.div`
   width: 32px;
   height: 32px;
   opacity: 0;
+  transition: opacity 0.2s;
   z-index: 2;
 `;
 

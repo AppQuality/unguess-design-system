@@ -7,8 +7,8 @@ import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatEditorArgs, FileItem, SuggestedUser } from "./_types";
-import { Comment, MediaType } from "./parts/comment";
+import { ChatEditorArgs, CommentMedia, SuggestedUser } from "./_types";
+import { Comment } from "./parts/comment";
 import { theme } from "../theme";
 import { Data } from "./context/chatContext";
 import { ToastProvider } from "@zendeskgarden/react-notifications";
@@ -27,25 +27,26 @@ interface EditorStoryArgs extends ChatEditorArgs {
     };
     message: string;
     date: string;
-    media?: MediaType[];
+    media?: CommentMedia[];
   }[];
   editorText?: string;
   background?: string;
   onSave: (editor: TipTapEditor, mentions: SuggestedUser[]) => void;
-  onFileUpload?: (files: FileItem[]) => Promise<Data>;
+  onFileUpload?: (files: (File & CommentMedia)[]) => Promise<Data>;
   placeholderOptions?: Partial<PlaceholderOptions>;
 }
 
 const ChatPanel = ({ background, ...args }: EditorStoryArgs) => {
-  const { editor, triggerSave, clearInput } = useChatContext();
+  const { triggerSave, clearInput } = useChatContext();
 
   return (
     <Chat>
       <Chat.Header>Titolone</Chat.Header>
       <Chat.Comments chatBkg={background}>
-        {args.comments?.map((comment) => (
+        {args.comments?.map((comment, index) => (
           <Comment
             {...comment}
+            key={index}
             header={{ title: "BUG1", message: "Attachment" }}
           >
             <>altre cose</>
@@ -154,9 +155,9 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
                 console.log("internal_id - ", id);
               }}
 
-              /*setIsMediaUploading={function (value: boolean): void {
-              throw new Error("Function not implemented.");
-            }}*/
+            /*setIsMediaUploading={function (value: boolean): void {
+            throw new Error("Function not implemented.");
+          }}*/
             >
               <ChatPanel {...args} />
             </ChatProvider>
@@ -170,11 +171,11 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor: TipTapEditor, mentions) => {},
+  onSave: (editor: TipTapEditor, mentions) => { },
   author: {
     avatar: "LC",
   },
-  onUpdate: ({ editor }) => {},
+  onUpdate: ({ editor }) => { },
   comments: [
     {
       message: "Hi, I'm a comment",
@@ -212,17 +213,20 @@ const defaultArgs: EditorStoryArgs = {
         {
           url: "https://images.unsplash.com/photo-1638799692504-9b3c0093d54d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           type: "image",
-          id: 1,
+          id: "1",
+          isLoadingMedia: false,
+          name: ""
         },
         {
           url: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           type: "image",
-          id: 2,
+          id: "2",
+          isLoadingMedia: false,
+          name: ""
         },
       ],
     },
   ],
-  messageBadFileFormat: "Format not supported, please upload video or image",
 };
 
 export const Default = Template.bind({});

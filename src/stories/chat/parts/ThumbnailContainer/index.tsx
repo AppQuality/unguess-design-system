@@ -1,10 +1,13 @@
-import ImageThumbnail from "./ImageThumbnail";
-import VideoThumbnail from "./VideoThumbnail";
+import Thumbnail from "./Thumbnail";
 import { useChatContext } from "../../context/chatContext";
-import { Grid } from "../../../grid/grid";
-import { Row } from "../../../grid/row";
-import { Col } from "../../../grid/col";
 import { useMemo } from "react";
+import { styled } from "styled-components";
+
+const FlexContainer = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.space.xs};
+  flex-wrap: wrap;
+`;
 
 export interface FileElement {
   fileName: string;
@@ -16,7 +19,7 @@ export interface FileElement {
 }
 
 interface Props {
-  openLightbox: (file: File, index: number) => void;
+  openLightbox: (index: number) => void;
 }
 
 const ThumbnailContainer = ({ openLightbox }: Props) => {
@@ -26,8 +29,8 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
     return thumbnails.map((file) => ({
       fileName: file.name,
       fileType: file.type,
-      previewUrl: URL.createObjectURL(file),
-      internal_id: file.internal_id,
+      previewUrl: file.url,
+      id: file.id,
       isLoadingMedia: file.isLoadingMedia,
     }));
   }, [thumbnails]);
@@ -37,52 +40,24 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
   }
 
   return (
-    <Grid>
-      <Row className="responsive-container">
-        {mediaFiles.map((file, index) => {
-          // Check if item is an image or a video
-          if (file.fileType.includes("image"))
-            return (
-              <Col xs={12} sm={3} xl={3} lg={3} className="flex-3-sm">
-                <ImageThumbnail
-                  key={index}
-                  src={file.previewUrl}
-                  index={index}
-                  showX={true}
-                  isLoadingMedia={file.isLoadingMedia}
-                  removeThumbnail={() => {
-                    removeThumbnail(index);
-                    onDeleteThumbnail(file.internal_id);
-                  }}
-                  clickThumbnail={() => {
-                    openLightbox(thumbnails[index], index);
-                  }}
-                />
-              </Col>
-            );
-          if (file.fileType.includes("video"))
-            return (
-              <Col xs={12} sm={3} className="flex-3-sm">
-                <VideoThumbnail
-                  key={index}
-                  src={file.previewUrl}
-                  index={index}
-                  showX={true}
-                  isLoadingMedia={file.isLoadingMedia}
-                  removeThumbnail={() => {
-                    removeThumbnail(index);
-                    onDeleteThumbnail(file.internal_id);
-                  }}
-                  clickThumbnail={() => {
-                    openLightbox(thumbnails[index], index);
-                  }}
-                />
-              </Col>
-            );
-          return null;
-        })}
-      </Row>
-    </Grid>
+    <FlexContainer>
+      {mediaFiles.map((file, index) => (
+        <Thumbnail
+          key={file.id}
+          src={file.previewUrl}
+          showX
+          type={file.fileType}
+          isLoadingMedia={file.isLoadingMedia}
+          removeThumbnail={() => {
+            removeThumbnail(index);
+            onDeleteThumbnail(file.id);
+          }}
+          clickThumbnail={() => {
+            openLightbox(index);
+          }}
+        />
+      ))}
+    </FlexContainer>
   );
 };
 
