@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Player } from ".";
 import { IBookmark, PlayerArgs } from "./_types";
 import { theme } from "../theme";
+import { Tag } from "@zendeskgarden/react-tags";
 
 const Container = styled.div`
   height: 80vh;
@@ -98,14 +99,14 @@ WithBookmarks.args = {
       start: 20,
       end: 25,
       hue: theme.colors.dangerHue,
-      tooltipContent: "Test observation",
+      tooltipContent: <Tag> Test Observation</Tag>,
     },
     {
       id: 3,
       start: 30,
       end: 38,
       hue: theme.colors.foreground,
-      tooltipContent: "20s - 28s (click me)",
+      tooltipContent:<Tag>20s - 28s (click me)</Tag>,
       onClick: () => {
         alert("you clicked me! 😳");
       },
@@ -115,21 +116,21 @@ WithBookmarks.args = {
       start: 40,
       end: 45,
       hue: theme.colors.successHue,
-      tooltipContent: "30s - 35s",
+      tooltipContent:<Tag>30s - 35s</Tag> ,
     },
     {
       id: 5,
       start: 50,
       end: 70,
       hue: theme.colors.dangerHue,
-      tooltipContent: "40s - 60s",
+      tooltipContent:<Tag>40s - 60s</Tag>,
     },
     {
       id: 6,
       start: 120,
       end: 170,
       hue: theme.colors.chromeHue,
-      tooltipContent: "110s - 160s",
+      tooltipContent: <Tag>110s - 160s</Tag>,
     },
   ],
   handleBookmarkUpdate: (bookmark: IBookmark) => {
