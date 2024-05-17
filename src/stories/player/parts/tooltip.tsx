@@ -17,9 +17,10 @@ const Content = styled.div`
   padding: 2px 4px;
   display: inline-flex;
   color: white;
+  font-size: ${({ theme }) => theme.fontSizes.xs};
   align-items: center;
   justify-content: center;
-  min-height: 16px;
+  min-height: 14px;
 `;
 
 export const PlayerTooltip = ({ children, ...props }: TooltipArgs) => (

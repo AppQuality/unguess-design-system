@@ -64,6 +64,11 @@ const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
 
   transition: width 0.1s ease;
 `;
+const StyledTooltip = styled(Tooltip)<{ tooltipColor: string }>`
+  margin-bottom: ${({ theme }) => theme.space.sm};
+  color: ${({ tooltipColor }) => tooltipColor};
+
+`;
 
 const Grabber = (props: {
   observation: IBookmark;
@@ -95,7 +100,7 @@ const Grabber = (props: {
 };
 
 export const Bookmark = (props: IBookmark) => {
-  const { start, end, hue, label } = props;
+  const { start, end, hue, tooltipContent } = props;
 
   const { context } = useVideoContext();
   const videoStart = context.part.start || 0;
@@ -109,7 +114,12 @@ export const Bookmark = (props: IBookmark) => {
   if (start > videoEnd || start < videoStart) return null;
 
   return (
-    <Tooltip content={label} type={"light"} size={"large"}>
+    <StyledTooltip
+      content={tooltipContent}
+      type={"light"}
+      size={"large"}
+      isTransparent
+    >
       <Rect
         isActive={activeBookmark && activeBookmark.id === props.id}
         hue={hue}
@@ -122,6 +132,6 @@ export const Bookmark = (props: IBookmark) => {
         <Grabber observation={props} />
         <Grabber isEnd observation={props} />
       </Rect>
-    </Tooltip>
+    </StyledTooltip>
   );
 };

@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   url: string;
@@ -22,7 +22,7 @@ export interface IBookmark {
   start: number;
   end: number;
   hue?: string;
-  label?: string;
+  tooltipContent?:  ReactNode;
   onClick?: () => void;
 }
 
