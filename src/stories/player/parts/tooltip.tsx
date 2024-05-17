@@ -17,7 +17,7 @@ const Content = styled.div`
   padding: 2px 4px;
   display: inline-flex;
   color: white;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
+  font-size: ${({ theme }) => theme.fontSizes.sm};
   align-items: center;
   justify-content: center;
   min-height: 14px;
