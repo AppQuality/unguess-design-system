@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
 import {
   useEditor,
   EditorContent,
   Editor as TipTapEditor,
   Content,
 } from "@tiptap/react";
-import { ChatEditorArgs, FileItem } from "../_types";
+import { ChatEditorArgs } from "../_types";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
@@ -14,19 +13,14 @@ import {
   useRef,
   useCallback,
 } from "react";
-
-import { Notification } from "../../notifications";
-import { useToast } from "../../notifications";
-
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
 import { CommentBar } from "./bar";
 import { editorExtensions } from "./extensions";
 import { EditorContainer } from "./containers";
 import ThumbnailContainer from "./ThumbnailContainer";
-import { Lightbox } from "../../lightbox";
-import { Slider } from "../../slider";
-import { Player } from "../../player";
+import MediaLightBox from "./MediaLightbox";
+import { useMedia } from "../hooks/useMedia";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -61,13 +55,15 @@ export const CommentBox = ({
     thumbnails,
     addThumbnails,
   } = useChatContext();
-
-  const { addToast } = useToast();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<File>({} as File);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-
+  const {getMedia} = useMedia();
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
+
+  function handleEvent(data: DataTransfer | null) {
+    if (!data || !data.files) return;
+    addThumbnails({ files: getMedia(data.files) });
+  }
 
   const closeLightbox = () => {
     setIsOpen(false);
@@ -86,10 +82,7 @@ export const CommentBox = ({
     },
     [videoRefs]
   );
-  const handleOpenLightbox = (file: File, index: number) => {
-    if (!file) throw Error("Error with the image");
-
-    setSelectedImage(file);
+  const handleOpenLightbox = (index: number) => {
     setSelectedImageIndex(index);
     setIsOpen(true);
   };
@@ -106,91 +99,13 @@ export const CommentBox = ({
       },
 
       handleDrop: function (view, event, slice, moved) {
-        if (!event.dataTransfer || !event.dataTransfer.files) return false;
-
         event.preventDefault();
-
-        const files: FileItem[] = Array.from(event.dataTransfer.files).map(
-          (file) => {
-            return Object.assign(file, {
-              isLoadingMedia: false,
-              internal_id: uuidv4(),
-            });
-          }
-        );
-        const wrongFiles = files.filter(
-          (file) => !/^(image|video)\//.test(file.type)
-        );
-
-        if (wrongFiles.length > 0) {
-          for (const file of wrongFiles) {
-            addToast(
-              ({ close }) => (
-                <Notification
-                  onClose={close}
-                  type="error"
-                  message={`${props.messageBadFileFormat} - ${file.name}`}
-                  isPrimary
-                />
-              ),
-              { placement: "top" }
-            );
-          }
-        }
-
-        const mediaFiles: FileItem[] = files.filter((file) =>
-          /^(image|video)\//.test(file.type)
-        );
-
-        if (mediaFiles.length === 0) return false;
-
-        addThumbnails({ files: mediaFiles });
-
-        return false;
+        handleEvent(event.dataTransfer);
       },
 
       handlePaste: (view, event, slice) => {
-
-        if (!event.clipboardData || !event.clipboardData.items) return false;
-
         event.preventDefault();
-
-        const files: FileItem[] = Array.from(event.clipboardData.files).map(
-          (file) => {
-            return Object.assign(file, {
-              isLoadingMedia: false,
-              internal_id: uuidv4(),
-            });
-          }
-        );
-        const wrongFiles = files.filter(
-          (file) => !/^(image|video)\//.test(file.type)
-        );
-
-        if (wrongFiles.length > 0) {
-          for (const file of wrongFiles) {
-            addToast(
-              ({ close }) => (
-                <Notification
-                  onClose={close}
-                  type="error"
-                  message={`${props.messageBadFileFormat} - ${file.name}`}
-                  isPrimary
-                />
-              ),
-              { placement: "top" }
-            );
-          }
-        }
-
-        const mediaFiles: FileItem[] = files.filter((file) =>
-          /^(image|video)\//.test(file.type)
-        );
-        if (mediaFiles.length === 0) return false;
-        
-        addThumbnails({ files: mediaFiles });
-
-        return false;
+        handleEvent(event.clipboardData);
       },
     },
     ...props,
@@ -208,48 +123,17 @@ export const CommentBox = ({
   ed.on("create", ({ editor }) => setEditor(editor as TipTapEditor));
   ed.on("update", ({ editor }) => setEditor(editor as TipTapEditor));
 
-  const mediaFiles = thumbnails.map((file) => {
-    return Object.assign(file, { isLoadingMedia: file.isLoadingMedia });
-  });
-
   return (
     <>
-      {isOpen && selectedImage && (
-        <Lightbox onClose={closeLightbox}>
-          <Lightbox.Header>{selectedImage.name}</Lightbox.Header>
-          <Lightbox.Body>
-            <Lightbox.Body.Main style={{ flex: 3 }}>
-              <Slider
-                prevArrow={<Slider.PrevButton isBright />}
-                nextArrow={<Slider.NextButton isBright />}
-                onSlideChange={slideChange}
-                initialSlide={selectedImageIndex}
-              >
-                {mediaFiles.map((item, index) => (
-                  <Slider.Slide>
-                    {item.type.includes("image") && (
-                      <img
-                        src={URL.createObjectURL(item)}
-                        alt={`media ${item.name}`}
-                      />
-                    )}
-                    {item.type.includes("video") && (
-                      <Player
-                        ref={(ref) => {
-                          videoRefs.current.push(ref);
-                        }}
-                        url={URL.createObjectURL(item)}
-                      />
-                    )}
-                  </Slider.Slide>
-                ))}
-              </Slider>
-            </Lightbox.Body.Main>
-          </Lightbox.Body>
-          <Lightbox.Close aria-label="Close modal" />
-        </Lightbox>
-      )}
-
+      <MediaLightBox
+        isOpen={isOpen}
+        header={thumbnails[selectedImageIndex]?.name}
+        onClose={closeLightbox}
+        slideChange={slideChange}
+        selectedImageIndex={selectedImageIndex}
+        thumbnails={thumbnails}
+        videoRefs={videoRefs}
+      />
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0, paddingBottom: 12 }}>
           {hasFloatingMenu && (
