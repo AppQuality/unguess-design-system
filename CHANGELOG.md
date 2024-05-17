@@ -1,3 +1,17 @@
+# v3.1.91 (Fri May 17 2024)
+
+#### 🐛 Bug Fix
+
+- new feat media attachments [#350](https://github.com/AppQuality/unguess-design-system/pull/350) ([@iacopolea](https://github.com/iacopolea) [@Kariamos](https://github.com/Kariamos))
+- Fix attachments [#348](https://github.com/AppQuality/unguess-design-system/pull/348) ([@iacopolea](https://github.com/iacopolea) [@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v3.1.90 (Thu May 16 2024)
 
 #### 🐛 Bug Fix
