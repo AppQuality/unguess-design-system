@@ -23,8 +23,9 @@ export interface HighlightArgs {
   search?: string;
 }
 
-export interface Observation extends Omit<IBookmark, "onClick"> {}
-
+export interface Observation extends Omit<IBookmark, "onClick"> {
+  color?: string;
+}
 
 export interface WordProps extends ISpanProps {
   start: number;

@@ -1,5 +1,4 @@
 import { HTMLAttributes, ReactNode } from "react";
-import { Observation } from "../highlight/_types";
 
 export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   url: string;
@@ -24,7 +23,6 @@ export interface IBookmark {
   end: number;
   hue?: string;
   label?: string;
-  color?: string;
   tooltipContent?: ReactNode;
   onClick?: () => void;
 }
