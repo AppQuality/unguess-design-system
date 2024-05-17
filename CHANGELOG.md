@@ -1,3 +1,21 @@
+# v3.1.92 (Fri May 17 2024)
+
+#### 🐛 Bug Fix
+
+- Update auto version to 11.x.x [#356](https://github.com/AppQuality/unguess-design-system/pull/356) ([@marcbon](https://github.com/marcbon))
+- ⬆️ chore(package.json): update auto dependency to version 11.1.1 [#355](https://github.com/AppQuality/unguess-design-system/pull/355) ([@marcbon](https://github.com/marcbon))
+- Update auto version [#354](https://github.com/AppQuality/unguess-design-system/pull/354) ([@marcbon](https://github.com/marcbon))
+- ⬆️ chore(package.json): update auto package to version 10.29.2 [#353](https://github.com/AppQuality/unguess-design-system/pull/353) ([@marcbon](https://github.com/marcbon))
+- bookmark-tooltip-fix [#352](https://github.com/AppQuality/unguess-design-system/pull/352) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- Bookmark tooltip changes [#351](https://github.com/AppQuality/unguess-design-system/pull/351) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.91 (Fri May 17 2024)
 
 #### 🐛 Bug Fix
