@@ -22,6 +22,7 @@ export interface IBookmark {
   start: number;
   end: number;
   hue?: string;
+  label?: string;
   tooltipContent?:  ReactNode;
   onClick?: () => void;
 }
