@@ -1,5 +1,5 @@
 import { useVideoContext } from "@appquality/stream-player";
-import { useCallback, useEffect } from "react";
+import { Ref, useCallback, useEffect } from "react";
 import { ReactComponent as FullScreenEnter } from "../assets/maximize-stroke.svg";
 import { ReactComponent as FullScreenExit } from "../assets/minimize-stroke.svg";
 import { ControlButton } from "./controlButton";
@@ -13,8 +13,10 @@ interface ElementWithFullscreen extends HTMLDivElement {
 
 export const FullScreenButton = ({
   container,
+  buttonRef,
 }: {
   container: HTMLDivElement | null;
+  buttonRef: Ref<HTMLButtonElement>;
 }) => {
   const { setFullScreen, isFullScreen } = useVideoContext();
 
@@ -67,6 +69,7 @@ export const FullScreenButton = ({
     }
 
     return false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref]);
 
   useEffect(() => {
@@ -83,10 +86,12 @@ export const FullScreenButton = ({
         });
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref]);
 
   return (
     <ControlButton
+      ref={buttonRef}
       onClick={(e) => {
         handleFullScreen();
         e.stopPropagation();

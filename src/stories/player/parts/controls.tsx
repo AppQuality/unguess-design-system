@@ -66,7 +66,8 @@ export const Controls = ({
   const [tooltipLabel, setTooltipLabel] = useState<string>("00:00");
   const [marks, setMarks] = useState<IBookmark[] | undefined>(bookmarks);
   const progressRef = useRef<HTMLDivElement>(null);
-  const { context, setCurrentTime } = useVideoContext();
+  const { context, setCurrentTime, isFullScreen } = useVideoContext();
+  const fsButtonRef = useRef<HTMLButtonElement>(null);
 
   const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
 
@@ -214,11 +215,16 @@ export const Controls = ({
 
         <StyledDiv style={{ width: "20%", justifyContent: "end" }}>
           <Cutter
-            onCutHandler={onCutHandler}
+            onCutHandler={() => {
+              onCutHandler?.(context.player?.ref.current?.currentTime ?? 0);
+              if (isCutting) 
+                if (isFullScreen)
+                  fsButtonRef.current?.click();
+            }}
             isCutting={isCutting}
             i18n={i18n}
           />
-          <FullScreenButton container={container} />
+          <FullScreenButton buttonRef={fsButtonRef} container={container} />
         </StyledDiv>
       </ControlsBar>
     </ControlsWrapper>
