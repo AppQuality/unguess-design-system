@@ -36,7 +36,7 @@ export const Cutter = ({
           <Button.StartIcon>
             <TagIcon />
           </Button.StartIcon>
-          {i18n?.onHighlight || "Save observation"}
+          {i18n?.onHighlight || "End observation"}
         </>
       ) : (
         <>
