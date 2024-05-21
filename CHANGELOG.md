@@ -1,3 +1,19 @@
+# v3.1.93 (Tue May 21 2024)
+
+#### 🐛 Bug Fix
+
+- Improve video cutting and add debounce to bookmark update [#361](https://github.com/AppQuality/unguess-design-system/pull/361) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- Add useDebounce hook for bookmark updates in player controls [#360](https://github.com/AppQuality/unguess-design-system/pull/360) ([@cannarocks](https://github.com/cannarocks))
+- 🚀 feat(player): add PlusIcon component for starting observation in CutterButton [#359](https://github.com/AppQuality/unguess-design-system/pull/359) ([@marcbon](https://github.com/marcbon))
+- Add sentiment data to DemoTranscript [#358](https://github.com/AppQuality/unguess-design-system/pull/358) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.92 (Fri May 17 2024)
 
 #### 🐛 Bug Fix
