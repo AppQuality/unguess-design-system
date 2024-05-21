@@ -8,7 +8,7 @@ import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg"
 import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
 import { SM } from "../../typography/typescale";
 import { ControlButton } from "./controlButton";
-import { getNextPlaybackRate } from "./utils";
+import { getNextPlaybackRate } from "../utils";
 
 const StyledDiv = styled.div`
   display: flex;

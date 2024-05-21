@@ -1,5 +1,5 @@
 import { Highlight } from "..";
-import { formatDuration } from "../../player/parts/utils";
+import { formatDuration } from "../../player/utils";
 import { SM } from "../../typography/typescale";
 import { StoryArgs } from "../index.stories";
 import { DemoTranscript as demo } from "./data";

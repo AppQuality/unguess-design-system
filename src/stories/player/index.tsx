@@ -5,7 +5,7 @@ import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
-import { ProgressContextProvider } from "./parts/progressContext";
+import { ProgressContextProvider } from "./context/progressContext";
 
 /**
  * The Player is a styled media tag with custom controls

@@ -15,7 +15,7 @@ interface ProgressProps {
 const StyledProgress = styled(Progress)`
   width: 100%;
   border-radius: 0;
-  color: ${({ theme }) => theme.palette.grey[700]};
+  color: ${({ theme }) => theme.palette.grey[400]};
   cursor: pointer;
   > div {
     border-radius: 0;
