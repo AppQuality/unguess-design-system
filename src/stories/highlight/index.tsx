@@ -127,10 +127,10 @@ const Word = (props: WordProps) => {
         >
           {isActive ? (
             <ActiveWord>
-              <Searchable start={props.start} text={props.text} />
+              <Searchable text={props.text} />
             </ActiveWord>
           ) : (
-            <Searchable start={props.start} text={props.text} />
+            <Searchable text={props.text} />
           )}{" "}
         </StyledWord>
       </Tooltip>
@@ -148,10 +148,10 @@ const Word = (props: WordProps) => {
     >
       {isActive ? (
         <ActiveWord>
-          <Searchable start={props.start} text={props.text} />
+          <Searchable text={props.text} />
         </ActiveWord>
       ) : (
-        <Searchable start={props.start} text={props.text} />
+        <Searchable text={props.text} />
       )}{" "}
     </StyledWord>
   );
