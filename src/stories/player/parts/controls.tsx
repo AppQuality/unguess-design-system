@@ -8,7 +8,7 @@ import { ControlsGroupCenter } from "./controlsCenterGroup";
 import { Cutter } from "./cutterButton";
 import { FullScreenButton } from "./fullScreenButton";
 import { ProgressBar } from "./progress";
-import { useProgressContext } from "./progressContext";
+import { useProgressContext } from "../context/progressContext";
 import { TimeLabel } from "./timeLabel";
 import { PlayerTooltip } from "./tooltip";
 import { formatDuration } from "./utils";

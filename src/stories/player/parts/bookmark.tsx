@@ -2,7 +2,7 @@ import { useVideoContext } from "@appquality/stream-player";
 import { css, styled } from "styled-components";
 import { Tooltip } from "../../tooltip";
 import { IBookmark } from "../_types";
-import { useProgressContext } from "./progressContext";
+import { useProgressContext } from "../context/progressContext";
 import { ReactComponent as GripIcon } from "../../../assets/icons/grip.svg";
 
 const StyledGrabber = styled.div<{ isEnd?: boolean }>`
