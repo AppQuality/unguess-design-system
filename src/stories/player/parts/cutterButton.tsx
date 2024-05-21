@@ -1,5 +1,6 @@
 import { useVideoContext } from "@appquality/stream-player";
 import { ReactComponent as TagIcon } from "../../../assets/icons/tag-stroke.svg";
+import { ReactComponent as PlusIcon } from "../assets/plus.svg";
 import { Button } from "../../buttons/button";
 import { PlayerI18n } from "../_types";
 
@@ -21,7 +22,7 @@ export const Cutter = ({
   return (
     <Button
       isPrimary
-      isAccent
+      isAccent={!isCutting}
       size={"small"}
       onClick={(e) => {
         if (videoRef) {
@@ -30,12 +31,21 @@ export const Cutter = ({
         e.stopPropagation();
       }}
     >
-      <Button.StartIcon>
-        <TagIcon />
-      </Button.StartIcon>
-      {isCutting
-        ? i18n?.onHighlight || "Click again to stop"
-        : i18n?.beforeHighlight || "New highlight"}
+      {isCutting ? (
+        <>
+          <Button.StartIcon>
+            <TagIcon />
+          </Button.StartIcon>
+          {i18n?.onHighlight || "End observation"}
+        </>
+      ) : (
+        <>
+          <Button.StartIcon>
+            <PlusIcon />
+          </Button.StartIcon>
+          {i18n?.beforeHighlight || "Start observation"}
+        </>
+      )}
     </Button>
   );
 };
