@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { SM } from "../../typography/typescale";
-import { formatDuration } from "./utils";
+import { formatDuration } from "../utils";
 
 const StyledDiv = styled.div`
   display: flex;

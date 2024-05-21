@@ -3,13 +3,13 @@ import { useHighlightContext } from "./highlightContext";
 
 
 const StyledSearchWord = styled.span`
-background-color: ${({ theme }) => theme.palette.product.talk};
-color: ${({ theme }) => theme.palette.grey[700]};`;
+  background-color: ${({ theme }) => theme.palette.product.talk};
+  color: ${({ theme }) => theme.palette.grey[700]};
+`;
+
 export const Searchable = ({
-  start,
   text,
 }: {
-  start: number;
   text: string;
 }) => {
   const { searchTerm } = useHighlightContext();
