@@ -1,3 +1,19 @@
+# v3.1.94 (Tue May 21 2024)
+
+#### 🐛 Bug Fix
+
+- Fix player types [#365](https://github.com/AppQuality/unguess-design-system/pull/365) ([@marcbon](https://github.com/marcbon))
+- 🔨 refactor(player): make tags property optional in IBookmark interface [#364](https://github.com/AppQuality/unguess-design-system/pull/364) ([@marcbon](https://github.com/marcbon))
+- Update observation severity colors [#363](https://github.com/AppQuality/unguess-design-system/pull/363) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Player-colors [#362](https://github.com/AppQuality/unguess-design-system/pull/362) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.93 (Tue May 21 2024)
 
 #### 🐛 Bug Fix
