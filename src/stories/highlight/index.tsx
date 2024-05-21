@@ -34,7 +34,7 @@ const StyledWord = styled(ZendeskSpan)<
 
 const ActiveWord = styled.span`
   background-color: ${({ theme }) =>
-    getColor(theme.palette.fuschia, 700, undefined, 0.5)};
+    getColor(theme.palette.fuschia, 400, undefined, 0.4)};
   padding: 0 2px;
 `;
 
