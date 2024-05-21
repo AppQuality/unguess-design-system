@@ -25,7 +25,7 @@ export interface IBookmark {
   label?: string;
   tooltipContent?: ReactNode;
   onClick?: () => void;
-  tags: VideoTag[];
+  tags?: VideoTag[];
 }
 
 export interface WrapperProps {
