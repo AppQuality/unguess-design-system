@@ -167,7 +167,7 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
   );
 };
 
-const defaultArgs: EditorStoryArgs = {
+export const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
   onSave: (editor: TipTapEditor, mentions) => {},

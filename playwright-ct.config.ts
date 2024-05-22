@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/experimental-ct-react';
+import svgr from "vite-plugin-svgr";
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -27,8 +28,15 @@ export default defineConfig({
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
     baseURL: 'http://localhost:3100',
-    userAgent: 'playwright-ct'
+    userAgent: 'playwright-ct',
+    ctViteConfig: {
+      plugins: [svgr({
+        svgrOptions: { exportType: 'named', ref: true, svgo: false, titleProp: true },
+        include: '**/*.svg'
+      })],
+    },
   },
+
 
   /* Configure projects for major browsers */
   projects: [

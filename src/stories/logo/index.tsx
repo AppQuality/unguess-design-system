@@ -1,7 +1,7 @@
 import { LogoArgs } from "./_types";
 import LogoHorizontal from "../../assets/logo-horizontal.svg";
 import LogoVertical from "../../assets/logo-vertical.svg";
-import LogoIcon from "../../assets/logo-icon.svg";
+import {ReactComponent as LogoIcon} from "../../assets/logo-icon.svg";
 
 /**
  * A Logo is a visual way to represent a brand logo.

@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/experimental-ct-react";
-import ThumbnailContainer from ".";
+import {Menus, defaultArgs} from "./index.stories";
 
 test.describe("Thumbnail container", () => {
   test("should render", async ({
     page,
     mount,
   }) => {
-    const component = await mount(<ThumbnailContainer openLightbox={(file, index) => {alert("open lightbox file")}} />);
+    const component = await mount(<Menus {...defaultArgs} />);
     expect(component).not.toBeNull();
   });
 });

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import DeleteThumbnailIcon from "../../../../assets/icons/remove-media-icon.svg";
+import {ReactComponent as DeleteThumbnailIcon} from "../../../../assets/icons/remove-media-icon.svg";
 
 const StyledDeleteThumbnailX = styled.div`
   position: absolute;
