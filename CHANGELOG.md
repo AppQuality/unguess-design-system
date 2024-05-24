@@ -1,3 +1,16 @@
+# v3.1.95 (Fri May 24 2024)
+
+#### 🐛 Bug Fix
+
+- Fix highlight [#367](https://github.com/AppQuality/unguess-design-system/pull/367) ([@marcbon](https://github.com/marcbon))
+- 🔧 refactor(highlight/index.tsx): remove unnecessary spread operator in Word component [#366](https://github.com/AppQuality/unguess-design-system/pull/366) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.94 (Tue May 21 2024)
 
 #### 🐛 Bug Fix
