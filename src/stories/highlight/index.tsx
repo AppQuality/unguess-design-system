@@ -83,8 +83,6 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
         ),
       };
 
-      console.log("Selection", selectionPart, text)
-
       props?.handleSelection?.({ ...selectionPart, text });
     }
   }, [props]);
@@ -125,6 +123,7 @@ const Word = (props: WordProps) => {
           data-start={props.start}
           data-end={props.end}
           className={!!observation ? "highlighted" : ""}
+          {...(!!observation ? { tag: "observation" } : {})}
         >
           {isActive ? (
             <ActiveWord>
@@ -145,6 +144,7 @@ const Word = (props: WordProps) => {
       data-start={props.start}
       data-end={props.end}
       className={!!observation ? "highlighted" : ""}
+      {...(!!observation ? { tag: "observation" } : {})}
     >
       {isActive ? (
         <ActiveWord>
