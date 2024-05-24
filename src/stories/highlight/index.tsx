@@ -15,7 +15,7 @@ const StyledWord = styled(ZendeskSpan)<
 
   ${({ observation, theme }) =>
     observation &&
-    ` user-select: none;
+    `
       background-color: ${
         observation.hue ??
         getColor(theme.palette.azure, 700, undefined, 0.5)
@@ -34,7 +34,7 @@ const StyledWord = styled(ZendeskSpan)<
 
 const ActiveWord = styled.span`
   background-color: ${({ theme }) =>
-    getColor(theme.palette.fuschia, 700, undefined, 0.5)};
+    getColor(theme.palette.fuschia, 400, undefined, 0.4)};
   padding: 0 2px;
 `;
 
@@ -127,10 +127,10 @@ const Word = (props: WordProps) => {
         >
           {isActive ? (
             <ActiveWord>
-              <Searchable start={props.start} text={props.text} />
+              <Searchable text={props.text} />
             </ActiveWord>
           ) : (
-            <Searchable start={props.start} text={props.text} />
+            <Searchable text={props.text} />
           )}{" "}
         </StyledWord>
       </Tooltip>
@@ -148,10 +148,10 @@ const Word = (props: WordProps) => {
     >
       {isActive ? (
         <ActiveWord>
-          <Searchable start={props.start} text={props.text} />
+          <Searchable text={props.text} />
         </ActiveWord>
       ) : (
-        <Searchable start={props.start} text={props.text} />
+        <Searchable text={props.text} />
       )}{" "}
     </StyledWord>
   );

@@ -3653,6 +3653,7 @@ export const DemoTranscript = {
                   num_words: 147,
                   start: 55.68,
                   end: 120.93,
+                  sentiment: 4
                 },
                 {
                   sentences: [
@@ -3666,6 +3667,7 @@ export const DemoTranscript = {
                   num_words: 48,
                   start: 122.75,
                   end: 142.36499,
+                  sentiment: 4
                 },
                 {
                   sentences: [
@@ -3679,6 +3681,8 @@ export const DemoTranscript = {
                   num_words: 1,
                   start: 143.22499,
                   end: 143.72499,
+                  sentiment: 3
+                  
                 },
                 {
                   sentences: [
@@ -3702,6 +3706,7 @@ export const DemoTranscript = {
                   num_words: 24,
                   start: 146.98999,
                   end: 159.355,
+                  sentiment: 4
                 },
                 {
                   sentences: [
@@ -3715,6 +3720,7 @@ export const DemoTranscript = {
                   num_words: 5,
                   start: 160.92,
                   end: 167.73999,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3728,6 +3734,7 @@ export const DemoTranscript = {
                   num_words: 17,
                   start: 168.765,
                   end: 176.94499,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3740,7 +3747,8 @@ export const DemoTranscript = {
                   speaker: 1,
                   num_words: 13,
                   start: 177.85,
-                  end: 184.25,
+                  end: 184.25,                  
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3754,6 +3762,7 @@ export const DemoTranscript = {
                   num_words: 4,
                   start: 184.25,
                   end: 186.27,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3772,6 +3781,7 @@ export const DemoTranscript = {
                   num_words: 7,
                   start: 190.015,
                   end: 191.955,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3785,6 +3795,7 @@ export const DemoTranscript = {
                   num_words: 24,
                   start: 192.33499,
                   end: 206.02,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3798,6 +3809,7 @@ export const DemoTranscript = {
                   num_words: 58,
                   start: 208.065,
                   end: 247.195,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3811,6 +3823,7 @@ export const DemoTranscript = {
                   num_words: 6,
                   start: 249.7,
                   end: 252.2,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3824,6 +3837,7 @@ export const DemoTranscript = {
                   num_words: 27,
                   start: 254.98,
                   end: 280.595,
+                  sentiment: 2
                 },
                 {
                   sentences: [
@@ -3837,6 +3851,7 @@ export const DemoTranscript = {
                   num_words: 8,
                   start: 282.21,
                   end: 286.79,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3850,6 +3865,7 @@ export const DemoTranscript = {
                   num_words: 5,
                   start: 289.64502,
                   end: 293.665,
+                  sentiment: 3
                 },
                 {
                   sentences: [
@@ -3863,6 +3879,7 @@ export const DemoTranscript = {
                   num_words: 10,
                   start: 295.223,
                   end: 299.723,
+                  sentiment: 3
                 },
               ],
             },
@@ -3872,3 +3889,10 @@ export const DemoTranscript = {
     ],
   },
 };
+
+
+export const DemoSentiment = {
+    role: "assistant",
+    rate: 4,
+    content: "The reason for this rating is that the tone of the text is overall polite, professional, and cooperative. The speaker expresses gratitude, ensures the participant feels comfortable, and clearly explains the purpose and process of the meeting. There is an emphasis on open communication, feedback, and collaboration, which creates a positive and constructive atmosphere. The overall attitude and approach towards the interaction appear positive and respectful."
+}

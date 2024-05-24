@@ -8,10 +8,11 @@ import { ControlsGroupCenter } from "./controlsCenterGroup";
 import { Cutter } from "./cutterButton";
 import { FullScreenButton } from "./fullScreenButton";
 import { ProgressBar } from "./progress";
-import { useProgressContext } from "./progressContext";
+import { useProgressContext } from "../context/progressContext";
 import { TimeLabel } from "./timeLabel";
 import { PlayerTooltip } from "./tooltip";
-import { formatDuration } from "./utils";
+import { formatDuration } from "../utils";
+import useDebounce from "../../../hooks/useDebounce";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   position: absolute;
@@ -65,9 +66,11 @@ export const Controls = ({
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
   const [tooltipLabel, setTooltipLabel] = useState<string>("00:00");
   const [marks, setMarks] = useState<IBookmark[] | undefined>(bookmarks);
+  const [updatedMark, setUpdatedMark] = useState<IBookmark>();
   const progressRef = useRef<HTMLDivElement>(null);
   const { context, setCurrentTime, isFullScreen } = useVideoContext();
   const fsButtonRef = useRef<HTMLButtonElement>(null);
+  const debouncedMark = useDebounce(updatedMark, 500);
 
   const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
 
@@ -155,16 +158,9 @@ export const Controls = ({
         ...marks.slice(currentObsIndex + 1),
       ];
       setMarks(newMarks);
-      onBookMarkUpdated?.(updatedMark);
+      setUpdatedMark(updatedMark);
     },
-    [
-      activeBookmark,
-      context.part.start,
-      duration,
-      fromEnd,
-      onBookMarkUpdated,
-      marks,
-    ]
+    [activeBookmark, context.part.start, duration, fromEnd, marks]
   );
 
   useEffect(() => {
@@ -180,6 +176,12 @@ export const Controls = ({
       document.removeEventListener("mouseup", reset);
     };
   }, [reset, marks]);
+
+  useEffect(() => {
+    if (debouncedMark) {
+      onBookMarkUpdated?.(debouncedMark);
+    }
+  }, [debouncedMark, onBookMarkUpdated]);
 
   return (
     <ControlsWrapper isPlaying={context.isPlaying}>
@@ -206,10 +208,7 @@ export const Controls = ({
       <ControlsBar>
         <StyledDiv style={{ width: "20%", justifyContent: "start" }}>
           <AudioButton />
-          <TimeLabel
-            current={relCurrentTime}
-            duration={duration}
-          />
+          <TimeLabel current={relCurrentTime} duration={duration} />
         </StyledDiv>
         <ControlsGroupCenter style={{ width: "60%" }} />
 

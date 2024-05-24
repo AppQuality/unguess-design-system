@@ -1,10 +1,23 @@
+import { styled } from "styled-components";
 import { Highlight } from "..";
 import { formatDuration } from "../../player/utils";
 import { SM } from "../../typography/typescale";
 import { StoryArgs } from "../index.stories";
-import { DemoTranscript as demo } from "./data";
+import { DemoTranscript as demo, DemoSentiment } from "./data";
+import { getSentiment } from "./sentiment-tag";
+import { Textarea } from "../../forms/textarea";
 
-export const TDiarization = (args: StoryArgs & { currentTime: number; offset: number }) => {
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: ${({ theme }) => theme.space.sm};
+`;
+
+export const TSentiment = (
+  args: StoryArgs & { currentTime: number; offset: number }
+) => {
   const words = demo.results.channels[0].alternatives[0].words.map((w) => ({
     word: w.punctuated_word,
     start: w.start,
@@ -18,15 +31,30 @@ export const TDiarization = (args: StoryArgs & { currentTime: number; offset: nu
       end: w.end,
       speaker: w.speaker,
       text: w.sentences.map((s) => s.text).join(" "),
+      sentiment: w.sentiment,
     }));
   return (
     <Highlight {...args}>
+      Overall: 4 - Positive
+      <Textarea
+        readOnly
+        disabled
+        style={{ margin: 0 }}
+        value={DemoSentiment.content}
+        rows={4}
+      />
+      <br />
+      <br />
       {paragraphs.map((p, index) => (
         <div style={{ marginBottom: "8px" }}>
-          <SM>
-            <b>{p.speaker === 1 ? "Tester" : "Interviewer"}</b>&nbsp;
-            ({formatDuration(p.start - args.offset)} - {formatDuration(p.end - args.offset)})
-          </SM>
+          <StyledDiv>
+            <SM>
+              <b>{p.speaker === 1 ? "Tester" : "Interviewer"}</b>&nbsp; (
+              {formatDuration(p.start - args.offset)} -{" "}
+              {formatDuration(p.end - args.offset)})
+            </SM>
+            {p.sentiment && getSentiment(p.sentiment).text}
+          </StyledDiv>
           {p.words.map((w) => (
             <Highlight.Word
               key={index}

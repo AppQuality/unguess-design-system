@@ -16,6 +16,7 @@ import { Transcript } from "./demo-parts/transcript-base";
 import { TDiarization } from "./demo-parts/transcript-diarization";
 import { TParagraph } from "./demo-parts/transcript-paragraph";
 import { Tag } from "../tags";
+import { TSentiment } from "./demo-parts/transcript-sentiment";
 
 export interface StoryArgs extends HighlightArgs {
   words: Array<WordProps & { speaker: number }>;
@@ -627,6 +628,17 @@ const DemoTemplate: StoryFn<StoryArgs> = (args) => {
                 title={"Diarization"}
               >
                 <TDiarization
+                  {...args}
+                  currentTime={currentTime}
+                  offset={VIDEO_OFFSET}
+                />
+              </Tabs.Panel>
+              <Tabs.Panel
+                className={"tab-panel-4"}
+                key={"tab-panel-4"}
+                title={"Meta"}
+              >
+                <TSentiment
                   {...args}
                   currentTime={currentTime}
                   offset={VIDEO_OFFSET}

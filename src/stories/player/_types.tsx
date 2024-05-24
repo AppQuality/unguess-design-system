@@ -25,9 +25,23 @@ export interface IBookmark {
   label?: string;
   tooltipContent?: ReactNode;
   onClick?: () => void;
+  tags?: VideoTag[];
 }
 
 export interface WrapperProps {
   isPlaying?: boolean;
   isLoaded?: boolean;
 }
+
+type VideoTag = {
+  group: {
+    id: number;
+    name: string;
+  };
+  tag: {
+    id: number;
+    name: string;
+    style: string;
+    usageNumber: number;
+  };
+};
