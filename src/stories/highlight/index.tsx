@@ -15,7 +15,7 @@ const StyledWord = styled(ZendeskSpan)<
 
   ${({ observation, theme }) =>
     observation &&
-    ` user-select: none;
+    `
       background-color: ${
         observation.hue ??
         getColor(theme.palette.azure, 700, undefined, 0.5)
