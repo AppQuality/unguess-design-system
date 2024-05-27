@@ -1,3 +1,21 @@
+# v3.1.96 (Mon May 27 2024)
+
+#### 🐛 Bug Fix
+
+- Tagging tool improvements [#373](https://github.com/AppQuality/unguess-design-system/pull/373) ([@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- 🎨 style(bookmark.tsx): add z-index property to hovered bookmark for better layering [#369](https://github.com/AppQuality/unguess-design-system/pull/369) ([@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- ✨ feat(highlight): add font-weight style to StyledWord in highlight component [#370](https://github.com/AppQuality/unguess-design-system/pull/370) ([@marcbon](https://github.com/marcbon))
+- feat: add random hue to new observation label in index.stories.tsx [#372](https://github.com/AppQuality/unguess-design-system/pull/372) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- 🔨 refactor(highlight/index.tsx): improve logic to find closest observation to word [#368](https://github.com/AppQuality/unguess-design-system/pull/368) ([@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- 🔧 fix(player): update end time for second bookmark in index.stories.tsx [#371](https://github.com/AppQuality/unguess-design-system/pull/371) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.95 (Fri May 24 2024)
 
 #### 🐛 Bug Fix
