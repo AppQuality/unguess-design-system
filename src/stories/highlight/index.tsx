@@ -22,6 +22,8 @@ const StyledWord = styled(ZendeskSpan)<
       };
       color: ${observation.color ?? "white"};
       box-sizing: border-box;
+      font-weight: ${theme.fontWeights.semibold};
+
       &:focus {
         outline: none;
       }
