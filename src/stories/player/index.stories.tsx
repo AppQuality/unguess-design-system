@@ -97,13 +97,13 @@ WithBookmarks.args = {
     {
       id: 2,
       start: 20,
-      end: 25,
+      end: 28,
       hue: theme.colors.dangerHue,
       tooltipContent: <Tag> Test Observation</Tag>,
     },
     {
       id: 3,
-      start: 30,
+      start: 25,
       end: 38,
       hue: theme.colors.foreground,
       tooltipContent:<Tag>20s - 28s (click me)</Tag>,
@@ -113,8 +113,8 @@ WithBookmarks.args = {
     },
     {
       id: 4,
-      start: 40,
-      end: 45,
+      start: 60,
+      end: 65,
       hue: theme.colors.successHue,
       tooltipContent:<Tag>30s - 35s</Tag> ,
     },
