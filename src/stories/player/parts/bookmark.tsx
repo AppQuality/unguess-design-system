@@ -44,6 +44,9 @@ const StyledGrabber = styled.div<{ isEnd?: boolean }>`
 const activeBookMark = css`
   height: 250%;
   transform: translateY(-30%);
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 4px;
 
   ${StyledGrabber} {
     display: block;
@@ -56,17 +59,15 @@ const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
   background-color: ${({ hue, theme }) => getColor(hue || theme.palette.grey[800], undefined, undefined, 0.8)};
   z-index: 1;
   border-radius: 2px;
-  &:hover {
-    ${activeBookMark}
-    border-radius: 4px;
-    background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
-    cursor: pointer;
-    z-index: 2;
-  }
   color: white;
-  ${({ isActive }) => isActive && activeBookMark}
-
   transition: width 0.1s ease;
+
+  &:hover {
+    background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
+    ${activeBookMark}
+  }
+
+  ${({ isActive }) => isActive && activeBookMark}
 `;
 const StyledTooltip = styled(Tooltip)<{ tooltipColor: string }>`
   margin-bottom: ${({ theme }) => theme.space.sm};
