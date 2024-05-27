@@ -4,6 +4,7 @@ import { Tooltip } from "../../tooltip";
 import { IBookmark } from "../_types";
 import { useProgressContext } from "../context/progressContext";
 import { ReactComponent as GripIcon } from "../../../assets/icons/grip.svg";
+import { getColor } from "../../theme/utils";
 
 const StyledGrabber = styled.div<{ isEnd?: boolean }>`
   position: absolute;
@@ -52,12 +53,14 @@ const activeBookMark = css`
 const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
   position: absolute;
   height: 110%;
-  background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
+  background-color: ${({ hue, theme }) => getColor(hue || theme.palette.grey[800], undefined, undefined, 0.8)};
   z-index: 1;
   border-radius: 2px;
   &:hover {
     ${activeBookMark}
     border-radius: 4px;
+    background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
+    cursor: pointer;
     z-index: 2;
   }
   color: white;

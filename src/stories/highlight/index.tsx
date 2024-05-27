@@ -22,6 +22,8 @@ const StyledWord = styled(ZendeskSpan)<
       };
       color: ${observation.color ?? "white"};
       box-sizing: border-box;
+      font-weight: ${theme.fontWeights.semibold};
+
       &:focus {
         outline: none;
       }
@@ -109,10 +111,17 @@ const Word = (props: WordProps) => {
     props.currentTime >= props.start &&
     props.currentTime < props.end;
 
-  // Is there an observation that contains this word?
-  const observation = props.observations?.find(
-    (obs) => props.start >= obs.start && props.end <= obs.end
+  // Are there any observations containing this word?
+  const foundObservations = props.observations?.map(
+    (obs) => (props.start >= obs.start && props.end <= obs.end) ? obs : null
   );
+
+  // Get the closer observation to the word
+  const observation = foundObservations?.reduce((prev, current) => {
+    if (!prev) return current;
+    if (!current) return prev;
+    return current.end - current.start < prev.end - prev.start ? current : prev;
+  }, null);
 
   if (props.tooltipContent !== undefined && !!observation) {
     return (
@@ -140,10 +149,10 @@ const Word = (props: WordProps) => {
   return (
     <StyledWord
       {...props}
-      observation={observation}
       data-start={props.start}
       data-end={props.end}
       className={!!observation ? "highlighted" : ""}
+      {...(observation && { observation })}
       {...(!!observation ? { tag: "observation" } : {})}
     >
       {isActive ? (
