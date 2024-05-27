@@ -44,7 +44,8 @@ const Template: StoryFn<StoryArgs> = (args) => {
           id: observations.length,
           start: selection.from,
           end: selection.to,
-          label: `new observation (#${observations.length})`
+          label: `new observation (#${observations.length})`,
+          hue: '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
         },
       ]);
     }
