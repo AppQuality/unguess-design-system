@@ -47,6 +47,19 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
+const CurrentTimeMarker = styled.div<{
+  left: number;
+}>`
+  width: 2px;
+  top: 0;
+  left: ${({ left }) => `${left}%`};
+  position: absolute;
+  height: 110%;
+  z-index: 1;
+  background-color: white;
+  transition: width 0.1s ease;
+`;
+
 export const Controls = ({
   container,
   onCutHandler,
@@ -67,9 +80,8 @@ export const Controls = ({
   const [tooltipLabel, setTooltipLabel] = useState<string>("00:00");
   const [marks, setMarks] = useState<IBookmark[] | undefined>(bookmarks);
   const [updatedMark, setUpdatedMark] = useState<IBookmark>();
-
   const progressRef = useRef<HTMLDivElement>(null);
-  const { context, setCurrentTime } = useVideoContext();
+  const { context, setCurrentTime } = useVideoContext()
   const debouncedMark = useDebounce(updatedMark, 500);
 
   const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
@@ -203,6 +215,7 @@ export const Controls = ({
           handleSkipAhead={handleSkipAhead}
           duration={duration}
         />
+        <CurrentTimeMarker left={progress} />
       </ProgressContainer>
 
       <ControlsBar>

@@ -58,6 +58,7 @@ const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
   &:hover {
     ${activeBookMark}
     border-radius: 4px;
+    z-index: 2;
   }
   color: white;
   ${({ isActive }) => isActive && activeBookMark}
