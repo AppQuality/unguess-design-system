@@ -57,7 +57,6 @@ const CurrentTimeMarker = styled.div<{
   height: 110%;
   z-index: 1;
   background-color: white;
-  transition: width 0.1s ease;
 `;
 
 export const Controls = ({
