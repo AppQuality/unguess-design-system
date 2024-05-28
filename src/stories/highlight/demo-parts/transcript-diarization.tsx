@@ -1,10 +1,17 @@
+import styled from "styled-components";
 import { Highlight } from "..";
 import { formatDuration } from "../../player/utils";
 import { SM } from "../../typography/typescale";
 import { StoryArgs } from "../index.stories";
 import { DemoTranscript as demo } from "./data";
 
-export const TDiarization = (args: StoryArgs & { currentTime: number; offset: number }) => {
+const StyledSM = styled(SM)`
+  user-select: none;
+`;
+
+export const TDiarization = (
+  args: StoryArgs & { currentTime: number; offset: number }
+) => {
   const words = demo.results.channels[0].alternatives[0].words.map((w) => ({
     word: w.punctuated_word,
     start: w.start,
@@ -20,13 +27,17 @@ export const TDiarization = (args: StoryArgs & { currentTime: number; offset: nu
       text: w.sentences.map((s) => s.text).join(" "),
     }));
   return (
-    <Highlight {...args}>
+    <Highlight
+      {...args}
+      handleSelection={(part) => console.log("selected part:", part.text, part)}
+    >
       {paragraphs.map((p, index) => (
         <div style={{ marginBottom: "8px" }}>
-          <SM>
-            <b>{p.speaker === 1 ? "Tester" : "Interviewer"}</b>&nbsp;
-            ({formatDuration(p.start - args.offset)} - {formatDuration(p.end - args.offset)})
-          </SM>
+          <StyledSM data-unselectable>
+            <b>{p.speaker === 1 ? "Tester" : "Interviewer"}</b>&nbsp; (
+            {formatDuration(p.start - args.offset)} -{" "}
+            {formatDuration(p.end - args.offset)})
+          </StyledSM>
           {p.words.map((w) => (
             <Highlight.Word
               key={index}

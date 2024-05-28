@@ -17,8 +17,7 @@ const StyledWord = styled(ZendeskSpan)<
     observation &&
     `
       background-color: ${
-        observation.hue ??
-        getColor(theme.palette.azure, 700, undefined, 0.5)
+        observation.hue ?? getColor(theme.palette.azure, 700, undefined, 0.5)
       };
       color: ${observation.color ?? "white"};
       box-sizing: border-box;
@@ -57,13 +56,33 @@ const WordsContainer = styled.div`
 const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   const ref = useRef<HTMLDivElement>(null);
 
+  const extractText = (selection: Selection) => {
+    var range = selection.getRangeAt(0);
+
+    var tempDiv = document.createElement("div");
+    tempDiv.appendChild(range.cloneContents());
+
+    var items = tempDiv.querySelectorAll("div");
+    items.forEach(function (item) {
+      if (item.getAttribute("data-unselectable")) {
+        item.remove();
+      }
+    });
+
+    var filteredText = tempDiv.textContent || tempDiv.innerText;
+    return filteredText.length ? filteredText.trim() : selection.toString();
+  };
+
   const handleSelectionChange = useCallback(() => {
     const activeSelection = document.getSelection();
-    const text = activeSelection?.toString();
 
-    if (!activeSelection || !text) {
+    if (!activeSelection) {
       return;
     }
+
+    // Extract the text from the selection cleaning unselectable items
+    const text = extractText(activeSelection);
+    if (!text) return;
 
     const anchorNode = activeSelection?.anchorNode?.parentElement;
     const focusNode = activeSelection?.focusNode?.parentElement;
@@ -112,8 +131,8 @@ const Word = (props: WordProps) => {
     props.currentTime < props.end;
 
   // Are there any observations containing this word?
-  const foundObservations = props.observations?.map(
-    (obs) => (props.start >= obs.start && props.end <= obs.end) ? obs : null
+  const foundObservations = props.observations?.map((obs) =>
+    props.start >= obs.start && props.end <= obs.end ? obs : null
   );
 
   // Get the closer observation to the word
