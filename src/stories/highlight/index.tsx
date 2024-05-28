@@ -65,6 +65,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const extractText = (selection: Selection) => {
+    if(selection.anchorNode === null || selection.focusNode === null) return "";
     var range = selection.getRangeAt(0);
 
     var tempDiv = document.createElement("div");
