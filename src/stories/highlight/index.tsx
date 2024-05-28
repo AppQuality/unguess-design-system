@@ -1,25 +1,25 @@
 import { Span as ZendeskSpan } from "@zendeskgarden/react-typography";
-import { PropsWithChildren, useCallback, useEffect, useRef } from "react";
+import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from "react";
 import styled from "styled-components";
 import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { HighlightContextProvider } from "./highlightContext";
 import { Searchable } from "./searchable";
 import { Tooltip } from "../tooltip";
+import { theme } from "../theme";
 
-const StyledWord = styled(ZendeskSpan) <
+const StyledWord = styled.div<
   WordProps & { observations?: Observation[] }
 >`
+  display: inline;
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
+  position: relative;
 
   ${({ observations, theme }) =>
     observations && observations.length > 0 &&
     `
-      background-color: ${
-        observations[observations.length - 1].hue ?? getColor(theme.palette.azure, 700, undefined, 0.5)
-      };
-      color: ${observations[observations.length - 1].color ?? "white"};
+      color: ${observations[observations.length - 1].color ?? theme.palette.grey[600]};
       box-sizing: border-box;
       font-weight: ${theme.fontWeights.semibold};
 
@@ -43,6 +43,18 @@ const WordsContainer = styled.div`
     getColor(theme.palette.kale, 700, undefined, 0.5)};
     }
   }
+`;
+
+const Layer = styled.div<{
+  color: string;
+}>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: ${({ color }) => getColor(color, 700, undefined, 0.5)};
 `;
 
 /**
@@ -127,33 +139,12 @@ const Word = (props: WordProps) => {
     props.currentTime < props.end;
 
   // Are there any observations containing this word?
-  const foundObservations = props.observations?.filter((obs) =>
-    props.start >= obs.start && props.end <= obs.end
-  ) ?? [];
+  const foundObservations = useMemo(() =>
+    props.observations?.filter((obs) =>
+      props.start >= obs.start && props.end <= obs.end
+    ) ?? [], [props.observations, props.start, props.end]);
 
-  if (props.tooltipContent !== undefined && foundObservations.length > 0) {
-    return (
-      <Tooltip content={props.tooltipContent(foundObservations)} isTransparent>
-        <StyledWord
-          {...props}
-          data-start={props.start}
-          data-end={props.end}
-          className={foundObservations.length > 0 ? "highlighted" : ""}
-          {...(foundObservations && { observations: foundObservations })}
-        >
-          {isActive ? (
-            <ActiveWord>
-              <Searchable text={props.text} />
-            </ActiveWord>
-          ) : (
-            <Searchable text={props.text} />
-          )}{" "}
-        </StyledWord>
-      </Tooltip>
-    );
-  }
-
-  return (
+  const ObsWord = useMemo(() => (
     <StyledWord
       {...props}
       data-start={props.start}
@@ -161,6 +152,9 @@ const Word = (props: WordProps) => {
       className={foundObservations.length > 0 ? "highlighted" : ""}
       {...(foundObservations && { observations: foundObservations })}
     >
+      {foundObservations.length > 0 && foundObservations.map((obs) => (
+        <Layer key={obs.id} color={obs.hue ?? theme.palette.grey[600]} />
+      ))}
       {isActive ? (
         <ActiveWord>
           <Searchable text={props.text} />
@@ -169,7 +163,17 @@ const Word = (props: WordProps) => {
         <Searchable text={props.text} />
       )}{" "}
     </StyledWord>
-  );
+  ), [props, foundObservations, isActive]);
+
+  if (props.tooltipContent !== undefined && foundObservations.length > 0) {
+    return (
+      <Tooltip content={props.tooltipContent(foundObservations)} isTransparent>
+        {ObsWord}
+      </Tooltip>
+    );
+  }
+
+  return <>{ObsWord}</>;
 };
 
 Highlight.Word = Word;

@@ -19,6 +19,22 @@ import { Tag } from "../tags";
 import { TSentiment } from "./demo-parts/transcript-sentiment";
 import { styled } from "styled-components";
 
+const StyledTag = styled(Tag)`
+  user-select: none;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+  }
+`;
+
 const TagsWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -55,8 +71,8 @@ const Template: StoryFn<StoryArgs> = (args) => {
           start: selection.from,
           end: selection.to,
           label: `new observation (#${observations.length})`,
-          hue,
-          color: "white"
+          hue: getColor(hue, 700, undefined, 0.5),
+          color: hue,
         },
       ]);
     }
@@ -581,9 +597,9 @@ WithTooltip.args = {
     tooltipContent: (obs: Observation[]) => (
       <TagsWrapper>
         {obs.map((o) => (
-          <Tag hue={o.hue} color={o.color} onClick={() => alert(o.label)}>
+          <StyledTag hue={o.hue} color={o.color} onClick={() => alert(o.label)}>
             This is a tag of obs "{o.label}"
-          </Tag>
+          </StyledTag>
         ))}
       </TagsWrapper>
     )
