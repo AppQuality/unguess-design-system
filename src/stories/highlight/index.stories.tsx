@@ -17,6 +17,31 @@ import { TDiarization } from "./demo-parts/transcript-diarization";
 import { TParagraph } from "./demo-parts/transcript-paragraph";
 import { Tag } from "../tags";
 import { TSentiment } from "./demo-parts/transcript-sentiment";
+import { styled } from "styled-components";
+
+const StyledTag = styled(Tag)`
+  user-select: none;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+  }
+`;
+
+const TagsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.space.xs};
+`;
 
 export interface StoryArgs extends HighlightArgs {
   words: Array<WordProps & { speaker: number }>;
@@ -38,6 +63,7 @@ const Template: StoryFn<StoryArgs> = (args) => {
   const handleAddObservation = () => {
     if (selection) {
       console.log("🚀 ~ handleAddObservation ~ selection:", selection);
+      const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
       setObservations([
         ...observations,
         {
@@ -45,7 +71,8 @@ const Template: StoryFn<StoryArgs> = (args) => {
           start: selection.from,
           end: selection.to,
           label: `new observation (#${observations.length})`,
-          hue: '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
+          hue: getColor(hue, 700, undefined, 0.5),
+          color: hue,
         },
       ]);
     }
@@ -567,11 +594,15 @@ WithTooltip.args = {
   ...defaultArgs,
   words: defaultArgs.words.map((w) => ({
     ...w,
-    tooltipContent: (obs: Observation) => (
-      <Tag hue={"red"} color="white" onClick={() => alert("Hey")}>
-        This is a tag of obs "{obs.label}"
-      </Tag>
-    ),
+    tooltipContent: (obs: Observation[]) => (
+      <TagsWrapper>
+        {obs.map((o) => (
+          <StyledTag hue={o.hue} color={o.color} onClick={() => alert(o.label)}>
+            This is a tag of obs "{o.label}"
+          </StyledTag>
+        ))}
+      </TagsWrapper>
+    )
   })),
 };
 

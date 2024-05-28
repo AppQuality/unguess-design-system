@@ -1,25 +1,24 @@
-import { Span as ZendeskSpan } from "@zendeskgarden/react-typography";
-import { PropsWithChildren, useCallback, useEffect, useRef } from "react";
+import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from "react";
 import styled from "styled-components";
 import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { HighlightContextProvider } from "./highlightContext";
 import { Searchable } from "./searchable";
 import { Tooltip } from "../tooltip";
+import { theme } from "../theme";
 
-const StyledWord = styled(ZendeskSpan)<
-  WordProps & { observation?: Observation }
+const StyledWord = styled.div<
+  WordProps & { observations?: Observation[] }
 >`
+  display: inline;
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
+  position: relative;
 
-  ${({ observation, theme }) =>
-    observation &&
+  ${({ observations, theme }) =>
+    observations && observations.length > 0 &&
     `
-      background-color: ${
-        observation.hue ?? getColor(theme.palette.azure, 700, undefined, 0.5)
-      };
-      color: ${observation.color ?? "white"};
+      color: ${observations[observations.length - 1].color ?? theme.palette.grey[600]};
       box-sizing: border-box;
       font-weight: ${theme.fontWeights.semibold};
 
@@ -39,9 +38,21 @@ const WordsContainer = styled.div`
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
-        getColor(theme.palette.kale, 700, undefined, 0.5)};
+    getColor(theme.palette.kale, 700, undefined, 0.5)};
     }
   }
+`;
+
+const Layer = styled.div<{
+  color: string;
+}>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: ${({ color }) => getColor(color, undefined, undefined, 0.2)};
 `;
 
 /**
@@ -52,6 +63,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const extractText = (selection: Selection) => {
+    if(selection.anchorNode === null || selection.focusNode === null) return "";
     var range = selection.getRangeAt(0);
 
     var tempDiv = document.createElement("div");
@@ -126,49 +138,22 @@ const Word = (props: WordProps) => {
     props.currentTime < props.end;
 
   // Are there any observations containing this word?
-  const foundObservations = props.observations?.map((obs) =>
-    props.start >= obs.start && props.end <= obs.end ? obs : null
-  );
+  const foundObservations = useMemo(() =>
+    props.observations?.filter((obs) =>
+      props.start >= obs.start && props.end <= obs.end
+    ) ?? [], [props.observations, props.start, props.end]);
 
-  // Get the closer observation to the word
-  const observation = foundObservations?.reduce((prev, current) => {
-    if (!prev) return current;
-    if (!current) return prev;
-    return current.end - current.start < prev.end - prev.start ? current : prev;
-  }, null);
-
-  if (props.tooltipContent !== undefined && !!observation) {
-    return (
-      <Tooltip content={props.tooltipContent(observation)} isTransparent>
-        <StyledWord
-          {...props}
-          observation={observation}
-          data-start={props.start}
-          data-end={props.end}
-          className={!!observation ? "highlighted" : ""}
-          {...(!!observation ? { tag: "observation" } : {})}
-        >
-          {isActive ? (
-            <ActiveWord>
-              <Searchable text={props.text} />
-            </ActiveWord>
-          ) : (
-            <Searchable text={props.text} />
-          )}{" "}
-        </StyledWord>
-      </Tooltip>
-    );
-  }
-
-  return (
+  const ObsWord = useMemo(() => (
     <StyledWord
       {...props}
       data-start={props.start}
       data-end={props.end}
-      className={!!observation ? "highlighted" : ""}
-      {...(observation && { observation })}
-      {...(!!observation ? { tag: "observation" } : {})}
+      className={foundObservations.length > 0 ? "highlighted" : ""}
+      {...(foundObservations && { observations: foundObservations })}
     >
+      {foundObservations.length > 0 && foundObservations.map((obs) => (
+        <Layer key={obs.id} color={obs.hue ?? theme.palette.grey[600]} />
+      ))}
       {isActive ? (
         <ActiveWord>
           <Searchable text={props.text} />
@@ -177,7 +162,17 @@ const Word = (props: WordProps) => {
         <Searchable text={props.text} />
       )}{" "}
     </StyledWord>
-  );
+  ), [props, foundObservations, isActive]);
+
+  if (props.tooltipContent !== undefined && foundObservations.length > 0) {
+    return (
+      <Tooltip content={props.tooltipContent(foundObservations)} isTransparent>
+        {ObsWord}
+      </Tooltip>
+    );
+  }
+
+  return <>{ObsWord}</>;
 };
 
 Highlight.Word = Word;
