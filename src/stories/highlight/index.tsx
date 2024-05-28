@@ -7,28 +7,24 @@ import { HighlightContextProvider } from "./highlightContext";
 import { Searchable } from "./searchable";
 import { Tooltip } from "../tooltip";
 
-const StyledWord = styled(ZendeskSpan)<
-  WordProps & { observation?: Observation }
+const StyledWord = styled(ZendeskSpan) <
+  WordProps & { observations?: Observation[] }
 >`
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
 
-  ${({ observation, theme }) =>
-    observation &&
+  ${({ observations, theme }) =>
+    observations && observations.length > 0 &&
     `
       background-color: ${
-        observation.hue ?? getColor(theme.palette.azure, 700, undefined, 0.5)
+        observations[observations.length - 1].hue ?? getColor(theme.palette.azure, 700, undefined, 0.5)
       };
-      color: ${observation.color ?? "white"};
+      color: ${observations[observations.length - 1].color ?? "white"};
       box-sizing: border-box;
       font-weight: ${theme.fontWeights.semibold};
 
       &:focus {
         outline: none;
-      }
-
-      + span:not([observation]) {
-        margin-left: 2px;
       }
     `}
 `;
@@ -44,7 +40,7 @@ const WordsContainer = styled.div`
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
-        getColor(theme.palette.kale, 700, undefined, 0.5)};
+    getColor(theme.palette.kale, 700, undefined, 0.5)};
     }
   }
 `;
@@ -131,27 +127,19 @@ const Word = (props: WordProps) => {
     props.currentTime < props.end;
 
   // Are there any observations containing this word?
-  const foundObservations = props.observations?.map((obs) =>
-    props.start >= obs.start && props.end <= obs.end ? obs : null
-  );
+  const foundObservations = props.observations?.filter((obs) =>
+    props.start >= obs.start && props.end <= obs.end
+  ) ?? [];
 
-  // Get the closer observation to the word
-  const observation = foundObservations?.reduce((prev, current) => {
-    if (!prev) return current;
-    if (!current) return prev;
-    return current.end - current.start < prev.end - prev.start ? current : prev;
-  }, null);
-
-  if (props.tooltipContent !== undefined && !!observation) {
+  if (props.tooltipContent !== undefined && foundObservations.length > 0) {
     return (
-      <Tooltip content={props.tooltipContent(observation)} isTransparent>
+      <Tooltip content={props.tooltipContent(foundObservations)} isTransparent>
         <StyledWord
           {...props}
-          observation={observation}
           data-start={props.start}
           data-end={props.end}
-          className={!!observation ? "highlighted" : ""}
-          {...(!!observation ? { tag: "observation" } : {})}
+          className={foundObservations.length > 0 ? "highlighted" : ""}
+          {...(foundObservations && { observations: foundObservations })}
         >
           {isActive ? (
             <ActiveWord>
@@ -170,9 +158,8 @@ const Word = (props: WordProps) => {
       {...props}
       data-start={props.start}
       data-end={props.end}
-      className={!!observation ? "highlighted" : ""}
-      {...(observation && { observation })}
-      {...(!!observation ? { tag: "observation" } : {})}
+      className={foundObservations.length > 0 ? "highlighted" : ""}
+      {...(foundObservations && { observations: foundObservations })}
     >
       {isActive ? (
         <ActiveWord>

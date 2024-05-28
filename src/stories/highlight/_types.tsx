@@ -33,8 +33,6 @@ export interface WordProps extends ISpanProps {
   currentTime?: number;
   observations?: Observation[];
   text: string;
-  /** Adjusts the font size. By default font size is medium */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
-
-  tooltipContent?: (observation: Observation) => ReactNode;
+  tooltipContent?: (observations: Observation[]) => ReactNode;
 }
