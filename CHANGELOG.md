@@ -1,3 +1,18 @@
+# v3.1.98 (Tue May 28 2024)
+
+#### 🐛 Bug Fix
+
+- "Refactor highlight components and add support for multiple observations in transcript" [#380](https://github.com/AppQuality/unguess-design-system/pull/380) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Multiple-obs-support-transcript [#379](https://github.com/AppQuality/unguess-design-system/pull/379) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- 🔨 refactor(highlight): remove unnecessary padding in ActiveWord styled component [#378](https://github.com/AppQuality/unguess-design-system/pull/378) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.97 (Tue May 28 2024)
 
 #### 🐛 Bug Fix
