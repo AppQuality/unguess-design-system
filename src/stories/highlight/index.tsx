@@ -1,4 +1,3 @@
-import { Span as ZendeskSpan } from "@zendeskgarden/react-typography";
 import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from "react";
 import styled from "styled-components";
 import { getColor } from "../theme/utils";
@@ -54,7 +53,7 @@ const Layer = styled.div<{
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-color: ${({ color }) => getColor(color, 700, undefined, 0.5)};
+  background-color: ${({ color }) => getColor(color, undefined, undefined, 0.2)};
 `;
 
 /**
