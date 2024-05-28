@@ -26,17 +26,12 @@ const StyledWord = styled(ZendeskSpan)<
       &:focus {
         outline: none;
       }
-
-      + span:not([observation]) {
-        margin-left: 2px;
-      }
     `}
 `;
 
 const ActiveWord = styled.span`
   background-color: ${({ theme }) =>
     getColor(theme.palette.fuschia, 400, undefined, 0.4)};
-  padding: 0 2px;
 `;
 
 const WordsContainer = styled.div`
