@@ -1,3 +1,19 @@
+# v3.1.97 (Tue May 28 2024)
+
+#### 🐛 Bug Fix
+
+- Add highlight support to unselectable [#377](https://github.com/AppQuality/unguess-design-system/pull/377) ([@cannarocks](https://github.com/cannarocks))
+- "Improve styling and functionality for transcript diarization in highlight component" [#376](https://github.com/AppQuality/unguess-design-system/pull/376) ([@cannarocks](https://github.com/cannarocks))
+- Fix obs player [#375](https://github.com/AppQuality/unguess-design-system/pull/375) ([@marcbon](https://github.com/marcbon))
+- 🎨 style(bookmark.tsx): improve styling for active bookmarks in player parts [#374](https://github.com/AppQuality/unguess-design-system/pull/374) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.96 (Mon May 27 2024)
 
 #### 🐛 Bug Fix
