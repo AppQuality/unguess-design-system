@@ -49,6 +49,7 @@ const ImageCard = styled(SpecialCard)<{error?: string, isLoading?: boolean}>`
   `}
   &.video {
     svg {
+      color: ${({ theme }) => theme.palette.grey[800]};
       position: absolute;
       top: 50%;
       left: 50%;
@@ -121,6 +122,7 @@ const Thumbnail = ({
             style={{
               display: "flex",
               position: "absolute",
+              color: "white",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -137,7 +139,7 @@ const Thumbnail = ({
               <video src={src}>
                 <track kind="captions" />
               </video>
-              <VideoPlayIcon />
+              <VideoPlayIcon opacity={error ? "0.3" : "1"} />
             </>
           )}
         </Preview>
