@@ -4,23 +4,23 @@ import { Spinner } from "@zendeskgarden/react-loaders";
 import { SpecialCard } from "../../../special-cards";
 import { ReactComponent as VideoPlayIcon } from "../../../../assets/icons/video-play-icon.svg";
 
-const ImageCard = styled(SpecialCard)`
+const ImageCard = styled(SpecialCard)<{isError?: boolean}>`
   padding: 0;
   position: relative;
   overflow: hidden;
-  min-width: 90px;
+  width: 90px;
 
   &:before {
     content: "";
+    font-size: ${({ theme }) => theme.fontSizes.xs};
     position: absolute;
+    padding: ${({ theme }) => theme.space.xs};
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme }) => theme.palette.grey[800]};
-    opacity: 0;
+    background-color: ${({ theme }) => theme.palette.grey[800]}00; // 0% opacity
     transition: opacity 0.2s;
-    z-index: 1;
   }
 
   &:hover {
@@ -28,10 +28,18 @@ const ImageCard = styled(SpecialCard)`
       opacity: 1;
     }
     &:before {
-      opacity: 0.3;
+      background-color: ${({ theme }) => theme.palette.grey[800]}4d; // 30% opacity
     }
   }
-
+  ${(p) =>
+    p.isError &&
+    `
+    &:before{
+      content: "Error Uploading Media";
+      color: ${p.theme.palette.white};
+      background-color: ${p.theme.palette.grey[800]}b3; // 0.7 opacity
+    }
+  `}
   &.video {
     svg {
       position: absolute;
@@ -53,6 +61,7 @@ const Preview = styled.div<{
   align-items: center;
   height: 100px;
   width: 100%;
+  color: ${({ theme }) => theme.palette.white};
 
   ${(p) =>
     p.url &&
@@ -98,13 +107,10 @@ const Thumbnail = ({
     <ImageCard
       onClick={clickThumbnail}
       className={type.includes("video") ? "video" : "image"}
+      isError={isError}
     >
-      {isError && (
-        // todo: add error icon
-        <span>error uploading media</span>
-      )}
       {isLoadingMedia ? (
-        <Preview>
+        <Preview url={src}>
           <Spinner
             style={{
               display: "flex",

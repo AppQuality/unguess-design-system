@@ -2,6 +2,7 @@ import Thumbnail from "./Thumbnail";
 import { useChatContext } from "../../context/chatContext";
 import { useMemo } from "react";
 import { styled } from "styled-components";
+import { isError } from "util";
 
 const FlexContainer = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
       previewUrl: file.url,
       id: file.id,
       isLoadingMedia: file.isLoadingMedia,
+      isError: file.isError,
     }));
   }, [thumbnails]);
 
@@ -48,6 +50,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
           showX
           type={file.fileType}
           isLoadingMedia={file.isLoadingMedia}
+          isError={file.isError}
           removeThumbnail={() => {
             removeThumbnail(index);
             onDeleteThumbnail(file.id);

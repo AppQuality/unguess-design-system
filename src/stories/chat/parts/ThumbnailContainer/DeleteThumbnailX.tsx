@@ -12,6 +12,7 @@ const StyledDeleteThumbnailX = styled.div`
   opacity: 0;
   transition: opacity 0.2s;
   z-index: 2;
+  color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
 interface Props {
