@@ -73,11 +73,10 @@ export const ChatContextProvider = ({
         if (!onFileUpload) return;
         try {
           const data = await onFileUpload(files);
-          const failed = data.failed?.map((f) => f.name);
           setThumbnails((prev) => {
             return prev.map(file => {
               file.isLoadingMedia = false;
-              file.isError = typeof file.name !== "undefined" && failed?.includes(file.name);
+              file.error = data.failed?.find(f => f.name === file.name)?.errorCode;
               return file;
             })
           });

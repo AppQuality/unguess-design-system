@@ -4,7 +4,7 @@ import { Spinner } from "@zendeskgarden/react-loaders";
 import { SpecialCard } from "../../../special-cards";
 import { ReactComponent as VideoPlayIcon } from "../../../../assets/icons/video-play-icon.svg";
 
-const ImageCard = styled(SpecialCard)<{isError?: boolean}>`
+const ImageCard = styled(SpecialCard)<{error?: string, isLoading?: boolean}>`
   padding: 0;
   position: relative;
   overflow: hidden;
@@ -32,11 +32,18 @@ const ImageCard = styled(SpecialCard)<{isError?: boolean}>`
     }
   }
   ${(p) =>
-    p.isError &&
+    p.error &&
     `
     &:before{
-      content: "Error Uploading Media";
+      content: "Error: ${p.error}";
       color: ${p.theme.palette.white};
+      background-color: ${p.theme.palette.grey[800]}b3; // 0.7 opacity
+    }
+  `}
+  ${(p) =>
+    p.isLoading &&
+    `
+    &:before{
       background-color: ${p.theme.palette.grey[800]}b3; // 0.7 opacity
     }
   `}
@@ -53,17 +60,15 @@ const ImageCard = styled(SpecialCard)<{isError?: boolean}>`
   }
 `;
 
-const Preview = styled.div<{
-  url?: string;
-}>`
+const Preview = styled.div<{url?: string;}>`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
   width: 100%;
   color: ${({ theme }) => theme.palette.white};
-
-  ${(p) =>
+  
+  ${p =>
     p.url &&
     `
     background-image: url(${p.url});
@@ -86,7 +91,7 @@ interface Props {
   isLoadingMedia?: boolean;
   removeThumbnail?: () => void;
   showX?: boolean;
-  isError?: boolean;
+  error?: string;
 }
 
 const Thumbnail = ({
@@ -95,8 +100,8 @@ const Thumbnail = ({
   removeThumbnail,
   clickThumbnail,
   showX,
-  isLoadingMedia = true,
-  isError = false,
+  isLoadingMedia,
+  error = "",
 }: Props) => {
   const handleCancel = (e: any) => {
     e.stopPropagation();
@@ -107,13 +112,15 @@ const Thumbnail = ({
     <ImageCard
       onClick={clickThumbnail}
       className={type.includes("video") ? "video" : "image"}
-      isError={isError}
+      error={error}
+      isLoading={isLoadingMedia}
     >
       {isLoadingMedia ? (
         <Preview url={src}>
           <Spinner
             style={{
               display: "flex",
+              position: "absolute",
               alignItems: "center",
               justifyContent: "center",
             }}
