@@ -15,7 +15,7 @@ import { formatDuration } from "../utils";
 import useDebounce from "../../../hooks/useDebounce";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
-  position: absolute;
+  ${({ showControls }) => showControls ? "position: relative;" : "position: absolute;"}
   bottom: 0;
   left: 0;
   right: 0;
@@ -66,6 +66,7 @@ export const Controls = ({
   isCutting,
   onBookMarkUpdated,
   i18n,
+  showControls = false,
 }: {
   container: HTMLDivElement | null;
   onCutHandler?: (time: number) => void;
@@ -73,6 +74,7 @@ export const Controls = ({
   isCutting?: boolean;
   onBookMarkUpdated?: (bookmark: IBookmark) => void;
   i18n?: PlayerI18n;
+  showControls?: boolean;
 }) => {
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
@@ -195,7 +197,10 @@ export const Controls = ({
   }, [debouncedMark, onBookMarkUpdated]);
 
   return (
-    <ControlsWrapper isPlaying={context.isPlaying}>
+    <ControlsWrapper
+      showControls={showControls}
+      {...(!showControls && { isPlaying: context.isPlaying })}
+    >
       <ProgressContainer
         onMouseEnter={onMouseEvent}
         onMouseMove={onMouseEvent}
