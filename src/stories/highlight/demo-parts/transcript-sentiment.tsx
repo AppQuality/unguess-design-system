@@ -53,7 +53,7 @@ export const TSentiment = (
               {formatDuration(p.start - args.offset)} -{" "}
               {formatDuration(p.end - args.offset)})
             </SM>
-            {p.sentiment && getSentiment(p.sentiment).text}
+            {p.speaker !== 0 && p.sentiment && getSentiment(p.sentiment).text}
           </StyledDiv>
           {p.words.map((w) => (
             <Highlight.Word
