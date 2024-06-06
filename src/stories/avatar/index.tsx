@@ -2,7 +2,6 @@ import { Avatar as ZendeskAvatar } from "@zendeskgarden/react-avatars";
 import { theme } from "../theme";
 import styled from "styled-components";
 import { AvatarArgs } from "./_types";
-import LogoIcon from "../../assets/logo-icon.svg";
 import { getColor } from "../theme/utils";
 import InternalAvatar from "./InternalAvatar";
 
