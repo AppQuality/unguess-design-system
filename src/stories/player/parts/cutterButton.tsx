@@ -3,6 +3,13 @@ import { ReactComponent as TagIcon } from "../../../assets/icons/tag-stroke.svg"
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
 import { Button } from "../../buttons/button";
 import { PlayerI18n } from "../_types";
+import { Span } from "../../typography/span";
+import { styled } from "styled-components";
+
+// Prevent button from breaking on smaller screens
+const StyledButton = styled(Button)`
+  overflow: visible;
+`;
 
 export const Cutter = ({
   onCutHandler,
@@ -20,7 +27,7 @@ export const Cutter = ({
   if (!onCutHandler) return null;
 
   return (
-    <Button
+    <StyledButton
       isPrimary
       isAccent={!isCutting}
       size={"small"}
@@ -36,16 +43,20 @@ export const Cutter = ({
           <Button.StartIcon>
             <TagIcon />
           </Button.StartIcon>
-          {i18n?.onHighlight || "End observation"}
+          <Span>
+            {i18n?.onHighlight || "End observation"}
+          </Span>
         </>
       ) : (
         <>
           <Button.StartIcon>
             <PlusIcon />
           </Button.StartIcon>
-          {i18n?.beforeHighlight || "Start observation"}
+          <Span>
+            {i18n?.beforeHighlight || "Start observation"}
+          </Span>
         </>
       )}
-    </Button>
+    </StyledButton>
   );
 };
