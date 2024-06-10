@@ -98,7 +98,6 @@ const Template: StoryFn<StoryArgs> = (args) => {
       <Highlight
         {...args}
         search={debauncedValue}
-        handleSelection={(part) => setSelection(part)}
       >
         {args.words.map((item, index) => (
           <>
@@ -179,7 +178,7 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
       <Grid>
         <Row>
           <Col>
-            <Highlight {...args} handleSelection={(part) => setSelection(part)}>
+            <Highlight {...args}>
               {args.words.map((item, index) => (
                 <>
                   <Highlight.Word

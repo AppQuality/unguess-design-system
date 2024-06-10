@@ -148,7 +148,6 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
           ),
         };
 
-        props?.handleSelection?.({ ...selectionPart, text });
         setSelection({ ...selectionPart, text });
       } else {
         setIsSelecting(false);
