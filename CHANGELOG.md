@@ -1,3 +1,24 @@
+# v3.1.99 (Mon Jun 10 2024)
+
+#### 🐛 Bug Fix
+
+- New version [#385](https://github.com/AppQuality/unguess-design-system/pull/385) ([@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@Kariamos](https://github.com/Kariamos))
+- 🚀 feat(player): add showControls prop to PlayerArgs and WrapperProps [#381](https://github.com/AppQuality/unguess-design-system/pull/381) ([@marcbon](https://github.com/marcbon))
+- 🚀 feat(highlight): add CreateObservationButton component [#387](https://github.com/AppQuality/unguess-design-system/pull/387) ([@marcbon](https://github.com/marcbon))
+- feat: centered tooltip attachment text [#386](https://github.com/AppQuality/unguess-design-system/pull/386) ([@Kariamos](https://github.com/Kariamos))
+- feat: added new component for internal avatar [#384](https://github.com/AppQuality/unguess-design-system/pull/384) ([@Kariamos](https://github.com/Kariamos))
+- Attachment error managment [#383](https://github.com/AppQuality/unguess-design-system/pull/383) ([@iacopolea](https://github.com/iacopolea) [@Kariamos](https://github.com/Kariamos))
+- 🚀 feat(cutterButton.tsx): add styled component for Cutter button to prevent [#382](https://github.com/AppQuality/unguess-design-system/pull/382) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 4
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.98 (Tue May 28 2024)
 
 #### 🐛 Bug Fix
