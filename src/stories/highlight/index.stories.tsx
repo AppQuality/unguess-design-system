@@ -578,6 +578,17 @@ const defaultArgs: StoryArgs = {
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
+export const WithSelectionButton = Template.bind({});
+WithSelectionButton.args = {
+  ...defaultArgs,
+  onSelectionButtonClick: (part) => {
+    console.log("CreateObservation: " + JSON.stringify(part));
+  },
+  i18n: {
+    selectionButtonLabel: "Add observation",
+  },
+};
+
 export const VideoSync = VideoTemplate.bind({});
 VideoSync.args = {
   ...defaultArgs,
