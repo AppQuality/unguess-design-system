@@ -126,6 +126,7 @@ const CommentBar = ({
           </IconButton>
         </Tooltip>
         <Tooltip
+          style={{ textAlign: "center" }}
           content={
             i18n?.menu?.attachment ?? (
               <span>
