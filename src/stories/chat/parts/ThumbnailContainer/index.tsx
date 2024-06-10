@@ -9,15 +9,6 @@ const FlexContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export interface FileElement {
-  fileName: string;
-  fileType: string;
-  errorCode?: "FILE_TOO_BIG" | "INVALID_FILE_EXTENSION" | "GENERIC_ERROR";
-  previewUrl: string;
-  internal_id: string;
-  isLoadingMedia: boolean;
-}
-
 interface Props {
   openLightbox: (index: number) => void;
 }
@@ -32,6 +23,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
       previewUrl: file.url,
       id: file.id,
       isLoadingMedia: file.isLoadingMedia,
+      error: file.error,
     }));
   }, [thumbnails]);
 
@@ -48,6 +40,7 @@ const ThumbnailContainer = ({ openLightbox }: Props) => {
           showX
           type={file.fileType}
           isLoadingMedia={file.isLoadingMedia}
+          error={file.error}
           removeThumbnail={() => {
             removeThumbnail(index);
             onDeleteThumbnail(file.id);

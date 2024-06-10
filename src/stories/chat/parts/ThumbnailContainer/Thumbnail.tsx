@@ -4,23 +4,23 @@ import { Spinner } from "@zendeskgarden/react-loaders";
 import { SpecialCard } from "../../../special-cards";
 import { ReactComponent as VideoPlayIcon } from "../../../../assets/icons/video-play-icon.svg";
 
-const ImageCard = styled(SpecialCard)`
+const ImageCard = styled(SpecialCard)<{error?: string, isLoading?: boolean}>`
   padding: 0;
   position: relative;
   overflow: hidden;
-  min-width: 90px;
+  width: 90px;
 
   &:before {
     content: "";
+    font-size: ${({ theme }) => theme.fontSizes.xs};
     position: absolute;
+    padding: ${({ theme }) => theme.space.xs};
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme }) => theme.palette.grey[800]};
-    opacity: 0;
+    background-color: ${({ theme }) => theme.palette.grey[800]}00; // 0% opacity
     transition: opacity 0.2s;
-    z-index: 1;
   }
 
   &:hover {
@@ -28,12 +28,28 @@ const ImageCard = styled(SpecialCard)`
       opacity: 1;
     }
     &:before {
-      opacity: 0.3;
+      background-color: ${({ theme }) => theme.palette.grey[800]}4d; // 30% opacity
     }
   }
-
+  ${(p) =>
+    p.error &&
+    `
+    &:before{
+      content: "Error: ${p.error}";
+      color: ${p.theme.palette.white};
+      background-color: ${p.theme.palette.grey[800]}b3; // 0.7 opacity
+    }
+  `}
+  ${(p) =>
+    p.isLoading &&
+    `
+    &:before{
+      background-color: ${p.theme.palette.grey[800]}b3; // 0.7 opacity
+    }
+  `}
   &.video {
     svg {
+      color: ${({ theme }) => theme.palette.grey[800]};
       position: absolute;
       top: 50%;
       left: 50%;
@@ -45,16 +61,15 @@ const ImageCard = styled(SpecialCard)`
   }
 `;
 
-const Preview = styled.div<{
-  url?: string;
-}>`
+const Preview = styled.div<{url?: string;}>`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
   width: 100%;
-
-  ${(p) =>
+  color: ${({ theme }) => theme.palette.white};
+  
+  ${p =>
     p.url &&
     `
     background-image: url(${p.url});
@@ -77,7 +92,7 @@ interface Props {
   isLoadingMedia?: boolean;
   removeThumbnail?: () => void;
   showX?: boolean;
-  isError?: boolean;
+  error?: string;
 }
 
 const Thumbnail = ({
@@ -86,8 +101,8 @@ const Thumbnail = ({
   removeThumbnail,
   clickThumbnail,
   showX,
-  isLoadingMedia = true,
-  isError = false,
+  isLoadingMedia,
+  error = "",
 }: Props) => {
   const handleCancel = (e: any) => {
     e.stopPropagation();
@@ -98,16 +113,16 @@ const Thumbnail = ({
     <ImageCard
       onClick={clickThumbnail}
       className={type.includes("video") ? "video" : "image"}
+      error={error}
+      isLoading={isLoadingMedia}
     >
-      {isError && (
-        // todo: add error icon
-        <span>error uploading media</span>
-      )}
       {isLoadingMedia ? (
-        <Preview>
+        <Preview url={src}>
           <Spinner
             style={{
               display: "flex",
+              position: "absolute",
+              color: "white",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -124,7 +139,7 @@ const Thumbnail = ({
               <video src={src}>
                 <track kind="captions" />
               </video>
-              <VideoPlayIcon />
+              <VideoPlayIcon opacity={error ? "0.3" : "1"} />
             </>
           )}
         </Preview>

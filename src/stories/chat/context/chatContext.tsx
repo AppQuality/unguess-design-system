@@ -66,39 +66,22 @@ export const ChatContextProvider = ({
       setEditor,
       thumbnails,
       setThumbnails,
-      afterUploadCallback: (failed: string[]) => {
-        setThumbnails(
-          thumbnails.map((file) => {
-            if (failed.includes(file.id)) {
-              file.isLoadingMedia = false;
-              //file.isError = true;
-            } else {
-              file.isLoadingMedia = false;
-              //file.isError = false
-            }
-            return file;
-          })
-        );
-      },
+      afterUploadCallback: (failed: string[]) => {},
 
-      addThumbnails: ({ files }: { files: (File & CommentMedia)[] }) => {
+      addThumbnails: async ({ files }: { files: (File & CommentMedia)[] }) => {
         setThumbnails((prev) => [...prev, ...files]);
-
-        if (onFileUpload) {
-          onFileUpload(files).then((data: Data) => {
-            const failed = data.failed?.map((f) => f.name);
-            setThumbnails((prev) => {
-              return prev.map((file) => {
-                file.isLoadingMedia = false;
-                if (failed?.length && failed.includes(file.id)) {
-                  file.isError = true;
-                } else {
-                  file.isError = false;
-                }
-                return file;
-              });
-            });
+        if (!onFileUpload) return;
+        try {
+          const data = await onFileUpload(files);
+          setThumbnails((prev) => {
+            return prev.map(file => {
+              file.isLoadingMedia = false;
+              file.error = data.failed?.find(f => f.name === file.name)?.errorCode;
+              return file;
+            })
           });
+        } catch (e) {
+          console.log("Error uploading files", e);
         }
       },
       clearInput: () => {
