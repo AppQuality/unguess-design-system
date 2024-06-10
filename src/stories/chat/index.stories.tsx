@@ -260,9 +260,13 @@ Menus.args = {
   hasButtonsMenu: true,
   onFileUpload: async (files) => {
     return new Promise((resolve, reject) => {
+      // simulate a 2.5 seconds delay then fail the first file and succeed the others
       setTimeout(() => {
-        resolve({ failed: [], uploaded_ids: [] });
-      }, 3000);
+        resolve({
+          failed: [{errorCode: "GENERIC_ERROR", name: files[0].name}],
+          uploaded_ids: files.slice(1).map(file => ({id: parseInt(file.id)}))
+        });
+      }, 2500);
     });
   },
   i18n: {

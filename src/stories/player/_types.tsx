@@ -10,6 +10,7 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   bookmarks?: IBookmark[];
   handleBookmarkUpdate?: (bookmark: IBookmark) => void;
   i18n?: PlayerI18n;
+  showControls?: boolean;
 }
 
 export interface PlayerI18n {
@@ -31,6 +32,7 @@ export interface IBookmark {
 export interface WrapperProps {
   isPlaying?: boolean;
   isLoaded?: boolean;
+  showControls?: boolean;
 }
 
 type VideoTag = {

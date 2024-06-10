@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useEffect, useMemo, useRef } from "react";
+import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
@@ -6,6 +6,8 @@ import { HighlightContextProvider } from "./highlightContext";
 import { Searchable } from "./searchable";
 import { Tooltip } from "../tooltip";
 import { theme } from "../theme";
+import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
+import { CreateObservationButton } from "./CreateObservationButton";
 
 const StyledWord = styled.div<
   WordProps & { observations?: Observation[] }
@@ -60,10 +62,22 @@ const Layer = styled.div<{
  */
 
 const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
+  const { onSelectionButtonClick, search, i18n } = props;
   const ref = useRef<HTMLDivElement>(null);
+  const [isSelecting, setIsSelecting] = useState<boolean>(false);
+  const [position, setPosition] = useState<{
+    x: number;
+    y: number;
+  }>();
+  const [selection, setSelection] = useState<{
+    from: number;
+    to: number;
+    text: string;
+  }>();
+  const activeSelection = document.getSelection();
 
   const extractText = (selection: Selection) => {
-    if(selection.anchorNode === null || selection.focusNode === null) return "";
+    if (selection.anchorNode === null || selection.focusNode === null) return "";
     var range = selection.getRangeAt(0);
 
     var tempDiv = document.createElement("div");
@@ -81,39 +95,68 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   };
 
   const handleSelectionChange = useCallback(() => {
-    const activeSelection = document.getSelection();
+    if (activeSelection && activeSelection.toString().length > 0) {
+      // Extract the text from the selection cleaning unselectable items
+      const text = extractText(activeSelection);
+      if (!text) return;
 
-    if (!activeSelection) {
-      return;
+      const anchorNode = activeSelection?.anchorNode?.parentElement;
+      const focusNode = activeSelection?.focusNode?.parentElement;
+
+      if (
+        anchorNode &&
+        focusNode &&
+        ref.current?.contains(anchorNode) && // Selection starts inside the ref
+        ref.current?.contains(focusNode) // Selection ends inside the ref
+      ) {
+        if (props?.onSelectionButtonClick) {
+          setIsSelecting(true);
+
+          const range = activeSelection.getRangeAt(0);
+          const rects = range.getClientRects();
+          const lastRect = rects[rects.length - 1];
+          const containerRect =
+            ref && ref.current
+              ? ref.current.getBoundingClientRect()
+              : null;
+
+          if (!lastRect || !containerRect) return;
+
+          const relativeY =
+            lastRect.bottom - containerRect.top + ref.current.scrollTop;
+          const relativeX =
+            lastRect.right - containerRect.left + ref.current.scrollLeft;
+
+          if (relativeY > 0 || relativeX > 0)
+            // Fix to avoid the button to be placed sometimes at the top left corner of the screen (X: 0, Y: 0)
+            setPosition({
+              x: relativeX,
+              y: relativeY + 15,
+            });
+        } else {
+          setIsSelecting(false);
+        }
+
+        const selectionPart = {
+          from: Math.min(
+            Number.parseFloat(anchorNode.getAttribute("data-start") ?? "0"),
+            Number.parseFloat(focusNode.getAttribute("data-start") ?? "0")
+          ),
+          to: Math.max(
+            Number.parseFloat(anchorNode.getAttribute("data-end") ?? "0"),
+            Number.parseFloat(focusNode.getAttribute("data-end") ?? "0")
+          ),
+        };
+
+        props?.handleSelection?.({ ...selectionPart, text });
+        setSelection({ ...selectionPart, text });
+      } else {
+        setIsSelecting(false);
+      }
+    } else {
+      setIsSelecting(false);
     }
-
-    // Extract the text from the selection cleaning unselectable items
-    const text = extractText(activeSelection);
-    if (!text) return;
-
-    const anchorNode = activeSelection?.anchorNode?.parentElement;
-    const focusNode = activeSelection?.focusNode?.parentElement;
-
-    if (
-      anchorNode &&
-      focusNode &&
-      ref.current?.contains(anchorNode) && // Selection starts inside the ref
-      ref.current?.contains(focusNode) // Selection ends inside the ref
-    ) {
-      const selectionPart = {
-        from: Math.min(
-          Number.parseFloat(anchorNode.getAttribute("data-start") ?? "0"),
-          Number.parseFloat(focusNode.getAttribute("data-start") ?? "0")
-        ),
-        to: Math.max(
-          Number.parseFloat(anchorNode.getAttribute("data-end") ?? "0"),
-          Number.parseFloat(focusNode.getAttribute("data-end") ?? "0")
-        ),
-      };
-
-      props?.handleSelection?.({ ...selectionPart, text });
-    }
-  }, [props]);
+  }, [props, activeSelection]);
 
   useEffect(() => {
     if (ref.current === null) return;
@@ -125,8 +168,24 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   }, [ref, props, handleSelectionChange]);
 
   return (
-    <HighlightContextProvider term={props.search}>
+    <HighlightContextProvider term={search}>
       <WordsContainer ref={ref}>{props.children}</WordsContainer>
+      {isSelecting && (
+        <CreateObservationButton
+          isAccent
+          isPrimary
+          position={position ?? {
+            x: 0,
+            y: 0,
+          }}
+          {...(onSelectionButtonClick && selection && { onClick: () => onSelectionButtonClick(selection) })}
+        >
+          <CreateObservationButton.StartIcon>
+            <TagIcon />
+          </CreateObservationButton.StartIcon>
+          {i18n?.selectionButtonLabel ?? "Create observation"}
+        </CreateObservationButton>
+      )}
     </HighlightContextProvider>
   );
 };

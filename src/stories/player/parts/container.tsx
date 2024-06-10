@@ -6,9 +6,11 @@ import { VideoStyle } from "./video";
 
 export const Container = styled.div<WrapperProps>`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  ${({ showControls }) => !showControls && `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  `}
   height: 100%;
   width: 100%;
   video {

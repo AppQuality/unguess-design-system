@@ -45,7 +45,7 @@ export interface CommentMedia {
   type: string;
   name?: string;
   isLoadingMedia?: boolean;
-  isError?: boolean;
+  error?: string;
   url?: string;
 }
 
