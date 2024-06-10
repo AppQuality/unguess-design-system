@@ -2,8 +2,8 @@ import { Avatar as ZendeskAvatar } from "@zendeskgarden/react-avatars";
 import { theme } from "../theme";
 import styled from "styled-components";
 import { AvatarArgs } from "./_types";
-import LogoIcon from "../../assets/logo-icon.svg";
 import { getColor } from "../theme/utils";
+import InternalAvatar from "./InternalAvatar";
 
 const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
   text-transform: uppercase;
@@ -35,7 +35,7 @@ const Avatar = ({ isSystem, badge, ...props }: AvatarArgs) => {
     if (type === "image")
       return <img alt="avatar" src={props.children as string} />;
     if (type === "text") return <Avatar.Text>{props.children}</Avatar.Text>;
-    if (type === "system") return <img alt="avatar" src={LogoIcon} />;
+    if (type === "system") return <InternalAvatar />;
   };
 
   return (
