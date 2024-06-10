@@ -50,6 +50,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
         isLoaded={isLoaded}
         isPlaying={context.isPlaying}
         ref={containerRef}
+        showControls={props.showControls}
       >
         {!isLoaded ? (
           <VideoSpinner />
@@ -68,6 +69,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             isCutting={isCutting}
             onBookMarkUpdated={props.handleBookmarkUpdate}
             i18n={props.i18n}
+            showControls={props.showControls}
           />
         </ProgressContextProvider>
       </Container>
