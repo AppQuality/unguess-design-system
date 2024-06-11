@@ -547,16 +547,10 @@ const defaultArgs: StoryArgs = {
   currentTime: words[10].start,
 };
 
-export const WithSearch = Template.bind({});
-WithSearch.args = {
+export const Default = Template.bind({});
+Default.args = {
   ...defaultArgs,
-  includeSearch: true,
-  onSelectionButtonClick: (part) => {
-    console.log("CreateObservation: " + JSON.stringify(part));
-  },
-  i18n: {
-    selectionButtonLabel: "Custom label",
-  },
+  onSelectionButtonClick: undefined,
 };
 
 export const WithSelectionButton = Template.bind({});
@@ -579,6 +573,18 @@ WithTooltip.args = {
       </TagsWrapper>
     )
   })),
+};
+
+export const WithSearch = Template.bind({});
+WithSearch.args = {
+  ...defaultArgs,
+  includeSearch: true,
+  onSelectionButtonClick: (part) => {
+    console.log("CreateObservation: " + JSON.stringify(part));
+  },
+  i18n: {
+    selectionButtonLabel: "Custom label",
+  },
 };
 
 export const VideoSync = VideoTemplate.bind({});
