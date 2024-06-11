@@ -12,10 +12,12 @@ import { CreateObservationButton } from "./CreateObservationButton";
 const StyledWord = styled.div<
   WordProps & { observations?: Observation[] }
 >`
-  display: inline;
+  display: inline-block;
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
   position: relative;
+  color: ${({ theme }) => theme.palette.grey[700]};
+  white-space: pre;
 
   ${({ observations, theme }) =>
     observations && observations.length > 0 &&
@@ -23,6 +25,7 @@ const StyledWord = styled.div<
       color: ${observations[observations.length - 1].color ?? theme.palette.grey[600]};
       box-sizing: border-box;
       font-weight: ${theme.fontWeights.semibold};
+      z-index: 1;
 
       &:focus {
         outline: none;
@@ -31,6 +34,8 @@ const StyledWord = styled.div<
 `;
 
 const ActiveWord = styled.span`
+  position: relative;
+  z-index: 2;
   background-color: ${({ theme }) =>
     getColor(theme.palette.fuschia, 400, undefined, 0.4)};
 `;
@@ -40,7 +45,7 @@ const WordsContainer = styled.div`
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
-    getColor(theme.palette.kale, 700, undefined, 0.5)};
+    getColor(theme.palette.grey, 400, undefined, 0.5)};
     }
   }
 `;
@@ -62,7 +67,7 @@ const Layer = styled.div<{
  */
 
 const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
-  const { onSelectionButtonClick, search, i18n } = props;
+  const { onSelectionButtonClick, search, i18n, children } = props;
   const ref = useRef<HTMLDivElement>(null);
   const [isSelecting, setIsSelecting] = useState<boolean>(false);
   const [position, setPosition] = useState<{
@@ -109,7 +114,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
         ref.current?.contains(anchorNode) && // Selection starts inside the ref
         ref.current?.contains(focusNode) // Selection ends inside the ref
       ) {
-        if (props?.onSelectionButtonClick) {
+        if (onSelectionButtonClick) {
           setIsSelecting(true);
 
           const range = activeSelection.getRangeAt(0);
@@ -148,7 +153,6 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
           ),
         };
 
-        props?.handleSelection?.({ ...selectionPart, text });
         setSelection({ ...selectionPart, text });
       } else {
         setIsSelecting(false);
@@ -156,7 +160,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
     } else {
       setIsSelecting(false);
     }
-  }, [props, activeSelection]);
+  }, [onSelectionButtonClick, activeSelection]);
 
   useEffect(() => {
     if (ref.current === null) return;
@@ -169,8 +173,8 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
 
   return (
     <HighlightContextProvider term={search}>
-      <WordsContainer ref={ref}>{props.children}</WordsContainer>
-      {isSelecting && (
+      <WordsContainer ref={ref}>{children}</WordsContainer>
+      {onSelectionButtonClick && isSelecting && selection && (
         <CreateObservationButton
           isAccent
           isPrimary
@@ -178,7 +182,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
             x: 0,
             y: 0,
           }}
-          {...(onSelectionButtonClick && selection && { onClick: () => onSelectionButtonClick(selection) })}
+          onClick={() => onSelectionButtonClick(selection)}
         >
           <CreateObservationButton.StartIcon>
             <TagIcon />
@@ -214,7 +218,10 @@ const Word = (props: WordProps) => {
         <Layer key={obs.id} color={obs.hue ?? theme.palette.grey[600]} />
       ))}
       {isActive ? (
-        <ActiveWord>
+        <ActiveWord
+          data-start={props.start}
+          data-end={props.end}
+        >
           <Searchable text={props.text} />
         </ActiveWord>
       ) : (
