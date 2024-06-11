@@ -29,7 +29,6 @@ export const TDiarization = (
   return (
     <Highlight
       {...args}
-      handleSelection={(part) => console.log("selected part:", part.text, part)}
     >
       {paragraphs.map((p, index) => (
         <div style={{ marginBottom: "8px" }}>

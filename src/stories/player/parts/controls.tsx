@@ -21,6 +21,7 @@ export const ControlsWrapper = styled.div<WrapperProps>`
   right: 0;
   padding: ${({ theme }) => theme.space.xxs} 0;
   background-color: ${({ theme }) => theme.palette.grey[100]};
+  height: 80px;
   ${({ isPlaying }) => isPlaying && "display: none;"}
   z-index: 2;
 `;

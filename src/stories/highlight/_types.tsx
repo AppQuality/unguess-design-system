@@ -16,7 +16,6 @@ export interface HighlightArgs {
   isMonospace?: boolean;
   /** Adjusts the font size. By default font size is medium */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
-  handleSelection?: (part: { from: number; to: number; text: string }) => void;
   search?: string;
   onSelectionButtonClick?: (part: { from: number; to: number; text: string }) => void;
   i18n?: {
