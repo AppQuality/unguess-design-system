@@ -152,6 +152,8 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
           ),
         };
 
+        console.log("selectionPart", selectionPart);
+
         setSelection({ ...selectionPart, text });
       } else {
         setIsSelecting(false);
@@ -217,7 +219,10 @@ const Word = (props: WordProps) => {
         <Layer key={obs.id} color={obs.hue ?? theme.palette.grey[600]} />
       ))}
       {isActive ? (
-        <ActiveWord>
+        <ActiveWord
+          data-start={props.start}
+          data-end={props.end}
+        >
           <Searchable text={props.text} />
         </ActiveWord>
       ) : (
