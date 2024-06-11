@@ -1,3 +1,17 @@
+# v3.1.100 (Tue Jun 11 2024)
+
+#### 🐛 Bug Fix
+
+- Improved transcript + player [#391](https://github.com/AppQuality/unguess-design-system/pull/391) ([@marcbon](https://github.com/marcbon))
+- Fix-transcript-obs-button [#388](https://github.com/AppQuality/unguess-design-system/pull/388) ([@marcbon](https://github.com/marcbon))
+- 🩹 fix(controls.tsx, floatingControls.tsx): adjust height to 80px for better [#390](https://github.com/AppQuality/unguess-design-system/pull/390) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.99 (Mon Jun 10 2024)
 
 #### 🐛 Bug Fix
