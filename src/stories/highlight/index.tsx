@@ -12,11 +12,12 @@ import { CreateObservationButton } from "./CreateObservationButton";
 const StyledWord = styled.div<
   WordProps & { observations?: Observation[] }
 >`
-  display: inline;
+  display: inline-block;
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
   position: relative;
   color: ${({ theme }) => theme.palette.grey[700]};
+  white-space: pre;
 
   ${({ observations, theme }) =>
     observations && observations.length > 0 &&
@@ -44,7 +45,7 @@ const WordsContainer = styled.div`
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
-        getColor(theme.palette.grey, 400, undefined, 0.5)};
+    getColor(theme.palette.grey, 400, undefined, 0.5)};
     }
   }
 `;
