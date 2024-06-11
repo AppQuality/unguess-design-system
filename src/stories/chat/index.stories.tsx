@@ -155,7 +155,7 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
                 console.log("internal_id - ", id);
               }}
 
-            /*setIsMediaUploading={function (value: boolean): void {
+              /*setIsMediaUploading={function (value: boolean): void {
             throw new Error("Function not implemented.");
           }}*/
             >
@@ -171,11 +171,11 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor: TipTapEditor, mentions) => { },
+  onSave: (editor: TipTapEditor, mentions) => {},
   author: {
     avatar: "LC",
   },
-  onUpdate: ({ editor }) => { },
+  onUpdate: ({ editor }) => {},
   comments: [
     {
       message: "Hi, I'm a comment",
@@ -215,14 +215,14 @@ const defaultArgs: EditorStoryArgs = {
           type: "image",
           id: "1",
           isLoadingMedia: false,
-          name: ""
+          name: "",
         },
         {
           url: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           type: "image",
           id: "2",
           isLoadingMedia: false,
-          name: ""
+          name: "",
         },
       ],
     },
@@ -263,8 +263,10 @@ Menus.args = {
       // simulate a 2.5 seconds delay then fail the first file and succeed the others
       setTimeout(() => {
         resolve({
-          failed: [{errorCode: "GENERIC_ERROR", name: files[0].name}],
-          uploaded_ids: files.slice(1).map(file => ({id: parseInt(file.id)}))
+          failed: [{ errorCode: "GENERIC_ERROR", name: files[0].name }],
+          uploaded_ids: files
+            .slice(1)
+            .map((file) => ({ id: parseInt(file.id) })),
         });
       }, 2500);
     });
@@ -277,7 +279,7 @@ Menus.args = {
       attachment: (
         <>
           <span style={{ color: theme.palette.grey[800] }}>
-            Allega immegini e video.
+            Allega immagini e video.
           </span>{" "}
           <br />
           <span style={{ color: theme.palette.grey[600] }}>Peso max: 5GB</span>
