@@ -8,7 +8,6 @@ import { Tooltip } from "../tooltip";
 import { theme } from "../theme";
 import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
 import { CreateObservationButton } from "./CreateObservationButton";
-import { on } from "events";
 
 const StyledWord = styled.div<
   WordProps & { observations?: Observation[] }
@@ -17,6 +16,7 @@ const StyledWord = styled.div<
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
   position: relative;
+  color: ${({ theme }) => theme.palette.grey[700]};
 
   ${({ observations, theme }) =>
     observations && observations.length > 0 &&
@@ -24,6 +24,7 @@ const StyledWord = styled.div<
       color: ${observations[observations.length - 1].color ?? theme.palette.grey[600]};
       box-sizing: border-box;
       font-weight: ${theme.fontWeights.semibold};
+      z-index: 1;
 
       &:focus {
         outline: none;
@@ -32,6 +33,8 @@ const StyledWord = styled.div<
 `;
 
 const ActiveWord = styled.span`
+  position: relative;
+  z-index: 2;
   background-color: ${({ theme }) =>
     getColor(theme.palette.fuschia, 400, undefined, 0.4)};
 `;
@@ -41,7 +44,7 @@ const WordsContainer = styled.div`
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
-    getColor(theme.palette.kale, 700, undefined, 0.5)};
+        getColor(theme.palette.grey, 400, undefined, 0.5)};
     }
   }
 `;
