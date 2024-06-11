@@ -2,7 +2,6 @@ import { Meta, StoryFn } from "@storybook/react";
 import { useCallback, useState } from "react";
 import { Highlight } from ".";
 import useDebounce from "../../hooks/useDebounce";
-import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
@@ -10,7 +9,6 @@ import { Player } from "../player";
 import { Tabs } from "../tabs";
 import { theme } from "../theme";
 import { getColor } from "../theme/utils";
-import { Paragraph } from "../typography/paragraph";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { Transcript } from "./demo-parts/transcript-base";
 import { TDiarization } from "./demo-parts/transcript-diarization";
@@ -18,6 +16,7 @@ import { TParagraph } from "./demo-parts/transcript-paragraph";
 import { Tag } from "../tags";
 import { TSentiment } from "./demo-parts/transcript-sentiment";
 import { styled } from "styled-components";
+import { on } from "events";
 
 const StyledTag = styled(Tag)`
   user-select: none;
@@ -49,33 +48,29 @@ export interface StoryArgs extends HighlightArgs {
   includeSearch?: boolean;
 }
 
-const Template: StoryFn<StoryArgs> = (args) => {
-  const [selection, setSelection] = useState<{
-    from: number;
-    to: number;
-    text: string;
-  }>();
+const Template: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [observations, setObservations] = useState<Observation[]>([]);
 
   const debauncedValue = useDebounce(searchValue, 300);
 
-  const handleAddObservation = () => {
-    if (selection) {
-      console.log("🚀 ~ handleAddObservation ~ selection:", selection);
-      const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
-      setObservations([
-        ...observations,
-        {
-          id: observations.length,
-          start: selection.from,
-          end: selection.to,
-          label: `new observation (#${observations.length})`,
-          hue: getColor(hue, 700, undefined, 0.5),
-          color: hue,
-        },
-      ]);
-    }
+  const handleAddObservation = (part: {
+    from: number;
+    to: number;
+    text: string;
+  }) => {
+    const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    setObservations([
+      ...observations,
+      {
+        id: observations.length,
+        start: part.from,
+        end: part.to,
+        label: `new observation (#${observations.length})`,
+        hue: getColor(hue, 700, undefined, 0.5),
+        color: hue,
+      },
+    ]);
   };
 
   return (
@@ -98,6 +93,12 @@ const Template: StoryFn<StoryArgs> = (args) => {
       <Highlight
         {...args}
         search={debauncedValue}
+        {...(onSelectionButtonClick && {
+          onSelectionButtonClick: (part) => {
+            onSelectionButtonClick(part);
+            handleAddObservation(part);
+          }
+        })}
       >
         {args.words.map((item, index) => (
           <>
@@ -113,30 +114,11 @@ const Template: StoryFn<StoryArgs> = (args) => {
           </>
         ))}
       </Highlight>
-      {selection && (
-        <>
-          <hr style={{ margin: `10px 0` }} />
-          <b>Testo selezionato</b>
-          <Paragraph>
-            <i>{selection.text}</i> ({selection.from} - {selection.to})
-          </Paragraph>
-          <br />
-          <Button isPrimary onClick={handleAddObservation}>
-            Add observation
-          </Button>
-        </>
-      )}
     </>
   );
 };
 
-const VideoTemplate: StoryFn<StoryArgs> = (args) => {
-  const [selection, setSelection] = useState<{
-    from: number;
-    to: number;
-    text: string;
-  }>();
-
+const VideoTemplate: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   const handleRef = useCallback((video: HTMLVideoElement) => {
@@ -158,19 +140,23 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
 
   const [observations, setObservations] = useState<Observation[]>([]);
 
-  const handleAddObservation = () => {
-    if (selection) {
-      console.log("🚀 ~ handleAddObservation ~ selection:", selection);
-      setObservations([
-        ...observations,
-        {
-          id: observations.length,
-          start: selection.from,
-          end: selection.to,
-          label: `new observation (#${observations.length})`
-        },
-      ]);
-    }
+  const handleAddObservation = (part: {
+    from: number;
+    to: number;
+    text: string;
+  }) => {
+    const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    setObservations([
+      ...observations,
+      {
+        id: observations.length,
+        start: part.from,
+        end: part.to,
+        label: `new observation (#${observations.length})`,
+        hue: getColor(hue, 700, undefined, 0.5),
+        color: hue,
+      },
+    ]);
   };
 
   return (
@@ -178,7 +164,15 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
       <Grid>
         <Row>
           <Col>
-            <Highlight {...args}>
+            <Highlight
+              {...args}
+              {...(onSelectionButtonClick && {
+                onSelectionButtonClick: (part) => {
+                  onSelectionButtonClick(part);
+                  handleAddObservation(part);
+                }
+              })}
+            >
               {args.words.map((item, index) => (
                 <>
                   <Highlight.Word
@@ -195,34 +189,12 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
             </Highlight>
           </Col>
           <Col>
-            {/* <video
-              ref={videoRef}
-              controls
-              src="https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"
-            /> */}
             <Player
               ref={handleRef}
               url={
                 "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/02b786286aa36703832b783711affb4fbf11ad77_1712765073.mp4"
               }
             />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {selection && (
-              <>
-                <hr style={{ margin: `10px 0` }} />
-                <b>Testo selezionato</b>
-                <Paragraph>
-                  <i>{selection.text}</i> ({selection.from} - {selection.to})
-                </Paragraph>
-                <br />
-                <Button isPrimary onClick={handleAddObservation}>
-                  Add observation
-                </Button>
-              </>
-            )}
           </Col>
         </Row>
       </Grid>
@@ -572,10 +544,14 @@ const defaultArgs: StoryArgs = {
     { end: 163.06, text: "Finict?", start: 162.56, speaker: 0 },
   ],
   currentTime: 46.525,
+  onSelectionButtonClick: undefined,
 };
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const WithSearch = Template.bind({});
+WithSearch.args = {
+  ...defaultArgs,
+  includeSearch: true,
+};
 
 export const WithSelectionButton = Template.bind({});
 WithSelectionButton.args = {
@@ -584,19 +560,8 @@ WithSelectionButton.args = {
     console.log("CreateObservation: " + JSON.stringify(part));
   },
   i18n: {
-    selectionButtonLabel: "Add observation",
+    selectionButtonLabel: "Custom label",
   },
-};
-
-export const VideoSync = VideoTemplate.bind({});
-VideoSync.args = {
-  ...defaultArgs,
-};
-
-export const WithSearch = Template.bind({});
-WithSearch.args = {
-  ...defaultArgs,
-  includeSearch: true,
 };
 
 export const WithTooltip = Template.bind({});
@@ -614,6 +579,17 @@ WithTooltip.args = {
       </TagsWrapper>
     )
   })),
+  onSelectionButtonClick: (part) => {
+    console.log("CreateObservation: " + JSON.stringify(part));
+  },
+  i18n: {
+    selectionButtonLabel: "Custom label",
+  },
+};
+
+export const VideoSync = VideoTemplate.bind({});
+VideoSync.args = {
+  ...defaultArgs,
 };
 
 const DemoTemplate: StoryFn<StoryArgs> = (args) => {

@@ -8,6 +8,7 @@ import { Tooltip } from "../tooltip";
 import { theme } from "../theme";
 import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
 import { CreateObservationButton } from "./CreateObservationButton";
+import { on } from "events";
 
 const StyledWord = styled.div<
   WordProps & { observations?: Observation[] }
@@ -62,7 +63,7 @@ const Layer = styled.div<{
  */
 
 const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
-  const { onSelectionButtonClick, search, i18n } = props;
+  const { onSelectionButtonClick, search, i18n, children } = props;
   const ref = useRef<HTMLDivElement>(null);
   const [isSelecting, setIsSelecting] = useState<boolean>(false);
   const [position, setPosition] = useState<{
@@ -109,7 +110,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
         ref.current?.contains(anchorNode) && // Selection starts inside the ref
         ref.current?.contains(focusNode) // Selection ends inside the ref
       ) {
-        if (props?.onSelectionButtonClick) {
+        if (onSelectionButtonClick) {
           setIsSelecting(true);
 
           const range = activeSelection.getRangeAt(0);
@@ -155,7 +156,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
     } else {
       setIsSelecting(false);
     }
-  }, [props, activeSelection]);
+  }, [onSelectionButtonClick, activeSelection]);
 
   useEffect(() => {
     if (ref.current === null) return;
@@ -168,8 +169,8 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
 
   return (
     <HighlightContextProvider term={search}>
-      <WordsContainer ref={ref}>{props.children}</WordsContainer>
-      {isSelecting && (
+      <WordsContainer ref={ref}>{children}</WordsContainer>
+      {onSelectionButtonClick && isSelecting && selection && (
         <CreateObservationButton
           isAccent
           isPrimary
@@ -177,7 +178,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
             x: 0,
             y: 0,
           }}
-          {...(onSelectionButtonClick && selection && { onClick: () => onSelectionButtonClick(selection) })}
+          onClick={() => onSelectionButtonClick(selection)}
         >
           <CreateObservationButton.StartIcon>
             <TagIcon />
