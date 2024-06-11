@@ -11,6 +11,7 @@ export const FloatingContainer = styled.div<WrapperProps>`
   right: 0;
   ${({ isPlaying }) => isPlaying && "display: none;"}
   z-index: 1;
+  height: calc(100% - 80px);
 `;
 
 const PlayIcon = styled(PlayIconComponent)``;
