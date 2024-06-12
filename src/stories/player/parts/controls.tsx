@@ -13,6 +13,7 @@ import { TimeLabel } from "./timeLabel";
 import { PlayerTooltip } from "./tooltip";
 import { formatDuration } from "../utils";
 import useDebounce from "../../../hooks/useDebounce";
+import { CutStart } from "./CutStart";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   ${({ showControls }) => showControls ? "position: relative;" : "position: absolute;"}
@@ -85,6 +86,7 @@ export const Controls = ({
   const progressRef = useRef<HTMLDivElement>(null);
   const { context, setCurrentTime } = useVideoContext()
   const debouncedMark = useDebounce(updatedMark, 500);
+  const [cutStart, setCutStart] = useState<number>(0);
 
   const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
 
@@ -197,6 +199,13 @@ export const Controls = ({
     }
   }, [debouncedMark, onBookMarkUpdated]);
 
+  useEffect(() => {
+    if (isCutting) {
+      setCutStart(progress);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCutting]);
+
   return (
     <ControlsWrapper
       showControls={showControls}
@@ -219,7 +228,8 @@ export const Controls = ({
           progress={progress}
           handleSkipAhead={handleSkipAhead}
           duration={duration}
-        />
+          />
+        {isCutting && <CutStart left={cutStart} />}
         <CurrentTimeMarker left={progress} />
       </ProgressContainer>
 
