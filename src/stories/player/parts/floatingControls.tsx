@@ -9,9 +9,9 @@ export const FloatingContainer = styled.div<WrapperProps>`
   top: 0;
   left: 0;
   right: 0;
-  ${({ isPlaying }) => isPlaying && "display: none;"}
   z-index: 1;
-  height: calc(100% - 80px);
+  ${({ isPlaying }) => isPlaying && "display: none;"}
+  ${({ showControls }) => showControls ? "height: 100%" : "height: calc(100% - 80px)"};
 `;
 
 const PlayIcon = styled(PlayIconComponent)``;
@@ -40,12 +40,13 @@ const ButtonsContainer = styled.div`
 
 export const FloatingControls = (props: {
   isPlaying?: boolean;
+  showControls?: boolean;
   onClick?: () => void;
 }) => {
-  const { isPlaying, onClick } = props;
+  const { isPlaying, showControls, onClick } = props;
 
   return (
-    <FloatingContainer isPlaying={isPlaying} onClick={onClick}>
+    <FloatingContainer isPlaying={isPlaying} showControls={showControls} onClick={onClick}>
       <ButtonsContainer>
         {!isPlaying && (
           <BigButton isPrimary size={"large"}>

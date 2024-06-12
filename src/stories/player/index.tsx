@@ -57,6 +57,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
         ) : (
           <FloatingControls
             isPlaying={context.isPlaying}
+            showControls={props.showControls}
             onClick={togglePlay}
           />
         )}
