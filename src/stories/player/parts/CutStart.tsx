@@ -7,7 +7,7 @@ const Pin = styled.div<{ left: number }>`
   position: absolute;
   height: 250%;
   z-index: 2;
-  background-color: ${({ theme }) => theme.palette.kale[600]};
+  background-color: ${({ theme }) => theme.palette.grey[600]};
   margin-left: -2px; // To not override the current time marker
 
   &:after {
@@ -19,7 +19,7 @@ const Pin = styled.div<{ left: number }>`
     height: 10px;
     border-radius: 50%;
     transform: translate(-50%, 0);
-    background-color: ${({ theme }) => theme.palette.kale[600]};
+    background-color: ${({ theme }) => theme.palette.grey[600]};
   }
 `;
 
