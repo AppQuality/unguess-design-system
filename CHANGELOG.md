@@ -1,3 +1,17 @@
+# v3.1.101 (Wed Jun 12 2024)
+
+#### 🐛 Bug Fix
+
+- Player improvements [#394](https://github.com/AppQuality/unguess-design-system/pull/394) ([@marcbon](https://github.com/marcbon))
+- 🔧 refactor(player): add showControls prop to FloatingControls component [#393](https://github.com/AppQuality/unguess-design-system/pull/393) ([@marcbon](https://github.com/marcbon))
+- ✨ feat(player): add CutStart component to show start point when cutting video [#392](https://github.com/AppQuality/unguess-design-system/pull/392) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.100 (Tue Jun 11 2024)
 
 #### 🐛 Bug Fix
