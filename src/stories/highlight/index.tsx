@@ -15,12 +15,14 @@ const StyledWord = styled(ZendeskSpan)<
 
   ${({ observation, theme }) =>
     observation &&
-    `
+    `font-weight: ${observation.isFocused && 500};
       background-color: ${
-        observation.hue ??
-        getColor(theme.palette.azure, 700, undefined, 0.5)
+        observation.isFocused
+          ? getColor(theme.palette.yellow, 300)
+          : observation.hue ??
+            getColor(theme.palette.azure, 700, undefined, 0.5)
       };
-      color: ${observation.color ?? "white"};
+      color: ${observation.isFocused ? "black" : observation.color ?? "white"};
       box-sizing: border-box;
       &:focus {
         outline: none;

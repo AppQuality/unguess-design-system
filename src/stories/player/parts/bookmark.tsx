@@ -49,7 +49,11 @@ const activeBookMark = css`
   }
 `;
 
-const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
+const Rect = styled.div<{
+  hue?: string;
+  isActive?: boolean;
+  isFocused?: boolean;
+}>`
   position: absolute;
   height: 110%;
   background-color: ${({ hue, theme }) => hue || theme.palette.grey[800]};
@@ -60,14 +64,13 @@ const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
     border-radius: 4px;
   }
   color: white;
+  ${({ isFocused }) => isFocused && activeBookMark}
   ${({ isActive }) => isActive && activeBookMark}
-
   transition: width 0.1s ease;
 `;
 const StyledTooltip = styled(Tooltip)<{ tooltipColor: string }>`
   margin-bottom: ${({ theme }) => theme.space.sm};
   color: ${({ tooltipColor }) => tooltipColor};
-
 `;
 
 const Grabber = (props: {
@@ -121,6 +124,7 @@ export const Bookmark = (props: IBookmark) => {
       isTransparent
     >
       <Rect
+        isFocused={props.isFocused}
         isActive={activeBookmark && activeBookmark.id === props.id}
         hue={hue}
         style={{

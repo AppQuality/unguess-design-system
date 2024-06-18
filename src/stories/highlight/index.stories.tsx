@@ -140,6 +140,7 @@ const VideoTemplate: StoryFn<StoryArgs> = (args) => {
           id: observations.length,
           start: selection.from,
           end: selection.to,
+          isFocused: true,
           label: `new observation (#${observations.length})`
         },
       ]);
