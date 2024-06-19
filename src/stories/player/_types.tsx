@@ -25,6 +25,7 @@ export interface IBookmark {
   hue?: string;
   label?: string;
   tooltipContent?: ReactNode;
+  isFocused?: boolean;
   onClick?: () => void;
   tags?: VideoTag[];
 }

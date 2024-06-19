@@ -9,6 +9,10 @@ import { theme } from "../theme";
 import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
 import { CreateObservationButton } from "./CreateObservationButton";
 
+const getFocusedObs = (observations: Observation[]) => {
+  return observations.find((obs) => obs.isFocused);
+};
+
 const StyledWord = styled.div<
   WordProps & { observations?: Observation[] }
 >`
@@ -24,9 +28,9 @@ const StyledWord = styled.div<
     `
       color: ${observations[observations.length - 1].color ?? theme.palette.grey[600]};
       box-sizing: border-box;
-      font-weight: ${theme.fontWeights.semibold};
+      font-weight: ${getFocusedObs(observations) ? theme.fontWeights.extrabold : theme.fontWeights.semibold};
+      font-style: ${getFocusedObs(observations) ? 'italic' : 'normal'};
       z-index: 1;
-
       &:focus {
         outline: none;
       }
