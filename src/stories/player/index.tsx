@@ -1,5 +1,11 @@
 import Video, { useVideoContext } from "@appquality/stream-player";
-import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import {
+  PropsWithChildren,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import { PlayerArgs } from "./_types";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
@@ -27,7 +33,9 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
 
-    useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement, [videoRef]);
+    useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement, [
+      videoRef,
+    ]);
 
     useEffect(() => {
       if (videoRef) {
@@ -50,14 +58,12 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
         isLoaded={isLoaded}
         isPlaying={context.isPlaying}
         ref={containerRef}
-        showControls={props.showControls}
       >
         {!isLoaded ? (
           <VideoSpinner />
         ) : (
           <FloatingControls
             isPlaying={context.isPlaying}
-            showControls={props.showControls}
             onClick={togglePlay}
           />
         )}
@@ -70,7 +76,6 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             isCutting={isCutting}
             onBookMarkUpdated={props.handleBookmarkUpdate}
             i18n={props.i18n}
-            showControls={props.showControls}
           />
         </ProgressContextProvider>
       </Container>
@@ -78,4 +83,12 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
   }
 );
 
-export { Player };
+const PlayerProvider = (props: PropsWithChildren<PlayerArgs>) => (
+  <Video src={props.url} {...props}>
+    {props.children}
+  </Video>
+);
+
+PlayerProvider.Core = PlayerCore;
+
+export { Player, PlayerProvider, useVideoContext };

@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
-import { Player } from ".";
+import { Player, PlayerProvider } from ".";
 import { IBookmark, PlayerArgs } from "./_types";
 import { theme } from "../theme";
 import { Tag } from "@zendeskgarden/react-tags";
@@ -13,14 +13,21 @@ const Container = styled.div`
 interface PlayerStoryArgs extends PlayerArgs {}
 
 const defaultArgs: PlayerStoryArgs = {
-  //   url: "https://s3.eu-west-1.amazonaws.com/tryber.media.production/media/T6631/CP4462/bugs/bf2ed159c4c8024a82116a5dfa26ef434180db334304e0372a531592040452e4.mp4",
-  url: "https://s3-eu-west-1.amazonaws.com/appq.use-case-media/CP3461/UC8794/T19095/ebf00412a1bc3fd33fddd52962cf80e6853a10d5_1625090207.mp4",
+  url: "https://s3.eu-west-1.amazonaws.com/appq.static/demo/098648899205a00f8311d929d3073499ef9d664b_1715352138.mp4",
   onCutHandler: undefined, // Storybook fix https://github.com/storybookjs/storybook/issues/22930
 };
 
 const Template: StoryFn<PlayerStoryArgs> = (args) => (
   <Container id="player.story.container">
     <Player {...args} />
+  </Container>
+);
+
+const TemplateWithContext: StoryFn<PlayerStoryArgs> = (args) => (
+  <Container id="player.story.container">
+    <PlayerProvider {...args}>
+      <PlayerProvider.Core url={args.url} />
+    </PlayerProvider>
   </Container>
 );
 
@@ -79,13 +86,6 @@ Basic.args = {
   ...defaultArgs,
 };
 
-export const ShowControls = Template.bind({});
-ShowControls.args = {
-  ...defaultArgs,
-  url: "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/db00e97cfb85971e3fa71b7735142e07ab2d1ebf_1605195177.m3u8",
-  showControls: true,
-};
-
 export const Streaming = Template.bind({});
 Streaming.args = {
   ...defaultArgs,
@@ -113,7 +113,7 @@ WithBookmarks.args = {
       start: 25,
       end: 38,
       hue: theme.colors.foreground,
-      tooltipContent:<Tag>20s - 28s (click me)</Tag>,
+      tooltipContent: <Tag>20s - 28s (click me)</Tag>,
       onClick: () => {
         alert("you clicked me! 😳");
       },
@@ -123,14 +123,14 @@ WithBookmarks.args = {
       start: 60,
       end: 65,
       hue: theme.colors.successHue,
-      tooltipContent:<Tag>30s - 35s</Tag> ,
+      tooltipContent: <Tag>30s - 35s</Tag>,
     },
     {
       id: 5,
       start: 50,
       end: 70,
       hue: theme.colors.dangerHue,
-      tooltipContent:<Tag>40s - 60s</Tag>,
+      tooltipContent: <Tag>40s - 60s</Tag>,
     },
     {
       id: 6,
@@ -143,6 +143,11 @@ WithBookmarks.args = {
   handleBookmarkUpdate: (bookmark: IBookmark) => {
     console.log("Bookmark updated", bookmark);
   },
+};
+
+export const WithContext = TemplateWithContext.bind({});
+WithContext.args = {
+  ...defaultArgs,
 };
 
 export default {
