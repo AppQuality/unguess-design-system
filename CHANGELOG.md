@@ -1,3 +1,16 @@
+# v3.1.102 (Fri Jun 21 2024)
+
+#### 🐛 Bug Fix
+
+- The player offers now an expert mode with full control [#396](https://github.com/AppQuality/unguess-design-system/pull/396) ([@cannarocks](https://github.com/cannarocks))
+- "Refactor Player component to use PlayerProvider for better context management" [#395](https://github.com/AppQuality/unguess-design-system/pull/395) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.101 (Wed Jun 12 2024)
 
 #### 🐛 Bug Fix
