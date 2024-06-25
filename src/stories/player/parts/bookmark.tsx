@@ -53,7 +53,7 @@ const activeBookMark = css`
   }
 `;
 
-const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
+const Rect = styled.div<{ hue?: string; isActive?: boolean; isFocused?:boolean; }>`
   position: absolute;
   height: 110%;
   background-color: ${({ hue, theme }) => getColor(hue || theme.palette.grey[800], undefined, undefined, 0.8)};
@@ -68,6 +68,7 @@ const Rect = styled.div<{ hue?: string; isActive?: boolean }>`
   }
 
   ${({ isActive }) => isActive && activeBookMark}
+  ${({ isFocused }) => isFocused && activeBookMark}
 `;
 const StyledTooltip = styled(Tooltip)<{ tooltipColor: string }>`
   margin-bottom: ${({ theme }) => theme.space.sm};
@@ -128,6 +129,7 @@ export const Bookmark = (props: IBookmark) => {
       <Rect
         isActive={activeBookmark && activeBookmark.id === props.id}
         hue={hue}
+        isFocused={props.isFocused}
         style={{
           left: `${((start - videoStart) / duration) * 100}%`,
           width: `${((end - start) / duration) * 100}%`,
