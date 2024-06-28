@@ -1,3 +1,177 @@
+# v3.1.102 (Fri Jun 21 2024)
+
+#### 🐛 Bug Fix
+
+- The player offers now an expert mode with full control [#396](https://github.com/AppQuality/unguess-design-system/pull/396) ([@cannarocks](https://github.com/cannarocks))
+- "Refactor Player component to use PlayerProvider for better context management" [#395](https://github.com/AppQuality/unguess-design-system/pull/395) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.101 (Wed Jun 12 2024)
+
+#### 🐛 Bug Fix
+
+- Player improvements [#394](https://github.com/AppQuality/unguess-design-system/pull/394) ([@marcbon](https://github.com/marcbon))
+- 🔧 refactor(player): add showControls prop to FloatingControls component [#393](https://github.com/AppQuality/unguess-design-system/pull/393) ([@marcbon](https://github.com/marcbon))
+- ✨ feat(player): add CutStart component to show start point when cutting video [#392](https://github.com/AppQuality/unguess-design-system/pull/392) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.100 (Tue Jun 11 2024)
+
+#### 🐛 Bug Fix
+
+- Improved transcript + player [#391](https://github.com/AppQuality/unguess-design-system/pull/391) ([@marcbon](https://github.com/marcbon))
+- Fix-transcript-obs-button [#388](https://github.com/AppQuality/unguess-design-system/pull/388) ([@marcbon](https://github.com/marcbon))
+- 🩹 fix(controls.tsx, floatingControls.tsx): adjust height to 80px for better [#390](https://github.com/AppQuality/unguess-design-system/pull/390) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.99 (Mon Jun 10 2024)
+
+#### 🐛 Bug Fix
+
+- New version [#385](https://github.com/AppQuality/unguess-design-system/pull/385) ([@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon) [@Kariamos](https://github.com/Kariamos))
+- 🚀 feat(player): add showControls prop to PlayerArgs and WrapperProps [#381](https://github.com/AppQuality/unguess-design-system/pull/381) ([@marcbon](https://github.com/marcbon))
+- 🚀 feat(highlight): add CreateObservationButton component [#387](https://github.com/AppQuality/unguess-design-system/pull/387) ([@marcbon](https://github.com/marcbon))
+- feat: centered tooltip attachment text [#386](https://github.com/AppQuality/unguess-design-system/pull/386) ([@Kariamos](https://github.com/Kariamos))
+- feat: added new component for internal avatar [#384](https://github.com/AppQuality/unguess-design-system/pull/384) ([@Kariamos](https://github.com/Kariamos))
+- Attachment error managment [#383](https://github.com/AppQuality/unguess-design-system/pull/383) ([@iacopolea](https://github.com/iacopolea) [@Kariamos](https://github.com/Kariamos))
+- 🚀 feat(cutterButton.tsx): add styled component for Cutter button to prevent [#382](https://github.com/AppQuality/unguess-design-system/pull/382) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 4
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.98 (Tue May 28 2024)
+
+#### 🐛 Bug Fix
+
+- "Refactor highlight components and add support for multiple observations in transcript" [#380](https://github.com/AppQuality/unguess-design-system/pull/380) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Multiple-obs-support-transcript [#379](https://github.com/AppQuality/unguess-design-system/pull/379) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- 🔨 refactor(highlight): remove unnecessary padding in ActiveWord styled component [#378](https://github.com/AppQuality/unguess-design-system/pull/378) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.97 (Tue May 28 2024)
+
+#### 🐛 Bug Fix
+
+- Add highlight support to unselectable [#377](https://github.com/AppQuality/unguess-design-system/pull/377) ([@cannarocks](https://github.com/cannarocks))
+- "Improve styling and functionality for transcript diarization in highlight component" [#376](https://github.com/AppQuality/unguess-design-system/pull/376) ([@cannarocks](https://github.com/cannarocks))
+- Fix obs player [#375](https://github.com/AppQuality/unguess-design-system/pull/375) ([@marcbon](https://github.com/marcbon))
+- 🎨 style(bookmark.tsx): improve styling for active bookmarks in player parts [#374](https://github.com/AppQuality/unguess-design-system/pull/374) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.96 (Mon May 27 2024)
+
+#### 🐛 Bug Fix
+
+- Tagging tool improvements [#373](https://github.com/AppQuality/unguess-design-system/pull/373) ([@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- 🎨 style(bookmark.tsx): add z-index property to hovered bookmark for better layering [#369](https://github.com/AppQuality/unguess-design-system/pull/369) ([@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- ✨ feat(highlight): add font-weight style to StyledWord in highlight component [#370](https://github.com/AppQuality/unguess-design-system/pull/370) ([@marcbon](https://github.com/marcbon))
+- feat: add random hue to new observation label in index.stories.tsx [#372](https://github.com/AppQuality/unguess-design-system/pull/372) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- 🔨 refactor(highlight/index.tsx): improve logic to find closest observation to word [#368](https://github.com/AppQuality/unguess-design-system/pull/368) ([@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- 🔧 fix(player): update end time for second bookmark in index.stories.tsx [#371](https://github.com/AppQuality/unguess-design-system/pull/371) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.95 (Fri May 24 2024)
+
+#### 🐛 Bug Fix
+
+- Fix highlight [#367](https://github.com/AppQuality/unguess-design-system/pull/367) ([@marcbon](https://github.com/marcbon))
+- 🔧 refactor(highlight/index.tsx): remove unnecessary spread operator in Word component [#366](https://github.com/AppQuality/unguess-design-system/pull/366) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.94 (Tue May 21 2024)
+
+#### 🐛 Bug Fix
+
+- Fix player types [#365](https://github.com/AppQuality/unguess-design-system/pull/365) ([@marcbon](https://github.com/marcbon))
+- 🔨 refactor(player): make tags property optional in IBookmark interface [#364](https://github.com/AppQuality/unguess-design-system/pull/364) ([@marcbon](https://github.com/marcbon))
+- Update observation severity colors [#363](https://github.com/AppQuality/unguess-design-system/pull/363) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks))
+- Player-colors [#362](https://github.com/AppQuality/unguess-design-system/pull/362) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.93 (Tue May 21 2024)
+
+#### 🐛 Bug Fix
+
+- Improve video cutting and add debounce to bookmark update [#361](https://github.com/AppQuality/unguess-design-system/pull/361) ([@cannarocks](https://github.com/cannarocks) [@marcbon](https://github.com/marcbon))
+- Add useDebounce hook for bookmark updates in player controls [#360](https://github.com/AppQuality/unguess-design-system/pull/360) ([@cannarocks](https://github.com/cannarocks))
+- 🚀 feat(player): add PlusIcon component for starting observation in CutterButton [#359](https://github.com/AppQuality/unguess-design-system/pull/359) ([@marcbon](https://github.com/marcbon))
+- Add sentiment data to DemoTranscript [#358](https://github.com/AppQuality/unguess-design-system/pull/358) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
+# v3.1.92 (Fri May 17 2024)
+
+#### 🐛 Bug Fix
+
+- Update auto version to 11.x.x [#356](https://github.com/AppQuality/unguess-design-system/pull/356) ([@marcbon](https://github.com/marcbon))
+- ⬆️ chore(package.json): update auto dependency to version 11.1.1 [#355](https://github.com/AppQuality/unguess-design-system/pull/355) ([@marcbon](https://github.com/marcbon))
+- Update auto version [#354](https://github.com/AppQuality/unguess-design-system/pull/354) ([@marcbon](https://github.com/marcbon))
+- ⬆️ chore(package.json): update auto package to version 10.29.2 [#353](https://github.com/AppQuality/unguess-design-system/pull/353) ([@marcbon](https://github.com/marcbon))
+- bookmark-tooltip-fix [#352](https://github.com/AppQuality/unguess-design-system/pull/352) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- Bookmark tooltip changes [#351](https://github.com/AppQuality/unguess-design-system/pull/351) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.91 (Fri May 17 2024)
 
 #### 🐛 Bug Fix
