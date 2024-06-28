@@ -223,8 +223,8 @@ const Word = (props: WordProps) => {
     () =>
       props.observations?.filter(
         (obs) =>
-          Number(props.start.toFixed(2)) >= Number(obs.start.toFixed(2)) &&
-          Number(props.end.toFixed(2)) <= Number(obs.end.toFixed(2))
+          Number(props.start.toFixed(8)) >= Number(obs.start.toFixed(8)) &&
+          Number(props.end.toFixed(8)) <= Number(obs.end.toFixed(8))
       ) ?? [],
     [props.observations, props.start, props.end]
   );
