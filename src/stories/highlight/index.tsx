@@ -1,4 +1,11 @@
-import { PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styled from "styled-components";
 import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
@@ -9,9 +16,11 @@ import { theme } from "../theme";
 import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
 import { CreateObservationButton } from "./CreateObservationButton";
 
-const StyledWord = styled.div<
-  WordProps & { observations?: Observation[] }
->`
+const getFocusedObs = (observations: Observation[]) => {
+  return observations.find((obs) => obs.isFocused);
+};
+
+const StyledWord = styled.div<WordProps & { observations?: Observation[] }>`
   display: inline-block;
   font-size: ${({ theme, size }) => theme.fontSizes[size ?? "md"]};
   padding: ${({ theme }) => theme.space.xxs} 0;
@@ -20,13 +29,20 @@ const StyledWord = styled.div<
   white-space: pre;
 
   ${({ observations, theme }) =>
-    observations && observations.length > 0 &&
+    observations &&
+    observations.length > 0 &&
     `
-      color: ${observations[observations.length - 1].color ?? theme.palette.grey[600]};
+      color: ${
+        observations[observations.length - 1].color ?? theme.palette.grey[600]
+      };
       box-sizing: border-box;
-      font-weight: ${theme.fontWeights.semibold};
+      font-weight: ${
+        getFocusedObs(observations)
+          ? theme.fontWeights.extrabold
+          : theme.fontWeights.semibold
+      };
+      font-style: ${getFocusedObs(observations) ? "italic" : "normal"};
       z-index: 1;
-
       &:focus {
         outline: none;
       }
@@ -45,7 +61,7 @@ const WordsContainer = styled.div`
   ${StyledWord}, span {
     &::selection {
       background-color: ${({ theme }) =>
-    getColor(theme.palette.grey, 400, undefined, 0.5)};
+        getColor(theme.palette.grey, 400, undefined, 0.5)};
     }
   }
 `;
@@ -59,7 +75,8 @@ const Layer = styled.div<{
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-color: ${({ color }) => getColor(color, undefined, undefined, 0.2)};
+  background-color: ${({ color }) =>
+    getColor(color, undefined, undefined, 0.2)};
 `;
 
 /**
@@ -82,7 +99,8 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   const activeSelection = document.getSelection();
 
   const extractText = (selection: Selection) => {
-    if (selection.anchorNode === null || selection.focusNode === null) return "";
+    if (selection.anchorNode === null || selection.focusNode === null)
+      return "";
     var range = selection.getRangeAt(0);
 
     var tempDiv = document.createElement("div");
@@ -121,9 +139,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
           const rects = range.getClientRects();
           const lastRect = rects[rects.length - 1];
           const containerRect =
-            ref && ref.current
-              ? ref.current.getBoundingClientRect()
-              : null;
+            ref && ref.current ? ref.current.getBoundingClientRect() : null;
 
           if (!lastRect || !containerRect) return;
 
@@ -178,10 +194,12 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
         <CreateObservationButton
           isAccent
           isPrimary
-          position={position ?? {
-            x: 0,
-            y: 0,
-          }}
+          position={
+            position ?? {
+              x: 0,
+              y: 0,
+            }
+          }
           onClick={() => onSelectionButtonClick(selection)}
         >
           <CreateObservationButton.StartIcon>
@@ -201,34 +219,40 @@ const Word = (props: WordProps) => {
     props.currentTime < props.end;
 
   // Are there any observations containing this word?
-  const foundObservations = useMemo(() =>
-    props.observations?.filter((obs) =>
-      props.start >= obs.start && props.end <= obs.end
-    ) ?? [], [props.observations, props.start, props.end]);
+  const foundObservations = useMemo(
+    () =>
+      props.observations?.filter(
+        (obs) =>
+          Number(props.start.toFixed(8)) >= Number(obs.start.toFixed(8)) &&
+          Number(props.end.toFixed(8)) <= Number(obs.end.toFixed(8))
+      ) ?? [],
+    [props.observations, props.start, props.end]
+  );
 
-  const ObsWord = useMemo(() => (
-    <StyledWord
-      {...props}
-      data-start={props.start}
-      data-end={props.end}
-      className={foundObservations.length > 0 ? "highlighted" : ""}
-      {...(foundObservations && { observations: foundObservations })}
-    >
-      {foundObservations.length > 0 && foundObservations.map((obs) => (
-        <Layer key={obs.id} color={obs.hue ?? theme.palette.grey[600]} />
-      ))}
-      {isActive ? (
-        <ActiveWord
-          data-start={props.start}
-          data-end={props.end}
-        >
+  const ObsWord = useMemo(
+    () => (
+      <StyledWord
+        {...props}
+        data-start={props.start}
+        data-end={props.end}
+        className={foundObservations.length > 0 ? "highlighted" : ""}
+        {...(foundObservations && { observations: foundObservations })}
+      >
+        {foundObservations.length > 0 &&
+          foundObservations.map((obs) => (
+            <Layer key={obs.id} color={obs.hue ?? theme.palette.grey[600]} />
+          ))}
+        {isActive ? (
+          <ActiveWord data-start={props.start} data-end={props.end}>
+            <Searchable text={props.text} />
+          </ActiveWord>
+        ) : (
           <Searchable text={props.text} />
-        </ActiveWord>
-      ) : (
-        <Searchable text={props.text} />
-      )}{" "}
-    </StyledWord>
-  ), [props, foundObservations, isActive]);
+        )}{" "}
+      </StyledWord>
+    ),
+    [props, foundObservations, isActive]
+  );
 
   if (props.tooltipContent !== undefined && foundObservations.length > 0) {
     return (
