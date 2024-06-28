@@ -1,3 +1,18 @@
+# v3.1.103 (Fri Jun 28 2024)
+
+#### 🐛 Bug Fix
+
+- release 20240628 [#399](https://github.com/AppQuality/unguess-design-system/pull/399) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- fix words in obs [#398](https://github.com/AppQuality/unguess-design-system/pull/398) ([@iDome89](https://github.com/iDome89))
+- Add highlited observations fix [#397](https://github.com/AppQuality/unguess-design-system/pull/397) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.102 (Fri Jun 21 2024)
 
 #### 🐛 Bug Fix
