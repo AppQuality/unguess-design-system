@@ -12,6 +12,7 @@ import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
 import { ProgressContextProvider } from "./context/progressContext";
+import { usePictureInPicture } from "./hooks/usePictureInPicture";
 
 /**
  * The Player is a styled media tag with custom controls
@@ -28,7 +29,7 @@ const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => (
 const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
   (props, forwardRef) => {
     const { context, togglePlay, setIsPlaying } = useVideoContext();
-    const { onCutHandler, bookmarks, isCutting } = props;
+    const { onCutHandler, bookmarks, isCutting, pipMode, onPipChange } = props;
     const videoRef = context.player?.ref.current;
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,8 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
     useImperativeHandle(forwardRef, () => videoRef as HTMLVideoElement, [
       videoRef,
     ]);
+
+    usePictureInPicture(videoRef, pipMode, onPipChange);
 
     useEffect(() => {
       if (videoRef) {

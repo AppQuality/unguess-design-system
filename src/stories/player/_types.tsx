@@ -4,7 +4,8 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   url: string;
   start?: number;
   end?: number;
-  enablePipOnScroll?: boolean;
+  pipMode?: "auto" | (() => boolean) | boolean;
+  onPipChange?: (isPip: boolean) => void;
   onCutHandler?: (time: number) => void;
   isCutting?: boolean;
   bookmarks?: IBookmark[];
