@@ -1,3 +1,20 @@
+# v3.1.104 (Tue Jul 02 2024)
+
+#### 🐛 Bug Fix
+
+- pipPlayer + chat improvements [#402](https://github.com/AppQuality/unguess-design-system/pull/402) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- feat: Add Picture-in-Picture functionality to Player component [#400](https://github.com/AppQuality/unguess-design-system/pull/400) ([@iacopolea](https://github.com/iacopolea))
+- fix: avatar type in the attachments lightbox is now the same as the a… [#401](https://github.com/AppQuality/unguess-design-system/pull/401) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 4
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.103 (Fri Jun 28 2024)
 
 #### 🐛 Bug Fix
