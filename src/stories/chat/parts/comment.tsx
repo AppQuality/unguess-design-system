@@ -176,6 +176,7 @@ export const Comment = ({
             header={header}
             author={{
               avatar: author.avatar,
+              avatarType: author.avatarType,
               name: author.name,
             }}
             date={date}
