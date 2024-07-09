@@ -17,24 +17,43 @@ export interface HighlightOptions {
 
 declare module "@tiptap/core" {
   interface Commands<ReturnType> {
-    highlight: {
+    baseHighlight: {
       /**
        * Set a highlight mark
        * @param attributes The highlight attributes
        * @example editor.commands.setHighlight({ color: 'red' })
        */
-      setHighlight: (attributes?: { color: string }) => ReturnType;
+      setBaseHighlight: (attributes?: { color: string }) => ReturnType;
       /**
        * Toggle a highlight mark
        * @param attributes The highlight attributes
        * @example editor.commands.toggleHighlight({ color: 'red' })
        */
-      toggleHighlight: (attributes?: { color: string }) => ReturnType;
+      toggleBaseHighlight: (attributes?: { color: string }) => ReturnType;
       /**
        * Unset a highlight mark
        * @example editor.commands.unsetHighlight()
        */
-      unsetHighlight: () => ReturnType;
+      unsetBaseHighlight: () => ReturnType;
+    };
+    positiveHighlight: {
+      /**
+       * Set a highlight mark
+       * @param attributes The highlight attributes
+       * @example editor.commands.setHighlight({ color: 'red' })
+       */
+      setPositiveHighlight: (attributes?: { color: string }) => ReturnType;
+      /**
+       * Toggle a highlight mark
+       * @param attributes The highlight attributes
+       * @example editor.commands.toggleHighlight({ color: 'red' })
+       */
+      togglePositiveHighlight: (attributes?: { color: string }) => ReturnType;
+      /**
+       * Unset a highlight mark
+       * @example editor.commands.unsetHighlight()
+       */
+      unsetPositiveHighlight: () => ReturnType;
     };
   }
 }
@@ -49,14 +68,23 @@ export const inputRegex = /(?:^|\s)(==(?!\s+==)((?:[^=]+))==(?!\s+==))$/;
  */
 export const pasteRegex = /(?:^|\s)(==(?!\s+==)((?:[^=]+))==(?!\s+==))/g;
 
+// Apply a fixed opacity to the color
+const hexToRgba = (hex: string, alpha?: number) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha || 0.5})`;
+};
+
 /**
  * This extension allows you to highlight text.
  * @see https://www.tiptap.dev/api/marks/highlight
  */
 export const Highlight = Mark.create<HighlightOptions>({
-  name: "baseMark",
+  name: "mark",
   priority: 1000,
   addOptions() {
+    console.log("loaded");
     return {
       color: "#ff489e",
       HTMLAttributes: {},
@@ -66,13 +94,20 @@ export const Highlight = Mark.create<HighlightOptions>({
   addAttributes() {
     return {
       color: {
-        default: null,
-        parseHTML: (element) =>
-          element.getAttribute("data-color") || element.style.backgroundColor,
+        default: "#ff489e",
+        parseHTML: (element) => {
+          console.log("parseHTML", element);
+          return (
+            element.getAttribute("data-color") || element.style.backgroundColor
+          );
+        },
         renderHTML: (attributes) => {
+          console.log("renderHTML", attributes);
           return {
             "data-color": this.options.color,
-            style: `background-color: ${attributes.color}; color: inherit`,
+            style: `background-color: ${hexToRgba(
+              attributes.color
+            )}; color: inherit; `,
           };
         },
       },
@@ -82,7 +117,7 @@ export const Highlight = Mark.create<HighlightOptions>({
   parseHTML() {
     return [
       {
-        tag: "mark",
+        tag: 'span[data-mark="mark"]',
       },
     ];
   },
@@ -97,17 +132,17 @@ export const Highlight = Mark.create<HighlightOptions>({
 
   addCommands() {
     return {
-      setHighlight:
+      setBaseHighlight:
         (attributes) =>
         ({ commands }) => {
           return commands.setMark(this.name, attributes);
         },
-      toggleHighlight:
+      toggleBaseHighlight:
         (attributes) =>
         ({ commands }) => {
           return commands.toggleMark(this.name, attributes);
         },
-      unsetHighlight:
+      unsetBaseHighlight:
         () =>
         ({ commands }) => {
           return commands.unsetMark(this.name);
@@ -119,7 +154,7 @@ export const Highlight = Mark.create<HighlightOptions>({
     return {
       "Mod-Shift-h": () => {
         console.log("fired");
-        return this.editor.commands.toggleHighlight();
+        return this.editor.commands.toggleBaseHighlight();
       },
     };
   },

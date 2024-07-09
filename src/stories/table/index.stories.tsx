@@ -1,28 +1,28 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { useState } from "react";
 import {
-  Table,
-  Head,
-  HeaderRow,
-  HeaderCell,
   Body,
-  Row,
-  Cell,
   Caption,
-  SortableCell
+  Cell,
+  Head,
+  HeaderCell,
+  HeaderRow,
+  Row,
+  SortableCell,
+  Table,
 } from ".";
 
 import { GroupedTable } from "./grouped";
 
-import { IRow, TableProps } from "./_types";
-import styled from "styled-components";
-import { Pagination } from "../pagination";
-import { XL } from "../typography/typescale";
 import getScrollbarSize from "dom-helpers/scrollbarSize";
 import { FixedSizeList } from "react-window";
-import { Field } from "../forms/field";
+import styled from "styled-components";
 import { Checkbox } from "../forms/checkbox";
+import { Field } from "../forms/field";
 import { Label } from "../label";
+import { Pagination } from "../pagination";
+import { XL } from "../typography/typescale";
+import { IRow, TableProps } from "./_types";
 
 const createRow = (
   item: IRow,
@@ -318,8 +318,9 @@ const isSelectAllChecked = (rows: IRow[]) => rows.every((row) => row.selected);
 const SelectionTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
   const [data, setData] = useState(items!);
   const [shiftEnabled, setShiftEnabled] = useState(false);
-  const [focusedRowIndex, setFocusedRowIndex] =
-    useState<number | undefined>(undefined);
+  const [focusedRowIndex, setFocusedRowIndex] = useState<number | undefined>(
+    undefined
+  );
 
   return (
     <div style={{ overflowX: "auto" }}>
