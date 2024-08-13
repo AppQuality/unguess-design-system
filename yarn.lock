@@ -131,6 +131,8 @@ __metadata:
     "@zendeskgarden/svg-icons": "npm:^6.31.1"
     auto: "npm:^11.1.1"
     formik: "npm:^2.2.9"
+    jest-playwright-preset: "npm:^4.0.0"
+    playwright: "npm:^1.46.0"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -17742,7 +17744,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright@npm:^1.14.0":
+"playwright@npm:^1.14.0, playwright@npm:^1.46.0":
   version: 1.46.0
   resolution: "playwright@npm:1.46.0"
   dependencies:
