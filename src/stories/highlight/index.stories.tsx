@@ -399,7 +399,8 @@ const Template: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
     to: number;
     text: string;
   }) => {
-    const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    const hue =
+      "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
     setObservations([
       ...observations,
       {
@@ -437,7 +438,7 @@ const Template: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
           onSelectionButtonClick: (part) => {
             onSelectionButtonClick(part);
             handleAddObservation(part);
-          }
+          },
         })}
       >
         {args.words.map((item, index) => (
@@ -458,7 +459,10 @@ const Template: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
   );
 };
 
-const VideoTemplate: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
+const VideoTemplate: StoryFn<StoryArgs> = ({
+  onSelectionButtonClick,
+  ...args
+}) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   const handleRef = useCallback((video: HTMLVideoElement) => {
@@ -485,7 +489,8 @@ const VideoTemplate: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) 
     to: number;
     text: string;
   }) => {
-    const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    const hue =
+      "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
     setObservations([
       ...observations,
       {
@@ -510,7 +515,7 @@ const VideoTemplate: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) 
                 onSelectionButtonClick: (part) => {
                   onSelectionButtonClick(part);
                   handleAddObservation(part);
-                }
+                },
               })}
             >
               {args.words.map((item, index) => (
@@ -571,7 +576,7 @@ WithTooltip.args = {
           </StyledTag>
         ))}
       </TagsWrapper>
-    )
+    ),
   })),
 };
 

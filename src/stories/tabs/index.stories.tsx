@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Tabs } from "./index";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
@@ -8,7 +8,7 @@ interface TabStoryArgs extends TabsArgs {
   items: { title: string; content: string; isDisabled?: boolean }[];
 }
 
-const Template: Story<TabStoryArgs> = (args) => (
+const Template: StoryFn<TabStoryArgs> = (args) => (
   <Row>
     <Col>
       <Tabs {...args} className="tabs-wrapper">
@@ -59,4 +59,4 @@ export default {
   parameters: {
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Tabs>;
+} as Meta<typeof Tabs>;

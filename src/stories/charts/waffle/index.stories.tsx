@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { WaffleChart } from ".";
 import { WaffleChartProps } from "./_types";
 
-const Template: Story<WaffleChartProps> = (args) => <WaffleChart {...args} />;
+const Template: StoryFn<WaffleChartProps> = (args) => <WaffleChart {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   width: "100%",
@@ -50,4 +50,4 @@ WithCustomTooltip.args = {
 export default {
   title: "Atoms/Charts/Waffle",
   component: WaffleChart,
-} as ComponentMeta<typeof WaffleChart>;
+} as Meta<typeof WaffleChart>;

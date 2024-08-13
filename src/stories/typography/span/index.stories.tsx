@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Span } from ".";
 import { SpanArgs } from "./_types";
 
-const Template: Story<SpanArgs> = (args) => <Span {...args} />;
+const Template: StoryFn<SpanArgs> = (args) => <Span {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -18,4 +18,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Span>;
+} as Meta<typeof Span>;

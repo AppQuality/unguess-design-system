@@ -69,7 +69,10 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
       <br />
       <Grid>
         <Row>
-          <Col xs="1" style={{ display: "flex", alignItems: "center", margin: 0 }}>
+          <Col
+            xs="1"
+            style={{ display: "flex", alignItems: "center", margin: 0 }}
+          >
             <VerticalLabel>Vertical Label</VerticalLabel>
           </Col>
           <Col xs="11" style={{ margin: 0 }}>
@@ -79,7 +82,13 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
         <Row>
           <Col xs="1" style={{ margin: 0 }}></Col>
           <Col xs="11" style={{ margin: 0 }}>
-            <div style={{ width: data.data.length * 150, maxWidth: "100%", marginTop: theme.space.md }}>
+            <div
+              style={{
+                width: data.data.length * 150,
+                maxWidth: "100%",
+                marginTop: theme.space.md,
+              }}
+            >
               <HorizontalLabel>Horizontal Label</HorizontalLabel>
             </div>
           </Col>
@@ -101,16 +110,23 @@ WithCustomTooltip.args = {
     return (
       <Tooltip>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {data?.icon}<Span isBold style={{ marginLeft: theme.space.xs, color: theme.palette.grey[600] }}>{cluster}</Span>
+          {data?.icon}
+          <Span
+            isBold
+            style={{
+              marginLeft: theme.space.xs,
+              color: theme.palette.grey[600],
+            }}
+          >
+            {cluster}
+          </Span>
         </div>
         {data?.customData && (
-          <MD style={{ marginTop: theme.space.xs }}>
-            {data?.customData}
-          </MD>
+          <MD style={{ marginTop: theme.space.xs }}>{data?.customData}</MD>
         )}
       </Tooltip>
-    )
-  }
+    );
+  },
 };
 
 export default {

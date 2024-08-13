@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Button } from "@zendeskgarden/react-buttons";
 import { Tooltip } from ".";
 import { TooltipArgs } from "./_types";
@@ -10,7 +10,7 @@ const defaultArgs: TooltipArgs = {
   children: <Button>Button</Button>,
 };
 
-const Template: Story<TooltipArgs> = ({ children, ...args }) => {
+const Template: StoryFn<TooltipArgs> = ({ children, ...args }) => {
   return <Tooltip {...args}>{children}</Tooltip>;
 };
 
@@ -28,4 +28,4 @@ Transparent.args = {
 export default {
   title: "Atoms/Tooltip",
   component: Tooltip,
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;

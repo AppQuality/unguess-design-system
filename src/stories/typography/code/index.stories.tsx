@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Code } from ".";
 import { CodeArgs } from "./_types";
 
-const Template: Story<CodeArgs> = (args) => <Code {...args} />;
+const Template: StoryFn<CodeArgs> = (args) => <Code {...args} />;
 
 const defaultArgs: CodeArgs = {
   children: "Equum cibum est optimum prandium est",
@@ -49,4 +49,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Code>;
+} as Meta<typeof Code>;

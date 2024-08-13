@@ -1,11 +1,11 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { LoginForm } from ".";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { Col } from "../grid/col";
 import { LoginFormArgs } from "./_types";
 
-const Template: Story<LoginFormArgs> = (args) => (
+const Template: StoryFn<LoginFormArgs> = (args) => (
   <Grid>
     <Row>
       <Col>
@@ -35,7 +35,9 @@ const defaultArgs: LoginFormArgs = {
   placeholderPassword: "Insert Password",
   passwordForgotLabel: "Forgot Password?",
   backToLabel: "Back to UNGUESS",
-  onBackClick: () => {alert("back ")},
+  onBackClick: () => {
+    alert("back ");
+  },
   validate: (values) => {
     let errors: any = {};
     if (!values.email) {
@@ -112,4 +114,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof LoginForm>;
+} as Meta<typeof LoginForm>;

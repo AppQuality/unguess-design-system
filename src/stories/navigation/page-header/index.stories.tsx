@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { PageHeaderMainProps } from "./_types";
 import { PageHeader } from ".";
 import { Anchor } from "../../buttons/anchor";
@@ -41,7 +41,7 @@ interface PageHeaderStoryProps {
   pageHeaderMainArgs: PageHeaderMainProps;
 }
 
-const CompleteHeaderTemplate: Story<PageHeaderStoryProps> = (args) => {
+const CompleteHeaderTemplate: StoryFn<PageHeaderStoryProps> = (args) => {
   const { pageHeaderMainArgs } = args;
 
   return (
@@ -88,10 +88,10 @@ const CompleteHeaderTemplate: Story<PageHeaderStoryProps> = (args) => {
   );
 };
 
-const CompleteHeaderEditableTemplate: Story<PageHeaderStoryProps> = (args) => {
+const CompleteHeaderEditableTemplate: StoryFn<PageHeaderStoryProps> = (args) => {
   const { pageHeaderMainArgs } = args;
   const [inputValue, setInputValue] = useState<string>(
-    (pageHeaderMainArgs.title as string) || ""
+    (pageHeaderMainArgs.title as string) || "",
   );
 
   return (
@@ -146,7 +146,7 @@ const CompleteHeaderEditableTemplate: Story<PageHeaderStoryProps> = (args) => {
   );
 };
 
-const FirstLevelTemplate: Story<PageHeaderStoryProps> = (args) => {
+const FirstLevelTemplate: StoryFn<PageHeaderStoryProps> = (args) => {
   const { pageHeaderMainArgs } = args;
 
   return (
@@ -178,7 +178,7 @@ const FirstLevelTemplate: Story<PageHeaderStoryProps> = (args) => {
   );
 };
 
-const SecondThirdLevelTemplate: Story<PageHeaderStoryProps> = (args) => {
+const SecondThirdLevelTemplate: StoryFn<PageHeaderStoryProps> = (args) => {
   const { pageHeaderMainArgs } = args;
 
   return (
@@ -223,9 +223,7 @@ const completeArgs: PageHeaderStoryProps = {
       >
         Button
       </Button>,
-      <Button size="large">
-        Please dress ignore me
-      </Button>,
+      <Button size="large">Please dress ignore me</Button>,
     ],
   },
   pageHeaderMainArgs: {
@@ -376,9 +374,7 @@ const SecondThirdLevelArgs: PageHeaderStoryProps = {
           <Button size="large" style={{ marginRight: theme.space.xs }}>
             Button 1
           </Button>
-          <Button size="large">
-            Button 2
-          </Button>
+          <Button size="large">Button 2</Button>
         </div>
       </StyledMeta>
     ),
@@ -416,4 +412,4 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof PageHeader>;
+} as Meta<typeof PageHeader>;

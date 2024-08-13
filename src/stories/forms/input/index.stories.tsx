@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Input } from ".";
 import { Field } from "../field";
 import { Label } from "../../label";
@@ -9,7 +9,7 @@ const defaultArgs: InputArgs = {
   focusInset: false,
 };
 
-const Template: Story<InputArgs> = (args) => {
+const Template: StoryFn<InputArgs> = (args) => {
   return (
     <Field>
       <Label isRegular={true}>Questa è la Label dell'Input</Label>
@@ -45,4 +45,4 @@ Error.args = {
 export default {
   title: "Molecules/Forms/Input",
   component: Input,
-} as ComponentMeta<typeof Input>;
+} as Meta<typeof Input>;

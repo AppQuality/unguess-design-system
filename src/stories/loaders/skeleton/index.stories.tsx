@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Skeleton } from ".";
 import { Col } from "../../grid/col";
 import { Row } from "../../grid/row";
@@ -9,7 +9,7 @@ const defaultArgs: SkeletonArgs = {
   isLight: false,
 };
 
-const Template: Story<SkeletonArgs> = (args) => {
+const Template: StoryFn<SkeletonArgs> = (args) => {
   return (
     <Row>
       <Col size={6}>
@@ -26,8 +26,8 @@ const Template: Story<SkeletonArgs> = (args) => {
         </XL>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -47,4 +47,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Skeleton>;
+} as Meta<typeof Skeleton>;

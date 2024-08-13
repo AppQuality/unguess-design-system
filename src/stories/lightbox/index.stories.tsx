@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Lightbox } from ".";
 import { LightboxArgs } from "./_types";
 import styled from "styled-components";
@@ -38,7 +38,7 @@ const defaultArgs: LightboxStoryArgs = {
   headerTitle: "Lightbox Title",
 };
 
-const Template: Story<LightboxStoryArgs> = (args) => {
+const Template: StoryFn<LightboxStoryArgs> = (args) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
@@ -145,4 +145,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Lightbox>;
+} as Meta<typeof Lightbox>;

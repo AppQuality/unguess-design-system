@@ -1,12 +1,12 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Tooltip } from "@zendeskgarden/react-tooltips";  //TODO: replace with unguess component
+import { Meta, StoryFn } from "@storybook/react";
+import { Tooltip } from "@zendeskgarden/react-tooltips"; //TODO: replace with unguess component
 import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
 import { IconButton } from ".";
 import { IconButtonArgs } from "./_types";
 import { Grid } from "@zendeskgarden/react-grid";
 import { Col, MD, Row, sizes, variants } from "../utils";
 
-const SizeTemplate: Story<IconButtonArgs> = (args) => (
+const SizeTemplate: StoryFn<IconButtonArgs> = (args) => (
   <Row>
     {sizes.map((size, i) => (
       <Col size={3} key={i}>
@@ -20,20 +20,16 @@ const SizeTemplate: Story<IconButtonArgs> = (args) => (
   </Row>
 );
 
-
-const Template: Story<IconButtonArgs> = (args) => {
+const Template: StoryFn<IconButtonArgs> = (args) => {
   return (
     <Grid>
       {variants.map((variant, i) => (
-      <>
-          <MD>
-            {Object.keys(variant)[0]}
-          </MD>
-        <SizeTemplate {...args} {...variant} key={i} />
-      </>
-      ))
-      }
-    </Grid >
+        <>
+          <MD>{Object.keys(variant)[0]}</MD>
+          <SizeTemplate {...args} {...variant} key={i} />
+        </>
+      ))}
+    </Grid>
   );
 };
 
@@ -70,4 +66,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof IconButton>;
+} as Meta<typeof IconButton>;

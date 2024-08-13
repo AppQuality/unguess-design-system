@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { HalfPieChart } from ".";
 import { PieChartProps } from "./_types";
 
-const Template: Story<PieChartProps> = (args) => <HalfPieChart {...args} />;
+const Template: StoryFn<PieChartProps> = (args) => <HalfPieChart {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -31,4 +31,4 @@ Default.args = {
 export default {
   title: "Atoms/Charts/HalfPie",
   component: HalfPieChart,
-} as ComponentMeta<typeof HalfPieChart>;
+} as Meta<typeof HalfPieChart>;

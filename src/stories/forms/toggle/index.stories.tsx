@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Toggle } from ".";
 import { Field } from "../field";
 import { Label } from "../../label";
@@ -12,7 +12,7 @@ interface ToggleStoryProps extends ToggleArgs {
   label: LabelArgs;
 }
 
-const Template: Story<ToggleStoryProps> = (args) => {
+const Template: StoryFn<ToggleStoryProps> = (args) => {
   return (
     <Row>
       <Col>
@@ -23,15 +23,15 @@ const Template: Story<ToggleStoryProps> = (args) => {
         </Field>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
   label: {
     ...BasicLabel.args,
-    isRegular: true
-  }
+    isRegular: true,
+  },
 };
 
 export default {
@@ -41,4 +41,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Toggle>;
+} as Meta<typeof Toggle>;

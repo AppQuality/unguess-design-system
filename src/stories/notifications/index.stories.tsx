@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import {
   Notification as UgNotification,
   ToastProvider as UgToastProvider,
@@ -46,7 +46,7 @@ const Toasts = ({ children, onClose, ...props }: NotificationArgs) => {
         | "top-end"
         | "bottom-start"
         | "bottom"
-        | "bottom-end"
+        | "bottom-end",
     ) => {
       return () => {
         addToast(
@@ -61,11 +61,11 @@ const Toasts = ({ children, onClose, ...props }: NotificationArgs) => {
               {children}
             </UgNotification>
           ),
-          { placement }
+          { placement },
         );
       };
     },
-    [addToast, props, children, onClose]
+    [addToast, props, children, onClose],
   );
 
   return (
@@ -83,7 +83,7 @@ const Toasts = ({ children, onClose, ...props }: NotificationArgs) => {
   );
 };
 
-const Template: Story<NotificationStoryProps> = ({
+const Template: StoryFn<NotificationStoryProps> = ({
   notificationArgs,
   toastProviderArgs,
 }) => {
@@ -97,9 +97,9 @@ const Template: Story<NotificationStoryProps> = ({
 export const ToastProvider = Template.bind({});
 ToastProvider.args = defaultArgs;
 
-const NotificationTemplate: Story<NotificationArgs> = ({
-  ...props
-}) => <UgNotification {...props} />;
+const NotificationTemplate: StoryFn<NotificationArgs> = ({ ...props }) => (
+  <UgNotification {...props} />
+);
 
 export const Notification = NotificationTemplate.bind({});
 Notification.args = defaultArgs.notificationArgs;
@@ -111,4 +111,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof UgNotification>;
+} as Meta<typeof UgNotification>;

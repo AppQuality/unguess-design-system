@@ -1,10 +1,10 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { theme } from "../theme";
 import { Avatar } from ".";
 import { AvatarArgs } from "./_types";
 import { ReactComponent as UserIcon } from "../../assets/icons/user-solo-stroke.svg";
 
-const Template: Story<AvatarArgs> = (args) => {
+const Template: StoryFn<AvatarArgs> = (args) => {
   const getChildren = (type: any) => {
     switch (type) {
       case "icon":
@@ -79,4 +79,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Avatar>;
+} as Meta<typeof Avatar>;

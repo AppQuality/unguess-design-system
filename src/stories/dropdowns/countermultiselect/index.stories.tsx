@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { CounterMultiselect } from ".";
 import { CounterMultiselectArgs } from "./_types";
 
@@ -16,7 +16,7 @@ const options = [
   { itemId: 7, label: "Potato" },
 ];
 
-const Template: Story<CounterMultiselectArgs> = ({ ...args }) => (
+const Template: StoryFn<CounterMultiselectArgs> = ({ ...args }) => (
   <div style={{ width: "300px" }}>
     <CounterMultiselect {...args} />
   </div>
@@ -30,4 +30,4 @@ Default.args = {
 export default {
   title: "Molecules/Dropdown/Multiselect With Counter",
   component: CounterMultiselect,
-} as ComponentMeta<typeof CounterMultiselect>;
+} as Meta<typeof CounterMultiselect>;

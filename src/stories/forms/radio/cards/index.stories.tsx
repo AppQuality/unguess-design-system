@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { RadioCard } from ".";
 import { RadioCardArgs } from "./_types";
 import { Field } from "../../field";
@@ -18,25 +18,29 @@ interface FormProps {
   };
 }
 
-const SingleTemplate: Story<RadioCardArgs> = (args) => {
+const SingleTemplate: StoryFn<RadioCardArgs> = (args) => {
   const [radioValue, setRadioValue] = useState("");
 
   const handleClick = (value: string) => {
     setRadioValue(value);
-  }
+  };
 
   return (
     <Field>
-      <RadioCard {...args} checked={radioValue === args.value} onChecked={handleClick} />
+      <RadioCard
+        {...args}
+        checked={radioValue === args.value}
+        onChecked={handleClick}
+      />
     </Field>
-  )
-}
+  );
+};
 
 export const SingleCard = SingleTemplate.bind({});
 SingleCard.args = {
   disabled: false,
   card: {
-    isFloating: false
+    isFloating: false,
   },
   label: "Smartphone",
   value: "1",
@@ -45,12 +49,12 @@ SingleCard.args = {
   name: "platform",
 };
 
-const FormTemplate: Story<FormProps> = (args) => {
+const FormTemplate: StoryFn<FormProps> = (args) => {
   const [radioValue, setRadioValue] = useState(args.cards[0].value);
 
   const handleClick = (value: string) => {
     setRadioValue(value);
-  }
+  };
 
   return (
     <form {...args.form}>
@@ -59,22 +63,28 @@ const FormTemplate: Story<FormProps> = (args) => {
           {args.cards.map((card) => (
             <Col>
               <Field style={{ height: "100%" }}>
-                <RadioCard {...card} checked={radioValue === card.value} onChecked={handleClick} />
+                <RadioCard
+                  {...card}
+                  checked={radioValue === card.value}
+                  onChecked={handleClick}
+                />
               </Field>
             </Col>
           ))}
         </Row>
-        <Row style={{ textAlign: "center", marginTop: theme.space.md, }}>
+        <Row style={{ textAlign: "center", marginTop: theme.space.md }}>
           <Col size={12}>
             <Field>
-              <Button type="submit" isPrimary>Submit</Button>
+              <Button type="submit" isPrimary>
+                Submit
+              </Button>
             </Field>
           </Col>
         </Row>
       </Grid>
     </form>
-  )
-}
+  );
+};
 
 export const MultipleCards = FormTemplate.bind({});
 MultipleCards.args = {
@@ -82,7 +92,7 @@ MultipleCards.args = {
     {
       disabled: false,
       card: {
-        isFloating: false
+        isFloating: false,
       },
       label: "Sito Web o Web App",
       icon: <SmartphoneIcon />,
@@ -93,7 +103,7 @@ MultipleCards.args = {
     {
       disabled: false,
       card: {
-        isFloating: false
+        isFloating: false,
       },
       label: "Mobile App",
       icon: <SmartphoneIcon />,
@@ -115,7 +125,7 @@ MultipleCards.args = {
       if (checked.length) alert("You have selected: " + checked.join(", "));
       return false;
     },
-  }
+  },
 };
 
 export default {
@@ -125,17 +135,17 @@ export default {
     indeterminate: {
       table: {
         disable: true,
-      }
+      },
     },
     icon: {
       table: {
         disable: true,
-      }
+      },
     },
     iconActive: {
       table: {
         disable: true,
-      }
+      },
     },
-  }
-} as ComponentMeta<typeof RadioCard>;
+  },
+} as Meta<typeof RadioCard>;

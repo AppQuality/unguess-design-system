@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
@@ -50,7 +50,7 @@ const ProfileModalComponent = ({ menuArgs, ...args }: ProfileModalArgs) => {
             ),
             {
               placement: "top",
-            }
+            },
           );
         },
       }}
@@ -58,7 +58,7 @@ const ProfileModalComponent = ({ menuArgs, ...args }: ProfileModalArgs) => {
   );
 };
 
-const Template: Story<ProfileModalArgs> = (args) => {
+const Template: StoryFn<ProfileModalArgs> = (args) => {
   return (
     <ToastProvider zIndex={9999}>
       <Row>
@@ -134,4 +134,4 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ProfileModal>;
+} as Meta<typeof ProfileModal>;

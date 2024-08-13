@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Autocomplete } from ".";
 import { Item } from "../item";
 import { Menu, Separator, MediaBody, MediaFigure } from "../menu";
@@ -34,7 +34,7 @@ const items = [
   { label: "Rubber tree", value: "item-3" },
 ];
 
-const Template: Story<AutocompleteStoryArgs> = (args) => {
+const Template: StoryFn<AutocompleteStoryArgs> = (args) => {
   const [selectedItem, setSelectedItem] = useState(items[0]);
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(items);
@@ -48,7 +48,7 @@ const Template: Story<AutocompleteStoryArgs> = (args) => {
     const matchedOptions = items.filter(
       (item) =>
         item.label.trim().toLowerCase().indexOf(value.trim().toLowerCase()) !==
-        -1
+        -1,
     );
 
     console.log("matchedOptions: ", matchedOptions);
@@ -140,7 +140,7 @@ const itemsMedia = [
   },
 ];
 
-const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
+const TemplateWithItemMedia: StoryFn<AutocompleteStoryArgs> = (args) => {
   const [selectedItem, setSelectedItem] = useState(itemsMedia[0]);
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(itemsMedia);
@@ -159,7 +159,7 @@ const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
     const matchedOptions = itemsMedia.filter(
       (item) =>
         item.label.trim().toLowerCase().indexOf(value.trim().toLowerCase()) !==
-        -1
+        -1,
     );
 
     console.log("matchedOptions: ", matchedOptions);
@@ -244,4 +244,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Autocomplete>;
+} as Meta<typeof Autocomplete>;

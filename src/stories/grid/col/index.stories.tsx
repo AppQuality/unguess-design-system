@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Col } from ".";
 import { ColArgs } from "./_types";
 
@@ -7,7 +7,7 @@ const defaultArgs: ColArgs = {
   children: "Column",
 };
 
-const Template: Story<typeof Col> = (args) => <Col {...args} />;
+const Template: StoryFn<typeof Col> = (args) => <Col {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = defaultArgs;
@@ -38,4 +38,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Col>;
+} as Meta<typeof Col>;

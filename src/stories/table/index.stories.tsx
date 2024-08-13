@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import {
   Table,
@@ -9,7 +9,7 @@ import {
   Row,
   Cell,
   Caption,
-  SortableCell
+  SortableCell,
 } from ".";
 
 import { GroupedTable } from "./grouped";
@@ -29,7 +29,7 @@ const createRow = (
   item: IRow,
   index: number,
   isStriped?: boolean,
-  isTruncated?: boolean
+  isTruncated?: boolean,
 ) => (
   <Row key={index} isStriped={isStriped && index % 2 === 0}>
     <Cell>{item.fruit}</Cell>
@@ -38,7 +38,7 @@ const createRow = (
   </Row>
 );
 
-const DefaultTemplate: Story<TableProps> = ({
+const DefaultTemplate: StoryFn<TableProps> = ({
   columns,
   items,
   isStriped,
@@ -63,7 +63,7 @@ const DefaultTemplate: Story<TableProps> = ({
         </Head>
         <Body>
           {items?.map((item, index) =>
-            createRow(item, index, isStriped, isTruncated)
+            createRow(item, index, isStriped, isTruncated),
           )}
         </Body>
       </Table>
@@ -114,7 +114,7 @@ export const Default = DefaultTemplate.bind({});
 Default.args = defaultArgs;
 
 /** GROUPED */
-const GroupedTemplate: Story<TableProps> = ({ ...args }) => {
+const GroupedTemplate: StoryFn<TableProps> = ({ ...args }) => {
   return (
     <div style={{ overflowX: "auto" }}>
       <GroupedTable {...args} />
@@ -192,7 +192,7 @@ const StyledTable = styled(Table)`
   margin-bottom: ${(p) => p.theme.space.md};
   min-width: 500px;
 `;
-const PaginationTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
+const PaginationTemplate: StoryFn<TableProps> = ({ columns, items, ...args }) => {
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -214,7 +214,7 @@ const PaginationTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
             : items
                 ?.slice(
                   currentPage * pageSize - pageSize,
-                  currentPage * pageSize
+                  currentPage * pageSize,
                 )
                 .map((item: IRow, index: number) => createRow(item, index))}
         </Body>
@@ -272,7 +272,7 @@ const StyledSpacerCell = styled(HeaderCell)`
   padding: 0;
   width: ${SCROLLBAR_SIZE}px;
 `;
-const ScrollTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
+const ScrollTemplate: StoryFn<TableProps> = ({ columns, items, ...args }) => {
   return (
     <div style={{ overflowX: "auto" }}>
       <Table style={{ minWidth: 400 }} {...args}>
@@ -316,11 +316,12 @@ const isSelectAllIndeterminate = (rows: IRow[]) => {
   return numSelectedRows > 0 && numSelectedRows < rows.length;
 };
 const isSelectAllChecked = (rows: IRow[]) => rows.every((row) => row.selected);
-const SelectionTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
+const SelectionTemplate: StoryFn<TableProps> = ({ columns, items, ...args }) => {
   const [data, setData] = useState(items!);
   const [shiftEnabled, setShiftEnabled] = useState(false);
-  const [focusedRowIndex, setFocusedRowIndex] =
-    useState<number | undefined>(undefined);
+  const [focusedRowIndex, setFocusedRowIndex] = useState<number | undefined>(
+    undefined,
+  );
 
   return (
     <div style={{ overflowX: "auto" }}>
@@ -434,7 +435,7 @@ type Direction = "asc" | "desc" | undefined;
 const sortData = (
   tableData: IRow[],
   sunExposureSort: Direction,
-  soilSort: Direction
+  soilSort: Direction,
 ) => {
   if (!sunExposureSort && !soilSort) {
     return tableData;
@@ -464,7 +465,7 @@ const sortData = (
     return 0;
   });
 };
-const SortTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
+const SortTemplate: StoryFn<TableProps> = ({ columns, items, ...args }) => {
   const [data, setData] = useState(items);
   const [sunExposureSort, setSunExposureSort] = useState<Direction>();
   const [soilSort, setSoilSort] = useState<Direction>();
@@ -582,7 +583,7 @@ const ScrollableRow = styled(Row).attrs({ role: "row" })`
 
 const ScrollableCell = styled(Cell).attrs({ role: "cell" })``;
 
-const VirtualScrollingTemplate: Story<TableProps> = ({
+const VirtualScrollingTemplate: StoryFn<TableProps> = ({
   columns,
   items,
   ...args
@@ -642,4 +643,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Table>;
+} as Meta<typeof Table>;

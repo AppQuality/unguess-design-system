@@ -1,5 +1,5 @@
 import { ModalArgs } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Modal, FooterItem, ModalClose } from ".";
 import { Button } from "../buttons/button";
 
@@ -35,10 +35,10 @@ const defaultArgs: ModalStoryArgs = {
   onClose: (e) => {
     alert("Close clicked");
     console.log(e);
-  }
+  },
 };
 
-const Template: Story<ModalStoryArgs> = (args) => {
+const Template: StoryFn<ModalStoryArgs> = (args) => {
   const { isDanger } = args;
 
   return (
@@ -54,7 +54,7 @@ const Template: Story<ModalStoryArgs> = (args) => {
         <FooterItem>
           <Button
             isPrimary
-            {...isDanger && { isDanger: true }}
+            {...(isDanger && { isDanger: true })}
             onClick={() => {
               alert("Ahoy!");
             }}
@@ -108,4 +108,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Modal>;
+} as Meta<typeof Modal>;

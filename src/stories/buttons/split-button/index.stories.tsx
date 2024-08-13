@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { Dropdown } from "../../dropdowns/select";
 import { Item } from "../../dropdowns/item";
@@ -10,7 +10,7 @@ import { ReactComponent as LeafIcon } from "../../../assets/icons/chevron-down-s
 import { SplitButton } from ".";
 import { SplitButtonArgs } from "./_types";
 
-const Template: Story<SplitButtonArgs> = (args) => {
+const Template: StoryFn<SplitButtonArgs> = (args) => {
   const [rotated, setRotated] = useState<boolean>();
   return (
     <SplitButton {...args}>
@@ -55,4 +55,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof IconButton>;
+} as Meta<typeof IconButton>;

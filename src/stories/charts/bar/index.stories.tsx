@@ -1,9 +1,9 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { BarChart } from ".";
 import { BarChartProps } from "./_types";
 import { data } from "./_data";
 
-const Template: Story<BarChartProps> = (args) => (
+const Template: StoryFn<BarChartProps> = (args) => (
   <BarChart
     width="100%"
     height="300px"
@@ -44,4 +44,4 @@ WithCustomTooltip.args = {
 export default {
   title: "Atoms/Charts/Bar",
   component: BarChart,
-} as ComponentMeta<typeof BarChart>;
+} as Meta<typeof BarChart>;

@@ -1,9 +1,8 @@
 import { DrawerArgs } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Drawer } from ".";
 import { Button } from "../buttons/button";
 import { LoremIpsum } from "./loremIpsum";
-
 
 const defaultArgs: DrawerArgs = {
   isOpen: true,
@@ -13,7 +12,7 @@ const defaultArgs: DrawerArgs = {
   },
 };
 
-const Template: Story<DrawerArgs> = (args) => {
+const Template: StoryFn<DrawerArgs> = (args) => {
   return (
     <Drawer isOpen={args.isOpen} onClose={args.onClose}>
       <Drawer.Header>What a title</Drawer.Header>
@@ -27,7 +26,12 @@ const Template: Story<DrawerArgs> = (args) => {
           </Button>
         </Drawer.FooterItem>
         <Drawer.FooterItem>
-          <Button isPrimary onClick={()=> {alert("Confirm clicked!")}}>
+          <Button
+            isPrimary
+            onClick={() => {
+              alert("Confirm clicked!");
+            }}
+          >
             Confirm
           </Button>
         </Drawer.FooterItem>
@@ -49,4 +53,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Drawer>;
+} as Meta<typeof Drawer>;

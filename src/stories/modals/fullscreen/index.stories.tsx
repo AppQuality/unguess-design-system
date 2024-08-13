@@ -1,5 +1,5 @@
 import { ModalArgs } from "../_types";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { ModalFullScreen } from ".";
 import { Button } from "../../buttons/button";
 import { Logo } from "../../logo";
@@ -24,10 +24,14 @@ const defaultArgs: ModalStoryArgs = {
   breadcrumbs: [
     {
       children: "ACME's Workspace",
-      onClick: () => { alert("ACME's Workspace clicked") }
+      onClick: () => {
+        alert("ACME's Workspace clicked");
+      },
     },
   ],
-  onClose: (e) => { alert("Close clicked"); }
+  onClose: (e) => {
+    alert("Close clicked");
+  },
 };
 
 const Container = styled.div`
@@ -37,7 +41,7 @@ const Container = styled.div`
   justify-content: flex-start;
 `;
 
-const Template: Story<ModalStoryArgs> = (args) => {
+const Template: StoryFn<ModalStoryArgs> = (args) => {
   const { isDanger, breadcrumbs } = args;
   const { width } = useWindowSize();
 
@@ -46,7 +50,12 @@ const Template: Story<ModalStoryArgs> = (args) => {
       <ModalFullScreen.Header isDanger={isDanger}>
         {width > parseInt(theme.breakpoints.sm) ? (
           <Container>
-            <Logo type="icon" size={25} style={{ marginRight: theme.space.xs }} /><Breadcrumb {...args}>
+            <Logo
+              type="icon"
+              size={25}
+              style={{ marginRight: theme.space.xs }}
+            />
+            <Breadcrumb {...args}>
               {breadcrumbs.map((item: any) => (
                 <Anchor {...item} />
               ))}
@@ -68,7 +77,7 @@ const Template: Story<ModalStoryArgs> = (args) => {
         <ModalFullScreen.FooterItem>
           <Button
             isPrimary
-            {...isDanger && { isDanger: true }}
+            {...(isDanger && { isDanger: true })}
             onClick={() => {
               alert("Ahoy!");
             }}
@@ -96,4 +105,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof ModalFullScreen>;
+} as Meta<typeof ModalFullScreen>;

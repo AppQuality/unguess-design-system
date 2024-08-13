@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { SunburstChart } from ".";
 import { SunburstChartProps } from "./_types";
 
-const Template: Story<SunburstChartProps> = (args) => (
+const Template: StoryFn<SunburstChartProps> = (args) => (
   <SunburstChart
     {...args}
     onChange={(data) => {
@@ -125,4 +125,4 @@ WithCustomTooltip.args = {
 export default {
   title: "Atoms/Charts/Sunburst",
   component: SunburstChart,
-} as ComponentMeta<typeof SunburstChart>;
+} as Meta<typeof SunburstChart>;

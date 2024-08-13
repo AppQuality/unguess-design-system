@@ -1,39 +1,54 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { LG, MD, SM, XL, XXL, XXXL } from "../index";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  margin-top: ${p => p.theme.space.sm};
+  margin-top: ${(p) => p.theme.space.sm};
 `;
 
-const AnchorTagTemplate: Story<any> = (args) => {
+const AnchorTagTemplate: StoryFn<any> = (args) => {
   return (
     <>
-      <SM {...args}>&lt;SM&gt;<a href="#sm">Veggies es bonus vobis proinde vos postulo</a></SM>
+      <SM {...args}>
+        &lt;SM&gt;<a href="#sm">Veggies es bonus vobis proinde vos postulo</a>
+      </SM>
       <StyledDiv>
-        <MD {...args}>&lt;MD&gt;<a href="#md">Veggies es bonus vobis proinde vos postulo</a></MD>
+        <MD {...args}>
+          &lt;MD&gt;<a href="#md">Veggies es bonus vobis proinde vos postulo</a>
+        </MD>
       </StyledDiv>
       <StyledDiv>
-        <LG {...args}>&lt;LG&gt;<a href="#lg">Veggies es bonus vobis proinde vos postulo</a></LG>
+        <LG {...args}>
+          &lt;LG&gt;<a href="#lg">Veggies es bonus vobis proinde vos postulo</a>
+        </LG>
       </StyledDiv>
-      {!args.isMonospace &&
+      {!args.isMonospace && (
         <>
           <StyledDiv>
-            <XL {...args}>&lt;XL&gt;<a href="#xl">Veggies es bonus vobis proinde vos postulo</a></XL>
+            <XL {...args}>
+              &lt;XL&gt;
+              <a href="#xl">Veggies es bonus vobis proinde vos postulo</a>
+            </XL>
           </StyledDiv>
           <StyledDiv>
-            <XXL {...args}>&lt;XXL&gt;<a href="#xxl">Veggies es bonus vobis proinde vos postulo</a></XXL>
+            <XXL {...args}>
+              &lt;XXL&gt;
+              <a href="#xxl">Veggies es bonus vobis proinde vos postulo</a>
+            </XXL>
           </StyledDiv>
           <StyledDiv>
-            <XXXL {...args}>&lt;XXXL&gt;<a href="#xxxl">Veggies es bonus vobis proinde vos postulo</a></XXXL>
+            <XXXL {...args}>
+              &lt;XXXL&gt;
+              <a href="#xxxl">Veggies es bonus vobis proinde vos postulo</a>
+            </XXXL>
           </StyledDiv>
         </>
-      }
+      )}
     </>
-  )
-}
+  );
+};
 
-export const AnchorTag = AnchorTagTemplate.bind({})
+export const AnchorTag = AnchorTagTemplate.bind({});
 AnchorTag.args = {
   isBold: false,
   isMonospace: false,
@@ -56,4 +71,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof MD>;
+} as Meta<typeof MD>;

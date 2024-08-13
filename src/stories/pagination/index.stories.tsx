@@ -1,9 +1,9 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { useEffect, useState } from "react";
 import { CursorPagination as CP, Pagination } from ".";
 import { PaginationProps } from "./_types";
 
-const CursorTemplate: Story<PaginationProps> = () => {
+const CursorTemplate: StoryFn<PaginationProps> = () => {
   const [cursor, setCursor] = useState(0);
 
   const pages = [0, 1, 2, 3, 4];
@@ -44,22 +44,22 @@ const CursorTemplate: Story<PaginationProps> = () => {
 
 const defaultArgs: PaginationProps = {
   currentPage: 1,
-  totalPages: 7
+  totalPages: 7,
 };
 export const CursorPagination = CursorTemplate.bind({});
 CursorPagination.args = defaultArgs;
 
-const PaginationTemplate: Story<PaginationProps> = ({...args}) => {
+const PaginationTemplate: StoryFn<PaginationProps> = ({ ...args }) => {
   const [page, setPage] = useState(args.currentPage);
   const [totalPages, setTotalPages] = useState(args.totalPages);
 
   useEffect(() => {
     setPage(args.currentPage);
-  }, [args.currentPage])
+  }, [args.currentPage]);
 
   useEffect(() => {
     setTotalPages(args.totalPages);
-  }, [args.totalPages])
+  }, [args.totalPages]);
 
   return (
     <Pagination
@@ -75,7 +75,7 @@ export const NumberedPagination = PaginationTemplate.bind({});
 NumberedPagination.args = {
   ...defaultArgs,
   pagePadding: 3,
-  pageGap: 1
+  pageGap: 1,
 };
 
 export default {
@@ -85,4 +85,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Pagination>;
+} as Meta<typeof Pagination>;

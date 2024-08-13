@@ -1,5 +1,6 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Accordion } from ".";
+import { userEvent, within, expect } from "@storybook/test";
 import { Row } from "../grid/row";
 import { Col } from "../grid/col";
 import { AccordionArgs } from "./_types";
@@ -11,11 +12,11 @@ interface AccordionStoryArg extends AccordionArgs {
   }>;
 }
 
-const Template: Story<AccordionStoryArg> = ({ items, ...args }) => {
+const Template: StoryFn<AccordionStoryArg> = ({ items, ...args }) => {
   return (
     <Row justifyContent="center">
       <Col sm={10}>
-        <Accordion {...args}>
+        <Accordion {...args} data-test-id="accordion">
           {items.map((item) => (
             <Accordion.Section>
               <Accordion.Header>
@@ -61,8 +62,8 @@ export const Default = Template.bind({});
 Default.args = defaultArgs;
 Default.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A80',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A80",
   },
 };
 
@@ -74,8 +75,8 @@ Bare.args = {
 
 Bare.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A86',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=245%3A86",
   },
 };
 
@@ -93,11 +94,10 @@ Compact.args = {
 
 Compact.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=1510%3A3230',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=1510%3A3230",
   },
 };
-
 
 export default {
   title: "Molecules/Accordion",
@@ -106,4 +106,9 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Accordion>;
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const accordion = canvas.getByTestId("accordion");
+    await userEvent.click(accordion);
+  },
+} as Meta<typeof Accordion>;

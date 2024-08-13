@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Anchor } from ".";
 import { IAnchorProps } from "@zendeskgarden/react-buttons";
 
@@ -8,7 +8,7 @@ const defaultArgs: IAnchorProps = {
   children: "Leave without watering",
 };
 
-const Template: Story<IAnchorProps> = (args) => <Anchor {...args} />;
+const Template: StoryFn<IAnchorProps> = (args) => <Anchor {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
@@ -18,8 +18,8 @@ Basic.args = {
 
 Basic.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26532',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26532",
   },
 };
 
@@ -32,8 +32,8 @@ Danger.args = {
 
 Danger.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26537',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26537",
   },
 };
 
@@ -53,5 +53,5 @@ export default {
       description: "The example text of anchor button",
       control: "text",
     },
-  }
-} as ComponentMeta<typeof Anchor>;
+  },
+} as Meta<typeof Anchor>;

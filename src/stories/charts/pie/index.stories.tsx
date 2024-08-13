@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { PieChart } from ".";
 import { PieChartProps } from "./_types";
 
-const Template: Story<PieChartProps> = (args) => (
+const Template: StoryFn<PieChartProps> = (args) => (
   <div
     style={{
       width: "350px",
@@ -102,12 +102,12 @@ WithCustomLabel.args = {
     data.data?.custom_data
       ? data.data.custom_data.toString()
       : labelPosition === "arclink"
-      ? `${label} ${id}`
-      : `${id}`,
+        ? `${label} ${id}`
+        : `${id}`,
   legend: true,
 };
 
 export default {
   title: "Atoms/Charts/Pie",
   component: PieChart,
-} as ComponentMeta<typeof PieChart>;
+} as Meta<typeof PieChart>;

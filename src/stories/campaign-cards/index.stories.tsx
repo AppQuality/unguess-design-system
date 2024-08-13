@@ -1,5 +1,5 @@
 import { CampaignCardsProps } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { CampaignCard } from "./index";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
@@ -32,7 +32,7 @@ const CardsContainer = styled.div`
   }
 `;
 
-const MultiTemplate: Story<CampaignCardsProps> = (args) => {
+const MultiTemplate: StoryFn<CampaignCardsProps> = (args) => {
   return (
     <CardsContainer>
       <StyledRow>
@@ -69,7 +69,7 @@ const MultiTemplate: Story<CampaignCardsProps> = (args) => {
   );
 };
 
-const SingleTemplate: Story<CampaignCardsProps> = (args) => {
+const SingleTemplate: StoryFn<CampaignCardsProps> = (args) => {
   return <CampaignCard {...args} />;
 };
 
@@ -102,4 +102,4 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof CampaignCard>;
+} as Meta<typeof CampaignCard>;

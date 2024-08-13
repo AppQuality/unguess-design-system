@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Editor as TipTapEditor } from "@tiptap/react";
 import { Editor } from ".";
 import { Col } from "../grid/col";
@@ -10,7 +10,7 @@ interface EditorStoryArgs extends EditorArgs {
   children?: any;
 }
 
-const Template: Story<EditorStoryArgs> = ({ children, ...args }) => {
+const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
   return (
     <Grid>
       <Row>
@@ -31,7 +31,7 @@ const defaultArgs: EditorStoryArgs = {
   onUpdate: ({ editor }) => {
     console.log(
       "Characters count:",
-      editor.storage.characterCount.characters()
+      editor.storage.characterCount.characters(),
     );
   },
 };
@@ -109,4 +109,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Editor>;
+} as Meta<typeof Editor>;

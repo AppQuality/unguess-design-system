@@ -1,9 +1,9 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { MultiSelect } from ".";
 import { MultiSelectProps } from "./_types";
 
-const Template: Story<MultiSelectProps> = (args) => {
+const Template: StoryFn<MultiSelectProps> = (args) => {
   return (
     <div style={{ width: "300px" }}>
       <MultiSelect {...args} />
@@ -36,7 +36,7 @@ Default.args = {
 };
 
 const patchMock = async (
-  options: { id?: number; label: string }[]
+  options: { id?: number; label: string }[],
 ): Promise<{ id: number; label: string }[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -51,7 +51,7 @@ const patchMock = async (
   });
 };
 
-const WithTagCreationTemplate: Story<MultiSelectProps> = (args) => {
+const WithTagCreationTemplate: StoryFn<MultiSelectProps> = (args) => {
   const [items, setItems] = useState(options);
   return (
     <div style={{ width: "300px" }}>
@@ -64,7 +64,7 @@ const WithTagCreationTemplate: Story<MultiSelectProps> = (args) => {
             ...(newLabel ? [{ label: newLabel }] : []),
           ]);
           const unselectedItems = options.filter(
-            (o) => !result.find((r) => r.id === o.id)
+            (o) => !result.find((r) => r.id === o.id),
           );
 
           setItems([
@@ -89,4 +89,4 @@ WithTagCreation.args = {
 export default {
   title: "Atoms/MultiSelect",
   component: MultiSelect,
-} as ComponentMeta<typeof MultiSelect>;
+} as Meta<typeof MultiSelect>;

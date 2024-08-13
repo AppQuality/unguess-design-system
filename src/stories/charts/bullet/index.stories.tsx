@@ -1,10 +1,10 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { theme } from "../../theme";
 import { BulletChart } from ".";
 import { BulletChartProps } from "./_types";
 import { Paragraph } from "@zendeskgarden/react-notifications";
 
-const TemplateBullet: Story<BulletChartProps> = (args) => (
+const TemplateBullet: StoryFn<BulletChartProps> = (args) => (
   <BulletChart {...args} />
 );
 export const Default = TemplateBullet.bind({});
@@ -15,27 +15,17 @@ Default.args = {
   values: [62.5],
 } as BulletChartProps;
 
-const TemplateWidget: Story<BulletChartProps> = (args) => {
+const TemplateWidget: StoryFn<BulletChartProps> = (args) => {
   return (
     <>
       <Paragraph style={{ marginBottom: theme.space.sm }}>
         Completamento Use Case
       </Paragraph>
-      <BulletChart
-        {...args}
-        ranges={[25, 50, 75, 100]}
-        values={[20]}
-      />
-      <Paragraph
-        style={{ marginBottom: theme.space.sm, marginTop: 20 }}
-      >
+      <BulletChart {...args} ranges={[25, 50, 75, 100]} values={[20]} />
+      <Paragraph style={{ marginBottom: theme.space.sm, marginTop: 20 }}>
         Tempo trascorso
       </Paragraph>
-      <BulletChart
-        {...args}
-        ranges={[25, 50, 75, 100]}
-        values={[100]}
-      />
+      <BulletChart {...args} ranges={[25, 50, 75, 100]} values={[100]} />
     </>
   );
 };
@@ -48,4 +38,4 @@ Widget.args = {
 export default {
   title: "Atoms/Charts/Bullet",
   component: BulletChart,
-} as ComponentMeta<typeof BulletChart>;
+} as Meta<typeof BulletChart>;

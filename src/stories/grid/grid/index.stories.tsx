@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Grid } from ".";
 import { Row } from "../row";
 import { Col } from "../col";
@@ -9,7 +9,7 @@ interface GridProps extends GridArgs {
   rows: Array<RowStoryArg>;
 }
 
-const Template: Story<GridProps> = ({ rows, ...args }) => {
+const Template: StoryFn<GridProps> = ({ rows, ...args }) => {
   return (
     <Grid {...args}>
       {rows.map((row) => (
@@ -60,7 +60,7 @@ EqualColumns.args = {
         },
       ],
     },
-  ]
+  ],
 };
 
 export const OneWiderColumn = Template.bind({});
@@ -96,10 +96,8 @@ OneWiderColumn.args = {
         },
       ],
     },
-  ]
+  ],
 };
-
-
 
 export default {
   title: "Molecules/Grid",
@@ -128,4 +126,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Grid>;
+} as Meta<typeof Grid>;

@@ -1,10 +1,10 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { AppHeader } from ".";
 import { AppHeaderArgs } from "./_types";
 import { Default as DefaultAvatar } from "../../avatar/index.stories";
 import { ReactComponent as ChangelogIcon } from "../../../assets/icons/megaphone-stroke.svg";
 
-const Template: Story<AppHeaderArgs> = (args) => <AppHeader {...args} />;
+const Template: StoryFn<AppHeaderArgs> = (args) => <AppHeader {...args} />;
 
 const defaultArgs = {
   isStandalone: true,
@@ -79,4 +79,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof AppHeader>;
+} as Meta<typeof AppHeader>;

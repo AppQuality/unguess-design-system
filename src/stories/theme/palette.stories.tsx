@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { HTMLAttributes } from "react";
 import { theme } from ".";
 import styled from "styled-components";
@@ -13,19 +13,17 @@ interface PaletteProps extends HTMLAttributes<HTMLDivElement> {
   palette: Array<{
     title: string;
     variants: Array<Variant>;
-  }>
+  }>;
 }
 
-
-
 const Section = styled.section`
-  margin-bottom: ${p => p.theme.space.xl};
+  margin-bottom: ${(p) => p.theme.space.xl};
   .sectionTitle {
-    margin-bottom: ${p => p.theme.space.md};
+    margin-bottom: ${(p) => p.theme.space.md};
   }
 `;
 const Ul = styled.ul`
-  border-radius: ${p => p.theme.borderRadii.lg};
+  border-radius: ${(p) => p.theme.borderRadii.lg};
   overflow: hidden;
   height: fit-content;
 `;
@@ -33,32 +31,55 @@ const Ul = styled.ul`
 const Li = styled.li<{ hex: string }>`
   background-color: ${({ hex }) => hex};
   color: ${({ hex }) => getTextColor(hex)};
-  padding: ${p => p.theme.space.sm};
+  padding: ${(p) => p.theme.space.sm};
 `;
 
 const ColorsLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: ${p => p.theme.space.xl} ${p => p.theme.space.lg};
+  grid-gap: ${(p) => p.theme.space.xl} ${(p) => p.theme.space.lg};
   max-width: 768px;
 `;
 
-const ColorSpec = styled(MD) <{ color: string }>`
+const ColorSpec = styled(MD)<{ color: string }>`
   color: ${({ color }) => color};
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const Template: Story<PaletteProps> = (props) => {
+const Template: StoryFn<PaletteProps> = (props) => {
   return (
     <div>
       <Section>
         <div className="sectionTitle">
           <LG>Reference:</LG>
         </div>
-        <p><small>Design principles <a href="https://garden.zendesk.com/design/color" target="_blank" rel="noreferrer">https://garden.zendesk.com/design/color (accessed 28 apr 2023)</a></small></p>
-        <p><small>Palette: <a href="https://garden.zendesk.com/components/palette" target="_blank" rel="noreferrer">https://garden.zendesk.com/components/palette (accessed 28 apr 2023)</a></small></p>
+        <p>
+          <small>
+            Design principles{" "}
+            <a
+              href="https://garden.zendesk.com/design/color"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://garden.zendesk.com/design/color (accessed 28 apr 2023)
+            </a>
+          </small>
+        </p>
+        <p>
+          <small>
+            Palette:{" "}
+            <a
+              href="https://garden.zendesk.com/components/palette"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://garden.zendesk.com/components/palette (accessed 28 apr
+              2023)
+            </a>
+          </small>
+        </p>
       </Section>
       <Section>
         <div className="sectionTitle">
@@ -70,7 +91,10 @@ const Template: Story<PaletteProps> = (props) => {
               {color.variants.map(({ name, hex }) => (
                 <Li hex={hex}>
                   <ColorSpec color={getTextColor(hex)}>
-                    <span>{color.title}{name !== color.title && `-${name}`}</span>
+                    <span>
+                      {color.title}
+                      {name !== color.title && `-${name}`}
+                    </span>
                     <span>{hex.toUpperCase()}</span>
                   </ColorSpec>
                 </Li>

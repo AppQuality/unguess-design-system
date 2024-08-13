@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Stepper } from ".";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
@@ -19,7 +19,7 @@ const StyledButtons = styled.div`
 
   & > button {
     margin-${(p) => (p.theme.rtl ? "right" : "left")}: ${(p) =>
-  p.theme.space.base * 3}px;
+      p.theme.space.base * 3}px;
 
     &:first-child {
       margin-${(p) => (p.theme.rtl ? "right" : "left")}: 0;
@@ -33,7 +33,7 @@ const StyledContainer = styled(ContainerCard)`
   }
 `;
 
-const Template: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
+const Template: StoryFn<StepperStoryProps> = ({ currentStep, ...args }) => {
   const [step, setStep] = useState(currentStep);
 
   const onNext = () => setStep(step + 1);
@@ -83,7 +83,7 @@ const Template: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
   );
 };
 
-const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
+const SplitTemplate: StoryFn<StepperStoryProps> = ({ currentStep, ...args }) => {
   const [step, setStep] = useState(currentStep);
   const [title, setTitle] = useState("");
   const onNext = () => setStep(step + 1);
@@ -158,7 +158,7 @@ const SplitTemplate: Story<StepperStoryProps> = ({ currentStep, ...args }) => {
                 {item.content}
                 <StyledButtons>{item.buttons}</StyledButtons>
               </ContainerCard>
-            )
+            ),
         )}
       </Col>
     </Row>
@@ -189,4 +189,4 @@ export default {
   //     control: { type: 'radio' },
   //   },
   // },
-} as ComponentMeta<typeof Stepper>;
+} as Meta<typeof Stepper>;

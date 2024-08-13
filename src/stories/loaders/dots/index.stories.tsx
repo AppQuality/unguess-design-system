@@ -1,19 +1,19 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from '../../theme';
+import { Meta, StoryFn } from "@storybook/react";
+import { theme } from "../../theme";
 import { Dots } from ".";
 import { DotsArgs } from "./_types";
 import { getColor } from "../../theme/utils";
 
 const defaultArgs: DotsArgs = {
-  size: '50'
+  size: "50",
 };
 
-const Template: Story<DotsArgs> = (args) => <Dots {...args} />
+const Template: StoryFn<DotsArgs> = (args) => <Dots {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  color: getColor(theme.colors.primaryHue, 600)
+  color: getColor(theme.colors.primaryHue, 600),
 };
 
 export default {
@@ -22,18 +22,18 @@ export default {
   argTypes: {
     size: {
       control: {
-        type: "number"
-      }
+        type: "number",
+      },
     },
     delayMS: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     duration: {
       table: {
-        disable: true
-      }
-    }
-  }
-} as ComponentMeta<typeof Dots>;
+        disable: true,
+      },
+    },
+  },
+} as Meta<typeof Dots>;

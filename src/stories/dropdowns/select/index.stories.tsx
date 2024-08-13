@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Dropdown, Select, Message } from ".";
 import { Item } from "../item";
 import { Menu } from "../menu";
@@ -28,7 +28,7 @@ const items = [
   { label: "Rubber tree", value: "item-3" },
 ];
 
-const Template: Story<MenuStoryArgs> = ({
+const Template: StoryFn<MenuStoryArgs> = ({
   items,
   menu,
   select,
@@ -132,4 +132,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;

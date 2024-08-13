@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Title } from "../title";
 import { ContainerCard } from ".";
 import { CardProps } from "./_types";
@@ -8,7 +8,7 @@ interface CardStoryProps extends CardProps {
   content: string;
 }
 
-const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
+const Template: StoryFn<CardStoryProps> = ({ title, content, ...args }) => {
   return (
     <ContainerCard {...args}>
       <Title>{title}</Title>
@@ -42,4 +42,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof ContainerCard>;
+} as Meta<typeof ContainerCard>;

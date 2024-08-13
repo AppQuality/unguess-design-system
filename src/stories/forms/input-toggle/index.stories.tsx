@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import styled from "styled-components";
 import { useState } from "react";
 import { InputToggle } from ".";
@@ -25,7 +25,7 @@ const TitleContainer = styled.div`
   flex-direction: column;
 `;
 
-const Template: Story<InputStoryArgs> = ({ value, isFocused, ...props }) => {
+const Template: StoryFn<InputStoryArgs> = ({ value, isFocused, ...props }) => {
   const [inputValue, setInputValue] = useState<string>((value as string) || "");
 
   return (
@@ -46,7 +46,7 @@ const Template: Story<InputStoryArgs> = ({ value, isFocused, ...props }) => {
   );
 };
 
-const TemplateWithLabel: Story<InputStoryArgs> = ({
+const TemplateWithLabel: StoryFn<InputStoryArgs> = ({
   label,
   value,
   isFocused,
@@ -121,8 +121,8 @@ export default {
     textSize: {
       control: {
         type: "select",
-        options: ['xs','sm','md','lg','xl','xxl', 'xxxl'],
+        options: ["xs", "sm", "md", "lg", "xl", "xxl", "xxxl"],
       },
-    }
+    },
   },
-} as ComponentMeta<typeof InputToggle>;
+} as Meta<typeof InputToggle>;

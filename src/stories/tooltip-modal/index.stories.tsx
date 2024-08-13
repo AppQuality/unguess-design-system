@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Button } from "../buttons/button";
 import { Row } from "../grid/row";
 import { Col } from "../grid/col";
 import { TooltipModal } from ".";
 import { TooltipModalArgs } from "./_types";
 
-const Template: Story<TooltipModalArgs> = (props) => {
+const Template: StoryFn<TooltipModalArgs> = (props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [referenceElement, setReferenceElement] =
     useState<HTMLButtonElement | null>();
@@ -93,4 +93,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof TooltipModal>;
+} as Meta<typeof TooltipModal>;

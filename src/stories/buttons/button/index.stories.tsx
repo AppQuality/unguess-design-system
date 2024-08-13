@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
 import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { Button } from ".";
@@ -6,7 +6,7 @@ import { ButtonArgs } from "./_types";
 import { Grid } from "@zendeskgarden/react-grid";
 import { Col, MD, Row, sizes, variants } from "../utils";
 
-const SizeTemplate: Story<ButtonArgs> = (args) => (
+const SizeTemplate: StoryFn<ButtonArgs> = (args) => (
   <Row>
     {sizes.map((size, i) => (
       <Col size={3} key={i}>
@@ -18,23 +18,20 @@ const SizeTemplate: Story<ButtonArgs> = (args) => (
   </Row>
 );
 
-
-const Template: Story<ButtonArgs> = (args) => {
+const Template: StoryFn<ButtonArgs> = (args) => {
   return (
     <Grid>
       {variants.map((variant, i) => (
         <>
-          <MD>
-            {Object.keys(variant)[0]}
-          </MD>
+          <MD>{Object.keys(variant)[0]}</MD>
           <SizeTemplate {...args} {...variant} key={i} />
         </>
       ))}
-    </Grid >
+    </Grid>
   );
 };
 
-const TemplateIcon: Story<ButtonArgs> = (args) => {
+const TemplateIcon: StoryFn<ButtonArgs> = (args) => {
   return (
     <Grid>
       <Row>
@@ -65,12 +62,11 @@ const TemplateIcon: Story<ButtonArgs> = (args) => {
   );
 };
 
-
 export const Default = Template.bind({});
 
 export const Basic = Template.bind({});
 Basic.args = {
-  isBasic: true
+  isBasic: true,
 };
 
 export const Primary = Template.bind({});

@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Title } from ".";
 import { TitleArgs } from "./_types";
 
-const Template: Story<TitleArgs> = (args) => <Title {...args} />;
+const Template: StoryFn<TitleArgs> = (args) => <Title {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -17,4 +17,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Title>;
+} as Meta<typeof Title>;

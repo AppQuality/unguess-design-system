@@ -1,19 +1,19 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from '../../theme';
-import { getColor } from '../../theme/utils';
+import { Meta, StoryFn } from "@storybook/react";
+import { theme } from "../../theme";
+import { getColor } from "../../theme/utils";
 import { Spinner } from ".";
 import { SpinnerArgs } from "./_types";
 
 const defaultArgs: SpinnerArgs = {
-  size: '50'
+  size: "50",
 };
 
-const Template: Story<SpinnerArgs> = (args) => <Spinner {...args} />
+const Template: StoryFn<SpinnerArgs> = (args) => <Spinner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  color: getColor(theme.colors.primaryHue, 600)
+  color: getColor(theme.colors.primaryHue, 600),
 };
 
 export default {
@@ -22,18 +22,18 @@ export default {
   argTypes: {
     size: {
       control: {
-        type: "number"
-      }
+        type: "number",
+      },
     },
     delayMS: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     duration: {
       table: {
-        disable: true
-      }
-    }
-  }
-} as ComponentMeta<typeof Spinner>;
+        disable: true,
+      },
+    },
+  },
+} as Meta<typeof Spinner>;

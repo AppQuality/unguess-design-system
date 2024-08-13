@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { SpecialCard } from ".";
 import { SpecialCardProps } from "./_types";
 import { ReactComponent as ExploratoryIcon } from "../../assets/icons/service-exploratory-icon.svg";
@@ -23,7 +23,7 @@ interface CardStoryProps extends SpecialCardProps {
   content: string;
 }
 
-const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
+const Template: StoryFn<CardStoryProps> = ({ title, content, ...args }) => {
   return (
     <SpecialCard {...args}>
       <SpecialCard.Meta justifyContent={"end"}>
@@ -59,12 +59,7 @@ const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
         </Button>
       </SpecialCard.Footer>
       <SpecialCard.Footer direction="column" justifyContent="center" noDivider>
-        <Button
-          isAccent
-          isPrimary
-          isPill
-          isStretched
-        >
+        <Button isAccent isPrimary isPill isStretched>
           Secondo bottone streched
         </Button>
       </SpecialCard.Footer>
@@ -90,4 +85,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof SpecialCard>;
+} as Meta<typeof SpecialCard>;

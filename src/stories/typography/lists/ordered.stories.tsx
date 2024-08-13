@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { OrderedList } from ".";
 import { OrderedListArgs } from "./_types";
 
-const OrderedTemplate: Story<OrderedListArgs> = ({ items, ...args }) => {
+const OrderedTemplate: StoryFn<OrderedListArgs> = ({ items, ...args }) => {
   return (
     <OrderedList {...args}>
       {items &&
@@ -17,7 +17,6 @@ const defaultArgs: OrderedListArgs = {
 
 export const Ordered = OrderedTemplate.bind({});
 Ordered.args = defaultArgs as OrderedListArgs;
-
 
 export default {
   title: "Atoms/Typography/Lists",
@@ -34,4 +33,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof OrderedList>;
+} as Meta<typeof OrderedList>;

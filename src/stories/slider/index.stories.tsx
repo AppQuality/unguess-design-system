@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Slider } from ".";
 import { XL, MD } from "../typography/typescale";
 import { SliderArgs } from "./_types";
@@ -24,7 +24,7 @@ const TextContainer = styled.div`
   padding: 40px;
 `;
 
-const Template: Story<SliderStoryArg> = ({ items, ...args }) => {
+const Template: StoryFn<SliderStoryArg> = ({ items, ...args }) => {
   return (
     <div style={{ height: "80vh" }}>
       <Slider {...args}>
@@ -119,4 +119,4 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Slider>;
+} as Meta<typeof Slider>;

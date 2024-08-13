@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Row } from ".";
 import { RowArgs } from "./_types";
 import { Col } from "../col";
@@ -26,7 +26,7 @@ const defaultArgs: RowStoryArg = {
   ],
 };
 
-const Template: Story<RowStoryArg> = ({cols, ...args}) => {
+const Template: StoryFn<RowStoryArg> = ({ cols, ...args }) => {
   return (
     <Row {...args}>
       {cols.map((col) => (
@@ -48,4 +48,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Row>;
+} as Meta<typeof Row>;

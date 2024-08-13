@@ -1,15 +1,18 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Paragraph } from "@zendeskgarden/react-typography";
 import { Ellipsis } from ".";
 import { MD } from "../typescale";
 
-
-const Template: Story<any> = ({width, ...args}) => {
-  const widthStyle = width ? {width: `${width}px`} : {};
+const Template: StoryFn<any> = ({ width, ...args }) => {
+  const widthStyle = width ? { width: `${width}px` } : {};
   return (
     <MD>
-      <Paragraph {...args}>&lt;Paragraph&gt; Equum cibum est optimum prandium est</Paragraph>
-      <Ellipsis style={widthStyle} {...args}>&lt;Ellipsis&gt; Equum cibum est optimum prandium est</Ellipsis>
+      <Paragraph {...args}>
+        &lt;Paragraph&gt; Equum cibum est optimum prandium est
+      </Paragraph>
+      <Ellipsis style={widthStyle} {...args}>
+        &lt;Ellipsis&gt; Equum cibum est optimum prandium est
+      </Ellipsis>
     </MD>
   );
 };
@@ -43,5 +46,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Ellipsis>;
-
+} as Meta<typeof Ellipsis>;

@@ -11,7 +11,7 @@ const Container = styled.div`
   height: 80vh;
 `;
 
-interface PlayerStoryArgs extends PlayerArgs { }
+interface PlayerStoryArgs extends PlayerArgs {}
 
 const defaultArgs: PlayerStoryArgs = {
   url: "https://s3.eu-west-1.amazonaws.com/appq.static/demo/098648899205a00f8311d929d3073499ef9d664b_1715352138.mp4",
@@ -37,7 +37,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
   ...args
 }) => {
   const [observations, setObservations] = useState<IBookmark[]>(
-    bookmarks || []
+    bookmarks || [],
   );
   const [start, setStart] = useState<number | undefined>(undefined);
 
@@ -60,7 +60,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
       ]);
       setStart(undefined);
     },
-    [observations, start]
+    [observations, start],
   );
 
   return (
@@ -101,9 +101,12 @@ const TemplateWithParagraphs: StoryFn<PlayerStoryArgs> = (args) => (
 
 const TemplateWithButtonForPip: StoryFn<PlayerStoryArgs> = (args) => {
   const [isPip, setIsPip] = useState(false);
-  const handlePipChange = useCallback((isPipFromPlayer: boolean) => {
-    setIsPip(isPipFromPlayer);
-  }, [setIsPip]);
+  const handlePipChange = useCallback(
+    (isPipFromPlayer: boolean) => {
+      setIsPip(isPipFromPlayer);
+    },
+    [setIsPip],
+  );
   return (
     <Container id="player.story.container">
       <Player {...args} pipMode={isPip} onPipChange={handlePipChange} />
@@ -112,17 +115,17 @@ const TemplateWithButtonForPip: StoryFn<PlayerStoryArgs> = (args) => {
       </Button>
       {Array.from({ length: 10 }).map((_, index) => (
         <p key={index}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
         </p>
       ))}
     </Container>
-  )
+  );
 };
 
 export const Basic = Template.bind({});
@@ -138,7 +141,7 @@ AutoPip.args = {
 
 export const ButtonPip = TemplateWithButtonForPip.bind({});
 ButtonPip.args = {
-  ...defaultArgs
+  ...defaultArgs,
 };
 
 export const Streaming = Template.bind({});

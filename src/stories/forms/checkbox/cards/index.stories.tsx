@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { CheckboxCard } from ".";
 import { CheckboxCardArgs } from "./_types";
 import { Field } from "../../field";
@@ -17,13 +17,18 @@ interface FormProps {
   };
 }
 
-const SingleTemplate: Story<CheckboxCardArgs> = (args) => {
+const SingleTemplate: StoryFn<CheckboxCardArgs> = (args) => {
   return (
     <Field>
-      <CheckboxCard {...args} name={"platform"} icon={<SmartphoneIcon />} iconActive={<SmartphoneActiveIcon />}></CheckboxCard>
+      <CheckboxCard
+        {...args}
+        name={"platform"}
+        icon={<SmartphoneIcon />}
+        iconActive={<SmartphoneActiveIcon />}
+      ></CheckboxCard>
     </Field>
-  )
-}
+  );
+};
 
 export const SingleCard = SingleTemplate.bind({});
 SingleCard.args = {
@@ -31,13 +36,15 @@ SingleCard.args = {
   disabled: false,
   defaultChecked: true,
   card: {
-    isFloating: false
+    isFloating: false,
   },
   label: "Smartphone",
-  onToggle: (checked: boolean) => { console.log("Checkbox isChecked?", checked); }
+  onToggle: (checked: boolean) => {
+    console.log("Checkbox isChecked?", checked);
+  },
 };
 
-const FormTemplate: Story<FormProps> = (args) => {
+const FormTemplate: StoryFn<FormProps> = (args) => {
   return (
     <form {...args.form}>
       <Grid>
@@ -45,22 +52,27 @@ const FormTemplate: Story<FormProps> = (args) => {
           {args.cards.map((card) => (
             <Col>
               <Field>
-                <CheckboxCard {...card} style={{ marginBottom: theme.space.sm}}/>
+                <CheckboxCard
+                  {...card}
+                  style={{ marginBottom: theme.space.sm }}
+                />
               </Field>
             </Col>
           ))}
         </Row>
-        <Row style={{ textAlign: "center", marginTop: theme.space.md, }}>
+        <Row style={{ textAlign: "center", marginTop: theme.space.md }}>
           <Col size={12}>
             <Field>
-              <Button type="submit" isPrimary>Submit</Button>
+              <Button type="submit" isPrimary>
+                Submit
+              </Button>
             </Field>
           </Col>
         </Row>
       </Grid>
     </form>
-  )
-}
+  );
+};
 
 export const MultipleCards = FormTemplate.bind({});
 MultipleCards.args = {
@@ -68,7 +80,7 @@ MultipleCards.args = {
     {
       disabled: false,
       card: {
-        isFloating: false
+        isFloating: false,
       },
       label: "Smartphone",
       icon: <SmartphoneIcon />,
@@ -80,7 +92,7 @@ MultipleCards.args = {
       disabled: false,
       card: {
         isFloating: false,
-        isDisabled: true
+        isDisabled: true,
       },
       label: "Tablet",
       icon: <SmartphoneIcon />,
@@ -91,7 +103,7 @@ MultipleCards.args = {
     {
       disabled: false,
       card: {
-        isFloating: false
+        isFloating: false,
       },
       label: "Desktop",
       icon: <SmartphoneIcon />,
@@ -113,7 +125,7 @@ MultipleCards.args = {
       if (checked.length) alert("You have selected: " + checked.join(", "));
       return false;
     },
-  }
+  },
 };
 
 export default {
@@ -123,17 +135,17 @@ export default {
     indeterminate: {
       table: {
         disable: true,
-      }
+      },
     },
     icon: {
       table: {
         disable: true,
-      }
+      },
     },
     iconActive: {
       table: {
         disable: true,
-      }
+      },
     },
-  }
-} as ComponentMeta<typeof CheckboxCard>;
+  },
+} as Meta<typeof CheckboxCard>;

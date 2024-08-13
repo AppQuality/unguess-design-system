@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { UnorderedList } from ".";
 import { UnorderedListArgs } from "./_types";
 
-const UnOrderedTemplate: Story<UnorderedListArgs> = ({ items, ...args }) => {
+const UnOrderedTemplate: StoryFn<UnorderedListArgs> = ({ items, ...args }) => {
   return (
     <UnorderedList {...args}>
       {items &&
@@ -33,4 +33,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof UnorderedList>;
+} as Meta<typeof UnorderedList>;

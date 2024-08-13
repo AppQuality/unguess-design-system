@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { MediaInput } from ".";
 import { Field } from "../field";
 import { Label } from "../../label";
@@ -14,7 +14,7 @@ const defaultArgs: MediaInputArgs = {
   placeholder: "Search something...",
 };
 
-const Template: Story<MediaInputArgs> = (args) => {
+const Template: StoryFn<MediaInputArgs> = (args) => {
   return (
     <Row>
       <Col sm={2}>
@@ -54,4 +54,4 @@ Error.args = {
 export default {
   title: "Molecules/Forms/MediaInput",
   component: MediaInput,
-} as ComponentMeta<typeof MediaInput>;
+} as Meta<typeof MediaInput>;

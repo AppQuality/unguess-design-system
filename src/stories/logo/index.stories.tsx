@@ -1,15 +1,15 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Logo } from ".";
 import { LogoArgs } from "./_types";
 
-const Template: Story<LogoArgs> = (args) => <Logo {...args} />
+const Template: StoryFn<LogoArgs> = (args) => <Logo {...args} />;
 
 const defaultArgs: LogoArgs = {
   type: "horizontal",
   size: 150,
   style: {},
-  className: ""
-}
+  className: "",
+};
 
 export const Default = Template.bind({});
 Default.args = defaultArgs;
@@ -21,4 +21,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as ComponentMeta<typeof Logo>;
+} as Meta<typeof Logo>;

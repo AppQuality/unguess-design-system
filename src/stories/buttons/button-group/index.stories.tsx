@@ -1,10 +1,13 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { ButtonGroup } from ".";
 import { Button } from "../button";
 import { Default, Basic } from "../button/index.stories";
 import { IButtonGroupProps } from "@zendeskgarden/react-buttons";
 
-const Template: Story<IButtonGroupProps & {items: any[];}> = ({ items, ...args }) => {
+const Template: StoryFn<IButtonGroupProps & { items: any[] }> = ({
+  items,
+  ...args
+}) => {
   return (
     <ButtonGroup {...args}>
       {items.map((item) => (
@@ -22,15 +25,15 @@ TwoItems.args = {
       ...Basic.args,
       children: "Item 1",
       value: "item-1",
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       ...Basic.args,
       children: "Item 2",
       value: "item-2",
-      onClick: () => {}
+      onClick: () => {},
     },
-  ]
+  ],
 };
 
 export const WithBorders = Template.bind({});
@@ -40,15 +43,15 @@ WithBorders.args = {
       ...Default.args,
       children: "Item 1",
       value: "item-1",
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       ...Default.args,
       children: "Item 2",
       value: "item-2",
-      onClick: () => {}
+      onClick: () => {},
     },
-  ]
+  ],
 };
 
 export const RoundedItems = Template.bind({});
@@ -59,28 +62,26 @@ RoundedItems.args = {
       children: "Item 1",
       value: "item-1",
       isPill: true,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       ...Basic.args,
       children: "Item 2",
       value: "item-2",
       isPill: true,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       ...Basic.args,
       children: "Item 3",
       value: "item-3",
       isPill: true,
-      onClick: () => {}
-    }
-  ]
+      onClick: () => {},
+    },
+  ],
 };
-
 
 export default {
   title: "Atoms/Buttons/ButtonGroup",
-  component: ButtonGroup
-
-} as ComponentMeta<typeof ButtonGroup>;
+  component: ButtonGroup,
+} as Meta<typeof ButtonGroup>;

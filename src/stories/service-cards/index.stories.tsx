@@ -1,5 +1,5 @@
 import { ServiceCardsProps } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { ServiceCard } from "./index";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
@@ -27,25 +27,16 @@ const defaultArgs: ServiceCardsProps = {
   hoverSubtitle:
     "We assign our experienced testers test cases, such as purchasing with a credit card or creating an account, and they will detect the bugs.",
   hoverButtons: [
-    <Button
-      isStretched
-      size="small"
-      isAccent
-    >
+    <Button isStretched size="small" isAccent>
       Come funziona
     </Button>,
-    <Button
-      isPrimary
-      isStretched
-      size="small"
-      isAccent
-    >
+    <Button isPrimary isStretched size="small" isAccent>
       Lancia campagna
     </Button>,
   ],
 };
 
-const SingleTemplate: Story<ServiceCardsProps> = (args) => {
+const SingleTemplate: StoryFn<ServiceCardsProps> = (args) => {
   return <ServiceCard {...args} />;
 };
 
@@ -54,7 +45,7 @@ SingleCard.args = {
   ...defaultArgs,
 };
 
-const MultiTemplate: Story<ServiceCardsProps> = (args) => {
+const MultiTemplate: StoryFn<ServiceCardsProps> = (args) => {
   return (
     <Row>
       <Col size={3}>
@@ -93,4 +84,4 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ServiceCard>;
+} as Meta<typeof ServiceCard>;

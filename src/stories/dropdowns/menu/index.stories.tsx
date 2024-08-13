@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
-import { ComponentMeta, Story } from '@storybook/react';
-import { Row } from '../../grid/row';
-import { Col } from '../../grid/col';
-import { Dropdown } from '../select';
-import { Trigger } from '../../trigger';
-import { Menu, NextItem, PreviousItem, Separator } from '.';
-import { Item } from '../item';
-import { Button } from '@zendeskgarden/react-buttons';
+import { Meta, StoryFn } from "@storybook/react";
+import { Row } from "../../grid/row";
+import { Col } from "../../grid/col";
+import { Dropdown } from "../select";
+import { Trigger } from "../../trigger";
+import { Menu, NextItem, PreviousItem, Separator } from ".";
+import { Item } from "../item";
+import { Button } from "@zendeskgarden/react-buttons";
 
 const items = [
   {
@@ -50,17 +50,19 @@ const items = [
     label: "Functional Testing (Bug Hunting, Customer Feedbacks & Special)",
     value: "9",
   },
-]
+];
 
-const Template: Story<any> = (args) => {
+const Template: StoryFn<any> = (args) => {
   const [rotated, setRotated] = useState<boolean | undefined>();
 
   return (
     <Row>
       <Col textAlign="center">
         <Dropdown
-          onSelect={item => alert(`You choose ${item.label}`)}
-          onStateChange={options => Object.hasOwn(options, 'isOpen') && setRotated(options.isOpen)}
+          onSelect={(item) => alert(`You choose ${item.label}`)}
+          onStateChange={(options) =>
+            Object.hasOwn(options, "isOpen") && setRotated(options.isOpen)
+          }
         >
           <Trigger>
             <Button>
@@ -72,10 +74,7 @@ const Template: Story<any> = (args) => {
           </Trigger>
           <Menu>
             {items.map((item) => (
-              <Item
-                key={item.value}
-                value={item}
-              >
+              <Item key={item.value} value={item}>
                 {item.label}
               </Item>
             ))}
@@ -88,12 +87,12 @@ const Template: Story<any> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   // ...defaultArgs
-}
+};
 
-const NestedTemplate: Story<any> = (args) => {
+const NestedTemplate: StoryFn<any> = (args) => {
   const [state, setState] = useState({
     isOpen: false,
-    tempSelectedItem: undefined
+    tempSelectedItem: undefined,
   });
 
   return (
@@ -101,22 +100,22 @@ const NestedTemplate: Story<any> = (args) => {
       <Col textAlign="center">
         <Dropdown
           isOpen={state.isOpen}
-          onSelect={item => {
-            if (item !== 'fruits' && item !== 'berry') {
+          onSelect={(item) => {
+            if (item !== "fruits" && item !== "berry") {
               alert(`You picked a ${item}`);
             }
           }}
           onStateChange={(changes, stateAndHelpers) => {
             const updatedState: any = {};
 
-            if (Object.hasOwn(changes, 'isOpen')) {
+            if (Object.hasOwn(changes, "isOpen")) {
               updatedState.isOpen =
-                changes.selectedItem === 'berry' ||
-                changes.selectedItem === 'fruits' ||
+                changes.selectedItem === "berry" ||
+                changes.selectedItem === "fruits" ||
                 changes.isOpen;
             }
 
-            if (Object.hasOwn(changes, 'selectedItem')) {
+            if (Object.hasOwn(changes, "selectedItem")) {
               updatedState.tempSelectedItem = changes.selectedItem;
               stateAndHelpers.setHighlightedIndex(1);
             }
@@ -135,7 +134,7 @@ const NestedTemplate: Story<any> = (args) => {
             </Button>
           </Trigger>
           <Menu placement="end">
-            {state.tempSelectedItem === 'berry' ? (
+            {state.tempSelectedItem === "berry" ? (
               <>
                 <PreviousItem value="fruits">Fruit</PreviousItem>
                 <Separator />
@@ -161,5 +160,5 @@ export const Nested = NestedTemplate.bind({});
 
 export default {
   title: "Molecules/Dropdown/Menu",
-  component: Menu
-} as ComponentMeta<typeof Menu>
+  component: Menu,
+} as Meta<typeof Menu>;
