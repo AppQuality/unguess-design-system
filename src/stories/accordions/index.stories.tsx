@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { Accordion } from ".";
-import { userEvent, within, expect } from "@storybook/test";
+import { userEvent, within, expect, getByRole } from "@storybook/test";
 import { Row } from "../grid/row";
 import { Col } from "../grid/col";
 import { AccordionArgs } from "./_types";
@@ -31,30 +31,29 @@ const Template: StoryFn<AccordionStoryArg> = ({ items, ...args }) => {
   );
 };
 
-const accordionContent = {
-  headerTitle: "Equum cibum est optimum prandium est",
-  content:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-};
+const accordionItems = [
+  {
+    headerTitle: "(1) Equum cibum est optimum prandium est",
+    content:
+      "This is the first content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  },
+  {
+    headerTitle: "(2) Equum cibum est optimum prandium est",
+    content:
+      "This is the second content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  },
+  {
+    headerTitle: "(3) Equum cibum est optimum prandium est",
+    content:
+      "This is the third content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  }
+];
 
 const defaultArgs: AccordionStoryArg = {
   isBare: false,
   isExpandable: false,
   isAnimated: true,
-  items: [
-    {
-      ...accordionContent,
-      headerTitle: "(1) " + accordionContent.headerTitle,
-    },
-    {
-      ...accordionContent,
-      headerTitle: "(2) " + accordionContent.headerTitle,
-    },
-    {
-      ...accordionContent,
-      headerTitle: "(3) " + accordionContent.headerTitle,
-    },
-  ],
+  items: accordionItems,
   level: 4,
 };
 
@@ -85,6 +84,16 @@ Expandable.args = {
   ...defaultArgs,
   isExpandable: true,
 };
+// overrride the play function to test the expandable accordion, which can have all the sections expanded
+Expandable.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const accordionButton = getByRole(canvasElement, 'button', { name: accordionItems[accordionItems.length-1].headerTitle })
+  await userEvent.click(accordionButton);
+  const accordionContentFirst = canvas.getByText(accordionItems[0].content).parentNode;
+  const accordionContentLast = canvas.getByText(accordionItems[accordionItems.length-1].content).parentNode;
+  expect(accordionContentFirst).toHaveAttribute("aria-hidden", "false");
+  expect(accordionContentLast).toHaveAttribute("aria-hidden", "false");
+}
 
 export const Compact = Template.bind({});
 Compact.args = {
@@ -108,7 +117,11 @@ export default {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const accordion = canvas.getByTestId("accordion");
-    await userEvent.click(accordion);
+    const accordionButton = getByRole(canvasElement, 'button', { name: accordionItems[accordionItems.length-1].headerTitle })
+    await userEvent.click(accordionButton);
+    const accordionContentFirst = canvas.getByText(accordionItems[0].content).parentNode;
+    const accordionContentLast = canvas.getByText(accordionItems[accordionItems.length-1].content).parentNode;
+    expect(accordionContentFirst).toHaveAttribute("aria-hidden", "true");
+    expect(accordionContentLast).toHaveAttribute("aria-hidden", "false");
   },
 } as Meta<typeof Accordion>;
