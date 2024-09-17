@@ -1,14 +1,13 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { styled } from "styled-components";
-import { Highlight } from ".";
 import useDebounce from "../../hooks/useDebounce";
 import { Tag } from "../tags";
 import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { HighlightContextProvider } from "./highlightContext";
-import { HighlightNew } from "./transcript";
+import { HighlightNew } from ".";
 
 const words = [
   { end: 1.04, text: "I", start: 0.88, speaker: 0 },

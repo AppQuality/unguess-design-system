@@ -53,6 +53,7 @@ export const pasteRegex = /(?:^|\s)(==(?!\s+==)((?:[^=]+))==(?!\s+==))/g;
  * This extension allows you to highlight text.
  * @see https://www.tiptap.dev/api/marks/highlight
  */
+
 export const NegativeHighlight = Mark.create<HighlightOptions>({
   name: "baseMark",
 
@@ -82,7 +83,7 @@ export const NegativeHighlight = Mark.create<HighlightOptions>({
   parseHTML() {
     return [
       {
-        tag: "negative",
+        tag: "negative", //<negative> tagsddfs </negative>
       },
     ];
   },

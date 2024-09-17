@@ -19,8 +19,8 @@ export const FloatingMenu = (props: FloatingMenuArgs) => {
   const { editor, triggerSelection } = props;
 
   const shouldShow = (props: ShouldShowProps): boolean => {
-    // console.log("shouldShow", editor, view, state, oldState, from, to);
-    return true;
+    // At least a word selected?", props.from !== props.to);
+    return props.from !== props.to;
   };
 
   if (!editor) {
@@ -31,11 +31,7 @@ export const FloatingMenu = (props: FloatingMenuArgs) => {
   return (
     <BubbleMenu editor={editor} shouldShow={shouldShow}>
       <MenuContainer className="bubble-menu">
-        <Button
-          isAccent
-          isPrimary
-          onClick={triggerSelection}
-        >
+        <Button isAccent isPrimary onClick={triggerSelection}>
           <Button.StartIcon>
             <TagIcon />
           </Button.StartIcon>
