@@ -13,9 +13,9 @@ import { useState } from "react";
 import { MD, SM } from "../../typography/typescale";
 
 interface SettingsProps extends MenuItemProps {
-  settingValue?: number;
+  settingValue?: string;
 
-  onSetSettings?: (value: number) => void;
+  onSetSettings?: (value: string) => void;
   i18n?: {
     settingsTitle?: string;
     settingsIntroText?: string;
@@ -53,9 +53,9 @@ const SettingsOutroText = styled(Paragraph)`
 `;
 
 export const SettingsItem = (props: SettingsProps) => {
-  const [value, setValue] = useState(props.settingValue || 0);
+  const [value, setValue] = useState(props.settingValue || "0");
 
-  const onToggleSettings = (value: number) => {
+  const onToggleSettings = (value: string) => {
     setValue(value);
     props.onSetSettings && props.onSetSettings(value);
   };
@@ -77,11 +77,11 @@ export const SettingsItem = (props: SettingsProps) => {
             {props.i18n?.settingsToggle?.title}
           </TriggerTitle>
           <Toggle
-            checked={value === 1}
-            onChange={() => onToggleSettings(value === 1 ? 0 : 1)}
+            checked={value === "1"}
+            onChange={() => onToggleSettings(value === "1" ? "0" : "1")}
           >
             <Label>
-              {value === 1
+              {value === "1"
                 ? props.i18n?.settingsToggle?.on
                 : props.i18n?.settingsToggle?.off}
             </Label>

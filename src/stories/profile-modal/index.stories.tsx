@@ -112,9 +112,9 @@ const defaultArgs: UserMenuArgs = {
       off: "No",
     },
   },
-  settingValue: 0,
-  onSetSettings: (value: number) => {
-    alert(value === 1 ? "Notifications enabled" : "Notifications disabled");
+  settingValue: "0",
+  onSetSettings: (value: string) => {
+    alert(value === "1" ? "Notifications enabled" : "Notifications disabled");
   },
 };
 
