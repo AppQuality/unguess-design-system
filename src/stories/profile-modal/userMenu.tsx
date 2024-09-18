@@ -21,6 +21,9 @@ const StyledList = styled.ul`
 export const UserMenu = (props: UserMenuArgs) => {
   const [item, setActiveItem] = useState("");
 
+  // set disableMenuLanguageSettings to false to enable the language selector menu item
+  const disableMenuLanguageSettings = true;
+
   const toggleItem = (item: string) => {
     setActiveItem(item);
   };
@@ -77,8 +80,9 @@ export const UserMenu = (props: UserMenuArgs) => {
           }}
           onSetSettings={props.onSetSettings}
         />
-        {false && (
+        {
           <LanguageItem
+            disabled={disableMenuLanguageSettings}
             title={props.languageTitle || "Change Language"}
             value={"language-selector"}
             selectedItem={item}
@@ -88,7 +92,7 @@ export const UserMenu = (props: UserMenuArgs) => {
             currentLanguageLabel={props.currentLanguageLabel}
             onSelectLanguage={(lang) => props.onSelectLanguage(lang)}
           />
-        )}
+        }
         <MenuItem
           selectedItem={item}
           icon={<LockIcon color={theme.palette.blue[600]} />}
