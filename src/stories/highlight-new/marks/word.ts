@@ -1,4 +1,3 @@
-import Paragraph from "@tiptap/extension-paragraph";
 import { Node } from "@tiptap/core";
 
 // export interface WordOptions {
@@ -44,7 +43,6 @@ export const Word = Node.create({
   content: "text*",
   group: "inline",
   inline: true,
-  atom: true,
   addAttributes() {
     return {
       "data-start": {

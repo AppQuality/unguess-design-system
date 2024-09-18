@@ -1,7 +1,7 @@
+import { BubbleMenuProps, Content, Editor } from "@tiptap/react";
 import { ISpanProps } from "@zendeskgarden/react-typography";
 import { ReactNode } from "react";
 import { IBookmark } from "../player/_types";
-import { BubbleMenuProps } from "@tiptap/react";
 
 export interface HighlightArgs {
   /**
@@ -18,16 +18,20 @@ export interface HighlightArgs {
   /** Adjusts the font size. By default font size is medium */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
   search?: string;
-  onSelectionButtonClick?: (part: {
-    from: number;
-    to: number;
-    text: string;
-  }) => void;
+  onSelectionButtonClick?: (
+    editor: Editor,
+    part: {
+      from: number;
+      to: number;
+      text: string;
+    }
+  ) => void;
   i18n?: {
     selectionButtonLabel: string;
   };
   observations?: Observation[];
   words?: WordProps[];
+  content: Content;
 }
 
 export interface Observation extends Omit<IBookmark, "onClick"> {
@@ -51,4 +55,27 @@ export interface HighlightRange {
 
 export interface FloatingMenuArgs extends Partial<BubbleMenuProps> {
   triggerSelection?: () => void;
+}
+
+type HighlightCommandsAttributes = Record<string, any>;
+
+type HighlightCommands<Name extends string, ReturnType> = Record<
+  `${Name}Highlight`,
+  Record<
+    `set${Capitalize<Name>}Highlight`,
+    (attributes?: HighlightCommandsAttributes) => ReturnType
+  > &
+    Record<
+      `toggle${Capitalize<Name>}Highlight`,
+      (attributes?: HighlightCommandsAttributes) => ReturnType
+    > &
+    Record<`unset${Capitalize<Name>}Highlight`, () => ReturnType>
+>;
+
+declare module "@tiptap/core" {
+  interface Commands<ReturnType>
+    extends HighlightCommands<"base", ReturnType>,
+      HighlightCommands<"positive", ReturnType>,
+      HighlightCommands<"active", ReturnType>,
+      HighlightCommands<"negative", ReturnType> {}
 }

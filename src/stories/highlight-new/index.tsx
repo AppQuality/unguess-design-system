@@ -2,24 +2,20 @@ import Document from "@tiptap/extension-document";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import {
-  Content,
   EditorContent,
   Editor as TipTapEditor,
   useEditor,
 } from "@tiptap/react";
-import {
-  PropsWithChildren,
-  KeyboardEvent as ReactKeyboardEvent,
-  useEffect,
-  useState,
-} from "react";
+import { PropsWithChildren, useEffect } from "react";
 import styled from "styled-components";
 import { getColor } from "../theme/utils";
-import { HighlightArgs, HighlightRange } from "./_types";
+import { HighlightArgs } from "./_types";
 import { EditorContainer } from "./editorContainer";
 import { FloatingMenu } from "./floatingButton";
 import { useHighlightContext } from "./highlightContext";
+import { Active } from "./marks/active";
 import { Highlight } from "./marks/base";
+import { Negative } from "./marks/negative";
 import { Positive } from "./marks/positive";
 import { Word } from "./marks/word";
 import { partFromSelection } from "./utils/partFromSelection";
@@ -49,27 +45,26 @@ const TranscriptContainer = styled.div`
     - Simple text input, use textarea instead.
  */
 export const HighlightNew = (props: PropsWithChildren<HighlightArgs>) => {
-  const [highlight, setHighlight] = useState<
-    (HighlightRange & { text: string }) | null
-  >(null);
+  const { observations, words } = props;
 
-  const { children, observations, words } = props;
-
-  const {
-    editor,
-    setEditor,
-    triggerSave,
-    currentSelection,
-    setCurrentSelection,
-  } = useHighlightContext();
+  const { setEditor, currentSelection, setCurrentSelection } =
+    useHighlightContext();
 
   useEffect(() => {
     // I want to create a text
   }, [observations, words]);
 
   const ed = useEditor({
-    extensions: [Document, Paragraph, Text, Word, Highlight, Positive],
-    content: (children as Content) || "",
+    extensions: [
+      Document,
+      Paragraph,
+      Text,
+      Word,
+      Highlight,
+      Positive,
+      Negative,
+      Active,
+    ],
     editorProps: {
       handlePaste: (view, event, slice) => {
         return true; // Prevent default paste behavior
@@ -82,6 +77,7 @@ export const HighlightNew = (props: PropsWithChildren<HighlightArgs>) => {
       const { $from, $to } = selection;
 
       const range = partFromSelection($from.node().attrs, $to.node().attrs);
+
       const text = editor.state.doc.textBetween($from.start(), $to.end());
 
       if (!text) {
@@ -90,13 +86,12 @@ export const HighlightNew = (props: PropsWithChildren<HighlightArgs>) => {
         return;
       }
 
-      if (!isNaN(range.from) && !isNaN(range.to)) {
-        // console.log("setting highlight", range, text);
-        setCurrentSelection({
-          ...range,
-          text,
-        });
-      }
+      if (isNaN(range.from) || isNaN(range.to)) return;
+
+      setCurrentSelection({
+        ...range,
+        text,
+      });
     },
     ...props,
   });
@@ -118,7 +113,7 @@ export const HighlightNew = (props: PropsWithChildren<HighlightArgs>) => {
           editor={ed}
           triggerSelection={() => {
             if (!currentSelection) return;
-            props?.onSelectionButtonClick?.(currentSelection);
+            props?.onSelectionButtonClick?.(ed, currentSelection);
           }}
         />
       </EditorContainer>

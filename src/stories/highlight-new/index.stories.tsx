@@ -1,13 +1,11 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
-import { styled } from "styled-components";
+import { HighlightNew } from ".";
 import useDebounce from "../../hooks/useDebounce";
-import { Tag } from "../tags";
 import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { HighlightContextProvider } from "./highlightContext";
-import { HighlightNew } from ".";
 
 const words = [
   { end: 1.04, text: "I", start: 0.88, speaker: 0 },
@@ -352,7 +350,6 @@ const words = [
 
 export interface StoryArgs extends HighlightArgs {
   words: Array<WordProps & { speaker: number }>;
-  transcript: string;
   currentTime: number;
   includeSearch?: boolean;
 }
@@ -388,12 +385,12 @@ const Transcript = ({ onSelectionButtonClick, ...args }: StoryArgs) => {
       {...args}
       search={debauncedValue}
       {...(onSelectionButtonClick && {
-        onSelectionButtonClick: (part) => {
-          onSelectionButtonClick(part);
+        onSelectionButtonClick: (editor, part) => {
+          onSelectionButtonClick(editor, part);
           handleAddObservation(part);
         },
       })}
-      children={args.transcript} // Temporary in order to test things
+      content={args.content}
     />
   );
 };
@@ -432,19 +429,40 @@ const Template: StoryFn<StoryArgs> = (args) => {
 const defaultArgs: StoryArgs = {
   words,
   currentTime: words[10].start,
-  transcript: words
-    .map(
-      (w) =>
-        `<span data-start="${w.start}" data-end="${w.end}">${w.text}</span> `
-    )
-    .join(""),
+  content: {
+    type: "doc",
+    content: [
+      {
+        type: "paragraph",
+        content: words.map((word, i) => ({
+          type: "Word",
+          ...(i === 10 ? { marks: [{ type: "activeMark" }] } : {}),
+          attrs: {
+            "data-start": word.start,
+            "data-end": word.end,
+          },
+          content: [
+            {
+              type: "text",
+              text: `${word.text} `,
+            },
+          ],
+        })),
+      },
+    ],
+  },
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  onSelectionButtonClick: (part) =>
-    console.log("Creating observation with this data:", part),
+  onSelectionButtonClick: async (editor, part) => {
+    const id = Math.floor(Math.random() * 1000).toString();
+    console.log(editor);
+    editor.commands.setPositiveHighlight({
+      class: "suchnew",
+    });
+  },
 };
 
 export default {
@@ -480,4 +498,4 @@ export default {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
   },
-} as Meta<typeof Highlight>;
+} as Meta<typeof HighlightNew>;

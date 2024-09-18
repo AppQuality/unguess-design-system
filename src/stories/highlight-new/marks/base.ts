@@ -6,56 +6,13 @@ import {
 } from "@tiptap/core";
 
 export interface HighlightOptions {
-  color: string;
+  id: string;
   /**
    * HTML attributes to add to the highlight element.
    * @default {}
    * @example { class: 'foo' }
    */
   HTMLAttributes: Record<string, any>;
-}
-
-declare module "@tiptap/core" {
-  interface Commands<ReturnType> {
-    baseHighlight: {
-      /**
-       * Set a highlight mark
-       * @param attributes The highlight attributes
-       * @example editor.commands.setHighlight({ color: 'red' })
-       */
-      setBaseHighlight: (attributes?: { color: string }) => ReturnType;
-      /**
-       * Toggle a highlight mark
-       * @param attributes The highlight attributes
-       * @example editor.commands.toggleHighlight({ color: 'red' })
-       */
-      toggleBaseHighlight: (attributes?: { color: string }) => ReturnType;
-      /**
-       * Unset a highlight mark
-       * @example editor.commands.unsetHighlight()
-       */
-      unsetBaseHighlight: () => ReturnType;
-    };
-    positiveHighlight: {
-      /**
-       * Set a highlight mark
-       * @param attributes The highlight attributes
-       * @example editor.commands.setHighlight({ color: 'red' })
-       */
-      setPositiveHighlight: (attributes?: { color: string }) => ReturnType;
-      /**
-       * Toggle a highlight mark
-       * @param attributes The highlight attributes
-       * @example editor.commands.toggleHighlight({ color: 'red' })
-       */
-      togglePositiveHighlight: (attributes?: { color: string }) => ReturnType;
-      /**
-       * Unset a highlight mark
-       * @example editor.commands.unsetHighlight()
-       */
-      unsetPositiveHighlight: () => ReturnType;
-    };
-  }
 }
 
 /**
@@ -83,10 +40,14 @@ const hexToRgba = (hex: string, alpha?: number) => {
 export const Highlight = Mark.create<HighlightOptions>({
   name: "mark",
   priority: 1000,
+
+  addStorage() {
+    return { color: "#ff489e" };
+  },
+
   addOptions() {
-    console.log("loaded");
     return {
-      color: "#ff489e",
+      id: "",
       HTMLAttributes: {},
     };
   },
@@ -94,7 +55,7 @@ export const Highlight = Mark.create<HighlightOptions>({
   addAttributes() {
     return {
       color: {
-        default: "#ff489e",
+        default: this.storage.color,
         parseHTML: (element) => {
           console.log("parseHTML", element);
           return (
@@ -102,11 +63,10 @@ export const Highlight = Mark.create<HighlightOptions>({
           );
         },
         renderHTML: (attributes) => {
-          console.log("renderHTML", attributes);
           return {
-            "data-color": this.options.color,
+            "data-color": this.storage.color,
             style: `background-color: ${hexToRgba(
-              attributes.color
+              this.storage.color
             )}; color: inherit; `,
           };
         },
@@ -147,15 +107,6 @@ export const Highlight = Mark.create<HighlightOptions>({
         ({ commands }) => {
           return commands.unsetMark(this.name);
         },
-    };
-  },
-
-  addKeyboardShortcuts() {
-    return {
-      "Mod-Shift-k": () => {
-        console.log("fired");
-        return this.editor.commands.toggleBaseHighlight();
-      },
     };
   },
 
