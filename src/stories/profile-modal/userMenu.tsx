@@ -21,8 +21,8 @@ const StyledList = styled.ul`
 export const UserMenu = (props: UserMenuArgs) => {
   const [item, setActiveItem] = useState("");
 
-  // set disableMenuLanguageSettings to false to enable the language selector menu item
-  const disableMenuLanguageSettings = true;
+  const disableMenuLanguageSettings =
+    props.disableMenuLanguageSettings || false;
 
   const toggleItem = (item: string) => {
     setActiveItem(item);
