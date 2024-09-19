@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EditorWithHighlight } from ".";
 import { paragraphs } from "./_data";
 
@@ -18,20 +18,20 @@ const RunningTemplate: StoryFn<StoryArgs> = (args) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   // Increase currentTime every second
-  // useEffect(() => {
-  //   const lastParagraph = paragraphs[paragraphs.length - 1];
-  //   const lastWord = lastParagraph.words[lastParagraph.words.length - 1];
-  //   const interval = setInterval(() => {
-  //     setCurrentTime((currentTime) => {
-  //       if (currentTime >= lastWord.end * 1000) {
-  //         clearInterval(interval);
-  //         return 0;
-  //       }
-  //       return currentTime + 300;
-  //     });
-  //   }, 300);
-  //   return () => clearInterval(interval);
-  // }, []);
+  useEffect(() => {
+    const lastParagraph = paragraphs[paragraphs.length - 1];
+    const lastWord = lastParagraph.words[lastParagraph.words.length - 1];
+    const interval = setInterval(() => {
+      setCurrentTime((currentTime) => {
+        if (currentTime >= lastWord.end * 1000) {
+          clearInterval(interval);
+          return 0;
+        }
+        return currentTime + 300;
+      });
+    }, 300);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>

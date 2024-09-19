@@ -2,8 +2,8 @@ import { Node } from "@tiptap/core";
 
 export const Word = Node.create({
   name: "Word",
-  content: "text*",
   group: "inline",
+  content: "inline*",
   inline: true,
   addAttributes() {
     return {
