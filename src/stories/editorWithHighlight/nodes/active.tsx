@@ -65,7 +65,6 @@ export const Active = ({
                     return n.copy(updatedContent);
                   }
 
-                  console.log("removing active descendant");
                   tr.replaceWith(
                     tr.mapping.map(pos),
                     tr.mapping.map(pos + node.nodeSize),
@@ -100,7 +99,7 @@ export const Active = ({
                   });
                   return n.copy(updatedContent);
                 }
-                console.log("adding active descendant");
+
                 tr.replaceWith(
                   tr.mapping.map(pos),
                   tr.mapping.map(pos + node.nodeSize),

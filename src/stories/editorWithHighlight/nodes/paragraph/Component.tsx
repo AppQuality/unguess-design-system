@@ -2,7 +2,10 @@ import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
 import styled from "styled-components";
 
-const Label = styled.span``;
+const Label = styled.p`
+  user-select: none;
+  margin: 24px 0 12px;
+`;
 
 const formatTime = (seconds: number) => {
   const date = new Date(0);
