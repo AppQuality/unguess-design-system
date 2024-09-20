@@ -9,14 +9,25 @@ import { Word } from "./nodes/word";
 export const useEditor = (
   {
     content,
+    onSetCurrentTime,
   }: {
     content?: Content;
+    onSetCurrentTime?: (time: number) => void;
   },
   deps?: React.DependencyList
 ) => {
   const ed = useTiptapEditor(
     {
-      extensions: [Document, Paragraph, Text, Word, Active, Annotation],
+      extensions: [
+        Document,
+        Paragraph,
+        Text,
+        Word,
+        Active({
+          onSetCurrentTime,
+        }),
+        Annotation,
+      ],
       editorProps: {
         handlePaste: () => true,
       },

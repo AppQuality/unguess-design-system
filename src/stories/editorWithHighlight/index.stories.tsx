@@ -7,7 +7,7 @@ type StoryArgs = {};
 
 const Template: StoryFn<StoryArgs> = (args) => {
   return (
-    <EditorWithHighlight {...args} content={paragraphs} currentTime={10} />
+    <EditorWithHighlight {...args} content={paragraphs} currentTime={3600} />
   );
 };
 
@@ -41,6 +41,7 @@ const RunningTemplate: StoryFn<StoryArgs> = (args) => {
         {...args}
         content={paragraphs}
         currentTime={currentTime}
+        onSetCurrentTime={(time) => setCurrentTime(time * 1000)}
       />
     </>
   );
@@ -63,6 +64,7 @@ const FakeRunningTemplate: StoryFn<StoryArgs> = (args) => {
         {...args}
         content={paragraphs}
         currentTime={currentTime}
+        onSetCurrentTime={(time) => setCurrentTime(time * 1000)}
       />
     </>
   );

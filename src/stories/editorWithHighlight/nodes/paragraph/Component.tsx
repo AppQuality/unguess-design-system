@@ -1,11 +1,8 @@
-import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
+import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
 import styled from "styled-components";
-import { LG } from "../../../typography/typescale";
 
-const Label = styled(LG)`
-  user-select: none;
-`;
+const Label = styled.span``;
 
 const formatTime = (seconds: number) => {
   const date = new Date(0);
@@ -14,10 +11,30 @@ const formatTime = (seconds: number) => {
   return date.toISOString().substring(11, 19);
 };
 
-export const Component = ({ node }: { node: PMNode }) => {
+export const Component = ({
+  node,
+  editor,
+}: {
+  node: PMNode;
+  editor: Editor;
+}) => {
   return (
     <NodeViewWrapper className="react-component">
-      <Label onClick={() => alert(1)} contentEditable={false}>
+      <Label
+        onClick={() => {
+          let currentWord: PMNode | null = null;
+          node.descendants((child) => {
+            if (currentWord !== null) return false;
+            if (child.type.name === "Word") {
+              currentWord = child;
+            }
+          });
+          if (!currentWord) return;
+          const word = currentWord as PMNode;
+          editor.commands.setCurrentTime(word.attrs["data-start"]);
+        }}
+        contentEditable={false}
+      >
         {node.attrs.speakername} ({formatTime(node.attrs.start)} -{" "}
         {formatTime(node.attrs.end)})
       </Label>
