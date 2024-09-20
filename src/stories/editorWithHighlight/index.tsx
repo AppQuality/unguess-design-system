@@ -10,6 +10,9 @@ export const EditorWithHighlight = ({
 }: {
   currentTime?: number;
   content?: {
+    start: number;
+    end: number;
+    speaker: number;
     words: {
       start: number;
       end: number;
@@ -23,7 +26,12 @@ export const EditorWithHighlight = ({
       type: "doc",
       content: content
         ? content.map((paragraph) => ({
-            type: "paragraph",
+            type: "Paragraph",
+            attrs: {
+              speakername: `Speaker ${paragraph.speaker}`,
+              start: paragraph.start,
+              end: paragraph.end,
+            },
             content: paragraph.words.map((word) => ({
               type: "Word",
               attrs: {
