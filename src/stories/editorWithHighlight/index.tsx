@@ -1,4 +1,4 @@
-import { Fragment } from "@tiptap/pm/model";
+import { Fragment, Node } from "@tiptap/pm/model";
 import { EditorContent } from "@tiptap/react";
 import { useEffect } from "react";
 import { FloatingMenu } from "./floatingMenu";
@@ -60,76 +60,74 @@ export const EditorWithHighlight = ({
 
     if (!currentWord) return;
 
-    const node = editor.$node("Word", {
-      "data-start": currentWord.start,
-      "data-end": currentWord.end,
-    });
-
-    if (!node) return;
-
-    const { from, to } = node;
     const { state } = editor;
 
-    const dispatch = editor.view.dispatch;
-
     const { tr } = state;
-    // // Step 1: Rimuovi "active" da tutte le "word" in ordine inverso
-    // state.doc.descendants((node, pos, parent, index) => {
-    //   if (
-    //     node.type.name !== "Active" &&
-    //     node.firstChild?.type.name === "Active"
-    //   ) {
-    //     const textContentFragment = node.firstChild.content;
-    //     const updatedNode = node.copy(textContentFragment);
 
-    //     // Sostituisci il nodo originale con quello aggiornato
-    //     tr.replaceWith(
-    //       tr.mapping.map(pos),
-    //       tr.mapping.map(pos + node.nodeSize),
-    //       updatedNode
-    //     );
-    //   }
-    // });
-
-    state.doc.nodesBetween(from, to, (node, pos) => {
-      // Controlla se il nodo è del tipo che vuoi sostituire (ad esempio "word")
+    // trova il nodo "active"
+    state.doc.descendants((node, pos) => {
       if (node.type.name === "Word") {
-        if (node.firstChild?.isLeaf) {
-          const activeNode = state.schema.nodes.Active.create(
-            {},
-            node.firstChild
-          );
-          const updatedNode = node.copy(Fragment.from(activeNode));
+        // check if the node has an "active" descendant
+        let hasActiveDescendant = false;
+        node.descendants((child) => {
+          hasActiveDescendant =
+            hasActiveDescendant || child.type.name === "Active";
+        });
 
+        if (hasActiveDescendant) {
+          // remove the "active" descendant
+          function removeActiveDescendant(n: Node): Node {
+            if (n.firstChild?.type.name === "Active") {
+              const textContent = n.textContent;
+              const textNode = state.schema.text(textContent);
+              return n.copy(Fragment.from(textNode));
+            }
+            let updatedContent: Fragment = Fragment.empty;
+            n.content.forEach((child) => {
+              updatedContent = updatedContent.addToEnd(
+                removeActiveDescendant(child)
+              );
+            });
+            return n.copy(updatedContent);
+          }
           tr.replaceWith(
             tr.mapping.map(pos),
             tr.mapping.map(pos + node.nodeSize),
-            updatedNode
+            removeActiveDescendant(node)
           );
-        } else {
-          node.descendants((child, childPos) => {
-            if (child.firstChild?.isLeaf && child.type.name !== "Active") {
-              const activeNode = state.schema.nodes.Active.create(
-                {},
-                child.firstChild
-              );
-              const updatedNode = child.copy(Fragment.from(activeNode));
-              tr.replaceWith(
-                tr.mapping.map(childPos),
-                tr.mapping.map(childPos + child.nodeSize),
-                updatedNode
-              );
-            }
-          });
         }
+      }
+      if (
+        node.type.name === "Word" &&
+        node.attrs["data-start"] === currentWord.start &&
+        node.attrs["data-end"] === currentWord.end
+      ) {
+        function getUpdatedNode(n: Node): Node {
+          if (n.firstChild?.type.name === "text" && n.type.name !== "Active") {
+            return n.copy(
+              Fragment.from(
+                state.schema.nodes.Active.create({}, n.content.firstChild)
+              )
+            );
+          }
+          let updatedContent: Fragment = Fragment.empty;
+          n.content.forEach((child, index) => {
+            updatedContent = updatedContent.addToEnd(getUpdatedNode(child));
+          });
+          return n.copy(updatedContent);
+        }
+        tr.replaceWith(
+          tr.mapping.map(pos),
+          tr.mapping.map(pos + node.nodeSize),
+          getUpdatedNode(node)
+        );
       }
     });
 
-    dispatch(tr);
+    editor.view.dispatch(tr);
   }, [currentTime, content, editor]);
 
   if (!editor) return null;
-
   return (
     <>
       <FloatingMenu
