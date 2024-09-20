@@ -3,6 +3,7 @@ import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import { Content, useEditor as useTiptapEditor } from "@tiptap/react";
 import { Active } from "./nodes/active";
+import { Annotation } from "./nodes/annotation";
 import { Word } from "./nodes/word";
 
 export const useEditor = (
@@ -15,7 +16,7 @@ export const useEditor = (
 ) => {
   const ed = useTiptapEditor(
     {
-      extensions: [Document, Paragraph, Text, Word, Active],
+      extensions: [Document, Paragraph, Text, Word, Active, Annotation],
       editorProps: {
         handlePaste: () => true,
       },

@@ -73,51 +73,55 @@ export const EditorWithHighlight = ({
     const dispatch = editor.view.dispatch;
 
     const { tr } = state;
-    // Step 1: Rimuovi "active" da tutte le "word" in ordine inverso
-    state.doc.descendants((node, pos, parent, index) => {
-      if (node.type.name === "Word") {
-        let hasActive = false;
+    // // Step 1: Rimuovi "active" da tutte le "word" in ordine inverso
+    // state.doc.descendants((node, pos, parent, index) => {
+    //   if (
+    //     node.type.name !== "Active" &&
+    //     node.firstChild?.type.name === "Active"
+    //   ) {
+    //     const textContentFragment = node.firstChild.content;
+    //     const updatedNode = node.copy(textContentFragment);
 
-        // Itera sui figli del nodo "word" e controlla se contiene "active"
-        node.content.forEach((child) => {
-          if (child.type.name === "Active") {
-            hasActive = true;
-          }
-        });
-
-        if (hasActive) {
-          // Estrai il testo dal nodo "word" e crea un nuovo nodo senza "active"
-          const textContent = node.textContent;
-          const updatedWordNode = state.schema.nodes.Word.create(
-            null,
-            state.schema.text(textContent)
-          );
-
-          // Sostituisci il nodo "word" con solo il testo
-          tr.replaceWith(
-            tr.mapping.map(pos),
-            tr.mapping.map(pos + node.nodeSize),
-            updatedWordNode
-          );
-        }
-      }
-    });
+    //     // Sostituisci il nodo originale con quello aggiornato
+    //     tr.replaceWith(
+    //       tr.mapping.map(pos),
+    //       tr.mapping.map(pos + node.nodeSize),
+    //       updatedNode
+    //     );
+    //   }
+    // });
 
     state.doc.nodesBetween(from, to, (node, pos) => {
       // Controlla se il nodo è del tipo che vuoi sostituire (ad esempio "word")
       if (node.type.name === "Word") {
-        // Crea il nodo "active"
-        const activeNode = state.schema.nodes.Active.create({}, node.content);
+        if (node.firstChild?.isLeaf) {
+          const activeNode = state.schema.nodes.Active.create(
+            {},
+            node.firstChild
+          );
+          const updatedNode = node.copy(Fragment.from(activeNode));
 
-        // Crea il nodo "word" aggiornato con "active" come figlio
-        const updatedNode = node.copy(Fragment.from(activeNode));
-
-        // Sostituisci il nodo originale con quello aggiornato
-        tr.replaceWith(
-          tr.mapping.map(pos),
-          tr.mapping.map(pos + node.nodeSize),
-          updatedNode
-        );
+          tr.replaceWith(
+            tr.mapping.map(pos),
+            tr.mapping.map(pos + node.nodeSize),
+            updatedNode
+          );
+        } else {
+          node.descendants((child, childPos) => {
+            if (child.firstChild?.isLeaf && child.type.name !== "Active") {
+              const activeNode = state.schema.nodes.Active.create(
+                {},
+                child.firstChild
+              );
+              const updatedNode = child.copy(Fragment.from(activeNode));
+              tr.replaceWith(
+                tr.mapping.map(childPos),
+                tr.mapping.map(childPos + child.nodeSize),
+                updatedNode
+              );
+            }
+          });
+        }
       }
     });
 
@@ -128,7 +132,35 @@ export const EditorWithHighlight = ({
 
   return (
     <>
-      <FloatingMenu editor={editor} onClick={() => {}} />
+      <FloatingMenu
+        editor={editor}
+        onClick={(editor) => {
+          const { state } = editor;
+          const { tr } = state;
+          const { from, to } = state.selection;
+          state.doc.nodesBetween(from, to, (node, pos) => {
+            // Controlla se il nodo è del tipo che vuoi sostituire (ad esempio "word")
+            if (node.type.name === "Word") {
+              // Crea il nodo "active"
+              const annotationNode = state.schema.nodes.Annotation.create(
+                {},
+                node.content
+              );
+
+              // Crea il nodo "word" aggiornato con "active" come figlio
+              const updatedNode = node.copy(Fragment.from(annotationNode));
+
+              // Sostituisci il nodo originale con quello aggiornato
+              tr.replaceWith(
+                tr.mapping.map(pos),
+                tr.mapping.map(pos + node.nodeSize),
+                updatedNode
+              );
+            }
+          });
+          editor.view.dispatch(tr);
+        }}
+      />
       <EditorContent editor={editor} />
     </>
   );

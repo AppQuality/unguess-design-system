@@ -16,6 +16,7 @@ Default.args = {};
 
 const RunningTemplate: StoryFn<StoryArgs> = (args) => {
   const [currentTime, setCurrentTime] = useState(0);
+  const intervalTime = 300;
 
   // Increase currentTime every second
   useEffect(() => {
@@ -27,9 +28,9 @@ const RunningTemplate: StoryFn<StoryArgs> = (args) => {
           clearInterval(interval);
           return 0;
         }
-        return currentTime + 300;
+        return currentTime + intervalTime;
       });
-    }, 300);
+    }, intervalTime);
     return () => clearInterval(interval);
   }, []);
 
@@ -46,6 +47,28 @@ const RunningTemplate: StoryFn<StoryArgs> = (args) => {
 };
 
 export const Running = RunningTemplate.bind({});
+Running.args = {};
+
+const FakeRunningTemplate: StoryFn<StoryArgs> = (args) => {
+  const [currentTime, setCurrentTime] = useState(0);
+  const intervalTime = 300;
+
+  return (
+    <>
+      Time: {currentTime}
+      <button onClick={() => setCurrentTime(currentTime + intervalTime)}>
+        Next
+      </button>
+      <EditorWithHighlight
+        {...args}
+        content={paragraphs}
+        currentTime={currentTime}
+      />
+    </>
+  );
+};
+
+export const FakeRunning = FakeRunningTemplate.bind({});
 Running.args = {};
 
 export default {

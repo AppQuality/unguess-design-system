@@ -1,7 +1,7 @@
 import { Node } from "@tiptap/core";
 
-export const Active = Node.create({
-  name: "Active",
+export const Annotation = Node.create({
+  name: "Annotation",
   content: "inline*",
   inline: true,
   parseHTML() {
@@ -13,9 +13,9 @@ export const Active = Node.create({
   },
   renderHTML({ node }) {
     return [
-      "active",
+      "observation",
       {
-        style: "background-color: #ff0000;",
+        style: "background-color: #ff000033;",
       },
       0,
     ];

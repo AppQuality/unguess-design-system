@@ -16,7 +16,7 @@ const MenuContainer = styled.div`
 
 export const FloatingMenu = (props: {
   editor: Editor;
-  onClick: () => void;
+  onClick: (editor: Editor) => void;
 }) => {
   const { editor, onClick } = props;
 
@@ -32,7 +32,7 @@ export const FloatingMenu = (props: {
   return (
     <BubbleMenu editor={editor} shouldShow={shouldShow}>
       <MenuContainer className="bubble-menu">
-        <Button isAccent isPrimary onClick={onClick}>
+        <Button isAccent isPrimary onClick={() => onClick(editor)}>
           <Button.StartIcon>
             <TagIcon />
           </Button.StartIcon>
