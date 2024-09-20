@@ -6,7 +6,7 @@ export const Paragraph = Node.create({
   name: "Paragraph",
   group: "block",
 
-  atom: true,
+  atom: false,
   content: "inline*",
 
   addAttributes() {
