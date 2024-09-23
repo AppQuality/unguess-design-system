@@ -42,6 +42,9 @@ function findAllAncestorsOfType(
     if (parent.type === nodeType) {
       ancestors.push(parent);
     }
+    if (resolvedPos.depth === 0) {
+      break;
+    }
 
     currentPos = resolvedPos.before(); // Move to the previous depth level
   }
