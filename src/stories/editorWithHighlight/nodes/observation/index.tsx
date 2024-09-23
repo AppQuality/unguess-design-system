@@ -39,7 +39,8 @@ export const Observation = Node.create({
               // Crea il nodo "active"
               const annotationNode = state.schema.nodes.Observation.create(
                 {
-                  title: "Ciao",
+                  title,
+                  type,
                 },
                 node.content
               );

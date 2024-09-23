@@ -6,8 +6,18 @@ import { paragraphs } from "./_data";
 type StoryArgs = {};
 
 const Template: StoryFn<StoryArgs> = (args) => {
+  const [observations, setObservations] = useState([
+    {
+      id: 1,
+      type: "title",
+      start: 1.1999999,
+      end: 5.2799997,
+      text: "My observation",
+    },
+  ]);
   const editor = EditorWithHighlight.useEditor({
     currentTime: 3600,
+    observations,
     content: paragraphs,
   });
 
