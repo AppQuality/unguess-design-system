@@ -39,6 +39,7 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
   languages: { [key: string]: Language };
   currentLanguage: string;
   logoutTitle?: string;
+  disableMenuLanguageSettings?: boolean;
   privacy: {
     title?: string;
     url?: string;
