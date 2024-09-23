@@ -16,7 +16,7 @@ const MenuContainer = styled.div`
 
 export const FloatingMenu = (props: {
   editor: Editor;
-  onClick: (editor: Editor) => void;
+  onClick: (editor: Editor, words: { start: number; end: number }) => void;
 }) => {
   const { editor, onClick } = props;
 
@@ -32,7 +32,24 @@ export const FloatingMenu = (props: {
   return (
     <BubbleMenu editor={editor} shouldShow={shouldShow}>
       <MenuContainer className="bubble-menu">
-        <Button isAccent isPrimary onClick={() => onClick(editor)}>
+        <Button
+          isAccent
+          isPrimary
+          onClick={() => {
+            const { from, to } = editor.state.selection;
+
+            let start: number = 0;
+            let end: number = 0;
+            editor.state.doc.nodesBetween(from, to, (node) => {
+              if (node.type.name === "Word") {
+                if (!start) start = node.attrs["data-start"];
+                end = node.attrs["data-end"];
+              }
+            });
+            if (start === end) return;
+            onClick(editor, { start, end });
+          }}
+        >
           <Button.StartIcon>
             <TagIcon />
           </Button.StartIcon>
