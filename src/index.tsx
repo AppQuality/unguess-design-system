@@ -40,11 +40,11 @@ export * from "./stories/special-cards";
 // --- Charts
 export * from "./stories/charts/bar";
 export * from "./stories/charts/bullet";
-export * from "./stories/charts/pie";
 export * from "./stories/charts/halfPie";
+export * from "./stories/charts/pie";
+export * from "./stories/charts/sentiment";
 export * from "./stories/charts/sunburst";
 export * from "./stories/charts/waffle";
-export * from "./stories/charts/sentiment";
 
 // --- Chat ---
 export * from "./stories/chat";
@@ -58,14 +58,14 @@ export * from "./stories/color-swatch";
 export * from "./stories/drawers";
 
 // --- Dropdowns ---
+export * from "./stories/dropdowns/autocomplete";
+export * from "./stories/dropdowns/countermultiselect";
 export * as DropdownField from "./stories/dropdowns/field";
 export * from "./stories/dropdowns/item";
 export * from "./stories/dropdowns/item-content";
 export * from "./stories/dropdowns/menu";
-export * from "./stories/dropdowns/countermultiselect";
-export * from "./stories/dropdowns/select";
-export * from "./stories/dropdowns/autocomplete";
 export * from "./stories/dropdowns/menuheader";
+export * from "./stories/dropdowns/select";
 
 // --- Editor ---
 export * from "./stories/editor";
@@ -84,8 +84,8 @@ export * from "./stories/forms/toggle";
 
 // --- Grid ---
 export * from "./stories/grid/col";
-export * from "./stories/grid/row";
 export * from "./stories/grid/grid";
+export * from "./stories/grid/row";
 
 // --- Highlight ---
 export * from "./stories/highlight";
@@ -100,10 +100,10 @@ export * from "./stories/label";
 export * from "./stories/lightbox";
 
 // --- Loaders ---
+export * from "./stories/loaders/dots";
 export * from "./stories/loaders/progress";
 export * from "./stories/loaders/skeleton";
 export * from "./stories/loaders/spinner";
-export * from "./stories/loaders/dots";
 
 // --- Login Form ---
 export * from "./stories/login-form";
@@ -119,15 +119,15 @@ export * from "./stories/modals";
 export * from "./stories/modals/fullscreen";
 
 // --- Navigation ---
+export * from "./stories/navigation/app-header";
 export * from "./stories/navigation/body";
+export * from "./stories/navigation/chrome";
 export * from "./stories/navigation/content";
 export * from "./stories/navigation/header";
 export * from "./stories/navigation/header/header-item";
-export * from "./stories/navigation/app-header";
 export * from "./stories/navigation/main";
 export * from "./stories/navigation/nav";
 export * from "./stories/navigation/nav/nav-item";
-export * from "./stories/navigation/chrome";
 
 // --- Notifications ---
 export * from "./stories/notifications";
@@ -152,14 +152,14 @@ export * from "./stories/stepper";
 
 // --- Table ---
 export {
-  Table,
-  Head as TableHead,
-  HeaderRow,
-  HeaderCell,
-  Body as TableBody,
-  Row as TableRow,
-  Cell as TableCell,
   Caption,
+  HeaderCell,
+  HeaderRow,
+  Table,
+  Body as TableBody,
+  Cell as TableCell,
+  Head as TableHead,
+  Row as TableRow,
 } from "./stories/table";
 
 export { GroupRow, GroupedTable } from "./stories/table/grouped";
@@ -198,5 +198,7 @@ export * from "./stories/typography/lists";
 export * from "./stories/typography/paragraph";
 export * from "./stories/typography/span";
 export * from "./stories/typography/typescale";
+
+export * from "./stories/editorWithHighlight";
 
 export { GlobalStyle };
