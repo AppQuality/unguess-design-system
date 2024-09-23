@@ -75,7 +75,7 @@ export const EditorWithHighlight = ({
 
     editor.commands.updateCurrentActive({ currentWord });
   }, [currentTime, content, editor, editor?.commands]);
-  
+
   useEffect(() => {
     if (!ref.current) return;
 
@@ -86,7 +86,7 @@ export const EditorWithHighlight = ({
         event.preventDefault(); // Impedisce il drag della selezione
       }
     });
-  }, [ref]);
+  }, [ref, ref.current]);
 
   if (!editor) return null;
   return (
