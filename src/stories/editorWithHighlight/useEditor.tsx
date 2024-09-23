@@ -48,9 +48,8 @@ export const useEditor = (
           return paragraph.words.map((word) => {
             const observationsInThisWord = observations?.filter(
               (observation) =>
-                observation.start >= word.start && observation.end <= word.end
+                observation.start <= word.start && observation.end >= word.end
             );
-
             function getWordContent() {
               const textContent: Content = [
                 {
