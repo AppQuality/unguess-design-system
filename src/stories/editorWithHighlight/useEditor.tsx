@@ -1,4 +1,5 @@
 import SearchAndReplace from "@sereneinserenade/tiptap-search-and-replace";
+import { Content } from "@tiptap/core";
 import Document from "@tiptap/extension-document";
 import Text from "@tiptap/extension-text";
 import { useEditor as useTiptapEditor } from "@tiptap/react";
@@ -38,6 +39,74 @@ export const useEditor = (
   },
   deps?: React.DependencyList
 ) => {
+  function getParsedContent(): Content | undefined {
+    if (!content) return undefined;
+    const result = {
+      type: "doc",
+      content: content.map((paragraph) => {
+        function getWords() {
+          return paragraph.words.map((word) => {
+            const observationsInThisWord = observations?.filter(
+              (observation) =>
+                observation.start >= word.start && observation.end <= word.end
+            );
+
+            function getWordContent() {
+              const textContent: Content = [
+                {
+                  type: "text",
+                  text: `${word.word} `,
+                },
+              ];
+              if (
+                !observationsInThisWord ||
+                observationsInThisWord.length === 0
+              )
+                return textContent;
+
+              return observationsInThisWord.reduce(
+                (acc: Content, observation) => {
+                  return [
+                    {
+                      type: "Observation",
+                      attrs: {
+                        type: observation.type,
+                        title: observation.text,
+                      },
+                      content: acc,
+                    },
+                  ];
+                },
+                textContent
+              );
+            }
+
+            return {
+              type: "Word",
+              attrs: {
+                "data-start": word.start,
+                "data-end": word.end,
+              },
+              content: getWordContent(),
+            };
+          });
+        }
+
+        return {
+          type: "Paragraph",
+          attrs: {
+            speakername: `Speaker ${paragraph.speaker}`,
+            start: paragraph.start,
+            end: paragraph.end,
+          },
+          content: getWords(),
+        };
+      }),
+    };
+
+    return result as Content;
+  }
+
   const ed = useTiptapEditor(
     {
       extensions: [
@@ -54,32 +123,7 @@ export const useEditor = (
       editorProps: {
         handlePaste: () => true,
       },
-      content: {
-        type: "doc",
-        content: content
-          ? content.map((paragraph) => ({
-              type: "Paragraph",
-              attrs: {
-                speakername: `Speaker ${paragraph.speaker}`,
-                start: paragraph.start,
-                end: paragraph.end,
-              },
-              content: paragraph.words.map((word) => ({
-                type: "Word",
-                attrs: {
-                  "data-start": word.start,
-                  "data-end": word.end,
-                },
-                content: [
-                  {
-                    type: "text",
-                    text: `${word.word} `,
-                  },
-                ],
-              })),
-            }))
-          : undefined,
-      },
+      content: getParsedContent(),
     },
     deps
   );
