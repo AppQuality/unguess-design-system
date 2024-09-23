@@ -151,22 +151,5 @@ export const useEditor = (
     ed.commands.updateCurrentActive({ currentWord });
   }, [currentTime, content, ed]);
 
-  useEffect(() => {
-    if (!observations) return;
-    if (!ed) return;
-    const selection = ed.state.selection;
-    observations.forEach((observation) => {
-      const startWord = ed.$node("Word", { "data-start": observation.start });
-      const endWord = ed.$node("Word", { "data-end": observation.end });
-      if (!startWord || !endWord) return;
-
-      ed.chain()
-        .setTextSelection({ from: startWord.pos, to: endWord.pos })
-        .addObservation(observation.type, observation.text)
-        .setTextSelection(selection.from)
-        .run();
-    });
-  }, [observations, ed]);
-
   return ed;
 };
