@@ -35,6 +35,7 @@
     "@nivo/sunburst": "^0.80.0",
     "@nivo/tooltip": "^0.80.0",
     "@nivo/waffle": "^0.80.0",
+    "@sereneinserenade/tiptap-search-and-replace": "^0.1.1",
     "@tiptap/extension-bubble-menu": "2.4.0",
     "@tiptap/extension-character-count": "2.2.4",
     "@tiptap/extension-dropcursor": "^2.2.4",

@@ -6,9 +6,14 @@ import { paragraphs } from "./_data";
 type StoryArgs = {};
 
 const Template: StoryFn<StoryArgs> = (args) => {
-  return (
-    <EditorWithHighlight {...args} content={paragraphs} currentTime={3600} />
-  );
+  const editor = EditorWithHighlight.useEditor({
+    currentTime: 3600,
+    content: paragraphs,
+  });
+
+  if (!editor) return <></>;
+
+  return <EditorWithHighlight {...args} editor={editor} />;
 };
 
 export const Default = Template.bind({});
@@ -17,6 +22,11 @@ Default.args = {};
 const RunningTemplate: StoryFn<StoryArgs> = (args) => {
   const [currentTime, setCurrentTime] = useState(0);
   const intervalTime = 300;
+  const editor = EditorWithHighlight.useEditor({
+    currentTime,
+    content: paragraphs,
+    onSetCurrentTime: (time) => setCurrentTime(time * 1000),
+  });
 
   // Increase currentTime every second
   useEffect(() => {
@@ -34,15 +44,12 @@ const RunningTemplate: StoryFn<StoryArgs> = (args) => {
     return () => clearInterval(interval);
   }, []);
 
+  if (!editor) return <></>;
+
   return (
     <>
       Time: {currentTime}
-      <EditorWithHighlight
-        {...args}
-        content={paragraphs}
-        currentTime={currentTime}
-        onSetCurrentTime={(time) => setCurrentTime(time * 1000)}
-      />
+      <EditorWithHighlight {...args} editor={editor} />
     </>
   );
 };
@@ -53,6 +60,13 @@ Running.args = {};
 const FakeRunningTemplate: StoryFn<StoryArgs> = (args) => {
   const [currentTime, setCurrentTime] = useState(0);
   const intervalTime = 300;
+  const editor = EditorWithHighlight.useEditor({
+    currentTime,
+    content: paragraphs,
+    onSetCurrentTime: (time) => setCurrentTime(time * 1000),
+  });
+
+  if (!editor) return <></>;
 
   return (
     <>
@@ -60,18 +74,32 @@ const FakeRunningTemplate: StoryFn<StoryArgs> = (args) => {
       <button onClick={() => setCurrentTime(currentTime + intervalTime)}>
         Next
       </button>
-      <EditorWithHighlight
-        {...args}
-        content={paragraphs}
-        currentTime={currentTime}
-        onSetCurrentTime={(time) => setCurrentTime(time * 1000)}
-      />
+      <EditorWithHighlight.Search editor={editor} />
+      <EditorWithHighlight {...args} editor={editor} />
     </>
   );
 };
 
 export const FakeRunning = FakeRunningTemplate.bind({});
-Running.args = {};
+FakeRunning.args = {};
+
+const WithSearchTemplate: StoryFn<StoryArgs> = (args) => {
+  const editor = EditorWithHighlight.useEditor({
+    currentTime: 3600,
+    content: paragraphs,
+  });
+
+  if (!editor) return <></>;
+  return (
+    <>
+      <EditorWithHighlight.Search editor={editor} />
+      <EditorWithHighlight {...args} editor={editor} />
+    </>
+  );
+};
+
+export const WithSearch = WithSearchTemplate.bind({});
+WithSearch.args = {};
 
 export default {
   title: "Molecules/EditorWithHighlight",

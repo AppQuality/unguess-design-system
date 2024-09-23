@@ -1,80 +1,17 @@
 import { Fragment } from "@tiptap/pm/model";
-import { EditorContent } from "@tiptap/react";
+import { Editor, EditorContent } from "@tiptap/react";
 import { useEffect, useRef } from "react";
+import styled from "styled-components";
 import { FloatingMenu } from "./floatingMenu";
+import { Search } from "./search";
 import { useEditor } from "./useEditor";
 
-export const EditorWithHighlight = ({
-  content,
-  currentTime,
-  onSetCurrentTime,
-}: {
-  currentTime?: number;
-  onSetCurrentTime?: (time: number) => void;
-  content?: {
-    start: number;
-    end: number;
-    speaker: number;
-    words: {
-      start: number;
-      end: number;
-      word: string;
-    }[];
-  }[];
-}) => {
+const EditorWrapper = styled.div`
+  ${Search.Style}
+`;
+
+const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const editor = useEditor({
-    onSetCurrentTime,
-    content: {
-      type: "doc",
-      content: content
-        ? content.map((paragraph) => ({
-            type: "Paragraph",
-            attrs: {
-              speakername: `Speaker ${paragraph.speaker}`,
-              start: paragraph.start,
-              end: paragraph.end,
-            },
-            content: paragraph.words.map((word) => ({
-              type: "Word",
-              attrs: {
-                "data-start": word.start,
-                "data-end": word.end,
-              },
-              content: [
-                {
-                  type: "text",
-                  text: `${word.word} `,
-                },
-              ],
-            })),
-          }))
-        : undefined,
-    },
-  });
-
-  useEffect(() => {
-    if (!currentTime) return;
-    if (!editor) return;
-
-    const currentParagraph = content?.find((paragraph) =>
-      paragraph.words.some(
-        (word) =>
-          word.start * 1000 <= currentTime && word.end * 1000 >= currentTime
-      )
-    );
-
-    if (!currentParagraph) return;
-
-    const currentWord = currentParagraph.words.find(
-      (word) =>
-        word.start * 1000 <= currentTime && word.end * 1000 >= currentTime
-    );
-
-    if (!currentWord) return;
-
-    editor.commands.updateCurrentActive({ currentWord });
-  }, [currentTime, content, editor, editor?.commands]);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -90,7 +27,7 @@ export const EditorWithHighlight = ({
 
   if (!editor) return null;
   return (
-    <>
+    <EditorWrapper>
       <FloatingMenu
         editor={editor}
         onClick={(editor) => {
@@ -121,6 +58,11 @@ export const EditorWithHighlight = ({
         }}
       />
       <EditorContent ref={ref} editor={editor} />
-    </>
+    </EditorWrapper>
   );
 };
+
+EditorWithHighlight.useEditor = useEditor;
+EditorWithHighlight.Search = Search;
+
+export { EditorWithHighlight };
