@@ -1,3 +1,20 @@
+# v3.1.105 (Mon Sep 23 2024)
+
+#### 🐛 Bug Fix
+
+- release new version [#407](https://github.com/AppQuality/unguess-design-system/pull/407) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee) [@iacopolea](https://github.com/iacopolea))
+- hide language selector [#405](https://github.com/AppQuality/unguess-design-system/pull/405) ([@Kariamos](https://github.com/Kariamos))
+- fix: Update settingValue type to string in UserMenuArgs and SettingsP… [#404](https://github.com/AppQuality/unguess-design-system/pull/404) ([@Kariamos](https://github.com/Kariamos))
+- feat: Add hue colors docs [#406](https://github.com/AppQuality/unguess-design-system/pull/406) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v3.1.104 (Tue Jul 02 2024)
 
 #### 🐛 Bug Fix
