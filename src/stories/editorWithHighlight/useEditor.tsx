@@ -4,7 +4,7 @@ import Text from "@tiptap/extension-text";
 import { useEditor as useTiptapEditor } from "@tiptap/react";
 import { useEffect } from "react";
 import { Active } from "./nodes/active";
-import { Annotation } from "./nodes/annotation";
+import { Observation } from "./nodes/observation";
 import { Paragraph } from "./nodes/paragraph";
 import { Word } from "./nodes/word";
 
@@ -40,7 +40,7 @@ export const useEditor = (
         Active({
           onSetCurrentTime,
         }),
-        Annotation,
+        Observation,
       ],
       editorProps: {
         handlePaste: () => true,

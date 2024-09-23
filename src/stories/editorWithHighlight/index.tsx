@@ -38,7 +38,7 @@ const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
             // Controlla se il nodo è del tipo che vuoi sostituire (ad esempio "word")
             if (node.type.name === "Word") {
               // Crea il nodo "active"
-              const annotationNode = state.schema.nodes.Annotation.create(
+              const annotationNode = state.schema.nodes.Observation.create(
                 {},
                 node.content
               );

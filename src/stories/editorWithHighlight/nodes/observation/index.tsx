@@ -1,7 +1,7 @@
 import { Node } from "@tiptap/core";
 
-export const Annotation = Node.create({
-  name: "Annotation",
+export const Observation = Node.create({
+  name: "Observation",
   content: "inline*",
   inline: true,
   parseHTML() {
