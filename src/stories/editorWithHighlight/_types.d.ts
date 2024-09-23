@@ -8,5 +8,8 @@ declare module "@tiptap/core" {
         currentWord: { start: number, end: number },
       }) => ReturnType;
     };
+    observation: {
+      addObservation: (type: string, title: string) => ReturnType;
+    };
   }
 }

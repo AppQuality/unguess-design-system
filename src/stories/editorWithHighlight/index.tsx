@@ -1,4 +1,3 @@
-import { Fragment } from "@tiptap/pm/model";
 import { Editor, EditorContent } from "@tiptap/react";
 import { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -34,35 +33,6 @@ const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
   if (!editor) return null;
   return (
     <EditorWrapper>
-      <FloatingMenu
-        editor={editor}
-        onClick={(editor) => {
-          const { state } = editor;
-          const { tr } = state;
-          const { from, to } = state.selection;
-          state.doc.nodesBetween(from, to, (node, pos) => {
-            // Controlla se il nodo è del tipo che vuoi sostituire (ad esempio "word")
-            if (node.type.name === "Word") {
-              // Crea il nodo "active"
-              const annotationNode = state.schema.nodes.Observation.create(
-                {},
-                node.content
-              );
-
-              // Crea il nodo "word" aggiornato con "active" come figlio
-              const updatedNode = node.copy(Fragment.from(annotationNode));
-
-              // Sostituisci il nodo originale con quello aggiornato
-              tr.replaceWith(
-                tr.mapping.map(pos),
-                tr.mapping.map(pos + node.nodeSize),
-                updatedNode
-              );
-            }
-          });
-          editor.view.dispatch(tr);
-        }}
-      />
       <EditorContent ref={ref} editor={editor} />
     </EditorWrapper>
   );
@@ -70,5 +40,6 @@ const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
 
 EditorWithHighlight.useEditor = useEditor;
 EditorWithHighlight.Search = Search;
+EditorWithHighlight.FloatingMenu = FloatingMenu;
 
 export { EditorWithHighlight };

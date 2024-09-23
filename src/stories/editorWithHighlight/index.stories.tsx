@@ -13,7 +13,17 @@ const Template: StoryFn<StoryArgs> = (args) => {
 
   if (!editor) return <></>;
 
-  return <EditorWithHighlight {...args} editor={editor} />;
+  return (
+    <>
+      <EditorWithHighlight.FloatingMenu
+        editor={editor}
+        onClick={(editor) => {
+          editor.commands.addObservation("type", "title");
+        }}
+      />
+      <EditorWithHighlight {...args} editor={editor} />;
+    </>
+  );
 };
 
 export const Default = Template.bind({});
@@ -49,6 +59,12 @@ const RunningTemplate: StoryFn<StoryArgs> = (args) => {
   return (
     <>
       Time: {currentTime}
+      <EditorWithHighlight.FloatingMenu
+        editor={editor}
+        onClick={(editor) => {
+          editor.commands.addObservation("type", "title");
+        }}
+      />
       <EditorWithHighlight {...args} editor={editor} />
     </>
   );
@@ -74,6 +90,12 @@ const FakeRunningTemplate: StoryFn<StoryArgs> = (args) => {
       <button onClick={() => setCurrentTime(currentTime + intervalTime)}>
         Next
       </button>
+      <EditorWithHighlight.FloatingMenu
+        editor={editor}
+        onClick={(editor) => {
+          editor.commands.addObservation("type", "title");
+        }}
+      />
       <EditorWithHighlight.Search editor={editor} />
       <EditorWithHighlight {...args} editor={editor} />
     </>
@@ -92,6 +114,12 @@ const WithSearchTemplate: StoryFn<StoryArgs> = (args) => {
   if (!editor) return <></>;
   return (
     <>
+      <EditorWithHighlight.FloatingMenu
+        editor={editor}
+        onClick={(editor) => {
+          editor.commands.addObservation("type", "title");
+        }}
+      />
       <EditorWithHighlight.Search editor={editor} />
       <EditorWithHighlight {...args} editor={editor} />
     </>
