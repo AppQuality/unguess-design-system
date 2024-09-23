@@ -1,6 +1,6 @@
 import { Fragment } from "@tiptap/pm/model";
 import { Editor, EditorContent } from "@tiptap/react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { FloatingMenu } from "./floatingMenu";
 import { Search } from "./search";
@@ -13,17 +13,23 @@ const EditorWrapper = styled.div`
 const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!ref.current) return;
+  const handleDragStart = useCallback((event: DragEvent) => {
+    const selection = window.getSelection();
+    if (selection && selection.toString()) {
+      event.preventDefault();
+    }
+  }, []);
 
-    ref.current.addEventListener("dragstart", (event) => {
-      // Controlla se c'è una selezione attiva
-      const selection = window.getSelection();
-      if (selection && selection.toString()) {
-        event.preventDefault(); // Impedisce il drag della selezione
-      }
-    });
-  }, [ref, ref.current]);
+  useEffect(() => {
+    const currentRef = ref.current;
+    if (!currentRef) return;
+
+    currentRef.addEventListener("dragstart", handleDragStart);
+
+    return () => {
+      currentRef.removeEventListener("dragstart", handleDragStart);
+    };
+  }, [handleDragStart]);
 
   if (!editor) return null;
   return (
