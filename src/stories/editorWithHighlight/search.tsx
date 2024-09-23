@@ -14,7 +14,6 @@ const Search = ({ editor }: { editor: Editor }) => {
       />
       <button
         onClick={() => {
-          //@ts-ignore
           editor.commands.setSearchTerm(search);
         }}
       >
