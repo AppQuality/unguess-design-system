@@ -39,6 +39,7 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
   languages: { [key: string]: Language };
   currentLanguage: string;
   logoutTitle?: string;
+  disableMenuLanguageSettings?: boolean;
   privacy: {
     title?: string;
     url?: string;
@@ -50,7 +51,7 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
   onLogout: () => void;
   onCopyEmail?: () => void;
   chatSupport?: boolean;
-  settingValue?: number;
+  settingValue?: string;
   i18n?: {
     settingsTitle?: string;
     settingsIntroText?: string;
@@ -65,5 +66,5 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
       off: string;
     };
   };
-  onSetSettings: (value: number) => void;
+  onSetSettings: (value: string) => void;
 }

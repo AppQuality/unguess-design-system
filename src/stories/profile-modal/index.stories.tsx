@@ -112,9 +112,11 @@ const defaultArgs: UserMenuArgs = {
       off: "No",
     },
   },
-  settingValue: 0,
-  onSetSettings: (value: number) => {
-    alert(value === 1 ? "Notifications enabled" : "Notifications disabled");
+  settingValue: "0",
+  // set disableMenuLanguageSettings to false to show the language settings or omit the property
+  disableMenuLanguageSettings: true,
+  onSetSettings: (value: string) => {
+    alert(value === "1" ? "Notifications enabled" : "Notifications disabled");
   },
 };
 

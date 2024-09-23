@@ -20,8 +20,8 @@ interface LanguagesProps extends MenuItemProps {
   currentLanguage: string;
   currentLanguageLabel?: string;
   onSelectLanguage: (lang: string) => void;
+  disabled?: boolean;
 }
-
 
 const StyledBody = styled.div`
   margin: ${({ theme }) => theme.space.base * 6}px
@@ -30,13 +30,12 @@ const StyledBody = styled.div`
 
 const StyledButtonContainer = styled.div`
   ${flexStart}
-  & button { 
+  & button {
     justify-content: flex-start;
   }
 `;
 
 export const LanguageItem = (props: LanguagesProps) => {
-
   const content = (
     <>
       <PreviousButton onClick={() => props.setActive("")} isBasic>
@@ -55,7 +54,9 @@ export const LanguageItem = (props: LanguagesProps) => {
               <Button.StartIcon>
                 {props.currentLanguage === key ? <CheckIcon /> : <EmptyIcon />}
               </Button.StartIcon>
-              <Span isBold={props.currentLanguage === key}>{props.languages[key].label}</Span>
+              <Span isBold={props.currentLanguage === key}>
+                {props.languages[key].label}
+              </Span>
             </Button>
           ))}
         </StyledButtonContainer>
@@ -63,7 +64,7 @@ export const LanguageItem = (props: LanguagesProps) => {
     </>
   );
 
-  return (
+  return props.disabled ? null : (
     <>
       <MenuItem
         content={content}
@@ -76,7 +77,7 @@ export const LanguageItem = (props: LanguagesProps) => {
           {props.title}
           <MD style={{ color: theme.palette.grey[600] }}>
             {props.currentLanguageLabel ?? "Now:"}
-            { " " + props.languages[props.currentLanguage].label}
+            {" " + props.languages[props.currentLanguage].label}
           </MD>
         </MenuItemBody>
       </MenuItem>

@@ -21,6 +21,9 @@ const StyledList = styled.ul`
 export const UserMenu = (props: UserMenuArgs) => {
   const [item, setActiveItem] = useState("");
 
+  const disableMenuLanguageSettings =
+    props.disableMenuLanguageSettings || false;
+
   const toggleItem = (item: string) => {
     setActiveItem(item);
   };
@@ -70,23 +73,26 @@ export const UserMenu = (props: UserMenuArgs) => {
           title={props.i18n?.settingsTitle || "Notifications Settings"}
           i18n={{
             settingsTitle:
-            props.i18n?.settingsTitle || "Notifications Settings",
+              props.i18n?.settingsTitle || "Notifications Settings",
             settingsIntroText: props.i18n?.settingsIntroText,
             settingsOutroText: props.i18n?.settingsOutroText,
             settingsToggle: props.i18n?.settingsToggle,
           }}
           onSetSettings={props.onSetSettings}
         />
-        <LanguageItem
-          title={props.languageTitle || "Change Language"}
-          value={"language-selector"}
-          selectedItem={item}
-          setActive={(i) => toggleItem(i)}
-          languages={props.languages}
-          currentLanguage={props.currentLanguage}
-          currentLanguageLabel={props.currentLanguageLabel}
-          onSelectLanguage={(lang) => props.onSelectLanguage(lang)}
-        />
+        {
+          <LanguageItem
+            disabled={disableMenuLanguageSettings}
+            title={props.languageTitle || "Change Language"}
+            value={"language-selector"}
+            selectedItem={item}
+            setActive={(i) => toggleItem(i)}
+            languages={props.languages}
+            currentLanguage={props.currentLanguage}
+            currentLanguageLabel={props.currentLanguageLabel}
+            onSelectLanguage={(lang) => props.onSelectLanguage(lang)}
+          />
+        }
         <MenuItem
           selectedItem={item}
           icon={<LockIcon color={theme.palette.blue[600]} />}
@@ -104,6 +110,7 @@ export const UserMenu = (props: UserMenuArgs) => {
         >
           {props.privacy?.title || "Privacy settings"}
         </MenuItem>
+
         <MenuItem
           selectedItem={item}
           icon={<ExitIcon color={theme.palette.red[600]} />}
