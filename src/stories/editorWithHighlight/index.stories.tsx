@@ -14,6 +14,13 @@ const Template: StoryFn<StoryArgs> = (args) => {
       end: 5.2799997,
       text: "My observation",
     },
+    {
+      id: 2,
+      type: "title",
+      start: 4.56,
+      end: 10.175,
+      text: "My other observation",
+    },
   ]);
   const editor = EditorWithHighlight.useEditor({
     currentTime: 3600,
