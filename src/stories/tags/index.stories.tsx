@@ -3,7 +3,6 @@ import { Tag } from ".";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { TagArgs } from "./_types";
-import { KEY_CODES } from "@zendeskgarden/container-utilities";
 import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
 
 
@@ -15,8 +14,13 @@ interface TagStoryProps extends TagArgs {
   secondaryTextColor: string;
 }
 
-const handleKeyDown = (e: React.KeyboardEvent<any>) => {
-  if (e.keyCode === KEY_CODES.DELETE || e.keyCode === KEY_CODES.BACKSPACE) {
+const KEY_CODES = {
+  DELETE: 'Delete',
+  BACKSPACE: 'Backspace'
+};
+
+const handleKeyDown = (e: React.KeyboardEvent) => {
+  if (e.key === KEY_CODES.DELETE || e.key === KEY_CODES.BACKSPACE) {
     e.preventDefault();
     alert("Tag dismissed via keyboard");
   }

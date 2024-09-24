@@ -145,9 +145,9 @@ export const HelpItem = (props: HelpItemProps) => {
           onClick={props.toggleChat}
           style={{ paddingLeft: theme.space.xxs }}
         >
-          <StyledFooterButton.StartIcon>
+          <Button.StartIcon>
             <InfoFill color={theme.palette.blue[600]} />
-          </StyledFooterButton.StartIcon>
+          </Button.StartIcon>
           {props.chatSupportLabel ?? "Report a technical issue"}
         </StyledFooterButton>
       </Footer>

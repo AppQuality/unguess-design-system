@@ -5,6 +5,7 @@ import { IBookmark } from "../_types";
 import { useProgressContext } from "../context/progressContext";
 import { ReactComponent as GripIcon } from "../../../assets/icons/grip.svg";
 import { getColor } from "../../theme/utils";
+import { TooltipArgs } from "../../tooltip/_types";
 
 const StyledGrabber = styled.div<{ isEnd?: boolean }>`
   position: absolute;
@@ -70,10 +71,8 @@ const Rect = styled.div<{ hue?: string; isActive?: boolean; isFocused?:boolean; 
   ${({ isActive }) => isActive && activeBookMark}
   ${({ isFocused }) => isFocused && activeBookMark}
 `;
-const StyledTooltip = styled(Tooltip)<{ tooltipColor: string }>`
+const StyledTooltip = styled(Tooltip)`
   margin-bottom: ${({ theme }) => theme.space.sm};
-  color: ${({ tooltipColor }) => tooltipColor};
-
 `;
 
 const Grabber = (props: {
