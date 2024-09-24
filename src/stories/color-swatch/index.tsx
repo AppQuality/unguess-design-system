@@ -16,7 +16,7 @@ const Trigger = styled.div`
 `;
 
 const StyledColorSwatchDialog = styled(ColorSwatchDialog)<{
-  disableTooltip: boolean;
+  disableTooltip?: boolean;
 }>`
   ${({ disableTooltip }) =>
     disableTooltip &&
