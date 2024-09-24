@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.1.105-deps4",
+  "version": "3.1.105-deps5",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -91,7 +91,6 @@
     "@types/react": "^17.0.0 || ^18.0.0",
     "@types/react-dom": "^17.0.0 || ^18.0.0",
     "@types/react-window": "^1.8.5",
-    "@types/styled-components": "^5.1.23",
     "@types/ua-parser-js": "^0.7.36",
     "@types/uuid": "^9.0.8",
     "@zendeskgarden/react-dropdowns": "^8.49.0",
