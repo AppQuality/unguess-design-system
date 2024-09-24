@@ -23,7 +23,6 @@ import { FixedSizeList } from "react-window";
 import { Field } from "../forms/field";
 import { Checkbox } from "../forms/checkbox";
 import { Label } from "../label";
-import { KEY_CODES } from "@zendeskgarden/container-utilities";
 
 const createRow = (
   item: IRow,
@@ -367,7 +366,7 @@ const SelectionTemplate: Story<TableProps> = ({ columns, items, ...args }) => {
                   <Checkbox
                     checked={row.selected}
                     onKeyDown={(e) => {
-                      if (e.keyCode === KEY_CODES.SHIFT) {
+                      if (e.shiftKey) {
                         setShiftEnabled(true);
                       }
                     }}
