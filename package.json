@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.1.105-deps2",
+  "version": "3.1.105-deps3",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -145,8 +145,8 @@
     "@zendeskgarden/react-forms": "^8.49.0",
     "@zendeskgarden/react-theming": "^8.48.2",
     "formik": "^2.2.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-components": "^6.1.1"
   }
 }
