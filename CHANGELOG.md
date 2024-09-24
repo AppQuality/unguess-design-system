@@ -1,3 +1,21 @@
+# v3.1.106 (Tue Sep 24 2024)
+
+#### 🐛 Bug Fix
+
+- Update package version to 3.1.106 [#410](https://github.com/AppQuality/unguess-design-system/pull/410) ([@cannarocks](https://github.com/cannarocks))
+- fix editor issues [#409](https://github.com/AppQuality/unguess-design-system/pull/409) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+- Hotfix editor issues [#408](https://github.com/AppQuality/unguess-design-system/pull/408) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks) [@sinatragianpaolo](https://github.com/sinatragianpaolo) [@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 5
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.105 (Mon Sep 23 2024)
 
 #### 🐛 Bug Fix
