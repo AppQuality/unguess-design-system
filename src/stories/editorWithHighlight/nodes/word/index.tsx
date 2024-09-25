@@ -1,4 +1,6 @@
 import { Node } from "@tiptap/core";
+import { ReactNodeViewRenderer } from "@tiptap/react";
+import { Component } from "./Component";
 
 export const Word = Node.create({
   name: "Word",
@@ -32,5 +34,11 @@ export const Word = Node.create({
       },
       0,
     ];
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(Component, {
+      as: "span",
+    });
   },
 });

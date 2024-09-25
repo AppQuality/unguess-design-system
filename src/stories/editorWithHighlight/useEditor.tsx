@@ -66,10 +66,13 @@ export const useEditor = (
 
     const currentWord = currentParagraph.words.find(
       (word) =>
-        word.start * 1000 <= currentTime && word.end * 1000 >= currentTime
+        word.start * 1000 <= currentTime && word.end * 1000 > currentTime
     );
 
     if (!currentWord) return;
+
+    console.log("currentWord", currentWord);
+    console.log("currentTime", currentTime);
 
     ed.commands.updateCurrentActive({ currentWord });
   }, [currentTime, content, ed]);

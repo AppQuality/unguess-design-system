@@ -77,7 +77,6 @@ class ContentParser {
       (sentence) =>
         sentence.start >= paragraph.start && sentence.end <= paragraph.end
     );
-    debugger;
     return {
       type: "Paragraph",
       attrs: {
