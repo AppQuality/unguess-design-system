@@ -1,19 +1,19 @@
 import { Content as TipTapContent } from "@tiptap/core";
 
-type Word = {
+export type WordType = {
   start: number;
   end: number;
   word: string;
 };
 
-type Paragraph = {
+export type ParagraphType = {
   start: number;
   end: number;
   speaker: number;
-  words: Word[];
+  words: WordType[];
 };
 
-type Observation = {
+export type ObservationType = {
   id: number;
   type: string;
   start: number;
@@ -22,13 +22,13 @@ type Observation = {
 };
 
 class ContentParser {
-  private observations?: Observation[];
+  private observations?: ObservationType[];
 
-  constructor(observations?: Observation[]) {
+  constructor(observations?: ObservationType[]) {
     this.observations = observations;
   }
 
-  private wrapWordInObservations(word: Word): TipTapContent {
+  private wrapWordInObservations(word: WordType): TipTapContent {
     const observationsInThisWord = this.observations?.filter(
       (observation) =>
         observation.start <= word.start && observation.end >= word.end
@@ -52,7 +52,7 @@ class ContentParser {
     );
   }
 
-  private getParsedWord(word: Word) {
+  private getParsedWord(word: WordType) {
     return {
       type: "Word",
       attrs: {
@@ -63,7 +63,7 @@ class ContentParser {
     };
   }
 
-  private getParsedParagraph(paragraph: Paragraph) {
+  private getParsedParagraph(paragraph: ParagraphType) {
     return {
       type: "Paragraph",
       attrs: {
@@ -76,7 +76,7 @@ class ContentParser {
   }
 
   public getParsedContent(
-    content?: Paragraph[]
+    content?: ParagraphType[]
   ): { type: "doc"; content: TipTapContent } | undefined {
     if (!content) return undefined;
 
@@ -88,8 +88,8 @@ class ContentParser {
 }
 
 export function getParsedContent(
-  content?: Paragraph[],
-  observations?: Observation[]
+  content?: ParagraphType[],
+  observations?: ObservationType[]
 ) {
   return new ContentParser(observations).getParsedContent(content) as
     | TipTapContent
