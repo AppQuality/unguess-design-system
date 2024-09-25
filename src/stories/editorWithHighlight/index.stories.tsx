@@ -146,6 +146,32 @@ const WithSearchTemplate: StoryFn<StoryArgs> = (args) => {
 export const WithSearch = WithSearchTemplate.bind({});
 WithSearch.args = {};
 
+const WithTranslationTemplate: StoryFn<StoryArgs> = (args) => {
+  const [currentTime, setCurrentTime] = useState(0);
+  const editor = EditorWithHighlight.useEditor({
+    currentTime,
+    content: paragraphs,
+    translations: paragraphs.flatMap((paragraph) => paragraph.sentences),
+    onSetCurrentTime: (time) => setCurrentTime(time * 1000),
+  });
+
+  if (!editor) return <></>;
+  return (
+    <>
+      <EditorWithHighlight.FloatingMenu
+        editor={editor}
+        onClick={(editor) => {
+          editor.commands.addObservation("type", "title");
+        }}
+      />
+      <EditorWithHighlight {...args} editor={editor} />
+    </>
+  );
+};
+
+export const WithTranslation = WithTranslationTemplate.bind({});
+WithTranslation.args = {};
+
 export default {
   title: "Molecules/EditorWithHighlight",
   component: EditorWithHighlight,

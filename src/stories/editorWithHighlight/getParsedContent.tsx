@@ -30,9 +30,11 @@ export type ObservationType = {
 
 class ContentParser {
   private observations?: ObservationType[];
+  private sentences?: SentenceType[];
 
-  constructor(observations?: ObservationType[]) {
+  constructor(observations?: ObservationType[], sentences?: SentenceType[]) {
     this.observations = observations;
+    this.sentences = sentences;
   }
 
   private wrapWordInObservations(word: WordType): TipTapContent {
@@ -71,13 +73,18 @@ class ContentParser {
   }
 
   private getParsedParagraph(paragraph: ParagraphType) {
+    const s = this.sentences?.filter(
+      (sentence) =>
+        sentence.start >= paragraph.start && sentence.end <= paragraph.end
+    );
+    debugger;
     return {
       type: "Paragraph",
       attrs: {
         speakername: `Speaker ${paragraph.speaker}`,
         start: paragraph.start,
         end: paragraph.end,
-        sentences: paragraph.sentences,
+        sentences: s,
       },
       content: paragraph.words.map((word) => this.getParsedWord(word)),
     };
@@ -97,9 +104,10 @@ class ContentParser {
 
 export function getParsedContent(
   content?: ParagraphType[],
-  observations?: ObservationType[]
+  observations?: ObservationType[],
+  sentences?: SentenceType[]
 ) {
-  return new ContentParser(observations).getParsedContent(content) as
-    | TipTapContent
-    | undefined;
+  return new ContentParser(observations, sentences).getParsedContent(
+    content
+  ) as TipTapContent | undefined;
 }

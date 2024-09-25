@@ -7,6 +7,7 @@ import {
   getParsedContent,
   ObservationType,
   ParagraphType,
+  SentenceType,
 } from "./getParsedContent";
 import { Active } from "./nodes/active";
 import { Observation } from "./nodes/observation";
@@ -17,11 +18,13 @@ export const useEditor = (
   {
     content,
     observations,
+    translations,
     currentTime,
     onSetCurrentTime,
   }: {
     content?: ParagraphType[];
     observations?: ObservationType[];
+    translations?: SentenceType[];
     currentTime?: number;
     onSetCurrentTime?: (time: number) => void;
   },
@@ -43,7 +46,7 @@ export const useEditor = (
       editorProps: {
         handlePaste: () => true,
       },
-      content: getParsedContent(content, observations),
+      content: getParsedContent(content, observations, translations),
     },
     deps
   );
