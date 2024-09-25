@@ -20,6 +20,9 @@ export const Paragraph = Node.create({
       end: {
         default: 0,
       },
+      sentences: {
+        default: [],
+      },
     };
   },
 

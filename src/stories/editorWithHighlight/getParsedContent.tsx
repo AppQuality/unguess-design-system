@@ -6,11 +6,18 @@ export type WordType = {
   word: string;
 };
 
+export type SentenceType = {
+  start: number;
+  end: number;
+  text: string;
+};
+
 export type ParagraphType = {
   start: number;
   end: number;
   speaker: number;
   words: WordType[];
+  sentences: SentenceType[];
 };
 
 export type ObservationType = {
@@ -70,6 +77,7 @@ class ContentParser {
         speakername: `Speaker ${paragraph.speaker}`,
         start: paragraph.start,
         end: paragraph.end,
+        sentences: paragraph.sentences,
       },
       content: paragraph.words.map((word) => this.getParsedWord(word)),
     };
