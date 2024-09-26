@@ -23,6 +23,7 @@ export const useEditor = (
     currentTime,
     onSetCurrentTime,
     themeExtension,
+    isEditable,
   }: {
     content?: ParagraphType[];
     observations?: ObservationType[];
@@ -30,11 +31,13 @@ export const useEditor = (
     currentTime?: number;
     onSetCurrentTime?: (time: number) => void;
     themeExtension?: Extension;
+    isEditable?: boolean;
   },
   deps?: React.DependencyList
 ) => {
   const ed = useTiptapEditor(
     {
+      editable: isEditable ? isEditable : false,
       extensions: [
         Document,
         Paragraph,

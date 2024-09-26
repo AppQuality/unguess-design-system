@@ -7,6 +7,15 @@ import { useEditor } from "./useEditor";
 
 const EditorWrapper = styled.div`
   ${Search.Style}
+
+  border:none;
+  .ProseMirror {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    min-height: 0;
+  }
 `;
 
 const EditorWithHighlight = ({ editor }: { editor: Editor }) => {

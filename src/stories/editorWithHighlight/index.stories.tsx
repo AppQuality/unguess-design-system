@@ -26,6 +26,7 @@ type StoryArgs = {
   ) => (time: number) => void;
   showSearch?: boolean;
   themeExtension?: Extension;
+  isEditable?: boolean;
 };
 
 const Template: StoryFn<StoryArgs> = (args) => {
@@ -35,6 +36,7 @@ const Template: StoryFn<StoryArgs> = (args) => {
     currentTime: currentTime,
     content: args.content,
     translations: args.translations,
+    isEditable: args.isEditable,
     observations: args.observations,
     onSetCurrentTime: args.onSetCurrentTime
       ? args.onSetCurrentTime(setCurrentTime)
@@ -357,4 +359,11 @@ WithCustomTheme.args = {
 export default {
   title: "Molecules/EditorWithHighlight",
   component: EditorWithHighlight,
+  argTypes: {
+    isEditable: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta;
