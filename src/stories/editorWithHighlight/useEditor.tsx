@@ -1,13 +1,14 @@
 import SearchAndReplace from "@sereneinserenade/tiptap-search-and-replace";
 import Document from "@tiptap/extension-document";
 import Text from "@tiptap/extension-text";
-import { useEditor as useTiptapEditor } from "@tiptap/react";
+import { Extension, useEditor as useTiptapEditor } from "@tiptap/react";
 import { useEffect } from "react";
+import { Theme } from "./extensions/theme";
 import {
-  getParsedContent,
   ObservationType,
   ParagraphType,
   SentenceType,
+  getParsedContent,
 } from "./getParsedContent";
 import { Active } from "./nodes/active";
 import { Observation } from "./nodes/observation";
@@ -21,12 +22,14 @@ export const useEditor = (
     translations,
     currentTime,
     onSetCurrentTime,
+    themeExtension,
   }: {
     content?: ParagraphType[];
     observations?: ObservationType[];
     translations?: SentenceType[];
     currentTime?: number;
     onSetCurrentTime?: (time: number) => void;
+    themeExtension?: Extension;
   },
   deps?: React.DependencyList
 ) => {
@@ -36,6 +39,7 @@ export const useEditor = (
         Document,
         Paragraph,
         Text,
+        themeExtension ? themeExtension : Theme.configure(),
         Word,
         SearchAndReplace.configure(),
         Active({

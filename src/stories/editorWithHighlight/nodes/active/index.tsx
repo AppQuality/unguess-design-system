@@ -1,5 +1,7 @@
 import { Node } from "@tiptap/core";
 import { Fragment, Node as PMNode } from "@tiptap/pm/model";
+import { ReactNodeViewRenderer } from "@tiptap/react";
+import { Component } from "./Component";
 
 export const Active = ({
   onSetCurrentTime,
@@ -112,5 +114,9 @@ export const Active = ({
             return true;
           },
       };
+    },
+
+    addNodeView() {
+      return ReactNodeViewRenderer(Component);
     },
   });

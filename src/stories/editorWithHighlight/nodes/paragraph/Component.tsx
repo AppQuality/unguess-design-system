@@ -1,49 +1,24 @@
 import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
-import styled from "styled-components";
+import { getTheme } from "../../extensions/theme";
 import { findActiveWord } from "../../findActiveWord";
 
-const Label = styled.p`
-  user-select: none;
-  margin: 24px 0 12px;
-`;
-
-const Spacer = styled.div`
-  width: 100%;
-  height: 20px;
-  margin: 24px 0 12px;
-`;
-
-const formatTime = (seconds: number) => {
-  const date = new Date(0);
-  date.setSeconds(seconds);
-  if (seconds < 3600) return date.toISOString().substring(14, 19);
-  return date.toISOString().substring(11, 19);
-};
-
 const Content = ({ node, editor }: { node: PMNode; editor: Editor }) => {
+  const themeExtension = getTheme(editor);
+  const ParagraphWrapper = themeExtension.options.paragraphWrapper;
+  const SpeakerWrapper = themeExtension.options.speakerWrapper;
   return (
-    <>
-      <Label
-        onClick={() => {
-          let currentWord: PMNode | null = null;
-          node.descendants((child) => {
-            if (currentWord !== null) return false;
-            if (child.type.name === "Word") {
-              currentWord = child;
-            }
-          });
-          if (!currentWord) return;
-          const word = currentWord as PMNode;
-          editor.commands.setCurrentTime(word.attrs["data-start"]);
+    <ParagraphWrapper>
+      <SpeakerWrapper
+        setCurrentTime={({ start }) => {
+          editor.commands.setCurrentTime(start);
         }}
-        contentEditable={false}
-      >
-        {node.attrs.speakername} ({formatTime(node.attrs.start)} -{" "}
-        {formatTime(node.attrs.end)})
-      </Label>
+        start={node.attrs.start}
+        end={node.attrs.end}
+        speaker={node.attrs.speakername}
+      />
       <NodeViewContent className="content is-editable" />
-    </>
+    </ParagraphWrapper>
   );
 };
 
@@ -61,40 +36,48 @@ export const Component = ({
       </NodeViewWrapper>
     );
   }
+  const themeExtension = getTheme(editor);
+  const SentencesWrapper = themeExtension.options.sentencesWrapper;
+  const SentenceWrapper = themeExtension.options.sentenceWrapper;
+  const TranslationWrapper = themeExtension.options.translationWrapper;
   const activeWord = findActiveWord(node);
+
   return (
     <NodeViewWrapper className="react-component">
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
-          <Content node={node} editor={editor} />
-        </div>
-        <div style={{ width: "50%" }}>
-          <Spacer />
-          {node.attrs.sentences.map(
-            (
-              sentence: { text: string; start: number; end: number },
-              index: number
-            ) => (
-              <span
-                onClick={() => {
-                  editor.commands.setCurrentTime(sentence.start);
-                }}
-                style={{
-                  backgroundColor: activeWord
-                    ? activeWord.attrs["data-start"] >= sentence.start &&
-                      activeWord.attrs["data-end"] <= sentence.end
-                      ? "yellow"
-                      : "transparent"
-                    : "transparent",
-                }}
-                key={index}
-              >
-                {sentence.text}{" "}
-              </span>
-            )
-          )}
-        </div>
-      </div>
+      {
+        <TranslationWrapper
+          content={<Content node={node} editor={editor} />}
+          translations={
+            <SentencesWrapper>
+              {node.attrs.sentences.map(
+                (
+                  sentence: { text: string; start: number; end: number },
+                  index: number
+                ) => (
+                  <>
+                    <SentenceWrapper
+                      start={sentence.start}
+                      end={sentence.end}
+                      setCurrentTime={({ start, end }) => {
+                        editor.commands.setCurrentTime(start);
+                      }}
+                      key={index}
+                      isActive={
+                        activeWord
+                          ? activeWord.attrs["data-start"] >= sentence.start &&
+                            activeWord.attrs["data-end"] <= sentence.end
+                          : false
+                      }
+                    >
+                      {sentence.text}{" "}
+                    </SentenceWrapper>
+                  </>
+                )
+              )}
+            </SentencesWrapper>
+          }
+        />
+      }
     </NodeViewWrapper>
   );
 };

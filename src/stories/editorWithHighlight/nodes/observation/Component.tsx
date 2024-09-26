@@ -2,7 +2,7 @@ import { NodeType } from "@tiptap/pm/model";
 import { EditorState } from "@tiptap/pm/state";
 import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
-import { Tooltip } from "../../../tooltip";
+import { getTheme } from "../../extensions/theme";
 
 function findNodePosition(doc: PMNode, targetNode: PMNode): number | null {
   let foundPos: number | null = null;
@@ -51,7 +51,8 @@ export const Component = ({
   node: PMNode;
   editor: Editor;
 }) => {
-  const background = node.attrs["color"] + "50";
+  const themeExtension = getTheme(editor);
+  const ObservationWrapper = themeExtension.options.observationWrapper;
 
   const nodePos = findNodePosition(editor.state.doc, node);
   if (!nodePos) return null;
@@ -62,19 +63,20 @@ export const Component = ({
     editor.state.schema.nodes.Observation
   );
 
-  const title = ancestors.length
-    ? [node, ...ancestors].map((ancestor) => ancestor.attrs["title"])
-    : [node.attrs["title"]];
+  const observationsNodes = ancestors.length ? [node, ...ancestors] : [node];
 
   return (
     <NodeViewWrapper as="span" className="react-component">
-      <span data-title={node.attrs["title"]} style={{ background }}>
-        <Tooltip content={title.join(" and ")}>
-          <span>
-            <NodeViewContent as="span" className="content is-editable" />
-          </span>
-        </Tooltip>
-      </span>
+      <ObservationWrapper
+        title={node.attrs["title"]}
+        color={node.attrs["color"]}
+        observations={observationsNodes.map((o) => ({
+          title: o.attrs["title"],
+          color: o.attrs["color"],
+        }))}
+      >
+        <NodeViewContent as="span" className="content is-editable" />
+      </ObservationWrapper>
     </NodeViewWrapper>
   );
 };
