@@ -76,6 +76,9 @@ export const Component = ({
               index: number
             ) => (
               <span
+                onClick={() => {
+                  editor.commands.setCurrentTime(sentence.start);
+                }}
                 style={{
                   backgroundColor: activeWord
                     ? activeWord.attrs["data-start"] >= sentence.start &&
