@@ -1,5 +1,6 @@
 import { Editor, Extension } from "@tiptap/react";
 import { ReactNode } from "react";
+import { styled } from "styled-components";
 import { Tooltip } from "../../../tooltip";
 
 const DefaultActiveWrapper = ({ children }: { children: ReactNode }) => {
@@ -118,6 +119,16 @@ const DefaultTranslationWrapper = ({
   );
 };
 
+const SearchStyleWrapper = styled.span`
+  .search-result {
+    background-color: rgba(255, 217, 0, 0.5);
+
+    &-current {
+      background-color: rgba(13, 255, 0, 0.5);
+    }
+  }
+`;
+
 export interface ThemeOptions {
   activeWrapper: typeof DefaultActiveWrapper;
   wordWrapper: typeof DefaultWordWrapper;
@@ -127,6 +138,22 @@ export interface ThemeOptions {
   sentencesWrapper: typeof DefaultSentencesWrapper;
   sentenceWrapper: typeof DefaultSentenceWrapper;
   translationWrapper: typeof DefaultTranslationWrapper;
+  /**
+   * Allow styling search results
+   * @example
+   * ```jsx
+   * styled.span`
+   *   .search-result {
+   *    background-color: rgba(0, 0, 255, 0.5);
+   *
+   *     &-current {
+   *       background-color: rgba(255, 255, 0, 0.5);
+   *     }
+   *   }
+   * `
+   * ```
+   */
+  searchStyleWrapper: typeof SearchStyleWrapper;
 }
 
 export const Theme = Extension.create<ThemeOptions, {}>({
@@ -142,6 +169,7 @@ export const Theme = Extension.create<ThemeOptions, {}>({
       sentencesWrapper: DefaultSentencesWrapper,
       sentenceWrapper: DefaultSentenceWrapper,
       translationWrapper: DefaultTranslationWrapper,
+      searchStyleWrapper: SearchStyleWrapper,
     };
   },
 });

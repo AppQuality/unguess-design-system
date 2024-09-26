@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { Editor, Extension } from "@tiptap/react";
+import { Editor } from "@tiptap/react";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { EditorWithHighlight } from ".";
 import { ReactComponent as BadgeIcon } from "../../assets/icons/check-badge-stroke.svg";
 import { ReactComponent as PlayIcon } from "../../assets/icons/play-fill.svg";
@@ -25,7 +26,7 @@ type StoryArgs = {
     setCurrentTime: (time: number) => void
   ) => (time: number) => void;
   showSearch?: boolean;
-  themeExtension?: Extension;
+  themeExtension?: typeof Theme;
   isEditable?: boolean;
 };
 
@@ -212,28 +213,19 @@ WithCustomTheme.args = {
   onAddObservation: (editor) => {
     editor.commands.addObservation({ title: "title" });
   },
+  showSearch: true,
   onSetCurrentTime: (setCurrentTime) => (time) => setCurrentTime(time * 1000),
   translations: paragraphs.flatMap((paragraph) => paragraph.sentences),
   themeExtension: Theme.configure({
-    activeWrapper: ({ children }: { children: React.ReactNode }) => {
+    activeWrapper: ({ children }) => {
       return (
         <span style={{ background: "blue", color: "white" }}>{children}</span>
       );
     },
-    wordWrapper: ({ children }: { children: React.ReactNode }) => {
+    wordWrapper: ({ children }) => {
       return <span style={{ textDecoration: "underline" }}>{children}</span>;
     },
-    observationWrapper: ({
-      title,
-      color,
-      children,
-      observations,
-    }: {
-      title: string;
-      color: string;
-      children: React.ReactNode;
-      observations: { title: string }[];
-    }) => {
+    observationWrapper: ({ title, color, children, observations }) => {
       const background = color + "50";
       return (
         <span
@@ -262,7 +254,7 @@ WithCustomTheme.args = {
         </span>
       );
     },
-    paragraphWrapper: ({ children }: { children: React.ReactNode }) => {
+    paragraphWrapper: ({ children }) => {
       return (
         <p
           style={{
@@ -275,17 +267,7 @@ WithCustomTheme.args = {
         </p>
       );
     },
-    speakerWrapper: ({
-      start,
-      end,
-      setCurrentTime,
-      speaker,
-    }: {
-      start: number;
-      end: number;
-      setCurrentTime?: ({ start, end }: { start: number; end: number }) => void;
-      speaker: string;
-    }) => {
+    speakerWrapper: ({ start, end, setCurrentTime, speaker }) => {
       return (
         <p>
           {speaker} ({start} - {end}){" "}
@@ -300,7 +282,7 @@ WithCustomTheme.args = {
         </p>
       );
     },
-    sentencesWrapper: ({ children }: { children: React.ReactNode }) => {
+    sentencesWrapper: ({ children }) => {
       return (
         <div
           style={{
@@ -313,19 +295,7 @@ WithCustomTheme.args = {
         </div>
       );
     },
-    sentenceWrapper: ({
-      start,
-      end,
-      setCurrentTime,
-      children,
-      isActive,
-    }: {
-      start: number;
-      end: number;
-      setCurrentTime?: ({ start, end }: { start: number; end: number }) => void;
-      children: React.ReactNode;
-      isActive?: boolean;
-    }) => {
+    sentenceWrapper: ({ start, end, setCurrentTime, children, isActive }) => {
       return (
         <span
           onClick={() => {
@@ -353,6 +323,15 @@ WithCustomTheme.args = {
         </div>
       );
     },
+    searchStyleWrapper: styled.span`
+      .search-result {
+        background-color: rgba(0, 0, 255, 0.5);
+
+        &-current {
+          background-color: rgba(255, 255, 0, 0.5);
+        }
+      }
+    `,
   }),
 };
 

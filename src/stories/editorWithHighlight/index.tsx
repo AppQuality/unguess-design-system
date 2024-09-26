@@ -1,14 +1,13 @@
 import { Editor, EditorContent } from "@tiptap/react";
 import { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { getTheme } from "./extensions/theme";
 import { FloatingMenu } from "./floatingMenu";
 import { Search } from "./search";
 import { useEditor } from "./useEditor";
 
 const EditorWrapper = styled.div`
-  ${Search.Style}
-
-  border:none;
+  border: none;
   .ProseMirror {
     background: transparent;
     border: none;
@@ -40,10 +39,16 @@ const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
   }, [handleDragStart]);
 
   if (!editor) return null;
+
+  const theme = getTheme(editor);
+  const SearchStyleWrapper = theme.options.searchStyleWrapper;
+
   return (
-    <EditorWrapper>
-      <EditorContent ref={ref} editor={editor} />
-    </EditorWrapper>
+    <SearchStyleWrapper>
+      <EditorWrapper>
+        <EditorContent ref={ref} editor={editor} />
+      </EditorWrapper>
+    </SearchStyleWrapper>
   );
 };
 
