@@ -71,9 +71,6 @@ export const useEditor = (
 
     if (!currentWord) return;
 
-    console.log("currentWord", currentWord);
-    console.log("currentTime", currentTime);
-
     ed.commands.updateCurrentActive({ currentWord });
   }, [currentTime, content, ed]);
 

@@ -1,9 +1,16 @@
 import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
 import styled from "styled-components";
+import { findActiveWord } from "../../findActiveWord";
 
 const Label = styled.p`
   user-select: none;
+  margin: 24px 0 12px;
+`;
+
+const Spacer = styled.div`
+  width: 100%;
+  height: 20px;
   margin: 24px 0 12px;
 `;
 
@@ -12,24 +19,6 @@ const formatTime = (seconds: number) => {
   date.setSeconds(seconds);
   if (seconds < 3600) return date.toISOString().substring(14, 19);
   return date.toISOString().substring(11, 19);
-};
-
-const findActiveWord = (node: PMNode): PMNode | null => {
-  let activeWord: PMNode | null = null;
-
-  node.descendants((child) => {
-    if (activeWord !== null) return false;
-    if (child.type.name === "Word") {
-      child.descendants((grandchild) => {
-        if (activeWord !== null) return false;
-        if (grandchild.type.name === "Active") {
-          activeWord = child;
-        }
-      });
-    }
-  });
-
-  return activeWord;
 };
 
 const Content = ({ node, editor }: { node: PMNode; editor: Editor }) => {
@@ -80,12 +69,13 @@ export const Component = ({
           <Content node={node} editor={editor} />
         </div>
         <div style={{ width: "50%" }}>
+          <Spacer />
           {node.attrs.sentences.map(
             (
               sentence: { text: string; start: number; end: number },
               index: number
             ) => (
-              <p
+              <span
                 style={{
                   backgroundColor: activeWord
                     ? activeWord.attrs["data-start"] >= sentence.start &&
@@ -96,8 +86,8 @@ export const Component = ({
                 }}
                 key={index}
               >
-                {sentence.text}
-              </p>
+                {sentence.text}{" "}
+              </span>
             )
           )}
         </div>
