@@ -1,7 +1,7 @@
 import { Editor, EditorContent } from "@tiptap/react";
 import { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { getTheme } from "./extensions/theme";
+import { Theme, getTheme } from "./extensions/theme";
 import { FloatingMenu } from "./floatingMenu";
 import { Search } from "./search";
 import { useEditor } from "./useEditor";
@@ -56,4 +56,4 @@ EditorWithHighlight.useEditor = useEditor;
 EditorWithHighlight.Search = Search;
 EditorWithHighlight.FloatingMenu = FloatingMenu;
 
-export { EditorWithHighlight };
+export { EditorWithHighlight, Theme };
