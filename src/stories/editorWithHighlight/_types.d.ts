@@ -9,7 +9,13 @@ declare module "@tiptap/core" {
       }) => ReturnType;
     };
     observation: {
-      addObservation: (type: string, title: string) => ReturnType;
+      addObservation: ({
+        title,
+        color,
+      }: {
+        title: string;
+        color?: string;
+      }) => ReturnType;
     };
   }
 }

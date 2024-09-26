@@ -13,6 +13,9 @@ export const Observation = Node.create({
       type: {
         default: "",
       },
+      color: {
+        default: "#909090",
+      },
       title: {
         default: "",
       },
@@ -30,7 +33,7 @@ export const Observation = Node.create({
   addCommands() {
     return {
       addObservation:
-        (type: string, title: string) =>
+        ({ title, color }: { title: string; color?: string }) =>
         ({ tr, state, view }) => {
           const { from, to } = state.selection;
           state.doc.nodesBetween(from, to, (node, pos) => {
@@ -40,7 +43,7 @@ export const Observation = Node.create({
               const annotationNode = state.schema.nodes.Observation.create(
                 {
                   title,
-                  type,
+                  color,
                 },
                 node.content
               );

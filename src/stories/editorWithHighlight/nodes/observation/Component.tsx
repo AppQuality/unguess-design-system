@@ -4,14 +4,6 @@ import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
 import { Tooltip } from "../../../tooltip";
 
-const useTypeSpec = (type: string) => {
-  switch (type) {
-    default:
-      return {
-        background: "rgba(144,144,144,0.3)",
-      };
-  }
-};
 function findNodePosition(doc: PMNode, targetNode: PMNode): number | null {
   let foundPos: number | null = null;
 
@@ -59,7 +51,7 @@ export const Component = ({
   node: PMNode;
   editor: Editor;
 }) => {
-  const { background } = useTypeSpec(node.attrs["type"]);
+  const background = node.attrs["color"] + "50";
 
   const nodePos = findNodePosition(editor.state.doc, node);
   if (!nodePos) return null;
