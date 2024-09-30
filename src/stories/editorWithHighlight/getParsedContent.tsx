@@ -17,7 +17,6 @@ export type ParagraphType = {
   end: number;
   speaker: number;
   words: WordType[];
-  sentences: SentenceType[];
 };
 
 export type ObservationType = {
