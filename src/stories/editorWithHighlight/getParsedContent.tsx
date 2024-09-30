@@ -26,6 +26,7 @@ export type ObservationType = {
   start: number;
   end: number;
   text: string;
+  color?: `#${string}`;
 };
 
 class ContentParser {
@@ -53,7 +54,10 @@ class ContentParser {
       (acc: TipTapContent, observation) => [
         {
           type: "Observation",
-          attrs: { type: observation.type, title: observation.text },
+          attrs: {
+            title: observation.text,
+            color: observation.color,
+          },
           content: acc,
         },
       ],

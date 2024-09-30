@@ -58,6 +58,7 @@ const DefaultSpeakerWrapper = ({
     <p
       style={{
         marginBottom: "10px",
+        userSelect: "none",
       }}
       onClick={() => {
         setCurrentTime && setCurrentTime({ start, end });

@@ -71,6 +71,7 @@ Default.args = {
       start: 1.1999999,
       end: 5.2799997,
       text: "My observation",
+      color: "#ff0000",
     },
     {
       id: 2,
@@ -200,6 +201,7 @@ WithCustomTheme.args = {
       type: "title",
       start: 1.1999999,
       end: 5.2799997,
+      color: "#ff0000",
       text: "My observation",
     },
     {
@@ -207,6 +209,7 @@ WithCustomTheme.args = {
       type: "title",
       start: 4.56,
       end: 10.175,
+      color: "#00ff00",
       text: "My other observation",
     },
   ],
@@ -231,7 +234,7 @@ WithCustomTheme.args = {
         <span
           data-title={title}
           style={{
-            background: `color-mix(in srgb, ${background}, #f0000050)`,
+            background: `color-mix(in srgb, ${background}, #ffffff 50%)`,
             padding: "0 0.2em",
           }}
         >
@@ -241,7 +244,7 @@ WithCustomTheme.args = {
               <>
                 {observations.map((o) => (
                   <div>
-                    <Tag hue="red" color="white">
+                    <Tag hue={o.color} color="white">
                       {o.title}
                     </Tag>
                   </div>
