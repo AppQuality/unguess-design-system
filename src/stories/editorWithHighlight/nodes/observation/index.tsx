@@ -10,8 +10,8 @@ export const Observation = Node.create({
 
   addAttributes() {
     return {
-      type: {
-        default: "",
+      id: {
+        default: 0,
       },
       color: {
         default: "#909090",
@@ -33,15 +33,14 @@ export const Observation = Node.create({
   addCommands() {
     return {
       addObservation:
-        ({ title, color }: { title: string; color?: string }) =>
+        ({ id, title, color }: { id: number; title: string; color?: string }) =>
         ({ tr, state, view }) => {
           const { from, to } = state.selection;
           state.doc.nodesBetween(from, to, (node, pos) => {
-            // Controlla se il nodo è del tipo che vuoi sostituire (ad esempio "word")
             if (node.type.name === "Word") {
-              // Crea il nodo "active"
               const annotationNode = state.schema.nodes.Observation.create(
                 {
+                  id,
                   title,
                   color,
                 },

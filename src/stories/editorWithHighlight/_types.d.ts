@@ -10,9 +10,11 @@ declare module "@tiptap/core" {
     };
     observation: {
       addObservation: ({
+        id,
         title,
         color,
       }: {
+        id: number;
         title: string;
         color?: string;
       }) => ReturnType;

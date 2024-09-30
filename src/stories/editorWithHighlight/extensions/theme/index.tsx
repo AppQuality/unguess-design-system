@@ -20,7 +20,7 @@ const DefaultObservationWrapper = ({
   title: string;
   color: string;
   children: ReactNode;
-  observations: { title: string; color: string }[];
+  observations: { id: number; title: string; color: string }[];
 }) => {
   const background = color + "50";
   return (

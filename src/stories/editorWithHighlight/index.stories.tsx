@@ -82,7 +82,10 @@ Default.args = {
     },
   ],
   onAddObservation: (editor) =>
-    editor.commands.addObservation({ title: "title" }),
+    editor.commands.addObservation({
+      id: Math.floor(Math.random() * 1000),
+      title: "title",
+    }),
 };
 
 const RunningTemplate: StoryFn<{}> = (args) => {
@@ -117,7 +120,10 @@ const RunningTemplate: StoryFn<{}> = (args) => {
       <EditorWithHighlight.FloatingMenu
         editor={editor}
         onClick={(editor) => {
-          editor.commands.addObservation({ title: "title" });
+          editor.commands.addObservation({
+            id: Math.floor(Math.random() * 1000),
+            title: "title",
+          });
         }}
       />
       <EditorWithHighlight {...args} editor={editor} />
@@ -148,7 +154,10 @@ const FakeRunningTemplate: StoryFn<StoryArgs> = (args, context) => {
       <EditorWithHighlight.FloatingMenu
         editor={editor}
         onClick={(editor) => {
-          editor.commands.addObservation({ title: "title" });
+          editor.commands.addObservation({
+            id: Math.floor(Math.random() * 1000),
+            title: "title",
+          });
         }}
       />
       <EditorWithHighlight {...args} editor={editor} />
@@ -165,7 +174,10 @@ WithSearch.args = {
   content: paragraphs,
   showSearch: true,
   onAddObservation: (editor) =>
-    editor.commands.addObservation({ title: "title" }),
+    editor.commands.addObservation({
+      id: Math.floor(Math.random() * 1000),
+      title: "title",
+    }),
 };
 
 export const WithTranslation = Template.bind({});
@@ -174,7 +186,10 @@ WithTranslation.args = {
   content: paragraphs,
   translations: paragraphs.flatMap((paragraph) => paragraph.sentences),
   onAddObservation: (editor) =>
-    editor.commands.addObservation({ title: "title" }),
+    editor.commands.addObservation({
+      id: Math.floor(Math.random() * 1000),
+      title: "title",
+    }),
   onSetCurrentTime: (setCurrentTime) => (time) => setCurrentTime(time * 1000),
 };
 
@@ -185,7 +200,11 @@ MultipleColorObservations.args = {
   onAddObservation: (editor) => {
     const colors = ["#ff0000", "#00ff00", "#0000ff"];
     const color = colors[Math.floor(Math.random() * colors.length)];
-    editor.commands.addObservation({ title: "title", color });
+    editor.commands.addObservation({
+      id: Math.floor(Math.random() * 1000),
+      title: "title",
+      color,
+    });
   },
   onSetCurrentTime: (setCurrentTime) => (time) => setCurrentTime(time * 1000),
 };
@@ -214,7 +233,10 @@ WithCustomTheme.args = {
     },
   ],
   onAddObservation: (editor) => {
-    editor.commands.addObservation({ title: "title" });
+    editor.commands.addObservation({
+      id: Math.floor(Math.random() * 1000),
+      title: "title",
+    });
   },
   showSearch: true,
   onSetCurrentTime: (setCurrentTime) => (time) => setCurrentTime(time * 1000),
@@ -245,7 +267,7 @@ WithCustomTheme.args = {
                 {observations.map((o) => (
                   <div>
                     <Tag hue={o.color} color="white">
-                      {o.title}
+                      #{JSON.stringify(o)} - {o.title}
                     </Tag>
                   </div>
                 ))}
