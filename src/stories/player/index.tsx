@@ -70,7 +70,10 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             onClick={togglePlay}
           />
         )}
-        <Video.Player className="player-container" />
+        <Video.Player
+          className="player-container"
+          increaseTimePrecision={props.increasePrecision}
+        />
         <ProgressContextProvider>
           <Controls
             container={containerRef.current}
