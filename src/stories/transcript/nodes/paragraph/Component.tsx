@@ -31,7 +31,7 @@ export const Component = ({
 }) => {
   if (!node.attrs.sentences || node.attrs.sentences.length === 0) {
     return (
-      <NodeViewWrapper className="react-component">
+      <NodeViewWrapper as="div" style={{ display: "inline" }}>
         <Content node={node} editor={editor} />
       </NodeViewWrapper>
     );

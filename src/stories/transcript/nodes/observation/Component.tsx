@@ -66,7 +66,7 @@ export const Component = ({
   const observationsNodes = ancestors.length ? [node, ...ancestors] : [node];
 
   return (
-    <NodeViewWrapper as="span" className="react-component">
+    <NodeViewWrapper as="div" style={{ display: "inline" }}>
       <ObservationWrapper
         title={node.attrs["title"]}
         color={node.attrs["color"]}

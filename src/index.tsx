@@ -199,6 +199,6 @@ export * from "./stories/typography/paragraph";
 export * from "./stories/typography/span";
 export * from "./stories/typography/typescale";
 
-export * from "./stories/editorWithHighlight";
+export * from "./stories/transcript";
 
 export { GlobalStyle };

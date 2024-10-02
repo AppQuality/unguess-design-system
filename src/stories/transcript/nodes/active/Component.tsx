@@ -12,7 +12,7 @@ export const Component = ({
   const themeExtension = getTheme(editor);
   const ActiveWrapper = themeExtension.options.activeWrapper;
   return (
-    <NodeViewWrapper as="span">
+    <NodeViewWrapper as="div" style={{ display: "inline" }}>
       <ActiveWrapper>
         <NodeViewContent as="span" className="content is-editable" />
       </ActiveWrapper>

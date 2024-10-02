@@ -7,7 +7,7 @@ export const Component = ({ node, editor }: { node: Node; editor: Editor }) => {
 
   const WordWrapper = themeExtension.options.wordWrapper;
   return (
-    <NodeViewWrapper {...node.attrs} as="span" className="react-component">
+    <NodeViewWrapper {...node.attrs} as="div" style={{ display: "inline" }}>
       <WordWrapper>
         <span
           onClick={() => {
