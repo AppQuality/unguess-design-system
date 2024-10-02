@@ -4054,6 +4054,11 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-strike/-/extension-strike-2.7.4.tgz#926e39924999514ba3a08e69129686844ac68d99"
   integrity sha512-ELMFUCE9MlF0qsGzHJl0AxzGUVyS9rglk6pzidoB0iU1LuzUa/K1el5ID2ksSFdq2+STK17rOWQxUiv3X8C7gw==
 
+"@tiptap/extension-text-style@2.2.4":
+  version "2.2.4"
+  resolved "https://registry.npmjs.org/@tiptap/extension-text-style/-/extension-text-style-2.2.4.tgz#078f7fc1712e1b0ac7b6597156b8a9bf12a5eaab"
+  integrity sha512-8Mcxy+HUHPUgK7bOv34m8zhbhzPm6f1/hgbgwz9m+Oel7MNPElsMXtxxygbwtr7Hbj6S4NBoBl/Ir4BkziYRbQ==
+
 "@tiptap/extension-text@^2.2.4":
   version "2.7.4"
   resolved "https://registry.npmjs.org/@tiptap/extension-text/-/extension-text-2.7.4.tgz#7ac58c102a3b1e33b7a2c6c03961101363fa52d7"
