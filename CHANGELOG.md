@@ -1,3 +1,17 @@
+# v3.1.108 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- Fix sidebar scrollable panel [#414](https://github.com/AppQuality/unguess-design-system/pull/414) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- fix: Restore scrollable panel with new version [#413](https://github.com/AppQuality/unguess-design-system/pull/413) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.106 (Tue Sep 24 2024)
 
 #### 🐛 Bug Fix
