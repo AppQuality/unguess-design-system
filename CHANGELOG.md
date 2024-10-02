@@ -1,3 +1,15 @@
+# v3.1.112 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Fix stream player to last working version [#418](https://github.com/AppQuality/unguess-design-system/pull/418) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v3.1.111 (Wed Oct 02 2024)
 
 #### 🐛 Bug Fix
