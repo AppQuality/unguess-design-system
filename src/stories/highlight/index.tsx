@@ -79,10 +79,29 @@ const Layer = styled.div<{
     getColor(color, undefined, undefined, 0.2)};
 `;
 
+const textFromSelection = (selection: Selection | null) => {
+  if (!selection || !selection.toString().length) return "";
+
+  if (selection.anchorNode === null || selection.focusNode === null) return "";
+  var range = selection.getRangeAt(0);
+
+  var tempDiv = document.createElement("div");
+  tempDiv.appendChild(range.cloneContents());
+
+  var items = tempDiv.querySelectorAll("div");
+  items.forEach(function (item) {
+    if (item.getAttribute("data-unselectable")) {
+      item.remove();
+    }
+  });
+
+  var filteredText = tempDiv.textContent || tempDiv.innerText;
+  return filteredText.length ? filteredText.trim() : selection.toString();
+};
+
 /**
  *  Use Highlight to use highlight interation on any text element
  */
-
 const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   const { onSelectionButtonClick, search, i18n, children } = props;
   const ref = useRef<HTMLDivElement>(null);
@@ -98,29 +117,15 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
   }>();
   const activeSelection = document.getSelection();
 
-  const extractText = (selection: Selection) => {
-    if (selection.anchorNode === null || selection.focusNode === null)
-      return "";
-    var range = selection.getRangeAt(0);
-
-    var tempDiv = document.createElement("div");
-    tempDiv.appendChild(range.cloneContents());
-
-    var items = tempDiv.querySelectorAll("div");
-    items.forEach(function (item) {
-      if (item.getAttribute("data-unselectable")) {
-        item.remove();
-      }
-    });
-
-    var filteredText = tempDiv.textContent || tempDiv.innerText;
-    return filteredText.length ? filteredText.trim() : selection.toString();
-  };
+  const extractText = useMemo(
+    () => textFromSelection(activeSelection),
+    [activeSelection]
+  );
 
   const handleSelectionChange = useCallback(() => {
     if (activeSelection && activeSelection.toString().length > 0) {
       // Extract the text from the selection cleaning unselectable items
-      const text = extractText(activeSelection);
+      const text = extractText;
       if (!text) return;
 
       const anchorNode = activeSelection?.anchorNode?.parentElement;
@@ -176,7 +181,7 @@ const Highlight = (props: PropsWithChildren<HighlightArgs>) => {
     } else {
       setIsSelecting(false);
     }
-  }, [onSelectionButtonClick, activeSelection]);
+  }, [activeSelection, extractText, onSelectionButtonClick]);
 
   useEffect(() => {
     if (ref.current === null) return;
@@ -222,9 +227,7 @@ const Word = (props: WordProps) => {
   const foundObservations = useMemo(
     () =>
       props.observations?.filter(
-        (obs) =>
-          Number(props.start.toFixed(8)) >= Number(obs.start.toFixed(8)) &&
-          Number(props.end.toFixed(8)) <= Number(obs.end.toFixed(8))
+        (obs) => props.start >= obs.start && props.end <= obs.end
       ) ?? [],
     [props.observations, props.start, props.end]
   );
