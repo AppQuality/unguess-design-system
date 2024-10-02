@@ -2,7 +2,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import { Editor } from "@tiptap/react";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { EditorWithHighlight } from ".";
+import { Transcript } from ".";
 import { ReactComponent as BadgeIcon } from "../../assets/icons/check-badge-stroke.svg";
 import { ReactComponent as PlayIcon } from "../../assets/icons/play-fill.svg";
 import { IconButton } from "../buttons/icon-button";
@@ -32,7 +32,7 @@ type StoryArgs = {
 
 const Template: StoryFn<StoryArgs> = (args) => {
   const [currentTime, setCurrentTime] = useState(args.currentTime);
-  const editor = EditorWithHighlight.useEditor({
+  const editor = Transcript.useEditor({
     themeExtension: args.themeExtension,
     currentTime: currentTime,
     content: args.content,
@@ -49,13 +49,13 @@ const Template: StoryFn<StoryArgs> = (args) => {
   return (
     <>
       {args.onAddObservation && (
-        <EditorWithHighlight.FloatingMenu
+        <Transcript.FloatingMenu
           editor={editor}
           onClick={args.onAddObservation}
         />
       )}
-      {args.showSearch && <EditorWithHighlight.Search editor={editor} />}
-      <EditorWithHighlight {...args} editor={editor} />
+      {args.showSearch && <Transcript.Search editor={editor} />}
+      <Transcript {...args} editor={editor} />
     </>
   );
 };
@@ -91,7 +91,7 @@ Default.args = {
 const RunningTemplate: StoryFn<{}> = (args) => {
   const [currentTime, setCurrentTime] = useState(0);
   const intervalTime = 300;
-  const editor = EditorWithHighlight.useEditor({
+  const editor = Transcript.useEditor({
     currentTime,
     content: paragraphs,
     onSetCurrentTime: (time) => setCurrentTime(time * 1000),
@@ -117,7 +117,7 @@ const RunningTemplate: StoryFn<{}> = (args) => {
   return (
     <>
       Time: {currentTime}
-      <EditorWithHighlight.FloatingMenu
+      <Transcript.FloatingMenu
         editor={editor}
         onClick={(editor) => {
           editor.commands.addObservation({
@@ -126,7 +126,7 @@ const RunningTemplate: StoryFn<{}> = (args) => {
           });
         }}
       />
-      <EditorWithHighlight {...args} editor={editor} />
+      <Transcript {...args} editor={editor} />
     </>
   );
 };
@@ -137,7 +137,7 @@ Running.args = {};
 const FakeRunningTemplate: StoryFn<StoryArgs> = (args, context) => {
   const [currentTime, setCurrentTime] = useState(0);
   const intervalTime = 300;
-  const editor = EditorWithHighlight.useEditor({
+  const editor = Transcript.useEditor({
     currentTime,
     content: paragraphs,
     onSetCurrentTime: (time) => setCurrentTime(time * 1000),
@@ -151,7 +151,7 @@ const FakeRunningTemplate: StoryFn<StoryArgs> = (args, context) => {
       <button onClick={() => setCurrentTime(currentTime + intervalTime)}>
         Next
       </button>
-      <EditorWithHighlight.FloatingMenu
+      <Transcript.FloatingMenu
         editor={editor}
         onClick={(editor) => {
           editor.commands.addObservation({
@@ -160,7 +160,7 @@ const FakeRunningTemplate: StoryFn<StoryArgs> = (args, context) => {
           });
         }}
       />
-      <EditorWithHighlight {...args} editor={editor} />
+      <Transcript {...args} editor={editor} />
     </>
   );
 };
@@ -361,8 +361,8 @@ WithCustomTheme.args = {
 };
 
 export default {
-  title: "Molecules/EditorWithHighlight",
-  component: EditorWithHighlight,
+  title: "Molecules/Transcript",
+  component: Transcript,
   argTypes: {
     isEditable: {
       control: {

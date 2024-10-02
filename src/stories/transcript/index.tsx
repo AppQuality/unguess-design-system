@@ -42,7 +42,7 @@ const EditorWrapper = styled.div`
   }
 `;
 
-const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
+const Transcript = ({ editor }: { editor: Editor }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleDragStart = useCallback((event: DragEvent) => {
@@ -77,8 +77,8 @@ const EditorWithHighlight = ({ editor }: { editor: Editor }) => {
   );
 };
 
-EditorWithHighlight.useEditor = useEditor;
-EditorWithHighlight.Search = Search;
-EditorWithHighlight.FloatingMenu = FloatingMenu;
+Transcript.useEditor = useEditor;
+Transcript.Search = Search;
+Transcript.FloatingMenu = FloatingMenu;
 
-export { EditorWithHighlight, Theme };
+export { Theme, Transcript };
