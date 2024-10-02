@@ -1,10 +1,9 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import { Tag } from ".";
+import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { TagArgs } from "./_types";
-import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
-
 
 interface TagStoryProps extends TagArgs {
   canBeClosed: boolean;
@@ -15,8 +14,8 @@ interface TagStoryProps extends TagArgs {
 }
 
 const KEY_CODES = {
-  DELETE: 'Delete',
-  BACKSPACE: 'Backspace'
+  DELETE: "Delete",
+  BACKSPACE: "Backspace",
 };
 
 const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -44,7 +43,12 @@ const Template: Story<TagStoryProps> = ({
         )}
         {children}
         {secondaryText && (
-          <Tag.SecondaryText color={secondaryTextColor} isBold={secondaryTextBold}>{secondaryText}</Tag.SecondaryText>
+          <Tag.SecondaryText
+            color={secondaryTextColor}
+            isBold={secondaryTextBold}
+          >
+            {secondaryText}
+          </Tag.SecondaryText>
         )}
         {canBeClosed && (
           <Tag.Close onClick={() => alert("Tag dismissed via mouse")} />
@@ -99,16 +103,16 @@ export default {
   },
   argTypes: {
     color: {
-      control: { type: 'color' },
+      control: { type: "color" },
     },
     hue: {
-      control: { type: 'color' },
+      control: { type: "color" },
     },
     secondaryTextColor: {
-      control: { type: 'color' },
+      control: { type: "color" },
     },
     secondaryTextBold: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
     },
   },
 } as ComponentMeta<typeof Tag>;
