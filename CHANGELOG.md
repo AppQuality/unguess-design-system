@@ -1,3 +1,17 @@
+# v3.1.110 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- Add new transcript [#416](https://github.com/AppQuality/unguess-design-system/pull/416) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+- New highlight component [#411](https://github.com/AppQuality/unguess-design-system/pull/411) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.109 (Wed Oct 02 2024)
 
 #### 🐛 Bug Fix
