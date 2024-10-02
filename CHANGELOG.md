@@ -1,3 +1,15 @@
+# v3.1.109 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- Fix authentication logic [#415](https://github.com/AppQuality/unguess-design-system/pull/415) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v3.1.108 (Wed Oct 02 2024)
 
 #### 🐛 Bug Fix
