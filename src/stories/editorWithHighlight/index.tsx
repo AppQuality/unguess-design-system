@@ -1,3 +1,4 @@
+import "@tiptap/core"; // Assicurati di importare il modulo prima
 import { Editor, EditorContent } from "@tiptap/react";
 import { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -5,6 +6,30 @@ import { Theme, getTheme } from "./extensions/theme";
 import { FloatingMenu } from "./floatingMenu";
 import { Search } from "./search";
 import { useEditor } from "./useEditor";
+
+declare module "@tiptap/core" {
+  interface Commands<ReturnType> {
+    active: {
+      setCurrentTime: (start: number) => ReturnType;
+      updateCurrentActive: ({
+        currentWord,
+      }: {
+        currentWord: { start: number; end: number };
+      }) => ReturnType;
+    };
+    observation: {
+      addObservation: ({
+        id,
+        title,
+        color,
+      }: {
+        id: number;
+        title: string;
+        color?: string;
+      }) => ReturnType;
+    };
+  }
+}
 
 const EditorWrapper = styled.div`
   border: none;
