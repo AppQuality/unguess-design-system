@@ -1,3 +1,15 @@
+# v3.1.111 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Add tiptap text-style dependency [#417](https://github.com/AppQuality/unguess-design-system/pull/417) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v3.1.110 (Wed Oct 02 2024)
 
 #### 🐛 Bug Fix
