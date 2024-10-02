@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/AppQuality/unguess-design-system#readme",
   "dependencies": {
-    "@appquality/stream-player": "^1.0.6",
+    "@appquality/stream-player": "1.0.6",
     "@nivo/bar": "^0.80.0",
     "@nivo/bullet": "^0.80.0",
     "@nivo/core": "^0.80.0",

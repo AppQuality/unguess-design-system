@@ -24,7 +24,7 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@appquality/stream-player@^1.0.6":
+"@appquality/stream-player@1.0.6":
   version "1.0.6"
   resolved "https://registry.npmjs.org/@appquality/stream-player/-/stream-player-1.0.6.tgz#b48d195b77ae0070b4d10384eb28573069b79605"
   integrity sha512-OuAkU3oX7nsJk7nD4MOce0qJeVPG3xij5gibteD0f/lIgNOMnqhL3azaQ/xdk+1KuA5uKVKORwnKK5m/7CyfDA==
