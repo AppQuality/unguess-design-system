@@ -42,6 +42,7 @@ const Template: StoryFn<StoryArgs> = (args) => {
     onSetCurrentTime: args.onSetCurrentTime
       ? args.onSetCurrentTime(setCurrentTime)
       : undefined,
+    numberOfSpeakers: 1,
   });
 
   if (!editor) return <></>;
@@ -295,7 +296,7 @@ WithCustomTheme.args = {
     speakerWrapper: ({ start, end, setCurrentTime, speaker }) => {
       return (
         <p>
-          {speaker} ({start} - {end}){" "}
+          Speaker {speaker + 1} ({start} - {end}){" "}
           <IconButton
             onClick={() => {
               setCurrentTime && setCurrentTime({ start, end });
