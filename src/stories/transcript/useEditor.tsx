@@ -24,6 +24,7 @@ export const useEditor = (
     onSetCurrentTime,
     themeExtension,
     isEditable,
+    numberOfSpeakers,
   }: {
     content?: ParagraphType[];
     observations?: ObservationType[];
@@ -32,6 +33,7 @@ export const useEditor = (
     onSetCurrentTime?: (time: number) => void;
     themeExtension?: Extension;
     isEditable?: boolean;
+    numberOfSpeakers?: number;
   },
   deps?: React.DependencyList
 ) => {
@@ -53,7 +55,12 @@ export const useEditor = (
       editorProps: {
         handlePaste: () => true,
       },
-      content: getParsedContent(content, observations, translations),
+      content: getParsedContent(
+        content,
+        observations,
+        translations,
+        numberOfSpeakers
+      ),
     },
     deps
   );

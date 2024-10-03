@@ -11,8 +11,11 @@ export const Paragraph = Node.create({
 
   addAttributes() {
     return {
-      speakername: {
-        default: "Speaker",
+      totalSpeakers: {
+        default: null,
+      },
+      speaker: {
+        default: 0,
       },
       start: {
         default: 0,

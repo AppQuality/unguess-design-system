@@ -48,11 +48,13 @@ const DefaultSpeakerWrapper = ({
   end,
   setCurrentTime,
   speaker,
+  totalSpeakers,
 }: {
   start: number;
   end: number;
   setCurrentTime?: ({ start, end }: { start: number; end: number }) => void;
-  speaker: string;
+  speaker: number;
+  totalSpeakers: number | null;
 }) => {
   return (
     <p
@@ -65,7 +67,8 @@ const DefaultSpeakerWrapper = ({
       }}
       contentEditable={false}
     >
-      {speaker} ({formatTime(start)} - {formatTime(end)})
+      Speaker {speaker} (su {totalSpeakers}) ({formatTime(start)} -{" "}
+      {formatTime(end)})
     </p>
   );
 };

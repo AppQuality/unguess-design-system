@@ -15,7 +15,8 @@ const Content = ({ node, editor }: { node: PMNode; editor: Editor }) => {
         }}
         start={node.attrs.start}
         end={node.attrs.end}
-        speaker={node.attrs.speakername}
+        speaker={node.attrs.speaker}
+        totalSpeakers={node.attrs.totalSpeakers}
       />
       <NodeViewContent className="content is-editable" />
     </ParagraphWrapper>
