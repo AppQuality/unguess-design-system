@@ -1,3 +1,15 @@
+# v3.1.113 (Thu Oct 03 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Add better speaker handling [#419](https://github.com/AppQuality/unguess-design-system/pull/419) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v3.1.112 (Wed Oct 02 2024)
 
 #### 🐛 Bug Fix
