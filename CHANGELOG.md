@@ -1,3 +1,16 @@
+# v3.1.114 (Mon Oct 07 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Use isExpanded style for panel container [#421](https://github.com/AppQuality/unguess-design-system/pull/421) ([@d-beezee](https://github.com/d-beezee))
+- fix: Use isExpanded style for panel container [#420](https://github.com/AppQuality/unguess-design-system/pull/420) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v3.1.113 (Thu Oct 03 2024)
 
 #### 🐛 Bug Fix
