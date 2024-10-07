@@ -14,6 +14,10 @@ const NavAccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
   order: 1;
   margin: ${({ theme }) => theme.space.xs} 0;
   padding-left: 8.5px;
+  .panelContainer {
+    ${sidebarNavItemExpanded}
+    ${(props) => !props.isExpanded && sidebarNavItemHidden}
+  }
 `;
 
 const AccordionItemHeader = styled(Accordion.Header)<
