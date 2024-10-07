@@ -1,7 +1,7 @@
 import { getColor as zendeskGetColor } from "@zendeskgarden/react-theming";
 import { DefaultTheme, css } from "styled-components";
-import { theme as unguessTheme } from ".";
 import UAParser from "ua-parser-js";
+import { theme as unguessTheme } from ".";
 
 declare type Hue = Record<number | string, string> | string;
 declare type GetColorFunction = (hue: Hue, shade?: number, theme?: DefaultTheme, transparency?: number) => string | undefined;
@@ -39,7 +39,6 @@ export const opacityTransition = css`
 export const sidebarNavItemExpanded = css`
   visibility: visible;
   opacity: 1;
-  // transition: opacity 0.2s ease;
 `;
 export const sidebarNavItemHidden = css`
   visibility: hidden;
