@@ -1,4 +1,4 @@
-import { ResponsiveWaffle, TooltipProps } from "@nivo/waffle";
+import { ResponsiveWaffle } from "@nivo/waffle";
 import {
   CHARTS_COLOR_SCHEME_MONO,
   DEFAULT_CHARTS_THEME,
@@ -42,15 +42,14 @@ const WaffleChart = ({
             value: total.value,
           },
         ]}
-        tooltip={({
-          data: { label, value },
-        }: TooltipProps<{ id: string; value: number; label: string }>) =>
-          tooltip ? (
-            tooltip({ label: data.label, value: data.value })
-          ) : (
+        tooltip={({ data: { label, value } }) => {
+          if (tooltip)
+            return <>{tooltip({ label: data.label, value: data.value })}</>;
+
+          return (
             <div style={{ background: "#fff" }}>{`${label}: ${value}`}</div>
-          )
-        }
+          );
+        }}
         fillDirection="top"
         total={total.value}
         rows={6}

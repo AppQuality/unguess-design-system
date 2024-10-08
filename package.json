@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "yarn run clean && rollup -c",
+    "build": "vite build",
     "clean": "rimraf build",
     "release": "npx auto shipit --base-branch=master",
     "type:check": "tsc",
