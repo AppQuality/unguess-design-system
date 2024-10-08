@@ -1,7 +1,7 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Blockquote } from ".";
-import { MD } from "../typescale";
 import { Paragraph } from "../paragraph";
+import { MD } from "../typescale";
 
 const Template: Story<any> = (args) => {
   return (
@@ -51,4 +51,3 @@ export default {
     chromatic: { delay: 300 },
   },
 } as ComponentMeta<typeof Blockquote>;
-

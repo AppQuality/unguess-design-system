@@ -1,16 +1,16 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Autocomplete } from ".";
-import { Item } from "../item";
-import { Menu, Separator, MediaBody, MediaFigure } from "../menu";
 import { Field } from "../field";
+import { Item } from "../item";
+import { MediaBody, MediaFigure, Menu, Separator } from "../menu";
 import { Dropdown } from "../select";
 // import { Field } from "../../field";
-import { Label } from "../../label";
-import { AutocompleteArgs } from "./_types";
-import { ReactComponent as AddIcon } from "../../../assets/icons/grid-add.svg";
 import { useCallback, useEffect, useState } from "react";
+import { ReactComponent as AddIcon } from "../../../assets/icons/grid-add.svg";
 import useDebounce from "../../../hooks/useDebounce";
+import { Label } from "../../label";
 import { ItemContent } from "../item-content";
+import { AutocompleteArgs } from "./_types";
 
 interface IItem {
   label: string;

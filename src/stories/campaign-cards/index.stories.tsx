@@ -1,10 +1,10 @@
-import { CampaignCardsProps } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
-import { CampaignCard } from "./index";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import styled from "styled-components";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { theme } from "../theme";
-import styled from "styled-components";
+import { CampaignCardsProps } from "./_types";
+import { CampaignCard } from "./index";
 
 const design = {
   type: "figma",

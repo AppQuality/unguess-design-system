@@ -1,8 +1,8 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
 
 <Meta title="Overview/Intro" />
 
-# Welcome to the amazing Unguess Design System 
+# Welcome to the amazing Unguess Design System
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
@@ -44,7 +44,7 @@ Components within the design system assume that a set of global styles have been
 Useful when you don't need any custom `body` styling in the application, typically this would be placed in a layout component that wraps all pages, or a top-level `App` component.
 
 ```javascript
-import { global } from '@storybook/design-system';
+import { global } from "@storybook/design-system";
 const { GlobalStyle } = global;
 ```
 
@@ -58,8 +58,8 @@ const { GlobalStyle } = global;
 Useful when you want build upon the shared global styling.
 
 ```javascript
-import { Global, css } from '@storybook/theming';
-import { global } from '@storybook/design-system';
+import { Global, css } from "@storybook/theming";
+import { global } from "@storybook/design-system";
 const { bodyStyles } = global;
 
 const customGlobalStyle = css`

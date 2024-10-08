@@ -1,9 +1,9 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Slider } from ".";
-import { XL, MD } from "../typography/typescale";
-import { SliderArgs } from "./_types";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import styled from "styled-components";
+import { Slider } from ".";
 import { Player } from "../player";
+import { MD, XL } from "../typography/typescale";
+import { SliderArgs } from "./_types";
 
 const slideContent = {
   headerTitle: "Equum cibum est optimum prandium est",

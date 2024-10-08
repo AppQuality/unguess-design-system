@@ -1,13 +1,13 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { useState } from "react";
-import { Dropdown } from "../../dropdowns/select";
+import { SplitButton } from ".";
+import { ReactComponent as LeafIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { Item } from "../../dropdowns/item";
 import { Menu } from "../../dropdowns/menu";
+import { Dropdown } from "../../dropdowns/select";
 import { Trigger } from "../../trigger";
 import { Button } from "../button";
 import { IconButton } from "../icon-button";
-import { ReactComponent as LeafIcon } from "../../../assets/icons/chevron-down-stroke.svg";
-import { SplitButton } from ".";
 import { SplitButtonArgs } from "./_types";
 
 const Template: Story<SplitButtonArgs> = (args) => {

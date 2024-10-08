@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from "../theme";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Avatar } from ".";
-import { AvatarArgs } from "./_types";
 import { ReactComponent as UserIcon } from "../../assets/icons/user-solo-stroke.svg";
+import { theme } from "../theme";
+import { AvatarArgs } from "./_types";
 
 const Template: Story<AvatarArgs> = (args) => {
   const getChildren = (type: any) => {

@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { IAnchorProps } from "@zendeskgarden/react-buttons";
 import { Breadcrumb } from ".";
 import { Anchor } from "../buttons/anchor";
@@ -28,22 +28,21 @@ Default.args = {
     {
       ...Basic.args,
       children: "Home",
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       ...Basic.args,
       children: "Nome lunghissimo della breadcrumb per provare l'ellipsis",
-      onClick: () => {}
+      onClick: () => {},
     },
   ],
-  showLastArrow: true
+  showLastArrow: true,
 };
-
 
 Default.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A32401',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A32401",
   },
 };
 
@@ -53,6 +52,5 @@ export default {
   parameters: {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
-
   },
 } as ComponentMeta<typeof Breadcrumb>;

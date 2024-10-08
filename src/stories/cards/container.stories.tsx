@@ -1,6 +1,6 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Title } from "../title";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { ContainerCard } from ".";
+import { Title } from "../title";
 import { CardProps } from "./_types";
 
 interface CardStoryProps extends CardProps {

@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Tabs } from "./index";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { TabsArgs } from "./_types";
+import { Tabs } from "./index";
 
 interface TabStoryArgs extends TabsArgs {
   items: { title: string; content: string; isDisabled?: boolean }[];

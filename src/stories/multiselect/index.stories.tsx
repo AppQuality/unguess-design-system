@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { useState } from "react";
 import { MultiSelect } from ".";
 import { MultiSelectProps } from "./_types";

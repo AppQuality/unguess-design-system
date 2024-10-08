@@ -1,14 +1,14 @@
-import { ModalArgs } from "../_types";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import styled from "styled-components";
 import { ModalFullScreen } from ".";
-import { Button } from "../../buttons/button";
-import { Logo } from "../../logo";
+import useWindowSize from "../../../hooks/useWindowSize";
 import { Breadcrumb } from "../../breadcrumbs";
 import { Anchor } from "../../buttons/anchor";
-import { Span } from "../../typography/span";
+import { Button } from "../../buttons/button";
+import { Logo } from "../../logo";
 import { theme } from "../../theme";
-import useWindowSize from "../../../hooks/useWindowSize";
-import styled from "styled-components";
+import { Span } from "../../typography/span";
+import { ModalArgs } from "../_types";
 
 interface ModalStoryArgs extends ModalArgs {
   breadcrumbs?: any;
@@ -24,10 +24,14 @@ const defaultArgs: ModalStoryArgs = {
   breadcrumbs: [
     {
       children: "ACME's Workspace",
-      onClick: () => { alert("ACME's Workspace clicked") }
+      onClick: () => {
+        alert("ACME's Workspace clicked");
+      },
     },
   ],
-  onClose: (e) => { alert("Close clicked"); }
+  onClose: (e) => {
+    alert("Close clicked");
+  },
 };
 
 const Container = styled.div`
@@ -46,7 +50,12 @@ const Template: Story<ModalStoryArgs> = (args) => {
       <ModalFullScreen.Header isDanger={isDanger}>
         {width > parseInt(theme.breakpoints.sm) ? (
           <Container>
-            <Logo type="icon" size={25} style={{ marginRight: theme.space.xs }} /><Breadcrumb {...args}>
+            <Logo
+              type="icon"
+              size={25}
+              style={{ marginRight: theme.space.xs }}
+            />
+            <Breadcrumb {...args}>
               {breadcrumbs.map((item: any) => (
                 <Anchor {...item} />
               ))}
@@ -68,7 +77,7 @@ const Template: Story<ModalStoryArgs> = (args) => {
         <ModalFullScreen.FooterItem>
           <Button
             isPrimary
-            {...isDanger && { isDanger: true }}
+            {...(isDanger && { isDanger: true })}
             onClick={() => {
               alert("Ahoy!");
             }}

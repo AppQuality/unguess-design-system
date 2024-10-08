@@ -1,12 +1,12 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Dropdown, Select, Message } from ".";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { Dropdown, Message, Select } from ".";
+import { Field } from "../field";
 import { Item } from "../item";
 import { Menu } from "../menu";
-import { Field } from "../field";
 // import { Field } from "../../field";
 import { Label } from "../../label";
-import { DropdownArgs, SelectArgs } from "./_types";
 import { MenuArgs } from "../menu/_types";
+import { DropdownArgs, SelectArgs } from "./_types";
 
 interface IItem {
   label: string;

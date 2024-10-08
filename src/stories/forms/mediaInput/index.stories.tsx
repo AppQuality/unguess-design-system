@@ -1,10 +1,10 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { MediaInput } from ".";
-import { Field } from "../field";
-import { Label } from "../../label";
-import { Row } from "../../grid/row";
-import { Col } from "../../grid/col";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search-stroke.svg";
+import { Col } from "../../grid/col";
+import { Row } from "../../grid/row";
+import { Label } from "../../label";
+import { Field } from "../field";
 import { MediaInputArgs } from "./_types";
 
 const defaultArgs: MediaInputArgs = {

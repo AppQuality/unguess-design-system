@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from "../../theme";
-import { BulletChart } from ".";
-import { BulletChartProps } from "./_types";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Paragraph } from "@zendeskgarden/react-notifications";
+import { BulletChart } from ".";
+import { theme } from "../../theme";
+import { BulletChartProps } from "./_types";
 
 const TemplateBullet: Story<BulletChartProps> = (args) => (
   <BulletChart {...args} />
@@ -21,21 +21,11 @@ const TemplateWidget: Story<BulletChartProps> = (args) => {
       <Paragraph style={{ marginBottom: theme.space.sm }}>
         Completamento Use Case
       </Paragraph>
-      <BulletChart
-        {...args}
-        ranges={[25, 50, 75, 100]}
-        values={[20]}
-      />
-      <Paragraph
-        style={{ marginBottom: theme.space.sm, marginTop: 20 }}
-      >
+      <BulletChart {...args} ranges={[25, 50, 75, 100]} values={[20]} />
+      <Paragraph style={{ marginBottom: theme.space.sm, marginTop: 20 }}>
         Tempo trascorso
       </Paragraph>
-      <BulletChart
-        {...args}
-        ranges={[25, 50, 75, 100]}
-        values={[100]}
-      />
+      <BulletChart {...args} ranges={[25, 50, 75, 100]} values={[100]} />
     </>
   );
 };

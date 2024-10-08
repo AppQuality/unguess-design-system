@@ -1,9 +1,8 @@
-import { DrawerArgs } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Drawer } from ".";
 import { Button } from "../buttons/button";
+import { DrawerArgs } from "./_types";
 import { LoremIpsum } from "./loremIpsum";
-
 
 const defaultArgs: DrawerArgs = {
   isOpen: true,
@@ -27,7 +26,12 @@ const Template: Story<DrawerArgs> = (args) => {
           </Button>
         </Drawer.FooterItem>
         <Drawer.FooterItem>
-          <Button isPrimary onClick={()=> {alert("Confirm clicked!")}}>
+          <Button
+            isPrimary
+            onClick={() => {
+              alert("Confirm clicked!");
+            }}
+          >
             Confirm
           </Button>
         </Drawer.FooterItem>

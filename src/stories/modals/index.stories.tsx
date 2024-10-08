@@ -1,7 +1,7 @@
-import { ModalArgs } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
-import { Modal, FooterItem, ModalClose } from ".";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { FooterItem, Modal, ModalClose } from ".";
 import { Button } from "../buttons/button";
+import { ModalArgs } from "./_types";
 
 interface ModalStoryArgs extends ModalArgs {
   content: string | any;
@@ -35,7 +35,7 @@ const defaultArgs: ModalStoryArgs = {
   onClose: (e) => {
     alert("Close clicked");
     console.log(e);
-  }
+  },
 };
 
 const Template: Story<ModalStoryArgs> = (args) => {
@@ -54,7 +54,7 @@ const Template: Story<ModalStoryArgs> = (args) => {
         <FooterItem>
           <Button
             isPrimary
-            {...isDanger && { isDanger: true }}
+            {...(isDanger && { isDanger: true })}
             onClick={() => {
               alert("Ahoy!");
             }}
