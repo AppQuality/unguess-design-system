@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 import {
   Plugin,
@@ -27,7 +28,7 @@ export default defineConfig(({ mode }) => {
           "react-dom",
           "styled-components",
           "react/jsx-runtime",
-          "@zendeskgarden/react-dropdowns",
+          // "@zendeskgarden/react-dropdowns",
           "formik",
         ],
         output: {
@@ -36,7 +37,14 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    plugins: [svgrPlugin(), dts({ include: ["src"], rollupTypes: true })],
+    plugins: [
+      svgrPlugin(),
+      libInjectCss(),
+      dts({
+        include: ["src"],
+        ...(mode === "development" ? {} : { rollupTypes: true }),
+      }),
+    ],
   };
 });
 
