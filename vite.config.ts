@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
           "react-dom",
           "styled-components",
           "react/jsx-runtime",
-          // "@zendeskgarden/react-dropdowns",
+          "@zendeskgarden/react-dropdowns",
           "formik",
         ],
         output: {
