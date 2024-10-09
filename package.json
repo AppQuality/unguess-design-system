@@ -9,11 +9,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "vite build",
-    "clean": "rimraf build",
+    "build:watch": "vite build --mode development --watch",
     "release": "npx auto shipit --base-branch=master",
     "type:check": "tsc",
     "dev": "vite",
-    "start": "vite"
+    "start": "vite",
+    "lint": "eslint --ext .tsx,.ts ."
   },
   "repository": {
     "type": "git",
@@ -103,12 +104,17 @@
     "@types/react-window": "^1.8.5",
     "@types/ua-parser-js": "^0.7.36",
     "@types/uuid": "^9.0.8",
+    "@typescript-eslint/parser": "^8.8.1",
     "@vitejs/plugin-react": "^4.3.1",
     "@zendeskgarden/react-dropdowns": "^8.49.0",
     "@zendeskgarden/react-forms": "8.49.0",
     "@zendeskgarden/react-theming": "^8.48.2",
     "@zendeskgarden/svg-icons": "^6.31.1",
     "auto": "^11.1.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.12",
     "formik": "^2.2.9",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -125,20 +131,22 @@
     "web-vitals": "^2.1.4"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+    "plugins": [
+      "react",
+      "react-hooks",
+      "react-refresh"
     ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
+    "rules": {
+      "react-refresh/only-export-components": "warn"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    }
   },
   "browserslist": {
     "production": [

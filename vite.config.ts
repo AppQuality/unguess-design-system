@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
     build: {
+      ...(mode === "development" ? { emptyOutDir: false } : {}),
       outDir: "build",
       lib: {
         entry: resolve(__dirname, "src/index.tsx"),
