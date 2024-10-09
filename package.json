@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.1.106-vite-4",
+  "version": "3.1.106-vite-5",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
