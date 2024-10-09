@@ -93,14 +93,9 @@ const formatAxisX = (value: DatumValue) => {
   if (!value || value === "start" || value === "end") return "";
 
   //Print only the first 10 characters
-  return (
-    <>
-      {value.toString().length > 20
-        ? value.toString().substring(0, 20) + "..."
-        : value.toString()}
-      <title>{value as string}</title>
-    </>
-  );
+  return value.toString().length > 20
+    ? value.toString().substring(0, 20) + "..."
+    : value.toString();
 };
 
 export const SentimentChart = ({
