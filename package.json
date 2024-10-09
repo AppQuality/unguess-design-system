@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.1.106-vite-3",
+  "version": "3.1.106-vite-4",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -106,7 +106,7 @@
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/parser": "^8.8.1",
     "@vitejs/plugin-react": "^4.3.1",
-    "@zendeskgarden/react-dropdowns": "^8.49.0",
+    "@zendeskgarden/react-dropdowns": "8.49.0",
     "@zendeskgarden/react-forms": "8.49.0",
     "@zendeskgarden/react-theming": "^8.48.2",
     "@zendeskgarden/svg-icons": "^6.31.1",
