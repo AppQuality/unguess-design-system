@@ -1,6 +1,6 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Dropdown, Message, Select } from ".";
-import { Field } from "../field";
+import { DropdownField as Field } from "../field";
 import { Item } from "../item";
 import { Menu } from "../menu";
 // import { Field } from "../../field";

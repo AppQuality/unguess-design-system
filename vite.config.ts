@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import dts from "vite-plugin-dts";
+
 import {
   Plugin,
   createFilter,
@@ -25,6 +27,7 @@ export default defineConfig(({ mode }) => {
           "react-dom",
           "styled-components",
           "react/jsx-runtime",
+          "@zendeskgarden/react-dropdowns",
           "formik",
         ],
         output: {
@@ -33,7 +36,7 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    plugins: [svgrPlugin()],
+    plugins: [svgrPlugin(), dts({ include: ["src"], rollupTypes: true })],
   };
 });
 

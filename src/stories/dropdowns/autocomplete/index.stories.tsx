@@ -1,6 +1,6 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Autocomplete } from ".";
-import { Field } from "../field";
+import { DropdownField as Field } from "../field";
 import { Item } from "../item";
 import { MediaBody, MediaFigure, Menu, Separator } from "../menu";
 import { Dropdown } from "../select";

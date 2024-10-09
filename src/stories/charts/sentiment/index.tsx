@@ -1,18 +1,16 @@
+import { DatumValue } from "@nivo/core";
 import { ResponsiveLine, SliceTooltipProps } from "@nivo/line";
-import { SentimentChartProps } from "./_types";
-import {
-  DEFAULT_CHARTS_THEME,
-} from "../../theme/charts";
-import { ChartContainer } from "../ChartContainer";
-import styled, { ThemeContext } from "styled-components";
 import { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
+import { DEFAULT_CHARTS_THEME } from "../../theme/charts";
+import { getColor } from "../../theme/utils";
+import { ChartContainer } from "../ChartContainer";
+import { SentimentChartProps } from "./_types";
 import { ReactComponent as S1 } from "./assets/sentiment_1.svg";
 import { ReactComponent as S2 } from "./assets/sentiment_2.svg";
 import { ReactComponent as S3 } from "./assets/sentiment_3.svg";
 import { ReactComponent as S4 } from "./assets/sentiment_4.svg";
 import { ReactComponent as S5 } from "./assets/sentiment_5.svg";
-import { DatumValue } from "@nivo/core";
-import { getColor } from "../../theme/utils";
 
 const Point = styled.g`
   transform: translate(-13px, -13px);
@@ -53,7 +51,10 @@ const SentimentContainer = styled(ChartContainer)`
 
 const DEFAULT_CHART_MARGINS = { top: 0, right: 0, bottom: 30, left: 30 };
 
-const formatSentiment = (value: DatumValue, i18n: SentimentChartProps["i18n"]) => {
+const formatSentiment = (
+  value: DatumValue,
+  i18n: SentimentChartProps["i18n"]
+) => {
   switch (value as number) {
     case 1:
       return i18n?.sentimentsValues.veryNegative ?? "Very Negative";
@@ -94,7 +95,9 @@ const formatAxisX = (value: DatumValue) => {
   //Print only the first 10 characters
   return (
     <>
-      {value.toString().length > 20 ? value.toString().substring(0, 20) + "..." : value.toString()}
+      {value.toString().length > 20
+        ? value.toString().substring(0, 20) + "..."
+        : value.toString()}
       <title>{value as string}</title>
     </>
   );
@@ -121,7 +124,9 @@ export const SentimentChart = ({
         <ResponsiveLine
           theme={{
             ...DEFAULT_CHARTS_THEME,
-            fontSize: theme.fontSizes.sm,
+            text: {
+              fontSize: theme.fontSizes.sm,
+            },
             axis: {
               legend: {
                 text: {
@@ -139,18 +144,19 @@ export const SentimentChart = ({
           }}
           curve="monotoneX"
           colors={theme.palette.grey[600]}
-          data={[{
-            id: data.id,
-            data: [
-              {
-                x: "start",
-              },
-              ...data.data,
-              {
-                x: "end",
-              }
-            ]
-          }
+          data={[
+            {
+              id: data.id,
+              data: [
+                {
+                  x: "start",
+                },
+                ...data.data,
+                {
+                  x: "end",
+                },
+              ],
+            },
           ]}
           margin={{ ...DEFAULT_CHART_MARGINS, ...margin }}
           gridXValues={1}
@@ -174,49 +180,59 @@ export const SentimentChart = ({
             return <Point>{formatPoint(datum.y ?? "")}</Point>;
           }}
           // To use the tooltip, we need to set "useMesh" to true and "enableSlices" to "false"
-          tooltip={tooltip ? (node) => {
-            const point = node.point.data;
+          tooltip={
+            tooltip
+              ? (node) => {
+                  const point = node.point.data;
 
-            return (
-              <>
-                {tooltip({
-                  value: formatSentiment(point.y, i18n),
-                  label: point.x.toString(),
-                  data: {
-                    customData: data.data[node.point.index].custom_data ?? undefined,
-                    yValue: point.y.toString() ?? "",
-                    icon: formatPoint(point.y),
-                    sentimentText: formatSentiment(point.y, i18n),
-                  }
-                })}
-              </>
-            )
-          } : undefined}
-          sliceTooltip={tooltip ? (e) => {
-            const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
-              custom_data?: string;
-            } = e.slice.points[0].data;
+                  return (
+                    <>
+                      {tooltip({
+                        value: formatSentiment(point.y, i18n),
+                        label: point.x.toString(),
+                        data: {
+                          customData:
+                            data.data[node.point.index].custom_data ??
+                            undefined,
+                          yValue: point.y.toString() ?? "",
+                          icon: formatPoint(point.y),
+                          sentimentText: formatSentiment(point.y, i18n),
+                        },
+                      })}
+                    </>
+                  );
+                }
+              : undefined
+          }
+          sliceTooltip={
+            tooltip
+              ? (e) => {
+                  const point: SliceTooltipProps["slice"]["points"][number]["data"] & {
+                    custom_data?: string;
+                  } = e.slice.points[0].data;
 
-            return (
-              <>
-                {tooltip({
-                  value: formatSentiment(point.y, i18n),
-                  label: point.xFormatted,
-                  data: {
-                    customData: point.custom_data ?? undefined,
-                    yValue: point.yFormatted,
-                    icon: formatPoint(point.y),
-                    sentimentText: formatSentiment(point.y, i18n),
-                  }
-                })}
-              </>
-            )
-          } : undefined}
+                  return (
+                    <>
+                      {tooltip({
+                        value: formatSentiment(point.y, i18n),
+                        label: point.xFormatted,
+                        data: {
+                          customData: point.custom_data ?? undefined,
+                          yValue: point.yFormatted,
+                          icon: formatPoint(point.y),
+                          sentimentText: formatSentiment(point.y, i18n),
+                        },
+                      })}
+                    </>
+                  );
+                }
+              : undefined
+          }
           markers={[
             {
-              axis: 'y',
+              axis: "y",
               legend: i18n?.sentimentsValues.neutral ?? "Neutral",
-              legendPosition: 'bottom-left',
+              legendPosition: "bottom-left",
               lineStyle: {
                 stroke: theme.palette.blue[600],
                 strokeWidth: 1,
@@ -226,44 +242,44 @@ export const SentimentChart = ({
                 fill: theme.palette.blue[600],
                 fontSize: theme.fontSizes.sm,
               },
-              value: 3
+              value: 3,
             },
             {
-              axis: 'y',
-              legendPosition: 'bottom-left',
+              axis: "y",
+              legendPosition: "bottom-left",
               lineStyle: {
                 stroke: "white",
                 strokeWidth: 2,
               },
-              value: 0
+              value: 0,
             },
             {
-              axis: 'y',
-              legendPosition: 'bottom-left',
+              axis: "y",
+              legendPosition: "bottom-left",
               lineStyle: {
                 stroke: "white",
                 strokeWidth: 2,
               },
-              value: 6
+              value: 6,
             },
             {
-              axis: 'x',
-              legendPosition: 'bottom-left',
+              axis: "x",
+              legendPosition: "bottom-left",
               lineStyle: {
                 stroke: "white",
                 strokeWidth: 2,
               },
-              value: "start"
+              value: "start",
             },
             {
-              axis: 'x',
-              legendPosition: 'bottom-left',
+              axis: "x",
+              legendPosition: "bottom-left",
               lineStyle: {
                 stroke: "white",
                 strokeWidth: 2,
               },
-              value: "end"
-            }
+              value: "end",
+            },
           ]}
           enableCrosshair={false}
           isInteractive
