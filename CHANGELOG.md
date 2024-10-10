@@ -1,3 +1,15 @@
+# v3.1.115 (Thu Oct 10 2024)
+
+#### 🐛 Bug Fix
+
+- Add start - end attrs to observation [#423](https://github.com/AppQuality/unguess-design-system/pull/423) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v3.1.114 (Mon Oct 07 2024)
 
 #### 🐛 Bug Fix
