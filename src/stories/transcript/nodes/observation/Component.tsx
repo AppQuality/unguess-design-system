@@ -71,6 +71,7 @@ export const Component = ({
         title={node.attrs["title"]}
         color={node.attrs["color"]}
         observations={observationsNodes.map((o) => ({
+          start: o.attrs["start"],
           id: o.attrs["id"],
           title: o.attrs["title"],
           color: o.attrs["color"],
