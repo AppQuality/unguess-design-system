@@ -20,12 +20,22 @@ const DefaultObservationWrapper = ({
   title: string;
   color: string;
   children: ReactNode;
-  observations: { id: number; title: string; color: string }[];
+  observations: { start: number; id: number; title: string; color: string }[];
 }) => {
   const background = color + "50";
   return (
     <span data-title={title} style={{ background }}>
-      <Tooltip content={observations.map((o) => o.title).join(" and ")}>
+      <Tooltip
+        content={observations.map((o) => (
+          <div
+            onClick={() => {
+              alert(`Clicked on observation ${o.id} - start: ${o.start}`);
+            }}
+          >
+            {o.title}
+          </div>
+        ))}
+      >
         <span>{children}</span>
       </Tooltip>
     </span>

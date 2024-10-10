@@ -62,6 +62,8 @@ class ContentParser {
         {
           type: "Observation",
           attrs: {
+            start: observation.start,
+            end: observation.end,
             id: observation.id,
             title: observation.text,
             color: observation.color,

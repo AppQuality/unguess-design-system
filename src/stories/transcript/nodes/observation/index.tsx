@@ -1,6 +1,7 @@
 import { Node } from "@tiptap/core";
 import { Fragment } from "@tiptap/pm/model";
 import { ReactNodeViewRenderer, mergeAttributes } from "@tiptap/react";
+import { Node as PMNode } from "prosemirror-model";
 import { Component } from "./Component";
 
 export const Observation = Node.create({
@@ -10,6 +11,12 @@ export const Observation = Node.create({
 
   addAttributes() {
     return {
+      start: {
+        default: 0,
+      },
+      end: {
+        default: 0,
+      },
       id: {
         default: 0,
       },
@@ -36,10 +43,21 @@ export const Observation = Node.create({
         ({ id, title, color }: { id: number; title: string; color?: string }) =>
         ({ tr, state, view }) => {
           const { from, to } = state.selection;
+          let firstWord: PMNode, lastWord: PMNode;
+          state.doc.nodesBetween(from, to, (node, pos) => {
+            if (node.type.name === "Word") {
+              if (!firstWord) {
+                firstWord = node;
+              }
+              lastWord = node;
+            }
+          });
           state.doc.nodesBetween(from, to, (node, pos) => {
             if (node.type.name === "Word") {
               const annotationNode = state.schema.nodes.Observation.create(
                 {
+                  start: firstWord.attrs["data-start"],
+                  end: lastWord.attrs["data-end"],
                   id,
                   title,
                   color,
