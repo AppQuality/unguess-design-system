@@ -1,21 +1,19 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Label } from ".";
 import { LabelArgs } from "./_types";
 
 const Template: Story<LabelArgs> = (args) => {
-  return (
-    <Label {...args}>Questa è una Label</Label>
-  )
-}
+  return <Label {...args}>Questa è una Label</Label>;
+};
 
 export const Basic = Template.bind({});
 Basic.args = {
-  isRegular: true
+  isRegular: true,
 };
 
 export const Bold = Template.bind({});
 Bold.args = {
-  isRegular: false
+  isRegular: false,
 };
 
 export default {

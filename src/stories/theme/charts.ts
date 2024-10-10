@@ -1,14 +1,19 @@
 import { CompleteTheme } from "@nivo/core";
-import {getColor} from "../theme/utils";
 import { theme } from ".";
+import { getColor } from "../theme/utils";
 
 interface UnguessChartsTheme extends CompleteTheme {}
 
 export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   background: theme.palette.white,
-  fontSize: Number(theme.fontSizes.sm), // Not used
-  fontFamily: theme.fonts.system,
-  textColor: theme.palette.grey[600],
+  text: {
+    fontFamily: theme.fonts.system,
+    outlineWidth: 0,
+    outlineColor: "transparent",
+    outlineOpacity: 0,
+    fontSize: Number(theme.fontSizes.sm),
+    fill: theme.palette.grey[600],
+  },
   annotations: {
     text: {
       fontSize: Number(theme.fontSizes.sm),
@@ -47,6 +52,10 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
     },
     legend: {
       text: {
+        fontFamily: theme.fonts.system,
+        outlineWidth: 0,
+        outlineColor: "transparent",
+        outlineOpacity: 0,
         fontSize: Number(theme.fontSizes.sm),
         fill: theme.palette.grey[600],
       },
@@ -57,6 +66,10 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
         strokeWidth: 3,
       },
       text: {
+        fontFamily: theme.fonts.system,
+        outlineWidth: 0,
+        outlineColor: "transparent",
+        outlineOpacity: 0,
         fontSize: Number(theme.fontSizes.sm),
         fill: theme.palette.grey[600],
       },
@@ -72,9 +85,12 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
   dots: {
     text: {
+      fontFamily: theme.fonts.system,
+      outlineWidth: 0,
+      outlineColor: "transparent",
+      outlineOpacity: 0,
       fill: theme.palette.grey[600],
       fontSize: Number(theme.fontSizes.sm),
-      fontFamily: theme.fonts.system,
     },
   },
   grid: {
@@ -85,9 +101,12 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
   },
   labels: {
     text: {
+      fontFamily: theme.fonts.system,
+      outlineWidth: 0,
+      outlineColor: "transparent",
+      outlineOpacity: 0,
       fill: theme.palette.grey[600],
       fontSize: Number(theme.fontSizes.sm),
-      fontFamily: theme.fonts.system,
     },
   },
   legends: {
@@ -97,16 +116,30 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
         opacity: 0.5,
       },
       text: {
+        fontFamily: theme.fonts.system,
+        outlineWidth: 0,
+        outlineColor: "transparent",
+        outlineOpacity: 0,
+        fontSize: Number(theme.fontSizes.sm),
+        fill: theme.palette.grey[600],
         opacity: 1,
       },
     },
     title: {
       text: {
+        fontFamily: theme.fonts.system,
+        outlineWidth: 0,
+        outlineColor: "transparent",
+        outlineOpacity: 0,
         fontSize: Number(theme.fontSizes.sm),
         fill: theme.palette.grey[600],
       },
     },
     text: {
+      fontFamily: theme.fonts.system,
+      outlineWidth: 0,
+      outlineColor: "transparent",
+      outlineOpacity: 0,
       fontWeight: theme.fontWeights.bold,
       fontSize: Number(theme.fontSizes.sm),
       fill: theme.palette.grey[600],
@@ -114,6 +147,10 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
     ticks: {
       line: {},
       text: {
+        fontFamily: theme.fonts.system,
+        outlineWidth: 0,
+        outlineColor: "transparent",
+        outlineOpacity: 0,
         fontSize: Number(theme.fontSizes.sm),
         fill: theme.palette.grey[600],
       },
@@ -125,7 +162,12 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
     textColor: theme.palette.grey[600],
     fontSize: theme.fontSizes.sm,
     text: {
+      outlineWidth: 0,
+      outlineColor: "transparent",
+      outlineOpacity: 0,
       fontFamily: theme.fonts.system,
+      fontSize: Number(theme.fontSizes.sm),
+      fill: theme.palette.grey[600],
     },
   },
   tooltip: {
@@ -139,6 +181,7 @@ export const DEFAULT_CHARTS_THEME: UnguessChartsTheme = {
     table: {},
     tableCell: {},
     tableCellValue: {},
+    wrapper: {},
   },
 };
 
@@ -152,7 +195,7 @@ export const CHARTS_COLOR_SCHEME_SEMANTIC = [
   theme.palette.yellow[700],
   theme.palette.azure[900],
   theme.palette.teal[700],
-  theme.palette.grey[200]
+  theme.palette.grey[200],
 ];
 
 export const CHARTS_COLOR_SCHEME_CATEGORICAL = [

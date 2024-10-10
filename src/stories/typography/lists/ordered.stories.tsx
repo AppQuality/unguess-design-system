@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { OrderedList } from ".";
 import { OrderedListArgs } from "./_types";
 
@@ -17,7 +17,6 @@ const defaultArgs: OrderedListArgs = {
 
 export const Ordered = OrderedTemplate.bind({});
 Ordered.args = defaultArgs as OrderedListArgs;
-
 
 export default {
   title: "Atoms/Typography/Lists",

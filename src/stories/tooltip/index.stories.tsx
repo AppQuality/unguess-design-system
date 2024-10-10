@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Button } from "@zendeskgarden/react-buttons";
 import { Tooltip } from ".";
 import { TooltipArgs } from "./_types";

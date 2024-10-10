@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { theme } from "../../theme";
-import { CounterMultiselectArgs } from "./_types";
-import { Menu } from "../menu";
-import { Autocomplete } from "../autocomplete";
-import { Dropdown } from "../select";
-import { Field } from "../field";
 import { Label } from "../../label";
-import { Item } from "../item";
+import { theme } from "../../theme";
 import { getColor } from "../../theme/utils";
+import { Autocomplete } from "../autocomplete";
+import { DropdownField as Field } from "../field";
+import { Item } from "../item";
+import { Menu } from "../menu";
+import { Dropdown } from "../select";
+import { CounterMultiselectArgs } from "./_types";
 
 const StyledAutocomplete = styled(Autocomplete)<{
   hasSelectedItems: boolean;

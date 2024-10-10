@@ -1,7 +1,7 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Grid } from ".";
-import { Row } from "../row";
 import { Col } from "../col";
+import { Row } from "../row";
 import { Basic as BasicRow, RowStoryArg } from "../row/index.stories";
 import { GridArgs } from "./_types";
 
@@ -60,7 +60,7 @@ EqualColumns.args = {
         },
       ],
     },
-  ]
+  ],
 };
 
 export const OneWiderColumn = Template.bind({});
@@ -96,10 +96,8 @@ OneWiderColumn.args = {
         },
       ],
     },
-  ]
+  ],
 };
-
-
 
 export default {
   title: "Molecules/Grid",

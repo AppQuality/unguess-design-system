@@ -1,11 +1,11 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { SpecialCard } from ".";
-import { SpecialCardProps } from "./_types";
-import { ReactComponent as ExploratoryIcon } from "../../assets/icons/service-exploratory-icon.svg";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import styled from "styled-components";
+import { SpecialCard } from ".";
+import { ReactComponent as ExploratoryIcon } from "../../assets/icons/service-exploratory-icon.svg";
+import { Button } from "../buttons/button";
 import { Tag } from "../tags";
 import { theme } from "../theme";
-import { Button } from "../buttons/button";
+import { SpecialCardProps } from "./_types";
 // import { CardLabel, CardTitle } from "./styled/header";
 
 // --- Example Components (TO BE REMOVED) ---
@@ -59,12 +59,7 @@ const Template: Story<CardStoryProps> = ({ title, content, ...args }) => {
         </Button>
       </SpecialCard.Footer>
       <SpecialCard.Footer direction="column" justifyContent="center" noDivider>
-        <Button
-          isAccent
-          isPrimary
-          isPill
-          isStretched
-        >
+        <Button isAccent isPrimary isPill isStretched>
           Secondo bottone streched
         </Button>
       </SpecialCard.Footer>

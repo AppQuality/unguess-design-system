@@ -60,7 +60,7 @@ export * from "./stories/drawers";
 // --- Dropdowns ---
 export * from "./stories/dropdowns/autocomplete";
 export * from "./stories/dropdowns/countermultiselect";
-export * as DropdownField from "./stories/dropdowns/field";
+export * from "./stories/dropdowns/field";
 export * from "./stories/dropdowns/item";
 export * from "./stories/dropdowns/item-content";
 export * from "./stories/dropdowns/menu";

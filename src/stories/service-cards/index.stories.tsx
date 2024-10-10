@@ -1,11 +1,10 @@
-import { ServiceCardsProps } from "./_types";
-import { ComponentMeta, Story } from "@storybook/react";
-import { ServiceCard } from "./index";
-import { Col } from "../grid/col";
-import { Row } from "../grid/row";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { ReactComponent as ExploratoryIcon } from "../../assets/icons/service-exploratory-icon.svg";
 import { Button } from "../buttons/button";
-import { theme } from "../theme";
+import { Col } from "../grid/col";
+import { Row } from "../grid/row";
+import { ServiceCardsProps } from "./_types";
+import { ServiceCard } from "./index";
 
 const defaultArgs: ServiceCardsProps = {
   serviceIcon: <ExploratoryIcon />,
@@ -27,19 +26,10 @@ const defaultArgs: ServiceCardsProps = {
   hoverSubtitle:
     "We assign our experienced testers test cases, such as purchasing with a credit card or creating an account, and they will detect the bugs.",
   hoverButtons: [
-    <Button
-      isStretched
-      size="small"
-      isAccent
-    >
+    <Button isStretched size="small" isAccent>
       Come funziona
     </Button>,
-    <Button
-      isPrimary
-      isStretched
-      size="small"
-      isAccent
-    >
+    <Button isPrimary isStretched size="small" isAccent>
       Lancia campagna
     </Button>,
   ],

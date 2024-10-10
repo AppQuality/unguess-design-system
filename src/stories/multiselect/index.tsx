@@ -1,15 +1,14 @@
 import { Multiselect } from "@zendeskgarden/react-dropdowns";
-import { Dropdown } from "../dropdowns/select";
-import { Field } from "../dropdowns/field";
-import { Menu } from "../dropdowns/menu";
-import { Item as ZenDeskItem } from "../dropdowns/item";
-import { Label } from "../label";
-import { useEffect, useState } from "react";
 import { Tag } from "@zendeskgarden/react-tags";
-import { MultiSelectProps } from "./_types";
-import { Separator } from "../dropdowns/menu";
+import { useEffect, useState } from "react";
+import { DropdownField as Field } from "../dropdowns/field";
+import { Item as ZenDeskItem } from "../dropdowns/item";
+import { Menu, Separator } from "../dropdowns/menu";
+import { Dropdown } from "../dropdowns/select";
+import { Label } from "../label";
 import { AddableItem } from "./AddableItem";
 import { Item } from "./Item";
+import { MultiSelectProps } from "./_types";
 
 const DisabledItem = ({ label }: { label: string }) => (
   <ZenDeskItem disabled>{label}</ZenDeskItem>
@@ -26,7 +25,8 @@ export const MultiSelect = ({
 }: MultiSelectProps) => {
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
-  const itemToString = (item: typeof options[number]) => (item ? item.id : "");
+  const itemToString = (item: (typeof options)[number]) =>
+    item ? item.id : "";
 
   useEffect(() => {
     const matchedOptions = options.filter(

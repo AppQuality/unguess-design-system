@@ -1,9 +1,9 @@
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { useRef, useState } from "react";
-import { ComponentMeta, Story } from "@storybook/react";
-import { Button } from "../buttons/button";
-import { Row } from "../grid/row";
-import { Col } from "../grid/col";
 import { TooltipModal } from ".";
+import { Button } from "../buttons/button";
+import { Col } from "../grid/col";
+import { Row } from "../grid/row";
 import { TooltipModalArgs } from "./_types";
 
 const Template: Story<TooltipModalArgs> = (props) => {

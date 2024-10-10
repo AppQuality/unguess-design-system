@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@zendeskgarden/react-theming";
+import React from "react";
 import { GlobalStyle } from "../src/stories/shared/globalStyle";
 import { theme } from "../src/stories/theme";
 
