@@ -1,5 +1,6 @@
 import {
   Field as ZendeskField,
+  Fieldset as ZendeskFieldset,
   Hint as ZendeskHint,
 } from "@zendeskgarden/react-forms";
 import styled from "styled-components";
@@ -12,4 +13,8 @@ const UgField = styled(ZendeskField)``;
  **/
 const Field = (props: FieldArgs) => <UgField {...props} />;
 
-export { Field as FormField, ZendeskHint as FormHint };
+export {
+  ZendeskFieldset as Fieldset,
+  Field as FormField,
+  ZendeskHint as FormHint,
+};
