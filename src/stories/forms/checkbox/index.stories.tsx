@@ -1,7 +1,7 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Checkbox } from ".";
 import { Label } from "../../label";
-import { Field } from "../field";
+import { FormField as Field } from "../field";
 import { CheckboxArgs } from "./_types";
 
 const Template: Story<CheckboxArgs> = (args) => {

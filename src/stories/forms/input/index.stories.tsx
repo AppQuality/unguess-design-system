@@ -1,7 +1,7 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Input } from ".";
 import { Label } from "../../label";
-import { Field } from "../field";
+import { FormField as Field } from "../field";
 import { InputArgs } from "./_types";
 
 const defaultArgs: InputArgs = {

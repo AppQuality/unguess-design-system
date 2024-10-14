@@ -4,7 +4,7 @@ import { ReactComponent as SearchIcon } from "../../../assets/icons/search-strok
 import { Col } from "../../grid/col";
 import { Row } from "../../grid/row";
 import { Label } from "../../label";
-import { Field } from "../field";
+import { FormField as Field } from "../field";
 import { MediaInputArgs } from "./_types";
 
 const defaultArgs: MediaInputArgs = {

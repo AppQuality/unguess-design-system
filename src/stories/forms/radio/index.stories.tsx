@@ -3,7 +3,7 @@ import { Radio } from ".";
 import { Col } from "../../grid/col";
 import { Row } from "../../grid/row";
 import { Label } from "../../label";
-import { Field } from "../field";
+import { FormField as Field } from "../field";
 import { RadioArgs } from "./_types";
 
 const Template: Story<RadioArgs> = (args) => {

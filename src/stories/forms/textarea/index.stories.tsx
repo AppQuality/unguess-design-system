@@ -3,7 +3,7 @@ import { Textarea } from ".";
 import { Col } from "../../grid/col";
 import { Row } from "../../grid/row";
 import { Label } from "../../label";
-import { Field } from "../field";
+import { FormField as Field } from "../field";
 import { TextareaArgs } from "./_types";
 
 const defaultArgs: TextareaArgs = {

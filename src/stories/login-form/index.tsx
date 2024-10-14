@@ -1,17 +1,17 @@
-import { Formik, Form } from "formik";
-import { ContainerCard } from "../cards";
-import { Field, Hint } from "../forms/field";
-import { Input } from "../forms/input";
-import { Button } from "../buttons/button";
-import { Title } from "../title";
-import { LoginFormArgs } from "./_types";
-import { Message } from "../dropdowns/select";
-import { theme } from "../theme";
-import { XL } from "../typography/typescale";
-import { Anchor } from "../buttons/anchor";
+import { Form, Formik } from "formik";
+import styled from "styled-components";
 import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-left-stroke.svg";
 import useWindowSize from "../../hooks/useWindowSize";
-import styled from "styled-components";
+import { Anchor } from "../buttons/anchor";
+import { Button } from "../buttons/button";
+import { ContainerCard } from "../cards";
+import { Message } from "../dropdowns/select";
+import { FormField as Field, FormHint as Hint } from "../forms/field";
+import { Input } from "../forms/input";
+import { theme } from "../theme";
+import { Title } from "../title";
+import { XL } from "../typography/typescale";
+import { LoginFormArgs } from "./_types";
 
 const StyledCard = styled(ContainerCard)`
   @media screen and (max-width: ${theme.breakpoints.sm}) {

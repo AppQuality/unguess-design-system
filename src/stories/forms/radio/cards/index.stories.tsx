@@ -8,7 +8,7 @@ import { Col } from "../../../grid/col";
 import { Grid } from "../../../grid/grid";
 import { Row } from "../../../grid/row";
 import { theme } from "../../../theme";
-import { Field } from "../../field";
+import { FormField as Field } from "../../field";
 import { RadioCardArgs } from "./_types";
 
 interface FormProps {

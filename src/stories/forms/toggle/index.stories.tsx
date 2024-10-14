@@ -5,7 +5,7 @@ import { Row } from "../../grid/row";
 import { Label } from "../../label";
 import { LabelArgs } from "../../label/_types";
 import { Basic as BasicLabel } from "../../label/index.stories";
-import { Field } from "../field";
+import { FormField as Field } from "../field";
 import { ToggleArgs } from "./_types";
 
 interface ToggleStoryProps extends ToggleArgs {
