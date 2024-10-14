@@ -66,6 +66,7 @@ export * from "./stories/dropdowns/item-content";
 export * from "./stories/dropdowns/menu";
 export * from "./stories/dropdowns/menuheader";
 export * from "./stories/dropdowns/select";
+export * from "./stories/dropdowns/selectNew";
 
 // --- Editor ---
 export * from "./stories/editor";
