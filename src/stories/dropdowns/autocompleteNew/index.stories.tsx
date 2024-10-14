@@ -1,7 +1,10 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { AutocompleteNew as Autocomplete, AutocompleteProps } from ".";
 import { Field } from "@zendeskgarden/react-dropdowns.next";
+import { Option } from "../option";
 import { Label } from "../../label";
+import { useState } from "react";
+import { ItemContent } from "../item-content";
 
 interface AutocompleteStoryArgs extends AutocompleteProps {
   allowNew?: boolean;
@@ -14,11 +17,27 @@ const items = [
 ];
 
 const Template: Story<AutocompleteStoryArgs> = (args) => {
+  const [options, setOptions] = useState(items);
+
+  const filterOptions = (inputValue: string) => {
+    if (inputValue === "") {
+      setOptions(items);
+      return;
+    }
+    const regex = new RegExp(inputValue, 'giu');
+    setOptions(items.filter(item => item.label.match(regex)));
+  }
+
   return (
     <div style={{ width: "300px" }}>
         <Field>
         <Label>Food Manager</Label>
-          <Autocomplete {...args} options={items} onOptionClick={(inputValue) => console.log('inputValue', inputValue)} />
+          <Autocomplete {...args} onInputChange={filterOptions}>
+            {options.length > 0
+              ? options.map(option => <Option key={option.value} value={option.value} label={option.label} />)
+              : <Option isDisabled value="" label="No results found" />
+            }
+          </Autocomplete>
         </Field>
     </div>
   );
@@ -49,17 +68,16 @@ const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
   return (
       <Field>
         <Label>Food Manager</Label>
-        <Autocomplete {...args}
-          options={itemsMedia}
-          renderOption={(option) => <div style={{display: "flex", flexDirection: 'row', alignItems: "center", justifyContent: "flex-start"}}>
-          <img src={option.thumbSrc} style={{marginRight: '12px', width: '100%', maxWidth: '60px'}} />
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start'}}>
-            <div>{option.label}</div>
-            {option.description && <div style={{fontSize: '12px', color: '#999'}}>{option.description}</div>}
-            </div>
-          </div>
-          }
-        />
+        <Autocomplete isExpanded {...args}>
+          {itemsMedia.map((item) => (
+            <Option
+              key={item.value}
+              value={item.value}
+            >
+              <ItemContent {...item} />
+            </Option>
+          ))}
+        </Autocomplete>
       </Field>
   );
 };
@@ -67,11 +85,17 @@ const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   allowNew: false,
+  onOptionClick: (value) => {
+    console.log("Option clicked", value);
+  }
 };
 
 export const WithMedia = TemplateWithItemMedia.bind({});
 WithMedia.args = {
   allowNew: false,
+  onOptionClick: (value) => {
+    console.log("Option clicked", value);
+  }
 };
 
 export default {
