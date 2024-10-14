@@ -114,6 +114,7 @@ export * from "./stories/logo";
 
 // --- Multiselect ---
 export * from "./stories/multiselect";
+export * from "./stories/multiselectNew";
 
 // --- Modals ---
 export * from "./stories/modals";
