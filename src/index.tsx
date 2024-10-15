@@ -59,6 +59,7 @@ export * from "./stories/drawers";
 
 // --- Dropdowns ---
 export * from "./stories/dropdowns/autocomplete";
+export * from "./stories/dropdowns/autocompleteNew";
 export * from "./stories/dropdowns/countermultiselect";
 export * from "./stories/dropdowns/field";
 export * from "./stories/dropdowns/item";
@@ -67,6 +68,8 @@ export * from "./stories/dropdowns/menu";
 export * from "./stories/dropdowns/menuheader";
 export * from "./stories/dropdowns/select";
 export * from "./stories/dropdowns/selectNew";
+export * from "./stories/dropdowns/option";
+export * from "./stories/dropdowns/optGroup";
 
 // --- Editor ---
 export * from "./stories/editor";
