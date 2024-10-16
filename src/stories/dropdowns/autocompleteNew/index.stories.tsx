@@ -5,10 +5,7 @@ import { Option } from "../option";
 import { Label } from "../../label";
 import { useState } from "react";
 import { ItemContent } from "../item-content";
-
-interface AutocompleteStoryArgs extends AutocompleteProps {
-  allowNew?: boolean;
-}
+import { on } from "events";
 
 const items = [
   { label: "Ferdinand ThreeMelons", value: "item-1" },
@@ -16,7 +13,7 @@ const items = [
   { label: "Rubber tree", value: "item-3" },
 ];
 
-const Template: Story<AutocompleteStoryArgs> = (args) => {
+const Template: Story<AutocompleteProps> = (args) => {
   const [options, setOptions] = useState(items);
 
   const filterOptions = (inputValue: string) => {
@@ -34,7 +31,7 @@ const Template: Story<AutocompleteStoryArgs> = (args) => {
         <Label>Food Manager</Label>
           <Autocomplete {...args} onInputChange={filterOptions}>
             {options.length > 0
-              ? options.map(option => <Option key={option.value} value={option.value} label={option.label} />)
+              ? options.map(option => <Option key={option.value} value={option.value} />)
               : <Option isDisabled value="" label="No results found" />
             }
           </Autocomplete>
@@ -64,7 +61,7 @@ const itemsMedia = [
   },
 ];
 
-const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
+const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
   return (
       <Field>
         <Label>Food Manager</Label>
@@ -84,15 +81,24 @@ const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  allowNew: false,
   onOptionClick: (value) => {
     console.log("Option clicked", value);
   }
 };
 
+export const Creatable = Template.bind({});
+Creatable.args = {
+  onOptionClick: (value) => {
+    console.log("Option clicked", value);
+    if (value.isNew) {
+      alert("Creating new item: " + value.selectionValue);
+    }
+  },
+  isCreatable: true,
+};
+
 export const WithMedia = TemplateWithItemMedia.bind({});
 WithMedia.args = {
-  allowNew: false,
   onOptionClick: (value) => {
     console.log("Option clicked", value);
   }

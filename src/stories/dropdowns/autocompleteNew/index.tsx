@@ -1,10 +1,16 @@
-import { Combobox, IComboboxProps, Option, OptionValue } from "@zendeskgarden/react-dropdowns.next";
+import { Combobox, IComboboxProps, Option, OptionValue, Separator } from "@zendeskgarden/react-dropdowns.next";
 import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { debounce } from "lodash";
 
+interface OnOptionClickArgs {
+  inputValue?: string;
+  selectionValue?: OptionValue | OptionValue[] | null;
+  isNew?: boolean;
+}
 export interface AutocompleteProps extends IComboboxProps {
-  onOptionClick?: (value?: OptionValue | OptionValue[] | null) => void;
+  onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
   onInputChange: (inputValue: string) => void;
+  isCreatable?: boolean;
 }
 
 /**
@@ -16,18 +22,20 @@ export interface AutocompleteProps extends IComboboxProps {
  * Not for this:
     - To make more than one selection, use Multiselect instead
  */
-const AutocompleteNew = ({ children, onOptionClick, onInputChange, onChange, ...props }: AutocompleteProps) => {
+const AutocompleteNew = ({ children, onOptionClick, onInputChange, onChange, isCreatable, ...props }: AutocompleteProps) => {
+  const [inputValue, setInputValue] = useState('');
 
-  const handleChange = useCallback<NonNullable<IComboboxProps['onChange']>>((event) => {
-    // to override the default onChange event
+  const handleChange = useCallback<NonNullable<IComboboxProps['onChange']>>((event,) => {
     if (typeof onChange === 'function') {
       onChange(event);
     }
     if (event.type === "input:change" && event.inputValue !== undefined) {
-      onInputChange(event.inputValue.replace(/[.*+?^${}()|[\]\\]/giu, '\\$&'));
+      const sanitizedInputValue = event.inputValue.replace(/[.*+?^${}()|[\]\\]/giu, '\\$&');
+      setInputValue(sanitizedInputValue);
+      onInputChange(sanitizedInputValue);
     }
     if (event.type === "option:click" && typeof onOptionClick === 'function') {
-      onOptionClick(event.inputValue);
+      onOptionClick({ inputValue: event.inputValue, selectionValue: event.selectionValue, isNew: (!!event.selectionValue && !event.inputValue) });
     }
   }, []);
 
@@ -41,6 +49,14 @@ const AutocompleteNew = ({ children, onOptionClick, onInputChange, onChange, ...
   return (
     <Combobox {...props} isAutocomplete onChange={debounceHandleChange}>
       {children}
+      {isCreatable && inputValue &&
+        <Option
+          type='add'
+          value={inputValue}
+          label={inputValue}
+          title="Create new item"
+        />
+      }
     </Combobox>
   )
 }
