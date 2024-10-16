@@ -35,6 +35,7 @@ export const MultiSelectNew = ({
 
   return (
     <Field>
+      <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
       <Combobox
         renderValue={({ selection }) => {
           if (
@@ -61,7 +62,11 @@ export const MultiSelectNew = ({
         isMultiselectable
         maxTags={maxItems}
         inputValue={inputValue}
-        selectionValue={options.filter((option) => option.selected)}
+        selectionValue={options
+          .filter((option) => option.selected)
+          .map((o) => {
+            return o.id.toString();
+          })}
         listboxMaxHeight={menuHeight ?? "200px"}
         isAutocomplete
         onChange={({ type, inputValue, selectionValue }) => {
@@ -74,8 +79,22 @@ export const MultiSelectNew = ({
             (type === "fn:setSelectionValue" || type === "option:click") &&
             Array.isArray(selectionValue)
           ) {
-            const selectedOptions = selectionValue.filter((v) => v.id);
-            const newOption = selectionValue.find((v) => !v.id);
+            const ss = selectionValue.map((s) => {
+              const option = options.find((o) => o.id === parseInt(s));
+              if (!option) {
+                return {
+                  id: undefined,
+                  label: s,
+                  selected: true,
+                };
+              }
+              return {
+                ...option,
+                selected: true,
+              };
+            });
+            const selectedOptions = ss.filter((v) => v.id);
+            const newOption = ss.find((v) => !v.id)?.label;
             onChange(
               options.map((o) => ({
                 ...o,
@@ -86,14 +105,16 @@ export const MultiSelectNew = ({
           }
         }}
       >
-        <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
-        {matchingOptions.map((option) => (
+        {options.map((option) => (
           <Option
+            isHidden={!matchingOptions.some((o) => o.id === option.id)}
             key={option.id}
-            value={option}
+            value={option.id.toString()}
             label={option.label}
             isSelected={option.selected}
-            tagProps={{ isPill: true, children: option.label }}
+            tagProps={{
+              isPill: true,
+            }}
           />
         ))}
         {matchingOptions.length === 0 && !creatable && (
