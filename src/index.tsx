@@ -208,4 +208,6 @@ export * from "./stories/datepicker";
 export * from "./stories/tableNew";
 export * from "./stories/transcript";
 
+export { Message } from "@zendeskgarden/react-forms";
+
 export { GlobalStyle };
