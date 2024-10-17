@@ -60,7 +60,7 @@ function flatOptions(options: AutocompleteProps['options']) {
  * Not for this:
     - To make more than one selection, use Multiselect instead
  */
-const AutocompleteNew = ({ options, onOptionClick, onInputChange, onChange, isCreatable, onCreateNewOption, isMultiselectable, ...props }: AutocompleteProps) => {
+const Autocomplete = ({ options, onOptionClick, onInputChange, onChange, isCreatable, onCreateNewOption, isMultiselectable, ...props }: AutocompleteProps) => {
   const [inputValue, setInputValue] = useState<string | undefined>();
   const [_options, setOption] = useState(options);
   // const [selectionValue, setSelectionValue] = useState<OptionValue | OptionValue[] | null>();
@@ -145,4 +145,4 @@ const AutocompleteNew = ({ options, onOptionClick, onInputChange, onChange, isCr
   );
 }
 
-export { AutocompleteNew };
+export { Autocomplete };

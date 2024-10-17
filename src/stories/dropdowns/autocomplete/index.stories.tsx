@@ -1,5 +1,5 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
-import { AutocompleteNew as Autocomplete, AutocompleteProps } from ".";
+import { Autocomplete, AutocompleteProps } from ".";
 import { Field } from "@zendeskgarden/react-dropdowns.next";
 import { Label } from "../../label";
 import { useState } from "react";
