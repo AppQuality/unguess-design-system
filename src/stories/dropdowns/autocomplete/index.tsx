@@ -17,11 +17,9 @@ interface IOptGroup extends IOptGroupProps {
 }
 
 export interface AutocompleteProps extends IComboboxProps {
-  children: null;
   onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
-  onInputChange: (inputValue: string) => void;
+  onInputChange?: (inputValue: string) => void;
   isCreatable?: boolean;
-  // promise to create new IOption
   onCreateNewOption?: (inputValue: string) => Promise<IOption>;
   options: Array<IOptGroup | IOption>;
 }
@@ -88,7 +86,6 @@ const Autocomplete = ({ options, onOptionClick, onInputChange, onChange, isCreat
   ), [matchingOptions]);
 
   const handleChange = useCallback<NonNullable<IComboboxProps['onChange']>>(event => {
-    console.log("event", event);
     if (typeof onChange === 'function') {
       onChange(event);
     }
@@ -96,7 +93,7 @@ const Autocomplete = ({ options, onOptionClick, onInputChange, onChange, isCreat
     if (event.type === "input:change" && event.inputValue !== undefined) {
       const sanitizedInputValue = event.inputValue.replace(/[.*+?^${}()|[\]\\]/giu, '\\$&');
       setInputValue(sanitizedInputValue);
-      onInputChange(sanitizedInputValue);
+      if (typeof onInputChange === 'function') onInputChange(sanitizedInputValue);
     }
     if (event.type === "option:click" && typeof onOptionClick === 'function') {
       // setSelectionValue(event.selectionValue);
