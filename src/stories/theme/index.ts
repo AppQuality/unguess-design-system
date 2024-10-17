@@ -1,10 +1,15 @@
-import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
-import { palette } from "./palette";
-import { gradients } from "./gradients";
-import { components } from "./components";
-import { boxShadow } from "./utils";
-import { fontWeights } from "./fontWeights";
+import {
+  DEFAULT_THEME,
+  ThemeProvider,
+  getColor,
+  retrieveComponentStyles,
+} from "@zendeskgarden/react-theming";
 import { colors } from "./colors";
+import { components } from "./components";
+import { fontWeights } from "./fontWeights";
+import { gradients } from "./gradients";
+import { palette } from "./palette";
+import { boxShadow } from "./utils";
 
 const theme = {
   ...DEFAULT_THEME,
@@ -44,4 +49,4 @@ const theme = {
   },
 };
 
-export { theme };
+export { ThemeProvider, getColor, retrieveComponentStyles, theme };

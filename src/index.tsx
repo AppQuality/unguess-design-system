@@ -207,6 +207,8 @@ export * from "./stories/typography/paragraph";
 export * from "./stories/typography/span";
 export * from "./stories/typography/typescale";
 
+export * from "./stories/datepicker";
+export * from "./stories/tableNew";
 export * from "./stories/transcript";
 
 export { GlobalStyle };
