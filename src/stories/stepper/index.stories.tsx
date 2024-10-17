@@ -1,12 +1,12 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { Stepper } from ".";
+import { Button } from "../buttons/button";
+import { ContainerCard } from "../cards";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { StepperArgs } from "./_types";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Button } from "../buttons/button";
-import { ContainerCard } from "../cards";
 
 interface StepperStoryProps extends StepperArgs {
   currentStep: number;

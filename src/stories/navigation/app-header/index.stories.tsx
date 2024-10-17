@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { AppHeader } from ".";
-import { AppHeaderArgs } from "./_types";
-import { Default as DefaultAvatar } from "../../avatar/index.stories";
 import { ReactComponent as ChangelogIcon } from "../../../assets/icons/megaphone-stroke.svg";
+import { Default as DefaultAvatar } from "../../avatar/index.stories";
+import { AppHeaderArgs } from "./_types";
 
 const Template: Story<AppHeaderArgs> = (args) => <AppHeader {...args} />;
 

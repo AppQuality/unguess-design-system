@@ -1,9 +1,9 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { SM, MD, LG, XL, XXL, XXXL } from ".";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import styled from "styled-components";
+import { LG, MD, SM, XL, XXL, XXXL } from ".";
 
 const StyledDiv = styled.div`
-  margin-top: ${p => p.theme.space.sm};
+  margin-top: ${(p) => p.theme.space.sm};
 `;
 
 const Template: Story<any> = (args) => {
@@ -16,23 +16,26 @@ const Template: Story<any> = (args) => {
       <StyledDiv>
         <LG {...args}>&lt;LG&gt;Veggies es bonus vobis proinde vos postulo</LG>
       </StyledDiv>
-      {!args.isMonospace &&
+      {!args.isMonospace && (
         <>
           <StyledDiv>
-            <XL {...args}>&lt;XL&gt;Veggies es bonus vobis proinde vos postulo</XL>
+            <XL {...args}>
+              &lt;XL&gt;Veggies es bonus vobis proinde vos postulo
+            </XL>
           </StyledDiv>
           <StyledDiv>
-            <XXL {...args}>&lt;XXL&gt;Veggies es bonus vobis proinde vos postulo</XXL>
+            <XXL {...args}>
+              &lt;XXL&gt;Veggies es bonus vobis proinde vos postulo
+            </XXL>
           </StyledDiv>
           <StyledDiv>
             <XXXL {...args}>&lt;XXXL&gt;Veggies es bonus vobis proinde</XXXL>
           </StyledDiv>
         </>
-      }
+      )}
     </>
   );
 };
-
 
 export const Default = Template.bind({});
 Default.args = {

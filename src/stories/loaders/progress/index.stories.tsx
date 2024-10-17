@@ -1,16 +1,16 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { theme } from '../../theme';
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Progress } from ".";
-import { ProgressArgs } from "./_types";
+import { theme } from "../../theme";
 import { getColor } from "../../theme/utils";
+import { ProgressArgs } from "./_types";
 
 const defaultArgs: ProgressArgs = {
   color: getColor(theme.colors.primaryHue, 600),
   value: 50,
-  size: 'medium'
+  size: "medium",
 };
 
-const Template: Story<ProgressArgs> = (args) => <Progress {...args} />
+const Template: Story<ProgressArgs> = (args) => <Progress {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -24,8 +24,8 @@ export default {
     size: {
       control: {
         type: "select",
-        options: ['small', 'medium', 'large']
-      }
-    }
-  }
+        options: ["small", "medium", "large"],
+      },
+    },
+  },
 } as ComponentMeta<typeof Progress>;

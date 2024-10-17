@@ -58,13 +58,18 @@ export * from "./stories/color-swatch";
 export * from "./stories/drawers";
 
 // --- Dropdowns ---
+export * from "./stories/buttonMenu";
+export * from "./stories/dotsMenu";
 export * from "./stories/dropdowns/autocomplete";
 export * from "./stories/dropdowns/countermultiselect";
-export * as DropdownField from "./stories/dropdowns/field";
+export * from "./stories/dropdowns/field";
+export * from "./stories/dropdowns/fieldNew";
 export * from "./stories/dropdowns/item";
 export * from "./stories/dropdowns/item-content";
 export * from "./stories/dropdowns/menu";
 export * from "./stories/dropdowns/menuheader";
+export * from "./stories/dropdowns/optGroup";
+export * from "./stories/dropdowns/option";
 export * from "./stories/dropdowns/select";
 
 // --- Editor ---
@@ -73,7 +78,7 @@ export * from "./stories/editor";
 // --- Forms ---
 export * from "./stories/forms/checkbox";
 export * from "./stories/forms/checkbox/cards";
-export * as FormField from "./stories/forms/field";
+export * from "./stories/forms/field";
 export * from "./stories/forms/input";
 export * from "./stories/forms/input-toggle";
 export * from "./stories/forms/mediaInput";
@@ -199,6 +204,10 @@ export * from "./stories/typography/paragraph";
 export * from "./stories/typography/span";
 export * from "./stories/typography/typescale";
 
+export * from "./stories/datepicker";
+export * from "./stories/tableNew";
 export * from "./stories/transcript";
+
+export { Message } from "@zendeskgarden/react-forms";
 
 export { GlobalStyle };

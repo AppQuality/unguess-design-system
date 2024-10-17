@@ -1,19 +1,19 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { PageHeaderMainProps } from "./_types";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import React, { useState } from "react";
+import styled from "styled-components";
 import { PageHeader } from ".";
 import { Anchor } from "../../buttons/anchor";
 import { Button } from "../../buttons/button";
-import React, { useState } from "react";
-import { theme } from "../../theme";
-import styled from "styled-components";
-import { Paragraph } from "../../typography/paragraph";
 import { InputToggle } from "../../forms/input-toggle";
-import { Tag } from "../../tags";
 import {
   CampaignFunctionalIcon,
   StatusCompletedIcon,
   StatusRunningIcon,
 } from "../../icons";
+import { Tag } from "../../tags";
+import { theme } from "../../theme";
+import { Paragraph } from "../../typography/paragraph";
+import { PageHeaderMainProps } from "./_types";
 
 const FakeBody = styled.div`
   background-color: ${({ theme }) => theme.palette.grey[100]};
@@ -223,9 +223,7 @@ const completeArgs: PageHeaderStoryProps = {
       >
         Button
       </Button>,
-      <Button size="large">
-        Please dress ignore me
-      </Button>,
+      <Button size="large">Please dress ignore me</Button>,
     ],
   },
   pageHeaderMainArgs: {
@@ -376,9 +374,7 @@ const SecondThirdLevelArgs: PageHeaderStoryProps = {
           <Button size="large" style={{ marginRight: theme.space.xs }}>
             Button 1
           </Button>
-          <Button size="large">
-            Button 2
-          </Button>
+          <Button size="large">Button 2</Button>
         </div>
       </StyledMeta>
     ),

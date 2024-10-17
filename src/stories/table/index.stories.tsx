@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { useState } from "react";
 import {
   Body,
@@ -18,7 +18,7 @@ import getScrollbarSize from "dom-helpers/scrollbarSize";
 import { FixedSizeList } from "react-window";
 import styled from "styled-components";
 import { Checkbox } from "../forms/checkbox";
-import { Field } from "../forms/field";
+import { FormField as Field } from "../forms/field";
 import { Label } from "../label";
 import { Pagination } from "../pagination";
 import { XL } from "../typography/typescale";

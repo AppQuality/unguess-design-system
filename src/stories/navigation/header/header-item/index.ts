@@ -1,6 +1,5 @@
 import { HeaderItem } from "./headerItem";
-import { HeaderItemText } from "./headerItemText";
 import { HeaderItemIcon } from "./headerItemIcon";
-import { BrandItem } from "./brandItem";
+import { HeaderItemText } from "./headerItemText";
 
-export { HeaderItem, HeaderItemText, HeaderItemIcon, BrandItem };
+export { HeaderItem, HeaderItemIcon, HeaderItemText };

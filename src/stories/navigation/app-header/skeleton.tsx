@@ -1,19 +1,11 @@
-import { HeaderItem, HeaderItemIcon } from "../header/header-item";
 import { Skeleton } from "../../loaders/skeleton";
 import { theme } from "../../theme";
 import { Header } from "../header";
-import { LogoIconContainer } from "../header/header-item/brandItem";
-import { Logo } from "../../logo";
+import { HeaderItem, HeaderItemIcon } from "../header/header-item";
 
 export const HeaderSkeleton = () => {
   return (
     <Header isStandalone>
-      <LogoIconContainer hasLogo>
-        <HeaderItemIcon>
-          <Logo type={"icon"} size={150} />
-        </HeaderItemIcon>
-      </LogoIconContainer>
-
       <HeaderItem style={{ marginRight: "auto", marginLeft: "-4px" }}>
         {window.matchMedia(`only screen and (min-width: 576px)`).matches ? (
           <Skeleton width="200px" height={theme.space.sm} />

@@ -1,16 +1,16 @@
 import { Paragraph } from "@zendeskgarden/react-notifications";
-import { MenuItemProps } from "../_types";
-import { PreviousButton } from "../components/previousMenuButton";
-import { ReactComponent as GearIcon } from "../../../assets/icons/gear-fill.svg";
-import styled from "styled-components";
-import { Separator } from "../../dropdowns/menu";
-import { Toggle } from "../../forms/toggle";
-import { MenuItem } from "../components/menuItem";
-import { theme } from "../../theme";
-import { Field } from "../../forms/field";
-import { Label } from "../../label";
 import { useState } from "react";
+import styled from "styled-components";
+import { ReactComponent as GearIcon } from "../../../assets/icons/gear-fill.svg";
+import { Separator } from "../../dropdowns/menu";
+import { FormField as Field } from "../../forms/field";
+import { Toggle } from "../../forms/toggle";
+import { Label } from "../../label";
+import { theme } from "../../theme";
 import { MD, SM } from "../../typography/typescale";
+import { MenuItemProps } from "../_types";
+import { MenuItem } from "../components/menuItem";
+import { PreviousButton } from "../components/previousMenuButton";
 
 interface SettingsProps extends MenuItemProps {
   settingValue?: string;

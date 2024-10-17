@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { MD } from "@zendeskgarden/react-typography";
 import { HTMLAttributes } from "react";
 import { styled } from "styled-components";
@@ -66,7 +66,7 @@ const getPaletteColor = (color: string) => {
   return null;
 };
 
-const Template: Story<ColorProps> = (props) => {
+const Template: StoryFn<ColorProps> = (props) => {
   return (
     <div>
       <ColorsLayout>

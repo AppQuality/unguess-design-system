@@ -1,10 +1,10 @@
-import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
 import { Avatar } from "../../avatar";
 import { IconButton } from "../../buttons/icon-button";
+import { theme } from "../../theme";
 import { Header } from "../header";
-import { BrandItem, HeaderItem, HeaderItemIcon } from "../header/header-item";
+import { HeaderItem, HeaderItemIcon } from "../header/header-item";
 import { AppHeaderArgs } from "./_types";
 import { HeaderSkeleton } from "./skeleton";
 
@@ -35,7 +35,6 @@ const AppHeader = ({
         zIndex: style?.zIndex || theme.levels.front,
       }}
     >
-      <BrandItem {...brand} toggleMenu={args.onSidebarMenuToggle} />
       {args.hasChangelog && args.changelogItem && (
         <HeaderItem style={{ marginRight: "-" + theme.space.xs }}>
           <HeaderItemIcon>{args.changelogItem}</HeaderItemIcon>

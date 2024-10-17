@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Icon } from ".";
-import { IconArgs } from "./_types";
-import { Row } from "../grid/row";
 import { Col } from "../grid/col";
+import { Row } from "../grid/row";
+import { IconArgs } from "./_types";
 
 const Template: Story<IconArgs> = (args) => {
   return (
@@ -16,13 +16,13 @@ const Template: Story<IconArgs> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'square',
-  size: 24
-}
+  type: "square",
+  size: 24,
+};
 Default.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/6Wf94FIaktAQevtlfDpfJG/UNGUESS-%7C-Icons-Library?node-id=1%3A97',
+    type: "figma",
+    url: "https://www.figma.com/file/6Wf94FIaktAQevtlfDpfJG/UNGUESS-%7C-Icons-Library?node-id=1%3A97",
   },
 };
 
@@ -33,8 +33,8 @@ export default {
     type: {
       control: {
         type: "select",
-        options: ['square', 'triangle', 'circle']
-      }
-    }
-  }
+        options: ["square", "triangle", "circle"],
+      },
+    },
+  },
 } as ComponentMeta<typeof Icon>;

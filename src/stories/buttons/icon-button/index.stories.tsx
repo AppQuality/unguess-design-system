@@ -1,10 +1,10 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Tooltip } from "@zendeskgarden/react-tooltips";  //TODO: replace with unguess component
-import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
-import { IconButton } from ".";
-import { IconButtonArgs } from "./_types";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Grid } from "@zendeskgarden/react-grid";
+import { Tooltip } from "@zendeskgarden/react-tooltips"; //TODO: replace with unguess component
+import { IconButton } from ".";
+import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
 import { Col, MD, Row, sizes, variants } from "../utils";
+import { IconButtonArgs } from "./_types";
 
 const SizeTemplate: Story<IconButtonArgs> = (args) => (
   <Row>
@@ -20,20 +20,16 @@ const SizeTemplate: Story<IconButtonArgs> = (args) => (
   </Row>
 );
 
-
 const Template: Story<IconButtonArgs> = (args) => {
   return (
     <Grid>
       {variants.map((variant, i) => (
-      <>
-          <MD>
-            {Object.keys(variant)[0]}
-          </MD>
-        <SizeTemplate {...args} {...variant} key={i} />
-      </>
-      ))
-      }
-    </Grid >
+        <>
+          <MD>{Object.keys(variant)[0]}</MD>
+          <SizeTemplate {...args} {...variant} key={i} />
+        </>
+      ))}
+    </Grid>
   );
 };
 

@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { LoginForm } from ".";
+import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { Col } from "../grid/col";
 import { LoginFormArgs } from "./_types";
 
 const Template: Story<LoginFormArgs> = (args) => (
@@ -35,7 +35,9 @@ const defaultArgs: LoginFormArgs = {
   placeholderPassword: "Insert Password",
   passwordForgotLabel: "Forgot Password?",
   backToLabel: "Back to UNGUESS",
-  onBackClick: () => {alert("back ")},
+  onBackClick: () => {
+    alert("back ");
+  },
   validate: (values) => {
     let errors: any = {};
     if (!values.email) {
