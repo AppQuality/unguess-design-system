@@ -1,7 +1,10 @@
+import react from "@vitejs/plugin-react";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
+import pkg from "./package.json";
 
 import {
   Plugin,
@@ -16,6 +19,7 @@ export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
     build: {
+      sourcemap: "inline",
       ...(mode === "development" ? { emptyOutDir: false } : {}),
       outDir: "build",
       lib: {
@@ -23,14 +27,7 @@ export default defineConfig(({ mode }) => {
         formats: ["es"],
       },
       rollupOptions: {
-        external: [
-          "react",
-          "react-dom",
-          "styled-components",
-          "react/jsx-runtime",
-          // "@zendeskgarden/react-dropdowns",
-          "formik",
-        ],
+        external: [...Object.keys(pkg.peerDependencies)],
         output: {
           assetFileNames: "assets/[name][extname]",
           entryFileNames: "[name].js",
@@ -38,11 +35,15 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
+      react(),
       svgrPlugin(),
       libInjectCss(),
       dts({
         include: ["src"],
         ...(mode === "development" ? {} : { rollupTypes: true }),
+      }),
+      chunkSplitPlugin({
+        strategy: "unbundle",
       }),
     ],
   };

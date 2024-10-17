@@ -5,7 +5,6 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "vite build",
@@ -14,7 +13,8 @@
     "type:check": "tsc",
     "dev": "vite",
     "start": "vite",
-    "lint": "eslint --ext .tsx,.ts ."
+    "lint": "eslint --ext .tsx,.ts .",
+    "analyze": "npx vite-bundle-visualizer"
   },
   "repository": {
     "type": "git",
@@ -54,7 +54,6 @@
     "@tiptap/react": "2.2.4",
     "@tiptap/starter-kit": "2.2.4",
     "@tiptap/suggestion": "2.2.4",
-    "@types/react-slick": "^0.23.10",
     "@zendeskgarden/container-utilities": "^2.0.0",
     "@zendeskgarden/css-bedrock": "^9.0.0",
     "@zendeskgarden/react-accordions": "8.76.8",
@@ -63,8 +62,8 @@
     "@zendeskgarden/react-buttons": "8.76.8",
     "@zendeskgarden/react-chrome": "8.76.8",
     "@zendeskgarden/react-colorpickers": "8.76.8",
-    "@zendeskgarden/react-dropdowns.next": "^8.76.8",
     "@zendeskgarden/react-dropdowns": "8.76.8",
+    "@zendeskgarden/react-dropdowns.next": "^8.76.8",
     "@zendeskgarden/react-forms": "8.76.8",
     "@zendeskgarden/react-grid": "8.76.8",
     "@zendeskgarden/react-loaders": "8.76.8",
@@ -105,6 +104,7 @@
     "@types/node": "^20.14.2",
     "@types/react": "^17.0.0 || ^18.0.0",
     "@types/react-dom": "^17.0.0 || ^18.0.0",
+    "@types/react-slick": "^0.23.10",
     "@types/react-window": "^1.8.5",
     "@types/ua-parser-js": "^0.7.36",
     "@types/uuid": "^9.0.8",
@@ -129,6 +129,7 @@
     "styled-components": "6.1.1",
     "typescript": "^4.5.0",
     "vite": "^5.2.13",
+    "vite-plugin-chunk-split": "^0.5.0",
     "vite-plugin-dts": "^4.2.3",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vite-tsconfig-paths": "^4.3.2",
@@ -165,8 +166,6 @@
     ]
   },
   "peerDependencies": {
-    "@types/react": "^17.0.0 || ^18.0.0",
-    "@types/react-dom": "^17.0.0 || ^18.0.0",
     "@zendeskgarden/react-theming": "^8.48.2",
     "formik": "^2.2.9",
     "react": "^17.0.0 || ^18.0.0",
