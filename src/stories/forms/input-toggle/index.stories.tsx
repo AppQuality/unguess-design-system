@@ -1,8 +1,8 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { Message } from "@zendeskgarden/react-dropdowns.next";
 import { useState } from "react";
 import styled from "styled-components";
 import { InputToggle } from ".";
-import { Message } from "../../dropdowns/select";
 import { InputToggleArgs } from "./_types";
 
 interface InputStoryArgs extends InputToggleArgs {
