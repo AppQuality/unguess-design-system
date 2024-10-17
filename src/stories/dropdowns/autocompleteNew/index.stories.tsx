@@ -1,122 +1,89 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { AutocompleteNew as Autocomplete, AutocompleteProps } from ".";
 import { Field } from "@zendeskgarden/react-dropdowns.next";
-import { Option } from "../option";
 import { Label } from "../../label";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { fn } from '@storybook/test';
 import { ItemContent } from "../item-content";
 
 let items = [
-  { label: "Ferdinand ThreeMelons", value: "item-1", isSelected: true },
-  { label: "Giommo Cornelio", value: "item-2" },
-  { label: "Rubber tree", value: "item-3" },
+  { label: "Ferdinand ThreeMelons", value: "item-1", id: "item-1", isSelected: true },
+  { label: "Giommo Cornelio", value: "item-2", id: "item-2" },
+  { label: "Rubber tree", value: "item-3", id: "item-3" },
 ];
 
 const Template: Story<AutocompleteProps> = (args) => {
-  const [options, setOptions] = useState(items);
-
-  const filterOptions = (inputValue: string) => {
-    if (inputValue === "") {
-      setOptions(items);
-      return;
-    }
-    const regex = new RegExp(inputValue, 'giu');
-    setOptions(items.filter(item => item.label.match(regex)));
-  }
 
   return (
     <div style={{ width: "300px" }}>
       <Field>
         <Label>Food Manager</Label>
-        <Autocomplete {...args} onInputChange={filterOptions}>
-          {options.length > 0
-            ? options.map(option => <Option key={option.value} value={option.value} />)
-            : <Option isDisabled value="" label="No results found" />
-          }
-        </Autocomplete>
+        <Autocomplete
+          {...args}
+          options={items}
+        />
       </Field>
     </div>
   );
 };
 
 const TemplateCreatable: Story<AutocompleteProps> = (args) => {
-  const [options, setOptions] = useState(items);
-
-  const filterOptions = (inputValue: string) => {
-    console.log("Filtering options", inputValue);
-    console.log("opt", options);
-    if (!inputValue) {
-      setOptions(items);
-      return;
-    }
-    const regex = new RegExp(inputValue, 'giu');
-    setOptions(items.filter(item => item.label.match(regex)));
-  }
-
-  const onCreateNewOption = (inputValue: any) => {
-    console.log("Creating new item", inputValue);
-    console.log("opt", options);
-    setOptions((prev) => {
-      const newItem = { label: inputValue, value: `item-${prev.length + 1}`, isSelected: true };
-      return [...prev.map(opt => args.isMultiselectable ? opt : { ...opt, isSelected: false }), newItem]
-    });
-    //alert("Creating new item: " + value.selectionValue);
-  }
-
   return (
     <Field>
       <Label>Food Manager</Label>
       <Autocomplete {...args}
+        options={items}
         isCreatable
-        onInputChange={filterOptions}
-        onCreateNewOption={onCreateNewOption}
-        onChange={e => console.log("Change", e)}
+        onCreateNewOption={async (inputValue) => {
+          // mock a promise to create a new item
+          return await new Promise((resolve) => setTimeout(() => {
+            resolve({ label: inputValue, value: inputValue, id: inputValue });
+          }, 1000));
+        }}
         onOptionClick={({ selectionValue }) => {
-          if (!selectionValue) return;
-          if (Array.isArray(selectionValue)) {
-            setOptions((prev) => prev.map(option => ({ ...option, isSelected: selectionValue?.includes(option.value) })));
-          } else {
-            setOptions((prev) => prev.map(option => ({ ...option, isSelected: option.value === selectionValue })));
-          }
           console.log("Option clicked", selectionValue);
         }}
-      >
-        {options.length > 0
-          ? options.map(option => {
-            console.log(option)
-            return(
-            <Option
-              key={option.value}
-              value={option.value}
-              label={option.label + " value: " + option.value}
-              isSelected={option.isSelected}
-            />
-          )})
-          : <Option isDisabled value="" label="No results found" />
-        }
-      </Autocomplete>
+      />
     </Field>
   );
 };
 
 const itemsMedia = [
   {
-    thumbSrc: "https://via.placeholder.com/60x40",
     label: "Ferdinand ThreeMelons",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     value: "item-1",
+    id: "item-1",
+    children: (
+      <ItemContent
+        label="Ferdinand ThreeMelons"
+        thumbSrc="https://via.placeholder.com/60x40"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      />
+    ),
   },
   {
-    thumbSrc: "https://via.placeholder.com/60x40",
     label: "Giommo Cornelio",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     value: "item-2",
+    id: "item-2",
+    children: (
+      <ItemContent
+        label="Giommo Cornelio"
+        thumbSrc="https://via.placeholder.com/60x40"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      />
+    ),
   },
   {
-    thumbSrc: "https://via.placeholder.com/40x60",
     label: "Rubber Tree",
-    description: "Lorem ",
     value: "item-3",
+    id: "item-3",
+    children: (
+      <ItemContent
+        label="Rubber Tree"
+        thumbSrc="https://via.placeholder.com/40x60"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      />
+    ),
   },
 ];
 
@@ -124,16 +91,7 @@ const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
   return (
     <Field>
       <Label>Food Manager</Label>
-      <Autocomplete isExpanded {...args}>
-        {itemsMedia.map((item) => (
-          <Option
-            key={item.value}
-            value={item.value}
-          >
-            <ItemContent {...item} />
-          </Option>
-        ))}
-      </Autocomplete>
+      <Autocomplete {...args} options={itemsMedia} isExpanded />
     </Field>
   );
 };
@@ -166,5 +124,8 @@ export default {
   parameters: {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
+  },
+  args: {
+    onChange: fn()
   },
 } as ComponentMeta<typeof Autocomplete>;
