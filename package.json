@@ -75,7 +75,6 @@
     "@zendeskgarden/react-tags": "8.76.8",
     "@zendeskgarden/react-tooltips": "8.76.8",
     "@zendeskgarden/react-typography": "8.76.8",
-    "lodash.debounce": "^4.0.8",
     "react-slick": "^0.29.0",
     "react-window": "^1.8.6",
     "tippy.js": "^6.3.7",
