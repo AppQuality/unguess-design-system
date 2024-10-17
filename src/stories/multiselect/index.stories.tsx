@@ -28,9 +28,11 @@ const options = [
 export const Default = Template.bind({});
 Default.args = {
   options: options,
-  selectedItems: [options[0], options[1]],
   onChange: async (selectedItems) => {
-    console.log("selectedItems", selectedItems);
+    console.log(
+      "selectedItems",
+      selectedItems.filter((o) => o.selected)
+    );
     await patchMock(selectedItems);
   },
 };
@@ -45,7 +47,10 @@ const patchMock = async (
         label: option.label,
       }));
       console.log("options", options);
-      console.log("newOptions", newOptions);
+      console.log(
+        "newOptions",
+        newOptions.filter((o) => !options.find((op) => op.id === o.id))
+      );
       resolve(newOptions);
     }, 1000);
   });

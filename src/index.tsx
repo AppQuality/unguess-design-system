@@ -72,7 +72,6 @@ export * from "./stories/dropdowns/menuheader";
 export * from "./stories/dropdowns/optGroup";
 export * from "./stories/dropdowns/option";
 export * from "./stories/dropdowns/select";
-export * from "./stories/dropdowns/selectNew";
 
 // --- Editor ---
 export * from "./stories/editor";
@@ -120,7 +119,6 @@ export * from "./stories/logo";
 
 // --- Multiselect ---
 export * from "./stories/multiselect";
-export * from "./stories/multiselectNew";
 
 // --- Modals ---
 export * from "./stories/modals";

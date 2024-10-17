@@ -1,3 +1,4 @@
+import { Message } from "@zendeskgarden/react-forms";
 import { Form, Formik } from "formik";
 import styled from "styled-components";
 import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-left-stroke.svg";
@@ -5,7 +6,6 @@ import useWindowSize from "../../hooks/useWindowSize";
 import { Anchor } from "../buttons/anchor";
 import { Button } from "../buttons/button";
 import { ContainerCard } from "../cards";
-import { Message } from "../dropdowns/select";
 import { FormField as Field, FormHint as Hint } from "../forms/field";
 import { Input } from "../forms/input";
 import { theme } from "../theme";
