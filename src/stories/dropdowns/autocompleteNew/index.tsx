@@ -1,17 +1,27 @@
-import { Combobox, IComboboxProps, Option, OptionValue, Separator } from "@zendeskgarden/react-dropdowns.next";
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
-import { debounce } from "lodash";
+import { Combobox, IComboboxProps, IOptGroupProps, IOptionProps, Option, OptionValue, Separator } from "@zendeskgarden/react-dropdowns.next";
+import { useCallback, useMemo, useState } from "react";
+import useDebounce from "../../../hooks/useDebounce";
+import { OptGroup } from "../optGroup";
 
 interface OnOptionClickArgs {
   inputValue?: string;
   selectionValue?: OptionValue | OptionValue[] | null;
-  isNew?: boolean;
 }
+
+interface IOption extends IOptionProps {
+  id: string; // override the id prop
+}
+interface IOptGroup extends IOptGroupProps {
+  id: string; // override the id prop
+  options: Array<IOption>;
+}
+
 export interface AutocompleteProps extends IComboboxProps {
   onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
   onInputChange: (inputValue: string) => void;
   isCreatable?: boolean;
   onCreateNewOption?: (inputValue: any) => void;
+  options: Array<IOption> | Array<IOptGroup>;
 }
 
 /**
@@ -23,7 +33,7 @@ export interface AutocompleteProps extends IComboboxProps {
  * Not for this:
     - To make more than one selection, use Multiselect instead
  */
-const AutocompleteNew = ({ children, onOptionClick, onInputChange, onChange, isCreatable, onCreateNewOption, ...props }: AutocompleteProps) => {
+const AutocompleteNew = ({ options, onOptionClick, onInputChange, onChange, isCreatable, onCreateNewOption, ...props }: AutocompleteProps) => {
   const [inputValue, setInputValue] = useState<string | undefined>();
 
   const handleChange = useCallback<NonNullable<IComboboxProps['onChange']>>(event => {
@@ -40,18 +50,22 @@ const AutocompleteNew = ({ children, onOptionClick, onInputChange, onChange, isC
     }
   }, []);
 
-  const debounceHandleChange = useMemo(() => debounce(handleChange, 300), [handleChange]);
-
-  useEffect(() => {
-    return () => {
-      debounceHandleChange.cancel();
-    };
-  }, [debounceHandleChange]);
+  const debounceHandleChange = useMemo(() => useDebounce(handleChange, 300), [handleChange]);
   return (
-    <Combobox {...props}
-      inputValue={inputValue}
-      isAutocomplete onChange={debounceHandleChange}>
-      {children}
+    <Combobox {...props} isAutocomplete inputValue={inputValue} onChange={debounceHandleChange}>
+      {options.length > 0 && options.map((option, index) => {
+        if ('options' in option) {
+          const {options: internalOptions, id} = option;
+          return (
+            <OptGroup key={id} {...option}>
+              {internalOptions.map((opt) => (
+                <Option key={opt.id} {...opt} />
+              ))}
+            </OptGroup>
+          );
+        }
+        return <Option key={index} {...option} />;
+      })}
       {isCreatable && inputValue &&
         <Option
           type='add'
@@ -63,7 +77,6 @@ const AutocompleteNew = ({ children, onOptionClick, onInputChange, onChange, isC
             // e.stopPropagation();
             if (typeof onCreateNewOption === 'function') {
               onCreateNewOption(e.currentTarget.title);
-              setInputValue(undefined);
             }
           }}
         >

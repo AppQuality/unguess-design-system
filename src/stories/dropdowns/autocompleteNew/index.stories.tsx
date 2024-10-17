@@ -41,19 +41,16 @@ const Template: Story<AutocompleteProps> = (args) => {
 
 const TemplateCreatable: Story<AutocompleteProps> = (args) => {
   const [options, setOptions] = useState(items);
-  const [matchingOptions, setMatchingOptions] = useState(options);
-
-  useEffect(() => {
-    setMatchingOptions(options);
-  }, [options]);
 
   const filterOptions = (inputValue: string) => {
-    if (inputValue === "") {
-      setMatchingOptions(options);
+    console.log("Filtering options", inputValue);
+    console.log("opt", options);
+    if (!inputValue) {
+      setOptions(items);
       return;
     }
     const regex = new RegExp(inputValue, 'giu');
-    setMatchingOptions(options.filter(item => item.label.match(regex)));
+    setOptions(items.filter(item => item.label.match(regex)));
   }
 
   const onCreateNewOption = (inputValue: any) => {
@@ -73,11 +70,7 @@ const TemplateCreatable: Story<AutocompleteProps> = (args) => {
         isCreatable
         onInputChange={filterOptions}
         onCreateNewOption={onCreateNewOption}
-        selectionValue={
-          (args.isMultiselectable)
-            ? options.filter(option => option.isSelected).map(option => option.value)
-            : options.find(option => option.isSelected)?.value
-        }
+        onChange={e => console.log("Change", e)}
         onOptionClick={({ selectionValue }) => {
           if (!selectionValue) return;
           if (Array.isArray(selectionValue)) {
@@ -88,15 +81,17 @@ const TemplateCreatable: Story<AutocompleteProps> = (args) => {
           console.log("Option clicked", selectionValue);
         }}
       >
-        {matchingOptions.length > 0
-          ? matchingOptions.map(option => (
+        {options.length > 0
+          ? options.map(option => {
+            console.log(option)
+            return(
             <Option
               key={option.value}
               value={option.value}
               label={option.label + " value: " + option.value}
               isSelected={option.isSelected}
             />
-          ))
+          )})
           : <Option isDisabled value="" label="No results found" />
         }
       </Autocomplete>
