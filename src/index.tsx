@@ -61,7 +61,6 @@ export * from "./stories/drawers";
 export * from "./stories/buttonMenu";
 export * from "./stories/dotsMenu";
 export * from "./stories/dropdowns/autocomplete";
-export * from "./stories/dropdowns/autocompleteNew";
 export * from "./stories/dropdowns/countermultiselect";
 export * from "./stories/dropdowns/field";
 export * from "./stories/dropdowns/fieldNew";
