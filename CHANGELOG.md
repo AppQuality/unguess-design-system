@@ -1,3 +1,122 @@
+# v3.1.115 (Thu Oct 10 2024)
+
+#### 🐛 Bug Fix
+
+- Add start - end attrs to observation [#423](https://github.com/AppQuality/unguess-design-system/pull/423) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v3.1.114 (Mon Oct 07 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Use isExpanded style for panel container [#421](https://github.com/AppQuality/unguess-design-system/pull/421) ([@d-beezee](https://github.com/d-beezee))
+- fix: Use isExpanded style for panel container [#420](https://github.com/AppQuality/unguess-design-system/pull/420) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v3.1.113 (Thu Oct 03 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Add better speaker handling [#419](https://github.com/AppQuality/unguess-design-system/pull/419) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v3.1.112 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Fix stream player to last working version [#418](https://github.com/AppQuality/unguess-design-system/pull/418) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v3.1.111 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Add tiptap text-style dependency [#417](https://github.com/AppQuality/unguess-design-system/pull/417) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v3.1.110 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- Add new transcript [#416](https://github.com/AppQuality/unguess-design-system/pull/416) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+- New highlight component [#411](https://github.com/AppQuality/unguess-design-system/pull/411) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.109 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- Fix authentication logic [#415](https://github.com/AppQuality/unguess-design-system/pull/415) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.108 (Wed Oct 02 2024)
+
+#### 🐛 Bug Fix
+
+- Fix sidebar scrollable panel [#414](https://github.com/AppQuality/unguess-design-system/pull/414) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- fix: Restore scrollable panel with new version [#413](https://github.com/AppQuality/unguess-design-system/pull/413) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v3.1.106 (Tue Sep 24 2024)
+
+#### 🐛 Bug Fix
+
+- Update package version to 3.1.106 [#410](https://github.com/AppQuality/unguess-design-system/pull/410) ([@cannarocks](https://github.com/cannarocks))
+- fix editor issues [#409](https://github.com/AppQuality/unguess-design-system/pull/409) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+- Hotfix editor issues [#408](https://github.com/AppQuality/unguess-design-system/pull/408) ([@marcbon](https://github.com/marcbon) [@cannarocks](https://github.com/cannarocks) [@sinatragianpaolo](https://github.com/sinatragianpaolo) [@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 5
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v3.1.105 (Mon Sep 23 2024)
 
 #### 🐛 Bug Fix
