@@ -20,7 +20,7 @@ export interface AutocompleteProps extends IComboboxProps {
   onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
   onInputChange?: (inputValue: string) => void;
   isCreatable?: boolean;
-  onCreateNewOption?: (inputValue: string) => Promise<IOption>;
+  onCreateNewOption?: (inputValue: string) => Promise<IOption | false>;
   options: Array<IOptGroup | IOption>;
 }
 // debounce a function call
@@ -96,7 +96,6 @@ const Autocomplete = ({ options, onOptionClick, onInputChange, onChange, isCreat
       if (typeof onInputChange === 'function') onInputChange(sanitizedInputValue);
     }
     if (event.type === "option:click" && typeof onOptionClick === 'function') {
-      // setSelectionValue(event.selectionValue);
       setInputValue(undefined);
       onOptionClick({ inputValue: event.inputValue, selectionValue: event.selectionValue });
     }
@@ -131,7 +130,7 @@ const Autocomplete = ({ options, onOptionClick, onInputChange, onChange, isCreat
           onClickCapture={async (e) => {
             if (typeof onCreateNewOption === 'function') {
               const newOption = await onCreateNewOption(e.currentTarget.title);
-              setOption(pre => [...pre, newOption]);
+              if (newOption) setOption(pre => [...pre, newOption]);
             }
           }}
         >

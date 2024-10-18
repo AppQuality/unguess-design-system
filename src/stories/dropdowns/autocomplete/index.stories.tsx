@@ -37,7 +37,12 @@ const TemplateCreatable: Story<AutocompleteProps> = (args) => {
         onCreateNewOption={async (inputValue) => {
           // mock a promise to create a new item
           return await new Promise((resolve) => setTimeout(() => {
-            resolve({ label: inputValue, value: inputValue, id: inputValue });
+            if (inputValue === "invalid") {
+              alert("Invalid value");
+              resolve(false);
+            } else {
+              resolve({ label: inputValue, value: inputValue, id: inputValue });
+            }
           }, 1000));
         }}
         onOptionClick={({ selectionValue }) => {
