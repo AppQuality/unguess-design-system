@@ -76,7 +76,7 @@ const Template: Story<MenuStoryArgs> = ({ items, ...args }) => {
           args.onSelect?.(value);
         }}
         validation={args?.validation}
-        label="Food Manager"
+        label={args.label}
       >
         {getItems()}
         {args.menuOption && (
@@ -102,6 +102,7 @@ Default.args = {
   isBare: false,
   isDisabled: false,
   isPrimary: false,
+  label: "Food Manager",
 };
 
 export const Validation = Template.bind({});
