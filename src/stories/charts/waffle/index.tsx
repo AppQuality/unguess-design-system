@@ -1,11 +1,11 @@
 import { ResponsiveWaffle } from "@nivo/waffle";
-import { WaffleChartProps } from "./_types";
 import {
   CHARTS_COLOR_SCHEME_MONO,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
 import { ChartContainer } from "../ChartContainer";
 import { CustomCell } from "./CustomCell";
+import { WaffleChartProps } from "./_types";
 
 const WaffleChart = ({
   height,
@@ -42,17 +42,22 @@ const WaffleChart = ({
             value: total.value,
           },
         ]}
-        tooltip={({ value, label }: { value: number; label: string }) =>
-          tooltip ? tooltip({ label, value }) : <>{`${label}: ${value}`}</>
-        }
-        fillDirection="bottom"
+        tooltip={({ data: { label, value } }) => {
+          if (tooltip)
+            return <>{tooltip({ label: data.label, value: data.value })}</>;
+
+          return (
+            <div style={{ background: "#fff" }}>{`${label}: ${value}`}</div>
+          );
+        }}
+        fillDirection="top"
         total={total.value}
         rows={6}
         columns={8}
+        padding={2}
         colors={CHARTS_COLOR_SCHEME_MONO}
-        // @ts-ignore property cellComponent does not exist, but it does
-        cellComponent={({ borderWidth, borderColor, ...rest }) => (
-          <CustomCell borderWidth={2} borderColor={"white"} {...rest} />
+        cellComponent={({ borderWidth, ...rest }) => (
+          <CustomCell borderWidth={2} {...rest} />
         )}
       />
     </ChartContainer>

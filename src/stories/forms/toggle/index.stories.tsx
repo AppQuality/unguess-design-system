@@ -1,11 +1,11 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Toggle } from ".";
-import { Field } from "../field";
+import { Col } from "../../grid/col";
+import { Row } from "../../grid/row";
 import { Label } from "../../label";
 import { LabelArgs } from "../../label/_types";
 import { Basic as BasicLabel } from "../../label/index.stories";
-import { Row } from "../../grid/row";
-import { Col } from "../../grid/col";
+import { FormField as Field } from "../field";
 import { ToggleArgs } from "./_types";
 
 interface ToggleStoryProps extends ToggleArgs {
@@ -23,15 +23,15 @@ const Template: Story<ToggleStoryProps> = (args) => {
         </Field>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
   label: {
     ...BasicLabel.args,
-    isRegular: true
-  }
+    isRegular: true,
+  },
 };
 
 export default {

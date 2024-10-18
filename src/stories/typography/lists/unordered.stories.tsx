@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { UnorderedList } from ".";
 import { UnorderedListArgs } from "./_types";
 

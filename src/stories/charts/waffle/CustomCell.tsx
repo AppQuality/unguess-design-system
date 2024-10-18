@@ -1,47 +1,45 @@
-export interface WaffleCellProps {
-  position?: any;
-  size?: any;
-  x?: any;
-  y?: any;
-  color?: any;
-  fill?: any;
-  opacity?: any;
-  borderWidth?: any;
-  borderColor?: any;
-  data?: any;
-  onHover?: any;
-  onLeave?: any;
-  onClick?: any;
- }
+import { CellComponentProps, Datum } from "@nivo/waffle";
+import { animated } from "@react-spring/web";
+export interface WaffleCellProps
+  extends CellComponentProps<{ id: string; value: number; label: string }> {
+  borderColor: string;
+}
 
-export const CustomCell = ({
-  position,
-  size,
-  x,
-  y,
-  color,
-  fill,
-  opacity,
+// export const CustomCell = ({
+//   animatedProps: { color, opacity, size, x, y },
+//   borderRadius,
+//   borderWidth,
+//   borderColor,
+//   padding,
+//   ...props
+// }: WaffleCellProps) => (
+//   <circle
+//     r={size.get() / 2}
+//     cx={x.get() + size.get() / 2}
+//     cy={y.get() + size.get() / 2}
+//     fill={color.get()}
+//     strokeWidth={borderWidth}
+//     stroke={borderColor}
+//     style={{ padding }}
+//     opacity={opacity.get()}
+//   />
+// );
+
+export const CustomCell = <D extends Datum>({
+  cell,
+  animatedProps,
+  borderRadius,
   borderWidth,
-  borderColor,
-  data,
-  onHover,
-  onLeave,
-  onClick,
-}: WaffleCellProps) => (
-  <circle
-    r={size / 2}
-    cx={x + size / 2}
-    cy={y + size / 2}
-    fill={fill || color}
-    strokeWidth={borderWidth}
-    stroke={borderColor}
-    opacity={opacity}
-    onMouseEnter={onHover}
-    onMouseMove={onHover}
-    onMouseLeave={onLeave}
-    onClick={event => {
-      onClick({ position, color, x, y, data }, event)
-    }}
+  testIdPrefix,
+}: CellComponentProps<D>) => (
+  <animated.circle
+    cx={animatedProps.x.get() + animatedProps.size.get() / 2}
+    cy={animatedProps.y.get() + animatedProps.size.get() / 2}
+    width={animatedProps.size}
+    height={animatedProps.size}
+    r={animatedProps.size.get() / 2}
+    opacity={animatedProps.opacity}
+    fill={cell.fill || animatedProps.color}
+    data-test-id={testIdPrefix ? `${testIdPrefix}.cell_${cell.key}` : undefined}
   />
-)
+);

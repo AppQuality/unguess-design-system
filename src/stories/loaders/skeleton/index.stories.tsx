@@ -1,8 +1,8 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Skeleton } from ".";
 import { Col } from "../../grid/col";
 import { Row } from "../../grid/row";
-import { XXL, XL } from "../../typography/typescale";
+import { XL, XXL } from "../../typography/typescale";
 import { SkeletonArgs } from "./_types";
 
 const defaultArgs: SkeletonArgs = {
@@ -26,8 +26,8 @@ const Template: Story<SkeletonArgs> = (args) => {
         </XL>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {

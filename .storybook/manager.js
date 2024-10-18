@@ -1,6 +1,6 @@
-import {addons} from '@storybook/addons';
-import unguessTheme from './unguessTheme';
+import { addons } from "@storybook/manager-api";
+import unguessTheme from "./unguessTheme";
 
 addons.setConfig({
-    theme: unguessTheme,
+  theme: unguessTheme,
 });

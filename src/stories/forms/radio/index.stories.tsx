@@ -1,9 +1,9 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Radio } from ".";
-import { Field } from "../field";
-import { Label } from "../../label";
-import { Row } from "../../grid/row";
 import { Col } from "../../grid/col";
+import { Row } from "../../grid/row";
+import { Label } from "../../label";
+import { FormField as Field } from "../field";
 import { RadioArgs } from "./_types";
 
 const Template: Story<RadioArgs> = (args) => {
@@ -17,8 +17,8 @@ const Template: Story<RadioArgs> = (args) => {
         </Field>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -32,5 +32,5 @@ Checked.args = {
 
 export default {
   title: "Molecules/Forms/Radio",
-  component: Radio
+  component: Radio,
 } as ComponentMeta<typeof Radio>;

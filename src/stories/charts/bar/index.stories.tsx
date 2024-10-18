@@ -1,7 +1,7 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { BarChart } from ".";
-import { BarChartProps } from "./_types";
 import { data } from "./_data";
+import { BarChartProps } from "./_types";
 
 const Template: Story<BarChartProps> = (args) => (
   <BarChart

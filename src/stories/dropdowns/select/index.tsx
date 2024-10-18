@@ -1,57 +1,106 @@
-import { PropsWithChildren } from "react";
 import {
-  Select as ZendeskSelect,
-  Dropdown as ZendeskDropdown,
-  Message as ZendeskMessage,
-} from "@zendeskgarden/react-dropdowns";
-import { StyledLabel } from "../../label";
-import { SelectArgs, DropdownArgs, MessageArgs } from "./_types";
+  Combobox,
+  Field,
+  Label,
+  OptGroup,
+  Option,
+} from "@zendeskgarden/react-dropdowns.next";
+import { ComponentProps } from "react";
 import styled from "styled-components";
-import { MenuHeaderItem } from "../menuheader";
-import { Separator } from "../menu";
+import { SelectArgs } from "./_types";
 
-const UgSelect = styled(ZendeskSelect)<SelectArgs>`
+const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean }>`
+  [data-garden-container-id="containers.combobox.option"] {
+    display: flex;
+    gap: ${({ theme }) => theme.space.sm};
+    align-items: center;
+  }
+
   ${(props) =>
     props.isPrimary &&
     `
+    [data-garden-container-id="containers.combobox"] {
       background-color: ${props.theme.palette.blue[600]};
-      color: white;
-      & svg[data-garden-id="forms.media_figure"] {
-         color: white;
-      }
-   `}
+     color: white;
+     svg[data-garden-id="dropdowns.combobox.input_icon"] {
+        color: white;
+     }
+    }
+ `}
 `;
 
-/**
- * Select allows a user to pick one option from a list. This helps simplify the UI when space is limited
- * <hr>
- * Used for this:
-    - To make a selection from a list of options
- * Not for this:
-    - To filter a large list of options, use Autocomplete instead
-    - To make multiple selections from a list, use Multiselect instead
-    - To select from a list on mobile, use a native Select instead
- */
-const Select = (props: SelectArgs) => <UgSelect {...props} />;
+const Select = ({
+  label,
+  className,
+  children,
+  onSelect,
+  ...props
+}: SelectArgs) => {
+  return (
+    <div className={className}>
+      <Field>
+        {label ? <Label>{label}</Label> : null}
+        <StyledComboBox
+          {...props}
+          isEditable={false}
+          onChange={(changeEvent) => {
+            if (
+              ["input:keyDown:Enter", "option:click"].includes(
+                changeEvent.type
+              ) &&
+              changeEvent.selectionValue &&
+              onSelect
+            ) {
+              onSelect(changeEvent.selectionValue.toString());
+            }
+          }}
+        >
+          {children}
+        </StyledComboBox>
+      </Field>
+    </div>
+  );
+};
 
-const StyledDropdown = styled.div`
-  ${StyledLabel} {
-    display: block;
+Select.Option = Option;
+
+const StyledMenuOption = styled(Option)`
+  padding-left: ${({ theme }) => theme.space.sm};
+  padding-right: ${({ theme }) => theme.space.sm};
+  &[aria-disabled="true"] {
+    color: ${({ theme }) => theme.palette.blue[600]};
+    font-weight: ${({ theme }) => theme.fontWeights.semibold};
+    cursor: pointer;
+    &:hover {
+      border-radius: 0 !important;
+      box-shadow: inset 3px 0 ${({ theme }) => theme.palette.blue[600]};
+      background-color: ${({ theme }) => theme.palette.blue[600]}14;
+    }
   }
 `;
 
-const StyledMenuHeaderItem = styled(MenuHeaderItem)`
-  pointer-events: none;
+Select.MenuOption = (
+  props: Omit<ComponentProps<typeof Select.Option>, "isDisabled">
+) => {
+  return <StyledMenuOption {...props} isDisabled />;
+};
+
+const OptionGroup = styled(OptGroup)`
+  [data-garden-id="dropdowns.combobox.option.content"]
+    > [data-garden-id="dropdowns.combobox.option"] {
+    padding-left: ${({ theme }) => theme.space.sm};
+    padding-right: ${({ theme }) => theme.space.sm};
+  }
 `;
 
-const Dropdown = (props: PropsWithChildren<DropdownArgs>) => (
-  <StyledDropdown>
-    <ZendeskDropdown {...props} />
-  </StyledDropdown>
-);
-const Message = (props: MessageArgs) => <ZendeskMessage {...props} />;
+Select.OptionGroup = OptionGroup;
 
-Dropdown.HeaderItem = StyledMenuHeaderItem;
-Dropdown.Separator = Separator;
+const OptionTitle = styled.div`
+  padding: ${({ theme }) => theme.space.xxs} ${({ theme }) => theme.space.sm};
+  color: ${({ theme }) => theme.palette.grey[800]};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
+`;
 
-export { Select, Dropdown, Message };
+Select.OptionTitle = OptionTitle;
+
+export { Select };

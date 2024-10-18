@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Editor as TipTapEditor } from "@tiptap/react";
 import { Editor } from ".";
 import { Col } from "../grid/col";
