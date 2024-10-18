@@ -1,3 +1,15 @@
+# v4.0.1 (Fri Oct 18 2024)
+
+#### 🐛 Bug Fix
+
+- ci: Remove chunk split [#428](https://github.com/AppQuality/unguess-design-system/pull/428) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.0 (Fri Oct 18 2024)
 
 #### 💥 Breaking Change
