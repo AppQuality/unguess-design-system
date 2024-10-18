@@ -1,3 +1,23 @@
+# v4.0.0 (Fri Oct 18 2024)
+
+#### 💥 Breaking Change
+
+- Update to vite and zendesk 8.76 [#426](https://github.com/AppQuality/unguess-design-system/pull/426) ([@d-beezee](https://github.com/d-beezee) [@iacopolea](https://github.com/iacopolea))
+- Update to vite [#422](https://github.com/AppQuality/unguess-design-system/pull/422) ([@d-beezee](https://github.com/d-beezee) [@iacopolea](https://github.com/iacopolea))
+
+#### 🐛 Bug Fix
+
+- ci: Use node 18 to build package [#427](https://github.com/AppQuality/unguess-design-system/pull/427) ([@d-beezee](https://github.com/d-beezee))
+- Autocomplete new [#425](https://github.com/AppQuality/unguess-design-system/pull/425) ([@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee))
+- feat: Add new select [#424](https://github.com/AppQuality/unguess-design-system/pull/424) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v3.1.115 (Thu Oct 10 2024)
 
 #### 🐛 Bug Fix
