@@ -1,17 +1,17 @@
-import { Combobox, IComboboxProps, IOptGroupProps, IOptionProps, ISelectedOption, Option, OptionValue, Separator } from "@zendeskgarden/react-dropdowns.next";
+import { Combobox, IComboboxProps, IOptGroupProps, IOptionProps, Option, OptionValue, Separator } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useMemo, useState } from "react";
 import { OptGroup } from "../optGroup";
 
-interface OnOptionClickArgs {
+export interface OnOptionClickArgs {
   inputValue?: string;
   selectionValue?: OptionValue | OptionValue[] | null;
 }
 
-interface IOption extends IOptionProps {
+export interface IOption extends IOptionProps {
   id: string; // override the id prop because propr value can be an object
   label: string; // override this, we need a label to filter the options
 }
-interface IOptGroup extends IOptGroupProps {
+export interface IOptGroup extends IOptGroupProps {
   id: string; // override the id prop to have a key to iterate over the options
   options: Array<IOption>;
 }
