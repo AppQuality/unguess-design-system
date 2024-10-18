@@ -1,6 +1,6 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Anchor } from ".";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { IAnchorProps } from "@zendeskgarden/react-buttons";
+import { Anchor } from ".";
 
 const defaultArgs: IAnchorProps = {
   isDanger: false,
@@ -18,8 +18,8 @@ Basic.args = {
 
 Basic.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26532',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26532",
   },
 };
 
@@ -32,8 +32,8 @@ Danger.args = {
 
 Danger.parameters = {
   design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26537',
+    type: "figma",
+    url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=538%3A26537",
   },
 };
 
@@ -53,5 +53,5 @@ export default {
       description: "The example text of anchor button",
       control: "text",
     },
-  }
+  },
 } as ComponentMeta<typeof Anchor>;

@@ -1,19 +1,14 @@
-import { Multiselect } from "@zendeskgarden/react-dropdowns";
-import { Dropdown } from "../dropdowns/select";
-import { Field } from "../dropdowns/field";
-import { Menu } from "../dropdowns/menu";
-import { Item as ZenDeskItem } from "../dropdowns/item";
-import { Label } from "../label";
+import {
+  Combobox,
+  Field,
+  Label,
+  Option,
+} from "@zendeskgarden/react-dropdowns.next";
 import { useEffect, useState } from "react";
-import { Tag } from "@zendeskgarden/react-tags";
-import { MultiSelectProps } from "./_types";
+import { ReactComponent as GridAddIcon } from "../../assets/icons/plus.svg";
 import { Separator } from "../dropdowns/menu";
-import { AddableItem } from "./AddableItem";
-import { Item } from "./Item";
-
-const DisabledItem = ({ label }: { label: string }) => (
-  <ZenDeskItem disabled>{label}</ZenDeskItem>
-);
+import { theme } from "../theme";
+import { MultiSelectProps } from "./_types";
 
 export const MultiSelect = ({
   options,
@@ -26,8 +21,6 @@ export const MultiSelect = ({
 }: MultiSelectProps) => {
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
-  const itemToString = (item: typeof options[number]) => (item ? item.id : "");
-
   useEffect(() => {
     const matchedOptions = options.filter(
       (option) =>
@@ -41,63 +34,96 @@ export const MultiSelect = ({
   }, [inputValue, options]);
 
   return (
-    <Dropdown
-      inputValue={inputValue}
-      selectedItems={options.filter((option) => option.selected)}
-      onSelect={(items: typeof options) =>
-        onChange &&
-        onChange(
-          options.map((o) => ({
-            ...o,
-            selected: items.some((i) => i.id === o.id),
-          }))
-        )
-      }
-      downshiftProps={{ itemToString }}
-      onInputValueChange={(value) => setInputValue(value)}
-    >
-      <Field>
-        <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
-        <Multiselect
-          placeholder={i18n?.placeholder ?? "Select Items"}
-          renderShowMore={i18n?.showMore}
-          isCompact={size !== "medium"}
-          maxItems={maxItems}
-          renderItem={({ value }) => (
-            <Tag isPill>
-              <span>{value.label}</span>
-              <Tag.Close
-                onClick={() =>
-                  onChange &&
-                  onChange(
-                    options.map((o) => ({
-                      ...o,
-                      selected: o.selected && o.id !== value.id,
-                    }))
-                  )
-                }
-              />
-            </Tag>
-          )}
-        />
-      </Field>
-      <Menu>
-        <div style={{ maxHeight: menuHeight ?? "200px" }}>
-          {matchingOptions.map((option) => {
-            const items = options
-              .filter((o) => o.selected)
-              .map((item) => itemToString(item));
+    <Field>
+      <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
+      <Combobox
+        renderValue={({ selection }) => {
+          if (
+            !selection ||
+            (Array.isArray(selection) && selection.length === 0)
+          ) {
             return (
-              <Item
-                option={option}
-                checked={items.includes(itemToString(option))}
-              />
+              <div style={{ color: theme.palette.grey[400] }}>
+                {i18n?.placeholder ?? "Select items..."}
+              </div>
             );
+          }
+        }}
+        renderExpandTags={
+          i18n?.showMore
+            ? (value) => {
+                if (!i18n.showMore) return "";
+                return i18n.showMore(value);
+              }
+            : undefined
+        }
+        maxHeight="auto"
+        isCompact={size !== "medium"}
+        isMultiselectable
+        maxTags={maxItems}
+        inputValue={inputValue}
+        selectionValue={options
+          .filter((option) => option.selected)
+          .map((o) => {
+            return o.id.toString();
           })}
-          {matchingOptions.length === 0 && (
-            <DisabledItem label={i18n?.noMatches ?? "No matches found"} />
-          )}
-        </div>
+        listboxMaxHeight={menuHeight ?? "200px"}
+        isAutocomplete
+        onChange={({ type, inputValue, selectionValue }) => {
+          if (type === "input:change") {
+            setInputValue(inputValue || "");
+            return;
+          }
+          if (
+            onChange &&
+            (type === "fn:setSelectionValue" || type === "option:click") &&
+            Array.isArray(selectionValue)
+          ) {
+            const ss = selectionValue.map((s) => {
+              const option = options.find((o) => o.id === parseInt(s));
+              if (!option) {
+                return {
+                  id: undefined,
+                  label: s,
+                  selected: true,
+                };
+              }
+              return {
+                ...option,
+                selected: true,
+              };
+            });
+            const selectedOptions = ss.filter((v) => v.id);
+            const newOption = ss.find((v) => !v.id)?.label;
+            onChange(
+              options.map((o) => ({
+                ...o,
+                selected: selectedOptions.some((i) => i.id === o.id),
+              })),
+              newOption ? newOption : undefined
+            ).then(() => setInputValue(""));
+          }
+        }}
+      >
+        {options.map((option) => (
+          <Option
+            isHidden={!matchingOptions.some((o) => o.id === option.id)}
+            key={option.id}
+            value={option.id.toString()}
+            label={option.label}
+            isSelected={option.selected}
+            tagProps={{
+              isPill: true,
+            }}
+          />
+        ))}
+        {matchingOptions.length === 0 && !creatable && (
+          <Option
+            isDisabled
+            value=""
+            label={i18n?.noMatches ?? "No matches found"}
+          />
+        )}
         {creatable &&
         inputValue.length > 0 &&
         !matchingOptions.find(
@@ -105,20 +131,19 @@ export const MultiSelect = ({
         ) ? (
           <>
             <Separator />
-            <AddableItem
-              onClick={async () => {
-                onChange && (await onChange(options, inputValue));
-                setInputValue("");
-              }}
+            <Option
+              tagProps={{ isPill: true }}
+              value={inputValue}
+              icon={<GridAddIcon />}
               label={
                 i18n?.addNew
                   ? i18n.addNew(inputValue)
-                  : `Want to add ${inputValue}?`
+                  : `Want to add "${inputValue}"?`
               }
             />
           </>
         ) : null}
-      </Menu>
-    </Dropdown>
+      </Combobox>
+    </Field>
   );
 };

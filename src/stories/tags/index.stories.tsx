@@ -1,4 +1,4 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Tag } from ".";
 import { ReactComponent as LeafIcon } from "../../assets/icons/leaf-stroke.svg";
 import { Col } from "../grid/col";

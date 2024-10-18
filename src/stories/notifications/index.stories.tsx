@@ -1,15 +1,15 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { useCallback } from "react";
 import {
   Notification as UgNotification,
   ToastProvider as UgToastProvider,
   useToast,
 } from ".";
-import { NotificationArgs, ToastProviderArgs } from "./_types";
-import { useCallback } from "react";
+import { Button } from "../buttons/button";
+import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { Col } from "../grid/col";
-import { Button } from "../buttons/button";
+import { NotificationArgs, ToastProviderArgs } from "./_types";
 
 interface NotificationStoryProps {
   notificationArgs: NotificationArgs;
@@ -97,9 +97,9 @@ const Template: Story<NotificationStoryProps> = ({
 export const ToastProvider = Template.bind({});
 ToastProvider.args = defaultArgs;
 
-const NotificationTemplate: Story<NotificationArgs> = ({
-  ...props
-}) => <UgNotification {...props} />;
+const NotificationTemplate: Story<NotificationArgs> = ({ ...props }) => (
+  <UgNotification {...props} />
+);
 
 export const Notification = NotificationTemplate.bind({});
 Notification.args = defaultArgs.notificationArgs;

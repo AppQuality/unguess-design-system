@@ -1,9 +1,9 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import styled from "styled-components";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { Message } from "@zendeskgarden/react-forms";
 import { useState } from "react";
+import styled from "styled-components";
 import { InputToggle } from ".";
 import { InputToggleArgs } from "./_types";
-import { Message } from "../../dropdowns/select";
 
 interface InputStoryArgs extends InputToggleArgs {
   label: string;
@@ -121,8 +121,8 @@ export default {
     textSize: {
       control: {
         type: "select",
-        options: ['xs','sm','md','lg','xl','xxl', 'xxxl'],
+        options: ["xs", "sm", "md", "lg", "xl", "xxl", "xxxl"],
       },
-    }
+    },
   },
 } as ComponentMeta<typeof InputToggle>;

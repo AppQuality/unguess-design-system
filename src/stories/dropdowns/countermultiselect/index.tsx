@@ -1,29 +1,31 @@
+import {
+  Combobox,
+  Field,
+  Label,
+  Option,
+} from "@zendeskgarden/react-dropdowns.next";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { theme } from "../../theme";
 import { CounterMultiselectArgs } from "./_types";
-import { Menu } from "../menu";
-import { Autocomplete } from "../autocomplete";
-import { Dropdown } from "../select";
-import { Field } from "../field";
-import { Label } from "../../label";
-import { Item } from "../item";
-import { getColor } from "../../theme/utils";
 
-const StyledAutocomplete = styled(Autocomplete)<{
-  hasSelectedItems: boolean;
-  theme: typeof theme;
-}>`
+const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean }>`
+  [data-garden-container-id="containers.combobox.option"] {
+    display: flex;
+    gap: ${({ theme }) => theme.space.sm};
+    align-items: center;
+  }
+
   ${(props) =>
-    props.hasSelectedItems &&
+    props.isPrimary &&
     `
-    border-color: ${getColor(theme.colors.primaryHue, 600)};
-    background-color: ${getColor(theme.colors.primaryHue, 600)};
-    color: white;
-    & > input, & > svg {
-      color: ${props.theme.palette.white};
+    [data-garden-container-id="containers.combobox"] {
+      background-color: ${props.theme.palette.blue[600]};
+     color: white;
+     svg[data-garden-id="dropdowns.combobox.input_icon"] {
+        color: white;
+     }
     }
-  `}
+ `}
 `;
 
 const CounterMultiselect = ({
@@ -59,7 +61,69 @@ const CounterMultiselect = ({
 
   return (
     <>
-      <Dropdown
+      <Field>
+        {label ? <Label>{label}</Label> : null}
+        <StyledComboBox
+          isPrimary={hasSelectedItems}
+          isAutocomplete
+          isCompact={isCompact}
+          inputValue={inputValue}
+          renderExpandTags={() => ""}
+          renderValue={() => {
+            return hasSelectedItems
+              ? i18n?.counterText
+                ? i18n.counterText(selectedItems.length)
+                : `Items (${selectedItems.length})`
+              : i18n?.noItems ?? "No items";
+          }}
+          isMultiselectable
+          onChange={({ type, selectionValue, inputValue }) => {
+            if (
+              ["input:keyDown:Enter", "option:click"].includes(type) &&
+              selectionValue &&
+              Array.isArray(selectionValue) &&
+              onChange
+            ) {
+              const newOptions = options.filter((o) =>
+                selectionValue.includes(o.itemId.toString())
+              );
+              onChange(newOptions);
+              setSelectedItems(newOptions);
+              setInputValue("");
+            }
+            if (type === "input:change") {
+              setInputValue(inputValue || "");
+            }
+          }}
+        >
+          {options.map((option) => (
+            <Option
+              key={option.itemId}
+              value={option.itemId.toString()}
+              label={option.label}
+              tagProps={{
+                hidden: true,
+              }}
+              isHidden={
+                !matchingOptions.some(
+                  (matchingOption) => matchingOption.itemId === option.itemId
+                )
+              }
+              isSelected={selectedItems.some(
+                (selectedItem) => selectedItem.itemId === option.itemId
+              )}
+            />
+          ))}
+          {matchingOptions.length === 0 && (
+            <Option
+              isDisabled
+              value=""
+              label={i18n?.noMatches ?? "No matches found"}
+            />
+          )}
+        </StyledComboBox>
+      </Field>
+      {/* <Dropdown
         inputValue={inputValue}
         selectedItems={selectedItems}
         onSelect={(items) => {
@@ -101,7 +165,7 @@ const CounterMultiselect = ({
             ))
           )}
         </Menu>
-      </Dropdown>
+      </Dropdown> */}
     </>
   );
 };

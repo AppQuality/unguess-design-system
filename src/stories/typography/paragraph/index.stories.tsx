@@ -1,7 +1,7 @@
-import { ComponentMeta, Story } from "@storybook/react";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { IParagraphProps } from "@zendeskgarden/react-typography";
 import { Paragraph } from ".";
 import { MD } from "../typescale";
-import { IParagraphProps } from "@zendeskgarden/react-typography";
 
 const Template: Story<IParagraphProps> = (args) => {
   return (

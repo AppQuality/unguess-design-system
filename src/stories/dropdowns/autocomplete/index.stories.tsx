@@ -1,240 +1,132 @@
-import { ComponentMeta, Story } from "@storybook/react";
-import { Autocomplete } from ".";
-import { Item } from "../item";
-import { Menu, Separator, MediaBody, MediaFigure } from "../menu";
-import { Field } from "../field";
-import { Dropdown } from "../select";
-// import { Field } from "../../field";
-import { Label } from "../../label";
-import { AutocompleteArgs } from "./_types";
-import { ReactComponent as AddIcon } from "../../../assets/icons/grid-add.svg";
-import { useCallback, useEffect, useState } from "react";
-import useDebounce from "../../../hooks/useDebounce";
+import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { Field, Label } from "@zendeskgarden/react-dropdowns.next";
+import { Autocomplete, AutocompleteProps } from ".";
 import { ItemContent } from "../item-content";
 
-interface IItem {
-  label: string;
-  value: string;
-}
-
-interface IContentItem {
-  thumbSrc: string;
-  description: string;
-  label: string;
-  value: string;
-}
-
-interface AutocompleteStoryArgs extends AutocompleteArgs {
-  allowNew?: boolean;
-}
-
-const items = [
-  { label: "Ferdinand ThreeMelons", value: "item-1" },
-  { label: "Giommo Cornelio", value: "item-2" },
-  { label: "Rubber tree", value: "item-3" },
+let items = [
+  {
+    label: "Ferdinand ThreeMelons",
+    value: "item-1",
+    id: "item-1",
+    isSelected: true,
+  },
+  { label: "Giommo Cornelio", value: "item-2", id: "item-2" },
+  { label: "Rubber tree", value: "item-3", id: "item-3" },
 ];
 
-const Template: Story<AutocompleteStoryArgs> = (args) => {
-  const [selectedItem, setSelectedItem] = useState(items[0]);
-  const [inputValue, setInputValue] = useState("");
-  const [matchingOptions, setMatchingOptions] = useState(items);
-
-  const debouncedInputValue = useDebounce<string>(inputValue, 300);
-  /**
-   * Debounce filtering
-   */
-  const filterMatchingOptions = (value: string) => {
-    console.log("debounce fired with value: ", value);
-    const matchedOptions = items.filter(
-      (item) =>
-        item.label.trim().toLowerCase().indexOf(value.trim().toLowerCase()) !==
-        -1
-    );
-
-    console.log("matchedOptions: ", matchedOptions);
-    setMatchingOptions(matchedOptions);
-  };
-
-  useEffect(() => {
-    filterMatchingOptions(debouncedInputValue);
-  }, [debouncedInputValue]);
-
-  console.log("Selected item: ", selectedItem);
-
+const Template: Story<AutocompleteProps> = (args) => {
   return (
     <div style={{ width: "300px" }}>
-      <Dropdown
-        inputValue={inputValue}
-        selectedItem={selectedItem}
-        onSelect={(item: IItem) => {
-          setInputValue("");
-          setSelectedItem(item);
-        }}
-        onInputValueChange={(value) => {
-          setInputValue(value);
-        }}
-        downshiftProps={{ itemToString: (item: IItem) => item && item.label }}
-      >
-        <Field>
-          <Label>Food Manager</Label>
-          <Autocomplete {...args}>{selectedItem.label}</Autocomplete>
-        </Field>
-        <Menu>
-          {matchingOptions.length ? (
-            matchingOptions.map((item) => (
-              <Item key={item.value} value={item}>
-                <span>{item.label}</span>
-              </Item>
-            ))
-          ) : (
-            <Item disabled>
-              <span>No matches found</span>
-            </Item>
-          )}
-          {args.allowNew && inputValue && (
-            <>
-              <Separator />
-              <Item key="new" value={inputValue}>
-                <MediaFigure>
-                  <AddIcon />
-                </MediaFigure>
-                <MediaBody>Add {inputValue}</MediaBody>
-              </Item>
-            </>
-          )}
-        </Menu>
-        <Menu>
-          {matchingOptions.length ? (
-            matchingOptions.map((item) => (
-              <Item key={item.value} value={item}>
-                <span>{item.label}</span>
-              </Item>
-            ))
-          ) : (
-            <Item disabled>No matches found</Item>
-          )}
-        </Menu>
-      </Dropdown>
+      <Field>
+        <Label>Food Manager</Label>
+        <Autocomplete {...args} options={items} />
+      </Field>
     </div>
+  );
+};
+
+const TemplateCreatable: Story<AutocompleteProps> = (args) => {
+  return (
+    <Field>
+      <Label>Food Manager</Label>
+      <Autocomplete
+        {...args}
+        options={items}
+        isCreatable
+        onCreateNewOption={async (inputValue) => {
+          // mock a promise to create a new item
+          return await new Promise((resolve) =>
+            setTimeout(() => {
+              if (inputValue === "invalid") {
+                alert("Invalid value");
+                resolve(false);
+              } else {
+                resolve({
+                  label: inputValue,
+                  value: inputValue,
+                  id: inputValue,
+                });
+              }
+            }, 1000)
+          );
+        }}
+        onOptionClick={({ selectionValue }) => {
+          console.log("Option clicked", selectionValue);
+        }}
+      />
+    </Field>
   );
 };
 
 const itemsMedia = [
   {
-    thumbSrc: "https://via.placeholder.com/60x40",
     label: "Ferdinand ThreeMelons",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     value: "item-1",
+    id: "item-1",
+    children: (
+      <ItemContent
+        label="Ferdinand ThreeMelons"
+        thumbSrc="https://via.placeholder.com/60x40"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      />
+    ),
   },
   {
-    thumbSrc: "https://via.placeholder.com/60x40",
     label: "Giommo Cornelio",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     value: "item-2",
+    id: "item-2",
+    children: (
+      <ItemContent
+        label="Giommo Cornelio"
+        thumbSrc="https://via.placeholder.com/60x40"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      />
+    ),
   },
   {
-    thumbSrc: "https://via.placeholder.com/40x60",
     label: "Rubber Tree",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     value: "item-3",
+    id: "item-3",
+    children: (
+      <ItemContent
+        label="Rubber Tree"
+        thumbSrc="https://via.placeholder.com/40x60"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      />
+    ),
   },
 ];
 
-const TemplateWithItemMedia: Story<AutocompleteStoryArgs> = (args) => {
-  const [selectedItem, setSelectedItem] = useState(itemsMedia[0]);
-  const [inputValue, setInputValue] = useState("");
-  const [matchingOptions, setMatchingOptions] = useState(itemsMedia);
-
-  const onSelect = useCallback((item: IContentItem) => {
-    setInputValue("");
-    setSelectedItem(item);
-  }, []);
-
-  const debouncedInputValue = useDebounce<string>(inputValue, 300);
-  /**
-   * Debounce filtering
-   */
-  const filterMatchingOptions = (value: string) => {
-    console.log("debounce fired with value: ", value);
-    const matchedOptions = itemsMedia.filter(
-      (item) =>
-        item.label.trim().toLowerCase().indexOf(value.trim().toLowerCase()) !==
-        -1
-    );
-
-    console.log("matchedOptions: ", matchedOptions);
-    setMatchingOptions(matchedOptions);
-  };
-
-  useEffect(() => {
-    filterMatchingOptions(debouncedInputValue);
-  }, [debouncedInputValue]);
-
-  console.log("Selected item: ", selectedItem);
-
+const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
   return (
-    <Dropdown
-      inputValue={inputValue}
-      selectedItem={selectedItem}
-      onSelect={onSelect}
-      onInputValueChange={(value) => {
-        setInputValue(value);
-      }}
-      downshiftProps={{
-        itemToString: (item: IContentItem) => item && item.label,
-      }}
-    >
-      <Field>
-        <Label>Food Manager</Label>
-        <Autocomplete {...args}>{selectedItem.label}</Autocomplete>
-      </Field>
-      <Menu>
-        {matchingOptions.length ? (
-          matchingOptions.map((item) => (
-            <Item key={item.value} value={item}>
-              <ItemContent key={`${item.value}-content`} {...item} />
-            </Item>
-          ))
-        ) : (
-          <Item disabled>
-            <span>No matches found</span>
-          </Item>
-        )}
-        {args.allowNew && inputValue && (
-          <>
-            <Separator />
-            <Item key="new" value={inputValue}>
-              <MediaFigure>
-                <AddIcon />
-              </MediaFigure>
-              <MediaBody>Add {inputValue}</MediaBody>
-            </Item>
-          </>
-        )}
-      </Menu>
-      <Menu>
-        {matchingOptions.length ? (
-          matchingOptions.map((item) => (
-            <Item key={item.value} value={item}>
-              <ItemContent key={`${item.value}-content`} {...item} />
-            </Item>
-          ))
-        ) : (
-          <Item disabled>No matches found</Item>
-        )}
-      </Menu>
-    </Dropdown>
+    <Field>
+      <Label>Food Manager</Label>
+      <Autocomplete {...args} options={itemsMedia} isExpanded />
+    </Field>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  allowNew: false,
+  onOptionClick: (value) => {
+    console.log("Option clicked", value);
+  },
+};
+
+export const Creatable = TemplateCreatable.bind({});
+Creatable.args = {
+  isMultiselectable: true,
+  onOptionClick: (value) => {
+    console.log("Option clicked", value);
+  },
 };
 
 export const WithMedia = TemplateWithItemMedia.bind({});
 WithMedia.args = {
-  allowNew: false,
+  onOptionClick: (value) => {
+    console.log("Option clicked", value);
+  },
 };
 
 export default {
@@ -243,5 +135,8 @@ export default {
   parameters: {
     // Sets a delay for the component's stories
     chromatic: { delay: 300 },
+  },
+  args: {
+    onChange: fn(),
   },
 } as ComponentMeta<typeof Autocomplete>;
