@@ -1,6 +1,5 @@
 import react from "@vitejs/plugin-react";
 import { resolve } from "node:path";
-import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 import { setEnv } from "./.vite/commands/setEnv";
@@ -36,9 +35,6 @@ export default defineConfig(({ mode }) => {
       dts({
         include: ["src"],
         ...(mode === "development" ? {} : { rollupTypes: true }),
-      }),
-      chunkSplitPlugin({
-        strategy: "unbundle",
       }),
     ],
   };
