@@ -1,5 +1,5 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
-import { Message } from "@zendeskgarden/react-dropdowns.next";
+import { Message } from "@zendeskgarden/react-forms";
 import { useState } from "react";
 import styled from "styled-components";
 import { InputToggle } from ".";
