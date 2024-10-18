@@ -5,7 +5,6 @@ const config = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/preset-create-react-app",
     "@storybook/addon-a11y",
   ],
   framework: {
@@ -27,7 +26,12 @@ const config = {
   },
   core: {
     disableTelemetry: true,
-    builder: "@storybook/builder-vite",
+    builder: {
+      name: "@storybook/builder-vite",
+      options: {
+        viteConfigPath: "./vite.config.storybook.mts",
+      },
+    },
   },
 };
 export default config;
