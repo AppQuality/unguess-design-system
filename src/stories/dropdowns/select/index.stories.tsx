@@ -116,6 +116,7 @@ Validation.args = {
   isBare: false,
   isDisabled: false,
   isPrimary: false,
+  label: "Food Manager",
 
   validation: "warning",
 };
@@ -137,6 +138,7 @@ WithMenuOption.args = {
       alert("Add new clicked");
     },
   },
+  label: "Food Manager",
 };
 
 export const WithGroups = Template.bind({});
@@ -154,6 +156,7 @@ WithGroups.args = {
   isBare: false,
   isDisabled: false,
   isPrimary: false,
+  label: "Food Manager",
 };
 
 export default {
