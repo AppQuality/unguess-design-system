@@ -120,6 +120,9 @@ export const SentimentChart = ({
           theme={{
             ...DEFAULT_CHARTS_THEME,
             text: {
+              fontFamily: theme.fonts.system,
+              color: theme.palette.grey[600],
+              fill: theme.palette.grey[600],
               fontSize: theme.fontSizes.sm,
             },
             axis: {
