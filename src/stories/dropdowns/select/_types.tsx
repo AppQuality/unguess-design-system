@@ -9,4 +9,5 @@ export interface SelectArgs extends Omit<IComboboxProps, "onSelect"> {
   children?: React.ReactNode;
   onSelect?: (value: string) => Promise<void> | void;
   isDisabled?: boolean;
+  fullWidthOption?: boolean;
 }
