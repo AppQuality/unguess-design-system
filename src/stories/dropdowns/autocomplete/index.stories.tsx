@@ -67,7 +67,7 @@ const itemsMedia = [
     children: (
       <ItemContent
         label="Ferdinand ThreeMelons"
-        thumbSrc="https://via.placeholder.com/60x40"
+        thumbSrc="https://place-hold.it/60x40"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
       />
     ),
@@ -79,7 +79,7 @@ const itemsMedia = [
     children: (
       <ItemContent
         label="Giommo Cornelio"
-        thumbSrc="https://via.placeholder.com/60x40"
+        thumbSrc="https://place-hold.it/60x40"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
       />
     ),
@@ -91,7 +91,7 @@ const itemsMedia = [
     children: (
       <ItemContent
         label="Rubber Tree"
-        thumbSrc="https://via.placeholder.com/40x60"
+        thumbSrc="https://place-hold.it/40x60"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
       />
     ),

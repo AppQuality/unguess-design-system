@@ -78,7 +78,7 @@
     "@zendeskgarden/react-tooltips": "8.76.8",
     "@zendeskgarden/react-typography": "8.76.8",
     "react-slick": "^0.29.0",
-    "react-window": "^1.8.6",
+    "@types/react-slick": "^0.23.10",
     "tippy.js": "^6.3.7",
     "ua-parser-js": "^1.0.2",
     "uuid": "^9.0.1"
@@ -105,7 +105,7 @@
     "@types/node": "^20.14.2",
     "@types/react": "^17.0.0 || ^18.0.0",
     "@types/react-dom": "^17.0.0 || ^18.0.0",
-    "@types/react-slick": "^0.23.10",
+    "react-window": "^1.8.6",
     "@types/react-window": "^1.8.5",
     "@types/ua-parser-js": "^0.7.36",
     "@types/uuid": "^9.0.8",
