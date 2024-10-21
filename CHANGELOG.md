@@ -1,3 +1,15 @@
+# v4.0.4 (Mon Oct 21 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Allow disabling autowidth for selects [#431](https://github.com/AppQuality/unguess-design-system/pull/431) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.3 (Mon Oct 21 2024)
 
 #### 🐛 Bug Fix
