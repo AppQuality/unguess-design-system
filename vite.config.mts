@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
     build: {
-      sourcemap: "inline",
+      ...(mode === "development" ? { sourcemap: "inline" } : {}),
       ...(mode === "development" ? { emptyOutDir: false } : {}),
       outDir: "build",
       lib: {
