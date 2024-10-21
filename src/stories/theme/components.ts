@@ -299,9 +299,11 @@ export const components = {
       ...(disabled && { pointerEvents: "none" }),
     };
   },
-  "dropdowns.combobox.floating": () => {
+  "dropdowns.combobox": (props: any) => {
     return {
-      width: "auto !important",
+      "[data-garden-id='dropdowns.combobox.floating']": {
+        ...(props.fullWidthOption ? {} : { width: "auto !important" }),
+      },
     };
   },
   "buttons.button": ({
