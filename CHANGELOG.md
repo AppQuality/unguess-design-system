@@ -1,3 +1,15 @@
+# v4.0.2 (Mon Oct 21 2024)
+
+#### 🐛 Bug Fix
+
+- Add build fixes [#429](https://github.com/AppQuality/unguess-design-system/pull/429) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.1 (Fri Oct 18 2024)
 
 #### 🐛 Bug Fix
