@@ -1,3 +1,15 @@
+# v4.0.5 (Tue Oct 22 2024)
+
+#### 🐛 Bug Fix
+
+- rework: Don't use wordwrapper [#432](https://github.com/AppQuality/unguess-design-system/pull/432) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.4 (Mon Oct 21 2024)
 
 #### 🐛 Bug Fix
