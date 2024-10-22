@@ -1,6 +1,5 @@
 import { Node } from "@tiptap/core";
-import { ReactNodeViewRenderer } from "@tiptap/react";
-import { Component } from "./Component";
+import { Plugin } from "@tiptap/pm/state";
 
 export const Word = Node.create({
   name: "Word",
@@ -20,13 +19,13 @@ export const Word = Node.create({
   parseHTML() {
     return [
       {
-        tag: "span[data-start][data-end]",
+        tag: "word[data-start][data-end]",
       },
     ];
   },
   renderHTML({ node }) {
     return [
-      "span",
+      "word",
       {
         "data-start": node.attrs["data-start"],
         "data-end": node.attrs["data-end"],
@@ -36,9 +35,29 @@ export const Word = Node.create({
     ];
   },
 
-  addNodeView() {
-    return ReactNodeViewRenderer(Component, {
-      as: "span",
-    });
+  addProseMirrorPlugins() {
+    return [
+      new Plugin({
+        props: {
+          handleDOMEvents: {
+            click: (view, event) => {
+              const { target } = event;
+              if (
+                target instanceof HTMLElement &&
+                target.getAttribute("data-start")
+              ) {
+                const dataStart = target.getAttribute("data-start");
+
+                if (!dataStart) return false;
+
+                this.editor.commands.setCurrentTime(Number(dataStart));
+                return true;
+              }
+              return false;
+            },
+          },
+        },
+      }),
+    ];
   },
 });

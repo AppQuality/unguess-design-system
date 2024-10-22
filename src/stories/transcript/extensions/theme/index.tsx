@@ -7,10 +7,6 @@ const DefaultActiveWrapper = ({ children }: { children: ReactNode }) => {
   return <span style={{ background: "#ff0000" }}>{children}</span>;
 };
 
-const DefaultWordWrapper = ({ children }: { children: ReactNode }) => {
-  return <span>{children}</span>;
-};
-
 const DefaultObservationWrapper = ({
   title,
   color,
@@ -145,7 +141,6 @@ const SearchStyleWrapper = styled.span`
 
 export interface ThemeOptions {
   activeWrapper: typeof DefaultActiveWrapper;
-  wordWrapper: typeof DefaultWordWrapper;
   observationWrapper: typeof DefaultObservationWrapper;
   paragraphWrapper: typeof DefaultParagraphWrapper;
   speakerWrapper: typeof DefaultSpeakerWrapper;
@@ -176,7 +171,6 @@ export const Theme = Extension.create<ThemeOptions, {}>({
   addOptions() {
     return {
       activeWrapper: DefaultActiveWrapper,
-      wordWrapper: DefaultWordWrapper,
       observationWrapper: DefaultObservationWrapper,
       paragraphWrapper: DefaultParagraphWrapper,
       speakerWrapper: DefaultSpeakerWrapper,
