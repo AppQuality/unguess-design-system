@@ -6,7 +6,7 @@ import {
   Option,
   OptionValue,
 } from "@zendeskgarden/react-dropdowns.next";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
 import { OptGroup } from "../optGroup";
 
@@ -79,6 +79,8 @@ const Autocomplete = ({
   const [inputValue, setInputValue] = useState<string | undefined>();
   const [_options, setOption] = useState(options);
   const debouncedInputValue = useDebounce(inputValue, 300);
+
+  useEffect(() => setOption(options), [options]);
 
   // update options isHidden property based on inputValue
   const matchingOptions = useMemo(
