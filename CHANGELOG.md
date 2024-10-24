@@ -1,3 +1,15 @@
+# v4.0.6 (Thu Oct 24 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Update options on propchange [#433](https://github.com/AppQuality/unguess-design-system/pull/433) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.5 (Tue Oct 22 2024)
 
 #### 🐛 Bug Fix
