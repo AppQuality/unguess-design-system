@@ -13,6 +13,7 @@ import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
 import { ProgressContextProvider } from "./context/progressContext";
 import { usePictureInPicture } from "./hooks/usePictureInPicture";
+import { useKeyboardCommands } from "./hooks/useKeyboardCommands";
 
 /**
  * The Player is a styled media tag with custom controls
@@ -38,6 +39,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
       videoRef,
     ]);
 
+    useKeyboardCommands();
     usePictureInPicture(videoRef, pipMode, onPipChange);
 
     useEffect(() => {
