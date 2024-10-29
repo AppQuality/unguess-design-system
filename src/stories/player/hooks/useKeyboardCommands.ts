@@ -2,31 +2,41 @@ import { useVideoContext } from "@appquality/stream-player";
 import { useEffect } from "react";
 
 type KeyboardCommandsHook = (
+  setIsPlaying: (isPlaying: boolean) => void,
+  videoRef?: HTMLVideoElement | null,
 ) => void;
 
-export const useKeyboardCommands: KeyboardCommandsHook = () => {
-  const { context, togglePlay, setCurrentTime, setMuted, isMuted } = useVideoContext();
-  const videoRef = context.player?.ref.current;
-
+export const useKeyboardCommands: KeyboardCommandsHook = (setIsPlaying, videoRef) => {
   useEffect(() => {
-
     function handleKeyDown(e: KeyboardEvent) {
-      console.log(e.code, videoRef);
-      if (e.code === "Space") {
-        togglePlay();
-      }
+      // console.log("handleKeyDown", e.code, document.activeElement, e.target);
+      if (document.activeElement?.tagName === "INPUT") return;
       if (!videoRef) return;
+      
+      if (e.code === "Space") {
+        e.preventDefault();
+        if (videoRef.paused) {
+          setIsPlaying(true);
+          videoRef.play();
+        } else {
+          setIsPlaying(false);
+          videoRef.pause();
+        }
+      }
       if (e.code === "ArrowLeft") {
-        setCurrentTime(videoRef.currentTime - 10);
+        videoRef.currentTime -= 10;
       }
       if (e.code === "ArrowRight") {
-        setCurrentTime(videoRef.currentTime + 10);
+        videoRef.currentTime += 10;
       }
       if (e.code === "KeyM") {
-        videoRef.volume = videoRef.volume > 0 ? 0 : 1;
-        setMuted(!videoRef.volume);
+        videoRef.muted = !videoRef.muted;
+        videoRef.volume = videoRef.muted ? 0 : 1;
       }
     }
-    document.addEventListener("keyup", handleKeyDown);
-  }, []);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [videoRef]);
 }
