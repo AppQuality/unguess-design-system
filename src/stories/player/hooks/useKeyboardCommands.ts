@@ -3,10 +3,11 @@ import { useEffect } from "react";
 
 type KeyboardCommandsHook = (
   setIsPlaying: (isPlaying: boolean) => void,
+  onCutHandler?: (time: number) => void,
   videoRef?: HTMLVideoElement | null,
 ) => void;
 
-export const useKeyboardCommands: KeyboardCommandsHook = (setIsPlaying, videoRef) => {
+export const useKeyboardCommands: KeyboardCommandsHook = (setIsPlaying, onCutHandler, videoRef) => {
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       // console.log("handleKeyDown", e.code, document.activeElement, e.target);
@@ -33,10 +34,14 @@ export const useKeyboardCommands: KeyboardCommandsHook = (setIsPlaying, videoRef
         videoRef.muted = !videoRef.muted;
         videoRef.volume = videoRef.muted ? 0 : 1;
       }
+      if (e.code === "KeyS") {
+        onCutHandler?.(videoRef.currentTime);
+        e.stopPropagation();
+      }
     }
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     }
-  }, [videoRef]);
+  }, [videoRef, onCutHandler]);
 }

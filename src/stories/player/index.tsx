@@ -39,7 +39,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
       videoRef,
     ]);
 
-    useKeyboardCommands(setIsPlaying, videoRef);
+    useKeyboardCommands(setIsPlaying, onCutHandler, videoRef);
     usePictureInPicture(videoRef, pipMode, onPipChange);
 
     useEffect(() => {
