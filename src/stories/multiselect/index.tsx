@@ -76,7 +76,7 @@ export const MultiSelect = ({
           }
           if (
             onChange &&
-            (type === "fn:setSelectionValue" || type === "option:click") &&
+            (type === "fn:setSelectionValue" || type === "option:click" || type === "input:keyDown:Enter") &&
             Array.isArray(selectionValue)
           ) {
             const ss = selectionValue.map((s) => {
