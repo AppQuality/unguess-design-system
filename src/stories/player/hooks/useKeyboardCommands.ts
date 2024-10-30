@@ -12,6 +12,8 @@ export const useKeyboardCommands: KeyboardCommandsHook = (setIsPlaying, onCutHan
     function handleKeyDown(e: KeyboardEvent) {
       // console.log("handleKeyDown", e.code, document.activeElement, e.target);
       if (document.activeElement?.tagName === "INPUT") return;
+      if (document.activeElement?.tagName === "TEXTAREA") return;
+      
       if (!videoRef) return;
       
       if (e.code === "Space") {
