@@ -2493,6 +2493,24 @@
     rehype-slug "^6.0.0"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-docs@^8.3.6":
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/@storybook/addon-docs/-/addon-docs-8.3.6.tgz#b03ad160475b7920ef03833bd2674ea62f872d23"
+  integrity sha512-31Rk1TOhDIzGM2wNCUIB1xKuWtArW0D2Puua9warEXlQ3FtvwmxnPrwbIzw6ufYZDWPwl9phDYTcRh8WqZIoGg==
+  dependencies:
+    "@mdx-js/react" "^3.0.0"
+    "@storybook/blocks" "8.3.6"
+    "@storybook/csf-plugin" "8.3.6"
+    "@storybook/global" "^5.0.0"
+    "@storybook/react-dom-shim" "8.3.6"
+    "@types/react" "^16.8.0 || ^17.0.0 || ^18.0.0"
+    fs-extra "^11.1.0"
+    react "^16.8.0 || ^17.0.0 || ^18.0.0"
+    react-dom "^16.8.0 || ^17.0.0 || ^18.0.0"
+    rehype-external-links "^3.0.0"
+    rehype-slug "^6.0.0"
+    ts-dedent "^2.0.0"
+
 "@storybook/addon-essentials@^8.3.5":
   version "8.3.5"
   resolved "https://registry.npmjs.org/@storybook/addon-essentials/-/addon-essentials-8.3.5.tgz#59599a75e3f72d1048d715f3ec35a4c07149b2f8"
@@ -2552,6 +2570,15 @@
     "@storybook/global" "^5.0.0"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-storysource@^8.3.6":
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/@storybook/addon-storysource/-/addon-storysource-8.3.6.tgz#c3d443bf9f0507e58338da4bc09fcce35439d53a"
+  integrity sha512-L35BJj8vO+jIHSVjCCygoQCHSPt6wiviOLkOMgY1KluslXGHfwHd5am5y9sy4YuFl21SyFPw525/yZj9SLgqpA==
+  dependencies:
+    "@storybook/source-loader" "8.3.6"
+    estraverse "^5.2.0"
+    tiny-invariant "^1.3.1"
+
 "@storybook/addon-toolbars@8.3.5":
   version "8.3.5"
   resolved "https://registry.npmjs.org/@storybook/addon-toolbars/-/addon-toolbars-8.3.5.tgz#7328fed0f4a24c6828ba23e06b9cddd0d3e00e2b"
@@ -2568,6 +2595,26 @@
   version "8.3.5"
   resolved "https://registry.npmjs.org/@storybook/blocks/-/blocks-8.3.5.tgz#35e20efb0c13a235832dd945520ff8ac61f40717"
   integrity sha512-8cHTdTywolTHlgwN8I7YH7saWAIjGzV617AwjhJ95AKlC0VtpO1gAFcAgCqr4DU9eMc+LZuvbnaU/RSvA5eCCQ==
+  dependencies:
+    "@storybook/csf" "^0.1.11"
+    "@storybook/global" "^5.0.0"
+    "@storybook/icons" "^1.2.10"
+    "@types/lodash" "^4.14.167"
+    color-convert "^2.0.1"
+    dequal "^2.0.2"
+    lodash "^4.17.21"
+    markdown-to-jsx "^7.4.5"
+    memoizerific "^1.11.3"
+    polished "^4.2.2"
+    react-colorful "^5.1.2"
+    telejson "^7.2.0"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
+"@storybook/blocks@8.3.6":
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/@storybook/blocks/-/blocks-8.3.6.tgz#ac2e4f07a4df23004b3361c592c2cffe6b95464a"
+  integrity sha512-Oc5jU6EzfsENjrd91KcKyEKBh60RT+8uyLi1RIrymC2C/mzZMTEoNIrbnQt0eIqbjlHxn6y9JMJxHu4NJ4EmZg==
   dependencies:
     "@storybook/csf" "^0.1.11"
     "@storybook/global" "^5.0.0"
@@ -2671,6 +2718,13 @@
   dependencies:
     unplugin "^1.3.1"
 
+"@storybook/csf-plugin@8.3.6":
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/@storybook/csf-plugin/-/csf-plugin-8.3.6.tgz#8e6fd04f1dd4662f85f6c1e8fa56d4331f3be4c7"
+  integrity sha512-TJyJPFejO6Gyr3+bXqE/+LomQbivvfHEbee/GwtlRj0XF4KQlqnvuEdEdcK25JbD0NXT8AbyncEUmjoxE7ojQw==
+  dependencies:
+    unplugin "^1.3.1"
+
 "@storybook/csf@^0.1.11":
   version "0.1.11"
   resolved "https://registry.npmjs.org/@storybook/csf/-/csf-0.1.11.tgz#ad685a4fe564a47a6b73571c2e7c07b526f4f71b"
@@ -2755,6 +2809,11 @@
   resolved "https://registry.npmjs.org/@storybook/react-dom-shim/-/react-dom-shim-8.3.5.tgz#dda5356d3bf55623b9b1429fac7bf185e59c58fd"
   integrity sha512-Hf0UitJ/K0C7ajooooUK/PxOR4ihUWqsC7iCV1Gqth8U37dTeLMbaEO4PBwu0VQ+Ufg0N8BJLWfg7o6G4hrODw==
 
+"@storybook/react-dom-shim@8.3.6":
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/@storybook/react-dom-shim/-/react-dom-shim-8.3.6.tgz#40ce82a4e6559a617c4a7288b532652fefcd271e"
+  integrity sha512-9BO6VXIdli4GHSfiP/Z0gwAf7oQig3D/yWK2U1+91UWDV8nIAgnNBAi76U4ORC6MiK5MdkDfIikIxnLLeLnahA==
+
 "@storybook/react-vite@^8.3.5":
   version "8.3.5"
   resolved "https://registry.npmjs.org/@storybook/react-vite/-/react-vite-8.3.5.tgz#c1aeb06b5962abb77a7d0d0ba08269bff35756f1"
@@ -2805,6 +2864,16 @@
     ts-dedent "^2.0.0"
     type-fest "~2.19"
     util-deprecate "^1.0.2"
+
+"@storybook/source-loader@8.3.6":
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/@storybook/source-loader/-/source-loader-8.3.6.tgz#1a14c1d4b1ab099770cbb755cf0149dc656800fd"
+  integrity sha512-czgQVFMsqeXe0pXjbore8X91gUOnpVVIv2dWsgS2UN9sHh+4B/Uevxx6Lz21074aynGO4bNti1BETGelejIM6w==
+  dependencies:
+    "@storybook/csf" "^0.1.11"
+    estraverse "^5.2.0"
+    lodash "^4.17.21"
+    prettier "^3.1.1"
 
 "@storybook/test@8.3.5":
   version "8.3.5"
@@ -8138,6 +8207,11 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
+
+prettier@^3.1.1:
+  version "3.3.3"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-3.3.3.tgz#30c54fe0be0d8d12e6ae61dbb10109ea00d53105"
+  integrity sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
 
 pretty-error@^4.0.0:
   version "4.0.0"
