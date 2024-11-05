@@ -1,5 +1,16 @@
-import { useVideoContext } from "@appquality/stream-player";
+import Analytics from "analytics";
+import googleAnalytics from "@analytics/google-analytics";
+
 import { useEffect } from "react";
+
+const analytics = Analytics({
+  app: 'Unguess',
+  plugins: [
+    googleAnalytics({
+      measurementIds: ['G-2M29YVTK78']
+    })
+  ]
+})
 
 type KeyboardCommandsHook = (
   setIsPlaying: (isPlaying: boolean) => void,
@@ -18,6 +29,10 @@ export const useKeyboardCommands: KeyboardCommandsHook = (setIsPlaying, onCutHan
       
       if (e.code === "Space") {
         e.preventDefault();
+        analytics.track('Player_Shortcut', {
+          action: 'play/pause',
+        })
+
         if (videoRef.paused) {
           setIsPlaying(true);
           videoRef.play();
@@ -28,17 +43,29 @@ export const useKeyboardCommands: KeyboardCommandsHook = (setIsPlaying, onCutHan
       }
       if (e.code === "ArrowLeft") {
         videoRef.currentTime -= 10;
+        analytics.track('Player_Shortcut', {
+          action: 'rewind',
+        })
       }
       if (e.code === "ArrowRight") {
         videoRef.currentTime += 10;
+        analytics.track('Player_Shortcut', {
+          action: 'fast-forward',
+        })
       }
       if (e.code === "KeyM") {
         videoRef.muted = !videoRef.muted;
         videoRef.volume = videoRef.muted ? 0 : 1;
+        analytics.track('Player_Shortcut', {
+          action: 'mute',
+        })
       }
       if (e.code === "KeyS") {
         onCutHandler?.(videoRef.currentTime);
         e.stopPropagation();
+        analytics.track('Player_Shortcut', {
+          action: 'start/stop_observation',
+        })
       }
     }
     document.addEventListener("keydown", handleKeyDown);
