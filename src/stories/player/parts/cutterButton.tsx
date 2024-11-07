@@ -30,7 +30,6 @@ export const Cutter = ({
     <StyledButton
       isPrimary
       isAccent={!isCutting}
-      size={"small"}
       onClick={(e) => {
         if (videoRef) {
           onCutHandler(videoRef.currentTime);
