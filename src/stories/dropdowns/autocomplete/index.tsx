@@ -125,8 +125,9 @@ const Autocomplete = ({
           onInputChange(sanitizedInputValue);
       }
       if (
-        event.type === "option:click" &&
-        typeof onOptionClick === "function"
+        (event.type === "option:click" || event.type === "input:keyDown:Enter")
+        && typeof onOptionClick === "function"
+        && event.selectionValue // address the issue of clicking enter on an empty input
       ) {
         setInputValue(undefined);
         onOptionClick({

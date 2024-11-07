@@ -51,9 +51,6 @@ const TemplateCreatable: Story<AutocompleteProps> = (args) => {
             }, 1000)
           );
         }}
-        onOptionClick={({ selectionValue }) => {
-          console.log("Option clicked", selectionValue);
-        }}
       />
     </Field>
   );
