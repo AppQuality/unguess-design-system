@@ -1,3 +1,22 @@
+# v4.0.7 (Thu Nov 07 2024)
+
+#### 🐛 Bug Fix
+
+- Player improvements [#437](https://github.com/AppQuality/unguess-design-system/pull/437) ([@iDome89](https://github.com/iDome89) [@cannarocks](https://github.com/cannarocks) [@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee))
+- Un 286 - Added keyboard shortcut [#436](https://github.com/AppQuality/unguess-design-system/pull/436) ([@iacopolea](https://github.com/iacopolea) [@Kariamos](https://github.com/Kariamos))
+- docs: Add autodocs [#435](https://github.com/AppQuality/unguess-design-system/pull/435) ([@d-beezee](https://github.com/d-beezee))
+- Feat: Remove unused size prop in CutterButton component [#434](https://github.com/AppQuality/unguess-design-system/pull/434) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 5
+
+- [@d-beezee](https://github.com/d-beezee)
+- [@iDome89](https://github.com/iDome89)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.6 (Thu Oct 24 2024)
 
 #### 🐛 Bug Fix
