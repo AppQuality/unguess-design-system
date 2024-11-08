@@ -7,13 +7,13 @@ import {
   useRef,
 } from "react";
 import { PlayerArgs } from "./_types";
+import { ProgressContextProvider } from "./context/progressContext";
+import { useKeyboardCommands } from "./hooks/useKeyboardCommands";
+import { usePictureInPicture } from "./hooks/usePictureInPicture";
 import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
-import { ProgressContextProvider } from "./context/progressContext";
-import { usePictureInPicture } from "./hooks/usePictureInPicture";
-import { useKeyboardCommands } from "./hooks/useKeyboardCommands";
 
 /**
  * The Player is a styled media tag with custom controls
@@ -39,7 +39,12 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
       videoRef,
     ]);
 
-    useKeyboardCommands(setIsPlaying, onCutHandler, videoRef);
+    useKeyboardCommands({
+      setIsPlaying,
+      onCutHandler,
+      videoRef,
+      onShortcut: props.onShortcut,
+    });
     usePictureInPicture(videoRef, pipMode, onPipChange);
 
     useEffect(() => {
@@ -85,7 +90,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
         </ProgressContextProvider>
       </Container>
     );
-  }
+  },
 );
 
 const PlayerProvider = (props: PropsWithChildren<PlayerArgs>) => (
