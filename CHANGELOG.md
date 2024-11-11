@@ -1,3 +1,17 @@
+# v4.0.8 (Mon Nov 11 2024)
+
+#### 🐛 Bug Fix
+
+- Add onShortcut event to player component [#440](https://github.com/AppQuality/unguess-design-system/pull/440) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- feat: add onShortcut prop to PlayerArgs to intercept events [#438](https://github.com/AppQuality/unguess-design-system/pull/438) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.7 (Thu Nov 07 2024)
 
 #### 🐛 Bug Fix
