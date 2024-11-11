@@ -12,6 +12,7 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   handleBookmarkUpdate?: (bookmark: IBookmark) => void;
   i18n?: PlayerI18n;
   showControls?: boolean;
+  onShortcut?: (type: string) => void;
 }
 
 export interface PlayerI18n {
