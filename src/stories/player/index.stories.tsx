@@ -16,6 +16,7 @@ interface PlayerStoryArgs extends PlayerArgs {}
 const defaultArgs: PlayerStoryArgs = {
   url: "https://s3.eu-west-1.amazonaws.com/appq.static/demo/098648899205a00f8311d929d3073499ef9d664b_1715352138.mp4",
   onCutHandler: undefined, // Storybook fix https://github.com/storybookjs/storybook/issues/22930
+  onShortcut: (type: string) => console.log("Shortcut intercept", type),
 };
 
 const Template: StoryFn<PlayerStoryArgs> = (args) => (
@@ -37,7 +38,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
   ...args
 }) => {
   const [observations, setObservations] = useState<IBookmark[]>(
-    bookmarks || []
+    bookmarks || [],
   );
   const [start, setStart] = useState<number | undefined>(undefined);
 
@@ -60,7 +61,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
       ]);
       setStart(undefined);
     },
-    [observations, start]
+    [observations, start],
   );
 
   return (
@@ -105,7 +106,7 @@ const TemplateWithButtonForPip: StoryFn<PlayerStoryArgs> = (args) => {
     (isPipFromPlayer: boolean) => {
       setIsPip(isPipFromPlayer);
     },
-    [setIsPip]
+    [setIsPip],
   );
   return (
     <Container id="player.story.container">
