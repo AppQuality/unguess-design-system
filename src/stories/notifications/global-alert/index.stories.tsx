@@ -7,21 +7,21 @@ import { Anchor } from "../../buttons/anchor";
 
 const GlobalAlertTemplate: Story<GlobalAlertProps> = ({ ...props }) => (
   <UgGlobalAlert {...props}>
-    <UgGlobalAlert.Content>
-      <UgGlobalAlert.Title>New update available</UgGlobalAlert.Title>
-      Your account will automatically update in 5 days.{' '}
-      <Anchor href="#" isExternal>
-        Find out more
-      </Anchor>
-    </UgGlobalAlert.Content>
-    <UgGlobalAlert.Button>Update now</UgGlobalAlert.Button>
-    <UgGlobalAlert.Close aria-label="Close Global Alert" />
   </UgGlobalAlert>
 );
 
 export const GlobalAlert = GlobalAlertTemplate.bind({});
 GlobalAlert.args = {
-  type: "info"
+  type: "info",
+  title: "Account update",
+  isClosable: true,
+  cta: "Find out more",
+  message: <>
+    Your account will automatically update in 5 days.{' '}
+    <Anchor href="#" isExternal>
+      Find out more
+    </Anchor>
+  </>
 };
 
 export default {
