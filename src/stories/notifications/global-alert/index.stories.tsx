@@ -16,7 +16,10 @@ GlobalAlert.args = {
   title: "Account update",
   dismissable: true,
   onClose: () => {alert('dismissed')},
-  cta: "Find out more",
+  cta: {
+    label: "Find out more",
+    onClick: () => {alert('clicked')}
+  },
   message: <>
     Your account will automatically update in 5 days.{' '}
     <Anchor href="#" isExternal>

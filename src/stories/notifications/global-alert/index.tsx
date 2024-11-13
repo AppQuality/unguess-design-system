@@ -15,7 +15,10 @@ export interface GlobalAlertProps extends Omit<IGlobalAlertProps, 'type'> {
   message?: ReactNode;
   dismissable?: boolean;
   onClose?: () => void;
-  cta?: string;
+  cta?: {
+    label: string;
+    onClick?: () => void;
+  };
 }
 
 const StyledGlobalAlert = styled(ZendeskGlobalAlert) <GlobalAlertProps>`
@@ -138,7 +141,7 @@ export const GlobalAlert = forwardRef<HTMLDivElement, GlobalAlertProps>(({ type,
       {title && <StyledGlobalAlert.Title>{title}</StyledGlobalAlert.Title>}
       {message}
     </StyledGlobalAlert.Content>
-    {cta && <CustomButton className="global-alert-cta" isAccent={type==='accent'}>{cta}</CustomButton>}
+    {cta && <CustomButton onClick={cta.onClick} className="global-alert-cta" isAccent={type==='accent'}>{cta.label}</CustomButton>}
     {dismissable && <StyledGlobalAlert.Close aria-label="Close Global Alert" onClick={onClose} />}
   </StyledGlobalAlert>
 ));
