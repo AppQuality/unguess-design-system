@@ -136,6 +136,7 @@ export * from "./stories/navigation/nav/nav-item";
 
 // --- Notifications ---
 export * from "./stories/notifications";
+export * from "./stories/notifications/global-alert";
 
 // --- Pagination ---
 export * from "./stories/pagination";
