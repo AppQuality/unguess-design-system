@@ -7,18 +7,14 @@ import styled from "styled-components";
 import { getColor } from "../../theme/utils";
 import { ButtonArgs } from "../../buttons/button/_types";
 import { Button } from "../../buttons/button";
-// import icons from "@zendeskgarden/svg-icons";
-import { ReactComponent as InfoIcon } from "@zendeskgarden/svg-icons/src/16/info-stroke.svg";
-import { ReactComponent as SuccessIcon } from "@zendeskgarden/svg-icons/src/16/check-circle-stroke.svg";
-import { ReactComponent as WarningIcon } from "@zendeskgarden/svg-icons/src/16/alert-warning-stroke.svg";
-import { ReactComponent as ErrorIcon } from "@zendeskgarden/svg-icons/src/16/alert-error-stroke.svg";
 import { ReactComponent as AccentIcon } from "@zendeskgarden/svg-icons/src/16/lightbulb-stroke.svg";
 import { ReactComponent as PrimaryIcon } from "@zendeskgarden/svg-icons/src/16/gear-stroke.svg";
 
 export interface GlobalAlertProps extends Omit<IGlobalAlertProps, 'type'> {
   type: IGlobalAlertProps['type'] | "accent" | "primary";
   message?: ReactNode;
-  isClosable?: boolean;
+  dismissable?: boolean;
+  onClose?: () => void;
   cta?: string;
 }
 
@@ -134,7 +130,7 @@ const CustomButton = ({ isPill = true, isPrimary = true, ...props }: ButtonArgs)
   <Button isPill={isPill} isPrimary={isPrimary} size="small" {...props} />
 );
 
-export const GlobalAlert = forwardRef<HTMLDivElement, GlobalAlertProps>(({ type, isClosable, cta, title, message, ...props }, ref) => (
+export const GlobalAlert = forwardRef<HTMLDivElement, GlobalAlertProps>(({ type, onClose, dismissable, cta, title, message, ...props }, ref) => (
   <StyledGlobalAlert ref={ref} type={type} {...props}>
     {type === "accent" && <AccentIcon className="global-alert-icon"/>}
     {type === "primary" && <PrimaryIcon className="global-alert-icon" />}
@@ -143,7 +139,7 @@ export const GlobalAlert = forwardRef<HTMLDivElement, GlobalAlertProps>(({ type,
       {message}
     </StyledGlobalAlert.Content>
     {cta && <CustomButton className="global-alert-cta" isAccent={type==='accent'}>{cta}</CustomButton>}
-    {isClosable && <StyledGlobalAlert.Close aria-label="Close Global Alert" />}
+    {dismissable && <StyledGlobalAlert.Close aria-label="Close Global Alert" onClick={onClose} />}
   </StyledGlobalAlert>
 ));
 

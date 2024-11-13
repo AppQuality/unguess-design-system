@@ -14,7 +14,8 @@ export const GlobalAlert = GlobalAlertTemplate.bind({});
 GlobalAlert.args = {
   type: "info",
   title: "Account update",
-  isClosable: true,
+  dismissable: true,
+  onClose: () => {alert('dismissed')},
   cta: "Find out more",
   message: <>
     Your account will automatically update in 5 days.{' '}
