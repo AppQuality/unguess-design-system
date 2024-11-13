@@ -36,6 +36,9 @@ const StyledGlobalAlert = styled(ZendeskGlobalAlert) <GlobalAlertProps>`
       width: 16px;
       height: 16px;
     }
+    .global-alert-cta {
+      flex-shrink: 0;
+    }
   
   
     // looks like the following rules get overwritten by garden if we use props.type directly instead of alerttype
