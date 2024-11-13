@@ -1,3 +1,17 @@
+# v4.0.9 (Wed Nov 13 2024)
+
+#### 🐛 Bug Fix
+
+- New Version - Global Alert Component [#442](https://github.com/AppQuality/unguess-design-system/pull/442) ([@iacopolea](https://github.com/iacopolea))
+- feat: update GlobalAlert component to support cta as an object with label and onClick handler [#441](https://github.com/AppQuality/unguess-design-system/pull/441) ([@iacopolea](https://github.com/iacopolea))
+- feat: global alert [#439](https://github.com/AppQuality/unguess-design-system/pull/439) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.0.8 (Mon Nov 11 2024)
 
 #### 🐛 Bug Fix
