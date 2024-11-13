@@ -123,6 +123,7 @@ const StyledGlobalAlert = styled(ZendeskGlobalAlert) <GlobalAlertProps>`
     &[alerttype="success"] {
       background-color: ${({ theme }) => getColor(theme.colors.successHue, 700)};
       box-shadow: 0 1px 1px ${({ theme }) => getColor(theme.colors.successHue, 700)};
+      color: ${({ theme }) => getColor(theme.colors.successHue, 50)};
       .global-alert-cta {
         background-color: ${({ theme }) => getColor(theme.colors.successHue, 800)};
       }
