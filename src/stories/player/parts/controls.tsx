@@ -14,7 +14,6 @@ import { PlayerTooltip } from "./tooltip";
 import { formatDuration } from "../utils";
 import useDebounce from "../../../hooks/useDebounce";
 import { CutStart } from "./CutStart";
-import { theme } from "../../theme";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   ${({ showControls }) =>
@@ -49,6 +48,7 @@ export const ControlsBar = styled.div`
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
+  gap: ${({ theme }) => theme.space.xxs};
 `;
 
 const CurrentTimeMarker = styled.div<{
@@ -237,14 +237,14 @@ export const Controls = ({
 
       <ControlsBar>
         <StyledDiv
-          style={{ width: "20%", justifyContent: "start", gap: theme.space.sm }}
+          style={{ width: "20%", justifyContent: "start"}}
         >
           <AudioButton />
           <TimeLabel current={relCurrentTime} duration={duration} />
         </StyledDiv>
         <ControlsGroupCenter style={{ width: "60%" }} />
 
-        <StyledDiv style={{ width: "20%", justifyContent: "end", gap: theme.space.sm  }}>
+        <StyledDiv style={{ width: "20%", justifyContent: "end"  }}>
           <Cutter
             onCutHandler={onCutHandler}
             isCutting={isCutting}
