@@ -14,6 +14,7 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: ${({ theme }) => theme.space.xxs};
 `;
 
 export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
@@ -45,6 +46,7 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
   return (
     <StyledDiv {...props}>
       <ControlButton
+        size={"small"}
         onClick={(e) => {
           if (videoRef) {
             videoRef.currentTime = 0;
@@ -55,6 +57,7 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
         <PreviousIcon />
       </ControlButton>
       <ControlButton
+        size={"small"}
         onClick={(e) => {
           onRewind();
           e.stopPropagation();
@@ -62,14 +65,15 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
       >
         <RewindIcon />
       </ControlButton>
-      <ControlButton size={"large"} onClick={togglePlay}>
+      <ControlButton onClick={togglePlay}>
         {isPlaying ? (
-          <PauseIcon style={{ width: "24px", height: "24px" }} />
+          <PauseIcon style={{ width: "20px", height: "20px" }} />
         ) : (
-          <PlayIcon style={{ width: "24px", height: "24px" }} />
+          <PlayIcon style={{ width: "20px", height: "20px" }} />
         )}
       </ControlButton>
       <ControlButton
+        size={"small"}
         onClick={(e) => {
           onForward();
           e.stopPropagation();
@@ -78,6 +82,7 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
         <ForwardIcon />
       </ControlButton>
       <ControlButton
+        size={"small"}
         isPill
         onClick={(e) => {
           const newSpeed = getNextPlaybackRate(playBackRate);
