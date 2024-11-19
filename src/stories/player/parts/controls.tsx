@@ -16,7 +16,8 @@ import useDebounce from "../../../hooks/useDebounce";
 import { CutStart } from "./CutStart";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
-  ${({ showControls }) => showControls ? "position: relative;" : "position: absolute;"}
+  ${({ showControls }) =>
+    showControls ? "position: relative;" : "position: absolute;"}
   bottom: 0;
   left: 0;
   right: 0;
@@ -47,6 +48,7 @@ export const ControlsBar = styled.div`
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
+  gap: ${({ theme }) => theme.space.xxs};
 `;
 
 const CurrentTimeMarker = styled.div<{
@@ -84,7 +86,7 @@ export const Controls = ({
   const [marks, setMarks] = useState<IBookmark[] | undefined>(bookmarks);
   const [updatedMark, setUpdatedMark] = useState<IBookmark>();
   const progressRef = useRef<HTMLDivElement>(null);
-  const { context, setCurrentTime } = useVideoContext()
+  const { context, setCurrentTime } = useVideoContext();
   const debouncedMark = useDebounce(updatedMark, 500);
   const [cutStart, setCutStart] = useState<number>(0);
 
@@ -228,19 +230,21 @@ export const Controls = ({
           progress={progress}
           handleSkipAhead={handleSkipAhead}
           duration={duration}
-          />
+        />
         {isCutting && <CutStart left={cutStart} />}
         <CurrentTimeMarker left={progress} />
       </ProgressContainer>
 
       <ControlsBar>
-        <StyledDiv style={{ width: "20%", justifyContent: "start" }}>
+        <StyledDiv
+          style={{ width: "20%", justifyContent: "start"}}
+        >
           <AudioButton />
           <TimeLabel current={relCurrentTime} duration={duration} />
         </StyledDiv>
         <ControlsGroupCenter style={{ width: "60%" }} />
 
-        <StyledDiv style={{ width: "20%", justifyContent: "end" }}>
+        <StyledDiv style={{ width: "20%", justifyContent: "end"  }}>
           <Cutter
             onCutHandler={onCutHandler}
             isCutting={isCutting}
