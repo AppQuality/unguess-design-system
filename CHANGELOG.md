@@ -1,3 +1,17 @@
+# v4.0.10 (Tue Nov 19 2024)
+
+#### 🐛 Bug Fix
+
+- Update player spacings [#444](https://github.com/AppQuality/unguess-design-system/pull/444) ([@iDome89](https://github.com/iDome89) [@d-beezee](https://github.com/d-beezee))
+- reviewed spacings of video controls according to figma [#443](https://github.com/AppQuality/unguess-design-system/pull/443) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- [@iDome89](https://github.com/iDome89)
+
+---
+
 # v4.0.9 (Wed Nov 13 2024)
 
 #### 🐛 Bug Fix
