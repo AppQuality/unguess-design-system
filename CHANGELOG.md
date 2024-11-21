@@ -1,3 +1,17 @@
+# v4.0.11 (Thu Nov 21 2024)
+
+#### 🐛 Bug Fix
+
+- new version for global-alert [#446](https://github.com/AppQuality/unguess-design-system/pull/446) ([@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee))
+- feat: enhance GlobalAlert component [#445](https://github.com/AppQuality/unguess-design-system/pull/445) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.0.10 (Tue Nov 19 2024)
 
 #### 🐛 Bug Fix
