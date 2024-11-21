@@ -27,7 +27,7 @@ const ShortcutTag = (props: ShortcutTagProps) => {
   return (
     <ShortcutTagWrapper {...props}>
       <SM isBold>
-        {props.ctrl ? !isMac() ? <CmdIcon width={16} /> : "Ctrl" : null}
+        {props.ctrl ? isMac() ? <CmdIcon width={16} /> : "Ctrl" : null}
         {props.text ? props.text : null}
       </SM>
     </ShortcutTagWrapper>
