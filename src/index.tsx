@@ -156,6 +156,9 @@ export * from "./stories/slider";
 // --- Stepper ---
 export * from "./stories/stepper";
 
+// --- Shortcut Tag ---
+export * from "./stories/shortcut-tag";
+
 // --- Table ---
 export {
   Caption,
@@ -168,7 +171,7 @@ export {
   Row as TableRow,
 } from "./stories/table";
 
-export { GroupRow, GroupedTable } from "./stories/table/grouped";
+export { GroupedTable, GroupRow } from "./stories/table/grouped";
 
 // --- Tabs ---
 export * from "./stories/tabs";
