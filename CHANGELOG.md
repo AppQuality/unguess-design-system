@@ -1,3 +1,16 @@
+# v4.0.12 (Fri Nov 22 2024)
+
+#### 🐛 Bug Fix
+
+- Add shortcut tag [#448](https://github.com/AppQuality/unguess-design-system/pull/448) ([@d-beezee](https://github.com/d-beezee))
+- feat: add ShortcutTag component with customizable props and stories [#447](https://github.com/AppQuality/unguess-design-system/pull/447) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.11 (Thu Nov 21 2024)
 
 #### 🐛 Bug Fix
