@@ -5,6 +5,10 @@ import { GlobalStyle } from "./stories/shared/globalStyle";
 // --- Accordions ---
 export * from "./stories/accordions";
 
+// --- Accordions-new ---
+export { Accordion } from "./stories/accordions-new";
+export type { AccordionArgs, HeaderArgs } from "./stories/accordions-new";
+
 // --- Alerts ---
 export * from "./stories/alerts";
 
