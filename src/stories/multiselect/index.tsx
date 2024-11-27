@@ -1,12 +1,8 @@
-import {
-  Combobox,
-  Field,
-  Label,
-  Option,
-} from "@zendeskgarden/react-dropdowns.next";
+import { Combobox, Field, Label } from "@zendeskgarden/react-dropdowns.next";
 import { useEffect, useState } from "react";
 import { ReactComponent as GridAddIcon } from "../../assets/icons/plus.svg";
 import { Separator } from "../dropdowns/menu";
+import { SelectOption } from "../selectOption";
 import { theme } from "../theme";
 import { MultiSelectProps } from "./_types";
 
@@ -27,7 +23,7 @@ export const MultiSelect = ({
         option.label
           .trim()
           .toLowerCase()
-          .indexOf(inputValue.trim().toLowerCase()) !== -1
+          .indexOf(inputValue.trim().toLowerCase()) !== -1,
     );
 
     setMatchingOptions(matchedOptions);
@@ -76,7 +72,9 @@ export const MultiSelect = ({
           }
           if (
             onChange &&
-            (type === "fn:setSelectionValue" || type === "option:click" || type === "input:keyDown:Enter") &&
+            (type === "fn:setSelectionValue" ||
+              type === "option:click" ||
+              type === "input:keyDown:Enter") &&
             Array.isArray(selectionValue)
           ) {
             const ss = selectionValue.map((s) => {
@@ -100,13 +98,13 @@ export const MultiSelect = ({
                 ...o,
                 selected: selectedOptions.some((i) => i.id === o.id),
               })),
-              newOption ? newOption : undefined
+              newOption ? newOption : undefined,
             ).then(() => setInputValue(""));
           }
         }}
       >
         {options.map((option) => (
-          <Option
+          <SelectOption
             isHidden={!matchingOptions.some((o) => o.id === option.id)}
             key={option.id}
             value={option.id.toString()}
@@ -118,7 +116,7 @@ export const MultiSelect = ({
           />
         ))}
         {matchingOptions.length === 0 && !creatable && (
-          <Option
+          <SelectOption
             isDisabled
             value=""
             label={i18n?.noMatches ?? "No matches found"}
@@ -127,11 +125,11 @@ export const MultiSelect = ({
         {creatable &&
         inputValue.length > 0 &&
         !matchingOptions.find(
-          (item) => item.label.toLowerCase() === inputValue.toLowerCase()
+          (item) => item.label.toLowerCase() === inputValue.toLowerCase(),
         ) ? (
           <>
             <Separator />
-            <Option
+            <SelectOption
               tagProps={{ isPill: true }}
               value={inputValue}
               icon={<GridAddIcon />}

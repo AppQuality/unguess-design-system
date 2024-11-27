@@ -7,6 +7,7 @@ import {
 } from "@zendeskgarden/react-dropdowns.next";
 import { ComponentProps } from "react";
 import styled from "styled-components";
+import { SelectOption } from "../../selectOption";
 import { SelectArgs } from "./_types";
 
 const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean }>`
@@ -46,7 +47,7 @@ const Select = ({
           onChange={(changeEvent) => {
             if (
               ["input:keyDown:Enter", "option:click"].includes(
-                changeEvent.type
+                changeEvent.type,
               ) &&
               changeEvent.selectionValue &&
               onSelect
@@ -62,7 +63,7 @@ const Select = ({
   );
 };
 
-Select.Option = Option;
+Select.Option = SelectOption;
 
 const StyledMenuOption = styled(Option)`
   padding-left: ${({ theme }) => theme.space.sm};
@@ -80,7 +81,7 @@ const StyledMenuOption = styled(Option)`
 `;
 
 Select.MenuOption = (
-  props: Omit<ComponentProps<typeof Select.Option>, "isDisabled">
+  props: Omit<ComponentProps<typeof Select.Option>, "isDisabled">,
 ) => {
   return <StyledMenuOption {...props} isDisabled />;
 };
