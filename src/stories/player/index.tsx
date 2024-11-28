@@ -14,6 +14,7 @@ import { Container } from "./parts/container";
 import { Controls } from "./parts/controls";
 import { FloatingControls } from "./parts/floatingControls";
 import { VideoSpinner } from "./parts/spinner";
+import { PlayerShortCut } from "./shortcuts";
 
 /**
  * The Player is a styled media tag with custom controls
@@ -100,5 +101,7 @@ const PlayerProvider = (props: PropsWithChildren<PlayerArgs>) => (
 );
 
 PlayerProvider.Core = PlayerCore;
+
+PlayerProvider.Shortcut = PlayerShortCut;
 
 export { Player, PlayerProvider, useVideoContext };

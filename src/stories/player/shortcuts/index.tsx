@@ -5,8 +5,6 @@ import { ShortcutTag } from "../../shortcut-tag";
 
 const ShortcutItemWrapper = styled.div`
   display: flex;
-  margin: ${({ theme }) => theme.space.sm} 0;
-  padding: ${({ theme }) => theme.space.xxs} 0;
   gap: ${({ theme }) => theme.space.xs};
   justify-content: space-between;
 

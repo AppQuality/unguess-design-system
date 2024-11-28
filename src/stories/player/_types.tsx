@@ -18,6 +18,11 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
 export interface PlayerI18n {
   beforeHighlight?: string;
   onHighlight?: string;
+  playpause?: string;
+  mute?: string;
+  observations?: string;
+  forward?: string;
+  backward?: string;
 }
 
 export interface IBookmark {

@@ -7,8 +7,9 @@ import { ReactComponent as PauseIcon } from "../../../assets/icons/pause-fill.sv
 import { ReactComponent as PlayIcon } from "../../../assets/icons/play-fill.svg";
 import { ReactComponent as PreviousIcon } from "../../../assets/icons/previous-fill.svg";
 import { SM } from "../../typography/typescale";
-import { ControlButton } from "./controlButton";
+import { PlayerI18n } from "../_types";
 import { getNextPlaybackRate } from "../utils";
+import { ControlButton } from "./controlButton";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -17,7 +18,11 @@ const StyledDiv = styled.div`
   gap: ${({ theme }) => theme.space.xxs};
 `;
 
-export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
+export const ControlsGroupCenter = (
+  props: HTMLAttributes<HTMLDivElement> & {
+    i18n?: PlayerI18n;
+  },
+) => {
   const [playBackRate, setPlayBackRate] = useState<number>(1);
   const { context, togglePlay } = useVideoContext();
 
@@ -62,10 +67,20 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
           onRewind();
           e.stopPropagation();
         }}
+        tooltip={{
+          description: props.i18n?.backward || "Backward",
+          type: "backward",
+        }}
       >
         <RewindIcon />
       </ControlButton>
-      <ControlButton onClick={togglePlay}>
+      <ControlButton
+        onClick={togglePlay}
+        tooltip={{
+          description: props.i18n?.playpause || "Play/Pause",
+          type: "play/pause",
+        }}
+      >
         {isPlaying ? (
           <PauseIcon style={{ width: "20px", height: "20px" }} />
         ) : (
@@ -77,6 +92,10 @@ export const ControlsGroupCenter = (props: HTMLAttributes<HTMLDivElement>) => {
         onClick={(e) => {
           onForward();
           e.stopPropagation();
+        }}
+        tooltip={{
+          description: props.i18n?.forward || "Forward",
+          type: "forward",
         }}
       >
         <ForwardIcon />
