@@ -1,19 +1,19 @@
 import { useVideoContext } from "@appquality/stream-player";
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import useDebounce from "../../../hooks/useDebounce";
 import { IBookmark, PlayerI18n, WrapperProps } from "../_types";
+import { useProgressContext } from "../context/progressContext";
+import { formatDuration } from "../utils";
 import { AudioButton } from "./audioButton";
 import { Bookmark } from "./bookmark";
 import { ControlsGroupCenter } from "./controlsCenterGroup";
+import { CutStart } from "./CutStart";
 import { Cutter } from "./cutterButton";
 import { FullScreenButton } from "./fullScreenButton";
 import { ProgressBar } from "./progress";
-import { useProgressContext } from "../context/progressContext";
 import { TimeLabel } from "./timeLabel";
 import { PlayerTooltip } from "./tooltip";
-import { formatDuration } from "../utils";
-import useDebounce from "../../../hooks/useDebounce";
-import { CutStart } from "./CutStart";
 
 export const ControlsWrapper = styled.div<WrapperProps>`
   ${({ showControls }) =>
@@ -114,7 +114,7 @@ export const Controls = ({
 
       return 0;
     },
-    [progressRef, duration]
+    [progressRef, duration],
   );
 
   const getProgress = useCallback(
@@ -125,7 +125,7 @@ export const Controls = ({
 
       return (current / duration) * 100;
     },
-    [context.part.start, duration]
+    [context.part.start, duration],
   );
 
   const handleSkipAhead = useCallback(
@@ -134,7 +134,12 @@ export const Controls = ({
       setCurrentTime(time);
       setProgress(getProgress(time));
     },
-    [getVideoPositionFromEvent, context.part.start, setCurrentTime, getProgress]
+    [
+      getVideoPositionFromEvent,
+      context.part.start,
+      setCurrentTime,
+      getProgress,
+    ],
   );
 
   const onMouseEvent = (e: MouseEvent<HTMLDivElement>) => {
@@ -161,7 +166,7 @@ export const Controls = ({
       if (!activeBookmark || !marks) return;
 
       const currentObsIndex = marks.findIndex(
-        (mark) => mark.id === activeBookmark.id
+        (mark) => mark.id === activeBookmark.id,
       );
       const value = (newX / clientW) * duration + context.part.start;
 
@@ -178,7 +183,7 @@ export const Controls = ({
       setMarks(newMarks);
       setUpdatedMark(updatedMark);
     },
-    [activeBookmark, context.part.start, duration, fromEnd, marks]
+    [activeBookmark, context.part.start, duration, fromEnd, marks],
   );
 
   useEffect(() => {
@@ -236,15 +241,13 @@ export const Controls = ({
       </ProgressContainer>
 
       <ControlsBar>
-        <StyledDiv
-          style={{ width: "20%", justifyContent: "start"}}
-        >
-          <AudioButton />
+        <StyledDiv style={{ width: "20%", justifyContent: "start" }}>
+          <AudioButton i18n={i18n} />
           <TimeLabel current={relCurrentTime} duration={duration} />
         </StyledDiv>
-        <ControlsGroupCenter style={{ width: "60%" }} />
+        <ControlsGroupCenter style={{ width: "60%" }} i18n={i18n} />
 
-        <StyledDiv style={{ width: "20%", justifyContent: "end"  }}>
+        <StyledDiv style={{ width: "20%", justifyContent: "end" }}>
           <Cutter
             onCutHandler={onCutHandler}
             isCutting={isCutting}

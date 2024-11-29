@@ -3,11 +3,11 @@ import {
   IComboboxProps,
   IOptGroupProps,
   IOptionProps,
-  Option,
   OptionValue,
 } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
+import { SelectOption } from "../../selectOption";
 import { OptGroup } from "../optGroup";
 
 export interface OnOptionClickArgs {
@@ -100,13 +100,13 @@ const Autocomplete = ({
           isHidden: isHidden(opt, debouncedInputValue),
         };
       }),
-    [_options, debouncedInputValue]
+    [_options, debouncedInputValue],
   );
 
   // check if there are visible options
   const thereAreVisibleOptions = useMemo(
     () => flatOptions(matchingOptions).some((opt) => opt.isHidden !== true),
-    [matchingOptions]
+    [matchingOptions],
   );
 
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
@@ -118,16 +118,17 @@ const Autocomplete = ({
       if (event.type === "input:change" && event.inputValue !== undefined) {
         const sanitizedInputValue = event.inputValue.replace(
           /[.*+?^${}()|[\]\\]/giu,
-          "\\$&"
+          "\\$&",
         );
         setInputValue(sanitizedInputValue);
         if (typeof onInputChange === "function")
           onInputChange(sanitizedInputValue);
       }
       if (
-        (event.type === "option:click" || event.type === "input:keyDown:Enter")
-        && typeof onOptionClick === "function"
-        && event.selectionValue // address the issue of clicking enter on an empty input
+        (event.type === "option:click" ||
+          event.type === "input:keyDown:Enter") &&
+        typeof onOptionClick === "function" &&
+        event.selectionValue // address the issue of clicking enter on an empty input
       ) {
         setInputValue(undefined);
         onOptionClick({
@@ -136,7 +137,7 @@ const Autocomplete = ({
         });
       }
     },
-    []
+    [],
   );
 
   return (
@@ -146,20 +147,20 @@ const Autocomplete = ({
           return (
             <OptGroup key={option.id} {...option}>
               {option.options.map((opt) => (
-                <Option key={opt.id} {...opt} />
+                <SelectOption key={opt.id} {...opt} />
               ))}
             </OptGroup>
           );
         }
-        return <Option key={index} {...option} />;
+        return <SelectOption key={index} {...option} />;
       })}
       {!thereAreVisibleOptions && (
-        <Option value="" isDisabled>
+        <SelectOption value="" isDisabled>
           No results found
-        </Option>
+        </SelectOption>
       )}
       {isCreatable && debouncedInputValue && (
-        <Option
+        <SelectOption
           type="add"
           value={debouncedInputValue}
           title={debouncedInputValue}
@@ -171,7 +172,7 @@ const Autocomplete = ({
           }}
         >
           {`Add "${debouncedInputValue}"`}
-        </Option>
+        </SelectOption>
       )}
     </Combobox>
   );

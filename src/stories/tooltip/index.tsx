@@ -28,9 +28,12 @@ const StyledTooltip = styled(TooltipComponent)`
     theme.shadows.lg(
       `${theme.space.base * 3}px`,
       `${theme.space.base * 5}px`,
-      getColor("neutralHue", 600, theme, 0.15)!
+      getColor("neutralHue", 600, theme, 0.15)!,
     )};
 
+  ${({ maxWidth }) =>
+    maxWidth &&
+    `max-width: ${maxWidth === "unset" ? "unset" : `${maxWidth}px`};`}
   ${({ isTransparent }) =>
     isTransparent &&
     `

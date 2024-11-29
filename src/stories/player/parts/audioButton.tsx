@@ -2,6 +2,7 @@ import { useVideoContext } from "@appquality/stream-player";
 import { useEffect, useState } from "react";
 import { ReactComponent as MutedIcon } from "../../../assets/icons/volume-muted-fill.svg";
 import { ReactComponent as UnMutedIcon } from "../../../assets/icons/volume-unmuted-fill.svg";
+import { PlayerI18n } from "../_types";
 import { ControlButton } from "./controlButton";
 
 interface VideowithAudio extends HTMLVideoElement {
@@ -10,7 +11,7 @@ interface VideowithAudio extends HTMLVideoElement {
   audioTracks?: any[];
 }
 
-export const AudioButton = () => {
+export const AudioButton = ({ i18n }: { i18n?: PlayerI18n }) => {
   const [hasAudio, setHasAudio] = useState<boolean>(false);
   const { isMuted, setMuted, context } = useVideoContext();
 
@@ -20,7 +21,7 @@ export const AudioButton = () => {
     if (!video) {
       return false;
     }
-    
+
     const videohasAudio =
       video.mozHasAudio ||
       Boolean(video.webkitAudioDecodedByteCount) ||
@@ -51,6 +52,10 @@ export const AudioButton = () => {
           player.ref.current.volume = player.ref.current.volume > 0 ? 0 : 1;
           setMuted(!player.ref.current.volume);
         }
+      }}
+      tooltip={{
+        description: i18n?.mute || "Mute",
+        type: "mute",
       }}
     >
       {isMuted || !hasAudio ? <MutedIcon /> : <UnMutedIcon />}
