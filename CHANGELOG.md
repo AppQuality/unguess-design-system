@@ -1,3 +1,19 @@
+# v4.0.13 (Fri Nov 29 2024)
+
+#### 🐛 Bug Fix
+
+- Add menu/select items stories and add player.shortcuts [#452](https://github.com/AppQuality/unguess-design-system/pull/452) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- fix: correct shortcut key for observation in PlayerShortCut component [#451](https://github.com/AppQuality/unguess-design-system/pull/451) ([@d-beezee](https://github.com/d-beezee))
+- Integrate-shortcut-tooltip [#450](https://github.com/AppQuality/unguess-design-system/pull/450) ([@d-beezee](https://github.com/d-beezee))
+- Add menu item stories [#449](https://github.com/AppQuality/unguess-design-system/pull/449) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.12 (Fri Nov 22 2024)
 
 #### 🐛 Bug Fix
