@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { ReactComponent as EnterIcon } from "../../../assets/icons/enter-stroke.svg";
-import { ReactComponent as MentionIcon } from "../../../assets/icons/at-stroke.svg";
-import { ShortcutTag } from "../../shortcut-tag";
+import { ReactComponent as EnterIcon } from "../../../../assets/icons/enter-stroke.svg";
+import { ReactComponent as MentionIcon } from "../../../../assets/icons/at-stroke.svg";
+import { ReactComponent as ItalicIcon } from "../../../../assets/icons/italic-stroke.svg";
+import { ReactComponent as BoldIcon } from "../../../../assets/icons/bold-stroke.svg";
+import { ShortcutTag } from "../../../shortcut-tag";
 
 const ShortcutItemWrapper = styled.div`
   display: flex;
@@ -55,9 +57,9 @@ const ChatShortCut = ({
   const getShortcut = () => {
     switch (type) {
       case "bold":
-        return ["ctrl", "B"];
+        return ["ctrl", <BoldIcon />];
       case "italic":
-        return ["ctrl", "I"];
+        return ["ctrl", <ItalicIcon />];
       case "send":
         return ["ctrl", <EnterIcon />];
       case "mention":

@@ -10,7 +10,7 @@ import { ChatContainer, MessagesContainer } from "./parts/containers";
 import { ChatTitle } from "./parts/header";
 import { CommentBox } from "./parts/commentBox";
 import { Comment } from "./parts/comment";
-import { ChatShortCut } from "./shortcuts";
+import { ChatShortCut } from "./parts/shortcuts";
 
 /**
  * Chat is a wrapper around Editor component 
@@ -32,6 +32,6 @@ Chat.Header = ChatTitle;
 Chat.Comments = MessagesContainer;
 Chat.Input = CommentBox;
 Chat.Footer = ChatFooter;
-Chat.Shortcuts = ChatShortCut;
+Chat.Shortcut = ChatShortCut;
 
 export { Chat, ChatContext, ChatProvider, useChatContext, Comment };
