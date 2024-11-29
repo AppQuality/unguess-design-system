@@ -63,7 +63,7 @@ const PlayerShortCut = ({
       case "backward":
         return [<ArrowLeft />];
       case "observation":
-        return ["s"];
+        return ["S"];
       default:
         throw new Error(`Invalid type ${type}`);
     }
