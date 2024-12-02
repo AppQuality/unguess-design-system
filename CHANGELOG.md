@@ -1,3 +1,17 @@
+# v4.0.14 (Mon Dec 02 2024)
+
+#### 🐛 Bug Fix
+
+- Add chat shortcuts [#454](https://github.com/AppQuality/unguess-design-system/pull/454) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee))
+- feat: add ChatShortCut component with keyboard shortcuts [#453](https://github.com/AppQuality/unguess-design-system/pull/453) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.13 (Fri Nov 29 2024)
 
 #### 🐛 Bug Fix
