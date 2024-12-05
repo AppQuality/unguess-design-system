@@ -1,102 +1,111 @@
-import type { Meta, StoryFn } from "@storybook/react";
-import { Grid } from "@zendeskgarden/react-grid";
-import { Button } from ".";
-import { ReactComponent as ChevronIcon } from "../../../assets/icons/chevron-down-stroke.svg";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
 import { ReactComponent as LeafIcon } from "../../../assets/icons/leaf-stroke.svg";
-import { Col, MD, Row, sizes, variants } from "../utils";
-import { ButtonArgs } from "./_types";
 
-const SizeTemplate: StoryFn<ButtonArgs> = (args) => (
-  <Row>
-    {sizes.map((size, i) => (
-      <Col size={3} key={i}>
-        <Button {...args} size={size}>
-          {size}
-        </Button>
-      </Col>
-    ))}
-  </Row>
-);
+import { Button } from ".";
 
-const Template: StoryFn<ButtonArgs> = (args) => {
-  return (
-    <Grid>
-      {variants.map((variant, i) => (
-        <>
-          <MD>{Object.keys(variant)[0]}</MD>
-          <SizeTemplate {...args} {...variant} key={i} />
-        </>
-      ))}
-    </Grid>
-  );
+type Args = React.ComponentProps<typeof Button> & {
+  withStartIcon?: boolean;
+  withEndIcon?: boolean;
 };
 
-const TemplateIcon: StoryFn<ButtonArgs> = (args) => {
-  return (
-    <Grid>
-      <Row>
-        {sizes.map((size, j) => (
-          <Col size={3} key={j}>
-            <Button {...args} size={size}>
-              <Button.StartIcon>
-                <LeafIcon />
-              </Button.StartIcon>
-              {size}
-            </Button>
-          </Col>
-        ))}
-      </Row>
-      <Row>
-        {sizes.map((size, k) => (
-          <Col size={3} key={k}>
-            <Button {...args} size={size}>
-              {size}
-              <Button.EndIcon>
-                <ChevronIcon />
-              </Button.EndIcon>
-            </Button>
-          </Col>
-        ))}
-      </Row>
-    </Grid>
-  );
-};
-
-export const Default = Template.bind({});
-
-export const Basic = Template.bind({});
-Basic.args = {
-  isBasic: true,
-};
-
-export const Primary = Template.bind({});
-Primary.args = {
-  isPrimary: true,
-};
-
-export const Link = Template.bind({});
-Link.args = {
-  isLink: true,
-};
-
-export const WithIcon = TemplateIcon.bind({});
-
-export default {
+const meta = {
   title: "Atoms/Buttons/Button",
   component: Button,
-  subcomponents: {
-    "Button.StartIcon": Button.StartIcon,
-    "Button.EndIcon": Button.EndIcon,
+
+  args: {
+    children: "Button",
+    onClick: fn(),
   },
-  argTypes: {
-    onClick: {
-      table: {
-        category: "Events",
-      },
-    },
+  render: ({ withStartIcon, withEndIcon, ...args }) => {
+    return (
+      <Button {...args}>
+        {withStartIcon && (
+          <Button.StartIcon>
+            <LeafIcon />
+          </Button.StartIcon>
+        )}
+        {args.children}
+        {withEndIcon && (
+          <Button.EndIcon>
+            <LeafIcon />
+          </Button.EndIcon>
+        )}
+      </Button>
+    );
   },
-  parameters: {
-    // Sets a delay for the component's stories
-    chromatic: { delay: 300 },
+} satisfies Meta<Args>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {},
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
   },
-} as Meta<typeof Button>;
+};
+export const Small: Story = {
+  args: {
+    size: "small",
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: "large",
+  },
+};
+
+export const Primary: Story = {
+  args: {
+    isPrimary: true,
+  },
+};
+
+export const DangerPrimary: Story = {
+  args: {
+    isPrimary: true,
+    isDanger: true,
+  },
+};
+
+export const AccentPrimary: Story = {
+  args: {
+    isPrimary: true,
+    isAccent: true,
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    isDanger: true,
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    isAccent: true,
+  },
+};
+
+export const Link: Story = {
+  args: {
+    isLink: true,
+  },
+};
+
+export const WithStartIcon: Story = {
+  args: {
+    withStartIcon: true,
+  },
+};
+
+export const WithEndIcon: Story = {
+  args: {
+    withEndIcon: true,
+  },
+};
