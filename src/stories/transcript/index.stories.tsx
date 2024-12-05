@@ -23,7 +23,7 @@ type StoryArgs = {
   translations?: SentenceType[];
   onAddObservation?: (editor: Editor) => void;
   onSetCurrentTime?: (
-    setCurrentTime: (time: number) => void
+    setCurrentTime: (time: number) => void,
   ) => (time: number) => void;
   showSearch?: boolean;
   themeExtension?: typeof Theme;
@@ -247,9 +247,6 @@ WithCustomTheme.args = {
       return (
         <span style={{ background: "blue", color: "white" }}>{children}</span>
       );
-    },
-    wordWrapper: ({ children }) => {
-      return <span style={{ textDecoration: "underline" }}>{children}</span>;
     },
     observationWrapper: ({ title, color, children, observations }) => {
       const background = color + "50";

@@ -2,7 +2,7 @@ import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { IButtonGroupProps } from "@zendeskgarden/react-buttons";
 import { ButtonGroup } from ".";
 import { Button } from "../button";
-import { Basic, Default } from "../button/index.stories";
+import { Default as Basic, Primary as Default } from "../button/index.stories";
 
 const Template: Story<IButtonGroupProps & { items: any[] }> = ({
   items,
