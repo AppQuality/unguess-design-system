@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
+  display: inline-block;
   padding: 10px;
   background-color: #ccc;
   .content {
+    display: inline-block;
     padding: 10px;
     background-color: #fff;
   }
@@ -12,7 +14,7 @@ const Wrapper = styled.div`
 const Placeholder = () => {
   return (
     <Wrapper>
-      <div className="content">PLACEHOLDER</div>
+      <span className="content">PLACEHOLDER</span>
     </Wrapper>
   );
 };
