@@ -5,7 +5,6 @@ import { colors } from "./colors";
 import { fontWeights } from "./fontWeights";
 import { palette } from "./palette";
 import { getColor } from "./utils";
-import { cursorTo } from "readline";
 
 export const components = {
   ...DEFAULT_THEME.components,
