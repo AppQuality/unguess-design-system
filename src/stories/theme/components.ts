@@ -29,6 +29,18 @@ export const components = {
     },
   },
   ...cardCmponentStyle,
+  "cursor_pagination.cursor": ({ disabled }: { disabled: boolean }) => {
+    return {
+      ...(disabled && {
+        color: palette.grey[400],
+        "&:hover, &:active": {
+          color: palette.grey[400],
+          backgroundColor: "transparent",
+          cursor: "auto",
+        },
+      }),
+    };
+  },
   "text.primary": () => ({
     color: getColor(colors.primaryHue, 600),
   }),
