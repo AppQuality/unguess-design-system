@@ -1,3 +1,20 @@
+# v4.0.15 (Wed Dec 11 2024)
+
+#### 🐛 Bug Fix
+
+- new version [#458](https://github.com/AppQuality/unguess-design-system/pull/458) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks) [@iacopolea](https://github.com/iacopolea))
+- feat: add cursor pagination styles for disabled state [#457](https://github.com/AppQuality/unguess-design-system/pull/457) ([@iacopolea](https://github.com/iacopolea))
+- Update stories [#456](https://github.com/AppQuality/unguess-design-system/pull/456) ([@d-beezee](https://github.com/d-beezee))
+- Update stories [#455](https://github.com/AppQuality/unguess-design-system/pull/455) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.14 (Mon Dec 02 2024)
 
 #### 🐛 Bug Fix
