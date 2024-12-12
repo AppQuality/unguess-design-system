@@ -64,10 +64,14 @@ const meta = {
   render: (args) => {
     return (
       <Modal {...args}>
-        <Modal.Header>{args.title ? args.title : <Placeholder />}</Modal.Header>
-        <Modal.Body>{args.content ? args.content : <Placeholder />}</Modal.Body>
+        <Modal.Header>
+          {args.title ? args.title : <Placeholder display="block" />}
+        </Modal.Header>
+        <Modal.Body>
+          {args.content ? args.content : <Placeholder display="block" />}
+        </Modal.Body>
         <Modal.Footer>
-          {args.footer ? args.footer : <Placeholder />}
+          {args.footer ? args.footer : <Placeholder display="block" />}
         </Modal.Footer>
       </Modal>
     );
