@@ -1,18 +1,38 @@
-import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
-import { FooterItem, Modal, ModalClose } from ".";
+import { Meta } from "@storybook/react";
+import { FooterItem, Modal } from ".";
 import { Button } from "../buttons/button";
+import { Placeholder } from "../placeholder";
 import { ModalArgs } from "./_types";
 
 interface ModalStoryArgs extends ModalArgs {
-  content: string | any;
-  title: string;
-  isDanger?: boolean;
+  content?: string | any;
+  title?: string;
+  footer?: string;
 }
 const longContent =
   "The tang of the untainted, fresh and free sea air was like a cool, " +
   "quieting thought, and the shells and pebbles and the seaweed with tiny living " +
   "creatures attached to it never lost their fascination for me.";
 
+const Footer = () => {
+  return (
+    <>
+      <FooterItem>
+        <Button isBasic>Secondary</Button>
+      </FooterItem>
+      <FooterItem>
+        <Button
+          isPrimary
+          onClick={() => {
+            alert("Ahoy!");
+          }}
+        >
+          Primary
+        </Button>
+      </FooterItem>
+    </>
+  );
+};
 const customContent = [
   "ELEMENT 1",
   "ELEMENT 2",
@@ -21,91 +41,63 @@ const customContent = [
   "ELEMENT 5",
 ].map((el) => <li>{el}</li>);
 
-const design = {
-  type: "figma",
-  url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A124",
-};
-
 const defaultArgs: ModalStoryArgs = {
-  isDanger: false,
-  title: "Cool title",
   isLarge: false,
   isExtraLarge: false,
-  content: longContent,
   onClose: (e) => {
     alert("Close clicked");
     console.log(e);
   },
 };
 
-const Template: Story<ModalStoryArgs> = (args) => {
-  const { isDanger } = args;
+type Args = ModalStoryArgs & {};
 
-  return (
-    <Modal {...args}>
-      <Modal.Header isDanger={isDanger}>{args.title}</Modal.Header>
-      <Modal.Body>{args.content}</Modal.Body>
-      <Modal.Footer>
-        <FooterItem>
-          <Button isBasic onClick={args.onClose}>
-            Secondary
-          </Button>
-        </FooterItem>
-        <FooterItem>
-          <Button
-            isPrimary
-            {...(isDanger && { isDanger: true })}
-            onClick={() => {
-              alert("Ahoy!");
-            }}
-          >
-            Primary
-          </Button>
-        </FooterItem>
-      </Modal.Footer>
-      <ModalClose aria-label="Close modal" />
-    </Modal>
-  );
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs,
-};
-Default.parameters = {
-  design,
-};
-
-export const Danger = Template.bind({});
-Danger.args = {
-  ...defaultArgs,
-  isDanger: true,
-};
-
-Danger.parameters = {
-  design,
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  ...defaultArgs,
-  isLarge: true,
-};
-Large.parameters = {
-  design,
-};
-
-export const WithCustomContent = Template.bind({});
-WithCustomContent.args = {
-  ...defaultArgs,
-  content: <ul>{customContent}</ul>,
-};
-
-export default {
+const meta = {
   title: "Molecules/Modals",
   component: Modal,
   parameters: {
-    // Sets a delay for the component's stories
-    chromatic: { delay: 300 },
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/BSagFENAXxMy2UpnQVa0mI/UNGUESS-%7C-Garden?node-id=102%3A124",
+    },
   },
-} as ComponentMeta<typeof Modal>;
+  render: (args) => {
+    return (
+      <Modal {...args}>
+        <Modal.Header>{args.title ? args.title : <Placeholder />}</Modal.Header>
+        <Modal.Body>{args.content ? args.content : <Placeholder />}</Modal.Body>
+        <Modal.Footer>
+          {args.footer ? args.footer : <Placeholder />}
+        </Modal.Footer>
+      </Modal>
+    );
+  },
+  args: {},
+} satisfies Meta<Args>;
+
+export default meta;
+
+export const Default = {
+  args: {
+    ...defaultArgs,
+  },
+};
+
+export const Large = {
+  args: {
+    ...defaultArgs,
+    title: "Cool title",
+    content: longContent,
+    footer: <Footer />,
+    isLarge: true,
+  },
+};
+
+export const WithCustomContent = {
+  args: {
+    ...defaultArgs,
+    title: "Cool title",
+    content: <ul>{customContent}</ul>,
+    footer: <Footer />,
+  },
+};
