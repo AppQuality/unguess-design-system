@@ -5,6 +5,7 @@ import { colors } from "./colors";
 import { fontWeights } from "./fontWeights";
 import { palette } from "./palette";
 import { getColor } from "./utils";
+import { AlertArgs } from "../notifications/alerts";
 
 export const components = {
   ...DEFAULT_THEME.components,
@@ -38,6 +39,13 @@ export const components = {
           backgroundColor: "transparent",
           cursor: "auto",
         },
+      }),
+    };
+  },
+  "notifications.alert": ({ type }: AlertArgs) => {
+    return {
+      ...(type === "success" && {
+        backgroundColor: getColor(colors.successHue, 10),
       }),
     };
   },

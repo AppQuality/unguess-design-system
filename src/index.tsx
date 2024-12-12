@@ -6,7 +6,7 @@ import { GlobalStyle } from "./stories/shared/globalStyle";
 export * from "./stories/accordions";
 
 // --- Alerts ---
-export * from "./stories/alerts";
+export * from "./stories/notifications/alerts";
 
 // --- Avatar ---
 export * from "./stories/avatar";
