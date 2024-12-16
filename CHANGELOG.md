@@ -1,3 +1,19 @@
+# v4.0.16 (Mon Dec 16 2024)
+
+#### 🐛 Bug Fix
+
+- release 20241216 [#461](https://github.com/AppQuality/unguess-design-system/pull/461) ([@d-beezee](https://github.com/d-beezee) [@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- UN-554-alert [#460](https://github.com/AppQuality/unguess-design-system/pull/460) ([@iacopolea](https://github.com/iacopolea))
+- docs: add Modal.Header stories and update Modal stories with new structure [#459](https://github.com/AppQuality/unguess-design-system/pull/459) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.15 (Wed Dec 11 2024)
 
 #### 🐛 Bug Fix
