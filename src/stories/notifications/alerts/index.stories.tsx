@@ -1,6 +1,5 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
-import { Alert } from ".";
-import { AlertArgs } from "./_types";
+import { Alert, AlertArgs } from ".";
 
 const Template: Story<AlertArgs> = (args) => {
   return (
@@ -25,7 +24,7 @@ Default.parameters = {
 };
 
 export default {
-  title: "Atoms/Alerts",
+  title: "Molecules/Notification/Alerts",
   component: Alert,
   parameters: {
     // Sets a delay for the component's stories
