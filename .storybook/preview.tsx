@@ -1,3 +1,4 @@
+import { DocsContainer } from "@storybook/blocks";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import React from "react";
 import { GlobalStyle } from "../src/stories/shared/globalStyle";
@@ -12,6 +13,14 @@ export const decorators = [
   ),
 ];
 
+const CustomDocsContainer = ({ children, context }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <DocsContainer context={context}>{children}</DocsContainer>
+    </ThemeProvider>
+  );
+};
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -22,6 +31,8 @@ export const parameters = {
   },
   docs: {
     inlineStories: true,
+
+    container: CustomDocsContainer,
   },
   options: {
     storySort: {

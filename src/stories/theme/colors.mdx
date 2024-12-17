@@ -1,0 +1,25 @@
+import {
+  ColorItem,
+  ColorPalette,
+  DocsContainer,
+  Meta,
+} from "@storybook/blocks";
+import { colors } from "./colors";
+import { palette } from "./palette";
+
+<Meta title="Theme/Colors" />
+
+<ColorPalette>
+  {Object.keys(palette).map((k) => {
+    return (
+      <>
+        <ColorItem
+          title={`zd.colors.${k}`}
+          colors={
+            typeof palette[k] === "string" ? { [k]: palette[k] } : palette[k]
+          }
+        />
+      </>
+    );
+  })}
+</ColorPalette>
