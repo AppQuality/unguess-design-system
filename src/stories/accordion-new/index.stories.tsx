@@ -34,7 +34,7 @@ type StoryArgs = AccordionArgs & {
   isLarge?: boolean;
   subtitles?: string;
   supertitles?: string;
-  meta?: React.ReactNode;
+  hasMeta?: boolean;
 };
 
 const meta = {
@@ -61,7 +61,35 @@ const meta = {
                       supertitle={args.supertitles}
                       meta
                     />
-                    {args.meta && <Accordion.Meta>{args.meta}</Accordion.Meta>}
+                    {args.hasMeta && <Accordion.Meta>
+                      <Tag>Tag 1</Tag>
+                      <Tag>Tag 2</Tag>
+                      <Tag
+                        color={theme.palette.green[800]}
+                        hue="rgba(0,0,0,0)"
+                        style={{ marginBottom: theme.space.xxs }}
+                      >
+                        <Tag.Avatar>
+                          <StatusCompletedIcon />
+                        </Tag.Avatar>
+                        Completed
+                        <Tag.SecondaryText color={theme.palette.grey[700]}>
+                          1
+                        </Tag.SecondaryText>
+                      </Tag>
+                      <Tag>
+                        <Tag.Avatar>
+                          <LeafIcon />
+                        </Tag.Avatar>
+                        Counter
+                        <Tag.SecondaryText
+                          color={"#000000"}
+                          isBold
+                        >
+                          2
+                        </Tag.SecondaryText>
+                      </Tag>
+                    </Accordion.Meta>}
                   </Accordion.Header>
                   <Accordion.Panel>{item.accordionContent}</Accordion.Panel>
                 </Accordion.Section>
@@ -72,9 +100,6 @@ const meta = {
       </Row>
     );
   },
-  args: {
-    level: 4,
-  },
 } satisfies Meta<StoryArgs>;
 
 export default meta;
@@ -84,6 +109,9 @@ const defaultArgs: StoryArgs = {
   level: 3,
   hasCheckbox: false,
   isLarge: false,
+  subtitles: "",
+  supertitles: "",
+  hasMeta: false,
 };
 
 export const Default: Story = {
@@ -113,47 +141,20 @@ export const Icon: Story = {
   },
 };
 
-export const FullLabel: Story = {
+export const WithMeta: Story = {
+  args: {
+    ...defaultArgs,
+    hasMeta: true,
+  },
+};
+
+export const Full: Story = {
   args: {
     ...defaultArgs,
     icon: <FolderIcon />,
     hasCheckbox: true,
     subtitles: "Some more info on the item",
-    supertitles: "00:00:23 - 00:00:27"
-  },
-};
-
-export const WithMeta: Story = {
-  args: {
-    ...defaultArgs,
-    meta: <>
-      <Tag>Tag 1</Tag>
-      <Tag>Tag 2</Tag>
-      <Tag
-        color={theme.palette.green[800]}
-        hue="rgba(0,0,0,0)"
-        style={{ marginBottom: theme.space.xxs }}
-      >
-        <Tag.Avatar>
-          <StatusCompletedIcon />
-        </Tag.Avatar>
-        Completed
-        <Tag.SecondaryText color={theme.palette.grey[700]}>
-          1
-        </Tag.SecondaryText>
-      </Tag>
-      <Tag>
-        <Tag.Avatar>
-          <LeafIcon />
-        </Tag.Avatar>
-        Counter
-        <Tag.SecondaryText
-          color={"#000000"}
-          isBold
-        >
-          2
-        </Tag.SecondaryText>
-      </Tag>
-    </>
+    supertitles: "00:00:23 - 00:00:27",
+    hasMeta: true,
   },
 };
