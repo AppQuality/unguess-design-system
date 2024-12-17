@@ -8,13 +8,33 @@ interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement> {
   hasCheckbox?: boolean;
   checkboxProps?: React.ComponentProps<typeof Checkbox>;
   isSelected?: boolean;
+  isLarge?: boolean;
+  icon?: React.ReactNode;
 }
+
+const StyledAccordionHeader = styled(ZendeskAccordion.Header)`
+  padding: ${theme.space.md};
+  display: flex;
+  gap: ${theme.space.xs};
+  align-items: flex-start;
+  [data-garden-id="accordions.rotate_icon"] {
+    padding: 0;
+  }
+  .accordion-header-inner-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: ${theme.space.xs};
+    width: 100%;
+  }
+`;
 
 export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>(({
   children,
   isSelected,
   hasCheckbox,
   checkboxProps,
+  icon,
   ...rest
 }, ref) => {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,9 +46,9 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   }
 
   return (
-    <ZendeskAccordion.Header ref={ref} {...rest}>
+    <StyledAccordionHeader ref={ref} {...rest}>
       {hasCheckbox &&
-        <Field onChange={handleCheckboxChange} style={{marginLeft: theme.space.md}}>
+        <Field onChange={handleCheckboxChange}>
           <Checkbox
             {...checkboxProps}
             onChange={handleCheckboxChange}
@@ -39,7 +59,10 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
             </Label>
           </Checkbox>
         </Field>}
+      {icon}
+      <div className="accordion-header-inner-wrapper">
       {children}
-    </ZendeskAccordion.Header>
+      </div>
+    </StyledAccordionHeader>
   )
 });

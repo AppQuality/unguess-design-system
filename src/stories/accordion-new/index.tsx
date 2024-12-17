@@ -3,6 +3,8 @@ import { forwardRef } from "react";
 import { IAccordionProps } from "@zendeskgarden/react-accordions";
 import { AccordionHeader } from "./AccordionHeader";
 import { AccordionSection } from "./AccordionSection";
+import { AccordionLabel } from "./AccordionLabel";
+import { AccordionMeta } from "./AccordionMeta";
 
 export interface AccordionArgs extends IAccordionProps {
 }
@@ -23,11 +25,13 @@ const AccordionComponent = forwardRef<HTMLDivElement, AccordionArgs>((props, ref
 export const Accordion = AccordionComponent as typeof AccordionComponent & {
    Section: typeof AccordionSection;
    Header: typeof AccordionHeader;
-   Label: typeof ZendeskAccordion.Label;
+   Label: typeof AccordionLabel;
+   Meta: typeof AccordionMeta;
    Panel: typeof ZendeskAccordion.Panel;
  };
 
 Accordion.Section = AccordionSection;
 Accordion.Header = AccordionHeader;
-Accordion.Label = ZendeskAccordion.Label;
+Accordion.Label = AccordionLabel;
+Accordion.Meta = AccordionMeta;
 Accordion.Panel = ZendeskAccordion.Panel;
