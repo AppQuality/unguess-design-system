@@ -4,6 +4,7 @@ import { GlobalStyle } from "./stories/shared/globalStyle";
 
 // --- Accordions ---
 export * from "./stories/accordions";
+export * from "./stories/accordion-new";
 
 // --- Alerts ---
 export * from "./stories/notifications/alerts";
