@@ -22,16 +22,16 @@ const AccordionComponent = forwardRef<HTMLDivElement, AccordionArgs>((props, ref
 
 
 
-export const Accordion = AccordionComponent as typeof AccordionComponent & {
-   Section: typeof AccordionSection;
-   Header: typeof AccordionHeader;
-   Label: typeof AccordionLabel;
-   Meta: typeof AccordionMeta;
-   Panel: typeof ZendeskAccordion.Panel;
- };
+export const AccordionNew = AccordionComponent as typeof AccordionComponent & {
+  Section: typeof AccordionSection;
+  Header: typeof AccordionHeader;
+  Label: typeof AccordionLabel;
+  Meta: typeof AccordionMeta;
+  Panel: typeof ZendeskAccordion.Panel;
+};
 
-Accordion.Section = AccordionSection;
-Accordion.Header = AccordionHeader;
-Accordion.Label = AccordionLabel;
-Accordion.Meta = AccordionMeta;
-Accordion.Panel = ZendeskAccordion.Panel;
+AccordionNew.Section = AccordionSection;
+AccordionNew.Header = AccordionHeader;
+AccordionNew.Label = AccordionLabel;
+AccordionNew.Meta = AccordionMeta;
+AccordionNew.Panel = ZendeskAccordion.Panel;

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Accordion, AccordionArgs } from ".";
+import { AccordionNew, AccordionArgs } from ".";
 import { Col } from "../grid/col";
 import { Row } from "../grid/row";
 import { Checkbox } from "../forms/checkbox";
@@ -39,29 +39,29 @@ type StoryArgs = AccordionArgs & {
 
 const meta = {
   title: "Molecules/New Accordion",
-  component: Accordion,
+  component: AccordionNew,
 
   render: ({ ...args }) => {
     return (
       <Row justifyContent="center">
         <Col sm={10}>
-          <Accordion {...args}>
+          <AccordionNew {...args}>
             {items.map((item) => {
               const [selected, setIsSelected] = useState(false);
               return (
-                <Accordion.Section isSelected={selected}>
-                  <Accordion.Header
+                <AccordionNew.Section isSelected={selected}>
+                  <AccordionNew.Header
                     hasCheckbox={args.hasCheckbox}
                     checkboxProps={{ onChange: () => setIsSelected(!selected) }}
                     icon={args.icon}
                   >
-                    <Accordion.Label isLarge={args.isLarge}
+                    <AccordionNew.Label isLarge={args.isLarge}
                       label={item.headerTitle}
                       subtitle={args.subtitles}
                       supertitle={args.supertitles}
                       meta
                     />
-                    {args.hasMeta && <Accordion.Meta>
+                    {args.hasMeta && <AccordionNew.Meta>
                       <Tag>Tag 1</Tag>
                       <Tag>Tag 2</Tag>
                       <Tag
@@ -89,13 +89,13 @@ const meta = {
                           2
                         </Tag.SecondaryText>
                       </Tag>
-                    </Accordion.Meta>}
-                  </Accordion.Header>
-                  <Accordion.Panel>{item.accordionContent}</Accordion.Panel>
-                </Accordion.Section>
+                    </AccordionNew.Meta>}
+                  </AccordionNew.Header>
+                  <AccordionNew.Panel>{item.accordionContent}</AccordionNew.Panel>
+                </AccordionNew.Section>
               )
             })}
-          </Accordion>
+          </AccordionNew>
         </Col>
       </Row>
     );
