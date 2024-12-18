@@ -43,8 +43,7 @@ const meta = {
 
   render: ({ ...args }) => {
     return (
-      <Row justifyContent="center">
-        <Col sm={10}>
+
           <AccordionNew {...args}>
             {items.map((item) => {
               const [selected, setIsSelected] = useState(false);
@@ -96,8 +95,6 @@ const meta = {
               )
             })}
           </AccordionNew>
-        </Col>
-      </Row>
     );
   },
 } satisfies Meta<StoryArgs>;
