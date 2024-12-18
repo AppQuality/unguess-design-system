@@ -3,9 +3,7 @@ import { Checkbox, Field, Label } from "@zendeskgarden/react-forms";
 import { forwardRef } from "react";
 import styled from "styled-components";
 
-interface AccordionSectionArgs extends React.HTMLAttributes<HTMLDivElement> {
-  hasCheckbox?: boolean;
-  checkboxProps?: React.ComponentProps<typeof Checkbox>;
+export interface AccordionSectionArgs extends React.HTMLAttributes<HTMLDivElement> {
   isSelected?: boolean;
 }
 

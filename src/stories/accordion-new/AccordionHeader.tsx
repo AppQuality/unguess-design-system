@@ -4,7 +4,7 @@ import { forwardRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../theme";
 
-interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement> {
+export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement> {
   hasCheckbox?: boolean;
   checkboxProps?: React.ComponentProps<typeof Checkbox>;
   isSelected?: boolean;
