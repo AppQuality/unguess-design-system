@@ -5,11 +5,10 @@ import styled from "styled-components";
 import { LG, MD, SM } from "../typography/typescale";
 import { AccordionContext } from ".";
 
-interface AccordionLabelArgs extends React.HTMLAttributes<HTMLDivElement> {
+export interface AccordionLabelArgs extends React.HTMLAttributes<HTMLDivElement> {
   label?: string;
   subtitle?: string;
   supertitle?: string;
-  meta?: React.ReactNode;
 }
 const StyledAccordionLabel = styled(ZendeskAccordion.Label)<AccordionLabelArgs>`
   padding: 0;
