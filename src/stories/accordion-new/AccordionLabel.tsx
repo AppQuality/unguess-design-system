@@ -1,15 +1,14 @@
 import { Accordion as ZendeskAccordion } from "@zendeskgarden/react-accordions";
-import { forwardRef} from "react";
+import { forwardRef, useContext} from "react";
 import { theme } from "../theme";
 import styled from "styled-components";
 import { LG, MD, SM } from "../typography/typescale";
+import { AccordionContext } from ".";
 
-interface AccordionLabelArgs extends React.HTMLAttributes<HTMLDivElement> {
-  isLarge?: boolean;
+export interface AccordionLabelArgs extends React.HTMLAttributes<HTMLDivElement> {
   label?: string;
   subtitle?: string;
   supertitle?: string;
-  meta?: React.ReactNode;
 }
 const StyledAccordionLabel = styled(ZendeskAccordion.Label)<AccordionLabelArgs>`
   padding: 0;
@@ -21,20 +20,23 @@ export const AccordionLabel = forwardRef<HTMLButtonElement, AccordionLabelArgs>(
   label,
   supertitle,
   subtitle,
-  isLarge,
   ...rest
-}, ref) => (
+}, ref) => {
+
+  const {isCompact} = useContext(AccordionContext);
+
+  return (
   <StyledAccordionLabel ref={ref} {...rest}>
     {supertitle && <SM color={theme.palette.grey[700]} style={{marginBottom: theme.space.xxs}}>{supertitle}</SM>}
     {label &&
-      isLarge
-        ? <LG isBold style={{marginBottom: theme.space.xxs}}>{label}</LG>
-        : <SM isBold style={{marginBottom: theme.space.xxs}}>{label}</SM>
+      isCompact
+      ? <SM isBold style={{marginBottom: theme.space.xxs}}>{label}</SM>
+      : <LG isBold style={{marginBottom: theme.space.xxs}}>{label}</LG>
     }
     {subtitle && 
-      isLarge
-        ? <MD color={theme.palette.grey[600]} style={{marginBottom: theme.space.xs}}>{subtitle}</MD>
-        : <SM color={theme.palette.grey[600]} style={{marginBottom: theme.space.xs}}>{subtitle}</SM>
+      isCompact
+      ? <SM color={theme.palette.grey[600]} style={{marginBottom: theme.space.xs}}>{subtitle}</SM>
+      : <MD color={theme.palette.grey[600]} style={{marginBottom: theme.space.xs}}>{subtitle}</MD>
     }
   </StyledAccordionLabel>
-));
+)});
