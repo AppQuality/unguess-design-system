@@ -1,9 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { AccordionNew } from ".";
-import { Checkbox } from "../forms/checkbox";
 import React from "react";
-import { ReactComponent as FolderIcon } from "@zendeskgarden/svg-icons/src/16/folder-open-stroke.svg";
-import { Placeholder } from "../placeholder";
 import { AccordionLabelArgs } from "./AccordionLabel";
 
 
@@ -52,5 +49,23 @@ const defaultArgs: StoryArgs = {
 export const Default: Story = {
   args: {
     ...defaultArgs,
+  },
+  parameters: {
+    s2d: {
+      initArgs: {
+        ":selector": "[data-garden-id='accordions.button']",
+      },
+      variantProperties: [ /* Figma variant properties definition here */ 
+        {
+          fromArg: "isCompact",
+        },
+        {
+          fromArg: "hasSubtitles",
+        },
+        {
+          fromArg: "hasSupertitles",
+        },
+      ],
+    },
   },
 };
