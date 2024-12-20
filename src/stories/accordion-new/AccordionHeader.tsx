@@ -11,13 +11,18 @@ export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement
   icon?: React.ReactNode;
 }
 
-const StyledAccordionHeader = styled(ZendeskAccordion.Header)`
+const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: boolean }>` // transient props, prefixed with $, avoid react does not recognize the prop on a DOM element warning
   padding: ${theme.space.md};
   display: flex;
   gap: ${theme.space.xs};
   align-items: flex-start;
   [data-garden-id="accordions.rotate_icon"] {
     padding: 0;
+  }
+  .accordion-header-icon-wrapper {
+    > svg {
+     ${props => props.$isCompact ? `width: 12px; height: 12px;` : `width: 16px; height: 16px;`}
+    }
   }
   .accordion-header-inner-wrapper {
     display: flex;
@@ -35,8 +40,8 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   icon,
   ...rest
 }, ref) => {
-  
-  const {hasCheckbox} = useContext(AccordionContext);
+
+  const { hasCheckbox, isCompact } = useContext(AccordionContext);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
@@ -47,7 +52,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   }
 
   return (
-    <StyledAccordionHeader ref={ref} {...rest}>
+    <StyledAccordionHeader ref={ref} $isCompact={isCompact} {...rest}>
       {hasCheckbox &&
         <Field onChange={handleCheckboxChange}>
           <Checkbox
@@ -60,9 +65,11 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
             </Label>
           </Checkbox>
         </Field>}
-      {icon}
+      {icon &&
+        <span className="accordion-header-icon-wrapper">{icon}</span>
+      }
       <div className="accordion-header-inner-wrapper">
-      {children}
+        {children}
       </div>
     </StyledAccordionHeader>
   )
