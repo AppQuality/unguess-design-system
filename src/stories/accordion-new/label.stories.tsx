@@ -1,8 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { AccordionNew } from ".";
 import React from "react";
+import { AccordionNew } from ".";
 import { AccordionLabelArgs } from "./AccordionLabel";
-
 
 type StoryArgs = AccordionLabelArgs & {
   isCompact?: boolean;
@@ -15,11 +14,12 @@ const meta = {
   component: AccordionNew.Label,
   decorators: [
     (Story: React.ComponentType, context) => {
-      return(
-      <AccordionNew level={3} isCompact={context.args.isCompact}>
-        <Story />
-      </AccordionNew>
-    )},
+      return (
+        <AccordionNew level={3} isCompact={context.args.isCompact}>
+          <Story />
+        </AccordionNew>
+      );
+    },
   ],
   render: ({ ...args }) => {
     return (
@@ -32,7 +32,6 @@ const meta = {
           />
         </AccordionNew.Header>
       </AccordionNew.Section>
-
     );
   },
 } satisfies Meta<StoryArgs>;
@@ -49,23 +48,5 @@ const defaultArgs: StoryArgs = {
 export const Default: Story = {
   args: {
     ...defaultArgs,
-  },
-  parameters: {
-    s2d: {
-      initArgs: {
-        ":selector": "[data-garden-id='accordions.button']",
-      },
-      variantProperties: [ /* Figma variant properties definition here */ 
-        {
-          fromArg: "isCompact",
-        },
-        {
-          fromArg: "hasSubtitles",
-        },
-        {
-          fromArg: "hasSupertitles",
-        },
-      ],
-    },
   },
 };
