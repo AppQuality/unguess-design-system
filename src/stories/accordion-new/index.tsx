@@ -5,9 +5,17 @@ import { AccordionHeader } from "./AccordionHeader";
 import { AccordionSection } from "./AccordionSection";
 import { AccordionLabel } from "./AccordionLabel";
 import { AccordionMeta } from "./AccordionMeta";
+import { createContext } from 'react';
 
 export interface AccordionArgs extends IAccordionProps {
+  hasCheckbox?: boolean;
 }
+export interface AccordionContext {
+  isCompact?: boolean;
+  hasCheckbox?: boolean;
+}
+
+export const AccordionContext = createContext({} as AccordionContext);
 
 /**
  * Accordions are headers that can be expanded to reveal content or collapsed to hide it.
@@ -16,9 +24,16 @@ export interface AccordionArgs extends IAccordionProps {
     - To organize related information into sections
     - To surface information through progressive disclosure
  */
-const AccordionComponent = forwardRef<HTMLDivElement, AccordionArgs>((props, ref) => (
-  <ZendeskAccordion ref={ref} {...props} />
-));
+const AccordionComponent = forwardRef<HTMLDivElement, AccordionArgs>((props, ref) => {
+  const context = {
+    isCompact: props.isCompact,
+    hasCheckbox: props.hasCheckbox,
+  };
+  return (
+  <AccordionContext.Provider value={context}>
+    <ZendeskAccordion ref={ref} {...props} />
+  </AccordionContext.Provider>
+)});
 
 
 

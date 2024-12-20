@@ -8,11 +8,11 @@ import { AccordionSectionArgs } from "./AccordionSection";
 
 
 type StoryArgs = AccordionSectionArgs & {
-  hasCheckbox?: boolean;
   selected?: boolean;
+  isCompact?: boolean;
   checkboxProps?: React.ComponentProps<typeof Checkbox>;
+  hasCheckbox?: boolean;
   icon?: React.ReactNode;
-  isLarge?: boolean;
   hasSubtitles?: boolean;
   hasSupertitles?: boolean;
   hasMeta?: boolean;
@@ -34,10 +34,9 @@ const meta = {
     return (
       <AccordionNew.Section isSelected={args.selected}>
         <AccordionNew.Header
-          hasCheckbox={args.hasCheckbox}
           icon={args.icon}
         >
-          <AccordionNew.Label isLarge={args.isLarge}
+          <AccordionNew.Label
             label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, Equum cibum est optimum prandium est"
             subtitle={args.hasSubtitles ? "Some more info on the item" : ""}
             supertitle={args.hasSupertitles ? "00:00:23 - 00:00:27" : ""}
@@ -59,7 +58,7 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs: StoryArgs = {
   hasCheckbox: false,
-  isLarge: false,
+  isCompact: false,
   hasSubtitles: false,
   hasSupertitles: false,
   hasMeta: false,
@@ -75,7 +74,7 @@ export const Default: Story = {
 export const Large: Story = {
   args: {
     ...defaultArgs,
-    isLarge: true,
+    isCompact: true,
   },
 };
 

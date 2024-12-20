@@ -1,14 +1,13 @@
 import { Accordion as ZendeskAccordion } from "@zendeskgarden/react-accordions";
 import { Checkbox, Field, Label } from "@zendeskgarden/react-forms";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../theme";
+import { AccordionContext } from ".";
 
 export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement> {
-  hasCheckbox?: boolean;
   checkboxProps?: React.ComponentProps<typeof Checkbox>;
   isSelected?: boolean;
-  isLarge?: boolean;
   icon?: React.ReactNode;
 }
 
@@ -32,11 +31,13 @@ const StyledAccordionHeader = styled(ZendeskAccordion.Header)`
 export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>(({
   children,
   isSelected,
-  hasCheckbox,
   checkboxProps,
   icon,
   ...rest
 }, ref) => {
+  
+  const {hasCheckbox} = useContext(AccordionContext);
+
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
     if (typeof checkboxProps?.onChange === "function") {

@@ -49,7 +49,9 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs: StoryArgs = {
   level: 3,
-  isBare: false
+  isBare: false,
+  isCompact: false,
+  hasCheckbox: false,
 };
 
 export const Default: Story = {
@@ -62,5 +64,19 @@ export const Bare: Story = {
   args: {
     ...defaultArgs,
     isBare: true,
+  },
+};
+
+export const Compact: Story = {
+  args: {
+    ...defaultArgs,
+    isCompact: true,
+  },
+};
+
+export const WithCheckbox: Story = {
+  args: {
+    ...defaultArgs,
+    hasCheckbox: true,
   },
 };
