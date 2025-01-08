@@ -11,8 +11,12 @@ export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement
   icon?: React.ReactNode;
 }
 
-const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: boolean }>` // transient props, prefixed with $, avoid react does not recognize the prop on a DOM element warning
-  padding: ${theme.space.md};
+const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: boolean, $hasBorder?: boolean }>` // transient props, prefixed with $, avoid react does not recognize the prop on a DOM element warning
+  padding-top: ${theme.space.md};
+  padding-bottom: ${theme.space.md};
+  padding-right: 0;
+  padding-left: 0;
+  ${props => props.$hasBorder ? `padding-left: ${theme.space.xs}; padding-right: ${theme.space.xs};` : ""}
   display: flex;
   gap: ${theme.space.xs};
   align-items: flex-start;
@@ -41,7 +45,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   ...rest
 }, ref) => {
 
-  const { hasCheckbox, isCompact } = useContext(AccordionContext);
+  const { hasCheckbox, isCompact, hasBorder } = useContext(AccordionContext);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
@@ -52,7 +56,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   }
 
   return (
-    <StyledAccordionHeader ref={ref} $isCompact={isCompact} {...rest}>
+    <StyledAccordionHeader ref={ref} $isCompact={isCompact} $hasBorder={hasBorder} {...rest}>
       {hasCheckbox &&
         <Field onChange={handleCheckboxChange}>
           <Checkbox
