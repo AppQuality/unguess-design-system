@@ -16,12 +16,14 @@ const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: bo
   padding-bottom: ${theme.space.md};
   padding-right: 0;
   padding-left: 0;
-  ${props => props.$hasBorder ? `padding-left: ${theme.space.xs}; padding-right: ${theme.space.xs};` : ""}
+  ${props => props.$hasBorder ? `padding-left: ${theme.space.md}; padding-right: ${theme.space.xs};` : ""}
   display: flex;
   gap: ${theme.space.xs};
   align-items: flex-start;
   [data-garden-id="accordions.rotate_icon"] {
     padding: 0;
+    padding-left: ${theme.space.sm};
+    padding-right: ${theme.space.sm};
   }
   .accordion-header-icon-wrapper {
     > svg {

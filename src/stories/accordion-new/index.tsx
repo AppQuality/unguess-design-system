@@ -17,7 +17,6 @@ export interface AccordionContext {
   isCompact?: boolean;
   hasCheckbox?: boolean;
   hasBorder?: boolean;
-  hasShadow?: boolean;
   type?: "default" | "primary" | "danger" | "warning" | "success" | "info";
 }
 
@@ -35,7 +34,6 @@ const AccordionComponent = forwardRef<HTMLDivElement, AccordionArgs>((props, ref
     isCompact: props.isCompact,
     hasCheckbox: props.hasCheckbox,
     hasBorder: props.hasBorder,
-    hasShadow: props.hasShadow,
     type: props.type
   };
   return (

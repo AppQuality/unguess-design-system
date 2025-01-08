@@ -13,28 +13,36 @@ const StyledAccordionSection = styled(ZendeskAccordion.Section) <{ $hasBorder?: 
 
   ${props => props.$type === 'primary' && `
     --semantic-color: ${getColor(props.theme.colors.primaryHue, 600)};
-    --box-shadow-color: ${getColor(props.theme.colors.primaryHue, 600, props.theme, 0.2)};
+    --box-shadow-color: ${getColor(props.theme.colors.primaryHue, 600, props.theme, 0.08)};
+    --box-shadow-color-hover: ${getColor(props.theme.colors.primaryHue, 600, props.theme, 0.2)};
   `};
   ${props => props.$type === 'success' && `
     --semantic-color: ${getColor(props.theme.colors.successHue, 600)};
-    --box-shadow-color: ${getColor(props.theme.colors.successHue, 600, props.theme, 0.2)};
+    --box-shadow-color: ${getColor(props.theme.colors.successHue, 600, props.theme, 0.08)};
+    --box-shadow-color-hover: ${getColor(props.theme.colors.successHue, 600, props.theme, 0.2)};
   `};
   ${props => props.$type === 'warning' && `
     --semantic-color: ${getColor(props.theme.colors.warningHue, 700)};
-    --box-shadow-color: ${getColor(props.theme.colors.warningHue, 700, props.theme, 0.2)};
+    --box-shadow-color: ${getColor(props.theme.colors.warningHue, 700, props.theme, 0.08)};
+    --box-shadow-color-hover: ${getColor(props.theme.colors.warningHue, 700, props.theme, 0.2)};
   `};
   ${props => props.$type === 'danger' && `
     --semantic-color: ${getColor(props.theme.colors.dangerHue, 900)};
-    --box-shadow-color: ${getColor(props.theme.colors.dangerHue, 900, props.theme, 0.2)};
+    --box-shadow-color: ${getColor(props.theme.colors.dangerHue, 900, props.theme, 0.08)};
+    --box-shadow-color-hover: ${getColor(props.theme.colors.dangerHue, 900, props.theme, 0.2)};
   `};
 
   ${props => props.$hasBorder && `
     border: 2px solid var(--semantic-color);
-    border-radius: ${props.theme.borderRadii.md};
-    margin-bottom: ${props.theme.space.sm};
+    border-radius: ${props.theme.borderRadii.lg};
+    margin-bottom: ${props.theme.space.md};
     background-color: ${props.theme.palette.white};
 
     box-shadow: 4px 4px 0px 0px var(--box-shadow-color);
+
+    &:hover {
+      box-shadow: 4px 4px 0px 0px var(--box-shadow-color-hover);
+    }
     
     > section {
       border-bottom: none;
@@ -52,14 +60,13 @@ export const AccordionSection = forwardRef<HTMLDivElement, AccordionSectionArgs>
   className,
   ...rest
 }, ref) => {
-  const { hasBorder, hasShadow, type } = useContext(AccordionContext);
+  const { hasBorder, type } = useContext(AccordionContext);
   return (
     <StyledAccordionSection
       ref={ref}
       className={`${className} ${isSelected ? 'isSelected' : ''}`}
       {...rest}
       $hasBorder={hasBorder}
-      $hasShadow={hasShadow}
       $type={type}
     >
       {children}
