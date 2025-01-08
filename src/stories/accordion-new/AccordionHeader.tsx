@@ -35,6 +35,7 @@ const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: bo
     flex-direction: row;
     flex-wrap: wrap;
     gap: ${theme.space.xs};
+    row-gap: ${theme.space.xxs};
     width: 100%;
   }
 `;
