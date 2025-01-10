@@ -8,9 +8,11 @@ export interface AccordionSectionArgs extends React.HTMLAttributes<HTMLDivElemen
   isSelected?: boolean;
 }
 
-const StyledAccordionSection = styled(ZendeskAccordion.Section) <{ $hasBorder?: boolean, $hasShadow?: boolean, $type?: "default" | "primary" | "danger" | "warning" | "success" | "info" }>`
-  --semantic-color: ${props => props.theme.palette.grey[300]};
-
+const StyledAccordionSection = styled(ZendeskAccordion.Section) <{ $hasBorder?: boolean, $type?: "default" | "primary" | "danger" | "warning" | "success" | "info" }>`
+  --semantic-color: ${props => getColor(props.theme.colors.neutralHue, 300)};
+  --box-shadow-color: ${props => getColor(props.theme.colors.neutralHue, 600, props.theme, 0.08)};
+  --box-shadow-color-hover: ${props => getColor(props.theme.colors.neutralHue, 600, props.theme, 0.2)};
+  
   ${props => props.$type === 'primary' && `
     --semantic-color: ${getColor(props.theme.colors.primaryHue, 600)};
     --box-shadow-color: ${getColor(props.theme.colors.primaryHue, 600, props.theme, 0.08)};
@@ -49,8 +51,8 @@ const StyledAccordionSection = styled(ZendeskAccordion.Section) <{ $hasBorder?: 
     }
 
     svg[data-garden-id='accordions.rotate_icon'] {
-    color: var(--semantic-color);
-  }
+      color: ${props.$type === 'default' ||  !props.$type ? getColor(props.theme.colors.neutralHue, 600) : 'var(--semantic-color)'};
+    }
   `}
 `;
 
