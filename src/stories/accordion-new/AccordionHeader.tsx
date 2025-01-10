@@ -51,11 +51,9 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   const { hasCheckbox, isCompact, hasBorder } = useContext(AccordionContext);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation();
     if (typeof checkboxProps?.onChange === "function") {
       checkboxProps.onChange(e);
     }
-    return false;
   }
 
   return (
@@ -67,7 +65,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
             onChange={handleCheckboxChange}
           >
             {checkboxProps?.["aria-label"]}
-            <Label hidden>
+            <Label hidden style={{ height: "16px" }}>
               {checkboxProps?.["aria-label"]}
             </Label>
           </Checkbox>
