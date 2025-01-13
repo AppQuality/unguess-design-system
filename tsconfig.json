@@ -18,5 +18,5 @@
     "declaration": true,
     "outDir": "./build"
   },
-  "include": ["src"]
+  "include": ["src", "src/stories/info-cards/_types.tsx", "src/stories/draccard/.bak_types.ts"]
 }
