@@ -4,15 +4,17 @@ export interface DracCardArgs {
   title: string;
   description: string;
   icon: React.ReactNode;
-  previousPrice: {
-    name: string;
-    isStrikeThrough: boolean;
+  price: {
+    firstRow?: {
+      value: string;
+      isStrikeThrough: boolean;
+    };
+    value: string;
   };
   currentPrice: string;
-  addictionalInfo: {
+  additionalInfo: {
     icon: React.ReactNode;
     text: string;
   }[];
   background: string;
 }
-

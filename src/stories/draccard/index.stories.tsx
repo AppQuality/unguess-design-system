@@ -1,31 +1,35 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { DracCard } from ".";
+import { DracCardArgs } from "./_types";
 
-interface Tile {
-  value: string;
-  label: string;
-  icon: React.FC;
-  description: string;
-  disabled?: boolean;
-}
+const defaultArgs: DracCardArgs = {
+  title: "Title",
+  description: "Description",
+  icon: <div>Icon</div>,
+  price: {
+    firstRow: {
+      value: "First Row",
+      isStrikeThrough: false,
+    },
+    value: "Value",
+  },
+  currentPrice: "Current Price",
+  additionalInfo: [
+    {
+      icon: <div>Icon</div>,
+      text: "Text",
+    },
+  ],
+  background: "green",
+};
 
-interface TilesStoryProps {
-  tiles: Array<Tile>;
-  hasDescription: boolean;
-}
-
-const Template: Story<TilesStoryProps> = ({
-  tiles,
-  hasDescription,
-  ...args
-}) => {
-  return (
-  <div>ciao</div>
-  );
+const Template: Story<DracCardArgs> = (args) => {
+  return <DracCard {...args} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
+  ...defaultArgs,
 };
 
 export default {

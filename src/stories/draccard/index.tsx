@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { DracCardArgs } from "./_types";
+import { LG, MD, SM } from "../typography/typescale";
+import { ReactComponent as ArrowRight } from "../../assets/icons/arrow-right.svg";
 
 /**
  * DracCard are Cards styled with icons and images to engage CTA.
@@ -18,13 +20,11 @@ const DracCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding: ${({ theme }) => `${theme.space.xs} ${theme.space.md}`};
-  border-radius: ${({ theme }) => theme.borderRadii.sm};
   box-shadow: 0px 4px 8px 0px rgba(47, 57, 65, 0.15);
   &:hover {
     box-shadow: 0px 20px 28px 0px rgba(47, 57, 65, 0.35);
   }
+  border-radius: ${({ theme }) => theme.borderRadii.lg};
 `;
 
 const DracCardHeader = styled.div<{ headerBackground: string }>`
@@ -32,19 +32,63 @@ const DracCardHeader = styled.div<{ headerBackground: string }>`
   justify-content: space-between;
   align-items: center;
   background: ${(props) => props.headerBackground};
+  padding: ${({ theme }) => `${theme.space.xs} ${theme.space.md}`};
+  border-radius: ${({ theme }) =>
+    `${theme.borderRadii.lg} ${theme.borderRadii.lg} 0 0`};
 `;
 
+const DracCardTextContaier = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const StyledSM = styled(SM)<{ isStrikethrough: boolean }>`
+  text-decoration: ${(props) =>
+    props.isStrikethrough ? "line-through" : "none"};
+`;
 const DracCardBody = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: ${({ theme }) => theme.palette.white[800]};
+  padding: ${({ theme }) => `${theme.space.xs} ${theme.space.md}`};
+  border-radius: ${({ theme }) =>
+    `0 0 ${theme.borderRadii.lg} ${theme.borderRadii.lg}`};
+`;
+const DracCardAdditionalInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.space.xs};
 `;
 
 const DracCard = (props: DracCardArgs) => {
   return (
     <DracCardContainer>
-      <DracCardHeader headerBackground={props.background}></DracCardHeader>
-      <DracCardBody></DracCardBody>
+      <DracCardHeader headerBackground={props.background}>
+        <DracCardTextContaier>
+          <SM>{props.description}</SM>
+          <LG isBold>{props.title}</LG>
+        </DracCardTextContaier>
+        {props.icon}
+      </DracCardHeader>
+      <DracCardBody>
+        <DracCardTextContaier>
+          {props.price.firstRow && (
+            <StyledSM isStrikethrough={props.price.firstRow.isStrikeThrough}>
+              {props.price.firstRow.value}
+            </StyledSM>
+          )}
+          <MD>{props.price.value}</MD>
+        </DracCardTextContaier>
+        <DracCardAdditionalInfo>
+          {props.additionalInfo.map((info) => (
+            <div key={info.text}>
+              {info.icon}
+              <SM>{info.text}</SM>
+            </div>
+          ))}
+          <ArrowRight />
+        </DracCardAdditionalInfo>
+      </DracCardBody>
     </DracCardContainer>
   );
 };
