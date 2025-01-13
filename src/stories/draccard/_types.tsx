@@ -1,13 +1,18 @@
-import { ChangeEventHandler } from "react";
-import { ITilesProps } from "@zendeskgarden/react-forms";
+import React from "react";
 
-export interface TilesArgs extends ITilesProps {
-  /** Sets the value of the selected radio button */
-  value?: string;
-  /** Handles radio selection */
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  /** Sets the name used to reference the value of the control */
-  name: string;
-  /** Centers tile content */
-  isCentered?: boolean;
+export interface DracCardArgs {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  previousPrice: {
+    name: string;
+    isStrikeThrough: boolean;
+  };
+  currentPrice: string;
+  addictionalInfo: {
+    icon: React.ReactNode;
+    text: string;
+  }[];
+  background: string;
 }
+
