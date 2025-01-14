@@ -47,21 +47,24 @@ const meta = {
         type: "select",
       },
     },
+    background: { table: { disable: true } },
+    icon: { table: { disable: true } },
   },
 
   render: ({ type, background, ...args }) => {
-    const getBackground = () => {
+    const getAdditionalProps= () => {
       if (type === "experiential")
-        return "linear-gradient(90deg, rgba(12,77,94,1) 35%, rgba(43,132,115,1) 100%)";
+        return {background: "linear-gradient(90deg, rgba(12,77,94,1) 35%, rgba(43,132,115,1) 100%)",icon: <ExperientialIcon />};
       if (type === "functional") {
-        return "linear-gradient(91deg, #001825 0%, #003A57 100%)";
+        return {background: "linear-gradient(91deg, #001825 0%, #003A57 100%)",icon: <FunctionalIcon />,};
       }
       if (type === "usability") {
-        return "linear-gradient(91deg, #8A0C49 0%, #D81E57 100%)";
+        return {background: "linear-gradient(91deg, #8A0C49 0%, #D81E57 100%)", icon: <AccessibilityIcon />,};
       }
-      return background;
+      return {background};
     };
-    return <ServiceTile {...args} background={getBackground()} />;
+    const additionalProps = getAdditionalProps();
+    return <ServiceTile {...args} {...additionalProps} />;
   },
 } satisfies Meta<Args>;
 
@@ -88,10 +91,8 @@ export const ExperiencialTile: Story = {
   args: {
     title: "Collect valuable feedbacks",
     description: "Assess your product usability",
-    icon: <ExperientialIcon />,
     price: "12 Token",
     superscript: "Offerta Black Friday",
-
     additionalInfo: [
       {
         icon: <ClockIcon width={12} height={12} />,
@@ -110,7 +111,6 @@ export const AccessibilityTile: Story = {
   args: {
     title: "Remove digital barriers",
     description: "Verify your accessibility compliance",
-    icon: <AccessibilityIcon />,
     price: "12 Token",
     superscript: "App exclusive",
     additionalInfo: [
@@ -131,7 +131,6 @@ export const FunctionalTile: Story = {
   args: {
     title: "Uncover critical issues",
     description: "Explore your latest release",
-    icon: <FunctionalIcon />,
     price: "5 Token",
     superscript: "8 Token",
     isSuperscriptStrikethrough: true,
