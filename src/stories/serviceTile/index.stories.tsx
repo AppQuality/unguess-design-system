@@ -4,6 +4,7 @@ import { fn } from "@storybook/test";
 import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
 import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
 import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
+import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
 
 const TYPES = [
   "none" as const,
@@ -91,7 +92,7 @@ export const Default: Story = {
   },
 };
 
-export const ExperiencialCard: Story = {
+export const ExperiencialTile: Story = {
   args: {
     title: "Collect valuable feedbacks",
     description: "Assess your product usability",
@@ -116,3 +117,31 @@ export const ExperiencialCard: Story = {
     type: "experiential",
   },
 };
+
+export const AccessibilityTile: Story = {
+  args: {
+    title: "Remove digital barriers",
+    description: "Verify your accessibility compliance",
+    icon: <ExperientialIcon />,
+    price: {
+      firstRow: {
+        value: "App exclusive",
+        isStrikeThrough: false,
+      },
+      currentPrice: "12",
+    },
+    additionalInfo: [
+      {
+        icon: <ClockIcon width={12} height={12} />,
+        text: "72 h",
+      },
+      {
+        icon: <ListBullet width={12} height={12} />,
+        text: "Type Issues",
+      },
+    ],
+    type: "usability",
+  },
+};
+
+
