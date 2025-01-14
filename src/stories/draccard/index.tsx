@@ -67,19 +67,25 @@ const DracCard = (props: DracCardArgs) => {
       <DracCardHeader headerBackground={props.background}>
         <DracCardTextContaier>
           <SM color="white">{props.description}</SM>
-          <LG color="white" isBold>{props.title}</LG>
+          <LG color="white" isBold>
+            {props.title}
+          </LG>
         </DracCardTextContaier>
         {props.icon}
       </DracCardHeader>
       <DracCardBody>
         <DracCardTextContaier>
           {props.price.firstRow && (
-            <StyledSM color={`${theme.palette.grey[600]}`}
-             isStrikethrough={props.price.firstRow.isStrikeThrough}>
+            <StyledSM
+              color={`${theme.palette.grey[600]}`}
+              isStrikethrough={props.price.firstRow.isStrikeThrough}
+            >
               {props.price.firstRow.value}
             </StyledSM>
           )}
-          <MD color={props.background}>{props.price.currentPrice}</MD>
+          <MD style={{ color: props.background, fontWeight: 500 }}>
+            {props.price.currentPrice}
+          </MD>
         </DracCardTextContaier>
         <DracCardAdditionalInfo>
           {props.additionalInfo.map((info) => (
@@ -88,7 +94,7 @@ const DracCard = (props: DracCardArgs) => {
               <SM color={`${theme.palette.grey[700]}`}>{info.text}</SM>
             </div>
           ))}
-          <ArrowRight color={props.background}/>
+          <ArrowRight color={props.background} />
         </DracCardAdditionalInfo>
       </DracCardBody>
     </DracCardContainer>
