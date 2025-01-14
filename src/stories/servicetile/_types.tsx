@@ -1,6 +1,7 @@
 import React from "react";
 
-export interface DracCardArgs {
+export interface ServiceTileArgs {
+  onClick?: () => void,
   title: string;
   description: string;
   icon: React.ReactNode;
