@@ -2,9 +2,13 @@ import { Meta, StoryObj } from "@storybook/react";
 import { ServiceTile } from ".";
 import { fn } from "@storybook/test";
 import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
+import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
+import { ReactComponent as FunctionalIcon } from "./data/functional.svg";
 import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
 import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
 import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
+import { ReactComponent as Heart } from "@zendeskgarden/svg-icons/src/16/heart-stroke.svg";
+
 
 const TYPES = [
   "none" as const,
@@ -122,7 +126,7 @@ export const AccessibilityTile: Story = {
   args: {
     title: "Remove digital barriers",
     description: "Verify your accessibility compliance",
-    icon: <ExperientialIcon />,
+    icon: <AccessibilityIcon />,
     price: {
       firstRow: {
         value: "App exclusive",
@@ -141,6 +145,32 @@ export const AccessibilityTile: Story = {
       },
     ],
     type: "usability",
+  },
+};
+
+export const FunctionalTile: Story = {
+  args: {
+    title: "Uncover critical issues",
+    description: "Explore your latest release",
+    icon: <FunctionalIcon />,
+    price: {
+      firstRow: {
+        value: "8 Token",
+        isStrikeThrough: true,
+      },  
+      currentPrice: "5",
+    },
+    additionalInfo: [
+      {
+        icon: <ClockIcon width={12} height={12} />,
+        text: "12 h",
+      },
+      {
+        icon: <Heart width={12} height={12} />,
+        text: "5 bugs",
+      },
+    ],
+    type: "functional",
   },
 };
 
