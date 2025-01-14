@@ -109,7 +109,7 @@ const ServiceTile = (props: {
               </SM>
             </div>
           ))}
-          <ArrowRight />
+          <ArrowRight  color={`${theme.palette.blue[700]}`} stroke={`${theme.palette.blue[700]}`}/>
         </ServiceTileAdditionalInfo>
       </ServiceTileBody>
     </ServiceTileContainer>

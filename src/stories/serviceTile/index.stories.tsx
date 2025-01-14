@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
 import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
 import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
-import { ServiceTile } from ".";
+import { ServiceTile } from "./";
 import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
 import { ReactComponent as Bug } from "./data/bug-solid.svg";
 import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
