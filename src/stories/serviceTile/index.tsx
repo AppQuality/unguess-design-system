@@ -59,7 +59,7 @@ const ServiceTileBody = styled.div`
 const ServiceTileAdditionalInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.space.xs};
+  gap: ${({ theme }) => theme.space.sm};
 `;
 
 const MeasurementWrapper = styled.span`
