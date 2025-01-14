@@ -1,14 +1,13 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ServiceTile } from ".";
 import { fn } from "@storybook/test";
-import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
-import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
-import { ReactComponent as FunctionalIcon } from "./data/functional.svg";
-import { ReactComponent as Bug } from "./data/bug-solid.svg";
 import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
-import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
 import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
-
+import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
+import { ServiceTile } from ".";
+import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
+import { ReactComponent as Bug } from "./data/bug-solid.svg";
+import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
+import { ReactComponent as FunctionalIcon } from "./data/functional.svg";
 
 const TYPES = [
   "none" as const,
@@ -29,13 +28,8 @@ const meta = {
     description: "Description",
     title: "Title",
     icon: <div>icon</div>,
-    price: {
-      firstRow: {
-        value: "First Row",
-        isStrikeThrough: false,
-      },
-      currentPrice: "Value",
-    },
+    price: "Value",
+    superscript: "First Row",
     additionalInfo: [
       {
         icon: <div>Icon</div>,
@@ -79,13 +73,7 @@ export const Default: Story = {
     description: "Description",
     title: "Title",
     icon: <div>icon</div>,
-    price: {
-      firstRow: {
-        value: "First Row",
-        isStrikeThrough: false,
-      },
-      currentPrice: "Value",
-    },
+
     additionalInfo: [
       {
         icon: <div>Icon</div>,
@@ -101,13 +89,9 @@ export const ExperiencialTile: Story = {
     title: "Collect valuable feedbacks",
     description: "Assess your product usability",
     icon: <ExperientialIcon />,
-    price: {
-      firstRow: {
-        value: "Offerta Black Friday",
-        isStrikeThrough: false,
-      },
-      currentPrice: "12",
-    },
+    price: "12 Token",
+    superscript: "Offerta Black Friday",
+
     additionalInfo: [
       {
         icon: <ClockIcon width={12} height={12} />,
@@ -127,13 +111,8 @@ export const AccessibilityTile: Story = {
     title: "Remove digital barriers",
     description: "Verify your accessibility compliance",
     icon: <AccessibilityIcon />,
-    price: {
-      firstRow: {
-        value: "App exclusive",
-        isStrikeThrough: false,
-      },
-      currentPrice: "12",
-    },
+    price: "12 Token",
+    superscript: "App exclusive",
     additionalInfo: [
       {
         icon: <ClockIcon width={12} height={12} />,
@@ -153,13 +132,9 @@ export const FunctionalTile: Story = {
     title: "Uncover critical issues",
     description: "Explore your latest release",
     icon: <FunctionalIcon />,
-    price: {
-      firstRow: {
-        value: "8 Token",
-        isStrikeThrough: true,
-      },  
-      currentPrice: "5",
-    },
+    price: "5 Token",
+    superscript: "8 Token",
+    isSuperscriptStrikethrough: true,
     additionalInfo: [
       {
         icon: <ClockIcon width={12} height={12} />,
@@ -173,5 +148,3 @@ export const FunctionalTile: Story = {
     type: "functional",
   },
 };
-
-

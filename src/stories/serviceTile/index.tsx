@@ -1,27 +1,14 @@
 import styled from "styled-components";
-import { ServiceTileArgs } from "./_types";
-import { LG, MD, SM } from "../typography/typescale";
 import { ReactComponent as ArrowRight } from "../../assets/icons/arrow-right.svg";
 import { theme } from "../theme";
-
-/**
- * ServiceTile are Cards styled with icons and images to engage CTA.
-
- * Used for this:
-    - Like Radios, Tiles are for choices that can't occur at the same time
-
- * Not for this:
-    - To choose more than one option at once, use a Checkbox instead
-    - To select from a long list of options, use a Select
-    - To define an action, use a Button instead
-    - For navigation, use an Anchor instead
- */
+import { LG, MD, SM } from "../typography/typescale";
 
 const ServiceTileContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: 0px 4px 8px 0px rgba(47, 57, 65, 0.15);
+  transition: box-shadow 0.3s;
   &:hover {
     box-shadow: 0px 20px 28px 0px rgba(47, 57, 65, 0.35);
   }
@@ -43,10 +30,14 @@ const ServiceTileTextContaier = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.space.xxs};
 `;
-const StyledSM = styled(SM)<{ isStrikethrough: boolean }>`
+const Superscript = styled(SM)<{ isStrikethrough?: boolean }>`
   text-decoration: ${(props) =>
     props.isStrikethrough ? "line-through" : "none"};
+  color: ${({ theme }) => theme.palette.grey[600]};
 `;
+Superscript.defaultProps = {
+  isBold: true,
+};
 const ServiceTileBody = styled.div`
   display: flex;
   justify-content: space-between;
@@ -62,13 +53,30 @@ const ServiceTileAdditionalInfo = styled.div`
   gap: ${({ theme }) => theme.space.sm};
 `;
 
-const MeasurementWrapper = styled.span`
-  background: linear-gradient(91deg, #003a57 11.98%, #00b280 100%);
+const PriceWrapper = styled(MD)`
+  ${({ theme }) =>
+    `background: linear-gradient(91deg, ${theme.palette.blue[600]} 11.98%,${theme.palette.green[400]}   100%);`}
   background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
+PriceWrapper.defaultProps = {
+  isBold: true,
+};
 
-const ServiceTile = (props: ServiceTileArgs) => {
+const ServiceTile = (props: {
+  onClick?: () => void;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  price: string;
+  superscript?: string;
+  isSuperscriptStrikethrough?: boolean;
+  additionalInfo: {
+    icon: React.ReactNode;
+    text: string;
+  }[];
+  background: string;
+}) => {
   return (
     <ServiceTileContainer onClick={props.onClick}>
       <ServiceTileHeader headerBackground={props.background}>
@@ -82,19 +90,12 @@ const ServiceTile = (props: ServiceTileArgs) => {
       </ServiceTileHeader>
       <ServiceTileBody>
         <ServiceTileTextContaier>
-          {props.price.firstRow && (
-            <StyledSM
-              isBold
-              color={`${theme.palette.grey[600]}`}
-              isStrikethrough={props.price.firstRow.isStrikeThrough}
-            >
-              {props.price.firstRow.value}
-            </StyledSM>
+          {props.superscript && (
+            <Superscript isStrikethrough={props.isSuperscriptStrikethrough}>
+              {props.superscript}
+            </Superscript>
           )}
-          <MD isBold>
-            {props.price.currentPrice}{" "}
-            <MeasurementWrapper>Token</MeasurementWrapper>
-          </MD>
+          <PriceWrapper>{props.price}</PriceWrapper>
         </ServiceTileTextContaier>
         <ServiceTileAdditionalInfo>
           {props.additionalInfo.map((info) => (
