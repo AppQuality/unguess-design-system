@@ -4,10 +4,10 @@ import { fn } from "@storybook/test";
 import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
 import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
 import { ReactComponent as FunctionalIcon } from "./data/functional.svg";
+import { ReactComponent as Bug } from "./data/bug-solid.svg";
 import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
 import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
 import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
-import { ReactComponent as Heart } from "@zendeskgarden/svg-icons/src/16/heart-stroke.svg";
 
 
 const TYPES = [
@@ -166,7 +166,7 @@ export const FunctionalTile: Story = {
         text: "12 h",
       },
       {
-        icon: <Heart width={12} height={12} />,
+        icon: <Bug width={12} height={12} />,
         text: "5 bugs",
       },
     ],
