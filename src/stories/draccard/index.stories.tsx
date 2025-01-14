@@ -11,9 +11,8 @@ const defaultArgs: DracCardArgs = {
       value: "First Row",
       isStrikeThrough: false,
     },
-    value: "Value",
+    currentPrice: "Value",
   },
-  currentPrice: "Current Price",
   additionalInfo: [
     {
       icon: <div>Icon</div>,
@@ -23,8 +22,81 @@ const defaultArgs: DracCardArgs = {
   background: "green",
 };
 
+const props: DracCardArgs[] = [
+  {
+    title: "Title",
+    description: "Description",
+    icon: <div>Icon</div>,
+    price: {
+      firstRow: {
+        value: "First Row",
+        isStrikeThrough: false,
+      },
+      currentPrice: "Current Price",
+    },
+    additionalInfo: [
+      {
+        icon: <div>Icon</div>,
+        text: "Text",
+      },
+    ],
+    background: "green",
+  },
+  {
+    title: "Access your product usability",
+    description: "Collect valuable feedbacks",
+    icon: <div>Icon</div>,
+    price: {
+      firstRow: {
+        value: "First Row",
+        isStrikeThrough: false,
+      },
+      currentPrice: "Offerta Black Friday",
+    },
+    additionalInfo: [
+      {
+        icon: <div>Icon</div>,
+        text: "72 h",
+      },
+      {
+        icon: <div>Icon</div>,
+        text: "5 users",
+      },
+    ],
+    background: "linear-gradient(91deg, #001825 0%, #003A57 100%);",
+  },
+  {
+    title: "Explore your latest release",
+    description: "Uncover Critial Issues",
+    icon: <div>Icon</div>,
+    price: {
+      firstRow: {
+        value: "8 Token",
+        isStrikeThrough: true,
+      },
+      currentPrice: "5 Token",
+    },
+    additionalInfo: [
+      {
+        icon: <div>Icon</div>,
+        text: "12 h",
+      },
+      {
+        icon: <div>Icon</div>,
+        text: "5 bugs",
+      },
+    ],
+    background: "linear-gradient(90deg, rgba(12,77,94,1) 35%, rgba(43,132,115,1) 100%);",
+  },
+
+]
+
 const Template: Story<DracCardArgs> = (args) => {
-  return <DracCard {...args} />;
+  return (<>
+  {props.map((prop) => (
+    <DracCard {...prop} />
+  ))}
+    </>);
 };
 
 export const Default = Template.bind({});

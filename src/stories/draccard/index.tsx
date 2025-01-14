@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { DracCardArgs } from "./_types";
 import { LG, MD, SM } from "../typography/typescale";
 import { ReactComponent as ArrowRight } from "../../assets/icons/arrow-right.svg";
+import { theme } from "../theme";
 
 /**
  * DracCard are Cards styled with icons and images to engage CTA.
@@ -65,28 +66,29 @@ const DracCard = (props: DracCardArgs) => {
     <DracCardContainer>
       <DracCardHeader headerBackground={props.background}>
         <DracCardTextContaier>
-          <SM>{props.description}</SM>
-          <LG isBold>{props.title}</LG>
+          <SM color="white">{props.description}</SM>
+          <LG color="white" isBold>{props.title}</LG>
         </DracCardTextContaier>
         {props.icon}
       </DracCardHeader>
       <DracCardBody>
         <DracCardTextContaier>
           {props.price.firstRow && (
-            <StyledSM isStrikethrough={props.price.firstRow.isStrikeThrough}>
+            <StyledSM color={`${theme.palette.grey[600]}`}
+             isStrikethrough={props.price.firstRow.isStrikeThrough}>
               {props.price.firstRow.value}
             </StyledSM>
           )}
-          <MD>{props.price.value}</MD>
+          <MD color={props.background}>{props.price.currentPrice}</MD>
         </DracCardTextContaier>
         <DracCardAdditionalInfo>
           {props.additionalInfo.map((info) => (
             <div key={info.text}>
               {info.icon}
-              <SM>{info.text}</SM>
+              <SM color={`${theme.palette.grey[700]}`}>{info.text}</SM>
             </div>
           ))}
-          <ArrowRight />
+          <ArrowRight color={props.background}/>
         </DracCardAdditionalInfo>
       </DracCardBody>
     </DracCardContainer>

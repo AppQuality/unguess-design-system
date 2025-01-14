@@ -9,9 +9,8 @@ export interface DracCardArgs {
       value: string;
       isStrikeThrough: boolean;
     };
-    value: string;
+    currentPrice: string;
   };
-  currentPrice: string;
   additionalInfo: {
     icon: React.ReactNode;
     text: string;
