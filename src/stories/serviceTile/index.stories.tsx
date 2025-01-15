@@ -2,7 +2,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
 import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
-import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg";
 import { ServiceTile } from "./";
 import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
 import { ReactComponent as Bug } from "./data/bug-solid.svg";
@@ -52,16 +51,26 @@ const meta = {
   },
 
   render: ({ type, background, ...args }) => {
-    const getAdditionalProps= () => {
+    const getAdditionalProps = () => {
       if (type === "experiential")
-        return {background: "linear-gradient(90deg, rgba(12,77,94,1) 35%, rgba(43,132,115,1) 100%)",icon: <ExperientialIcon />};
+        return {
+          background:
+            "linear-gradient(90deg, rgba(12,77,94,1) 35%, rgba(43,132,115,1) 100%)",
+          icon: <ExperientialIcon />,
+        };
       if (type === "functional") {
-        return {background: "linear-gradient(91deg, #001825 0%, #003A57 100%)",icon: <FunctionalIcon />,};
+        return {
+          background: "linear-gradient(91deg, #001825 0%, #003A57 100%)",
+          icon: <FunctionalIcon />,
+        };
       }
       if (type === "usability") {
-        return {background: "linear-gradient(91deg, #8A0C49 0%, #D81E57 100%)", icon: <AccessibilityIcon />,};
+        return {
+          background: "linear-gradient(91deg, #8A0C49 0%, #D81E57 100%)",
+          icon: <AccessibilityIcon />,
+        };
       }
-      return {background};
+      return { background };
     };
     const additionalProps = getAdditionalProps();
     return <ServiceTile {...args} {...additionalProps} />;
@@ -93,16 +102,6 @@ export const ExperiencialTile: Story = {
     description: "Assess your product usability",
     price: "12 Token",
     superscript: "Offerta Black Friday",
-    additionalInfo: [
-      {
-        icon: <ClockIcon width={12} height={12} />,
-        text: "72 h",
-      },
-      {
-        icon: <UserIcon width={12} height={12} />,
-        text: "5 users",
-      },
-    ],
     type: "experiential",
   },
 };
