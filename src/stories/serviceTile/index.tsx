@@ -26,7 +26,7 @@ const ServiceTileHeader = styled.div<{ headerBackground: string }>`
   border-radius: ${({ theme }) =>
     `${theme.borderRadii.lg} ${theme.borderRadii.lg} 0 0`};
 
-  gap: ${({ theme }) => theme.space.xxs};
+  gap: ${({ theme }) => theme.space.md };
   svg {
     flex-shrink: 0;
   }
