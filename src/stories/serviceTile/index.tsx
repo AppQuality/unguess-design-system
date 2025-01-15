@@ -6,7 +6,8 @@ import { LG, MD, SM } from "../typography/typescale";
 const ServiceTileContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  height: 100%;
   box-shadow: 0px 4px 8px 0px rgba(47, 57, 65, 0.15);
   transition: box-shadow 0.3s;
   &:hover {
@@ -19,10 +20,16 @@ const ServiceTileHeader = styled.div<{ headerBackground: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-grow: 1;
   background: ${(props) => props.headerBackground};
   padding: ${({ theme }) => `${theme.space.sm} ${theme.space.md}`};
   border-radius: ${({ theme }) =>
     `${theme.borderRadii.lg} ${theme.borderRadii.lg} 0 0`};
+
+  gap: ${({ theme }) => theme.space.xxs};
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 const ServiceTileTextContainer = styled.div`

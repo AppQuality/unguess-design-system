@@ -164,3 +164,15 @@ export const FunctionalTile: Story = {
     type: "functional",
   },
 };
+
+export const WithLongTitle: Story = {
+  args: {
+    title:
+      "Uncover critical issues. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Explore your latest release",
+    price: "5 Token",
+    superscript: "8 Token",
+    isSuperscriptStrikethrough: true,
+    type: "functional",
+  },
+};
