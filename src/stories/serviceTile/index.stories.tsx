@@ -35,13 +35,6 @@ const meta = {
     additionalInfo: <Placeholder />,
     background: "green",
   },
-  parameters: {
-    docs: {
-      source: {
-        type: "code",
-      },
-    },
-  },
   argTypes: {
     type: {
       options: TYPES,
