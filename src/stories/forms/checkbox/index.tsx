@@ -1,5 +1,4 @@
-import { Checkbox as ZendeskCheckbox } from "@zendeskgarden/react-forms";
-import { CheckboxArgs } from "./_types";
+import { ICheckboxProps, Checkbox as ZendeskCheckbox } from "@zendeskgarden/react-forms";
 import styled from "styled-components";
 
 const UgCheckbox = styled(ZendeskCheckbox)``;
@@ -14,6 +13,6 @@ const UgCheckbox = styled(ZendeskCheckbox)``;
    *  - To give the user a mutually exclusive choice, use the Radio component instead
    *  - To let users activate an option that takes effect immediately, use a Toggle instead
    **/
-const Checkbox = (props: CheckboxArgs) => <UgCheckbox {...props} />;
+const Checkbox = (props: ICheckboxProps) => <UgCheckbox {...props} />;
 
 export { Checkbox };
