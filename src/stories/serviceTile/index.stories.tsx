@@ -8,8 +8,10 @@ import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
 import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
 import { ReactComponent as FunctionalIcon } from "./data/functional.svg";
 
-import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
-import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
+import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/12/clock-stroke.svg";
+import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/12/list-bullet-stroke.svg";
+import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/12/user-solo-stroke.svg";
+import { ReactComponent as BugIcon } from "./data/bug-solid.svg";
 
 const TYPES = [
   "none" as const,
@@ -57,13 +59,13 @@ const meta = {
           additionalInfo: (
             <div style={{ display: "flex", gap: "8px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ClockIcon />
+                <ClockIcon/>
                 <SM isBold color={`${theme.palette.grey[700]}`}>
                   72h
                 </SM>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ListBullet />
+                <UserIcon />
                 <SM isBold color={`${theme.palette.grey[700]}`}>
                   5 users
                 </SM>
@@ -84,7 +86,7 @@ const meta = {
                 </SM>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ListBullet />
+                <BugIcon/>
                 <SM isBold color={`${theme.palette.grey[700]}`}>
                   5 bugs
                 </SM>
@@ -106,7 +108,7 @@ const meta = {
                 </SM>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ListBullet />
+                <ListBullet  />
                 <SM isBold color={`${theme.palette.grey[700]}`}>
                   Type A Issues
                 </SM>
