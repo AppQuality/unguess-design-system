@@ -1,12 +1,15 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
-import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
+import { Placeholder } from "../placeholder";
+import { theme } from "../theme";
+import { SM } from "../typography/typescale";
 import { ServiceTile } from "./";
 import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
-import { ReactComponent as Bug } from "./data/bug-solid.svg";
 import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
 import { ReactComponent as FunctionalIcon } from "./data/functional.svg";
+
+import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/16/clock-stroke.svg";
+import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/16/list-bullet-stroke.svg";
 
 const TYPES = [
   "none" as const,
@@ -26,18 +29,19 @@ const meta = {
     onClick: fn(),
     description: "Description",
     title: "Title",
-    icon: <div>icon</div>,
+    icon: <Placeholder />,
     price: "Value",
     superscript: "First Row",
-    additionalInfo: [
-      {
-        icon: <div>Icon</div>,
-        text: "Text",
-      },
-    ],
+    additionalInfo: <Placeholder />,
     background: "green",
   },
-
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
   argTypes: {
     type: {
       options: TYPES,
@@ -57,17 +61,65 @@ const meta = {
           background:
             "linear-gradient(90deg, rgba(12,77,94,1) 35%, rgba(43,132,115,1) 100%)",
           icon: <ExperientialIcon />,
+          additionalInfo: (
+            <div style={{ display: "flex", gap: "8px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <ClockIcon />
+                <SM isBold color={`${theme.palette.grey[700]}`}>
+                  72h
+                </SM>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <ListBullet />
+                <SM isBold color={`${theme.palette.grey[700]}`}>
+                  5 users
+                </SM>
+              </div>
+            </div>
+          ),
         };
       if (type === "functional") {
         return {
           background: "linear-gradient(91deg, #001825 0%, #003A57 100%)",
           icon: <FunctionalIcon />,
+          additionalInfo: (
+            <div style={{ display: "flex", gap: "8px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <ClockIcon />
+                <SM isBold color={`${theme.palette.grey[700]}`}>
+                  12h
+                </SM>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <ListBullet />
+                <SM isBold color={`${theme.palette.grey[700]}`}>
+                  5 bugs
+                </SM>
+              </div>
+            </div>
+          ),
         };
       }
       if (type === "usability") {
         return {
           background: "linear-gradient(91deg, #8A0C49 0%, #D81E57 100%)",
           icon: <AccessibilityIcon />,
+          additionalInfo: (
+            <div style={{ display: "flex", gap: "8px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <ClockIcon />
+                <SM isBold color={`${theme.palette.grey[700]}`}>
+                  72h
+                </SM>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <ListBullet />
+                <SM isBold color={`${theme.palette.grey[700]}`}>
+                  Type A Issues
+                </SM>
+              </div>
+            </div>
+          ),
         };
       }
       return { background };
@@ -84,19 +136,12 @@ export const Default: Story = {
   args: {
     description: "Description",
     title: "Title",
-    icon: <div>icon</div>,
 
-    additionalInfo: [
-      {
-        icon: <div>Icon</div>,
-        text: "Text",
-      },
-    ],
     type: "none",
   },
 };
 
-export const ExperiencialTile: Story = {
+export const ExperientialTile: Story = {
   args: {
     title: "Collect valuable feedbacks",
     description: "Assess your product usability",
@@ -112,16 +157,6 @@ export const AccessibilityTile: Story = {
     description: "Verify your accessibility compliance",
     price: "12 Token",
     superscript: "App exclusive",
-    additionalInfo: [
-      {
-        icon: <ClockIcon width={12} height={12} />,
-        text: "72 h",
-      },
-      {
-        icon: <ListBullet width={12} height={12} />,
-        text: "Type Issues",
-      },
-    ],
     type: "usability",
   },
 };
@@ -133,16 +168,6 @@ export const FunctionalTile: Story = {
     price: "5 Token",
     superscript: "8 Token",
     isSuperscriptStrikethrough: true,
-    additionalInfo: [
-      {
-        icon: <ClockIcon width={12} height={12} />,
-        text: "12 h",
-      },
-      {
-        icon: <Bug width={12} height={12} />,
-        text: "5 bugs",
-      },
-    ],
     type: "functional",
   },
 };

@@ -25,7 +25,7 @@ const ServiceTileHeader = styled.div<{ headerBackground: string }>`
     `${theme.borderRadii.lg} ${theme.borderRadii.lg} 0 0`};
 `;
 
-const ServiceTileTextContaier = styled.div`
+const ServiceTileTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.xxs};
@@ -41,7 +41,7 @@ Superscript.defaultProps = {
 const ServiceTileBody = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   background: ${({ theme }) => theme.palette.white[800]};
   padding: ${({ theme }) => `${theme.space.sm} ${theme.space.md}`};
   border-radius: ${({ theme }) =>
@@ -71,45 +71,35 @@ const ServiceTile = (props: {
   price: string;
   superscript?: string;
   isSuperscriptStrikethrough?: boolean;
-  additionalInfo: {
-    icon: React.ReactNode;
-    text: string;
-  }[];
+  additionalInfo?: React.ReactNode;
   background: string;
 }) => {
   return (
     <ServiceTileContainer onClick={props.onClick}>
       <ServiceTileHeader headerBackground={props.background}>
-        <ServiceTileTextContaier>
+        <ServiceTileTextContainer>
           <SM color="white">{props.description}</SM>
           <LG color="white" isBold>
             {props.title}
           </LG>
-        </ServiceTileTextContaier>
+        </ServiceTileTextContainer>
         {props.icon}
       </ServiceTileHeader>
       <ServiceTileBody>
-        <ServiceTileTextContaier>
+        <ServiceTileTextContainer>
           {props.superscript && (
             <Superscript isStrikethrough={props.isSuperscriptStrikethrough}>
               {props.superscript}
             </Superscript>
           )}
           <PriceWrapper>{props.price}</PriceWrapper>
-        </ServiceTileTextContaier>
+        </ServiceTileTextContainer>
         <ServiceTileAdditionalInfo>
-          {props.additionalInfo.map((info) => (
-            <div
-              key={info.text}
-              style={{ display: "flex", alignItems: "center", gap: 4 }}
-            >
-              {info.icon}
-              <SM isBold color={`${theme.palette.grey[700]}`}>
-                {info.text}
-              </SM>
-            </div>
-          ))}
-          <ArrowRight  color={`${theme.palette.blue[700]}`} stroke={`${theme.palette.blue[700]}`}/>
+          {props.additionalInfo}
+          <ArrowRight
+            color={`${theme.palette.blue[700]}`}
+            stroke={`${theme.palette.blue[700]}`}
+          />
         </ServiceTileAdditionalInfo>
       </ServiceTileBody>
     </ServiceTileContainer>
