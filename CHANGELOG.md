@@ -1,3 +1,15 @@
+# v4.0.19 (Thu Jan 16 2025)
+
+#### 🐛 Bug Fix
+
+- feat: enhance ServiceTile layout with flex-grow for improved responsi… [#471](https://github.com/AppQuality/unguess-design-system/pull/471) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.18 (Thu Jan 16 2025)
 
 #### 🐛 Bug Fix
