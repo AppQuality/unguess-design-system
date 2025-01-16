@@ -1,3 +1,21 @@
+# v4.0.17 (Thu Jan 16 2025)
+
+#### 🐛 Bug Fix
+
+- Add base structure for new accordion, add service tile and add palette/colors docs [#468](https://github.com/AppQuality/unguess-design-system/pull/468) ([@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee) [@sinatragianpaolo](https://github.com/sinatragianpaolo) [@iDome89](https://github.com/iDome89))
+- Service tile [#467](https://github.com/AppQuality/unguess-design-system/pull/467) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@iDome89](https://github.com/iDome89) [@d-beezee](https://github.com/d-beezee))
+- Un 538 new accordion [#464](https://github.com/AppQuality/unguess-design-system/pull/464) ([@iacopolea](https://github.com/iacopolea))
+- Un 538 new accordion [#463](https://github.com/AppQuality/unguess-design-system/pull/463) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- [@iDome89](https://github.com/iDome89)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.0.16 (Mon Dec 16 2024)
 
 #### 🐛 Bug Fix
