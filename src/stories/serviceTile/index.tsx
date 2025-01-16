@@ -26,7 +26,7 @@ const ServiceTileHeader = styled.div<{ headerBackground: string }>`
   border-radius: ${({ theme }) =>
     `${theme.borderRadii.lg} ${theme.borderRadii.lg} 0 0`};
 
-  gap: ${({ theme }) => theme.space.md };
+  gap: ${({ theme }) => theme.space.md};
   svg {
     flex-shrink: 0;
   }
@@ -57,7 +57,7 @@ const ServiceTileBody = styled.div`
 const ServiceTileAdditionalInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.space.sm};
+  gap: ${({ theme }) => theme.space.xxs};
 `;
 
 const PriceWrapper = styled(MD)`
@@ -102,11 +102,11 @@ const ServiceTile = (props: {
           <PriceWrapper>{props.price}</PriceWrapper>
         </ServiceTileTextContainer>
         <ServiceTileAdditionalInfo>
-          {props.additionalInfo}
-          <ArrowRight
-            color={`${theme.palette.blue[700]}`}
-            stroke={`${theme.palette.blue[700]}`}
-          />
+            {props.additionalInfo}
+            <ArrowRight
+              color={`${theme.palette.blue[700]}`}
+              stroke={`${theme.palette.blue[700]}`}
+            />
         </ServiceTileAdditionalInfo>
       </ServiceTileBody>
     </ServiceTileContainer>

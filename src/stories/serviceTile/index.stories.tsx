@@ -2,7 +2,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Placeholder } from "../placeholder";
 import { theme } from "../theme";
-import { SM } from "../typography/typescale";
 import { ServiceTile } from "./";
 import { ReactComponent as AccessibilityIcon } from "./data/accessibility.svg";
 import { ReactComponent as ExperientialIcon } from "./data/experiential.svg";
@@ -12,6 +11,7 @@ import { ReactComponent as ClockIcon } from "@zendeskgarden/svg-icons/src/12/clo
 import { ReactComponent as ListBullet } from "@zendeskgarden/svg-icons/src/12/list-bullet-stroke.svg";
 import { ReactComponent as UserIcon } from "@zendeskgarden/svg-icons/src/12/user-solo-stroke.svg";
 import { ReactComponent as BugIcon } from "./data/bug-solid.svg";
+import { Tag } from "../tags";
 
 const TYPES = [
   "none" as const,
@@ -57,19 +57,19 @@ const meta = {
             "linear-gradient(90deg, rgba(12,77,94,1) 35%, rgba(43,132,115,1) 100%)",
           icon: <ExperientialIcon />,
           additionalInfo: (
-            <div style={{ display: "flex", gap: "8px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ClockIcon/>
-                <SM isBold color={`${theme.palette.grey[700]}`}>
-                  72h
-                </SM>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <UserIcon />
-                <SM isBold color={`${theme.palette.grey[700]}`}>
-                  5 users
-                </SM>
-              </div>
+            <div style={{ display: "flex", gap: "4px" }}>
+              <Tag color={theme.palette.grey[700]} hue="#ffff">
+                <Tag.Avatar>
+                  <ClockIcon />
+                </Tag.Avatar>
+                72h
+              </Tag>
+              <Tag color={theme.palette.grey[700]} hue="#ffff">
+                <Tag.Avatar>
+                  <UserIcon />
+                </Tag.Avatar>
+                5 users
+              </Tag>
             </div>
           ),
         };
@@ -78,19 +78,19 @@ const meta = {
           background: "linear-gradient(91deg, #001825 0%, #003A57 100%)",
           icon: <FunctionalIcon />,
           additionalInfo: (
-            <div style={{ display: "flex", gap: "8px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ClockIcon />
-                <SM isBold color={`${theme.palette.grey[700]}`}>
-                  12h
-                </SM>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <BugIcon/>
-                <SM isBold color={`${theme.palette.grey[700]}`}>
-                  5 bugs
-                </SM>
-              </div>
+            <div style={{ display: "flex", gap: "4px" }}>
+              <Tag color={theme.palette.grey[700]} hue="#ffff">
+                <Tag.Avatar>
+                  <ClockIcon />
+                </Tag.Avatar>
+                12h
+              </Tag>
+              <Tag color={theme.palette.grey[700]} hue="#ffff">
+                <Tag.Avatar>
+                  <BugIcon />
+                </Tag.Avatar>
+                5 bugs
+              </Tag>
             </div>
           ),
         };
@@ -100,19 +100,19 @@ const meta = {
           background: "linear-gradient(91deg, #8A0C49 0%, #D81E57 100%)",
           icon: <AccessibilityIcon />,
           additionalInfo: (
-            <div style={{ display: "flex", gap: "8px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ClockIcon />
-                <SM isBold color={`${theme.palette.grey[700]}`}>
-                  72h
-                </SM>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <ListBullet  />
-                <SM isBold color={`${theme.palette.grey[700]}`}>
-                  Type A Issues
-                </SM>
-              </div>
+            <div style={{ display: "flex", gap: "4px" }}>
+              <Tag color={theme.palette.grey[700]} hue="#ffff">
+                <Tag.Avatar>
+                  <ClockIcon />
+                </Tag.Avatar>
+                72h
+              </Tag>
+              <Tag color={theme.palette.grey[700]} hue="#ffff">
+                <Tag.Avatar>
+                  <ListBullet />
+                </Tag.Avatar>
+                Type A Issues
+              </Tag>
             </div>
           ),
         };
