@@ -58,13 +58,13 @@ const meta = {
           icon: <ExperientialIcon />,
           additionalInfo: (
             <div style={{ display: "flex", gap: "4px" }}>
-              <Tag color={theme.palette.grey[700]} hue="#ffff">
+              <Tag color={theme.palette.grey[700]} hue="#ffff" isPill size="medium">
                 <Tag.Avatar>
                   <ClockIcon />
                 </Tag.Avatar>
                 72h
               </Tag>
-              <Tag color={theme.palette.grey[700]} hue="#ffff">
+              <Tag color={theme.palette.grey[700]} hue="#ffff" isPill size="medium">
                 <Tag.Avatar>
                   <UserIcon />
                 </Tag.Avatar>
@@ -79,13 +79,13 @@ const meta = {
           icon: <FunctionalIcon />,
           additionalInfo: (
             <div style={{ display: "flex", gap: "4px" }}>
-              <Tag color={theme.palette.grey[700]} hue="#ffff">
+              <Tag color={theme.palette.grey[700]} hue="#ffff" isPill size="medium">
                 <Tag.Avatar>
                   <ClockIcon />
                 </Tag.Avatar>
                 12h
               </Tag>
-              <Tag color={theme.palette.grey[700]} hue="#ffff">
+              <Tag color={theme.palette.grey[700]} hue="#ffff" isPill size="medium">
                 <Tag.Avatar>
                   <BugIcon />
                 </Tag.Avatar>
@@ -101,13 +101,13 @@ const meta = {
           icon: <AccessibilityIcon />,
           additionalInfo: (
             <div style={{ display: "flex", gap: "4px" }}>
-              <Tag color={theme.palette.grey[700]} hue="#ffff">
+              <Tag color={theme.palette.grey[700]} hue="#ffff" isPill size="medium">
                 <Tag.Avatar>
                   <ClockIcon />
                 </Tag.Avatar>
                 72h
               </Tag>
-              <Tag color={theme.palette.grey[700]} hue="#ffff">
+              <Tag color={theme.palette.grey[700]} hue="#ffff" isPill size="medium">
                 <Tag.Avatar>
                   <ListBullet />
                 </Tag.Avatar>
