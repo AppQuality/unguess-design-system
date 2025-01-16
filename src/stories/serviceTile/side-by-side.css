@@ -1,0 +1,17 @@
+#side-by-side .sb-unstyled {
+  display: flex;
+  align-items: stretch;
+}
+#side-by-side .sb-unstyled > div,
+#side-by-side .sb-unstyled > div > div {
+  height: 100%;
+}
+
+#side-by-side {
+  display: flex;
+  gap: 10px;
+}
+
+#side-by-side > * {
+  flex: 1;
+}
