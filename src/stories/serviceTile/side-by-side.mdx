@@ -1,0 +1,16 @@
+import { Canvas, Meta, Story } from "@storybook/blocks";
+import * as TileStories from "./index.stories";
+import "./side-by-side.css";
+
+<Meta of={TileStories} />
+
+# Side by side examples
+
+This story shows multiple examples side by side.
+
+<div id="side-by-side">
+
+  <Story of={TileStories.WithLongTitle} />
+  <Story of={TileStories.WithLongTitle} />
+  <Story of={TileStories.AccessibilityTile} />
+</div>

@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import "@zendeskgarden/css-bedrock"; //This package provides a mostly reasonable CSS reset layered on top of modern-normalize.
 
 import { theme } from "../theme";
+import { getColor } from "../theme/utils";
 
 const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar-track:hover {
@@ -23,6 +24,17 @@ const GlobalStyle = createGlobalStyle`
     box-shadow: inset 0 0 10px 10px ${theme.palette.blue["200"]};
     border: solid 2px transparent;
     border-radius: 25px;
+  }
+
+  :root {
+    --zd-palette-primary: ${getColor(theme.colors.primaryHue, 600)};
+    --zd-palette-danger: ${getColor(theme.colors.dangerHue, 600)};
+    --zd-palette-warning: ${getColor(theme.colors.warningHue, 600)};
+    --zd-palette-success: ${getColor(theme.colors.successHue, 600)};
+    --zd-palette-neutral: ${getColor(theme.colors.neutralHue, 600)};
+    --zd-palette-info: ${getColor(theme.colors.infoHue, 600)};
+    --zd-palette-chrome: ${getColor(theme.colors.chromeHue, 600)};
+    --zd-palette-accent: ${getColor(theme.colors.accentHue, 600)};
   }
 
   /* This stuff is for Firefox */
