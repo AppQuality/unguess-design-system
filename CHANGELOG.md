@@ -1,3 +1,15 @@
+# v4.0.18 (Thu Jan 16 2025)
+
+#### 🐛 Bug Fix
+
+- feat: Export service tile [#470](https://github.com/AppQuality/unguess-design-system/pull/470) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.17 (Thu Jan 16 2025)
 
 #### 🐛 Bug Fix
