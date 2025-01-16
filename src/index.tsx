@@ -3,8 +3,8 @@ import { GlobalStyle } from "./stories/shared/globalStyle";
 // -------------- Components --------------
 
 // --- Accordions ---
-export * from "./stories/accordions";
 export * from "./stories/accordion-new";
+export * from "./stories/accordions";
 
 // --- Alerts ---
 export * from "./stories/notifications/alerts";
@@ -153,6 +153,9 @@ export * from "./stories/profile-modal";
 
 // --- Slider ---
 export * from "./stories/slider";
+
+// --- ServiceTile ---
+export * from "./stories/serviceTile";
 
 // --- Stepper ---
 export * from "./stories/stepper";
