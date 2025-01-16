@@ -51,7 +51,7 @@ const ServiceTileBody = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  background: ${({ theme }) => theme.palette.white[800]};
+  background: ${({ theme }) => theme.palette.white};
   padding: ${({ theme }) => `${theme.space.sm} ${theme.space.md}`};
   border-radius: ${({ theme }) =>
     `0 0 ${theme.borderRadii.lg} ${theme.borderRadii.lg}`};
