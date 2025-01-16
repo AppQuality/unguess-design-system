@@ -4,6 +4,7 @@ import { theme } from "../theme";
 import { LG, MD, SM } from "../typography/typescale";
 
 const ServiceTileContainer = styled.div`
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
