@@ -14,6 +14,7 @@ const ServiceTileContainer = styled.div`
     box-shadow: 0px 20px 28px 0px rgba(47, 57, 65, 0.35);
   }
   border-radius: ${({ theme }) => theme.borderRadii.lg};
+  flex-grow: 1;
 `;
 
 const ServiceTileHeader = styled.div<{ headerBackground: string }>`
@@ -102,11 +103,11 @@ const ServiceTile = (props: {
           <PriceWrapper>{props.price}</PriceWrapper>
         </ServiceTileTextContainer>
         <ServiceTileAdditionalInfo>
-            {props.additionalInfo}
-            <ArrowRight
-              color={`${theme.palette.blue[700]}`}
-              stroke={`${theme.palette.blue[700]}`}
-            />
+          {props.additionalInfo}
+          <ArrowRight
+            color={`${theme.palette.blue[700]}`}
+            stroke={`${theme.palette.blue[700]}`}
+          />
         </ServiceTileAdditionalInfo>
       </ServiceTileBody>
     </ServiceTileContainer>
