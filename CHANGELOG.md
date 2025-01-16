@@ -1,3 +1,15 @@
+# v4.0.20 (Thu Jan 16 2025)
+
+#### 🐛 Bug Fix
+
+- feat: add pointer cursor to ServiceTileContainer for better user inte… [#472](https://github.com/AppQuality/unguess-design-system/pull/472) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.19 (Thu Jan 16 2025)
 
 #### 🐛 Bug Fix
