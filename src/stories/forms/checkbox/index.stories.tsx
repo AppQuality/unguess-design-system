@@ -36,9 +36,7 @@ const meta = {
         {withLabel ? (
           <Label isRegular={true}>Questa è una Label accanto la Checkbox</Label>
         ) : (
-          <Label hidden style={{ height: "16px" }}>
-            Questa è una Label nascosta
-          </Label>
+          <Label style={{ height: "20px" }}></Label>
         )}
       </Checkbox>
     );
