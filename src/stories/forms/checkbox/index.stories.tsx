@@ -10,10 +10,14 @@ type Args = React.ComponentProps<typeof Checkbox> & {
 const meta = {
   title: "Molecules/Forms/Checkbox",
   component: Checkbox,
-  args: {
-  },
+  args: {},
   argTypes: {
     checked: {
+      control: {
+        type: "boolean",
+      },
+    },
+    withLabel: {
       control: {
         type: "boolean",
       },
@@ -29,11 +33,16 @@ const meta = {
   render: ({ withLabel, ...args }) => {
     return (
       <Checkbox {...args}>
-        {withLabel ? <Label isRegular={true}>Questa è una Label accanto la Checkbox</Label>
-        : <Label hidden style={{ height: "16px" }}>Questa è una Label nascosta</Label>}
+        {withLabel ? (
+          <Label isRegular={true}>Questa è una Label accanto la Checkbox</Label>
+        ) : (
+          <Label hidden style={{ height: "16px" }}>
+            Questa è una Label nascosta
+          </Label>
+        )}
       </Checkbox>
     );
-  }
+  },
 } satisfies Meta<Args>;
 
 export default meta;
