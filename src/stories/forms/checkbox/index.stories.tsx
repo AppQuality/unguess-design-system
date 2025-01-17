@@ -1,27 +1,51 @@
-import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Checkbox } from ".";
 import { Label } from "../../label";
 import { FormField as Field } from "../field";
-import { CheckboxArgs } from "./_types";
 
-const Template: Story<CheckboxArgs> = (args) => {
-  return (
-    <Field>
-      <Checkbox {...args}>
-        <Label isRegular={true}>Questa è una Label accanto la Checkbox</Label>
-      </Checkbox>
-    </Field>
-  );
+type Args = React.ComponentProps<typeof Checkbox> & {
+  withLabel?: boolean;
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  indeterminate: false,
-  disabled: false,
-  defaultChecked: true,
-};
-
-export default {
+const meta = {
   title: "Molecules/Forms/Checkbox",
   component: Checkbox,
-} as ComponentMeta<typeof Checkbox>;
+  args: {
+  },
+  argTypes: {
+    checked: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
+  decorators: [
+    (Story) => (
+      <Field>
+        <Story />
+      </Field>
+    ),
+  ],
+  render: ({ withLabel, ...args }) => {
+    return (
+      <Checkbox {...args}>
+        {withLabel ? <Label isRegular={true}>Questa è una Label accanto la Checkbox</Label>
+        : <Label hidden style={{ height: "16px" }}>Questa è una Label nascosta</Label>}
+      </Checkbox>
+    );
+  }
+} satisfies Meta<Args>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {},
+};
+
+export const WithLabel: Story = {
+  args: {
+    withLabel: true,
+  },
+};
