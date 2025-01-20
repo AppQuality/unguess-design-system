@@ -1,12 +1,15 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { AccordionArgs, AccordionNew } from ".";
-import { Placeholder } from "../placeholder";
-import { ReactNode } from "react";
-import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
 import { ReactComponent as FolderIcon } from "@zendeskgarden/svg-icons/src/16/folder-open-stroke.svg";
-import { Tag } from "../tags";
+import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
+import { ReactNode } from "react";
+import { AccordionArgs, AccordionNew } from ".";
 import { StatusCompletedIcon } from "../icons";
+import { Placeholder } from "../placeholder";
+import { Tag } from "../tags";
 import { theme } from "../theme";
+import SectionStory, {
+  Default as SectionStoryDefault,
+} from "./section.stories";
 
 type StoryArgs = AccordionArgs & {
   panelContent?: ReactNode;
@@ -16,19 +19,16 @@ type StoryArgs = AccordionArgs & {
   hasSupertitles?: boolean;
 };
 
-const accordionContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+const accordionContent =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 const items = [
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Equum cibum est optimum prandium est",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  "Lorem ipsum dolor sit amet",
 ];
 
 const ExampleIcon = () => {
-  return (
-    <FolderIcon />
-  );
-}
+  return <FolderIcon />;
+};
 const ExampleMeta = () => {
   return (
     <>
@@ -43,38 +43,29 @@ const ExampleMeta = () => {
           <StatusCompletedIcon />
         </Tag.Avatar>
         Completed
-        <Tag.SecondaryText color={theme.palette.grey[700]}>
-          1
-        </Tag.SecondaryText>
+        <Tag.SecondaryText color={theme.palette.grey[700]}>1</Tag.SecondaryText>
       </Tag>
       <Tag>
         <Tag.Avatar>
           <LeafIcon />
         </Tag.Avatar>
         Counter
-        <Tag.SecondaryText
-          color={"#000000"}
-          isBold
-        >
+        <Tag.SecondaryText color={"#000000"} isBold>
           2
         </Tag.SecondaryText>
       </Tag>
     </>
   );
-}
+};
 
 const ExamplePanel = () => {
   return (
     <div>
-      <p>
-        {accordionContent}
-      </p>
-      <p>
-        {accordionContent}
-      </p>
+      <p>{accordionContent}</p>
+      <p>{accordionContent}</p>
     </div>
   );
-}
+};
 
 const meta = {
   title: "Molecules/New Accordion",
@@ -82,22 +73,8 @@ const meta = {
 
   render: ({ ...args }) => {
     return (
-      <AccordionNew {...args}>
-        {items.map((item) => {
-          return (
-            <AccordionNew.Section>
-              <AccordionNew.Header icon={args.icon}>
-                <AccordionNew.Label
-                  subtitle={args.hasSubtitles ? "Some more info on the item" : ""}
-                  supertitle={args.hasSupertitles ? "00:00:23 - 00:00:27" : ""}
-                  label={item}
-                />
-                {args.meta && <AccordionNew.Meta>{args.meta}</AccordionNew.Meta>}
-              </AccordionNew.Header>
-              <AccordionNew.Panel>{args.panelContent}</AccordionNew.Panel>
-            </AccordionNew.Section>
-          )
-        })}
+      <AccordionNew {...args} id="accordion" expandedSections={[]}>
+        {<SectionStory.render {...SectionStoryDefault.args} />}
       </AccordionNew>
     );
   },
