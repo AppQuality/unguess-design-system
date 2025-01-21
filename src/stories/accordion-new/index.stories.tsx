@@ -141,6 +141,15 @@ export const WithCheckbox: Story = {
   },
 };
 
+export const WithBorderAndShadow: Story = {
+  args: {
+    ...defaultArgs,
+    hasBorder: true,
+    hasShadow: true,
+    type: "primary",
+  },
+};
+
 export const WithIcon: Story = {
   args: {
     ...defaultArgs,
