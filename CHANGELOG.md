@@ -1,3 +1,16 @@
+# v4.0.23 (Tue Jan 21 2025)
+
+#### 🐛 Bug Fix
+
+- new version [#476](https://github.com/AppQuality/unguess-design-system/pull/476) ([@iacopolea](https://github.com/iacopolea))
+- fix: update CheckboxCardArgs to use ICheckboxProps for improved type safety [#475](https://github.com/AppQuality/unguess-design-system/pull/475) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.0.22 (Tue Jan 21 2025)
 
 #### 🐛 Bug Fix
