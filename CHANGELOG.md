@@ -1,3 +1,19 @@
+# v4.0.22 (Tue Jan 21 2025)
+
+#### 🐛 Bug Fix
+
+- release 20250121 [#474](https://github.com/AppQuality/unguess-design-system/pull/474) ([@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee) [@marcbon](https://github.com/marcbon))
+- fix: correct mention id parsing to read integer instead of string [#465](https://github.com/AppQuality/unguess-design-system/pull/465) ([@d-beezee](https://github.com/d-beezee))
+- Un 538 new accordion [#466](https://github.com/AppQuality/unguess-design-system/pull/466) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.21 (Thu Jan 16 2025)
 
 #### 🐛 Bug Fix
