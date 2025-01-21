@@ -1,7 +1,7 @@
 import { SpecialCardProps } from "../../../special-cards/_types";
-import { CheckboxArgs } from "../_types";
+import { ICheckboxProps } from "@zendeskgarden/react-forms";
 
-export interface CheckboxCardArgs extends CheckboxArgs {
+export interface CheckboxCardArgs extends ICheckboxProps {
     card?: SpecialCardProps;
     label: string;
     icon: React.ReactNode;
