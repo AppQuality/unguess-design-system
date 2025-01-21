@@ -7,7 +7,7 @@ export const CustomMention = Mention.extend({
     return {
       id: {
         default: null,
-        parseHTML: (element) => element.getAttribute("data-mention-id"),
+        parseHTML: (element) => Number(element.getAttribute("data-mention-id")),
         renderHTML: (attributes) => {
           if (!attributes.id) {
             return {};
@@ -55,7 +55,7 @@ export const CustomMention = Mention.extend({
       mergeAttributes(
         { "data-type": this.name },
         this.options.HTMLAttributes,
-        HTMLAttributes
+        HTMLAttributes,
       ),
       outputText,
     ];

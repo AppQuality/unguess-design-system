@@ -1,17 +1,18 @@
 import { Meta, StoryFn } from "@storybook/react";
+import { fn } from "@storybook/test";
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { Editor as TipTapEditor } from "@tiptap/react";
+import { ToastProvider } from "@zendeskgarden/react-notifications";
 import styled from "styled-components";
 import { Chat, ChatProvider, useChatContext } from ".";
 import { Button } from "../buttons/button";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { ChatEditorArgs, CommentMedia, SuggestedUser } from "./_types";
-import { Comment } from "./parts/comment";
 import { theme } from "../theme";
+import { ChatEditorArgs, CommentMedia, SuggestedUser } from "./_types";
 import { Data } from "./context/chatContext";
-import { ToastProvider } from "@zendeskgarden/react-notifications";
+import { Comment } from "./parts/comment";
 
 const ButtonsContainer = styled.div`
   padding: 0px 16px;
@@ -155,7 +156,7 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
                 console.log("internal_id - ", id);
               }}
 
-            /*setIsMediaUploading={function (value: boolean): void {
+              /*setIsMediaUploading={function (value: boolean): void {
             throw new Error("Function not implemented.");
           }}*/
             >
@@ -171,11 +172,11 @@ const Template: StoryFn<EditorStoryArgs> = ({ children, ...args }) => {
 const defaultArgs: EditorStoryArgs = {
   children:
     "<p>I'm <em>a</em> <strong>stupid</strong> <code>editor</code>!</p>",
-  onSave: (editor: TipTapEditor, mentions) => { },
+  onSave: fn(),
   author: {
     avatar: "LC",
   },
-  onUpdate: ({ editor }) => { },
+  onUpdate: ({ editor }) => {},
   comments: [
     {
       message: "Hi, I'm a comment",
@@ -215,14 +216,14 @@ const defaultArgs: EditorStoryArgs = {
           type: "image",
           id: "1",
           isLoadingMedia: false,
-          name: ""
+          name: "",
         },
         {
           url: "https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           type: "image",
           id: "2",
           isLoadingMedia: false,
-          name: ""
+          name: "",
         },
       ],
     },
@@ -263,8 +264,10 @@ Menus.args = {
       // simulate a 2.5 seconds delay then fail the first file and succeed the others
       setTimeout(() => {
         resolve({
-          failed: [{errorCode: "GENERIC_ERROR", name: files[0].name}],
-          uploaded_ids: files.slice(1).map(file => ({id: parseInt(file.id)}))
+          failed: [{ errorCode: "GENERIC_ERROR", name: files[0].name }],
+          uploaded_ids: files
+            .slice(1)
+            .map((file) => ({ id: parseInt(file.id) })),
         });
       }, 2500);
     });
