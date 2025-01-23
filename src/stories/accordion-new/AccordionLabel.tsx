@@ -30,7 +30,7 @@ export const AccordionLabel = forwardRef<HTMLButtonElement, AccordionLabelArgs>(
     <StyledAccordionLabel ref={ref} {...rest}>
       {label &&
         isCompact
-        ? <SM isBold style={{ marginBottom: theme.space.xxs }}>{label}</SM>
+        ? <MD isBold style={{ marginBottom: theme.space.xxs }}>{label}</MD>
         : <LG isBold style={{ marginBottom: theme.space.xxs }}>{label}</LG>
       }
       {subtitle &&
