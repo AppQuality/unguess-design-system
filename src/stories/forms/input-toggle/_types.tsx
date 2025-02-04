@@ -11,4 +11,6 @@ export interface InputToggleArgs extends IInputProps {
   textSize?: textSizes;
   /** Sets the initial focus */
   isFocused?: boolean;
+  /** Prevent empty value */
+  preventEmpty?: boolean;
 }

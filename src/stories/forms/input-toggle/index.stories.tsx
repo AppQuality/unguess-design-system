@@ -91,6 +91,12 @@ Default.args = {
   isBare: false,
 };
 
+export const PreventEmpty = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+  preventEmpty: true,
+};
+
 export const Success = Template.bind({});
 Success.args = {
   ...defaultArgs,

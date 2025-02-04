@@ -13,6 +13,7 @@ import { ReactComponent as EditIcon } from "../../../assets/icons/notes-stroke.s
 import { Label } from "../../label";
 import { XL } from "../../typography/typescale";
 import { theme } from "../../theme";
+import { Span } from "../../typography/span";
 
 interface IInputToggleContext {
   isEditing?: boolean;
@@ -89,6 +90,7 @@ const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
         onClick={handleClick}
         onBlur={() => setIsEditing(false)}
         {...props}
+        {...!isEditing && { style: { cursor: "pointer" } }}
       />
     </ToggleContext.Provider>
   );
@@ -103,14 +105,15 @@ const getInputSize = (textSize: textSizes) => ({
 const InputItem = (props: InputToggleArgs) => {
   const {
     placeholder = "Insert a value",
-    value,
     style,
     textSize = "xl",
+    preventEmpty = true,
   } = props;
   const [input, setInput] = useState<HTMLInputElement | null>();
+  const [val, setVal] = useState<string>(preventEmpty ? placeholder : "");
+  const [prevValue, setPrevValue] = useState<string>(preventEmpty ? placeholder : "");
 
   const { isEditing } = useContext(ToggleContext);
-
   const size = getInputSize(textSize);
 
   useEffect(() => {
@@ -119,15 +122,34 @@ const InputItem = (props: InputToggleArgs) => {
     }
   }, [isEditing, input]);
 
-  return isEditing ? (
-    <StyledInput
-      ref={setInput}
-      {...props}
-      style={{ fontWeight: 500, ...size, ...style }}
-    />
-  ) : (
-    <StyledText isBold style={{ fontWeight: 500, ...size, ...style }}>
-      {!value ? placeholder : value} <EditIcon />
+  const handleBlur = () => {
+    if (preventEmpty && val.trim() === "") {
+      setVal(prevValue);
+    } else {
+      setPrevValue(val);
+    }
+  };
+
+  if (isEditing)
+    return (
+      <StyledInput
+        ref={setInput}
+        {...props}
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        {...preventEmpty && { onBlur: handleBlur }}
+        style={{ fontWeight: 500, ...size, ...style }}
+      />
+    );
+
+  return (
+    <StyledText isBold style={{ ...size, ...style }}>
+      {!val ? (
+        <Span style={{ color: theme.palette.grey[500] }}>{placeholder}</Span>
+      ) : (
+        <Span>{val}</Span>
+      )}
+      <EditIcon />
     </StyledText>
   );
 };
