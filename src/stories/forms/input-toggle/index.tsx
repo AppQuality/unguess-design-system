@@ -107,7 +107,7 @@ const InputItem = (props: InputToggleArgs) => {
     placeholder = "Insert a value",
     style,
     textSize = "xl",
-    preventEmpty = true,
+    preventEmpty = false,
   } = props;
   const [input, setInput] = useState<HTMLInputElement | null>();
   const [val, setVal] = useState<string>(preventEmpty ? placeholder : "");
