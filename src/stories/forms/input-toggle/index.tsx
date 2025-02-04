@@ -104,7 +104,7 @@ const getInputSize = (textSize: textSizes) => ({
 
 const InputItem = (props: InputToggleArgs) => {
   const {
-    placeholder = "Insert a value",
+    placeholder = "Placeholder",
     style,
     textSize = "xl",
     preventEmpty = false,
