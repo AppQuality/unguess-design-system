@@ -12,6 +12,8 @@ export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement
 }
 
 const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: boolean, $hasBorder?: boolean }>` // transient props, prefixed with $, avoid react does not recognize the prop on a DOM element warning
+  container-type: inline-size;
+  container-name: accordion-header;
   padding-top: ${theme.space.md};
   padding-bottom: ${theme.space.md};
   padding-right: 0;
@@ -24,19 +26,28 @@ const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: bo
     padding: 0;
     padding-left: ${theme.space.sm};
     padding-right: ${theme.space.sm};
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
   .accordion-header-icon-wrapper {
+    margin-top: ${p => p.$isCompact ? "2px" : "3px"};
     > svg {
-     ${props => props.$isCompact ? `width: 12px; height: 12px;` : `width: 16px; height: 16px;`}
+     width: 16px;
+     height: 16px;
     }
   }
   .accordion-header-inner-wrapper {
+    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: ${theme.space.xs};
     row-gap: ${theme.space.xxs};
-    width: 100%;
+  }
+  @container accordion-header (min-width: 623px) {
+    .accordion-header-inner-wrapper {
+      flex-direction: row;
+    }
   }
 `;
 
@@ -59,7 +70,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   return (
     <StyledAccordionHeader ref={ref} $isCompact={isCompact} $hasBorder={hasBorder} {...rest}>
       {hasCheckbox &&
-        <Field onChange={handleCheckboxChange}>
+        <Field onChange={handleCheckboxChange} style={{ marginTop: isCompact ? "0" : "1px" }}>
           <Checkbox
             {...checkboxProps}
             onChange={handleCheckboxChange}
@@ -71,7 +82,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
           </Checkbox>
         </Field>}
       {icon &&
-        <span className="accordion-header-icon-wrapper">{icon}</span>
+        <div className="accordion-header-icon-wrapper">{icon}</div>
       }
       <div className="accordion-header-inner-wrapper">
         {children}
