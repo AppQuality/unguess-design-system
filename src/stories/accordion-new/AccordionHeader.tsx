@@ -4,6 +4,8 @@ import { forwardRef, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../theme";
 import { AccordionContext } from ".";
+import { AccordionMeta } from "./AccordionMeta";
+import { AccordionLabel } from "./AccordionLabel";
 
 export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement> {
   checkboxProps?: React.ComponentProps<typeof Checkbox>;
@@ -11,7 +13,7 @@ export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement
   icon?: React.ReactNode;
 }
 
-const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: boolean, $hasBorder?: boolean }>` // transient props, prefixed with $, avoid react does not recognize the prop on a DOM element warning
+const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: boolean, $hasBorder?: boolean, $responsiveBreakpoint?: number }>` // transient props, prefixed with $, avoid react does not recognize the prop on a DOM element warning
   container-type: inline-size;
   container-name: accordion-header;
   padding-top: ${theme.space.md};
@@ -38,17 +40,28 @@ const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: bo
   }
   .accordion-header-inner-wrapper {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: ${theme.space.xs};
-    row-gap: ${theme.space.xxs};
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+            "supertitle supertitle"
+            "label meta";
+    column-gap: ${theme.space.xs};
+    row-gap: 0;
   }
-  @container accordion-header (min-width: 623px) {
-    .accordion-header-inner-wrapper {
-      flex-direction: row;
+  ${props => props.$responsiveBreakpoint && `
+    @container accordion-header (max-width: ${props.$responsiveBreakpoint}px) {
+      .accordion-header-inner-wrapper {
+        grid-template-columns: 100%;
+        grid-template-areas:
+              "supertitle"
+              "label"
+              "meta";
+      }
+      [data-garden-id="accordions.button"] {
+        margin-bottom: ${theme.space.xs};
+      }
     }
-  }
+  `}
 `;
 
 export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>(({
@@ -59,7 +72,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   ...rest
 }, ref) => {
 
-  const { hasCheckbox, isCompact, hasBorder } = useContext(AccordionContext);
+  const { hasCheckbox, isCompact, hasBorder, responsiveBreakpoint } = useContext(AccordionContext);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof checkboxProps?.onChange === "function") {
@@ -68,7 +81,7 @@ export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>((
   }
 
   return (
-    <StyledAccordionHeader ref={ref} $isCompact={isCompact} $hasBorder={hasBorder} {...rest}>
+    <StyledAccordionHeader ref={ref} $isCompact={isCompact} $hasBorder={hasBorder} $responsiveBreakpoint={responsiveBreakpoint} {...rest}>
       {hasCheckbox &&
         <Field onChange={handleCheckboxChange} style={{ marginTop: isCompact ? "0" : "1px" }}>
           <Checkbox

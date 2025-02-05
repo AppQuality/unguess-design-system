@@ -12,8 +12,16 @@ export interface AccordionLabelArgs extends React.HTMLAttributes<HTMLDivElement>
 }
 const StyledAccordionLabel = styled(ZendeskAccordion.Label) <AccordionLabelArgs>`
   padding: 0;
-  width: auto;
-  flex-grow: 1;
+  grid-area: label;
+  div + div {
+    margin-top: ${theme.space.xxs};
+  }
+`;
+
+const StyledSuperTitle = styled(SM)`
+  grid-area: supertitle;
+  color: ${theme.palette.grey[700]};
+  margin-bottom: ${theme.space.xxs};
 `;
 
 export const AccordionLabel = forwardRef<HTMLButtonElement, AccordionLabelArgs>(({
@@ -24,19 +32,20 @@ export const AccordionLabel = forwardRef<HTMLButtonElement, AccordionLabelArgs>(
 }, ref) => {
 
   const { isCompact } = useContext(AccordionContext);
-
   return <>
-    {supertitle && <SM color={theme.palette.grey[700]} style={{ flex: "1 0 100%" }}>{supertitle}</SM>}
+    {supertitle && <StyledSuperTitle>{supertitle}</StyledSuperTitle>}
     <StyledAccordionLabel ref={ref} {...rest}>
-      {label &&
+      {label ?
         isCompact
-        ? <MD isBold style={{ marginBottom: theme.space.xxs }}>{label}</MD>
-        : <LG isBold style={{ marginBottom: theme.space.xxs }}>{label}</LG>
+        ? <MD isBold>{label}</MD>
+        : <LG isBold>{label}</LG>
+        : null
       }
-      {subtitle &&
+      {subtitle ?
         isCompact
-        ? <SM color={theme.palette.grey[600]} style={{ marginBottom: theme.space.xs }}>{subtitle}</SM>
-        : <MD color={theme.palette.grey[600]} style={{ marginBottom: theme.space.xs }}>{subtitle}</MD>
+        ? <SM color={theme.palette.grey[600]}>{subtitle}</SM>
+        : <MD color={theme.palette.grey[600]}>{subtitle}</MD>
+        : null
       }
     </StyledAccordionLabel>
   </>

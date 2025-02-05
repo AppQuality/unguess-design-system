@@ -4,6 +4,7 @@ import styled from "styled-components";
 interface AccordionMetaArgs extends React.HTMLAttributes<HTMLDivElement> {
 }
 const StyledAccordionMeta = styled.div<AccordionMetaArgs>`
+  grid-area: meta;
 `;
 
 export const AccordionMeta = forwardRef<HTMLDivElement, AccordionMetaArgs>(({
