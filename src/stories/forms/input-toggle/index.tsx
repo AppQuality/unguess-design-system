@@ -110,6 +110,8 @@ const InputItem = (props: InputToggleArgs) => {
     style,
     textSize = "xl",
     preventEmpty = false,
+    onChange,
+    onBlur,
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   const [val, setVal] = useState<string>(preventEmpty ? placeholder : "");
@@ -137,8 +139,14 @@ const InputItem = (props: InputToggleArgs) => {
         ref={inputRef}
         {...props}
         value={val}
-        onChange={(e) => setVal(e.target.value)}
-        onBlur={handleBlur}
+        onChange={(e) => {
+          setVal(e.target.value);
+          onChange?.(e);
+        }}
+        onBlur={(e) => {
+          handleBlur();
+          onBlur?.(e);
+        }}
         style={{ fontWeight: 500, ...size, ...style }}
       />
     );
