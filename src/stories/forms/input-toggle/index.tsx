@@ -66,6 +66,8 @@ const Wrapper = styled.div<InputToggleArgs>`
  * Used for this:
  *  - To let the user enter data into a field
  *  - To enter multiline text, use a Textarea
+ * 
+ * Note: If used with preventEmpty prop, the placeholder will be used as the initial value: val is the current value, lastVal is the last value before the input was empty.
  */
 const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
   const [isEditing, setIsEditing] = useState<boolean>(!!isFocused);
@@ -109,35 +111,34 @@ const InputItem = (props: InputToggleArgs) => {
     textSize = "xl",
     preventEmpty = false,
   } = props;
-  const [input, setInput] = useState<HTMLInputElement | null>();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [val, setVal] = useState<string>(preventEmpty ? placeholder : "");
-  const [prevValue, setPrevValue] = useState<string>(preventEmpty ? placeholder : "");
-
+  const [lastVal, setLastVal] = useState<string>(preventEmpty ? placeholder : "");
   const { isEditing } = useContext(ToggleContext);
   const size = getInputSize(textSize);
 
   useEffect(() => {
-    if (isEditing && input) {
-      input.focus();
+    if (isEditing && inputRef?.current) {
+      inputRef?.current.focus();
     }
-  }, [isEditing, input]);
+  }, [isEditing, inputRef]);
 
   const handleBlur = () => {
     if (preventEmpty && val.trim() === "") {
-      setVal(prevValue);
+      setVal(lastVal);
     } else {
-      setPrevValue(val);
+      setLastVal(val);
     }
   };
 
   if (isEditing)
     return (
       <StyledInput
-        ref={setInput}
+        ref={inputRef}
         {...props}
         value={val}
         onChange={(e) => setVal(e.target.value)}
-        {...preventEmpty && { onBlur: handleBlur }}
+        onBlur={handleBlur}
         style={{ fontWeight: 500, ...size, ...style }}
       />
     );
