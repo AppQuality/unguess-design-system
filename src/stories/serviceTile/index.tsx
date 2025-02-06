@@ -3,7 +3,7 @@ import { ReactComponent as ArrowRight } from "../../assets/icons/arrow-right.svg
 import { theme } from "../theme";
 import { LG, MD, SM } from "../typography/typescale";
 
-const ServiceTileContainer = styled.div`
+const Container = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ const ServiceTileContainer = styled.div`
   flex-grow: 1;
 `;
 
-const ServiceTileHeader = styled.div<{ headerBackground: string }>`
+const Header = styled.div<{ headerBackground: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +34,7 @@ const ServiceTileHeader = styled.div<{ headerBackground: string }>`
   }
 `;
 
-const ServiceTileTextContainer = styled.div`
+const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.xxs};
@@ -47,24 +47,29 @@ const Superscript = styled(SM)<{ isStrikethrough?: boolean }>`
 Superscript.defaultProps = {
   isBold: true,
 };
-const ServiceTileBody = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+const Body = styled.div`
+  position: relative;
   background: ${({ theme }) => theme.palette.white};
-  padding: ${({ theme }) => `${theme.space.sm} ${theme.space.md}`};
+  padding: ${({ theme }) => `${theme.space.sm} ${theme.space.xxl} ${theme.space.sm} ${theme.space.md}`};
   border-radius: ${({ theme }) =>
     `0 0 ${theme.borderRadii.lg} ${theme.borderRadii.lg}`};
+  .footer-icon {
+    position: absolute;
+    right: ${p => p.theme.space.md};
+    bottom: ${p => p.theme.space.sm};
+  }
 `;
-const ServiceTileAdditionalInfo = styled.div`
+const AdditionalInfo = styled.div`
   display: flex;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-end;
   gap: ${({ theme }) => theme.space.xxs};
 `;
 
 const PriceWrapper = styled(MD)`
-  ${({ theme }) =>
-    `background: linear-gradient(91deg, ${theme.palette.blue[600]} 11.98%,${theme.palette.green[400]}   100%);`}
+  flex: 0 0 auto;
+  background: linear-gradient(91deg, ${p => p.theme.palette.blue[600]} 11.98%,${p => p.theme.palette.green[400]}   100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -84,34 +89,33 @@ const ServiceTile = (props: {
   background: string;
 }) => {
   return (
-    <ServiceTileContainer onClick={props.onClick}>
-      <ServiceTileHeader headerBackground={props.background}>
-        <ServiceTileTextContainer>
+    <Container onClick={props.onClick}>
+      <Header headerBackground={props.background}>
+        <TextContainer>
           <SM color="white">{props.description}</SM>
           <LG color="white" isBold>
             {props.title}
           </LG>
-        </ServiceTileTextContainer>
+        </TextContainer>
         {props.icon}
-      </ServiceTileHeader>
-      <ServiceTileBody>
-        <ServiceTileTextContainer>
-          {props.superscript && (
-            <Superscript isStrikethrough={props.isSuperscriptStrikethrough}>
-              {props.superscript}
-            </Superscript>
-          )}
+      </Header>
+      <Body>
+        {props.superscript && (
+          <Superscript isStrikethrough={props.isSuperscriptStrikethrough}>
+            {props.superscript}
+          </Superscript>
+        )}
+        <AdditionalInfo>
           <PriceWrapper>{props.price}</PriceWrapper>
-        </ServiceTileTextContainer>
-        <ServiceTileAdditionalInfo>
           {props.additionalInfo}
-          <ArrowRight
-            color={`${theme.palette.blue[700]}`}
-            stroke={`${theme.palette.blue[700]}`}
-          />
-        </ServiceTileAdditionalInfo>
-      </ServiceTileBody>
-    </ServiceTileContainer>
+        </AdditionalInfo>
+        <ArrowRight
+          className="footer-icon"
+          color={`${theme.palette.blue[700]}`}
+          stroke={`${theme.palette.blue[700]}`}
+        />
+      </Body>
+    </Container>
   );
 };
 
