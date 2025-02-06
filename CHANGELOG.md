@@ -1,3 +1,17 @@
+# v4.0.25 (Thu Feb 06 2025)
+
+#### 🐛 Bug Fix
+
+- Accordion fixes [#488](https://github.com/AppQuality/unguess-design-system/pull/488) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- rework: arrange service tile internal content to improve responsiveness [#484](https://github.com/AppQuality/unguess-design-system/pull/484) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.24 (Thu Feb 06 2025)
 
 #### 🐛 Bug Fix
