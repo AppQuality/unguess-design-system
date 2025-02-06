@@ -39,7 +39,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.space.xxs};
 `;
-const Superscript = styled(SM) <{ isStrikethrough?: boolean }>`
+const Superscript = styled(SM)<{ isStrikethrough?: boolean }>`
   text-decoration: ${(props) =>
     props.isStrikethrough ? "line-through" : "none"};
   color: ${({ theme }) => theme.palette.grey[600]};
