@@ -88,8 +88,8 @@ const meta = {
             <AccordionNew.Section>
               <AccordionNew.Header icon={args.icon}>
                 <AccordionNew.Label
-                  subtitle={args.hasSubtitles ? "Some more info on the item" : ""}
-                  supertitle={args.hasSupertitles ? "00:00:23 - 00:00:27" : ""}
+                  subtitle={args.hasSubtitles ? "Some more info on the item" : undefined}
+                  supertitle={args.hasSupertitles ? "00:00:23 - 00:00:27" : undefined}
                   label={item}
                 />
                 {args.meta && <AccordionNew.Meta>{args.meta}</AccordionNew.Meta>}
@@ -109,6 +109,15 @@ type Story = StoryObj<typeof meta>;
 const defaultArgs: StoryArgs = {
   level: 3,
   panelContent: <ExamplePanel />,
+  responsiveBreakpoint: undefined,
+  hasBorder: undefined,
+  type: undefined,
+  hasCheckbox: undefined,
+  isCompact: undefined,
+  icon: undefined,
+  meta: undefined,
+  hasSubtitles: false,
+  hasSupertitles: false
 };
 
 export const Default: Story = {
@@ -145,7 +154,6 @@ export const WithBorderAndShadow: Story = {
   args: {
     ...defaultArgs,
     hasBorder: true,
-    hasShadow: true,
     type: "primary",
   },
 };
@@ -161,6 +169,14 @@ export const WithMeta: Story = {
   args: {
     ...defaultArgs,
     meta: <ExampleMeta />,
+  },
+};
+
+export const WithResponsiveMeta: Story = {
+  args: {
+    ...defaultArgs,
+    meta: <ExampleMeta />,
+    responsiveBreakpoint: 1027,
   },
 };
 

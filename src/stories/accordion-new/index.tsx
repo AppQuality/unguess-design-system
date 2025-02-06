@@ -9,12 +9,13 @@ import { createContext } from 'react';
 
 export interface AccordionArgs extends IAccordionProps {
   hasCheckbox?: boolean;
+  responsiveBreakpoint?: number;
   hasBorder?: boolean;
-  hasShadow?: boolean;
   type?: "default" | "primary" | "danger" | "warning" | "success" | "info";
 }
 export interface AccordionContext {
   isCompact?: boolean;
+  responsiveBreakpoint?: number;
   hasCheckbox?: boolean;
   hasBorder?: boolean;
   type?: "default" | "primary" | "danger" | "warning" | "success" | "info";
@@ -32,6 +33,7 @@ export const AccordionContext = createContext({} as AccordionContext);
 const AccordionComponent = forwardRef<HTMLDivElement, AccordionArgs>((props, ref) => {
   const context = {
     isCompact: props.isCompact,
+    responsiveBreakpoint: props.responsiveBreakpoint,
     hasCheckbox: props.hasCheckbox,
     hasBorder: props.hasBorder,
     type: props.type
