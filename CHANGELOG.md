@@ -1,3 +1,20 @@
+# v4.0.24 (Thu Feb 06 2025)
+
+#### 🐛 Bug Fix
+
+- new version with fix accordion [#485](https://github.com/AppQuality/unguess-design-system/pull/485) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- fix: remove typecheck job from Storybook workflow [#487](https://github.com/AppQuality/unguess-design-system/pull/487) ([@iacopolea](https://github.com/iacopolea))
+- fix: move typecheck job in Storybook workflow after build [#486](https://github.com/AppQuality/unguess-design-system/pull/486) ([@iacopolea](https://github.com/iacopolea))
+- Un 724 [#480](https://github.com/AppQuality/unguess-design-system/pull/480) ([@iacopolea](https://github.com/iacopolea))
+- feat: add typecheck job to Storybook workflow for improved type safety [#477](https://github.com/AppQuality/unguess-design-system/pull/477) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.23 (Tue Jan 21 2025)
 
 #### 🐛 Bug Fix
