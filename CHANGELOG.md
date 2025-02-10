@@ -1,3 +1,16 @@
+# v4.0.26 (Mon Feb 10 2025)
+
+#### 🐛 Bug Fix
+
+- Refactor InputToggle [#489](https://github.com/AppQuality/unguess-design-system/pull/489) ([@marcbon](https://github.com/marcbon))
+- feat: Add 'preventEmpty' option to InputToggleArgs [#479](https://github.com/AppQuality/unguess-design-system/pull/479) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.25 (Thu Feb 06 2025)
 
 #### 🐛 Bug Fix
