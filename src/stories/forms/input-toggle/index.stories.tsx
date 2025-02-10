@@ -18,6 +18,7 @@ const defaultArgs: InputStoryArgs = {
   required: true,
   isFocused: false,
   textSize: "xl",
+  preventEmpty: false,
 };
 
 const TitleContainer = styled.div`
@@ -88,13 +89,13 @@ const TemplateWithLabel: Story<InputStoryArgs> = ({
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  isBare: false,
 };
 
 export const PreventEmpty = Template.bind({});
-Default.args = {
+PreventEmpty.args = {
   ...defaultArgs,
   preventEmpty: true,
+  value: "This is a value",
 };
 
 export const Success = Template.bind({});

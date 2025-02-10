@@ -106,6 +106,7 @@ const getInputSize = (textSize: textSizes) => ({
 
 const InputItem = (props: InputToggleArgs) => {
   const {
+    value,
     placeholder = "Placeholder",
     style,
     textSize = "xl",
@@ -114,8 +115,8 @@ const InputItem = (props: InputToggleArgs) => {
     onBlur,
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
-  const [val, setVal] = useState<string>(preventEmpty ? placeholder : "");
-  const [lastVal, setLastVal] = useState<string>(preventEmpty ? placeholder : "");
+  const [val, setVal] = useState<string>(value ? value.toString() : preventEmpty ? placeholder : "");
+  const [lastVal, setLastVal] = useState<string>(value ? value.toString() : preventEmpty ? placeholder : "");
   const { isEditing } = useContext(ToggleContext);
   const size = getInputSize(textSize);
 
