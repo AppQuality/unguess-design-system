@@ -13,6 +13,7 @@ import { ReactComponent as EditIcon } from "../../../assets/icons/notes-stroke.s
 import { Label } from "../../label";
 import { XL } from "../../typography/typescale";
 import { theme } from "../../theme";
+import { Span } from "../../typography/span";
 
 interface IInputToggleContext {
   isEditing?: boolean;
@@ -65,6 +66,8 @@ const Wrapper = styled.div<InputToggleArgs>`
  * Used for this:
  *  - To let the user enter data into a field
  *  - To enter multiline text, use a Textarea
+ * 
+ * Note: If used with preventEmpty prop, the placeholder will be used as the initial value: val is the current value, lastVal is the last value before the input was empty.
  */
 const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
   const [isEditing, setIsEditing] = useState<boolean>(!!isFocused);
@@ -89,6 +92,7 @@ const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
         onClick={handleClick}
         onBlur={() => setIsEditing(false)}
         {...props}
+        {...!isEditing && { style: { cursor: "pointer" } }}
       />
     </ToggleContext.Provider>
   );
@@ -102,32 +106,60 @@ const getInputSize = (textSize: textSizes) => ({
 
 const InputItem = (props: InputToggleArgs) => {
   const {
-    placeholder = "Insert a value",
     value,
+    placeholder = "Placeholder",
     style,
     textSize = "xl",
+    preventEmpty = false,
+    onChange,
+    onBlur,
   } = props;
-  const [input, setInput] = useState<HTMLInputElement | null>();
-
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [val, setVal] = useState<string>(value ? value.toString() : preventEmpty ? placeholder : "");
+  const [lastVal, setLastVal] = useState<string>(value ? value.toString() : preventEmpty ? placeholder : "");
   const { isEditing } = useContext(ToggleContext);
-
   const size = getInputSize(textSize);
 
   useEffect(() => {
-    if (isEditing && input) {
-      input.focus();
+    if (isEditing && inputRef?.current) {
+      inputRef?.current.focus();
     }
-  }, [isEditing, input]);
+  }, [isEditing, inputRef]);
 
-  return isEditing ? (
-    <StyledInput
-      ref={setInput}
-      {...props}
-      style={{ fontWeight: 500, ...size, ...style }}
-    />
-  ) : (
-    <StyledText isBold style={{ fontWeight: 500, ...size, ...style }}>
-      {!value ? placeholder : value} <EditIcon />
+  const handleBlur = () => {
+    if (preventEmpty && val.trim() === "") {
+      setVal(lastVal);
+    } else {
+      setLastVal(val);
+    }
+  };
+
+  if (isEditing)
+    return (
+      <StyledInput
+        ref={inputRef}
+        {...props}
+        value={val}
+        onChange={(e) => {
+          setVal(e.target.value);
+          onChange?.(e);
+        }}
+        onBlur={(e) => {
+          handleBlur();
+          onBlur?.(e);
+        }}
+        style={{ fontWeight: 500, ...size, ...style }}
+      />
+    );
+
+  return (
+    <StyledText isBold style={{ ...size, ...style }}>
+      {!val ? (
+        <Span style={{ color: theme.palette.grey[500] }}>{placeholder}</Span>
+      ) : (
+        <Span>{val}</Span>
+      )}
+      <EditIcon />
     </StyledText>
   );
 };
