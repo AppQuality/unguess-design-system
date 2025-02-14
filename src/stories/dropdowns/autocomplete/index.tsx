@@ -9,6 +9,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
 import { SelectOption } from "../../selectOption";
 import { OptGroup } from "../optGroup";
+import styled from "styled-components";
 
 export interface OnOptionClickArgs {
   inputValue?: string;
@@ -66,6 +67,11 @@ function isHidden(option: IOption, inputValue?: string) {
  * Not for this:
     - To make more than one selection, use Multiselect instead
  */
+
+    const StyledOption = styled(SelectOption)`
+    max-width: none
+    width:100%`
+
 const Autocomplete = ({
   options,
   onOptionClick,
@@ -79,7 +85,7 @@ const Autocomplete = ({
   const [inputValue, setInputValue] = useState<string | undefined>();
   const [_options, setOption] = useState(options);
   const debouncedInputValue = useDebounce(inputValue, 300);
-
+  
   useEffect(() => setOption(options), [options]);
 
   // update options isHidden property based on inputValue
@@ -141,26 +147,26 @@ const Autocomplete = ({
   );
 
   return (
-    <Combobox {...props} isAutocomplete onChange={handleChange}>
+    <Combobox style={{width:"100%", position:"relative"}} {...props} isAutocomplete onChange={handleChange}>
       {matchingOptions.map((option, index) => {
         if ("options" in option) {
           return (
             <OptGroup key={option.id} {...option}>
               {option.options.map((opt) => (
-                <SelectOption key={opt.id} {...opt} />
+                <StyledOption key={opt.id} {...opt} />
               ))}
             </OptGroup>
           );
         }
-        return <SelectOption key={index} {...option} />;
+        return <StyledOption key={index} {...option} />;
       })}
       {!thereAreVisibleOptions && (
-        <SelectOption value="" isDisabled>
+        <StyledOption value="" isDisabled>
           No results found
-        </SelectOption>
+        </StyledOption>
       )}
       {isCreatable && debouncedInputValue && (
-        <SelectOption
+        <StyledOption
           type="add"
           value={debouncedInputValue}
           title={debouncedInputValue}
@@ -172,7 +178,7 @@ const Autocomplete = ({
           }}
         >
           {`Add "${debouncedInputValue}"`}
-        </SelectOption>
+        </StyledOption>
       )}
     </Combobox>
   );
