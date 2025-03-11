@@ -1,11 +1,9 @@
 import { Accordion as ZendeskAccordion } from "@zendeskgarden/react-accordions";
 import { Checkbox, Field, Label } from "@zendeskgarden/react-forms";
-import { forwardRef, useContext, useEffect, useState } from "react";
+import { forwardRef, useContext } from "react";
 import styled from "styled-components";
-import { theme } from "../theme";
 import { AccordionContext } from ".";
-import { AccordionMeta } from "./AccordionMeta";
-import { AccordionLabel } from "./AccordionLabel";
+import { theme } from "../theme";
 
 export interface AccordionHeaderArgs extends React.HTMLAttributes<HTMLDivElement> {
   checkboxProps?: React.ComponentProps<typeof Checkbox>;
@@ -23,7 +21,7 @@ const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: bo
   ${props => props.$hasBorder ? `padding-left: ${theme.space.md}; padding-right: ${theme.space.xs};` : ""}
   display: flex;
   gap: ${theme.space.xs};
-  align-items: flex-start;
+  align-items: center;
   [data-garden-id="accordions.rotate_icon"] {
     padding: 0;
     padding-left: ${theme.space.sm};
@@ -62,6 +60,7 @@ const StyledAccordionHeader = styled(ZendeskAccordion.Header) <{ $isCompact?: bo
       }
     }
   `}
+
 `;
 
 export const AccordionHeader = forwardRef<HTMLDivElement, AccordionHeaderArgs>(({
