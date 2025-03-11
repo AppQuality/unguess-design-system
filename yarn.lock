@@ -4230,6 +4230,14 @@
     prop-types "^15.5.7"
     react-popper "^1.3.4"
 
+"@zendeskgarden/react-drag-drop@^8.76.9":
+  version "8.76.9"
+  resolved "https://registry.npmjs.org/@zendeskgarden/react-drag-drop/-/react-drag-drop-8.76.9.tgz#dd95d0c5bcc5faba121f7b555e002b72826f0eef"
+  integrity sha512-XsKDCaYTASNPOd2o67H88L8yCYbv88n/w4Ueva0537C/n72nw3lz9x/+kqfaI57uHng1WXY5P0DuczJu2YUf9g==
+  dependencies:
+    polished "^4.3.1"
+    prop-types "^15.7.2"
+
 "@zendeskgarden/react-dropdowns.next@^8.76.8":
   version "8.76.8"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-dropdowns.next/-/react-dropdowns.next-8.76.8.tgz#d2cdb014e17d0872635f28dfae9b63140898b39b"
