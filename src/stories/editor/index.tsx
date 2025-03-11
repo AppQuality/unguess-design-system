@@ -73,7 +73,13 @@ const Editor = ({
   placeholderOptions,
   ...props
 }: PropsWithChildren<EditorArgs>) => {
-  const { children, hasInlineMenu, bubbleOptions, editable } = props;
+  const {
+    children,
+    hasInlineMenu,
+    bubbleOptions,
+    editable,
+    disableSaveShortcut,
+  } = props;
 
   const isEditable = editable !== undefined ? editable : true;
 
@@ -104,15 +110,17 @@ const Editor = ({
       CharacterCount,
     ],
     content: (children as Content) || "",
-    editorProps: {
-      handleKeyDown: (view, event: KeyboardEvent) => {
-        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-          return true;
-        }
+    editorProps: props.disableSaveShortcut
+      ? {}
+      : {
+          handleKeyDown: (view, event: KeyboardEvent) => {
+            if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+              return true;
+            }
 
-        return false;
-      },
-    },
+            return false;
+          },
+        },
     ...props,
   });
 
@@ -134,7 +142,9 @@ const Editor = ({
         </>
       )}
       <EditorContent editor={ed} onKeyDown={onKeyDown} />
-      {isEditable && <EditorFooter saveText={footerSaveText} />}
+      {!disableSaveShortcut && isEditable && (
+        <EditorFooter saveText={footerSaveText} />
+      )}
     </EditorContainer>
   );
 };
