@@ -12,6 +12,7 @@ export interface EditorArgs extends Partial<EditorOptions> {
   /** Applies validation state styling */
   validation?: validationStatus;
   onSave?: (editor: Editor) => void;
+  disableSaveShortcut?: boolean;
 }
 
 export interface EditorHeaderArgs {

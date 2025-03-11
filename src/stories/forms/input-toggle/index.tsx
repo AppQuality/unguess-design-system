@@ -1,19 +1,19 @@
-import styled from "styled-components";
 import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
   useRef,
   useState,
-  useEffect,
-  createContext,
-  useMemo,
-  useContext,
 } from "react";
-import { Input } from "../input";
-import { InputToggleArgs, textSizes } from "./_types";
+import styled from "styled-components";
 import { ReactComponent as EditIcon } from "../../../assets/icons/notes-stroke.svg";
 import { Label } from "../../label";
-import { XL } from "../../typography/typescale";
 import { theme } from "../../theme";
 import { Span } from "../../typography/span";
+import { XL } from "../../typography/typescale";
+import { Input } from "../input";
+import { InputToggleArgs, textSizes } from "./_types";
 
 interface IInputToggleContext {
   isEditing?: boolean;
@@ -66,7 +66,7 @@ const Wrapper = styled.div<InputToggleArgs>`
  * Used for this:
  *  - To let the user enter data into a field
  *  - To enter multiline text, use a Textarea
- * 
+ *
  * Note: If used with preventEmpty prop, the placeholder will be used as the initial value: val is the current value, lastVal is the last value before the input was empty.
  */
 const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
@@ -92,7 +92,7 @@ const InputToggle = ({ isFocused, ...props }: InputToggleArgs) => {
         onClick={handleClick}
         onBlur={() => setIsEditing(false)}
         {...props}
-        {...!isEditing && { style: { cursor: "pointer" } }}
+        {...(!isEditing && { style: { cursor: "pointer" } })}
       />
     </ToggleContext.Provider>
   );
@@ -115,10 +115,16 @@ const InputItem = (props: InputToggleArgs) => {
     onBlur,
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
-  const [val, setVal] = useState<string>(value ? value.toString() : preventEmpty ? placeholder : "");
-  const [lastVal, setLastVal] = useState<string>(value ? value.toString() : preventEmpty ? placeholder : "");
+  const valWithFallback = (value?: string) =>
+    value ? value.toString() : preventEmpty ? placeholder : "";
+  const [val, setVal] = useState<string>(valWithFallback(value));
+  const [lastVal, setLastVal] = useState<string>(valWithFallback(value));
   const { isEditing } = useContext(ToggleContext);
   const size = getInputSize(textSize);
+
+  useEffect(() => {
+    setVal(valWithFallback(value));
+  }, [value]);
 
   useEffect(() => {
     if (isEditing && inputRef?.current) {
