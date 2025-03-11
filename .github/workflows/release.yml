@@ -25,13 +25,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "18"
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-deps-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            yarn-deps-${{ hashFiles('yarn.lock') }}
       - name: Git Identity
         run: |
           git config --global user.name 'github-actions[bot]'
