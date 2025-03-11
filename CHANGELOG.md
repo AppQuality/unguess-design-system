@@ -1,3 +1,21 @@
+# v4.0.27 (Tue Mar 11 2025)
+
+#### 🐛 Bug Fix
+
+- Remove Cache [#496](https://github.com/AppQuality/unguess-design-system/pull/496) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- chore: remove caching of node modules in release workflow [#495](https://github.com/AppQuality/unguess-design-system/pull/495) ([@d-beezee](https://github.com/d-beezee))
+- Fix inputToggle and update accordion component [#494](https://github.com/AppQuality/unguess-design-system/pull/494) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+- Add disableSaveShortcut prop to Editor component [#493](https://github.com/AppQuality/unguess-design-system/pull/493) ([@cannarocks](https://github.com/cannarocks))
+- refactor: improve value handling in InputToggle component [#492](https://github.com/AppQuality/unguess-design-system/pull/492) ([@d-beezee](https://github.com/d-beezee))
+- Fix AccordionHeader alignment for improved layout [#491](https://github.com/AppQuality/unguess-design-system/pull/491) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.26 (Mon Feb 10 2025)
 
 #### 🐛 Bug Fix
