@@ -31,7 +31,7 @@ const defaultArgs: EditorStoryArgs = {
   onUpdate: ({ editor }) => {
     console.log(
       "Characters count:",
-      editor.storage.characterCount.characters()
+      editor.storage.characterCount.characters(),
     );
   },
 };
@@ -93,6 +93,13 @@ Validation.args = {
   ...defaultArgs,
   children: `<p>Hey, try to change the validation here. Our editor will change the theme color accordingly.</p>`,
   validation: "error",
+};
+
+export const NoSaveShortcut = Template.bind({});
+NoSaveShortcut.args = {
+  ...defaultArgs,
+  children: `<p>Hey, try to change the validation here. Our editor will change the theme color accordingly.</p>`,
+  disableSaveShortcut: true,
 };
 
 export default {
