@@ -54,7 +54,8 @@ export * from "./stories/close";
 
 // --- Color Pickers ---
 export * from "./stories/color-swatch";
-
+// --- Draggable ---
+export * from "./stories/draggable";
 // --- Drawers ---
 export * from "./stories/drawers";
 
