@@ -1,3 +1,18 @@
+# v4.0.28 (Fri Mar 14 2025)
+
+#### 🐛 Bug Fix
+
+- Add DraggableItem, DraggableList e PlanCard [#500](https://github.com/AppQuality/unguess-design-system/pull/500) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- Add plan card components with SVG icons [#499](https://github.com/AppQuality/unguess-design-system/pull/499) ([@cannarocks](https://github.com/cannarocks))
+- feat: add Draggable and DraggableList components with stories [#497](https://github.com/AppQuality/unguess-design-system/pull/497) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.27 (Tue Mar 11 2025)
 
 #### 🐛 Bug Fix
