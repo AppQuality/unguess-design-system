@@ -1,83 +1,56 @@
-import styled from "styled-components";
 import { Tag } from "../../tags";
 import { theme } from "../../theme";
 import { IPlanStatus, PlanCardsProps } from "./_types";
-
 import { SpecialCard } from "../../special-cards";
-import { ReactComponent as PlanIcon } from "./icons/plan-icon.svg";
-import { ReactComponent as DraftStatusIcon } from "./icons/draft-status.svg";
 import { ReactComponent as DraftIcon } from "./icons/draft.svg";
-import { ReactComponent as RequestedStatusIcon } from "./icons/requested-status.svg";
-import { ReactComponent as RequestedIcon } from "./icons/requested.svg";
+import { ReactComponent as SubmittedIcon } from "./icons/submitted.svg";
+import { ReactComponent as WaitingIcon } from "./icons/waiting.svg";
 import { CampaignCardSkeleton } from "./skeleton";
+import { PlanTag } from "./parts/tag";
+import { LabelComponent } from "./parts/Label";
+import { TitleComponent } from "./parts/Title";
 
-const getTagColor = (status: IPlanStatus) => {
+const getTitleColor = (status: IPlanStatus) => {
   switch (status) {
-    case "draft":
-      return theme.palette.azure[600];
-    case "pending_review":
+    case "submitted":
+      return theme.palette.grey[800];
+    case "pending_quote_review":
       return theme.palette.yellow[700];
     default:
-      return theme.palette.grey[700];
+      return theme.palette.azure[800];
   }
 };
 
-const PlanTag = ({
-  status,
-  statusLabel,
-}: {
-  status: IPlanStatus;
-  statusLabel: string;
-}) => {
-  const color = getTagColor(status);
-
-  return (
-    <StyledTag hue="transparent" color={color} size="large">
-      <Tag.Avatar>
-        {status === "draft" ? (
-          <DraftStatusIcon color={color} />
-        ) : (
-          <RequestedStatusIcon color={color} />
-        )}
-      </Tag.Avatar>
-      {statusLabel}
-    </StyledTag>
-  );
-};
-
-const StyledTag = styled(Tag)`
-  max-width: 85%;
-  cursor: pointer;
-`;
-
 const PlanCard = ({
-  projectTitle,
-  campaignTitle,
   status = "draft",
   i18n,
+  children,
   ...props
 }: PlanCardsProps) => {
   if (props.isLoading) return <CampaignCardSkeleton />;
 
+  const Icon = (() => {
+    switch (status) {
+      case "submitted":
+        return <SubmittedIcon />;
+      case "pending_quote_review":
+        return <WaitingIcon />;
+      default:
+        return <DraftIcon />;
+    }
+  })();
+
   return (
-    <SpecialCard title={campaignTitle} {...props}>
-      <SpecialCard.Thumb>
-        {status === "draft" ? <DraftIcon /> : <RequestedIcon />}
-      </SpecialCard.Thumb>
-      <SpecialCard.Header>
-        <SpecialCard.Header.Label>{projectTitle}</SpecialCard.Header.Label>
-        <SpecialCard.Header.Title style={{ color: getTagColor(status) }}>
-          {campaignTitle}
-        </SpecialCard.Header.Title>
+    <SpecialCard title={"Setup Activity"} {...props}>
+      <SpecialCard.Thumb>{Icon}</SpecialCard.Thumb>
+      <SpecialCard.Header style={{ color: getTitleColor(status) }}>
+        {children}
       </SpecialCard.Header>
 
-      <SpecialCard.Footer>
-        <StyledTag size="large">
-          <Tag.Avatar>
-            <PlanIcon />
-          </Tag.Avatar>
+      <SpecialCard.Footer style={{ marginBottom: theme.space.xxs }}>
+        <Tag size="large" hue="transparent">
           {i18n?.planLabel ?? "Plan"}
-        </StyledTag>
+        </Tag>
         <PlanTag
           status={status ?? "draft"}
           statusLabel={i18n?.statusLabel ?? (status as string)}
@@ -86,5 +59,8 @@ const PlanCard = ({
     </SpecialCard>
   );
 };
+
+PlanCard.ProjectLabel = LabelComponent;
+PlanCard.Title = TitleComponent;
 
 export { PlanCard };

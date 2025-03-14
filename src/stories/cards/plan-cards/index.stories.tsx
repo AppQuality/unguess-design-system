@@ -6,15 +6,14 @@ import { theme } from "../../theme";
 import { PlanCardsProps } from "./_types";
 import { PlanCard } from "./index";
 
-const design = {
-  type: "figma",
-  url: "https://www.figma.com/file/cDHa0NrDcLoJcPL20FfGBI/UNGUESS-%7C-Redesign-Zendesk?node-id=205%3A14819",
-};
+interface StoryArgs extends PlanCardsProps {
+  projectTitle: string;
+  campaignTitle: string;
+}
 
-const defaultArgs: PlanCardsProps = {
+const defaultArgs: StoryArgs = {
   projectTitle: "This is the project title",
   campaignTitle: "This is the campaign title",
-  status: "draft",
   i18n: {
     statusLabel: "Draft",
   },
@@ -31,42 +30,54 @@ const CardsContainer = styled.div`
   }
 `;
 
-const MultiTemplate: Story<PlanCardsProps> = (args) => {
-
+const MultiTemplate: Story<StoryArgs> = (args) => {
   return (
     <CardsContainer>
       <StyledRow>
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
-          <PlanCard
-            {...args}
-            projectTitle={
-              "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
-            }
-            campaignTitle={
-              "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
-            }
-          />
+          <PlanCard {...args}>
+            <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
+            <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
+          </PlanCard>
         </Col>
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
           <PlanCard
             {...args}
-            status={"pending_review"}
+            status={"pending_quote_review"}
             i18n={{ statusLabel: "Requested" }}
-          />
+          >
+            <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
+            <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
+          </PlanCard>
         </Col>
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
-          <PlanCard {...args} />
+          <PlanCard {...args}>
+            <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
+            <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
+          </PlanCard>
         </Col>
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
-          <PlanCard {...args} />
+          <PlanCard
+            {...args}
+            status={"submitted"}
+            i18n={{ statusLabel: "Submitted" }}
+          >
+            <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
+            <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
+          </PlanCard>
         </Col>
       </StyledRow>
     </CardsContainer>
   );
 };
 
-const SingleTemplate: Story<PlanCardsProps> = (args) => {
-  return <PlanCard {...args} />;
+const SingleTemplate: Story<StoryArgs> = (args) => {
+  return (
+    <PlanCard {...args}>
+      <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
+      <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
+    </PlanCard>
+  );
 };
 
 export const SingleCard = SingleTemplate.bind({});
@@ -74,13 +85,18 @@ SingleCard.args = {
   ...defaultArgs,
 };
 
+export const i18nCard = SingleTemplate.bind({});
+i18nCard.storyName = "i18n";
+i18nCard.args = {
+  ...defaultArgs,
+  projectTitle: "Questo è il titolo del progetto",
+  campaignTitle: "Questo è il titolo della campagna",
+  i18n: { statusLabel: "Bozza", planLabel: "Piano" },
+};
+
 export const Grid = MultiTemplate.bind({});
 Grid.args = {
   ...defaultArgs,
-};
-
-Grid.parameters = {
-  design,
 };
 
 export default {
