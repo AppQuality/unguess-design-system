@@ -1,3 +1,4 @@
+import { PlanCard } from "./stories/cards/plan-cards";
 import { GlobalStyle } from "./stories/shared/globalStyle";
 
 // -------------- Components --------------
@@ -54,7 +55,8 @@ export * from "./stories/close";
 
 // --- Color Pickers ---
 export * from "./stories/color-swatch";
-
+// --- Draggable ---
+export * from "./stories/draggable";
 // --- Drawers ---
 export * from "./stories/drawers";
 
@@ -147,6 +149,9 @@ export * from "./stories/navigation/page-header";
 
 // --- Player ---
 export * from "./stories/player";
+
+// --- PlanCard ---
+export { PlanCard } from "./stories/cards/plan-cards";
 
 // --- Profile Modal ---
 export * from "./stories/profile-modal";

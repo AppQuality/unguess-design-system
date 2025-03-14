@@ -18,7 +18,7 @@ import { Span } from '../typography/span';
 
 const StyledAvatar = styled(ZendeskTag.Avatar)``;
 const StyledClose = styled(ZendeskTag.Close)``;
-const StyledSpan = styled(Span) <{ color?: string; }>`
+const StyledSpan = styled(Span)<{ color?: string; }>`
     min-width: 1ch;
     margin-left: ${(p) => p.theme.space.xxs};
     ${(p) => p.color && `color: ${p.color};`}

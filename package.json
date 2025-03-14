@@ -64,6 +64,7 @@
     "@zendeskgarden/react-chrome": "8.76.8",
     "@zendeskgarden/react-colorpickers": "8.76.8",
     "@zendeskgarden/react-datepickers": "8.76.8",
+    "@zendeskgarden/react-drag-drop": "^8.76.9",
     "@zendeskgarden/react-dropdowns": "8.76.8",
     "@zendeskgarden/react-dropdowns.next": "^8.76.8",
     "@zendeskgarden/react-forms": "8.76.8",
