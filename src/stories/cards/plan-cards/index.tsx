@@ -64,3 +64,4 @@ PlanCard.ProjectLabel = LabelComponent;
 PlanCard.Title = TitleComponent;
 
 export { PlanCard };
+export type { IPlanStatus };
