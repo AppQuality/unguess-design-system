@@ -1,3 +1,15 @@
+# v4.0.29 (Fri Mar 14 2025)
+
+#### 🐛 Bug Fix
+
+- Export PlanCard status type [#501](https://github.com/AppQuality/unguess-design-system/pull/501) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.28 (Fri Mar 14 2025)
 
 #### 🐛 Bug Fix
