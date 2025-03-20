@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ReactNode } from "react";
 import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
-import { ReactComponent as FolderIcon } from "@zendeskgarden/svg-icons/src/16/folder-open-stroke.svg";
 import { Tag } from "../../tags";
 import { theme } from "../../theme";
 import { StatusCompletedIcon } from "../../icons";
@@ -13,10 +12,11 @@ type StoryArgs = TemplateCardsProps & {
 
 const ExampleFooter = () => (
   <>
+    <TemplateCard.PriceTag text='100¥' />
+    <TemplateCard.UserTag text='Users 12' />
     <Tag
       color={theme.palette.green[800]}
       hue="rgba(0,0,0,0)"
-      style={{ marginBottom: theme.space.xxs }}
     >
       <Tag.Avatar>
         <StatusCompletedIcon />
@@ -65,8 +65,12 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs: StoryArgs = {
   isFast: true,
-  title: 'Title',
-  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Quisquam, quos.',
+  isTailored: true,
+  title: 'Detailed feedback in real time.',
+  superTitle: 'Moderated',
+  thumbUrl: 'https://admin.unguess.io/uploads/Icona_severtity_esperienziale_39f5178d1b.svg',
+  description: 'Gain qualitative insights by observing users as they lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Quisquam, quos.',
+  lineClamp: 2,
   exampleFooter: <ExampleFooter />,
 };
 
