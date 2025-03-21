@@ -1,3 +1,17 @@
+# v4.0.30 (Fri Mar 21 2025)
+
+#### 🐛 Bug Fix
+
+- Add TemplateCard 📝 [#503](https://github.com/AppQuality/unguess-design-system/pull/503) ([@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks))
+- UN-981-template-card [#502](https://github.com/AppQuality/unguess-design-system/pull/502) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.29 (Fri Mar 14 2025)
 
 #### 🐛 Bug Fix
