@@ -153,6 +153,9 @@ export * from "./stories/player";
 // --- PlanCard ---
 export { PlanCard } from "./stories/cards/plan-cards";
 
+// --- TemplateCard ---
+export { TemplateCard } from "./stories/cards/template-card";
+
 // --- Profile Modal ---
 export * from "./stories/profile-modal";
 
