@@ -12,7 +12,6 @@ import { LG, SM } from "../../typography/typescale";
 import styled from "styled-components";
 
 export interface TemplateCardsProps extends React.ComponentProps<typeof SpecialCard> {
-  isLoading?: boolean;
   isFast?: boolean;
   isTailored?: boolean;
   lineClamp?: number;
@@ -82,12 +81,9 @@ const TemplateCard = ({
   isFast,
   isTailored,
   lineClamp,
-  isLoading,
   children,
   ...props
 }: TemplateCardsProps) => {
-  if (isLoading) return '...loading';
-
   return (
     <SpecialCard {...props}>
       <SpecialCard.Meta>
