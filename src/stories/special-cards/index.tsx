@@ -5,6 +5,7 @@ import { CardMeta } from "./styled/meta";
 import { CardThumbnail } from "./styled/thumbnail";
 import { CardHeader } from "./styled/header";
 import { CardFooter } from "./styled/footer";
+import { CardBody } from "./styled/Body";
 import { CARD_COMPONENT_ID } from "../cards";
 import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
@@ -45,5 +46,6 @@ SpecialCard.Meta = CardMeta;
 SpecialCard.Thumb = CardThumbnail;
 SpecialCard.Header = CardHeader;
 SpecialCard.Footer = CardFooter;
+SpecialCard.Body = CardBody;
 
 export { SpecialCard };
