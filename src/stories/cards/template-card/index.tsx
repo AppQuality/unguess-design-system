@@ -115,7 +115,7 @@ const TemplateCard = ({
           src={props.thumbUrl}
         />
       </SpecialCard.Thumb>
-      <SpecialCard.Header>
+      <SpecialCard.Header style={{flexGrow: 'unset'}}>
         {superTitle && <SM style={{marginBottom: theme.space.xs}} color={theme.palette.grey[600]}>{superTitle}</SM>}
         <LG isBold color={getColor(theme.colors.primaryHue, 600)} style={{ marginBottom: theme.space.xs }}>{title}</LG>
       </SpecialCard.Header>
