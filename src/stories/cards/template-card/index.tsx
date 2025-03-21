@@ -8,7 +8,7 @@ import { SpecialCard } from "../../special-cards";
 import { Tag } from "../../tags";
 import { theme } from "../../theme";
 import { getColor } from "../../theme/utils";
-import { LG, MD, SM } from "../../typography/typescale";
+import { LG, SM } from "../../typography/typescale";
 import styled from "styled-components";
 
 export interface TemplateCardsProps extends React.ComponentProps<typeof SpecialCard> {
@@ -93,7 +93,7 @@ const TemplateCard = ({
       <SpecialCard.Meta>
         <StyledMetaContainer>
           {isTailored ? <TailoredTemplate /> : <UnguessTemplate />}
-          <SM isBold>{isTailored
+          <SM color={theme.palette.grey[800]} isBold>{isTailored
             ? "Tailored"
             : "UNGUESS Template"
           }</SM>
@@ -113,14 +113,14 @@ const TemplateCard = ({
           </Tag>
         )}
       </SpecialCard.Meta>
-      <SpecialCard.Thumb align="center" style={{ maxWidth: "100%", maxHeight: "72px" }}>
+      <SpecialCard.Thumb style={{ maxWidth: "100%", maxHeight: "72px" }}>
         <StyledImage
           alt={title}
           src={props.thumbUrl}
         />
       </SpecialCard.Thumb>
       <SpecialCard.Header>
-        {superTitle && <SM color={theme.palette.grey[600]}>{superTitle}</SM>}
+        {superTitle && <SM style={{marginBottom: theme.space.xs}} color={theme.palette.grey[600]}>{superTitle}</SM>}
         <LG isBold color={getColor(theme.colors.primaryHue, 600)} style={{ marginBottom: theme.space.xs }}>{title}</LG>
       </SpecialCard.Header>
       <SpecialCard.Body lines={lineClamp}>
