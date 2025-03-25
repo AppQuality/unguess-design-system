@@ -62,6 +62,15 @@ const UserTag = ({ text }: { text: string }) => (
   </Tag>
 );
 
+const Meta = ({isTailored}: {isTailored?: boolean}) => (
+  <StyledMetaContainer>
+    {isTailored ? <TailoredTemplate /> : <UnguessTemplate />}
+    <SM color={theme.palette.grey[800]} isBold>
+      { isTailored ? "My tailored activity" : "UNGUESS Template" }
+    </SM>
+  </StyledMetaContainer>
+);
+
 const StyledImage = styled.img`
   width: auto;
   height: 64px;
@@ -87,13 +96,7 @@ const TemplateCard = ({
   return (
     <SpecialCard {...props}>
       <SpecialCard.Meta>
-        <StyledMetaContainer>
-          {isTailored ? <TailoredTemplate /> : <UnguessTemplate />}
-          <SM color={theme.palette.grey[800]} isBold>{isTailored
-            ? "Tailored"
-            : "UNGUESS Template"
-          }</SM>
-        </StyledMetaContainer>
+        <Meta isTailored={isTailored} />
         {isFast && (
           <Tag
             hue={theme.palette.lemon["500"]}
@@ -130,5 +133,6 @@ const TemplateCard = ({
 TemplateCard.Footer = TemplateCardFooter;
 TemplateCard.PriceTag = PriceTag;
 TemplateCard.UserTag = UserTag;
+TemplateCard.Meta = Meta;
 
 export { TemplateCard };
