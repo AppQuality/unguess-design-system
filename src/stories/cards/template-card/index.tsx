@@ -19,6 +19,10 @@ export interface TemplateCardsProps extends React.ComponentProps<typeof SpecialC
   title: string;
   superTitle?: string;
   description: string;
+  i18n: {
+    tailoredHeader: string;
+    unguessHeader: string;
+  };
 }
 
 const TemplateCardFooter = ({ children }: { children: React.ReactNode }) => (
@@ -62,11 +66,11 @@ const UserTag = ({ text }: { text: string }) => (
   </Tag>
 );
 
-const Meta = ({isTailored}: {isTailored?: boolean}) => (
+const Meta = ({isTailored, i18n}: {isTailored?: boolean, i18n: TemplateCardsProps['i18n']}) => (
   <StyledMetaContainer>
     {isTailored ? <TailoredTemplate /> : <UnguessTemplate />}
     <SM color={theme.palette.grey[800]} isBold>
-      { isTailored ? "My tailored activity" : "UNGUESS Template" }
+      { isTailored ? i18n.tailoredHeader : i18n.unguessHeader }
     </SM>
   </StyledMetaContainer>
 );
@@ -91,6 +95,7 @@ const TemplateCard = ({
   isTailored,
   lineClamp,
   children,
+  i18n,
   ...props
 }: TemplateCardsProps) => {
   return (
