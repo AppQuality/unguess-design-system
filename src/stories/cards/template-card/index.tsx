@@ -101,7 +101,7 @@ const TemplateCard = ({
   return (
     <SpecialCard {...props}>
       <SpecialCard.Meta>
-        <Meta isTailored={isTailored} />
+        <Meta isTailored={isTailored} i18n={i18n} />
         {isFast && (
           <Tag
             hue={theme.palette.lemon["500"]}
