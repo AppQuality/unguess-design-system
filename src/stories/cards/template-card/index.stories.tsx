@@ -12,36 +12,26 @@ type StoryArgs = TemplateCardsProps & {
 
 const ExampleFooter = () => (
   <>
-    <TemplateCard.PriceTag text='100¥' />
-    <TemplateCard.UserTag text='Users 12' />
-    <Tag
-      color={theme.palette.green[800]}
-      hue="rgba(0,0,0,0)"
-    >
+    <TemplateCard.PriceTag text="100¥" />
+    <TemplateCard.UserTag text="Users 12" />
+    <Tag color={theme.palette.green[800]} hue="rgba(0,0,0,0)">
       <Tag.Avatar>
         <StatusCompletedIcon />
       </Tag.Avatar>
       Completed
-      <Tag.SecondaryText color={theme.palette.grey[700]}>
-        1
-      </Tag.SecondaryText>
+      <Tag.SecondaryText color={theme.palette.grey[700]}>1</Tag.SecondaryText>
     </Tag>
     <Tag>
       <Tag.Avatar>
         <LeafIcon />
       </Tag.Avatar>
       Counter
-      <Tag.SecondaryText
-        color={"#000000"}
-        isBold
-      >
+      <Tag.SecondaryText color={"#000000"} isBold>
         2
       </Tag.SecondaryText>
     </Tag>
   </>
 );
-
-
 
 const meta = {
   title: "Molecules/Card/Template Card",
@@ -49,11 +39,9 @@ const meta = {
 
   render: ({ children, ...args }) => {
     return (
-      <TemplateCard onClick={() => alert('clicked')} {...args}>
+      <TemplateCard onClick={() => alert("clicked")} {...args}>
         {args.exampleFooter && (
-          <TemplateCard.Footer>
-            {args.exampleFooter}
-          </TemplateCard.Footer>
+          <TemplateCard.Footer>{args.exampleFooter}</TemplateCard.Footer>
         )}
       </TemplateCard>
     );
@@ -65,15 +53,17 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs: StoryArgs = {
   i18n: {
-    tailoredHeader: 'My tailored activities',
-    unguessHeader: 'Suggested by UNGUESS',
+    tailoredHeader: "My tailored activities",
+    unguessHeader: "Suggested by UNGUESS",
   },
   isFast: true,
   isTailored: true,
-  title: 'Detailed feedback in real time.',
-  superTitle: 'Moderated',
-  thumbUrl: 'https://admin.unguess.io/uploads/Icona_severtity_esperienziale_39f5178d1b.svg',
-  description: 'Gain qualitative insights by observing users as they lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Quisquam, quos.',
+  title: "Detailed feedback in real time.",
+  superTitle: "Moderated",
+  thumbUrl:
+    "https://admin.unguess.io/uploads/Icona_severtity_esperienziale_39f5178d1b.svg",
+  description:
+    "Gain qualitative insights by observing users as they lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Quisquam, quos.",
   lineClamp: 2,
   exampleFooter: <ExampleFooter />,
 };
@@ -84,3 +74,9 @@ export const Default: Story = {
   },
 };
 
+export const WithoutImage: Story = {
+  args: {
+    ...defaultArgs,
+    thumbUrl: undefined,
+  },
+};
