@@ -64,6 +64,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const defaultArgs: StoryArgs = {
+  i18n: {
+    tailoredHeader: 'My tailored activities',
+    unguessHeader: 'Suggested by UNGUESS',
+  },
   isFast: true,
   isTailored: true,
   title: 'Detailed feedback in real time.',
