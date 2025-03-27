@@ -19,6 +19,10 @@ export interface TemplateCardsProps extends React.ComponentProps<typeof SpecialC
   title: string;
   superTitle?: string;
   description: string;
+  i18n: {
+    tailoredHeader: string;
+    unguessHeader: string;
+  };
 }
 
 const TemplateCardFooter = ({ children }: { children: React.ReactNode }) => (
@@ -62,6 +66,15 @@ const UserTag = ({ text }: { text: string }) => (
   </Tag>
 );
 
+const Meta = ({isTailored, i18n}: {isTailored?: boolean, i18n: TemplateCardsProps['i18n']}) => (
+  <StyledMetaContainer>
+    {isTailored ? <TailoredTemplate /> : <UnguessTemplate />}
+    <SM color={theme.palette.grey[800]} isBold>
+      { isTailored ? i18n.tailoredHeader : i18n.unguessHeader }
+    </SM>
+  </StyledMetaContainer>
+);
+
 const StyledImage = styled.img`
   width: auto;
   height: 64px;
@@ -82,18 +95,13 @@ const TemplateCard = ({
   isTailored,
   lineClamp,
   children,
+  i18n,
   ...props
 }: TemplateCardsProps) => {
   return (
     <SpecialCard {...props}>
       <SpecialCard.Meta>
-        <StyledMetaContainer>
-          {isTailored ? <TailoredTemplate /> : <UnguessTemplate />}
-          <SM color={theme.palette.grey[800]} isBold>{isTailored
-            ? "Tailored"
-            : "UNGUESS Template"
-          }</SM>
-        </StyledMetaContainer>
+        <Meta isTailored={isTailored} i18n={i18n} />
         {isFast && (
           <Tag
             hue={theme.palette.lemon["500"]}
@@ -130,5 +138,6 @@ const TemplateCard = ({
 TemplateCard.Footer = TemplateCardFooter;
 TemplateCard.PriceTag = PriceTag;
 TemplateCard.UserTag = UserTag;
+TemplateCard.Meta = Meta;
 
 export { TemplateCard };

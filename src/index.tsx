@@ -153,6 +153,9 @@ export * from "./stories/player";
 // --- PlanCard ---
 export { PlanCard } from "./stories/cards/plan-cards";
 
+// --- PlanStatus ---
+export { PlanTag } from "./stories/cards/plan-cards/parts/tag";
+
 // --- TemplateCard ---
 export { TemplateCard } from "./stories/cards/template-card";
 
