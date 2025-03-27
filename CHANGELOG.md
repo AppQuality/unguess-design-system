@@ -1,3 +1,19 @@
+# v4.0.31 (Thu Mar 27 2025)
+
+#### 🐛 Bug Fix
+
+- Add planTag and other fixes [#507](https://github.com/AppQuality/unguess-design-system/pull/507) ([@iacopolea](https://github.com/iacopolea) [@cannarocks](https://github.com/cannarocks))
+- fix build problem [#505](https://github.com/AppQuality/unguess-design-system/pull/505) ([@iacopolea](https://github.com/iacopolea))
+- Add PlanTag component for plan status display [#506](https://github.com/AppQuality/unguess-design-system/pull/506) ([@cannarocks](https://github.com/cannarocks))
+- feat: add Meta component to TemplateCard [#504](https://github.com/AppQuality/unguess-design-system/pull/504) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.30 (Fri Mar 21 2025)
 
 #### 🐛 Bug Fix
