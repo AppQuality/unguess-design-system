@@ -258,6 +258,7 @@ export const components = {
     return {
       ...(isAccent &&
         !isPrimary &&
+        !disabled &&
         !isBasic && {
           borderColor: getColor(colors.accentHue, 700),
           color: getColor(colors.accentHue, 700),
@@ -273,7 +274,8 @@ export const components = {
           },
         }),
       ...(isAccent &&
-        isBasic && {
+        isBasic &&
+        !disabled && {
           color: getColor(colors.accentHue, 700),
           "&:hover": {
             backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
@@ -285,7 +287,8 @@ export const components = {
           },
         }),
       ...(isAccent &&
-        isPrimary && {
+        isPrimary &&
+        !disabled && {
           backgroundColor: getColor(colors.accentHue, 600),
           color: "white",
           "&:hover": {
@@ -297,25 +300,26 @@ export const components = {
             color: "white",
           },
         }),
-      ...(isBright && {
-        backgroundColor: "transparent",
-        color: "white",
-        border: "none",
-        "&:hover": {
-          backgroundColor: palette.grey[500],
+      ...(isBright &&
+        !disabled && {
+          backgroundColor: "transparent",
           color: "white",
-          "& svg": {
+          border: "none",
+          "&:hover": {
+            backgroundColor: palette.grey[500],
             color: "white",
+            "& svg": {
+              color: "white",
+            },
           },
-        },
-        "&:active": {
-          backgroundColor: palette.grey[600],
-          color: "white",
-          "& svg": {
+          "&:active": {
+            backgroundColor: palette.grey[600],
             color: "white",
+            "& svg": {
+              color: "white",
+            },
           },
-        },
-      }),
+        }),
       ...(disabled && { pointerEvents: "none" }),
     };
   },
@@ -332,12 +336,14 @@ export const components = {
     isPrimary,
     isBasic,
     isLink,
+    disabled,
   }: ButtonArgs) => {
     return {
       ...(isAccent &&
         !isPrimary &&
         !isBasic &&
-        !isLink && {
+        !isLink &&
+        !disabled && {
           borderColor: getColor(colors.accentHue, 700),
           color: getColor(colors.accentHue, 700),
           "&:hover": {
@@ -352,7 +358,8 @@ export const components = {
           },
         }),
       ...(isAccent &&
-        isPrimary && {
+        isPrimary &&
+        !disabled && {
           backgroundColor: getColor(colors.accentHue, 600),
           "&:hover": {
             backgroundColor: getColor(colors.accentHue, 700),
@@ -362,7 +369,8 @@ export const components = {
           },
         }),
       ...(isAccent &&
-        isBasic && {
+        isBasic &&
+        !disabled && {
           color: getColor(colors.accentHue, 700),
           "&:hover": {
             backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
@@ -374,7 +382,8 @@ export const components = {
           },
         }),
       ...(isAccent &&
-        isLink && {
+        isLink &&
+        !disabled && {
           color: getColor(colors.accentHue, 700),
           "&:hover": {
             color: getColor(colors.accentHue, 800),
@@ -383,17 +392,18 @@ export const components = {
             color: getColor(colors.accentHue, 800),
           },
         }),
-      ...(isBright && {
-        backgroundColor: "transparent",
-        color: "white",
-        border: "none",
-        "&:hover": {
-          backgroundColor: palette.grey[500],
-        },
-        "&:active": {
-          backgroundColor: palette.grey[600],
-        },
-      }),
+      ...(isBright &&
+        !disabled && {
+          backgroundColor: "transparent",
+          color: "white",
+          border: "none",
+          "&:hover": {
+            backgroundColor: palette.grey[500],
+          },
+          "&:active": {
+            backgroundColor: palette.grey[600],
+          },
+        }),
     };
   },
 };
