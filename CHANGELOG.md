@@ -1,3 +1,17 @@
+# v4.0.33 (Fri Mar 28 2025)
+
+#### 🐛 Bug Fix
+
+- Fix editor bubbleMenu [#510](https://github.com/AppQuality/unguess-design-system/pull/510) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- fix: Prevent error on removechild fro bubblemenu when toggling editable state [#509](https://github.com/AppQuality/unguess-design-system/pull/509) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.32 (Thu Mar 27 2025)
 
 #### 🐛 Bug Fix
