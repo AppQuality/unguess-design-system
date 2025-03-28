@@ -1,3 +1,16 @@
+# v4.0.34 (Fri Mar 28 2025)
+
+#### 🐛 Bug Fix
+
+- Add support to disabled stato to  "isAccent" buttons [#512](https://github.com/AppQuality/unguess-design-system/pull/512) ([@cannarocks](https://github.com/cannarocks))
+- Add disabled state handling in button component [#511](https://github.com/AppQuality/unguess-design-system/pull/511) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.33 (Fri Mar 28 2025)
 
 #### 🐛 Bug Fix
