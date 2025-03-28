@@ -16,6 +16,7 @@ const meta = {
   args: {
     children: "Button",
     onClick: fn(),
+    disabled: false,
   },
   render: ({ withStartIcon, withEndIcon, ...args }) => {
     return (
