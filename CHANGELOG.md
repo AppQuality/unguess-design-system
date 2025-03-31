@@ -1,3 +1,15 @@
+# v4.0.35 (Mon Mar 31 2025)
+
+#### 🐛 Bug Fix
+
+- Add title tag to TemplateCard in order to improve accessibility [#513](https://github.com/AppQuality/unguess-design-system/pull/513) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.34 (Fri Mar 28 2025)
 
 #### 🐛 Bug Fix
