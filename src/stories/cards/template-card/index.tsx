@@ -136,7 +136,9 @@ const TemplateCard = ({
           {title}
         </LG>
       </SpecialCard.Header>
-      <SpecialCard.Body lines={lineClamp}>{description}</SpecialCard.Body>
+      <SpecialCard.Body lines={lineClamp} title={description}>
+        {description}
+      </SpecialCard.Body>
       {children}
     </SpecialCard>
   );
