@@ -12,7 +12,7 @@ const ButtonMenu = ({
     <>
       <Menu
         {...rest}
-        button={label}
+        button={typeof label === "string" ? label : (props) => label(props)}
         onChange={({ type, value }) => {
           if (type === "menuItem:click") {
             onSelect(value);
