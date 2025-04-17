@@ -6,18 +6,26 @@ import { findActiveWord } from "../../findActiveWord";
 const Content = ({ node, editor }: { node: PMNode; editor: Editor }) => {
   const themeExtension = getTheme(editor);
   const ParagraphWrapper = themeExtension.options.paragraphWrapper;
+  const SentimentWrapper = themeExtension.options.sentimentWrapper;
   const SpeakerWrapper = themeExtension.options.speakerWrapper;
   return (
     <ParagraphWrapper>
-      <SpeakerWrapper
-        setCurrentTime={({ start }) => {
-          editor.commands.setCurrentTime(start);
-        }}
-        start={node.attrs.start}
-        end={node.attrs.end}
-        speaker={node.attrs.speaker}
-        totalSpeakers={node.attrs.totalSpeakers}
-      />
+      <div className="paragraph-topbar">
+        <SpeakerWrapper
+          setCurrentTime={({ start }) => {
+            editor.commands.setCurrentTime(start);
+          }}
+          start={node.attrs.start}
+          end={node.attrs.end}
+          speaker={node.attrs.speaker}
+          totalSpeakers={node.attrs.totalSpeakers}
+        />
+        {node.attrs.sentiment && (
+          <div className="paragraph-sentiment">
+            <SentimentWrapper {...node.attrs.sentiment} />
+          </div>
+        )}
+      </div>
       <NodeViewContent className="content is-editable" />
     </ParagraphWrapper>
   );

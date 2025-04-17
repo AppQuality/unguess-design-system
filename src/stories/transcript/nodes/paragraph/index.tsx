@@ -26,6 +26,9 @@ export const Paragraph = Node.create({
       sentences: {
         default: [],
       },
+      sentiment: {
+        default: null,
+      },
     };
   },
 
