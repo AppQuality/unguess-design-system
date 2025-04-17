@@ -94,7 +94,7 @@ const DefaultSpeakerWrapper = ({
 };
 
 const DefaultSentencesWrapper = ({ children }: { children: ReactNode }) => {
-  return <div style={{ paddingTop: "30px" }}>{children}</div>;
+  return <div>{children}</div>;
 };
 
 const DefaultSentenceWrapper = ({

@@ -247,6 +247,18 @@ WithSentiment.args = {
     }),
 };
 
+const ParagraphContainer = styled.div`
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+  .paragraph-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+`;
+
 export const WithCustomTheme = Template.bind({});
 WithCustomTheme.args = {
   currentTime: 0,
@@ -321,21 +333,11 @@ WithCustomTheme.args = {
       );
     },
     paragraphWrapper: ({ children }) => {
-      return (
-        <p
-          style={{
-            paddingBottom: "10px",
-            borderBottom: "1px solid",
-            marginBottom: "10px",
-          }}
-        >
-          {children}
-        </p>
-      );
+      return <ParagraphContainer>{children}</ParagraphContainer>;
     },
     speakerWrapper: ({ start, end, setCurrentTime, speaker }) => {
       return (
-        <p>
+        <div>
           Speaker {speaker + 1} ({start} - {end}){" "}
           <IconButton
             onClick={() => {
@@ -345,14 +347,13 @@ WithCustomTheme.args = {
           >
             <PlayIcon />
           </IconButton>
-        </p>
+        </div>
       );
     },
     sentencesWrapper: ({ children }) => {
       return (
         <div
           style={{
-            paddingTop: "32px",
             paddingBottom: "10px",
             borderLeft: "1px solid red",
           }}
@@ -390,7 +391,11 @@ WithCustomTheme.args = {
       );
     },
     sentimentWrapper: ({ value, text }) => {
-      return <Tag hue="red">{value} </Tag>;
+      return (
+        <Tag hue="red" color="white" title={text}>
+          {value}
+        </Tag>
+      );
     },
     searchStyleWrapper: styled.span`
       .search-result {
