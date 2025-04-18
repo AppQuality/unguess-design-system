@@ -11,6 +11,12 @@ export type SentenceType = {
   end: number;
   text: string;
 };
+export type SentimentType = {
+  start: number;
+  end: number;
+  value: number;
+  text: string;
+};
 
 export type ParagraphType = {
   start: number;
@@ -28,18 +34,26 @@ export type ObservationType = {
   color?: `#${string}`;
 };
 
-class ContentParser {
+export class ContentParser {
   private observations?: ObservationType[];
-  private sentences?: SentenceType[];
+  private translations?: SentenceType[];
+  private sentiments?: SentimentType[];
   private numberOfSpeakers: number | null = null;
 
-  constructor(
-    observations?: ObservationType[],
-    sentences?: SentenceType[],
-    numberOfSpeakers?: number
-  ) {
+  constructor({
+    observations,
+    translations,
+    sentiments,
+    numberOfSpeakers,
+  }: {
+    observations?: ObservationType[];
+    translations?: SentenceType[];
+    sentiments?: SentimentType[];
+    numberOfSpeakers?: number;
+  }) {
     this.observations = observations;
-    this.sentences = sentences;
+    this.translations = translations;
+    this.sentiments = sentiments;
     if (numberOfSpeakers) {
       this.numberOfSpeakers = numberOfSpeakers;
     }
@@ -87,9 +101,13 @@ class ContentParser {
   }
 
   private getParsedParagraph(paragraph: ParagraphType) {
-    const s = this.sentences?.filter(
+    const s = this.translations?.filter(
       (sentence) =>
         sentence.start >= paragraph.start && sentence.end <= paragraph.end
+    );
+    const paragraphSentiment = this.sentiments?.find(
+      (sentiment) =>
+        sentiment.start >= paragraph.start && sentiment.end <= paragraph.end
     );
     return {
       type: "Paragraph",
@@ -99,32 +117,18 @@ class ContentParser {
         start: paragraph.start,
         end: paragraph.end,
         sentences: s,
+        sentiment: paragraphSentiment,
       },
       content: paragraph.words.map((word) => this.getParsedWord(word)),
     };
   }
 
-  public getParsedContent(
-    content?: ParagraphType[]
-  ): { type: "doc"; content: TipTapContent } | undefined {
+  public getParsedContent(content?: ParagraphType[]) {
     if (!content) return undefined;
 
     return {
       type: "doc",
       content: content.map((paragraph) => this.getParsedParagraph(paragraph)),
-    };
+    } as TipTapContent;
   }
-}
-
-export function getParsedContent(
-  content?: ParagraphType[],
-  observations?: ObservationType[],
-  sentences?: SentenceType[],
-  numberOfSpeakers?: number
-) {
-  return new ContentParser(
-    observations,
-    sentences,
-    numberOfSpeakers
-  ).getParsedContent(content) as TipTapContent | undefined;
 }

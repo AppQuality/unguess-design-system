@@ -8,13 +8,14 @@ import { ReactComponent as PlayIcon } from "../../assets/icons/play-fill.svg";
 import { IconButton } from "../buttons/icon-button";
 import { Tag } from "../tags";
 import { Tooltip } from "../tooltip";
-import { paragraphs } from "./_data";
 import { Theme } from "./extensions/theme";
 import {
   ObservationType,
   ParagraphType,
   SentenceType,
+  SentimentType,
 } from "./getParsedContent";
+import { paragraphs } from "./_data";
 
 type StoryArgs = {
   currentTime?: number;
@@ -23,11 +24,12 @@ type StoryArgs = {
   translations?: SentenceType[];
   onAddObservation?: (editor: Editor) => void;
   onSetCurrentTime?: (
-    setCurrentTime: (time: number) => void,
+    setCurrentTime: (time: number) => void
   ) => (time: number) => void;
   showSearch?: boolean;
   themeExtension?: typeof Theme;
   isEditable?: boolean;
+  sentiment?: SentimentType[];
 };
 
 const Template: StoryFn<StoryArgs> = (args) => {
@@ -39,6 +41,7 @@ const Template: StoryFn<StoryArgs> = (args) => {
     translations: args.translations,
     isEditable: args.isEditable,
     observations: args.observations,
+    sentiments: args.sentiment,
     onSetCurrentTime: args.onSetCurrentTime
       ? args.onSetCurrentTime(setCurrentTime)
       : undefined,
@@ -210,11 +213,63 @@ MultipleColorObservations.args = {
   onSetCurrentTime: (setCurrentTime) => (time) => setCurrentTime(time * 1000),
 };
 
+export const WithSentiment = Template.bind({});
+WithSentiment.args = {
+  currentTime: 3600,
+  content: paragraphs,
+  sentiment: paragraphs.map((paragraph) => ({
+    start: paragraph.start,
+    end: paragraph.end,
+    value: 1 + (paragraph.text.length % 5),
+    text: paragraph.text,
+  })),
+  observations: [
+    {
+      id: 1,
+      type: "title",
+      start: 1.1999999,
+      end: 5.2799997,
+      text: "My observation",
+      color: "#ff0000",
+    },
+    {
+      id: 2,
+      type: "title",
+      start: 4.56,
+      end: 10.175,
+      text: "My other observation",
+    },
+  ],
+  onAddObservation: (editor) =>
+    editor.commands.addObservation({
+      id: Math.floor(Math.random() * 1000),
+      title: "title",
+    }),
+};
+
+const ParagraphContainer = styled.div`
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+  .paragraph-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+`;
+
 export const WithCustomTheme = Template.bind({});
 WithCustomTheme.args = {
   currentTime: 0,
   content: paragraphs,
 
+  sentiment: paragraphs.map((paragraph) => ({
+    start: paragraph.start,
+    end: paragraph.end,
+    value: 1 + (paragraph.text.length % 5),
+    text: paragraph.text,
+  })),
   observations: [
     {
       id: 1,
@@ -278,21 +333,11 @@ WithCustomTheme.args = {
       );
     },
     paragraphWrapper: ({ children }) => {
-      return (
-        <p
-          style={{
-            paddingBottom: "10px",
-            borderBottom: "1px solid",
-            marginBottom: "10px",
-          }}
-        >
-          {children}
-        </p>
-      );
+      return <ParagraphContainer>{children}</ParagraphContainer>;
     },
     speakerWrapper: ({ start, end, setCurrentTime, speaker }) => {
       return (
-        <p>
+        <div>
           Speaker {speaker + 1} ({start} - {end}){" "}
           <IconButton
             onClick={() => {
@@ -302,14 +347,13 @@ WithCustomTheme.args = {
           >
             <PlayIcon />
           </IconButton>
-        </p>
+        </div>
       );
     },
     sentencesWrapper: ({ children }) => {
       return (
         <div
           style={{
-            paddingTop: "32px",
             paddingBottom: "10px",
             borderLeft: "1px solid red",
           }}
@@ -344,6 +388,13 @@ WithCustomTheme.args = {
           <div style={{ width: "60%" }}>{content}</div>
           <div style={{ width: "40%" }}>{translations}</div>
         </div>
+      );
+    },
+    sentimentWrapper: ({ value, text }) => {
+      return (
+        <Tag hue="red" color="white" title={text}>
+          {value}
+        </Tag>
       );
     },
     searchStyleWrapper: styled.span`
