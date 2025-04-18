@@ -5,11 +5,13 @@ import { Extension, useEditor as useTiptapEditor } from "@tiptap/react";
 import { useEffect } from "react";
 import { Theme } from "./extensions/theme";
 import {
+  ContentParser,
   ObservationType,
   ParagraphType,
   SentenceType,
-  getParsedContent,
+  SentimentType,
 } from "./getParsedContent";
+
 import { Active } from "./nodes/active";
 import { Observation } from "./nodes/observation";
 import { Paragraph } from "./nodes/paragraph";
@@ -25,6 +27,7 @@ export const useEditor = (
     themeExtension,
     isEditable,
     numberOfSpeakers,
+    sentiments,
   }: {
     content?: ParagraphType[];
     observations?: ObservationType[];
@@ -34,9 +37,18 @@ export const useEditor = (
     themeExtension?: Extension;
     isEditable?: boolean;
     numberOfSpeakers?: number;
+    sentiments?: SentimentType[];
   },
   deps?: React.DependencyList
 ) => {
+  const parser = new ContentParser({
+    observations,
+    translations,
+    sentiments,
+    numberOfSpeakers,
+  });
+  const parsedContent = parser.getParsedContent(content);
+
   const ed = useTiptapEditor(
     {
       editable: isEditable ? isEditable : false,
@@ -55,12 +67,7 @@ export const useEditor = (
       editorProps: {
         handlePaste: () => true,
       },
-      content: getParsedContent(
-        content,
-        observations,
-        translations,
-        numberOfSpeakers
-      ),
+      content: parsedContent,
     },
     deps
   );

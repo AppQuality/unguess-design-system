@@ -6,9 +6,21 @@ import { findActiveWord } from "../../findActiveWord";
 const Content = ({ node, editor }: { node: PMNode; editor: Editor }) => {
   const themeExtension = getTheme(editor);
   const ParagraphWrapper = themeExtension.options.paragraphWrapper;
-  const SpeakerWrapper = themeExtension.options.speakerWrapper;
   return (
     <ParagraphWrapper>
+      <TopBar node={node} editor={editor} />
+      <NodeViewContent className="content is-editable" />
+    </ParagraphWrapper>
+  );
+};
+
+const TopBar = ({ node, editor }: { node: PMNode; editor: Editor }) => {
+  const themeExtension = getTheme(editor);
+  const SentimentWrapper = themeExtension.options.sentimentWrapper;
+  const SpeakerWrapper = themeExtension.options.speakerWrapper;
+
+  return (
+    <div className="paragraph-topbar">
       <SpeakerWrapper
         setCurrentTime={({ start }) => {
           editor.commands.setCurrentTime(start);
@@ -18,8 +30,12 @@ const Content = ({ node, editor }: { node: PMNode; editor: Editor }) => {
         speaker={node.attrs.speaker}
         totalSpeakers={node.attrs.totalSpeakers}
       />
-      <NodeViewContent className="content is-editable" />
-    </ParagraphWrapper>
+      {node.attrs.sentiment && (
+        <div className="paragraph-sentiment">
+          <SentimentWrapper {...node.attrs.sentiment} />
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -30,14 +46,18 @@ export const Component = ({
   node: PMNode;
   editor: Editor;
 }) => {
+  const themeExtension = getTheme(editor);
+  const ParagraphWrapper = themeExtension.options.paragraphWrapper;
   if (!node.attrs.sentences || node.attrs.sentences.length === 0) {
     return (
       <NodeViewWrapper as="div" style={{ display: "inline" }}>
-        <Content node={node} editor={editor} />
+        <ParagraphWrapper>
+          <TopBar node={node} editor={editor} />
+          <NodeViewContent className="content is-editable" />
+        </ParagraphWrapper>
       </NodeViewWrapper>
     );
   }
-  const themeExtension = getTheme(editor);
   const SentencesWrapper = themeExtension.options.sentencesWrapper;
   const SentenceWrapper = themeExtension.options.sentenceWrapper;
   const TranslationWrapper = themeExtension.options.translationWrapper;
@@ -45,9 +65,10 @@ export const Component = ({
 
   return (
     <NodeViewWrapper className="react-component">
-      {
+      <ParagraphWrapper>
+        <TopBar node={node} editor={editor} />
         <TranslationWrapper
-          content={<Content node={node} editor={editor} />}
+          content={<NodeViewContent className="content is-editable" />}
           translations={
             <SentencesWrapper>
               {node.attrs.sentences.map(
@@ -78,7 +99,7 @@ export const Component = ({
             </SentencesWrapper>
           }
         />
-      }
+      </ParagraphWrapper>
     </NodeViewWrapper>
   );
 };

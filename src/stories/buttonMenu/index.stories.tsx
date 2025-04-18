@@ -1,30 +1,75 @@
-import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/overflow-vertical-fill.svg";
+import React from "react";
 import { ButtonMenu } from ".";
-import { ButtonMenuProps } from "./_types";
+import { IconButton } from "../buttons/icon-button";
 
-const Template: Story<ButtonMenuProps> = (props) => {
-  return (
-    <ButtonMenu {...props}>
-      <ButtonMenu.Item value="cactus">Cactus</ButtonMenu.Item>
-      <ButtonMenu.Item value="jade">Jade plant</ButtonMenu.Item>
-      <ButtonMenu.Item value="echeveria">Echeveria</ButtonMenu.Item>
-    </ButtonMenu>
-  );
-};
+type Args = React.ComponentProps<typeof ButtonMenu>;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: "Menu",
-  onSelect: (value) => {
-    alert("Clicked " + value);
-  },
-};
-
-export default {
+const meta = {
   title: "Molecules/ButtonMenu",
   component: ButtonMenu,
-  parameters: {
-    // Sets a delay for the component's stories
-    chromatic: { delay: 300 },
+  args: {
+    onSelect: fn(),
+    children: undefined,
   },
-} as ComponentMeta<typeof ButtonMenu>;
+  render: (args) => {
+    return (
+      <ButtonMenu {...args}>
+        <ButtonMenu.Item value="1">Item 1</ButtonMenu.Item>
+        <ButtonMenu.Item value="2">Item 2</ButtonMenu.Item>
+        <ButtonMenu.Item type="danger" value="3">
+          Item 3
+        </ButtonMenu.Item>
+      </ButtonMenu>
+    );
+  },
+} satisfies Meta<Args>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    label: "Menu",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    label: (props) => (
+      <IconButton {...props}>
+        <LeafIcon />
+      </IconButton>
+    ),
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<ButtonMenu label={(props) => (
+  <IconButton {...props}>
+    <LeafIcon />
+  </IconButton>
+)}>
+  <ButtonMenu.Item value="1">Item 1</ButtonMenu.Item>
+  <ButtonMenu.Item value="2">Item 2</ButtonMenu.Item>
+  <ButtonMenu.Item type="danger" value="3">
+    Item 3
+  </ButtonMenu.Item>
+</ButtonMenu>`,
+      },
+    },
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    label: "Menu",
+
+    buttonProps: {
+      isDanger: true,
+    },
+  },
+};

@@ -38,8 +38,22 @@ const DefaultObservationWrapper = ({
   );
 };
 
+const DefaultParagraphWrapperContainer = styled.div`
+  margin-bottom: 20px;
+  .paragraph-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+`;
+
 const DefaultParagraphWrapper = ({ children }: { children: ReactNode }) => {
-  return <p style={{ marginBottom: "20px" }}>{children}</p>;
+  return (
+    <DefaultParagraphWrapperContainer>
+      {children}
+    </DefaultParagraphWrapperContainer>
+  );
 };
 
 const formatTime = (seconds: number) => {
@@ -80,7 +94,7 @@ const DefaultSpeakerWrapper = ({
 };
 
 const DefaultSentencesWrapper = ({ children }: { children: ReactNode }) => {
-  return <div style={{ paddingTop: "30px" }}>{children}</div>;
+  return <div>{children}</div>;
 };
 
 const DefaultSentenceWrapper = ({
@@ -128,6 +142,24 @@ const DefaultTranslationWrapper = ({
     </div>
   );
 };
+const DefaultSentimentWrapper = ({
+  value,
+  text,
+}: {
+  value: number;
+  text: string;
+}) => {
+  return (
+    <span
+      title={text}
+      style={{
+        backgroundColor: `rgba(${value * 255}, ${255 - value * 255}, 0, 0.5)`,
+      }}
+    >
+      Value: {value}
+    </span>
+  );
+};
 
 const SearchStyleWrapper = styled.span`
   .search-result {
@@ -143,6 +175,7 @@ export interface ThemeOptions {
   activeWrapper: typeof DefaultActiveWrapper;
   observationWrapper: typeof DefaultObservationWrapper;
   paragraphWrapper: typeof DefaultParagraphWrapper;
+  sentimentWrapper: typeof DefaultSentimentWrapper;
   speakerWrapper: typeof DefaultSpeakerWrapper;
   sentencesWrapper: typeof DefaultSentencesWrapper;
   sentenceWrapper: typeof DefaultSentenceWrapper;
@@ -173,6 +206,7 @@ export const Theme = Extension.create<ThemeOptions, {}>({
       activeWrapper: DefaultActiveWrapper,
       observationWrapper: DefaultObservationWrapper,
       paragraphWrapper: DefaultParagraphWrapper,
+      sentimentWrapper: DefaultSentimentWrapper,
       speakerWrapper: DefaultSpeakerWrapper,
       sentencesWrapper: DefaultSentencesWrapper,
       sentenceWrapper: DefaultSentenceWrapper,
