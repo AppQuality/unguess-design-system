@@ -1,3 +1,19 @@
+# v4.0.36 (Fri Apr 18 2025)
+
+#### 🐛 Bug Fix
+
+- Add iconbutton menu component and support for sentiment in transcript [#517](https://github.com/AppQuality/unguess-design-system/pull/517) ([@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- UN-1233-add-sentiment-to-transcript [#516](https://github.com/AppQuality/unguess-design-system/pull/516) ([@d-beezee](https://github.com/d-beezee))
+- chore: Update and fix storybook version [#515](https://github.com/AppQuality/unguess-design-system/pull/515) ([@d-beezee](https://github.com/d-beezee))
+- UN-1187 feat(button-menu): allow label to be a function for dynamic rendering [#514](https://github.com/AppQuality/unguess-design-system/pull/514) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.35 (Mon Mar 31 2025)
 
 #### 🐛 Bug Fix
