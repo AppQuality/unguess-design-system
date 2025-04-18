@@ -48,7 +48,6 @@ export const useEditor = (
     numberOfSpeakers,
   });
   const parsedContent = parser.getParsedContent(content);
-  console.log("parsedContent", parsedContent);
 
   const ed = useTiptapEditor(
     {
