@@ -1,3 +1,16 @@
+# v4.0.37 (Thu May 08 2025)
+
+#### 🐛 Bug Fix
+
+- Fix Globalalert Action [#519](https://github.com/AppQuality/unguess-design-system/pull/519) ([@d-beezee](https://github.com/d-beezee))
+- fix: Add onClick handler to CTA button in GlobalAlert component [#518](https://github.com/AppQuality/unguess-design-system/pull/518) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.36 (Fri Apr 18 2025)
 
 #### 🐛 Bug Fix
