@@ -1,6 +1,6 @@
 import {
-  IGlobalAlertProps,
   GlobalAlert as ZendeskGlobalAlert,
+  IGlobalAlertProps,
 } from "@zendeskgarden/react-notifications";
 import { ReactComponent as PrimaryIcon } from "@zendeskgarden/svg-icons/src/16/gear-stroke.svg";
 import { ReactComponent as AccentIcon } from "@zendeskgarden/svg-icons/src/16/lightbulb-stroke.svg";
@@ -146,6 +146,7 @@ export const GlobalAlert = forwardRef<HTMLDivElement, GlobalAlertProps>(
       {cta && (
         <Button
           {...cta.buttonProps}
+          onClick={cta.onClick}
           className="global-alert-cta"
           isPill
           isPrimary
@@ -162,5 +163,5 @@ export const GlobalAlert = forwardRef<HTMLDivElement, GlobalAlertProps>(
         />
       )}
     </StyledGlobalAlert>
-  ),
+  )
 );
