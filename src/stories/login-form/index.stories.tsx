@@ -30,7 +30,11 @@ const defaultArgs: LoginFormArgs = {
   errors: {},
   touched: {},
   title: "Welcome to Unguess",
-  buttonText: "Sign In",
+  buttonLoginText: "Sign In",
+  buttonRegisterText: "Register now",
+  onclickRegister: () => {
+    alert("Register now. Redirect to register page");
+  },
   placeholderEmail: "Insert Email",
   placeholderPassword: "Insert Password",
   passwordForgotLabel: "Forgot Password?",
