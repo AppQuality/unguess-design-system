@@ -126,7 +126,7 @@ const LoginForm = (props: LoginFormArgs) => {
                   {props.buttonLoginText}
                 </Button>
                 <br />
-               <div style={{ marginLeft: "50%" }}>or</div> 
+               <div style={{ marginLeft: "50%" }}>{props.buttonDividerText}</div> 
                 <br />
                 <Button
                   type="button"

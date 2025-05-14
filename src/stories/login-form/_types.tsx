@@ -17,6 +17,7 @@ export interface LoginFormArgs {
   initialValues: LoginFields;
   title: string;
   buttonLoginText: string;
+  buttonDividerText: string;
   buttonRegisterText: string;
   onclickRegister?: () => void;
   placeholderEmail: string;

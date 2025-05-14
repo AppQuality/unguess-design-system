@@ -31,6 +31,7 @@ const defaultArgs: LoginFormArgs = {
   touched: {},
   title: "Welcome to Unguess",
   buttonLoginText: "Sign In",
+  buttonDividerText: "or",
   buttonRegisterText: "Register now",
   onclickRegister: () => {
     alert("Register now. Redirect to register page");
