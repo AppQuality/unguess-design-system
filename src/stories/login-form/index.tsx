@@ -123,7 +123,18 @@ const LoginForm = (props: LoginFormArgs) => {
                   isAccent
                   style={{ marginBottom: theme.space.md }}
                 >
-                  {props.buttonText}
+                  {props.buttonLoginText}
+                </Button>
+                <br />
+               <div style={{ marginLeft: "50%" }}>{props.buttonDividerText}</div> 
+                <br />
+                <Button
+                  type="button"
+                  isStretched
+                  style={{ marginBottom: theme.space.md }}
+                  onClick={props.onclickRegister}
+                >
+                  {props.buttonRegisterText}
                 </Button>
 
                 {status && (

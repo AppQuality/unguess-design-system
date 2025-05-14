@@ -16,7 +16,10 @@ export interface LoginFormArgs {
   touched: FormikTouched<any>;
   initialValues: LoginFields;
   title: string;
-  buttonText: string;
+  buttonLoginText: string;
+  buttonDividerText: string;
+  buttonRegisterText: string;
+  onclickRegister?: () => void;
   placeholderEmail: string;
   placeholderPassword: string;
   card?: CardProps
