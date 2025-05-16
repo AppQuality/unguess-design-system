@@ -125,7 +125,9 @@ const LoginForm = (props: LoginFormArgs) => {
                 >
                   {props.buttonText}
                 </Button>
-
+                {(typeof props.registerCta !== 'undefined') && (
+                  props.registerCta
+                )}  
                 {status && (
                   <div style={{ textAlign: "center" }}>
                     <Message validation="error">{status.message}</Message>

@@ -1,4 +1,5 @@
 import { FormikTouched, FormikErrors, FormikValues } from "formik";
+import React from "react";
 import { CardProps } from "../cards/_types";
 
 export interface LoginFormArgs {
@@ -17,6 +18,7 @@ export interface LoginFormArgs {
   initialValues: LoginFields;
   title: string;
   buttonText: string;
+  registerCta?: React.ReactNode;
   placeholderEmail: string;
   placeholderPassword: string;
   card?: CardProps
