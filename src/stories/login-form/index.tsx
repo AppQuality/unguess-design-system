@@ -125,20 +125,9 @@ const LoginForm = (props: LoginFormArgs) => {
                 >
                   {props.buttonLoginText}
                 </Button>
-                <div
-                  style={{ textAlign: "center", marginBottom: theme.space.md }}
-                >
-                  {props.buttonDividerText}
-                </div>
-                <Button
-                  type="button"
-                  isStretched
-                  style={{ marginBottom: theme.space.md }}
-                  onClick={props.onclickRegister}
-                >
-                  {props.buttonRegisterText}
-                </Button>
-
+                {(typeof props.registerCta !== 'undefined') && (
+                  props.registerCta
+                )}  
                 {status && (
                   <div style={{ textAlign: "center" }}>
                     <Message validation="error">{status.message}</Message>
