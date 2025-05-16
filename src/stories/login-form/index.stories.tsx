@@ -1,8 +1,10 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { LoginForm } from ".";
+import { Anchor } from "../buttons/anchor";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
+import { theme } from "../theme";
 import { LoginFormArgs } from "./_types";
 
 const Template: Story<LoginFormArgs> = (args) => (
@@ -31,11 +33,7 @@ const defaultArgs: LoginFormArgs = {
   touched: {},
   title: "Welcome to Unguess",
   buttonLoginText: "Sign In",
-  buttonDividerText: "or",
   buttonRegisterText: "Register now",
-  onclickRegister: () => {
-    alert("Register now. Redirect to register page");
-  },
   placeholderEmail: "Insert Email",
   placeholderPassword: "Insert Password",
   passwordForgotLabel: "Forgot Password?",
@@ -74,6 +72,16 @@ Filled.args = {
     password: "password",
   },
 };
+
+export const WithRegisterCTA = Template.bind({});
+WithRegisterCTA.args = {
+  ...defaultArgs,
+  registerCta: <div style={{textAlign: 'center'}}>
+    <div style={{marginBottom: theme.space.md}}>or</div>
+    <Anchor href="#" onClick={()=>alert('Redirect to register page')}>Register Now</Anchor>
+  </div>,
+}
+
 
 export default {
   title: "Organisms/LoginForm",
