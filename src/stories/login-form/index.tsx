@@ -125,9 +125,11 @@ const LoginForm = (props: LoginFormArgs) => {
                 >
                   {props.buttonLoginText}
                 </Button>
-                <br />
-               <div style={{ marginLeft: "50%" }}>{props.buttonDividerText}</div> 
-                <br />
+                <div
+                  style={{ textAlign: "center", marginBottom: theme.space.md }}
+                >
+                  {props.buttonDividerText}
+                </div>
                 <Button
                   type="button"
                   isStretched
