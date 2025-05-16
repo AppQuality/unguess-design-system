@@ -1,3 +1,19 @@
+# v4.0.38 (Fri May 16 2025)
+
+#### 🐛 Bug Fix
+
+- Add optional registerCTA  to login form [#521](https://github.com/AppQuality/unguess-design-system/pull/521) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- feat: Consolidate button text properties in LoginFormArgs for consistency [#524](https://github.com/AppQuality/unguess-design-system/pull/524) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Add optional registerCTA to login form [#523](https://github.com/AppQuality/unguess-design-system/pull/523) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- feat: Center buttonDividerText in LoginForm component [#522](https://github.com/AppQuality/unguess-design-system/pull/522) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Add register button to loginForm [#520](https://github.com/AppQuality/unguess-design-system/pull/520) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 1
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+---
+
 # v4.0.37 (Thu May 08 2025)
 
 #### 🐛 Bug Fix
