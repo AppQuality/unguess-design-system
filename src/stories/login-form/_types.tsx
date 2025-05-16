@@ -17,8 +17,7 @@ export interface LoginFormArgs {
   touched: FormikTouched<any>;
   initialValues: LoginFields;
   title: string;
-  buttonLoginText: string;
-  buttonRegisterText: string;
+  buttonText: string;
   registerCta?: React.ReactNode;
   placeholderEmail: string;
   placeholderPassword: string;

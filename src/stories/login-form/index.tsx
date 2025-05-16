@@ -123,7 +123,7 @@ const LoginForm = (props: LoginFormArgs) => {
                   isAccent
                   style={{ marginBottom: theme.space.md }}
                 >
-                  {props.buttonLoginText}
+                  {props.buttonText}
                 </Button>
                 {(typeof props.registerCta !== 'undefined') && (
                   props.registerCta
