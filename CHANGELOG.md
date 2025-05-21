@@ -1,3 +1,16 @@
+# v4.0.39 (Wed May 21 2025)
+
+#### 🐛 Bug Fix
+
+- Improve firefox compatibility [#526](https://github.com/AppQuality/unguess-design-system/pull/526) ([@d-beezee](https://github.com/d-beezee))
+- feat: Update CenteredItem component to improve text positioning and spacing [#525](https://github.com/AppQuality/unguess-design-system/pull/525) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.38 (Fri May 16 2025)
 
 #### 🐛 Bug Fix
