@@ -20,24 +20,21 @@ const CenteredItem = ({
   const parameter = 6;
   const fontSizeFactor =
     ((fontSizeMultiplier ? fontSizeMultiplier : 1) * radius) / (14 * parameter);
-  const spacing =
-    ((fontSizeMultiplier ? fontSizeMultiplier : 1) * radius) /
-    (parameter * 0.9);
-  const shift = -radius / (parameter * 2.5);
+  const spacing = radius / 8;
+  const shift = radius / 12;
   return (
     <>
       {label && (
         <g transform={`translate(${centerX},${centerY})`}>
           <text
             textAnchor="middle"
-            baselineShift={shift + (value ? spacing : spacing / 2)}
             fill={theme.palette.grey[600]}
             style={{
               fontSize:
                 parseInt(theme.fontSizes.md.replace("px", "")) * fontSizeFactor,
             }}
           >
-            {label}
+            <tspan dy={value ? shift + spacing : shift}>{label}</tspan>
           </text>
         </g>
       )}
@@ -45,7 +42,6 @@ const CenteredItem = ({
         <g transform={`translate(${centerX},${centerY})`}>
           <text
             textAnchor="middle"
-            baselineShift={shift - (label ? spacing : spacing / 2)}
             fill={theme.palette.blue[600]}
             style={{
               fontSize:
@@ -54,7 +50,7 @@ const CenteredItem = ({
               fontWeight: theme.fontWeights.semibold,
             }}
           >
-            {value}
+            <tspan dy={label ? shift - spacing : shift}>{value}</tspan>
           </text>
         </g>
       )}
