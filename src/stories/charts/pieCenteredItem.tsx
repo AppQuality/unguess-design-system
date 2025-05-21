@@ -20,7 +20,7 @@ const CenteredItem = ({
   const parameter = 6;
   const fontSizeFactor =
     ((fontSizeMultiplier ? fontSizeMultiplier : 1) * radius) / (14 * parameter);
-  const spacing = radius / 8;
+  const spacing = radius / 6.5;
   const shift = radius / 12;
   return (
     <>
@@ -34,7 +34,7 @@ const CenteredItem = ({
                 parseInt(theme.fontSizes.md.replace("px", "")) * fontSizeFactor,
             }}
           >
-            <tspan dy={value ? shift + spacing : shift}>{label}</tspan>
+            <tspan dy={value ? shift - spacing : shift}>{label}</tspan>
           </text>
         </g>
       )}
@@ -50,7 +50,7 @@ const CenteredItem = ({
               fontWeight: theme.fontWeights.semibold,
             }}
           >
-            <tspan dy={label ? shift - spacing : shift}>{value}</tspan>
+            <tspan dy={label ? shift + spacing : shift}>{value}</tspan>
           </text>
         </g>
       )}
