@@ -72,6 +72,7 @@ export * from "./stories/forms/radio";
 export * from "./stories/forms/radio/cards";
 export * from "./stories/forms/textarea";
 export * from "./stories/forms/toggle";
+export * from "./stories/forms/numberInput";
 // --- Grid ---
 export * from "./stories/grid/col";
 export * from "./stories/grid/grid";
