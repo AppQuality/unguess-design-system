@@ -14,6 +14,7 @@ export const MultiSelect = ({
   maxItems,
   size,
   menuHeight,
+  listboxAppendToNode,
 }: MultiSelectProps) => {
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
@@ -23,7 +24,7 @@ export const MultiSelect = ({
         option.label
           .trim()
           .toLowerCase()
-          .indexOf(inputValue.trim().toLowerCase()) !== -1,
+          .indexOf(inputValue.trim().toLowerCase()) !== -1
     );
 
     setMatchingOptions(matchedOptions);
@@ -53,6 +54,7 @@ export const MultiSelect = ({
               }
             : undefined
         }
+        listboxAppendToNode={listboxAppendToNode}
         maxHeight="auto"
         isCompact={size !== "medium"}
         isMultiselectable
@@ -98,7 +100,7 @@ export const MultiSelect = ({
                 ...o,
                 selected: selectedOptions.some((i) => i.id === o.id),
               })),
-              newOption ? newOption : undefined,
+              newOption ? newOption : undefined
             ).then(() => setInputValue(""));
           }
         }}
@@ -125,7 +127,7 @@ export const MultiSelect = ({
         {creatable &&
         inputValue.length > 0 &&
         !matchingOptions.find(
-          (item) => item.label.toLowerCase() === inputValue.toLowerCase(),
+          (item) => item.label.toLowerCase() === inputValue.toLowerCase()
         ) ? (
           <>
             <Separator />
