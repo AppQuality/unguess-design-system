@@ -1,3 +1,15 @@
+# v4.0.40 (Tue Jun 17 2025)
+
+#### 🐛 Bug Fix
+
+- feat: Add listboxAppendToNode prop to MultiSelect for enhanced flexib… [#527](https://github.com/AppQuality/unguess-design-system/pull/527) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.39 (Wed May 21 2025)
 
 #### 🐛 Bug Fix
