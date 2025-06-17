@@ -7,6 +7,7 @@ type Item = {
 export type MultiSelectProps = {
   maxItems?: number;
   options: Item[];
+  listboxAppendToNode?: Element | DocumentFragment;
   selectedItems?: Item[];
   onChange?: (selectedItems: Item[], newItem?: string) => Promise<void>;
   creatable?: boolean;
