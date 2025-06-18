@@ -37,6 +37,19 @@ Default.args = {
   },
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  options: options,
+  isDisabled: true,
+  onChange: async (selectedItems) => {
+    console.log(
+      "selectedItems",
+      selectedItems.filter((o) => o.selected)
+    );
+    await patchMock(selectedItems);
+  },
+};
+
 const patchMock = async (
   options: { id?: number; label: string }[]
 ): Promise<{ id: number; label: string }[]> => {

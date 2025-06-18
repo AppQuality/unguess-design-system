@@ -13,6 +13,7 @@ export type MultiSelectProps = {
   creatable?: boolean;
   size: "small" | "medium";
   menuHeight?: string;
+  isDisabled?: boolean;
   i18n: {
     placeholder?: string;
     label?: string;
