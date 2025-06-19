@@ -91,6 +91,12 @@ WithTagCreation.args = {
   creatable: true,
 };
 
+export const Disabled = WithTagCreationTemplate.bind({});
+Disabled.args = {
+  options,
+  disabled: true,
+};
+
 export default {
   title: "Atoms/MultiSelect",
   component: MultiSelect,
