@@ -15,9 +15,11 @@ export const MultiSelect = ({
   size,
   menuHeight,
   listboxAppendToNode,
+  disabled
 }: MultiSelectProps) => {
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
+
   useEffect(() => {
     const matchedOptions = options.filter(
       (option) =>
@@ -26,7 +28,6 @@ export const MultiSelect = ({
           .toLowerCase()
           .indexOf(inputValue.trim().toLowerCase()) !== -1
     );
-
     setMatchingOptions(matchedOptions);
   }, [inputValue, options]);
 
@@ -34,6 +35,7 @@ export const MultiSelect = ({
     <Field>
       <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
       <Combobox
+        isDisabled={disabled}
         renderValue={({ selection }) => {
           if (
             !selection ||
@@ -62,16 +64,17 @@ export const MultiSelect = ({
         inputValue={inputValue}
         selectionValue={options
           .filter((option) => option.selected)
-          .map((o) => {
-            return o.id.toString();
-          })}
+          .map((o) => o.id.toString())}
         listboxMaxHeight={menuHeight ?? "200px"}
         isAutocomplete
-        onChange={({ type, inputValue, selectionValue }) => {
+        onChange={({ type, inputValue: newInput, selectionValue }) => {
+          if (disabled) return; // blocca interazioni se disabilitato
+
           if (type === "input:change") {
-            setInputValue(inputValue || "");
+            setInputValue(newInput || "");
             return;
           }
+
           if (
             onChange &&
             (type === "fn:setSelectionValue" ||
@@ -93,8 +96,10 @@ export const MultiSelect = ({
                 selected: true,
               };
             });
+
             const selectedOptions = ss.filter((v) => v.id);
             const newOption = ss.find((v) => !v.id)?.label;
+
             onChange(
               options.map((o) => ({
                 ...o,
@@ -117,6 +122,7 @@ export const MultiSelect = ({
             }}
           />
         ))}
+
         {matchingOptions.length === 0 && !creatable && (
           <SelectOption
             isDisabled
@@ -124,6 +130,7 @@ export const MultiSelect = ({
             label={i18n?.noMatches ?? "No matches found"}
           />
         )}
+
         {creatable &&
         inputValue.length > 0 &&
         !matchingOptions.find(
