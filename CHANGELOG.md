@@ -1,3 +1,17 @@
+# v4.0.41 (Thu Jun 19 2025)
+
+#### 🐛 Bug Fix
+
+- Add disabled to multiselect [#530](https://github.com/AppQuality/unguess-design-system/pull/530) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@d-beezee](https://github.com/d-beezee))
+- feat: Implement disabled state for MultiSelect component to prevent interactions [#529](https://github.com/AppQuality/unguess-design-system/pull/529) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+---
+
 # v4.0.40 (Tue Jun 17 2025)
 
 #### 🐛 Bug Fix
