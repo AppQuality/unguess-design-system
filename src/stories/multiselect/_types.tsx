@@ -20,4 +20,5 @@ export type MultiSelectProps = {
     addNew?: (value: string) => string;
     showMore?: (value: number) => string;
   };
+  disabled?: boolean;
 };
