@@ -21,4 +21,5 @@ export type MultiSelectProps = {
     showMore?: (value: number) => string;
   };
   disabled?: boolean;
+  onBlur?: () => void;
 };
