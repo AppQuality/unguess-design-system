@@ -1,3 +1,15 @@
+# v4.0.42 (Fri Jun 20 2025)
+
+#### 🐛 Bug Fix
+
+- feat: Add onBlur prop to MultiSelect for handling blur events [#531](https://github.com/AppQuality/unguess-design-system/pull/531) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.41 (Thu Jun 19 2025)
 
 #### 🐛 Bug Fix
