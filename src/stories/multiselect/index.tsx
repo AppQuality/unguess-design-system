@@ -15,7 +15,8 @@ export const MultiSelect = ({
   size,
   menuHeight,
   listboxAppendToNode,
-  disabled
+  disabled,
+  onBlur,
 }: MultiSelectProps) => {
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
@@ -35,6 +36,7 @@ export const MultiSelect = ({
     <Field>
       <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
       <Combobox
+        onBlur={onBlur}
         isDisabled={disabled}
         renderValue={({ selection }) => {
           if (
