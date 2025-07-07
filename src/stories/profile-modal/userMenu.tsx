@@ -3,6 +3,7 @@ import { UserMenuArgs } from "./_types";
 import { ReactComponent as ExitIcon } from "../../assets/icons/exit.svg";
 import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
 import { ReactComponent as LockIcon } from "../../assets/icons/lock-locked-fill.svg";
+import { ReactComponent as UserIcon } from "../../assets/icons/user-fill.svg";
 import { MenuItem, MenuItemBody } from "./components/menuItem";
 import styled from "styled-components";
 import { HelpItem } from "./items/helpMenuItem";
@@ -52,6 +53,15 @@ export const UserMenu = (props: UserMenuArgs) => {
           </MenuItem>
         )}
         {item === "" && <Separator />}
+
+        <MenuItem
+          selectedItem={item}
+          icon={<UserIcon color={theme.palette.blue[600]} />}
+          setActive={() => props?.profile?.onClick()}
+        >
+          {props?.profile?.title || "Edit Profile"}
+        </MenuItem>
+
         <HelpItem
           value={"csm"}
           selectedItem={item}
