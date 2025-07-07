@@ -118,6 +118,10 @@ const defaultArgs: UserMenuArgs = {
   onSetSettings: (value: string) => {
     alert(value === "1" ? "Notifications enabled" : "Notifications disabled");
   },
+  profile: {
+    title: "Edit Profile",
+    onClick: () => alert("Navigate to profile page"),
+  },
 };
 
 export const Default = Template.bind({});
