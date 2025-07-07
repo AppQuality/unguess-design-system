@@ -44,6 +44,10 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
     title?: string;
     url?: string;
   };
+  profile: {
+    title?: string;
+    onClick: () => void;
+  };
   privacyTitle?: string;
   onSelectLanguage: (lang: string) => void;
   onFeedbackClick?: () => void;
