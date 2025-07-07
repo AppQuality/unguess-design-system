@@ -1,3 +1,16 @@
+# v4.0.43 (Mon Jul 07 2025)
+
+#### 🐛 Bug Fix
+
+- release-07-07-2025 [#533](https://github.com/AppQuality/unguess-design-system/pull/533) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- feat: Add profile menu item with edit functionality to UserMenu component [#532](https://github.com/AppQuality/unguess-design-system/pull/532) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 1
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+---
+
 # v4.0.42 (Fri Jun 20 2025)
 
 #### 🐛 Bug Fix
