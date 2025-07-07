@@ -59,6 +59,7 @@ export const UserMenu = (props: UserMenuArgs) => {
           icon={<UserIcon color={theme.palette.blue[600]} />}
           setActive={() => props?.profile?.onClick()}
         >
+          {props?.profile?.title || "Edit Profile"}
         </MenuItem>
 
         <HelpItem
