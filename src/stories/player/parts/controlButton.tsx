@@ -12,13 +12,15 @@ const ControlButtonWithTooltip = (
       description: string;
       type: ShortcutType;
     };
-  },
+  }
 ) => {
   if (!props.tooltip) return <IconButton {...props} />;
   return (
     <Tooltip
       size="medium"
       maxWidth="unset"
+      placement="end"
+      appendToNode={this}
       content={
         <PlayerShortCut type={props.tooltip.type}>
           {props.tooltip.description}
