@@ -1,3 +1,16 @@
+# v4.0.45 (Fri Jul 11 2025)
+
+#### 🐛 Bug Fix
+
+- Minor changes [#538](https://github.com/AppQuality/unguess-design-system/pull/538) ([@cannarocks](https://github.com/cannarocks))
+- fix: Clean up formatting in AccordionMeta component and update canius… [#537](https://github.com/AppQuality/unguess-design-system/pull/537) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.44 (Fri Jul 11 2025)
 
 #### 🐛 Bug Fix
