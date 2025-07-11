@@ -91,7 +91,10 @@ const Template: Story<MenuStoryArgs> = ({ items, ...args }) => {
   );
 };
 
-const Template2: Story<MenuStoryArgs> = ({ items, ...args }) => {
+const SelectWithoutPreSelection: Story<MenuStoryArgs> = ({
+  items,
+  ...args
+}) => {
   const [selectedItem, setSelectedItem] = useState<string>();
   function getItems() {
     return items.map((item) => {
@@ -128,12 +131,9 @@ const Template2: Story<MenuStoryArgs> = ({ items, ...args }) => {
         {...args}
         inputValue={selectedItem}
         selectionValue={selectedItem}
-        {...(selectedItem
-          ? {
-              renderValue: (value: any) =>
-                getItemByValue(value.inputValue || "")?.label,
-            }
-          : {})}
+        renderValue={(value: any) =>
+          getItemByValue(value.inputValue || "")?.label
+        }
         onSelect={(value) => {
           setSelectedItem(value);
           args.onSelect?.(value);
@@ -222,7 +222,7 @@ WithGroups.args = {
   label: "Food Manager",
 };
 
-export const Placeholder = Template2.bind({});
+export const Placeholder = SelectWithoutPreSelection.bind({});
 Placeholder.args = {
   items: [
     { label: "Giommis", items: items },
@@ -236,6 +236,12 @@ Placeholder.args = {
   placeholder: "Select an item",
   isPrimary: false,
   label: "Food Manager",
+};
+
+export const NeverShowPlaceholder = SelectWithoutPreSelection.bind({});
+NeverShowPlaceholder.args = {
+  ...Placeholder.args,
+  preventEmpty: true,
 };
 
 export default {
