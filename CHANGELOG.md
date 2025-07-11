@@ -1,3 +1,17 @@
+# v4.0.44 (Fri Jul 11 2025)
+
+#### 🐛 Bug Fix
+
+- Update placeholder [#536](https://github.com/AppQuality/unguess-design-system/pull/536) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@cannarocks](https://github.com/cannarocks))
+- Add placeholder to select [#535](https://github.com/AppQuality/unguess-design-system/pull/535) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.43 (Mon Jul 07 2025)
 
 #### 🐛 Bug Fix
