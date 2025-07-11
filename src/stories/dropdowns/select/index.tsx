@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { SelectOption } from "../../selectOption";
 import { SelectArgs } from "./_types";
 
-const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean }>`
+const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean, isPrefilled?: boolean }>`
   [data-garden-container-id="containers.combobox.option"] {
     display: flex;
     gap: ${({ theme }) => theme.space.sm};

@@ -91,6 +91,69 @@ const Template: Story<MenuStoryArgs> = ({ items, ...args }) => {
   );
 };
 
+const Template2: Story<MenuStoryArgs> = ({ items, ...args }) => {
+  const [selectedItem, setSelectedItem] = useState<string>();
+  function getItems() {
+    return items.map((item) => {
+      if ("items" in item) {
+        return (
+          <Select.OptionGroup label={item.label}>
+            {item.items.map((singleItem) => (
+              <Select.Option
+                value={singleItem.value}
+                label={singleItem.label}
+              />
+            ))}
+          </Select.OptionGroup>
+        );
+      } else {
+        return <Select.Option value={item.value} label={item.label} />;
+      }
+    });
+  }
+  function getItemByValue(value: string) {
+    const allItems = items
+      .map((item) => {
+        if ("items" in item) {
+          return item.items;
+        }
+        return item;
+      })
+      .flat();
+    return allItems.find((item) => item.value === value);
+  }
+  return (
+    <div style={{ width: "300px" }}>
+      <Select
+        {...args}
+        inputValue={selectedItem}
+        selectionValue={selectedItem}
+        {...(selectedItem
+          ? {
+              renderValue: (value: any) =>
+                getItemByValue(value.inputValue || "")?.label,
+            }
+          : {})}
+        onSelect={(value) => {
+          setSelectedItem(value);
+          args.onSelect?.(value);
+        }}
+        validation={args?.validation}
+        label={args.label}
+      >
+        {getItems()}
+        {args.menuOption && (
+          <Select.MenuOption
+            label={args.menuOption.label}
+            value="menu-option"
+            onClick={args.menuOption.onClick}
+          />
+        )}
+      </Select>
+    </div>
+  );
+};
+
 export const Default = Template.bind({});
 Default.args = {
   items: items,
@@ -155,6 +218,22 @@ WithGroups.args = {
   isCompact: false,
   isBare: false,
   isDisabled: false,
+  isPrimary: false,
+  label: "Food Manager",
+};
+
+export const Placeholder = Template2.bind({});
+Placeholder.args = {
+  items: [
+    { label: "Giommis", items: items },
+    { label: "Others", items: [{ label: "Non Giommis", value: "item-99" }] },
+    { items: [{ label: "Ungrouped", value: "item-1000" }] },
+  ],
+  onSelect: (item: string) => {
+    console.log(item);
+    alert("Selected: " + item);
+  },
+  placeholder: "Select an item",
   isPrimary: false,
   label: "Food Manager",
 };
