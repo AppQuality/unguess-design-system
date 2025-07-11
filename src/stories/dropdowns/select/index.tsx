@@ -10,7 +10,10 @@ import styled from "styled-components";
 import { SelectOption } from "../../selectOption";
 import { SelectArgs } from "./_types";
 
-const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean }>`
+const StyledComboBox = styled(Combobox)<{
+  isPrimary?: boolean;
+  isPrefilled?: boolean;
+}>`
   [data-garden-container-id="containers.combobox.option"] {
     display: flex;
     gap: ${({ theme }) => theme.space.sm};
@@ -37,17 +40,29 @@ const Select = ({
   onSelect,
   ...props
 }: SelectArgs) => {
+  const disableRenderValueIfUnselected = ({
+    inputValue,
+    selectionValue,
+    preventEmpty,
+  }: SelectArgs) => {
+    if (!inputValue && !selectionValue && !preventEmpty) {
+      return { renderValue: undefined };
+    }
+    return {};
+  };
+
   return (
     <div className={className}>
       <Field>
         {label ? <Label>{label}</Label> : null}
         <StyledComboBox
           {...props}
+          {...disableRenderValueIfUnselected(props)}
           isEditable={false}
           onChange={(changeEvent) => {
             if (
               ["input:keyDown:Enter", "option:click"].includes(
-                changeEvent.type,
+                changeEvent.type
               ) &&
               changeEvent.selectionValue &&
               onSelect
@@ -81,7 +96,7 @@ const StyledMenuOption = styled(Option)`
 `;
 
 Select.MenuOption = (
-  props: Omit<ComponentProps<typeof Select.Option>, "isDisabled">,
+  props: Omit<ComponentProps<typeof Select.Option>, "isDisabled">
 ) => {
   return <StyledMenuOption {...props} isDisabled />;
 };

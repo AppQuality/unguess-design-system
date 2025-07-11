@@ -10,4 +10,9 @@ export interface SelectArgs extends Omit<IComboboxProps, "onSelect"> {
   onSelect?: (value: string) => Promise<void> | void;
   isDisabled?: boolean;
   fullWidthOption?: boolean;
+  /**
+   * By default, if both `inputValue` and `selectionValue` are empty, any `renderValue` will not be displayed.
+   * Set this to true if you want `renderValue` to always be shown, regardless of `inputValue` or `selectionValue`.
+   */
+  preventEmpty?: boolean;
 }
