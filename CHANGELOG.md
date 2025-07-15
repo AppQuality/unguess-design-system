@@ -1,3 +1,17 @@
+# v4.0.46 (Tue Jul 15 2025)
+
+#### 🐛 Bug Fix
+
+- Player fixes [#539](https://github.com/AppQuality/unguess-design-system/pull/539) ([@Kariamos](https://github.com/Kariamos) [@cannarocks](https://github.com/cannarocks))
+- UN-644: add tooltip placement and appendToNode prop [#534](https://github.com/AppQuality/unguess-design-system/pull/534) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.45 (Fri Jul 11 2025)
 
 #### 🐛 Bug Fix
