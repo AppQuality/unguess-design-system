@@ -1,6 +1,6 @@
 {
   "name": "@appquality/unguess-design-system",
-  "version": "3.1.115",
+  "version": "3.1.116-tooltip-player",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
