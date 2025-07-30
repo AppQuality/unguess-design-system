@@ -1,6 +1,4 @@
-import {
-  DrawerModal as ZendeskDrawerModal,
-} from "@zendeskgarden/react-modals";
+import { DrawerModal as ZendeskDrawerModal } from "@zendeskgarden/react-modals";
 import { DrawerArgs } from "./_types";
 import styled from "styled-components";
 
@@ -8,7 +6,12 @@ const UgDrawer = styled(ZendeskDrawerModal)`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
   }
-`;  
+`;
+
+const UgDrawerBody = styled(ZendeskDrawerModal.Body)`
+  word-break: break-word;
+  whitespace: normal;
+`;
 
 /**
  * A Drawer is a container for supplementary content that is anchored to the edge of a page.
@@ -19,7 +22,7 @@ const UgDrawer = styled(ZendeskDrawerModal)`
  */
 const Drawer = (props: DrawerArgs) => <UgDrawer {...props} />;
 Drawer.Header = ZendeskDrawerModal.Header;
-Drawer.Body = ZendeskDrawerModal.Body;
+Drawer.Body = UgDrawerBody;
 Drawer.Footer = ZendeskDrawerModal.Footer;
 Drawer.FooterItem = ZendeskDrawerModal.FooterItem;
 Drawer.Close = ZendeskDrawerModal.Close;
