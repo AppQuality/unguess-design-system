@@ -29,6 +29,7 @@ const CardContent = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   flex-grow: 1;
+  word-break: break-word;
 `;
 
 const ButtonsWrap = styled.div`
@@ -41,7 +42,6 @@ const ButtonsWrap = styled.div`
 
   button {
     padding: ${({ theme }) => theme.space.xxs} 0;
-    
   }
 
   button:not(:first-child) {
@@ -64,6 +64,7 @@ const HoverBody = styled.div`
   align-items: space-between;
   flex-direction: column;
   justify-content: space-between;
+  word-break: break-word;
 `;
 
 const HoverMetaContainer = styled.div``;
@@ -121,10 +122,7 @@ const ServiceCard = (props: ServiceCardsProps) => {
         {props.tags && (
           <SpecialCard.Footer justifyContent={"start"} wrap>
             {props.tags.map((tag, index) => (
-              <StyledTag
-                key={index}
-                size="large"
-              >
+              <StyledTag key={index} size="large">
                 <StyledTag.Avatar>{tag.icon}</StyledTag.Avatar>
                 {tag.label}
               </StyledTag>

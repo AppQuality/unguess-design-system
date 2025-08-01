@@ -16,6 +16,7 @@ const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  word-break: break-word;
 
   ${({ isFloating, theme }) =>
     !isFloating &&
