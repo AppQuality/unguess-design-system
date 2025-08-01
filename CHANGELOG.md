@@ -1,3 +1,19 @@
+# v4.0.47 (Fri Aug 01 2025)
+
+#### 🐛 Bug Fix
+
+- merge break word fixes [#542](https://github.com/AppQuality/unguess-design-system/pull/542) ([@Kariamos](https://github.com/Kariamos) [@iacopolea](https://github.com/iacopolea))
+- fix: Remove unnecessary whitespace property from styled components [#543](https://github.com/AppQuality/unguess-design-system/pull/543) ([@Kariamos](https://github.com/Kariamos))
+- UN-1614: Update Drawer body component to break long words and avoid overflow [#541](https://github.com/AppQuality/unguess-design-system/pull/541) ([@Kariamos](https://github.com/Kariamos))
+- UN-1612 fix long words in cards [#540](https://github.com/AppQuality/unguess-design-system/pull/540) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.46 (Tue Jul 15 2025)
 
 #### 🐛 Bug Fix
