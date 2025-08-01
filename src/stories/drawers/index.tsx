@@ -10,7 +10,6 @@ const UgDrawer = styled(ZendeskDrawerModal)`
 
 const UgDrawerBody = styled(ZendeskDrawerModal.Body)`
   word-break: break-word;
-  whitespace: normal;
 `;
 
 /**

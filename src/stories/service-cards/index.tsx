@@ -29,7 +29,6 @@ const CardContent = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   flex-grow: 1;
-  whitespace: normal;
   word-break: break-word;
 `;
 
@@ -65,7 +64,6 @@ const HoverBody = styled.div`
   align-items: space-between;
   flex-direction: column;
   justify-content: space-between;
-  whitespace: normal;
   word-break: break-word;
 `;
 
