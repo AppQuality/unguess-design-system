@@ -1,15 +1,15 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import styled from "styled-components";
 import { ReactComponent as LightningBoltIcon } from "../../../assets/icons/bolt-icon-fill.svg";
+import { ReactComponent as PriceIcon } from "../../../assets/icons/lock-fill.svg";
 import { ReactComponent as TailoredTemplate } from "../../../assets/icons/tailored_template.svg";
 import { ReactComponent as UnguessTemplate } from "../../../assets/icons/unguess_template.svg";
-import { ReactComponent as PriceIcon } from "../../../assets/icons/lock-fill.svg";
 import { ReactComponent as UsersIcon } from "../../../assets/icons/user-group-fill.svg";
 import { SpecialCard } from "../../special-cards";
 import { Tag } from "../../tags";
 import { theme } from "../../theme";
 import { getColor } from "../../theme/utils";
 import { LG, SM } from "../../typography/typescale";
-import styled from "styled-components";
 
 export interface TemplateCardsProps
   extends React.ComponentProps<typeof SpecialCard> {
@@ -17,9 +17,9 @@ export interface TemplateCardsProps
   isTailored?: boolean;
   lineClamp?: number;
   thumbUrl?: string;
-  title: string;
-  superTitle?: string;
-  description: string;
+  templateTitle: ReactNode;
+  superTitle?: ReactNode;
+  description: ReactNode;
   i18n: {
     tailoredHeader: string;
     unguessHeader: string;
@@ -86,6 +86,7 @@ const StyledMetaContainer = styled.div`
 
 const TemplateCard = ({
   title,
+  templateTitle,
   superTitle,
   description,
   isFast,
@@ -133,10 +134,10 @@ const TemplateCard = ({
           color={getColor(theme.colors.primaryHue, 600)}
           style={{ marginBottom: theme.space.xs }}
         >
-          {title}
+          {templateTitle}
         </LG>
       </SpecialCard.Header>
-      <SpecialCard.Body lines={lineClamp} title={description}>
+      <SpecialCard.Body lines={lineClamp}>
         {description}
       </SpecialCard.Body>
       {children}
