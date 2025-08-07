@@ -9,17 +9,6 @@ export const palette = {
   ...DEFAULT_THEME.palette, // we are overwriting this but want to keep the original palette component as reference
   "black": "#000000",
   "white": "#FFFFFF",
-  "product": {
-    "support": "#00a656",
-    "message": "#37b8af",
-    "explore": "#30aabc",
-    "gather": "#f6c8be",
-    "guide": "#ff6224",
-    "connect": "#ff6224",
-    "chat": "#f79a3e",
-    "talk": "#efc93d",
-    "sell": "#c38f00"
-  },
   "grey": {
     "100": "#f8f9f9",
     "200": "#e9ebed",
@@ -153,5 +142,18 @@ export const palette = {
     "600": "#bf5000",
     "M400": "#d4772c",
     "M600": "#b35827",
+  },
+  "talk": {
+    "0": "#FFFDF9",
+    "50": "#FDF8E6",
+    "100": "#FCF3D3",
+    "200": "#FAEDC1",
+    "300": "#F9E8AE",
+    "400": "#F5DE88",
+    "500": "#F2D363",
+    "600": "#EFC93D",
+    "700": "#D1AF32",
+    "800": "#B39527",
+    "900": "#957B1D",
   }
 };
