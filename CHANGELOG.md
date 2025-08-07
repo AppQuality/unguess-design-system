@@ -1,3 +1,16 @@
+# v4.0.48 (Thu Aug 07 2025)
+
+#### 🐛 Bug Fix
+
+- new version [#545](https://github.com/AppQuality/unguess-design-system/pull/545) ([@iacopolea](https://github.com/iacopolea))
+- UN-1667-search-templates [#544](https://github.com/AppQuality/unguess-design-system/pull/544) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.0.47 (Fri Aug 01 2025)
 
 #### 🐛 Bug Fix
