@@ -5,6 +5,7 @@ import { ReactComponent as DraftStatusIcon } from "../../icons/draft-status.svg"
 import { ReactComponent as SubmittedStatusIcon } from "../../icons/submitted-status.svg";
 import { ReactComponent as WaitingStatusIcon } from "../../icons/waiting-status.svg";
 import { ReactComponent as ApprovedStatusIcon } from "../../icons/approved-status.svg";
+import { ReactComponent as PaymentStatusIcon } from "../../icons/payment-status.svg";
 
 export interface IPlanTagProps {
   status: IPlanStatus;
@@ -22,6 +23,8 @@ const getTagColor = (status: IPlanStatus) => {
       return theme.palette.yellow[700];
     case "approved":
       return theme.palette.azure[600];
+    case "paying":
+      return theme.palette.green[700];
     default:
       return theme.palette.azure[800];
   }
@@ -38,6 +41,8 @@ export const PlanTag = ({ status, statusLabel }: IPlanTagProps) => {
         return <WaitingStatusIcon />;
       case "approved":
         return <ApprovedStatusIcon />;
+      case "paying":
+        return <PaymentStatusIcon />;
       default:
         return <DraftStatusIcon />;
     }

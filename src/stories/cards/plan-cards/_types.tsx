@@ -1,6 +1,6 @@
 import { SpecialCardProps } from "../../special-cards/_types";
 
-export type IPlanStatus = "draft" | "submitted" | "pending_quote_review" | "approved";
+export type IPlanStatus = "draft" | "submitted" | "pending_quote_review" | "approved" | "paying";
 
 export interface PlanCardsProps extends SpecialCardProps {
   /**
