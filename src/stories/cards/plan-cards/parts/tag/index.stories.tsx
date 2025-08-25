@@ -31,7 +31,7 @@ export default {
     status: {
       control: {
         type: "select",
-        options: ["draft", "submitted", "pending_quote_review", "approved"],
+        options: ["draft", "submitted", "pending_quote_review", "approved", "paying"],
       },
     },
   },
