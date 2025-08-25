@@ -5,6 +5,7 @@ import { SpecialCard } from "../../special-cards";
 import { ReactComponent as DraftIcon } from "./icons/draft.svg";
 import { ReactComponent as SubmittedIcon } from "./icons/submitted.svg";
 import { ReactComponent as WaitingIcon } from "./icons/waiting.svg";
+import { ReactComponent as PaymentIcon } from "./icons/payment.svg";
 import { CampaignCardSkeleton } from "./skeleton";
 import { PlanTag } from "./parts/tag";
 import { LabelComponent } from "./parts/Label";
@@ -35,6 +36,8 @@ const PlanCard = ({
         return <SubmittedIcon />;
       case "pending_quote_review":
         return <WaitingIcon />;
+      case "paying":
+        return <PaymentIcon />;
       default:
         return <DraftIcon />;
     }
