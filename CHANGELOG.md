@@ -1,3 +1,16 @@
+# v4.0.49 (Mon Aug 25 2025)
+
+#### 🐛 Bug Fix
+
+- Add new status to plans 🤑 [#547](https://github.com/AppQuality/unguess-design-system/pull/547) ([@cannarocks](https://github.com/cannarocks))
+- Add 'paying' status to PlanCard and PlanTag components [#546](https://github.com/AppQuality/unguess-design-system/pull/546) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.48 (Thu Aug 07 2025)
 
 #### 🐛 Bug Fix
