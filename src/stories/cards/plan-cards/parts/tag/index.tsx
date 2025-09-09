@@ -24,7 +24,7 @@ const getTagColor = (status: IPlanStatus) => {
     case "approved":
       return theme.palette.azure[600];
     case "paying":
-      return theme.palette.green[700];
+      return theme.palette.grey[600];
     default:
       return theme.palette.azure[800];
   }
