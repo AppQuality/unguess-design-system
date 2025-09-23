@@ -44,7 +44,9 @@ const PlanCard = ({ status, i18n, children, ...props }: PlanCardsProps) => {
 
   return (
     <SpecialCard title={"Setup Activity"} {...props}>
+      {status && (
       <SpecialCard.Thumb>{Icon}</SpecialCard.Thumb>
+      )}
       <SpecialCard.Header style={{ color: getTitleColor(status) }}>
         {children}
       </SpecialCard.Header>
@@ -53,10 +55,12 @@ const PlanCard = ({ status, i18n, children, ...props }: PlanCardsProps) => {
         <Tag size="large" hue="transparent">
           {i18n?.planLabel ?? "Plan"}
         </Tag>
-        <PlanTag
-          status={status}
-          statusLabel={i18n?.statusLabel ?? (status as string)}
-        />
+        {status && (
+          <PlanTag
+            status={status}
+            statusLabel={i18n?.statusLabel ?? (status as string)}
+          />
+        )}
       </SpecialCard.Footer>
     </SpecialCard>
   );
