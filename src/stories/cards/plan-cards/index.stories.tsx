@@ -43,7 +43,7 @@ const MultiTemplate: Story<StoryArgs> = (args) => {
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
           <PlanCard
             {...args}
-            status={"pending_quote_review"}
+            status={"AwaitingApproval"}
             i18n={{ statusLabel: "Requested" }}
           >
             <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
@@ -59,7 +59,7 @@ const MultiTemplate: Story<StoryArgs> = (args) => {
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
           <PlanCard
             {...args}
-            status={"submitted"}
+            status={"Submitted"}
             i18n={{ statusLabel: "Submitted" }}
           >
             <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
