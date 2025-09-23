@@ -8,14 +8,14 @@ import { ReactComponent as ApprovedStatusIcon } from "../../icons/approved-statu
 import { ReactComponent as PaymentStatusIcon } from "../../icons/payment-status.svg";
 
 export interface IPlanTagProps {
-  status: IPlanStatus;
+  status?: IPlanStatus;
   statusLabel: string;
 }
 /**
  * Almost duplicated getTitleColor switch cause design requires slightly different colors
  * for the status tag.
  */
-const getTagColor = (status: IPlanStatus) => {
+const getTagColor = (status?: IPlanStatus) => {
   switch (status) {
     case "Submitted":
       return theme.palette.grey[800];

@@ -11,7 +11,7 @@ import { PlanTag } from "./parts/tag";
 import { LabelComponent } from "./parts/Label";
 import { TitleComponent } from "./parts/Title";
 
-const getTitleColor = (status: IPlanStatus) => {
+const getTitleColor = (status?: IPlanStatus) => {
   switch (status) {
     case "Submitted":
       return theme.palette.grey[800];

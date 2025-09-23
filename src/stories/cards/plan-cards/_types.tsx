@@ -20,7 +20,7 @@ export interface PlanCardsProps extends SpecialCardProps {
    * "draft" or "submitted" or "pending_quote_review"
    * default is "draft"
    */
-  status: IPlanStatus;
+  status?: IPlanStatus;
 
   i18n?: {
     statusLabel?: string;
