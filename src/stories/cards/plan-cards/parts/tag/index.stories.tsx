@@ -10,7 +10,7 @@ interface TagStoryProps extends IPlanTagProps {
 const Template: Story<TagStoryProps> = ({ children, ...args }) => (
   <Row>
     <Col textAlign="center">
-      <PlanTag status={args.status ?? "draft"} statusLabel={children} />
+      <PlanTag status={args.status ?? "UnquotedDraft"} statusLabel={children} />
     </Col>
   </Row>
 );
@@ -31,7 +31,7 @@ export default {
     status: {
       control: {
         type: "select",
-        options: ["draft", "submitted", "pending_quote_review", "approved", "paying"],
+        options: ["UnquotedDraft", "Submitted", "AwaitingApproval", "Accepted", "Paying"],
       },
     },
   },
