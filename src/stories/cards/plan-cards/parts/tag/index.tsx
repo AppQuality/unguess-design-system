@@ -17,13 +17,17 @@ export interface IPlanTagProps {
  */
 const getTagColor = (status: IPlanStatus) => {
   switch (status) {
-    case "submitted":
+    case "Submitted":
       return theme.palette.grey[800];
-    case "pending_quote_review":
+    case "AwaitingApproval":
+    case "OpsCheck":
+    case "AwaitingPayment":
       return theme.palette.yellow[700];
-    case "approved":
+    case "Accepted":
+    case "RunningPlan":
+    case "PurchasedPlan":
       return theme.palette.azure[600];
-    case "paying":
+    case "Paying":
       return theme.palette.grey[600];
     default:
       return theme.palette.azure[800];
@@ -35,13 +39,17 @@ export const PlanTag = ({ status, statusLabel }: IPlanTagProps) => {
 
   const Icon = (() => {
     switch (status) {
-      case "submitted":
+      case "Submitted":
         return <SubmittedStatusIcon />;
-      case "pending_quote_review":
+      case "AwaitingApproval":
+      case "OpsCheck":
+      case "AwaitingPayment":
         return <WaitingStatusIcon />;
-      case "approved":
+      case "Accepted":
+      case "RunningPlan":
+      case "PurchasedPlan":
         return <ApprovedStatusIcon />;
-      case "paying":
+      case "Paying":
         return <PaymentStatusIcon />;
       default:
         return <DraftStatusIcon />;

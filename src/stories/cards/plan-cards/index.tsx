@@ -13,30 +13,29 @@ import { TitleComponent } from "./parts/Title";
 
 const getTitleColor = (status: IPlanStatus) => {
   switch (status) {
-    case "submitted":
+    case "Submitted":
       return theme.palette.grey[800];
-    case "pending_quote_review":
+    case "AwaitingApproval":
+    case "OpsCheck":
+    case "AwaitingPayment":
       return theme.palette.yellow[700];
     default:
       return theme.palette.azure[800];
   }
 };
 
-const PlanCard = ({
-  status = "draft",
-  i18n,
-  children,
-  ...props
-}: PlanCardsProps) => {
+const PlanCard = ({ status, i18n, children, ...props }: PlanCardsProps) => {
   if (props.isLoading) return <CampaignCardSkeleton />;
 
   const Icon = (() => {
     switch (status) {
-      case "submitted":
+      case "Submitted":
         return <SubmittedIcon />;
-      case "pending_quote_review":
+      case "AwaitingApproval":
+      case "OpsCheck":
+      case "AwaitingPayment":
         return <WaitingIcon />;
-      case "paying":
+      case "Paying":
         return <PaymentIcon />;
       default:
         return <DraftIcon />;
@@ -55,7 +54,7 @@ const PlanCard = ({
           {i18n?.planLabel ?? "Plan"}
         </Tag>
         <PlanTag
-          status={status ?? "draft"}
+          status={status}
           statusLabel={i18n?.statusLabel ?? (status as string)}
         />
       </SpecialCard.Footer>
