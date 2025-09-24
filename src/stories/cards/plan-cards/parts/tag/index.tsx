@@ -58,6 +58,7 @@ export const PlanTag = ({ status, statusLabel }: IPlanTagProps) => {
     }
   })();
 
+  if (!Icon) return null;
   return (
     <Tag hue="transparent" color={color} size="large">
       <Tag.Avatar>{Icon}</Tag.Avatar>
