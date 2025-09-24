@@ -46,13 +46,15 @@ export const PlanTag = ({ status, statusLabel }: IPlanTagProps) => {
       case "AwaitingPayment":
         return <WaitingStatusIcon />;
       case "Accepted":
-      case "RunningPlan":
-      case "PurchasedPlan":
         return <ApprovedStatusIcon />;
       case "Paying":
         return <PaymentStatusIcon />;
-      default:
+      case "UnquotedDraft":
+      case "PurchasableDraft":
+      case "PrequotedDraft":
         return <DraftStatusIcon />;
+      default:
+        return null;
     }
   })();
 
