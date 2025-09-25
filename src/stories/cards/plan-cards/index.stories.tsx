@@ -35,7 +35,7 @@ const MultiTemplate: Story<StoryArgs> = (args) => {
     <CardsContainer>
       <StyledRow>
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
-          <PlanCard {...args}>
+          <PlanCard {...args} status="UnquotedDraft" i18n={{ statusLabel: "Draft", planLabel: "Finalize Activity" }}>
             <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
             <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
           </PlanCard>
@@ -44,14 +44,17 @@ const MultiTemplate: Story<StoryArgs> = (args) => {
           <PlanCard
             {...args}
             status={"AwaitingApproval"}
-            i18n={{ statusLabel: "Requested" }}
+            i18n={{ statusLabel: "Waiting for you", planLabel: "Confirm & Launch" }}
           >
             <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
             <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
           </PlanCard>
         </Col>
         <Col xs={10} md={6} lg={3} style={{ marginBottom: theme.space.sm }}>
-          <PlanCard {...args}>
+          <PlanCard {...args}
+            status={"Paying"}
+            i18n={{ statusLabel: "Ongoing Payment", planLabel: "Take a look" }}
+          >
             <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
             <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>
           </PlanCard>
@@ -60,7 +63,7 @@ const MultiTemplate: Story<StoryArgs> = (args) => {
           <PlanCard
             {...args}
             status={"Submitted"}
-            i18n={{ statusLabel: "Submitted" }}
+            i18n={{ statusLabel: "Under Review", planLabel: "Take a look" }}
           >
             <PlanCard.ProjectLabel>{args.projectTitle}</PlanCard.ProjectLabel>
             <PlanCard.Title>{args.campaignTitle}</PlanCard.Title>

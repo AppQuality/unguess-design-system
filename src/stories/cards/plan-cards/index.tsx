@@ -10,6 +10,7 @@ import { CampaignCardSkeleton } from "./skeleton";
 import { PlanTag } from "./parts/tag";
 import { LabelComponent } from "./parts/Label";
 import { TitleComponent } from "./parts/Title";
+import { PlanCardButton } from "./parts/PlanCardButton";
 
 const getTitleColor = (status?: IPlanStatus) => {
   switch (status) {
@@ -53,7 +54,9 @@ const PlanCard = ({ status, i18n, children, ...props }: PlanCardsProps) => {
 
       <SpecialCard.Footer style={{ marginBottom: theme.space.xxs }}>
         <Tag size="large" hue="transparent">
-          {i18n?.planLabel ?? "Plan"}
+          <PlanCardButton status={status}>
+            {i18n?.planLabel ?? "Plan"}
+            </PlanCardButton>
         </Tag>
         {status && (
           <PlanTag
