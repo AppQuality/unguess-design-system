@@ -25,7 +25,7 @@ export const PlanCardButton = ({
     case "AwaitingApproval":
     case "AwaitingPayment":
       return (
-        <Button size="small" isStretched isPrimary {...buttonProps}>
+        <Button size="small" isPrimary {...buttonProps}>
           {buttonProps.children}
         </Button>
       );
@@ -33,7 +33,7 @@ export const PlanCardButton = ({
     case "Submitted":
     case "OpsCheck":
       return (
-        <Button size="small" isStretched isBasic {...buttonProps}>
+        <Button size="small" isBasic {...buttonProps}>
           <Button.StartIcon>
             <EyeStroke />
           </Button.StartIcon>
