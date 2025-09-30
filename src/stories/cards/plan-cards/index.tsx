@@ -45,19 +45,16 @@ const PlanCard = ({ status, i18n, children, ...props }: PlanCardsProps) => {
 
   return (
     <SpecialCard title={"Setup Activity"} {...props}>
-      {status && (
-      <SpecialCard.Thumb>{Icon}</SpecialCard.Thumb>
-      )}
+      {status && <SpecialCard.Thumb>{Icon}</SpecialCard.Thumb>}
       <SpecialCard.Header style={{ color: getTitleColor(status) }}>
         {children}
       </SpecialCard.Header>
 
       <SpecialCard.Footer style={{ marginBottom: theme.space.xxs }}>
-        <Tag size="large" hue="transparent">
-          <PlanCardButton status={status}>
-            {i18n?.planLabel ?? "Plan"}
-            </PlanCardButton>
-        </Tag>
+        <PlanCardButton status={status}>
+          {i18n?.planLabel ?? "Plan"}
+        </PlanCardButton>
+
         {status && (
           <PlanTag
             status={status}
