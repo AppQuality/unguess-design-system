@@ -1,20 +1,19 @@
-import { Tag } from "../../tags";
+import { SpecialCard } from "../../special-cards";
 import { theme } from "../../theme";
 import { IPlanStatus, PlanCardsProps } from "./_types";
-import { SpecialCard } from "../../special-cards";
 import { ReactComponent as DraftIcon } from "./icons/draft.svg";
 import { ReactComponent as SubmittedIcon } from "./icons/submitted.svg";
 import { ReactComponent as WaitingIcon } from "./icons/waiting.svg";
-import { ReactComponent as PaymentIcon } from "./icons/payment.svg";
-import { CampaignCardSkeleton } from "./skeleton";
-import { PlanTag } from "./parts/tag";
 import { LabelComponent } from "./parts/Label";
-import { TitleComponent } from "./parts/Title";
 import { PlanCardButton } from "./parts/PlanCardButton";
+import { PlanTag } from "./parts/tag";
+import { TitleComponent } from "./parts/Title";
+import { CampaignCardSkeleton } from "./skeleton";
 
 const getTitleColor = (status?: IPlanStatus) => {
   switch (status) {
     case "Submitted":
+    case "Paying":
       return theme.palette.grey[800];
     case "AwaitingApproval":
     case "OpsCheck":
@@ -31,13 +30,12 @@ const PlanCard = ({ status, i18n, children, ...props }: PlanCardsProps) => {
   const Icon = (() => {
     switch (status) {
       case "Submitted":
+      case "Paying":
         return <SubmittedIcon />;
       case "AwaitingApproval":
       case "OpsCheck":
       case "AwaitingPayment":
         return <WaitingIcon />;
-      case "Paying":
-        return <PaymentIcon />;
       default:
         return <DraftIcon />;
     }
@@ -71,3 +69,4 @@ PlanCard.Title = TitleComponent;
 
 export { PlanCard };
 export type { IPlanStatus };
+
