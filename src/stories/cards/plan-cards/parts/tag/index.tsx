@@ -8,22 +8,26 @@ import { ReactComponent as ApprovedStatusIcon } from "../../icons/approved-statu
 import { ReactComponent as PaymentStatusIcon } from "../../icons/payment-status.svg";
 
 export interface IPlanTagProps {
-  status: IPlanStatus;
+  status?: IPlanStatus;
   statusLabel: string;
 }
 /**
  * Almost duplicated getTitleColor switch cause design requires slightly different colors
  * for the status tag.
  */
-const getTagColor = (status: IPlanStatus) => {
+const getTagColor = (status?: IPlanStatus) => {
   switch (status) {
-    case "submitted":
+    case "Submitted":
       return theme.palette.grey[800];
-    case "pending_quote_review":
+    case "AwaitingApproval":
+    case "OpsCheck":
+    case "AwaitingPayment":
       return theme.palette.yellow[700];
-    case "approved":
+    case "Accepted":
+    case "RunningPlan":
+    case "PurchasedPlan":
       return theme.palette.azure[600];
-    case "paying":
+    case "Paying":
       return theme.palette.grey[600];
     default:
       return theme.palette.azure[800];
@@ -35,19 +39,26 @@ export const PlanTag = ({ status, statusLabel }: IPlanTagProps) => {
 
   const Icon = (() => {
     switch (status) {
-      case "submitted":
+      case "Submitted":
         return <SubmittedStatusIcon />;
-      case "pending_quote_review":
+      case "AwaitingApproval":
+      case "OpsCheck":
+      case "AwaitingPayment":
         return <WaitingStatusIcon />;
-      case "approved":
+      case "Accepted":
         return <ApprovedStatusIcon />;
-      case "paying":
+      case "Paying":
         return <PaymentStatusIcon />;
-      default:
+      case "UnquotedDraft":
+      case "PurchasableDraft":
+      case "PrequotedDraft":
         return <DraftStatusIcon />;
+      default:
+        return null;
     }
   })();
 
+  if (!Icon) return null;
   return (
     <Tag hue="transparent" color={color} size="large">
       <Tag.Avatar>{Icon}</Tag.Avatar>
