@@ -1,3 +1,19 @@
+# v4.0.50 (Tue Oct 14 2025)
+
+#### 🐛 Bug Fix
+
+- Card status support [#550](https://github.com/AppQuality/unguess-design-system/pull/550) ([@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee) [@cannarocks](https://github.com/cannarocks))
+- fix: Conditionally render icon and status tag in PlanCard component [#549](https://github.com/AppQuality/unguess-design-system/pull/549) ([@iacopolea](https://github.com/iacopolea))
+- fix: Update color and icon for 'paying' status in PlanTag component [#548](https://github.com/AppQuality/unguess-design-system/pull/548) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 3
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.49 (Mon Aug 25 2025)
 
 #### 🐛 Bug Fix
