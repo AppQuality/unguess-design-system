@@ -1,28 +1,20 @@
 import {
   Combobox,
   IComboboxProps,
-  IOptGroupProps,
-  IOptionProps,
-  OptionValue,
+  OptionValue
 } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
-import { SelectOption } from "../../selectOption";
+import { IOptGroup, IOption, SelectOption } from "../../selectOption";
 import { OptGroup } from "../optGroup";
+
 
 export interface OnOptionClickArgs {
   inputValue?: string;
   selectionValue?: OptionValue | OptionValue[] | null;
 }
 
-export interface IOption extends IOptionProps {
-  id: string; // override the id prop because propr value can be an object
-  label: string; // override this, we need a label to filter the options
-}
-export interface IOptGroup extends IOptGroupProps {
-  id: string; // override the id prop to have a key to iterate over the options
-  options: Array<IOption>;
-}
+
 
 export interface AutocompleteProps extends IComboboxProps {
   onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
@@ -155,12 +147,14 @@ const Autocomplete = ({
         return <SelectOption key={index} {...option} />;
       })}
       {!thereAreVisibleOptions && (
-        <SelectOption value="" isDisabled>
+        <SelectOption id="no-results" label="No results found" value="" isDisabled>
           No results found
         </SelectOption>
       )}
       {isCreatable && debouncedInputValue && (
         <SelectOption
+          id="create-new-option"
+          label={`Add "${debouncedInputValue}"`}
           type="add"
           value={debouncedInputValue}
           title={debouncedInputValue}
