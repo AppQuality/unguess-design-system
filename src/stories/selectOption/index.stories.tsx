@@ -26,11 +26,9 @@ const meta = {
         >
           <SelectOption
             {...args}
+            meta={hasMeta ? "Daisy" : undefined}
             icon={hasIcon ? <StatusRunningIcon /> : undefined}
-          >
-            Acacia
-            {hasMeta && <SelectOption.Meta>Daisy</SelectOption.Meta>}
-          </SelectOption>
+          />
         </Combobox>
       </Field>
     );
@@ -44,47 +42,64 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    id: "acacia",
+    label: "Acacia",
+  },
 };
 
 export const WithMeta: Story = {
   args: {
+    id: "acacia",
+    label: "Acacia",
     hasMeta: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
+    id: "acacia",
+    label: "Acacia",
     isDisabled: true,
   },
 };
 
 export const WithIcon: Story = {
   args: {
+    id: "acacia",
+    label: "Acacia",
     hasIcon: true,
   },
 };
 
 export const Selected: Story = {
   args: {
+    id: "acacia",
+    label: "Acacia",
     selected: true,
   },
 };
 export const SelectedWithIcon: Story = {
   args: {
-    selected: true,
+    id: "acacia",
+    label: "Acacia",
     hasIcon: true,
+    selected: true,
   },
 };
 
 export const Compact: Story = {
   args: {
+    id: "acacia",
+    label: "Acacia",
     isCompact: true,
   },
 };
 
 export const Danger: Story = {
   args: {
+    id: "acacia",
+    label: "Acacia",
     type: "danger",
   },
 };

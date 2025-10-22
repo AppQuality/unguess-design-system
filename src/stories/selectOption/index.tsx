@@ -1,8 +1,10 @@
 import {
   IOptGroupProps,
-  IOptionProps, Option
+  IOptionProps,
+  Option,
 } from "@zendeskgarden/react-dropdowns.next";
 import { ReactNode } from "react";
+import styled from "styled-components";
 export interface IOption extends IOptionProps {
   id: string; // override the id prop because propr value can be an object
   label: string; // override this, we need a label to filter the options
@@ -14,10 +16,33 @@ export interface IOptGroup extends IOptGroupProps {
   options: Array<IOption>;
 }
 
-export const SelectOption = ({action, ...props}: IOption) => (
-  <Option {...props}>
+const OptionActionWrapper = styled.div`
+  position: absolute;
+  right: 4px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+`;
+
+const StyledOption = styled(Option)`
+  position: relative;
+
+  &:hover,
+  &[hover="true"] {
+    background-color: ${({ theme }) => theme.palette.green[100]};
+    ${OptionActionWrapper} {
+      opacity: 1;
+    }
+  }
+`;
+const OptionAction = ({ children }: { children: ReactNode }) => (
+  <OptionActionWrapper>{children}</OptionActionWrapper>
+);
+
+export const SelectOption = ({ action, ...props }: IOption) => (
+  <StyledOption {...props}>
     {props.label}
-    {action && <div style={{float: 'right'}}>{action}</div>}
-    {props.meta && <div style={{float: 'right', marginLeft: '8px', color: '#666'}}>{props.meta}</div>}
-  </Option>
+    {action && <OptionAction>{action}</OptionAction>}
+    {props.meta && <Option.Meta>{props.meta}</Option.Meta>}
+  </StyledOption>
 );
