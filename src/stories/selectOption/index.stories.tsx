@@ -3,10 +3,12 @@ import { StatusRunningIcon } from "../icons";
 
 import { Combobox, Field } from "@zendeskgarden/react-dropdowns.next";
 import { SelectOption } from ".";
+import { TooltipModal } from "../tooltip-modal";
 
 type Args = React.ComponentProps<typeof SelectOption> & {
   hasMeta?: boolean;
   hasIcon?: boolean;
+  hasActions?: boolean;
   selected?: boolean;
   isCompact?: boolean;
 };
@@ -15,7 +17,7 @@ const meta = {
   title: "Atoms/SelectOption",
   component: SelectOption,
 
-  render: ({ hasMeta, hasIcon, ...args }) => {
+  render: ({ hasMeta, hasIcon, hasActions, ...args }) => {
     return (
       <Field>
         <Combobox
@@ -26,6 +28,18 @@ const meta = {
         >
           <SelectOption
             {...args}
+            actions={
+              hasActions ? (
+                <>
+                  <TooltipModal.Title>titolo</TooltipModal.Title>
+
+                  <TooltipModal.Body>
+                    <label htmlFor="title-input">Title</label>
+                    <input type="text" id="title-input" />
+                  </TooltipModal.Body>
+                </>
+              ) : undefined
+            }
             meta={hasMeta ? "Daisy" : undefined}
             icon={hasIcon ? <StatusRunningIcon /> : undefined}
           />
@@ -69,6 +83,14 @@ export const WithIcon: Story = {
     id: "acacia",
     label: "Acacia",
     hasIcon: true,
+  },
+};
+
+export const WithActions: Story = {
+  args: {
+    id: "acacia",
+    label: "Acacia",
+    hasActions: true,
   },
 };
 
