@@ -4,6 +4,8 @@ import { StatusRunningIcon } from "../icons";
 import { Combobox, Field } from "@zendeskgarden/react-dropdowns.next";
 import { SelectOption } from ".";
 import { TooltipModal } from "../tooltip-modal";
+import { Input } from "../forms/input";
+import { Button } from "@zendeskgarden/react-buttons";
 
 type Args = React.ComponentProps<typeof SelectOption> & {
   hasMeta?: boolean;
@@ -27,16 +29,47 @@ const meta = {
           selectionValue={args.selected ? args.value : undefined}
         >
           <SelectOption
+            id="select-an-option"
+            label="Select an option"
+            value=""
+            actions={
+              hasActions ? (
+                <>
+                  <form>
+                    <label htmlFor="title-input">Title</label>
+                    <input type="text" id="title-input" />
+                  </form>
+                </>
+              ) : undefined
+            }
+          />
+          <SelectOption
             {...args}
             actions={
               hasActions ? (
                 <>
-                  <TooltipModal.Title>titolo</TooltipModal.Title>
-
-                  <TooltipModal.Body>
-                    <label htmlFor="title-input">Title</label>
-                    <input type="text" id="title-input" />
-                  </TooltipModal.Body>
+                    <label htmlFor="title-input">pippo</label>
+                    <Input
+                      type="text"
+                      id="title-input"
+                      onKeyDown={(e) => {
+                        // if is enter save and close the modal
+                        if (e.key === "Enter") {
+                          alert("blur input");
+                          e.currentTarget.blur();
+                        }
+                      }}
+                    />
+                    <Button
+                      type="button"
+                      isDanger
+                      onClick={(e) => {
+                        console.log("button clicked");
+e.currentTarget.blur();
+                      }}
+                    >
+                      Delete
+                    </Button>
                 </>
               ) : undefined
             }

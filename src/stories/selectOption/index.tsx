@@ -3,12 +3,14 @@ import {
   IOptionProps,
   Option,
 } from "@zendeskgarden/react-dropdowns.next";
-import { ReactNode } from "react";
+import { ReactNode, RefObject, useRef, useState } from "react";
+import { ReactComponent as EditIcon } from "@zendeskgarden/svg-icons/src/12/overflow-vertical-fill.svg";
 import styled from "styled-components";
+import { TooltipModalOption } from "./TooltipModalOption";
 export interface IOption extends IOptionProps {
   id: string; // override the id prop because propr value can be an object
   label: string; // override this, we need a label to filter the options
-  action?: ReactNode;
+  actions?: ReactNode;
   meta?: ReactNode;
 }
 export interface IOptGroup extends IOptGroupProps {
@@ -27,22 +29,63 @@ const OptionActionWrapper = styled.div`
 const StyledOption = styled(Option)`
   position: relative;
 
-  &:hover,
-  &[hover="true"] {
-    background-color: ${({ theme }) => theme.palette.green[100]};
+  &:hover {
     ${OptionActionWrapper} {
       opacity: 1;
     }
   }
 `;
-const OptionAction = ({ children }: { children: ReactNode }) => (
-  <OptionActionWrapper>{children}</OptionActionWrapper>
-);
 
-export const SelectOption = ({ action, ...props }: IOption) => (
-  <StyledOption {...props}>
-    {props.label}
-    {action && <OptionAction>{action}</OptionAction>}
-    {props.meta && <Option.Meta>{props.meta}</Option.Meta>}
-  </StyledOption>
-);
+const EditAction = styled.div`
+  cursor: pointer;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(p) => p.theme.palette.grey[200]};
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${(p) => p.theme.palette.grey[400]};
+  }
+`;
+
+export const SelectOption = ({ actions, label, meta, ...props }: IOption) => {
+  const refObject = useRef<HTMLLIElement>(null);
+  const [modalRef, setModalRef] = useState<RefObject<HTMLElement> | null>(null);
+  const OptionAction = () => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      // avoid select options to be closed when clicking on the edit icon
+      e.stopPropagation();
+      //e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+      setModalRef(refObject);
+    };
+
+    return (
+      <OptionActionWrapper onClick={handleClick}>
+        <EditAction>
+          <EditIcon />
+        </EditAction>
+      </OptionActionWrapper>
+    );
+  };
+  return (
+    <>
+      <StyledOption {...props} ref={refObject}>
+        {label}
+        {actions && (
+          <>
+            <OptionAction />
+            <TooltipModalOption modalRef={modalRef} setModalRef={setModalRef}>
+              {actions}
+            </TooltipModalOption>
+          </>
+        )}
+        {meta && <Option.Meta>{meta}</Option.Meta>}
+      </StyledOption>
+    </>
+  );
+};
