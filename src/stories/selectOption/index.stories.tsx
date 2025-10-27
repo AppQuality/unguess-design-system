@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { ReactComponent as DeleteIcon } from "@zendeskgarden/svg-icons/src/12/trash-stroke.svg";
 import { StatusRunningIcon } from "../icons";
-
+import { Button } from "@zendeskgarden/react-buttons";
 import { Combobox, Field } from "@zendeskgarden/react-dropdowns.next";
 import { SelectOption } from ".";
-import { TooltipModal } from "../tooltip-modal";
 import { Input } from "../forms/input";
-import { Button } from "@zendeskgarden/react-buttons";
 
 type Args = React.ComponentProps<typeof SelectOption> & {
   hasMeta?: boolean;
@@ -30,48 +29,61 @@ const meta = {
         >
           <SelectOption
             id="select-an-option"
-            label="Select an option"
+            label="Select or create an option"
             value=""
+            actionIcon={hasIcon ? <DeleteIcon /> : undefined}
             actions={
-              hasActions ? (
-                <>
-                  <form>
-                    <label htmlFor="title-input">Title</label>
-                    <input type="text" id="title-input" />
-                  </form>
-                </>
-              ) : undefined
+              hasActions
+                ? ({ closeModal }) => (
+                    <Button
+                      type="button"
+                      isDanger
+                      onClick={(e) => {
+                        alert("delete item");
+                        if (closeModal) closeModal();
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  )
+                : undefined
             }
           />
           <SelectOption
             {...args}
             actions={
-              hasActions ? (
-                <>
-                    <label htmlFor="title-input">pippo</label>
-                    <Input
-                      type="text"
-                      id="title-input"
-                      onKeyDown={(e) => {
-                        // if is enter save and close the modal
-                        if (e.key === "Enter") {
-                          alert("blur input");
-                          e.currentTarget.blur();
-                        }
-                      }}
-                    />
-                    <Button
-                      type="button"
-                      isDanger
-                      onClick={(e) => {
-                        console.log("button clicked");
-e.currentTarget.blur();
-                      }}
-                    >
-                      Delete
-                    </Button>
-                </>
-              ) : undefined
+              hasActions
+                ? ({ closeModal }) => (
+                    <>
+                      <label htmlFor="title-input">pippo</label>
+                      <Input
+                        type="text"
+                        id="title-input"
+                        onKeyDown={(e) => {
+                          // if is enter save and close the modal
+                          if (e.key === "Enter") {
+                            alert("blur input");
+                            e.currentTarget.blur();
+                            if (closeModal) closeModal();
+                          }
+                        }}
+                        onClick={(e) => {
+                          e.currentTarget.focus();
+                        }}
+                      />
+                      <Button
+                        type="button"
+                        isDanger
+                        onClick={(e) => {
+                          alert("delete item");
+                          if (closeModal) closeModal();
+                        }}
+                      >
+                        Delete
+                      </Button>
+                    </>
+                  )
+                : undefined
             }
             meta={hasMeta ? "Daisy" : undefined}
             icon={hasIcon ? <StatusRunningIcon /> : undefined}

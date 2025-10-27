@@ -9,7 +9,7 @@ export const TooltipModalOption = ({
 }: {
   modalRef: RefObject<HTMLElement> | null;
   setModalRef: React.Dispatch<React.SetStateAction<RefObject<HTMLElement> | null>>;
-  children: ReactNode;
+  children: (props: { closeModal: () => void }) => ReactNode;
   inputSelector?: string;
 }) => {
   // search for a input field inside the modal to focus on it when the modal opens
@@ -21,20 +21,24 @@ export const TooltipModalOption = ({
       }, 0);
     }
   }, [modalRef?.current, inputSelector]);
+
+  const closeModal = () => {
+    setModalRef(null);
+  }
+
   return (
     <TooltipModal
       referenceElement={modalRef?.current || undefined}
       focusOnMount={true}
-      restoreFocus={true}
       appendToNode={modalRef?.current?.parentElement?.parentElement?.parentElement || undefined}
-      onClose={() => setModalRef(null)}
+      onClose={closeModal}
       placement="auto"
       hasArrow={false}
       role="dialog"
       style={{ maxWidth: 300 }}
     >
       <div ref={ref}>
-        {children}
+        {typeof children === "function" ? children({ closeModal }) : children}
       </div>
     </TooltipModal>
   );

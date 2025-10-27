@@ -10,8 +10,9 @@ import { TooltipModalOption } from "./TooltipModalOption";
 export interface IOption extends IOptionProps {
   id: string; // override the id prop because propr value can be an object
   label: string; // override this, we need a label to filter the options
-  actions?: ReactNode;
+  actions?: (props: { closeModal: () => void }) => ReactNode;
   meta?: ReactNode;
+  actionIcon?: ReactNode;
 }
 export interface IOptGroup extends IOptGroupProps {
   id: string; // override the id prop to have a key to iterate over the options
@@ -52,26 +53,32 @@ const EditAction = styled.div`
   }
 `;
 
-export const SelectOption = ({ actions, label, meta, ...props }: IOption) => {
+export const SelectOption = ({
+  actions,
+  actionIcon,
+  label,
+  meta,
+  ...props
+}: IOption) => {
   const refObject = useRef<HTMLLIElement>(null);
   const [modalRef, setModalRef] = useState<RefObject<HTMLElement> | null>(null);
+
   const OptionAction = () => {
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       // avoid select options to be closed when clicking on the edit icon
       e.stopPropagation();
-      //e.preventDefault();
+      e.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
       setModalRef(refObject);
     };
 
     return (
       <OptionActionWrapper onClick={handleClick}>
-        <EditAction>
-          <EditIcon />
-        </EditAction>
+        <EditAction>{actionIcon || <EditIcon />}</EditAction>
       </OptionActionWrapper>
     );
   };
+
   return (
     <>
       <StyledOption {...props} ref={refObject}>
@@ -79,13 +86,15 @@ export const SelectOption = ({ actions, label, meta, ...props }: IOption) => {
         {actions && (
           <>
             <OptionAction />
-            <TooltipModalOption modalRef={modalRef} setModalRef={setModalRef}>
-              {actions}
-            </TooltipModalOption>
           </>
         )}
         {meta && <Option.Meta>{meta}</Option.Meta>}
       </StyledOption>
+      {actions && ( // here to avoid click events to propagate to the actual option
+        <TooltipModalOption modalRef={modalRef} setModalRef={setModalRef}>
+          {actions}
+        </TooltipModalOption>
+      )}
     </>
   );
 };
