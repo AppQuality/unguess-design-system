@@ -1,20 +1,17 @@
 import {
   Combobox,
   IComboboxProps,
-  OptionValue
+  OptionValue,
 } from "@zendeskgarden/react-dropdowns.next";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
 import { IOptGroup, IOption, SelectOption } from "../../selectOption";
 import { OptGroup } from "../optGroup";
-
 
 export interface OnOptionClickArgs {
   inputValue?: string;
   selectionValue?: OptionValue | OptionValue[] | null;
 }
-
-
 
 export interface AutocompleteProps extends IComboboxProps {
   onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
@@ -64,6 +61,7 @@ const Autocomplete = ({
   onInputChange,
   onChange,
   isCreatable,
+  isEditable,
   onCreateNewOption,
   isMultiselectable,
   ...props
@@ -73,6 +71,40 @@ const Autocomplete = ({
   const debouncedInputValue = useDebounce(inputValue, 300);
 
   useEffect(() => setOption(options), [options]);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const autocompleteRef = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!isEditable) return;
+    const handleDocumentClick = (e: MouseEvent) => {
+      if (
+        autocompleteRef.current &&
+        !autocompleteRef.current.contains(e.target as Node)
+      ) {
+        setIsExpanded(false);
+      }
+    };
+    document.addEventListener("mousedown", handleDocumentClick);
+    return () => {
+      document.removeEventListener("mousedown", handleDocumentClick);
+    };
+  }, [isEditable]);
+
+  // Close on Escape
+  useEffect(() => {
+    if (!isEditable) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsExpanded(false);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isEditable]);
 
   // update options isHidden property based on inputValue
   const matchingOptions = useMemo(
@@ -92,13 +124,13 @@ const Autocomplete = ({
           isHidden: isHidden(opt, debouncedInputValue),
         };
       }),
-    [_options, debouncedInputValue],
+    [_options, debouncedInputValue]
   );
 
   // check if there are visible options
   const thereAreVisibleOptions = useMemo(
     () => flatOptions(matchingOptions).some((opt) => opt.isHidden !== true),
-    [matchingOptions],
+    [matchingOptions]
   );
 
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
@@ -110,7 +142,7 @@ const Autocomplete = ({
       if (event.type === "input:change" && event.inputValue !== undefined) {
         const sanitizedInputValue = event.inputValue.replace(
           /[.*+?^${}()|[\]\\]/giu,
-          "\\$&",
+          "\\$&"
         );
         setInputValue(sanitizedInputValue);
         if (typeof onInputChange === "function")
@@ -127,13 +159,35 @@ const Autocomplete = ({
           inputValue: event.inputValue,
           selectionValue: event.selectionValue,
         });
+        if (isEditable && !isMultiselectable) {
+          setIsExpanded(false);
+        }
       }
     },
-    [],
+    []
+  );
+
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (props.onClick) {
+        props.onClick(e);
+      }
+      if (isEditable) {
+        setIsExpanded(true);
+      }
+    },
+    [props.onClick, isEditable]
   );
 
   return (
-    <Combobox {...props} isAutocomplete onChange={handleChange}>
+    <Combobox
+      {...props}
+      onClick={handleClick}
+      isAutocomplete
+      onChange={handleChange}
+      ref={autocompleteRef}
+      isExpanded={isEditable ? isExpanded : props.isExpanded}
+    >
       {matchingOptions.map((option, index) => {
         if ("options" in option) {
           return (
@@ -147,7 +201,12 @@ const Autocomplete = ({
         return <SelectOption key={index} {...option} />;
       })}
       {!thereAreVisibleOptions && (
-        <SelectOption id="no-results" label="No results found" value="" isDisabled>
+        <SelectOption
+          id="no-results"
+          label="No results found"
+          value=""
+          isDisabled
+        >
           No results found
         </SelectOption>
       )}

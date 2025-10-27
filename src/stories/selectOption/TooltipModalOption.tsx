@@ -8,7 +8,9 @@ export const TooltipModalOption = ({
   inputSelector = "input",
 }: {
   modalRef: RefObject<HTMLElement> | null;
-  setModalRef: React.Dispatch<React.SetStateAction<RefObject<HTMLElement> | null>>;
+  setModalRef: React.Dispatch<
+    React.SetStateAction<RefObject<HTMLElement> | null>
+  >;
   children: (props: { closeModal: () => void }) => ReactNode;
   inputSelector?: string;
 }) => {
@@ -17,20 +19,25 @@ export const TooltipModalOption = ({
   useEffect(() => {
     if (modalRef && modalRef.current) {
       setTimeout(() => {
-  (ref.current?.querySelector(inputSelector) as HTMLElement | null)?.focus();
+        (
+          ref.current?.querySelector(inputSelector) as HTMLElement | null
+        )?.focus();
       }, 0);
     }
   }, [modalRef?.current, inputSelector]);
 
   const closeModal = () => {
     setModalRef(null);
-  }
+  };
 
   return (
     <TooltipModal
       referenceElement={modalRef?.current || undefined}
       focusOnMount={true}
-      appendToNode={modalRef?.current?.parentElement?.parentElement?.parentElement || undefined}
+      appendToNode={
+        modalRef?.current?.parentElement?.parentElement?.parentElement ||
+        undefined
+      }
       onClose={closeModal}
       placement="auto"
       hasArrow={false}
@@ -39,6 +46,8 @@ export const TooltipModalOption = ({
     >
       <div ref={ref}>
         {typeof children === "function" ? children({ closeModal }) : children}
+
+        <TooltipModal.Close aria-label="Close" />
       </div>
     </TooltipModal>
   );

@@ -3,6 +3,8 @@ import { fn } from "@storybook/test";
 import { Field, Label } from "@zendeskgarden/react-dropdowns.next";
 import { Autocomplete, AutocompleteProps } from ".";
 import { ItemContent } from "../item-content";
+import { Button, Input, TooltipModal } from "../../..";
+import { useEffect, useRef, useState } from "react";
 
 let items = [
   {
@@ -95,6 +97,66 @@ const itemsMedia = [
   },
 ];
 
+const editableItems = [
+    {
+      label: "Apple",
+      value: "apple",
+      id: "apple",
+      actions: ({ closeModal }: { closeModal?: () => void }) => (
+        <Button
+          type="button"
+          isDanger
+          onClick={(e) => {
+            alert("delete item");
+            if (closeModal) closeModal();
+          }}
+        >
+          Delete
+        </Button>
+      ),
+    },
+    {
+      label: "Banana",
+      value: "banana",
+      id: "banana",
+      actions: ({ closeModal }: { closeModal?: () => void }) => (
+        <>
+          <TooltipModal.Title tag="h2">Edit or delete a Tag</TooltipModal.Title>
+          <TooltipModal.Body>
+            <label htmlFor="title-input">label</label>
+            <Input
+              value={"Banana"}
+              type="text"
+              id="title-input"
+              onKeyDown={(e) => {
+                // if is enter save and close the modal
+                if (e.key === "Enter") {
+                  alert("edit tag" + e.currentTarget.value);
+                  e.currentTarget.blur();
+                  if (closeModal) closeModal();
+                }
+              }}
+              onClick={(e) => {
+                e.currentTarget.focus();
+              }}
+            />
+            <Button
+              type="button"
+              isDanger
+              onClick={(e) => {
+                alert("delete item");
+                if (closeModal) closeModal();
+              }}
+            >
+              Delete
+            </Button>
+          </TooltipModal.Body>
+        </>
+      ),
+    },
+    { label: "Not Editable", value: "orange", id: "orange" },
+  ];
+
 const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
   return (
     <Field>
@@ -103,6 +165,15 @@ const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
     </Field>
   );
 };
+
+const TemplateEditable: Story<AutocompleteProps> = (args) => {
+  return (
+    <Field>
+      <Label>Food Manager</Label>
+        <Autocomplete {...args} isEditable options={editableItems} />
+    </Field>
+  );
+}
 
 export const Default = Template.bind({});
 Default.args = {
@@ -114,6 +185,13 @@ Default.args = {
 export const Creatable = TemplateCreatable.bind({});
 Creatable.args = {
   isMultiselectable: true,
+  onOptionClick: (value) => {
+    console.log("Option clicked", value);
+  },
+};
+
+export const Editable = TemplateEditable.bind({});
+Editable.args = {
   onOptionClick: (value) => {
     console.log("Option clicked", value);
   },

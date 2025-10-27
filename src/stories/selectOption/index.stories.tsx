@@ -5,6 +5,7 @@ import { Button } from "@zendeskgarden/react-buttons";
 import { Combobox, Field } from "@zendeskgarden/react-dropdowns.next";
 import { SelectOption } from ".";
 import { Input } from "../forms/input";
+import { TooltipModal } from "../tooltip-modal";
 
 type Args = React.ComponentProps<typeof SelectOption> & {
   hasMeta?: boolean;
@@ -55,32 +56,38 @@ const meta = {
               hasActions
                 ? ({ closeModal }) => (
                     <>
-                      <label htmlFor="title-input">pippo</label>
-                      <Input
-                        type="text"
-                        id="title-input"
-                        onKeyDown={(e) => {
-                          // if is enter save and close the modal
-                          if (e.key === "Enter") {
-                            alert("blur input");
-                            e.currentTarget.blur();
+                      <TooltipModal.Title tag="h2">
+                        Edit or delete a Tag
+                      </TooltipModal.Title>
+                      <TooltipModal.Body>
+                        <label htmlFor="title-input">pippo</label>
+                        <Input
+                          value={args.label}
+                          type="text"
+                          id="title-input"
+                          onKeyDown={(e) => {
+                            // if is enter save and close the modal
+                            if (e.key === "Enter") {
+                              alert("edit tag" + e.currentTarget.value);
+                              e.currentTarget.blur();
+                              if (closeModal) closeModal();
+                            }
+                          }}
+                          onClick={(e) => {
+                            e.currentTarget.focus();
+                          }}
+                        />
+                        <Button
+                          type="button"
+                          isDanger
+                          onClick={(e) => {
+                            alert("delete item");
                             if (closeModal) closeModal();
-                          }
-                        }}
-                        onClick={(e) => {
-                          e.currentTarget.focus();
-                        }}
-                      />
-                      <Button
-                        type="button"
-                        isDanger
-                        onClick={(e) => {
-                          alert("delete item");
-                          if (closeModal) closeModal();
-                        }}
-                      >
-                        Delete
-                      </Button>
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </TooltipModal.Body>
                     </>
                   )
                 : undefined
