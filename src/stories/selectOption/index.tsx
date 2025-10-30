@@ -58,6 +58,7 @@ export const SelectOption = ({
   actionIcon,
   label,
   meta,
+  children,
   ...props
 }: IOption) => {
   const refObject = useRef<HTMLLIElement>(null);
@@ -82,7 +83,7 @@ export const SelectOption = ({
   return (
     <>
       <StyledOption {...props} ref={refObject}>
-        {label}
+        {children || label}
         {actions && (
           <>
             <OptionAction />

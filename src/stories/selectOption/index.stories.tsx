@@ -32,7 +32,7 @@ const meta = {
             id="select-an-option"
             label="Select or create an option"
             value=""
-            actionIcon={hasIcon ? <DeleteIcon /> : undefined}
+            actionIcon={<DeleteIcon />}
             actions={
               hasActions
                 ? ({ closeModal }) => (
