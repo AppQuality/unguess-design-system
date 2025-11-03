@@ -10,7 +10,7 @@ import { TooltipModalOption } from "./TooltipModalOption";
 export interface IOption extends IOptionProps {
   id?: string; // override the id prop because propr value can be an object
   label: string; // override this, we need a label to filter the options
-  actions?: (props: { closeModal: () => void }) => ReactNode;
+  actions?: (props: { option: IOption; closeModal: () => void }) => ReactNode;
   meta?: ReactNode;
   actionIcon?: ReactNode;
 }
