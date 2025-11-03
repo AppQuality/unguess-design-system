@@ -33,6 +33,21 @@ export const TooltipModalOption = ({
     setModalRef(null);
   };
 
+  useEffect(() => {
+    const handleMouseDown = (e: MouseEvent) => {
+      if (
+        modalRef?.current &&
+        (e.target instanceof Element && e.target.closest('[data-qa="tooltip-modal-option"]') === null)
+      ) {
+        closeModal();
+      }
+    };
+    document.addEventListener("mousedown", handleMouseDown);
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown);
+    };
+  }, [modalRef?.current]);
+
   return (
     <TooltipModal
       referenceElement={modalRef?.current || undefined}
