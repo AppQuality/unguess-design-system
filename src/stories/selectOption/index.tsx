@@ -56,7 +56,6 @@ const EditAction = styled.div`
 export const SelectOption = ({
   actions,
   actionIcon,
-  label,
   meta,
   children,
   ...props
@@ -70,11 +69,12 @@ export const SelectOption = ({
       e.stopPropagation();
       e.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
+      e.bubbles = false;
       setModalRef(refObject);
     };
 
     return (
-      <OptionActionWrapper onClick={handleClick}>
+      <OptionActionWrapper onClick={handleClick} data-qa="select-option-actions">
         <EditAction>{actionIcon || <EditIcon />}</EditAction>
       </OptionActionWrapper>
     );
@@ -83,16 +83,12 @@ export const SelectOption = ({
   return (
     <>
       <StyledOption {...props} ref={refObject}>
-        {children || label}
-        {actions && (
-          <>
-            <OptionAction />
-          </>
-        )}
+        {children || props.label}
+        {actions && <OptionAction />}
         {meta && <Option.Meta>{meta}</Option.Meta>}
       </StyledOption>
       {actions && ( // here to avoid click events to propagate to the actual option
-        <TooltipModalOption modalRef={modalRef} setModalRef={setModalRef}>
+        <TooltipModalOption option={props} modalRef={modalRef} setModalRef={setModalRef}>
           {actions}
         </TooltipModalOption>
       )}

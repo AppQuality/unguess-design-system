@@ -160,17 +160,22 @@ const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
   return (
     <Field>
       <Label>Food Manager</Label>
-      <Autocomplete {...args} options={itemsMedia} isExpanded />
+      <Autocomplete {...args} options={itemsMedia} />
     </Field>
   );
 };
 
 const TemplateEditable: Story<AutocompleteProps> = (args) => {
-  return (
+  return (<div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '400px' }}>
     <Field>
       <Label>Food Manager</Label>
-        <Autocomplete {...args} isEditable options={editableItems} />
+        <Autocomplete {...args} options={editableItems} />
     </Field>
+    <Field>
+      <Label>Food Manager</Label>
+        <Autocomplete {...args} options={editableItems} />
+    </Field>
+  </div>
   );
 }
 
@@ -194,6 +199,8 @@ Editable.args = {
   onOptionClick: (value) => {
     console.log("Option clicked", value);
   },
+  isEditable: true,
+  listboxAppendToNode: document.body
 };
 
 export const WithMedia = TemplateWithItemMedia.bind({});

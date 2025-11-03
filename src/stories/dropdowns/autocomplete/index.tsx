@@ -20,14 +20,6 @@ export interface AutocompleteProps extends IComboboxProps {
   onCreateNewOption?: (inputValue: string) => Promise<IOption | false>;
   options: Array<IOptGroup | IOption>;
 }
-// debounce a function call
-function debounce(fn: Function, ms = 300) {
-  let timeoutId: ReturnType<typeof setTimeout>;
-  return function (this: any, ...args: any[]) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn.apply(this, args), ms);
-  };
-}
 
 // flat the options array that can have nested options
 function flatOptions(options: AutocompleteProps["options"]) {
@@ -75,26 +67,23 @@ const Autocomplete = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const autocompleteRef = useRef<HTMLDivElement>(null);
 
-  // Close on outside click
   useEffect(() => {
-    if (!isEditable) return;
+    if (!isEditable || !isExpanded || !autocompleteRef.current) return;
+
+    // Close on outside click
     const handleDocumentClick = (e: MouseEvent) => {
+      const listboxElements = document.querySelectorAll('[data-garden-container-id="containers.combobox.listbox"]');
+      const isClickInsideListbox = Array.from(listboxElements).some((el) => el.contains(e.target as Node));
       if (
-        autocompleteRef.current &&
-        !autocompleteRef.current.contains(e.target as Node)
+        !isClickInsideListbox &&
+        (e.target instanceof Element && e.target.closest('[data-qa="tooltip-modal-option"') === null)
       ) {
         setIsExpanded(false);
       }
     };
     document.addEventListener("mousedown", handleDocumentClick);
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
-    };
-  }, [isEditable]);
 
-  // Close on Escape
-  useEffect(() => {
-    if (!isEditable) return;
+    // Close on Escape key
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setIsExpanded(false);
@@ -102,9 +91,10 @@ const Autocomplete = ({
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => {
+      document.removeEventListener("mousedown", handleDocumentClick);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isEditable]);
+  }, [isExpanded, isEditable, autocompleteRef.current]);
 
   // update options isHidden property based on inputValue
   const matchingOptions = useMemo(
@@ -172,11 +162,14 @@ const Autocomplete = ({
       if (props.onClick) {
         props.onClick(e);
       }
-      if (isEditable) {
-        setIsExpanded(true);
+      if (isEditable && !isExpanded) {
+        if (e.target === autocompleteRef.current ||
+            autocompleteRef.current?.contains(e.target as Node)) {
+          setIsExpanded(true);
+        }
       }
     },
-    [props.onClick, isEditable]
+    [isExpanded, props.onClick, isEditable]
   );
 
   return (
