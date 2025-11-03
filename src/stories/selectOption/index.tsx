@@ -8,7 +8,7 @@ import { ReactComponent as EditIcon } from "@zendeskgarden/svg-icons/src/12/over
 import styled from "styled-components";
 import { TooltipModalOption } from "./TooltipModalOption";
 export interface IOption extends IOptionProps {
-  id: string; // override the id prop because propr value can be an object
+  id?: string; // override the id prop because propr value can be an object
   label: string; // override this, we need a label to filter the options
   actions?: (props: { closeModal: () => void }) => ReactNode;
   meta?: ReactNode;
