@@ -55,20 +55,4 @@ export interface UserMenuArgs extends LiHTMLAttributes<HTMLLIElement> {
   onLogout: () => void;
   onCopyEmail?: () => void;
   chatSupport?: boolean;
-  settingValue?: string;
-  i18n?: {
-    settingsTitle?: string;
-    settingsIntroText?: string;
-    settingsOutroText?: {
-      paragraph_1: string;
-      paragraph_2?: string;
-      paragraph_3?: string;
-    };
-    settingsToggle?: {
-      title: string;
-      on: string;
-      off: string;
-    };
-  };
-  onSetSettings: (value: string) => void;
 }
