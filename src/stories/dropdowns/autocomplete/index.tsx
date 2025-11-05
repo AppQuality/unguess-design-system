@@ -1,10 +1,9 @@
 import {
-  Combobox,
-  IComboboxProps,
   OptionValue,
 } from "@zendeskgarden/react-dropdowns.next";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
+import { Combobox, ComboboxProps } from "../../combobox";
 import { IOptGroup, IOption, SelectOption } from "../../selectOption";
 import { OptGroup } from "../optGroup";
 
@@ -13,7 +12,7 @@ export interface OnOptionClickArgs {
   selectionValue?: OptionValue | OptionValue[] | null;
 }
 
-export interface AutocompleteProps extends IComboboxProps {
+export interface AutocompleteProps extends ComboboxProps {
   onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
   onInputChange?: (inputValue: string) => void;
   isCreatable?: boolean;
@@ -64,37 +63,6 @@ const Autocomplete = ({
 
   useEffect(() => setOption(options), [options]);
 
-  const [isExpanded, setIsExpanded] = useState(false);
-  const autocompleteRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!isEditable || !isExpanded || !autocompleteRef.current) return;
-
-    // Close on outside click
-    const handleDocumentClick = (e: MouseEvent) => {
-      const listboxElements = document.querySelectorAll('[data-garden-container-id="containers.combobox.listbox"]');
-      const isClickInsideListbox = Array.from(listboxElements).some((el) => el.contains(e.target as Node));
-      if (
-        !isClickInsideListbox &&
-        (e.target instanceof Element && e.target.closest('[data-qa="tooltip-modal-option"') === null)
-      ) {
-        setIsExpanded(false);
-      }
-    };
-    document.addEventListener("mousedown", handleDocumentClick);
-
-    // Close on Escape key
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsExpanded(false);
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isExpanded, isEditable, autocompleteRef.current]);
 
   // update options isHidden property based on inputValue
   const matchingOptions = useMemo(
@@ -123,7 +91,7 @@ const Autocomplete = ({
     [matchingOptions]
   );
 
-  const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
+  const handleChange = useCallback<NonNullable<ComboboxProps["onChange"]>>(
     (event) => {
       if (typeof onChange === "function") {
         onChange(event);
@@ -149,37 +117,17 @@ const Autocomplete = ({
           inputValue: event.inputValue,
           selectionValue: event.selectionValue,
         });
-        if (isEditable && !isMultiselectable) {
-          setIsExpanded(false);
-        }
       }
     },
     []
   );
 
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (props.onClick) {
-        props.onClick(e);
-      }
-      if (isEditable && !isExpanded) {
-        if (e.target === autocompleteRef.current ||
-            autocompleteRef.current?.contains(e.target as Node)) {
-          setIsExpanded(true);
-        }
-      }
-    },
-    [isExpanded, props.onClick, isEditable]
-  );
-
   return (
     <Combobox
       {...props}
-      onClick={handleClick}
       isAutocomplete
+      isEditable={isEditable}
       onChange={handleChange}
-      ref={autocompleteRef}
-      isExpanded={isEditable ? isExpanded : props.isExpanded}
     >
       {matchingOptions.map((option, index) => {
         if ("options" in option) {

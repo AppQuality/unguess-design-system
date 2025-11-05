@@ -11,6 +11,7 @@ export type MultiSelectProps = {
   selectedItems?: Item[];
   onChange?: (selectedItems: Item[], newItem?: string) => Promise<void>;
   creatable?: boolean;
+  isEditable?: boolean;
   size: "small" | "medium";
   menuHeight?: string;
   i18n: {
