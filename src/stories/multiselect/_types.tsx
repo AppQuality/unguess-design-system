@@ -1,10 +1,15 @@
+import { ReactNode } from "react";
+import { ComboboxProps } from "../combobox";
+import { IOption } from "../selectOption";
+
 type Item = {
   id: number;
   label: string;
   selected?: boolean;
+  actions?: (props: { option: IOption; closeModal: () => void }) => ReactNode;
 };
 
-export type MultiSelectProps = {
+export interface MultiSelectProps extends Omit<ComboboxProps, "onChange"> {
   maxItems?: number;
   options: Item[];
   listboxAppendToNode?: Element | DocumentFragment;

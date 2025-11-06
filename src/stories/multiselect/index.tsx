@@ -19,6 +19,7 @@ export const MultiSelect = ({
   listboxAppendToNode,
   disabled,
   onBlur,
+  ...props
 }: MultiSelectProps) => {
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
@@ -38,6 +39,7 @@ export const MultiSelect = ({
     <Field>
       <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
       <Combobox
+        {...props}
         onBlur={onBlur}
         isDisabled={disabled}
         isEditable={isEditable}

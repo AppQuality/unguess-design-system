@@ -65,6 +65,7 @@ export const TooltipModalOption = ({
       <div ref={ref}>
         {typeof children === "function" ? children({ option, closeModal }) : children}
       </div>
+      <TooltipModal.Close aria-label="Close" />
     </TooltipModal>
   );
 };
