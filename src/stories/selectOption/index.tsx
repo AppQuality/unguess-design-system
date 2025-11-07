@@ -3,7 +3,7 @@ import {
   IOptionProps,
   Option,
 } from "@zendeskgarden/react-dropdowns.next";
-import { ReactNode, RefObject, useRef, useState } from "react";
+import { ReactNode, RefObject, useEffect, useRef, useState } from "react";
 import { ReactComponent as EditIcon } from "@zendeskgarden/svg-icons/src/12/overflow-vertical-fill.svg";
 import styled from "styled-components";
 import { TooltipModalOption } from "./TooltipModalOption";
@@ -63,6 +63,21 @@ export const SelectOption = ({
   const refObject = useRef<HTMLLIElement>(null);
   const [modalRef, setModalRef] = useState<RefObject<HTMLElement> | null>(null);
 
+  useEffect(() => {
+    if (modalRef === null) return;
+    // pointer event to none to the parent list item to avoid closing the modal when clicking inside
+    if (modalRef.current && refObject.current) {
+
+        modalRef.current.parentElement!.style.pointerEvents = "none";
+
+    }
+    return () => {
+      if (modalRef.current && refObject.current) {
+        modalRef.current.parentElement!.style.pointerEvents = "auto";
+      }
+    };
+  }, [modalRef]);
+
   const OptionAction = () => {
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       // avoid select options to be closed when clicking on the edit icon
@@ -74,7 +89,10 @@ export const SelectOption = ({
     };
 
     return (
-      <OptionActionWrapper onClick={handleClick} data-qa="select-option-actions">
+      <OptionActionWrapper
+        onClick={handleClick}
+        data-qa="select-option-actions"
+      >
         <EditAction>{actionIcon || <EditIcon />}</EditAction>
       </OptionActionWrapper>
     );
@@ -88,7 +106,11 @@ export const SelectOption = ({
         {meta && <Option.Meta>{meta}</Option.Meta>}
       </StyledOption>
       {actions && ( // here to avoid click events to propagate to the actual option
-        <TooltipModalOption option={props} modalRef={modalRef} setModalRef={setModalRef}>
+        <TooltipModalOption
+          option={props}
+          modalRef={modalRef}
+          setModalRef={setModalRef}
+        >
           {actions}
         </TooltipModalOption>
       )}
