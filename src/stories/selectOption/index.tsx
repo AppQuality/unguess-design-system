@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { TooltipModalOption } from "./TooltipModalOption";
 export interface IOption extends IOptionProps {
   id?: string; // override the id prop because propr value can be an object
-  label: string; // override this, we need a label to filter the options
+  label?: string; // override this, we need a label to filter the options
   actions?: (props: { option: IOption; closeModal: () => void }) => ReactNode;
   meta?: ReactNode;
   actionIcon?: ReactNode;
@@ -53,7 +53,7 @@ const EditAction = styled.div`
   }
 `;
 
-export const SelectOption = ({
+const SelectOption = ({
   actions,
   actionIcon,
   meta,
@@ -121,3 +121,7 @@ export const SelectOption = ({
     </>
   );
 };
+
+SelectOption.Meta = Option.Meta;
+
+export { SelectOption };
