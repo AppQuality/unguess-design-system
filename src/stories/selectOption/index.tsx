@@ -67,13 +67,17 @@ export const SelectOption = ({
     if (modalRef === null) return;
     // pointer event to none to the parent list item to avoid closing the modal when clicking inside
     if (modalRef.current && refObject.current) {
-
-        modalRef.current.parentElement!.style.pointerEvents = "none";
-
+        const el = modalRef.current.closest('ul[role="listbox"]') as HTMLElement;
+        if (el) {
+          el.style.overflowY = "hidden";
+        }
     }
     return () => {
       if (modalRef.current && refObject.current) {
-        modalRef.current.parentElement!.style.pointerEvents = "auto";
+        const el = modalRef.current.closest('ul[role="listbox"]') as HTMLElement;
+        if (el) {
+          el.style.overflowY = "auto";
+        }
       }
     };
   }, [modalRef]);
