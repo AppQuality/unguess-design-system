@@ -13,6 +13,7 @@ export interface IOption extends IOptionProps {
   actions?: (props: { option: IOption; closeModal: () => void }) => ReactNode;
   meta?: ReactNode;
   actionIcon?: ReactNode;
+  onOptionActionClick?: (e?: React.MouseEvent<HTMLDivElement>, option?: IOption) => void;
 }
 export interface IOptGroup extends IOptGroupProps {
   id: string; // override the id prop to have a key to iterate over the options
@@ -58,6 +59,7 @@ const SelectOption = ({
   actionIcon,
   meta,
   children,
+  onOptionActionClick,
   ...props
 }: IOption) => {
   const refObject = useRef<HTMLLIElement>(null);
@@ -90,6 +92,9 @@ const SelectOption = ({
       e.nativeEvent.stopImmediatePropagation();
       e.bubbles = false;
       setModalRef(refObject);
+      if (onOptionActionClick) {
+        onOptionActionClick(e, props);
+      }
     };
 
     return (
