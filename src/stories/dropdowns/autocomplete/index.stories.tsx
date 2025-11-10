@@ -160,7 +160,7 @@ const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
   return (
     <Field>
       <Label>Food Manager</Label>
-      <Autocomplete {...args} options={itemsMedia} />
+      <Autocomplete {...args} options={itemsMedia} isExpanded />
     </Field>
   );
 };
