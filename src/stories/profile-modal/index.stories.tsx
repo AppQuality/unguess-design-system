@@ -96,28 +96,8 @@ const defaultArgs: UserMenuArgs = {
   onCopyEmail: () => {
     alert("Copied to clipboard!");
   },
-  i18n: {
-    settingsTitle: "Notifications settings",
-    settingsIntroText: "Manage the notifications we send you by email.",
-    settingsOutroText: {
-      paragraph_1: "By turning on notifications, you will be updated on:",
-      paragraph_2:
-        "a comment, a campaign starting, a campaign ending, a mention and an invitation",
-      paragraph_3:
-        "By turning off notifications, you will be only updated on mentions and invitations.",
-    },
-    settingsToggle: {
-      title: "Allow notifications",
-      on: "Yes",
-      off: "No",
-    },
-  },
-  settingValue: "0",
   // set disableMenuLanguageSettings to false to show the language settings or omit the property
   disableMenuLanguageSettings: true,
-  onSetSettings: (value: string) => {
-    alert(value === "1" ? "Notifications enabled" : "Notifications disabled");
-  },
   profile: {
     title: "Edit Profile",
     onClick: () => alert("Navigate to profile page"),

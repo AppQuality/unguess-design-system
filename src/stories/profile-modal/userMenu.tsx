@@ -12,7 +12,6 @@ import { theme } from "../theme";
 import { Separator } from "../dropdowns/menu";
 import { MD } from "../typography/typescale";
 import { UserContainer } from "./components/UserContainer";
-import { SettingsItem } from "./items/settingsMenuItem";
 
 const StyledList = styled.ul`
   padding: 0;
@@ -74,21 +73,6 @@ export const UserMenu = (props: UserMenuArgs) => {
           copyLabel={props?.copyLabel}
           onCopyEmail={props?.onCopyEmail}
           chatSupport={props?.chatSupport}
-        />
-        <SettingsItem
-          value={"settings"}
-          selectedItem={item}
-          setActive={(i) => toggleItem(i)}
-          settingValue={props.settingValue}
-          title={props.i18n?.settingsTitle || "Notifications Settings"}
-          i18n={{
-            settingsTitle:
-              props.i18n?.settingsTitle || "Notifications Settings",
-            settingsIntroText: props.i18n?.settingsIntroText,
-            settingsOutroText: props.i18n?.settingsOutroText,
-            settingsToggle: props.i18n?.settingsToggle,
-          }}
-          onSetSettings={props.onSetSettings}
         />
         {
           <LanguageItem
