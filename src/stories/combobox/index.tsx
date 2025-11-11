@@ -70,14 +70,14 @@ export const Combobox = ({ isEditable, ...props }: ComboboxProps) => {
       if (
         (event.type === "option:click" ||
           event.type === "input:keyDown:Enter") &&
-        event.selectionValue // address the issue of clicking enter on an empty input
+        event.selectionValue
       ) {
         if (isEditable && !props.isMultiselectable) {
           setIsExpanded(false);
         }
       }
     },
-    []
+    [isEditable, props.isMultiselectable, props.onChange]
   );
 
   return (

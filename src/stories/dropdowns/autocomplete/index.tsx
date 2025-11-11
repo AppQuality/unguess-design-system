@@ -34,7 +34,7 @@ function flatOptions(options: AutocompleteProps["options"]) {
 function isHidden(option: IOption, inputValue?: string) {
   if (!inputValue) return false;
   const regex = new RegExp(inputValue, "giu");
-  return !option.label.match(regex);
+  return !option.label?.match(regex);
 }
 
 /**
