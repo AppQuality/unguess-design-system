@@ -1,3 +1,17 @@
+# v4.0.51 (Tue Nov 11 2025)
+
+#### 🐛 Bug Fix
+
+- Remove global notification settings [#553](https://github.com/AppQuality/unguess-design-system/pull/553) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee))
+- Un 2041: remove notification settings profile modal [#552](https://github.com/AppQuality/unguess-design-system/pull/552) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.50 (Tue Oct 14 2025)
 
 #### 🐛 Bug Fix
