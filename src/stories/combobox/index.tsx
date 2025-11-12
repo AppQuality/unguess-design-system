@@ -24,8 +24,10 @@ export const Combobox = ({ isEditable, ...props }: ComboboxProps) => {
       const isClickInsideListbox = Array.from(listboxElements).some((el) =>
         el.contains(e.target as Node)
       );
+      const isClickInsideRef = ref.current?.contains(e.target as Node);
       if (
         !isClickInsideListbox &&
+        !isClickInsideRef &&
         e.target instanceof Element &&
         e.target.closest('[data-qa="tooltip-modal-option"') === null
       ) {
