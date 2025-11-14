@@ -3,7 +3,7 @@ import { useHighlightContext } from "./highlightContext";
 
 
 const StyledSearchWord = styled.span`
-  background-color: ${({ theme }) => theme.palette.product.talk};
+  background-color: ${({ theme }) => theme.palette.talk};
   color: ${({ theme }) => theme.palette.grey[700]};
 `;
 

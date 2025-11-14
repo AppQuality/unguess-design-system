@@ -31,6 +31,7 @@ const Template: Story<TooltipModalArgs> = (props) => {
             Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot
             courgette tatsoi pea sprouts fava bean collard greens dandelion okra
             wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+            <input type="text" placeholder="Enter text" />
           </TooltipModal.Body>
           <TooltipModal.Close aria-label="Close" />
         </TooltipModal>

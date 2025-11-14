@@ -1,12 +1,98 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { Button } from "@zendeskgarden/react-buttons";
+import { Field, Label } from "@zendeskgarden/react-dropdowns.next";
+import { Input } from "@zendeskgarden/react-forms";
+import { TooltipModal } from "@zendeskgarden/react-modals";
 import { useState } from "react";
 import { MultiSelect } from ".";
 import { MultiSelectProps } from "./_types";
+
+const editableItems = [
+  {
+    label: "Apple",
+    value: "apple",
+    id: 1,
+    actions: ({ closeModal }: { closeModal?: () => void }) => (
+      <Button
+        type="button"
+        isDanger
+        onClick={(e) => {
+          alert("delete item");
+          if (closeModal) closeModal();
+        }}
+      >
+        Delete
+      </Button>
+    ),
+  },
+  {
+    label: "Banana",
+    value: "banana",
+    id: 2,
+    actions: ({ closeModal }: { closeModal?: () => void }) => (
+      <>
+        <TooltipModal.Title tag="h2">Edit or delete a Tag</TooltipModal.Title>
+        <TooltipModal.Body>
+          <label htmlFor="title-input">label</label>
+          <Input
+            value={"Banana"}
+            type="text"
+            id="title-input"
+            onKeyDown={(e) => {
+              // if is enter save and close the modal
+              if (e.key === "Enter") {
+                alert("edit tag" + e.currentTarget.value);
+                e.currentTarget.blur();
+                if (closeModal) closeModal();
+              }
+            }}
+            onClick={(e) => {
+              e.currentTarget.focus();
+            }}
+          />
+          <Button
+            type="button"
+            isDanger
+            onClick={(e) => {
+              alert("delete item");
+              if (closeModal) closeModal();
+            }}
+          >
+            Delete
+          </Button>
+        </TooltipModal.Body>
+      </>
+    ),
+  },
+  { label: "Not Editable", value: "orange", id: 3 },
+];
 
 const Template: Story<MultiSelectProps> = (args) => {
   return (
     <div style={{ width: "300px" }}>
       <MultiSelect {...args} />
+    </div>
+  );
+};
+
+const TemplateEditable: Story<MultiSelectProps> = (args) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+        maxWidth: "400px",
+      }}
+    >
+      <Field>
+        <Label>Food Manager</Label>
+        <MultiSelect {...args} options={editableItems} />
+      </Field>
+      <Field>
+        <Label>Food Manager</Label>
+        <MultiSelect {...args} options={editableItems} />
+      </Field>
     </div>
   );
 };
@@ -95,6 +181,12 @@ export const Disabled = WithTagCreationTemplate.bind({});
 Disabled.args = {
   options,
   disabled: true,
+};
+
+export const Editable = TemplateEditable.bind({});
+Editable.args = {
+  options: editableItems,
+  isEditable: true,
 };
 
 export default {

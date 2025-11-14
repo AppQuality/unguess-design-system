@@ -58,6 +58,7 @@ const defaultArgs: StoryArgs = {
   },
   isFast: true,
   isTailored: true,
+  templateTitle: "Detailed feedback in real time.",
   title: "Detailed feedback in real time.",
   superTitle: "Moderated",
   thumbUrl:

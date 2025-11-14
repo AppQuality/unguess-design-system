@@ -46,7 +46,7 @@ const Description = styled(SM)`
 `;
 
 const Image = memo(({ src }: Image) => {
-  return <img src={src} />;
+  return <img alt="" src={src} />;
 });
 
 const ItemContent = (props: ItemContentArgs) => {

@@ -1,6 +1,7 @@
-import { Combobox, Field, Label } from "@zendeskgarden/react-dropdowns.next";
+import { Field, Label } from "@zendeskgarden/react-dropdowns.next";
 import { useEffect, useState } from "react";
 import { ReactComponent as GridAddIcon } from "../../assets/icons/plus.svg";
+import { Combobox } from "../combobox";
 import { Separator } from "../dropdowns/menu";
 import { SelectOption } from "../selectOption";
 import { theme } from "../theme";
@@ -10,6 +11,7 @@ export const MultiSelect = ({
   options,
   onChange,
   creatable,
+  isEditable,
   i18n,
   maxItems,
   size,
@@ -17,6 +19,7 @@ export const MultiSelect = ({
   listboxAppendToNode,
   disabled,
   onBlur,
+  ...props
 }: MultiSelectProps) => {
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
@@ -36,8 +39,10 @@ export const MultiSelect = ({
     <Field>
       <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
       <Combobox
+        {...props}
         onBlur={onBlur}
         isDisabled={disabled}
+        isEditable={isEditable}
         renderValue={({ selection }) => {
           if (
             !selection ||
@@ -102,18 +107,25 @@ export const MultiSelect = ({
             const selectedOptions = ss.filter((v) => v.id);
             const newOption = ss.find((v) => !v.id)?.label;
 
-            onChange(
+            const result = onChange(
               options.map((o) => ({
                 ...o,
                 selected: selectedOptions.some((i) => i.id === o.id),
               })),
               newOption ? newOption : undefined
-            ).then(() => setInputValue(""));
+            );
+            if (result && typeof result.then === "function") {
+              result.then(() => setInputValue(""));
+            } else {
+              setInputValue("");
+            }
           }
         }}
       >
         {options.map((option) => (
           <SelectOption
+            {...option}
+            id={option.id?.toString() || option.label}
             isHidden={!matchingOptions.some((o) => o.id === option.id)}
             key={option.id}
             value={option.id.toString()}

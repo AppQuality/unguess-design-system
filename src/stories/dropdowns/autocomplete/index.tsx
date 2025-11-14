@@ -1,13 +1,10 @@
 import {
-  Combobox,
-  IComboboxProps,
-  IOptGroupProps,
-  IOptionProps,
   OptionValue,
 } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
-import { SelectOption } from "../../selectOption";
+import { Combobox, ComboboxProps } from "../../combobox";
+import { IOptGroup, IOption, SelectOption } from "../../selectOption";
 import { OptGroup } from "../optGroup";
 
 export interface OnOptionClickArgs {
@@ -15,29 +12,12 @@ export interface OnOptionClickArgs {
   selectionValue?: OptionValue | OptionValue[] | null;
 }
 
-export interface IOption extends IOptionProps {
-  id: string; // override the id prop because propr value can be an object
-  label: string; // override this, we need a label to filter the options
-}
-export interface IOptGroup extends IOptGroupProps {
-  id: string; // override the id prop to have a key to iterate over the options
-  options: Array<IOption>;
-}
-
-export interface AutocompleteProps extends IComboboxProps {
+export interface AutocompleteProps extends ComboboxProps {
   onOptionClick?: ({ inputValue, selectionValue }: OnOptionClickArgs) => void;
   onInputChange?: (inputValue: string) => void;
   isCreatable?: boolean;
   onCreateNewOption?: (inputValue: string) => Promise<IOption | false>;
   options: Array<IOptGroup | IOption>;
-}
-// debounce a function call
-function debounce(fn: Function, ms = 300) {
-  let timeoutId: ReturnType<typeof setTimeout>;
-  return function (this: any, ...args: any[]) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn.apply(this, args), ms);
-  };
 }
 
 // flat the options array that can have nested options
@@ -54,7 +34,7 @@ function flatOptions(options: AutocompleteProps["options"]) {
 function isHidden(option: IOption, inputValue?: string) {
   if (!inputValue) return false;
   const regex = new RegExp(inputValue, "giu");
-  return !option.label.match(regex);
+  return !option.label?.match(regex);
 }
 
 /**
@@ -72,6 +52,7 @@ const Autocomplete = ({
   onInputChange,
   onChange,
   isCreatable,
+  isEditable,
   onCreateNewOption,
   isMultiselectable,
   ...props
@@ -81,6 +62,7 @@ const Autocomplete = ({
   const debouncedInputValue = useDebounce(inputValue, 300);
 
   useEffect(() => setOption(options), [options]);
+
 
   // update options isHidden property based on inputValue
   const matchingOptions = useMemo(
@@ -100,16 +82,16 @@ const Autocomplete = ({
           isHidden: isHidden(opt, debouncedInputValue),
         };
       }),
-    [_options, debouncedInputValue],
+    [_options, debouncedInputValue]
   );
 
   // check if there are visible options
   const thereAreVisibleOptions = useMemo(
     () => flatOptions(matchingOptions).some((opt) => opt.isHidden !== true),
-    [matchingOptions],
+    [matchingOptions]
   );
 
-  const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
+  const handleChange = useCallback<NonNullable<ComboboxProps["onChange"]>>(
     (event) => {
       if (typeof onChange === "function") {
         onChange(event);
@@ -118,7 +100,7 @@ const Autocomplete = ({
       if (event.type === "input:change" && event.inputValue !== undefined) {
         const sanitizedInputValue = event.inputValue.replace(
           /[.*+?^${}()|[\]\\]/giu,
-          "\\$&",
+          "\\$&"
         );
         setInputValue(sanitizedInputValue);
         if (typeof onInputChange === "function")
@@ -137,11 +119,17 @@ const Autocomplete = ({
         });
       }
     },
-    [],
+    []
   );
 
   return (
-    <Combobox {...props} isAutocomplete onChange={handleChange}>
+    <Combobox
+      {...props}
+      isAutocomplete
+      isEditable={isEditable}
+      onChange={handleChange}
+      inputValue={inputValue}
+    >
       {matchingOptions.map((option, index) => {
         if ("options" in option) {
           return (
@@ -155,12 +143,19 @@ const Autocomplete = ({
         return <SelectOption key={index} {...option} />;
       })}
       {!thereAreVisibleOptions && (
-        <SelectOption value="" isDisabled>
+        <SelectOption
+          id="no-results"
+          label="No results found"
+          value=""
+          isDisabled
+        >
           No results found
         </SelectOption>
       )}
       {isCreatable && debouncedInputValue && (
         <SelectOption
+          id="create-new-option"
+          label={`Add "${debouncedInputValue}"`}
           type="add"
           value={debouncedInputValue}
           title={debouncedInputValue}
