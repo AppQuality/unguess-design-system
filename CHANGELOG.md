@@ -1,3 +1,17 @@
+# v4.0.52 (Fri Nov 14 2025)
+
+#### 🐛 Bug Fix
+
+- Add "isEditable" props to Autocomplete and Multiselect components [#554](https://github.com/AppQuality/unguess-design-system/pull/554) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- Enhance Autocomplete and SelectOption components by adding editable feature [#551](https://github.com/AppQuality/unguess-design-system/pull/551) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.51 (Tue Nov 11 2025)
 
 #### 🐛 Bug Fix
