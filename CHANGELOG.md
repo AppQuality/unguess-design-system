@@ -1,3 +1,17 @@
+# v4.0.53 (Mon Nov 17 2025)
+
+#### 🐛 Bug Fix
+
+- new version [#556](https://github.com/AppQuality/unguess-design-system/pull/556) ([@iacopolea](https://github.com/iacopolea) [@d-beezee](https://github.com/d-beezee))
+- fix: Remove inputValue prop from Autocomplete component [#555](https://github.com/AppQuality/unguess-design-system/pull/555) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.0.52 (Fri Nov 14 2025)
 
 #### 🐛 Bug Fix
