@@ -128,7 +128,6 @@ const Autocomplete = ({
       isAutocomplete
       isEditable={isEditable}
       onChange={handleChange}
-      inputValue={inputValue}
     >
       {matchingOptions.map((option, index) => {
         if ("options" in option) {
