@@ -151,10 +151,15 @@ const Autocomplete = ({
           No results found
         </SelectOption>
       )}
-      {isCreatable && debouncedInputValue && (
+      {isCreatable 
+        && debouncedInputValue 
+        && !matchingOptions.find(
+          (item) => item.label?.toLowerCase() === debouncedInputValue.toLowerCase()
+        )
+        && (
         <SelectOption
           id="create-new-option"
-          label={`${debouncedInputValue}`}
+          label={debouncedInputValue}
           type="add"
           value={debouncedInputValue}
           title={debouncedInputValue}

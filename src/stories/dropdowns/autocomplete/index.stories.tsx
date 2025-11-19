@@ -172,8 +172,8 @@ const TemplateEditable: Story<AutocompleteProps> = (args) => {
         <Autocomplete {...args} options={editableItems} />
     </Field>
     <Field>
-      <Label>Food Manager</Label>
-        <Autocomplete {...args} options={editableItems} />
+      <Label>Food Manager Creatable</Label>
+        <Autocomplete {...args} isCreatable={true} options={editableItems} />
     </Field>
   </div>
   );
