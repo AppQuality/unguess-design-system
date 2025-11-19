@@ -97,64 +97,64 @@ const itemsMedia = [
 ];
 
 const editableItems = [
-    {
-      label: "Apple",
-      value: "apple",
-      id: "apple",
-      actions: ({ closeModal }: { closeModal?: () => void }) => (
-        <Button
-          type="button"
-          isDanger
-          onClick={(e) => {
-            alert("delete item");
-            if (closeModal) closeModal();
-          }}
-        >
-          Delete
-        </Button>
-      ),
-    },
-    {
-      label: "Banana",
-      value: "banana",
-      id: "banana",
-      actions: ({ closeModal }: { closeModal?: () => void }) => (
-        <>
-          <TooltipModal.Title tag="h2">Edit or delete a Tag</TooltipModal.Title>
-          <TooltipModal.Body>
-            <label htmlFor="title-input">label</label>
-            <Input
-              value={"Banana"}
-              type="text"
-              id="title-input"
-              onKeyDown={(e) => {
-                // if is enter save and close the modal
-                if (e.key === "Enter") {
-                  alert("edit tag" + e.currentTarget.value);
-                  e.currentTarget.blur();
-                  if (closeModal) closeModal();
-                }
-              }}
-              onClick={(e) => {
-                e.currentTarget.focus();
-              }}
-            />
-            <Button
-              type="button"
-              isDanger
-              onClick={(e) => {
-                alert("delete item");
+  {
+    label: "Apple",
+    value: "apple",
+    id: "apple",
+    actions: ({ closeModal }: { closeModal?: () => void }) => (
+      <Button
+        type="button"
+        isDanger
+        onClick={(e) => {
+          alert("delete item");
+          if (closeModal) closeModal();
+        }}
+      >
+        Delete
+      </Button>
+    ),
+  },
+  {
+    label: "Banana",
+    value: "banana",
+    id: "banana",
+    actions: ({ closeModal }: { closeModal?: () => void }) => (
+      <>
+        <TooltipModal.Title tag="h2">Edit or delete a Tag</TooltipModal.Title>
+        <TooltipModal.Body>
+          <label htmlFor="title-input">label</label>
+          <Input
+            value={"Banana"}
+            type="text"
+            id="title-input"
+            onKeyDown={(e) => {
+              // if is enter save and close the modal
+              if (e.key === "Enter") {
+                alert("edit tag" + e.currentTarget.value);
+                e.currentTarget.blur();
                 if (closeModal) closeModal();
-              }}
-            >
-              Delete
-            </Button>
-          </TooltipModal.Body>
-        </>
-      ),
-    },
-    { label: "Not Editable", value: "orange", id: "orange" },
-  ];
+              }
+            }}
+            onClick={(e) => {
+              e.currentTarget.focus();
+            }}
+          />
+          <Button
+            type="button"
+            isDanger
+            onClick={(e) => {
+              alert("delete item");
+              if (closeModal) closeModal();
+            }}
+          >
+            Delete
+          </Button>
+        </TooltipModal.Body>
+      </>
+    ),
+  },
+  { label: "Not Editable", value: "orange", id: "orange" },
+];
 
 const TemplateWithItemMedia: Story<AutocompleteProps> = (args) => {
   return (
@@ -169,11 +169,32 @@ const TemplateEditable: Story<AutocompleteProps> = (args) => {
   return (<div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '400px' }}>
     <Field>
       <Label>Food Manager</Label>
-        <Autocomplete {...args} options={editableItems} />
+      <Autocomplete {...args} options={editableItems} />
     </Field>
     <Field>
       <Label>Food Manager Creatable</Label>
-        <Autocomplete {...args} isCreatable={true} options={editableItems} />
+      <Autocomplete
+        {...args}
+        isCreatable
+        options={editableItems}
+        onCreateNewOption={async (inputValue) => {
+          // mock a promise to create a new item
+          return await new Promise((resolve) =>
+            setTimeout(() => {
+              if (inputValue === "invalid") {
+                alert("Invalid value");
+                resolve(false);
+              } else {
+                resolve({
+                  label: inputValue,
+                  value: inputValue,
+                  id: inputValue,
+                });
+              }
+            }, 1000)
+          );
+        }}
+      />
     </Field>
   </div>
   );
