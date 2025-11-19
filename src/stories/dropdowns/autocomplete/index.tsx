@@ -154,7 +154,7 @@ const Autocomplete = ({
       {isCreatable && debouncedInputValue && (
         <SelectOption
           id="create-new-option"
-          label={`Add "${debouncedInputValue}"`}
+          label={`${debouncedInputValue}`}
           type="add"
           value={debouncedInputValue}
           title={debouncedInputValue}
