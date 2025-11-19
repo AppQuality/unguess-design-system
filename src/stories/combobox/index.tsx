@@ -14,10 +14,12 @@ export const Combobox = ({ isEditable, ...props }: ComboboxProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isEditable || !isExpanded || !ref.current) return;
+    console.log("isExpanded", isExpanded);
+    if (!isEditable || !ref.current) return;
 
     // Close on outside click
     const handleDocumentClick = (e: MouseEvent) => {
+      console.log("ciolla", e)
       const listboxElements = document.querySelectorAll(
         '[data-garden-container-id="containers.combobox.listbox"]'
       );
@@ -25,13 +27,27 @@ export const Combobox = ({ isEditable, ...props }: ComboboxProps) => {
         el.contains(e.target as Node)
       );
       const isClickInsideRef = ref.current?.contains(e.target as Node);
+      const isClickInsideTooltipModal = e.target instanceof Element && e.target.closest('[data-qa="tooltip-modal-option"') !== null;
+
+      console.log("isClickInsideListbox", isClickInsideListbox);
+      console.log("isClickInsideRef", isClickInsideRef);
+
       if (
         !isClickInsideListbox &&
         !isClickInsideRef &&
-        e.target instanceof Element &&
-        e.target.closest('[data-qa="tooltip-modal-option"') === null
+        !isClickInsideTooltipModal
       ) {
         setIsExpanded(false);
+        return;
+      }
+
+      if (
+        isClickInsideRef &&
+        !isClickInsideListbox &&
+        !isClickInsideTooltipModal
+      ) {
+        setIsExpanded(!isExpanded);
+        return;
       }
     };
     document.addEventListener("mousedown", handleDocumentClick);
@@ -69,15 +85,16 @@ export const Combobox = ({ isEditable, ...props }: ComboboxProps) => {
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     (event) => {
       props.onChange?.(event);
-      if (
-        (event.type === "option:click" ||
-          event.type === "input:keyDown:Enter") &&
-        event.selectionValue
-      ) {
-        if (isEditable && !props.isMultiselectable) {
-          setIsExpanded(false);
-        }
-      }
+
+      // if (
+      //   (event.type === "option:click" ||
+      //     event.type === "input:keyDown:Enter") &&
+      //   event.selectionValue
+      // ) {
+      //   if (isEditable && !props.isMultiselectable) {
+      //     setIsExpanded(false);
+      //   }
+      // }
     },
     [isEditable, props.isMultiselectable, props.onChange]
   );
