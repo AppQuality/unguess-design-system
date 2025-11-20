@@ -76,6 +76,7 @@ const Template: Story<MultiSelectProps> = (args) => {
 };
 
 const TemplateEditable: Story<MultiSelectProps> = (args) => {
+  const [items, setItems] = useState(editableItems);
   return (
     <div
       style={{
@@ -90,8 +91,44 @@ const TemplateEditable: Story<MultiSelectProps> = (args) => {
         <MultiSelect {...args} options={editableItems} />
       </Field>
       <Field>
-        <Label>Food Manager</Label>
-        <MultiSelect {...args} options={editableItems} />
+        <Label>Food Manager Creatable</Label>
+        <MultiSelect
+          {...args}
+          creatable
+          options={items}
+          onChange={async (items, newLabel) => {
+            const result = await patchMock([
+              ...items.filter((o) => o.selected),
+              ...(newLabel ? [{ label: newLabel }] : []),
+            ]);
+            const unselectedItems = editableItems.filter(
+              (o) => !result.find((r) => r.id === o.id)
+            );
+
+            setItems([
+              ...unselectedItems.map((r) => ({ ...r, selected: false })),
+              ...result.map((r) => ({
+                ...r,
+                value: newLabel || "",
+                selected: true,
+                actions: ({ closeModal }: { closeModal?: () => void }) => (
+                  <Button
+                    type="button"
+                    isDanger
+                    onClick={(e) => {
+                      alert("delete item");
+                      if (closeModal) closeModal();
+                    }}
+                  >
+                    Delete
+                  </Button>
+                ),
+              })),
+            ]);
+            console.log("result", result);
+            console.log("selectedItems");
+            console.log("newLabel", newLabel);
+          }} />
       </Field>
     </div>
   );
