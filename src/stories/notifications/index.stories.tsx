@@ -19,7 +19,7 @@ interface NotificationStoryProps {
 const defaultArgs: NotificationStoryProps = {
   notificationArgs: {
     type: "info",
-    message: "Action completed",
+    message: "Action completed for this kind of notification.",
     onClose: () => alert("Close"),
   },
   toastProviderArgs: {
@@ -61,7 +61,7 @@ const Toasts = ({ children, onClose, ...props }: NotificationArgs) => {
               {children}
             </UgNotification>
           ),
-          { placement }
+          { placement, autoDismiss: false }
         );
       };
     },
