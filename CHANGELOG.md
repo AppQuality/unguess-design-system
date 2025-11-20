@@ -1,3 +1,16 @@
+# v4.0.54 (Thu Nov 20 2025)
+
+#### 🐛 Bug Fix
+
+- release 20251120 [#558](https://github.com/AppQuality/unguess-design-system/pull/558) ([@marcbon](https://github.com/marcbon))
+- Fix-autocomplete-creatable-input [#557](https://github.com/AppQuality/unguess-design-system/pull/557) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 1
+
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.53 (Mon Nov 17 2025)
 
 #### 🐛 Bug Fix
