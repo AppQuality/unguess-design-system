@@ -71,12 +71,14 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
       display: none;
     }
 
-    a[data-custom-id="notifications.notification.close"] {
-      margin: 0;
-      position: absolute;
-      top: ${({ theme }) => theme.space.xxs};
-      right: ${({ theme }) => theme.space.xxs};
-    }
+    ${({ closeText, theme }) => !closeText && `
+      a[data-custom-id="notifications.notification.close"] {
+        margin: 0;
+        position: absolute;
+        top: ${theme.space.xxs};
+        right:  ${theme.space.xxs};
+      }
+    `}
 
     ${UgTitle} {
       text-align: center;
@@ -96,7 +98,6 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
     - For a passive status update about user or system activity
  */
 const Notification = ({
-  closeText,
   message,
   onClose,
   type,
@@ -109,7 +110,7 @@ const Notification = ({
       {message}
     </UgTitle>
     <UgAnchor type={type} isPrimary={isPrimary} onClick={onClose}>
-      {closeText ?? <UgClose />}
+      {props.closeText ?? <UgClose />}
     </UgAnchor>
   </UgNotification>
 );

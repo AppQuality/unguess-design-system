@@ -21,6 +21,7 @@ const defaultArgs: NotificationStoryProps = {
     type: "info",
     message: "Action completed for this kind of notification.",
     onClose: () => alert("Close"),
+    closeText: "Close notification",
   },
   toastProviderArgs: {
     limit: 5,
@@ -61,7 +62,7 @@ const Toasts = ({ children, onClose, ...props }: NotificationArgs) => {
               {children}
             </UgNotification>
           ),
-          { placement, autoDismiss: false }
+          { placement }
         );
       };
     },
