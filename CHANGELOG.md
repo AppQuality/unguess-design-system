@@ -1,3 +1,18 @@
+# v4.0.55 (Wed Nov 26 2025)
+
+#### 🐛 Bug Fix
+
+- release 20251126 [#561](https://github.com/AppQuality/unguess-design-system/pull/561) ([@marcbon](https://github.com/marcbon))
+- UN-2077-mobile-notification [#559](https://github.com/AppQuality/unguess-design-system/pull/559) ([@marcbon](https://github.com/marcbon))
+- fix: Prevent overflow in UgModal by setting overflow to hidden [#560](https://github.com/AppQuality/unguess-design-system/pull/560) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.54 (Thu Nov 20 2025)
 
 #### 🐛 Bug Fix
