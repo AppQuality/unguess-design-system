@@ -19,8 +19,9 @@ interface NotificationStoryProps {
 const defaultArgs: NotificationStoryProps = {
   notificationArgs: {
     type: "info",
-    message: "Action completed",
+    message: "Action completed for this kind of notification.",
     onClose: () => alert("Close"),
+    closeText: "Close notification",
   },
   toastProviderArgs: {
     limit: 5,

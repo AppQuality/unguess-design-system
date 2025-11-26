@@ -35,7 +35,7 @@ const UgAnchor = styled(Anchor).attrs<{
   ${(props) => retrieveComponentStyles(CLOSE_COMPONENT_ID, props)};
 `;
 
-const UgTitle = styled(Title).attrs<{ 
+const UgTitle = styled(Title).attrs<{
   "data-custom-id"?: string
 }>((props) => ({
   "data-custom-id": props["data-custom-id"] ?? TITLE_COMPONENT_ID,
@@ -59,6 +59,36 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
   }
 
   ${(props) => retrieveComponentStyles(NOTIFICATION_COMPONENT_ID, props)};
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    padding: ${({ theme }) => theme.space.md};
+    width: 300px; // Set a fixed width for better mobile appearance
+    white-space: normal;
+    justify-content: center;
+
+    > svg {
+      display: none;
+    }
+
+    ${({ closeText, theme }) => !closeText && `
+      a[data-custom-id="notifications.notification.close"] {
+        margin: 0;
+        position: absolute;
+        top: ${theme.space.xxs};
+        right:  ${theme.space.xxs};
+      }
+    `}
+
+    ${UgTitle} {
+      text-align: center;
+    }
+
+    ${UgAnchor} {
+      margin: auto;
+      margin-top: ${({ theme }) => theme.space.sm};
+    }
+  }
 `;
 
 /**
@@ -68,7 +98,6 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
     - For a passive status update about user or system activity
  */
 const Notification = ({
-  closeText,
   message,
   onClose,
   type,
@@ -81,7 +110,7 @@ const Notification = ({
       {message}
     </UgTitle>
     <UgAnchor type={type} isPrimary={isPrimary} onClick={onClose}>
-      {closeText ?? <UgClose />}
+      {props.closeText ?? <UgClose />}
     </UgAnchor>
   </UgNotification>
 );
