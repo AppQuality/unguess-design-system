@@ -49,6 +49,89 @@ export const components = {
       }),
     };
   },
+  "notifications.global-alert": ({alertType}: {alertType: string}) => {
+    if (alertType === "primary") {
+      return {
+        backgroundColor: getColor(colors.primaryHue, 100),
+        color: getColor(colors.primaryHue, 700),
+        boxShadow: `0 1px 1px ${getColor(colors.primaryHue, 300)}`,
+        '[data-garden-id="notifications.global-alert.content"]': {
+          color: getColor(colors.primaryHue, 700),
+        },
+        '[data-garden-id="notifications.global-alert.title"]': {
+          color: getColor(colors.accentHue, 800),
+        },
+        '[data-garden-id="buttons.anchor"]': {
+        },
+        '.global-alert-icon': {
+          color: getColor(colors.accentHue, 700),
+        },
+      };
+    }
+    if (alertType === "accent") {
+      return {
+        backgroundColor: palette.blue[100],
+        color: getColor(colors.primaryHue, 700),
+        boxShadow: `0 1px 1px ${getColor(colors.accentHue, 600)}`,
+        '[data-garden-id="notifications.global-alert.content"]': {
+          color: getColor(colors.accentHue, 700),
+        },
+        '[data-garden-id="notifications.global-alert.title"]': {
+          color: getColor(colors.accentHue, 800),
+        },
+        '[data-garden-id="buttons.anchor"]': {
+          color: getColor(colors.accentHue, 700),
+        }
+      };
+    }
+    if (alertType === "info") {
+      return {
+        backgroundColor: getColor(colors.infoHue, 100),
+        color: getColor(colors.primaryHue, 700),
+        '[data-garden-id="notifications.global-alert.content"]': {
+          color: getColor(colors.infoHue, 700),
+        },
+        '[data-garden-id="notifications.global-alert.title"]': {
+          color: getColor(colors.infoHue, 800),
+        },
+        '[data-garden-id="buttons.anchor"]': {
+          color: getColor(colors.infoHue, 700),
+        },
+        '[data-garden-id="notifications.global-alert.icon"]': {
+          color: getColor(colors.infoHue, 700),
+        },
+      };
+    }
+    if (alertType === "error") {
+      return {
+        '.global-alert-cta': {
+          backgroundColor: getColor(colors.dangerHue, 800),
+        },
+      };
+    }
+    if (alertType === "warning") {
+      return {
+        backgroundColor: getColor(colors.warningHue, 300),
+        boxShadow: `0 1px 1px ${getColor(colors.warningHue, 600)}`,
+        '.global-alert-cta': {
+          backgroundColor: getColor(colors.warningHue, 800),
+        },
+      };
+    }
+    if (alertType === "success") {
+      return {
+        backgroundColor: getColor(colors.successHue, 700),
+        boxShadow: `0 1px 1px ${getColor(colors.successHue, 700)}`,
+        color: getColor(colors.successHue, 50),
+        '.global-alert-cta': {
+          backgroundColor: getColor(colors.successHue, 800),
+        },
+      };
+    }
+  },
+  "notifications.global-alert.icon": {
+    marginTop: "-2px",
+  },
   "text.primary": () => ({
     color: getColor(colors.primaryHue, 600),
   }),
