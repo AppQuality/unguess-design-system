@@ -27,7 +27,7 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
       - name: Use Node.js 20.x and configure npm for OIDC
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
           registry-url: 'https://registry.npmjs.org'
