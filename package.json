@@ -174,5 +174,8 @@
   },
   "resolutions": {
     "jackspeak": "2.1.1"
+  },
+  "engines": {
+    "node": ">=20.17.0"
   }
 }
