@@ -177,5 +177,8 @@
   },
   "engines": {
     "node": ">=20.17.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
