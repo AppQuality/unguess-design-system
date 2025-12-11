@@ -43,6 +43,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
         run: |
-          yarn --frozen-lockfile
-          yarn run build
-          yarn release
+          npm ci --force
+          npm run build
+          npm run release
