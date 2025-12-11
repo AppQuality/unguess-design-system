@@ -10,6 +10,11 @@ on:
   workflow_dispatch:
 
 # what the action will do
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   release:
     # The operating system it will run on
