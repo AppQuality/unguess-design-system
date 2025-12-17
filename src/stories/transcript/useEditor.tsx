@@ -1,4 +1,4 @@
-import SearchAndReplace from "@sereneinserenade/tiptap-search-and-replace";
+// import SearchAndReplace from "@sereneinserenade/tiptap-search-and-replace";
 import Document from "@tiptap/extension-document";
 import Text from "@tiptap/extension-text";
 import { Extension, useEditor as useTiptapEditor } from "@tiptap/react";
@@ -58,7 +58,7 @@ export const useEditor = (
         Text,
         themeExtension ? themeExtension : Theme.configure(),
         Word,
-        SearchAndReplace.configure(),
+        // SearchAndReplace.configure(),
         Active({
           onSetCurrentTime,
         }),

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ReactComponent as DeleteIcon } from "@zendeskgarden/svg-icons/src/12/trash-stroke.svg";
-import { StatusRunningIcon } from "../icons";
 import { Button } from "@zendeskgarden/react-buttons";
-import { Combobox, Field } from "@zendeskgarden/react-dropdowns.next";
+import { Combobox, Field } from "@zendeskgarden/react-dropdowns";
+import { ReactComponent as DeleteIcon } from "@zendeskgarden/svg-icons/src/12/trash-stroke.svg";
 import { SelectOption } from ".";
 import { Input } from "../forms/input";
+import { StatusRunningIcon } from "../icons";
 import { TooltipModal } from "../tooltip-modal";
 
 type Args = React.ComponentProps<typeof SelectOption> & {

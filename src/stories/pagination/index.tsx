@@ -1,9 +1,9 @@
-import { 
-   CursorPagination as ZendeskCursorPagination,
-   Pagination as ZendeskPagination, 
-} from '@zendeskgarden/react-pagination';
+import {
+  CursorPagination as ZendeskCursorPagination,
+  OffsetPagination as ZendeskPagination,
+} from "@zendeskgarden/react-pagination";
 import styled from "styled-components";
-import { PaginationProps } from './_types';
+import { PaginationProps } from "./_types";
 
 const UgPagination = styled(ZendeskPagination)``;
 
@@ -14,7 +14,7 @@ const UgPagination = styled(ZendeskPagination)``;
     - To divide large amounts of data into manageable chunks
 
  */
-const Pagination = (props: PaginationProps) => <UgPagination {...props}/>;
+const Pagination = (props: PaginationProps) => <UgPagination {...props} />;
 
 const CursorPagination = ZendeskCursorPagination;
 

@@ -1,8 +1,8 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
 import { Button } from "@zendeskgarden/react-buttons";
-import { Field, Label } from "@zendeskgarden/react-dropdowns.next";
+import { Field, Label } from "@zendeskgarden/react-dropdowns";
 import { Input } from "@zendeskgarden/react-forms";
-import { TooltipModal } from "@zendeskgarden/react-modals";
+import { TooltipDialog as TooltipModal } from "@zendeskgarden/react-modals";
 import { useState } from "react";
 import { MultiSelect } from ".";
 import { MultiSelectProps } from "./_types";
@@ -128,7 +128,8 @@ const TemplateEditable: Story<MultiSelectProps> = (args) => {
             console.log("result", result);
             console.log("selectedItems");
             console.log("newLabel", newLabel);
-          }} />
+          }}
+        />
       </Field>
     </div>
   );

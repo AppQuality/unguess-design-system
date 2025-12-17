@@ -1,9 +1,9 @@
 import { Avatar as ZendeskAvatar } from "@zendeskgarden/react-avatars";
-import { theme } from "../theme";
 import styled from "styled-components";
-import { AvatarArgs } from "./_types";
+import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import InternalAvatar from "./InternalAvatar";
+import { AvatarArgs } from "./_types";
 
 const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
   text-transform: uppercase;
@@ -41,6 +41,7 @@ const Avatar = ({ isSystem, badge, ...props }: AvatarArgs) => {
   return (
     <UgAvatar
       {...props}
+      backgroundColor={undefined}
       badge={fixedBadge}
       isSystem={props.avatarType === "system" || isSystem}
       children={wrapChildren(props.avatarType || "text")}

@@ -1,7 +1,6 @@
-import { BubbleMenu } from "@tiptap/react";
+import { BubbleMenu, FloatingMenuProps } from "@tiptap/react/menus";
 import styled from "styled-components";
 import { IconButton } from "../buttons/icon-button";
-import { FloatingMenuArgs } from "./_types";
 
 import { ReactComponent as BoldIcon } from "../../assets/icons/bold-fill.svg";
 import { ReactComponent as H1Icon } from "../../assets/icons/h1-fill.svg";
@@ -34,7 +33,7 @@ const MenuContainer = styled(Card)`
   }
 `;
 
-export const FloatingMenu = (props: FloatingMenuArgs) => {
+export const FloatingMenu = (props: FloatingMenuProps) => {
   const { editor } = props;
 
   if (!editor) {

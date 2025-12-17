@@ -2,9 +2,9 @@ import {
   IOptGroupProps,
   IOptionProps,
   Option,
-} from "@zendeskgarden/react-dropdowns.next";
-import { ReactNode, RefObject, useEffect, useRef, useState } from "react";
+} from "@zendeskgarden/react-dropdowns";
 import { ReactComponent as EditIcon } from "@zendeskgarden/svg-icons/src/12/overflow-vertical-fill.svg";
+import { ReactNode, RefObject, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { TooltipModalOption } from "./TooltipModalOption";
 export interface IOption extends IOptionProps {
@@ -13,7 +13,10 @@ export interface IOption extends IOptionProps {
   actions?: (props: { option: IOption; closeModal: () => void }) => ReactNode;
   meta?: ReactNode;
   actionIcon?: ReactNode;
-  onOptionActionClick?: (e?: React.MouseEvent<HTMLDivElement>, option?: IOption) => void;
+  onOptionActionClick?: (
+    e?: React.MouseEvent<HTMLDivElement>,
+    option?: IOption
+  ) => void;
 }
 export interface IOptGroup extends IOptGroupProps {
   id: string; // override the id prop to have a key to iterate over the options
@@ -69,14 +72,16 @@ const SelectOption = ({
     if (modalRef === null) return;
     // pointer event to none to the parent list item to avoid closing the modal when clicking inside
     if (modalRef.current && refObject.current) {
-        const el = modalRef.current.closest('ul[role="listbox"]') as HTMLElement;
-        if (el) {
-          el.style.overflowY = "hidden";
-        }
+      const el = modalRef.current.closest('ul[role="listbox"]') as HTMLElement;
+      if (el) {
+        el.style.overflowY = "hidden";
+      }
     }
     return () => {
       if (modalRef.current && refObject.current) {
-        const el = modalRef.current.closest('ul[role="listbox"]') as HTMLElement;
+        const el = modalRef.current.closest(
+          'ul[role="listbox"]'
+        ) as HTMLElement;
         if (el) {
           el.style.overflowY = "auto";
         }

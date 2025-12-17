@@ -1,12 +1,13 @@
-import { BubbleMenuPluginProps } from "@tiptap/extension-bubble-menu";
-import { BubbleMenu, Editor } from "@tiptap/react";
+import { BubbleMenu, BubbleMenuProps } from "@tiptap/react/menus";
+
+import { Editor } from "@tiptap/react";
 import styled from "styled-components";
 import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
 
 import { Button } from "../buttons/button";
 
 type ShouldShowProps = Parameters<
-  NonNullable<BubbleMenuPluginProps["shouldShow"]>
+  NonNullable<BubbleMenuProps["shouldShow"]>
 >[0];
 
 const MenuContainer = styled.div`

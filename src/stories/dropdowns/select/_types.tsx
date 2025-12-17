@@ -1,4 +1,4 @@
-import { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
+import { IComboboxProps } from "@zendeskgarden/react-dropdowns";
 
 export interface SelectArgs extends Omit<IComboboxProps, "onSelect"> {
   /** The label*/

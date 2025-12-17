@@ -1,10 +1,9 @@
 import {
   Combobox,
   Field,
-  Label,
   OptGroup,
   Option,
-} from "@zendeskgarden/react-dropdowns.next";
+} from "@zendeskgarden/react-dropdowns";
 import { ComponentProps } from "react";
 import styled from "styled-components";
 import { SelectOption } from "../../selectOption";
@@ -54,7 +53,7 @@ const Select = ({
   return (
     <div className={className}>
       <Field>
-        {label ? <Label>{label}</Label> : null}
+        {label ? <Field.Label>{label}</Field.Label> : null}
         <StyledComboBox
           {...props}
           {...disableRenderValueIfUnselected(props)}
@@ -109,7 +108,13 @@ const OptionGroup = styled(OptGroup)`
   }
 `;
 
-Select.OptionGroup = OptionGroup;
+Select.OptionGroup = (
+  props: Omit<ComponentProps<typeof OptionGroup>, "content"> & {
+    label?: string;
+  }
+) => {
+  return <OptionGroup {...props} content={props.label} />;
+};
 
 const OptionTitle = styled.div`
   padding: ${({ theme }) => theme.space.xxs} ${({ theme }) => theme.space.sm};

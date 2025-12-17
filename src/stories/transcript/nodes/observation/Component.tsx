@@ -67,6 +67,7 @@ export const Component = ({
 
   return (
     <NodeViewWrapper as="div" style={{ display: "inline" }}>
+      {/* @ts-ignore */}
       <ObservationWrapper
         title={node.attrs["title"]}
         color={node.attrs["color"]}
@@ -77,6 +78,7 @@ export const Component = ({
           color: o.attrs["color"],
         }))}
       >
+        {/* @ts-ignore */}
         <NodeViewContent as="span" className="content is-editable" />
       </ObservationWrapper>
     </NodeViewWrapper>

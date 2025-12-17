@@ -1,12 +1,9 @@
 import { convertToMatrix } from "@zendeskgarden/container-utilities";
-import {
-  ColorSwatchDialog,
-  IColorSwatchDialogProps,
-} from "@zendeskgarden/react-colorpickers";
+import { ColorSwatchDialog } from "@zendeskgarden/react-colorpickers";
 import React, { useState } from "react";
-import { ColorSwatchTriggerProps, ColorSwatchProps } from "./_types";
-import { ReactComponent as ColorIndicatorIcon } from "../../assets/icons/circle-full-fill.svg";
 import { styled } from "styled-components";
+import { ReactComponent as ColorIndicatorIcon } from "../../assets/icons/circle-full-fill.svg";
+import { ColorSwatchProps, ColorSwatchTriggerProps } from "./_types";
 
 const Trigger = styled.div`
   display: flex;
@@ -63,15 +60,8 @@ const ColorSwatch = ({
 
   const matrix = convertToMatrix(cleanedColors, rowSize ?? 7);
   const [color, setColor] = useState(matrix[0][0].value);
-  const [rowIndex, setRowIndex] = useState(0);
-  const [colIndex, setColIndex] = useState(0);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
   const [selectedColIndex, setSelectedColIndex] = useState(0);
-
-  const handleChange = (rowIdx: number, colIdx: number) => {
-    setRowIndex(rowIdx);
-    setColIndex(colIdx);
-  };
 
   const handleSelect = (rowIdx: number, colIdx: number) => {
     setSelectedRowIndex(rowIdx);
@@ -81,14 +71,13 @@ const ColorSwatch = ({
   return (
     <StyledColorSwatchDialog
       colors={matrix}
-      onChange={handleChange}
       onSelect={(rowIdx, colIdx) => {
+        if (rowIdx === null || colIdx === null) return;
         handleSelect(rowIdx, colIdx);
-        setColor(matrix[rowIdx][colIdx].value);
-        if (onSelect) onSelect(matrix[rowIdx][colIdx].value)
+        const newColor = matrix[rowIdx][colIdx].value;
+        setColor(newColor);
+        if (onSelect) onSelect(newColor);
       }}
-      rowIndex={rowIndex}
-      colIndex={colIndex}
       selectedRowIndex={selectedRowIndex}
       selectedColIndex={selectedColIndex}
       {...props}

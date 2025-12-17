@@ -1,5 +1,6 @@
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
-import { BubbleMenuProps, Editor, EditorOptions } from "@tiptap/react";
+import { Editor, EditorOptions } from "@tiptap/react";
+import { BubbleMenuProps } from "@tiptap/react/menus";
 
 type validationStatus = "success" | "warning" | "error";
 

@@ -1,3 +1,3 @@
-import { Datepicker } from "@zendeskgarden/react-datepickers";
+import { DatePicker } from "@zendeskgarden/react-datepickers";
 
-export { Datepicker };
+export { DatePicker as Datepicker };

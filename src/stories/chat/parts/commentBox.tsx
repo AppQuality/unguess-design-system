@@ -1,26 +1,26 @@
-import styled from "styled-components";
 import {
-  useEditor,
-  EditorContent,
-  Editor as TipTapEditor,
   Content,
+  Editor as TipTapEditor,
+  EditorContent,
+  useEditor,
 } from "@tiptap/react";
-import { ChatEditorArgs } from "../_types";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
-  useState,
-  useRef,
   useCallback,
+  useRef,
+  useState,
 } from "react";
+import styled from "styled-components";
 import { FloatingMenu } from "../../editor/floatingMenu";
 import { useChatContext } from "../context/chatContext";
-import { CommentBar } from "./bar";
-import { editorExtensions } from "./extensions";
-import { EditorContainer } from "./containers";
-import ThumbnailContainer from "./ThumbnailContainer";
-import MediaLightBox from "./MediaLightbox";
 import { useMedia } from "../hooks/useMedia";
+import { ChatEditorArgs } from "../_types";
+import { CommentBar } from "./bar";
+import { EditorContainer } from "./containers";
+import { editorExtensions } from "./extensions";
+import MediaLightBox from "./MediaLightbox";
+import ThumbnailContainer from "./ThumbnailContainer";
 
 const ChatBoxContainer = styled.div`
   display: flex;
@@ -57,7 +57,7 @@ export const CommentBox = ({
   } = useChatContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-  const {getMedia} = useMedia();
+  const { getMedia } = useMedia();
   const ext = editorExtensions({ placeholderOptions, mentionableUsers });
 
   function handleEvent(data: DataTransfer | null) {
@@ -137,7 +137,7 @@ export const CommentBox = ({
       <ChatBoxContainer>
         <EditorContainer editable style={{ marginLeft: 0, paddingBottom: 12 }}>
           {hasFloatingMenu && (
-            <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
+            <FloatingMenu editor={ed} options={{ ...bubbleOptions }} />
           )}
           <EditorContent editor={ed} onKeyDown={onKeyDown}></EditorContent>
           <ThumbnailContainer openLightbox={handleOpenLightbox} />

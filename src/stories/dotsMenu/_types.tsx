@@ -1,4 +1,4 @@
-import { IMenuProps } from "@zendeskgarden/react-dropdowns.next";
+import { IMenuProps } from "@zendeskgarden/react-dropdowns";
 import { ReactNode } from "react";
 
 export interface IDotsMenu

@@ -1,9 +1,10 @@
-import { PALETTE } from "@zendeskgarden/react-theming";
 import { Meta, StoryFn } from "@storybook/react";
-import { ColorSwatchProps } from "./_types";
-import { ReactComponent as ColorIndicatorIcon } from "../../assets/icons/circle-full-fill.svg";
+import { fn } from "@storybook/test";
+import { PALETTE } from "@zendeskgarden/react-theming";
 import { ColorSwatch } from ".";
+import { ReactComponent as ColorIndicatorIcon } from "../../assets/icons/circle-full-fill.svg";
 import { theme } from "../theme";
+import { ColorSwatchProps } from "./_types";
 
 const colors: ColorSwatchProps["colors"] = [
   { label: "Blue-200", value: PALETTE.blue[200] },
@@ -46,7 +47,7 @@ const Template: StoryFn<ColorSwatchProps> = (props) => (
 export const Default = Template.bind({});
 Default.args = {
   colors: colors,
-  onSelect: (color) => console.log(color),
+  onSelect: fn(),
 };
 
 export const WithoutLabels = Template.bind({});
