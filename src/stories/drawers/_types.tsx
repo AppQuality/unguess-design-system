@@ -1,7 +1,7 @@
-import { IDrawerModalProps } from "@zendeskgarden/react-modals";
+import { IDrawerProps } from "@zendeskgarden/react-modals";
 import { KeyboardEvent, MouseEvent } from "react";
 
-export interface DrawerArgs extends IDrawerModalProps {
+export interface DrawerArgs extends IDrawerProps {
   /**
    * Opens the modal
    */

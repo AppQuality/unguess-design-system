@@ -1,4 +1,4 @@
-import { Field, Label } from "@zendeskgarden/react-dropdowns.next";
+import { Field, Label } from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import { ReactComponent as GridAddIcon } from "../../assets/icons/plus.svg";
 import { Combobox } from "../combobox";

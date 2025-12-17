@@ -1,5 +1,6 @@
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
-import { BubbleMenuProps, EditorOptions } from "@tiptap/react";
+import { EditorOptions } from "@tiptap/react";
+import { BubbleMenuProps } from "@tiptap/react/menus";
 
 type validationStatus = "success" | "warning" | "error";
 
@@ -10,7 +11,7 @@ export interface ChatEditorArgs extends Partial<EditorOptions> {
   placeholderOptions?: Partial<PlaceholderOptions>;
   hasFloatingMenu?: boolean;
   hasButtonsMenu?: boolean;
-  bubbleOptions?: any;
+  bubbleOptions?: BubbleMenuProps["options"];
   i18n?: {
     menu?: {
       bold?: string;

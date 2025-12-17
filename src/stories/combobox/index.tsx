@@ -1,7 +1,7 @@
 import {
-  IComboboxProps,
   Combobox as ZendeskCombobox,
-} from "@zendeskgarden/react-dropdowns.next";
+  IComboboxProps,
+} from "@zendeskgarden/react-dropdowns";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export interface ComboboxProps extends IComboboxProps {

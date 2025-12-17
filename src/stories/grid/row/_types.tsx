@@ -1,9 +1,13 @@
 import {
+  ALIGN_ITEMS as ALIGN_ITEMS_VALUE,
   IRowProps,
-  ALIGN_ITEMS,
-  JUSTIFY_CONTENT,
-  WRAP,
+  JUSTIFY_CONTENT as JUSTIFY_CONTENT_VALUE,
+  WRAP as WRAP_VALUE,
 } from "@zendeskgarden/react-grid";
+
+type ALIGN_ITEMS = (typeof ALIGN_ITEMS_VALUE)[number];
+type JUSTIFY_CONTENT = (typeof JUSTIFY_CONTENT_VALUE)[number];
+type WRAP = (typeof WRAP_VALUE)[number];
 
 export interface RowArgs extends IRowProps {
   /**

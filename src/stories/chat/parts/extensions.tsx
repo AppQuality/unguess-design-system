@@ -1,18 +1,17 @@
-import { ReactRenderer } from "@tiptap/react";
-import { PlaceholderOptions } from "@tiptap/extension-placeholder";
-import Typography from "@tiptap/extension-typography";
-import Link from "@tiptap/extension-link";
-import StarterKit from "@tiptap/starter-kit";
-import Placeholder from "@tiptap/extension-placeholder";
 import CharacterCount from "@tiptap/extension-character-count";
+import Dropcursor from "@tiptap/extension-dropcursor";
+import Image from "@tiptap/extension-image";
+import Link from "@tiptap/extension-link";
+import Placeholder, { PlaceholderOptions } from "@tiptap/extension-placeholder";
+import Typography from "@tiptap/extension-typography";
+import { ReactRenderer } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import tippy, { type Instance as TippyInstance } from "tippy.js";
+import { colors } from "../../theme/colors";
+import { getColor } from "../../theme/utils";
+import { SuggestedUser } from "../_types";
 import { CustomMention as Mention } from "./mention";
 import { MentionList, MentionListRef } from "./mentionList";
-import tippy, { type Instance as TippyInstance } from "tippy.js";
-import { SuggestedUser } from "../_types";
-import Image from "@tiptap/extension-image";
-import Dropcursor from "@tiptap/extension-dropcursor";
-import { getColor } from "../../theme/utils";
-import { colors } from "../../theme/colors";
 
 /**
  * Workaround for the current typing incompatibility between Tippy.js and Tiptap

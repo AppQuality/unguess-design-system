@@ -7,14 +7,14 @@ import {
   useState,
 } from "react";
 import styled from "styled-components";
+import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
+import { theme } from "../theme";
 import { getColor } from "../theme/utils";
-import { HighlightArgs, Observation, WordProps } from "./_types";
+import { Tooltip } from "../tooltip";
+import { CreateObservationButton } from "./CreateObservationButton";
 import { HighlightContextProvider } from "./highlightContext";
 import { Searchable } from "./searchable";
-import { Tooltip } from "../tooltip";
-import { theme } from "../theme";
-import { ReactComponent as TagIcon } from "../../assets/icons/tag-stroke.svg";
-import { CreateObservationButton } from "./CreateObservationButton";
+import { HighlightArgs, Observation, WordProps } from "./_types";
 
 const getFocusedObs = (observations: Observation[]) => {
   return observations.find((obs) => obs.isFocused);

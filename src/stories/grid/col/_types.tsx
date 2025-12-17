@@ -1,11 +1,13 @@
 import {
+  ALIGN_SELF as ALIGN_SELF_VALUE,
   IColProps,
-  GRID_NUMBER,
-  BREAKPOINT,
-  ALIGN_SELF,
-  TEXT_ALIGN,
+  TEXT_ALIGN as TEXT_ALIGN_VALUE,
 } from "@zendeskgarden/react-grid";
 
+type GRID_NUMBER = number | string;
+type BREAKPOINT = number | string | boolean;
+type ALIGN_SELF = (typeof ALIGN_SELF_VALUE)[number];
+type TEXT_ALIGN = (typeof TEXT_ALIGN_VALUE)[number];
 export interface ColArgs extends IColProps {
   /** Sets the total number of grid `columns` that the column spans on all screen sizes */
   size?: GRID_NUMBER;

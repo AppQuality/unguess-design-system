@@ -1,6 +1,6 @@
-import { DrawerModal as ZendeskDrawerModal } from "@zendeskgarden/react-modals";
-import { DrawerArgs } from "./_types";
+import { Drawer as ZendeskDrawerModal } from "@zendeskgarden/react-modals";
 import styled from "styled-components";
+import { DrawerArgs } from "./_types";
 
 const UgDrawer = styled(ZendeskDrawerModal)`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

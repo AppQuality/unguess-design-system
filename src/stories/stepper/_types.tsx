@@ -1,6 +1,6 @@
 import {
-  IStepperProps,
   IStepperLabelProps,
+  IStepperProps,
 } from "@zendeskgarden/react-accordions";
 
 export interface StepperArgs extends IStepperProps {
@@ -14,7 +14,7 @@ export interface StepperArgs extends IStepperProps {
 
 export interface StepperLabelArgs extends IStepperLabelProps {
   /** Replaces the label number with an icon */
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
   /** Hides the label text */
   isHidden?: boolean;
 }

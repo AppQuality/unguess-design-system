@@ -1,4 +1,4 @@
-import { Field as ZendeskField } from "@zendeskgarden/react-dropdowns.next";
+import { Field as ZendeskField } from "@zendeskgarden/react-dropdowns";
 import styled from "styled-components";
 
 const DropdownFieldNew = styled(ZendeskField)``;

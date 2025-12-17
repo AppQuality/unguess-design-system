@@ -1,11 +1,11 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { ButtonArgs } from "../buttons/button/_types";
 import { cardCmponentStyle } from "../cards/index";
+import { AlertArgs } from "../notifications/alerts";
 import { colors } from "./colors";
 import { fontWeights } from "./fontWeights";
 import { palette } from "./palette";
 import { getColor } from "./utils";
-import { AlertArgs } from "../notifications/alerts";
 
 export const components = {
   ...DEFAULT_THEME.components,
@@ -49,7 +49,7 @@ export const components = {
       }),
     };
   },
-  "notifications.global-alert": ({alertType}: {alertType: string}) => {
+  "notifications.global-alert": ({ alertType }: { alertType: string }) => {
     if (alertType === "primary") {
       return {
         backgroundColor: getColor(colors.primaryHue, 100),
@@ -61,9 +61,8 @@ export const components = {
         '[data-garden-id="notifications.global-alert.title"]': {
           color: getColor(colors.accentHue, 800),
         },
-        '[data-garden-id="buttons.anchor"]': {
-        },
-        '.global-alert-icon': {
+        '[data-garden-id="buttons.anchor"]': {},
+        ".global-alert-icon": {
           color: getColor(colors.accentHue, 700),
         },
       };
@@ -81,7 +80,7 @@ export const components = {
         },
         '[data-garden-id="buttons.anchor"]': {
           color: getColor(colors.accentHue, 700),
-        }
+        },
       };
     }
     if (alertType === "info") {
@@ -104,7 +103,7 @@ export const components = {
     }
     if (alertType === "error") {
       return {
-        '.global-alert-cta': {
+        ".global-alert-cta": {
           backgroundColor: getColor(colors.dangerHue, 800),
         },
       };
@@ -113,7 +112,7 @@ export const components = {
       return {
         backgroundColor: getColor(colors.warningHue, 300),
         boxShadow: `0 1px 1px ${getColor(colors.warningHue, 600)}`,
-        '.global-alert-cta': {
+        ".global-alert-cta": {
           backgroundColor: getColor(colors.warningHue, 800),
         },
       };
@@ -123,7 +122,7 @@ export const components = {
         backgroundColor: getColor(colors.successHue, 700),
         boxShadow: `0 1px 1px ${getColor(colors.successHue, 700)}`,
         color: getColor(colors.successHue, 50),
-        '.global-alert-cta': {
+        ".global-alert-cta": {
           backgroundColor: getColor(colors.successHue, 800),
         },
       };
@@ -413,80 +412,22 @@ export const components = {
       },
     };
   },
-  "buttons.button": ({
-    isAccent,
-    isBright,
-    isPrimary,
-    isBasic,
-    isLink,
-    disabled,
-  }: ButtonArgs) => {
-    return {
-      ...(isAccent &&
-        !isPrimary &&
-        !isBasic &&
-        !isLink &&
-        !disabled && {
-          borderColor: getColor(colors.accentHue, 700),
-          color: getColor(colors.accentHue, 700),
-          "&:hover": {
-            borderColor: getColor(colors.accentHue, 800),
-            color: getColor(colors.accentHue, 800),
-            backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
-          },
-          "&:active": {
-            borderColor: getColor(colors.accentHue, 800),
-            color: getColor(colors.accentHue, 800),
-            backgroundColor: palette.blue[100],
-          },
-        }),
-      ...(isAccent &&
-        isPrimary &&
-        !disabled && {
+  "buttons.button": ({ $isPrimary, isAccent, isDisabled, ...props }: any) => {
+    if (isDisabled) return;
+    if (isAccent) {
+      return {
+        backgroundColor: "#fff",
+        color: getColor(colors.accentHue, 600),
+        borderColor: getColor(colors.accentHue, 600),
+        ...($isPrimary && {
           backgroundColor: getColor(colors.accentHue, 600),
+          color: "#fff",
           "&:hover": {
             backgroundColor: getColor(colors.accentHue, 700),
-          },
-          "&:active": {
-            backgroundColor: getColor(colors.accentHue, 800),
+            borderColor: getColor(colors.accentHue, 700),
           },
         }),
-      ...(isAccent &&
-        isBasic &&
-        !disabled && {
-          color: getColor(colors.accentHue, 700),
-          "&:hover": {
-            backgroundColor: getColor(colors.primaryHue, 600, undefined, 0.08),
-            color: getColor(colors.accentHue, 800),
-          },
-          "&:active": {
-            backgroundColor: palette.blue[100],
-            color: getColor(colors.accentHue, 800),
-          },
-        }),
-      ...(isAccent &&
-        isLink &&
-        !disabled && {
-          color: getColor(colors.accentHue, 700),
-          "&:hover": {
-            color: getColor(colors.accentHue, 800),
-          },
-          "&:active": {
-            color: getColor(colors.accentHue, 800),
-          },
-        }),
-      ...(isBright &&
-        !disabled && {
-          backgroundColor: "transparent",
-          color: "white",
-          border: "none",
-          "&:hover": {
-            backgroundColor: palette.grey[500],
-          },
-          "&:active": {
-            backgroundColor: palette.grey[600],
-          },
-        }),
-    };
+      };
+    }
   },
 };

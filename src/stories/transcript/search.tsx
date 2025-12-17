@@ -17,7 +17,7 @@ const Search = ({
 
   const setSearchTerm = useCallback(
     (term: string) => {
-      editor.commands.setSearchTerm(term);
+      // editor.commands.setSearchTerm(term);
     },
     [editor]
   );

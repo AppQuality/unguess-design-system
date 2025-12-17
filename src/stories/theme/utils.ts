@@ -1,13 +1,28 @@
 import { getColor as zendeskGetColor } from "@zendeskgarden/react-theming";
-import { DefaultTheme, css } from "styled-components";
+import { css, DefaultTheme } from "styled-components";
 import UAParser from "ua-parser-js";
 import { theme as unguessTheme } from ".";
 
 declare type Hue = Record<number | string, string> | string;
-declare type GetColorFunction = (hue: Hue, shade?: number, theme?: DefaultTheme, transparency?: number) => string | undefined;
+declare type GetColorFunction = (
+  hue: Hue,
+  shade?: number,
+  theme?: DefaultTheme,
+  transparency?: number
+) => string | undefined;
 
-export const getColor: GetColorFunction = (hue, shade, theme = unguessTheme, transparency) => {
-  return zendeskGetColor(hue, shade, theme, transparency);
+export const getColor: GetColorFunction = (
+  hue,
+  shade,
+  theme = unguessTheme,
+  transparency
+) => {
+  return zendeskGetColor({
+    theme,
+    hue: hue as string,
+    shade,
+    transparency,
+  });
 };
 
 export const hex2rgba = (hex: string, alpha = 1) => {
@@ -45,5 +60,3 @@ export const sidebarNavItemHidden = css`
   pointer-events: none;
   color: transparent;
 `;
-
-

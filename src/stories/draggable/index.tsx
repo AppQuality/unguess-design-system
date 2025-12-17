@@ -1,7 +1,7 @@
 import {
   Draggable as ZDDraggable,
   DraggableList as ZDraggableList,
-} from "@zendeskgarden/react-drag-drop";
+} from "@zendeskgarden/react-draggable";
 import styled from "styled-components";
 
 const StyledDraggable = styled(ZDDraggable)`
