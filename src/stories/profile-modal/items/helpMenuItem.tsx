@@ -1,20 +1,20 @@
-import { MenuItem } from "../components/menuItem";
-import { ReactComponent as QuestionMark } from "../../../assets/icons/question-mark.svg";
+import styled from "styled-components";
 import { ReactComponent as CopyIcon } from "../../../assets/icons/copy.svg";
 import { ReactComponent as InfoFill } from "../../../assets/icons/info-fill.svg";
-import { PreviousButton } from "../components/previousMenuButton";
-import { Separator } from "../../dropdowns/menu";
-import { Paragraph } from "../../typography/paragraph";
-import { MD, SM } from "../../typography/typescale";
+import { ReactComponent as QuestionMark } from "../../../assets/icons/question-mark.svg";
 import { Avatar } from "../../avatar";
-import styled from "styled-components";
+import { Anchor } from "../../buttons/anchor";
+import { Button } from "../../buttons/button";
 import { theme } from "../../theme";
 import { flexCenter } from "../../theme/mixins";
-import { Button } from "../../buttons/button";
-import { Anchor } from "../../buttons/anchor";
-import { MenuItemProps } from "../_types";
-import { getInitials } from "../utils";
 import { getColor } from "../../theme/utils";
+import { Paragraph } from "../../typography/paragraph";
+import { MD, SM } from "../../typography/typescale";
+import { MenuItemProps } from "../_types";
+import { MenuItem } from "../components/menuItem";
+import { PreviousButton } from "../components/previousMenuButton";
+import { Separator } from "../components/Separator";
+import { getInitials } from "../utils";
 
 interface HelpItemProps extends MenuItemProps {
   title: string;
@@ -38,7 +38,12 @@ const StyledButton = styled(Button)`
   &:hover,
   &:focus,
   &:active {
-    background-color: ${getColor(props.theme.colors.primaryHue, 600, undefined, 0.08)};
+    background-color: ${getColor(
+      props.theme.colors.primaryHue,
+      600,
+      undefined,
+      0.08
+    )};
     color: ${
       props.isDanger
         ? props.theme.palette.red[500]
@@ -77,7 +82,6 @@ const Description = styled.div`
   color: ${theme.palette.grey["600"]};
   margin: 2px 0px;
 `;
-
 export const HelpItem = (props: HelpItemProps) => {
   const { csm } = props;
   const { email } = csm;
@@ -137,20 +141,20 @@ export const HelpItem = (props: HelpItemProps) => {
 
       {props.chatSupport && (
         <Footer>
-        <Separator />
-        {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
-        <StyledFooterButton
-          isStretched
-          isBasic
-          onClick={props.toggleChat}
-          style={{ paddingLeft: theme.space.xxs }}
-        >
-          <Button.StartIcon>
-            <InfoFill color={theme.palette.blue[600]} />
-          </Button.StartIcon>
-          {props.chatSupportLabel ?? "Report a technical issue"}
-        </StyledFooterButton>
-      </Footer>
+          <Separator />
+          {/* TODO: qui agganciare customerly => https://docs.customerly.io/api/is-it-possible-to-open-the-live-chat-directly-from-a-link-or-a-custom-button */}
+          <StyledFooterButton
+            isStretched
+            isBasic
+            onClick={props.toggleChat}
+            style={{ paddingLeft: theme.space.xxs }}
+          >
+            <Button.StartIcon>
+              <InfoFill color={theme.palette.blue[600]} />
+            </Button.StartIcon>
+            {props.chatSupportLabel ?? "Report a technical issue"}
+          </StyledFooterButton>
+        </Footer>
       )}
     </>
   );

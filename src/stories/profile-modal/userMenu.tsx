@@ -4,14 +4,14 @@ import { ReactComponent as ExitIcon } from "../../assets/icons/exit.svg";
 import { ReactComponent as LockIcon } from "../../assets/icons/lock-locked-fill.svg";
 import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
 import { ReactComponent as UserIcon } from "../../assets/icons/user-fill.svg";
-import { Separator } from "../dropdowns/menu";
 import { theme } from "../theme";
 import { MD } from "../typography/typescale";
+import { UserMenuArgs } from "./_types";
 import { MenuItem, MenuItemBody } from "./components/menuItem";
+import { Separator } from "./components/Separator";
 import { UserContainer } from "./components/UserContainer";
 import { HelpItem } from "./items/helpMenuItem";
 import { LanguageItem } from "./items/languageMenuItem";
-import { UserMenuArgs } from "./_types";
 
 const StyledList = styled.ul`
   padding: 0;
