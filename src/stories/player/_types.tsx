@@ -42,6 +42,7 @@ export interface WrapperProps {
   isPlaying?: boolean;
   isLoaded?: boolean;
   showControls?: boolean;
+  hideWhenPlaying?: boolean;
 }
 
 type VideoTag = {
