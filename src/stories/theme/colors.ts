@@ -25,7 +25,7 @@ export const colors: ThemeColors = {
         disabled: "neutralHue.300",
       },
       foreground: {
-        default: "#2f3941",
+        default: "grey.800",
         subtle: "neutralHue.700",
         onEmphasis: "palette.white",
         primary: "primaryHue.600",
@@ -48,3 +48,5 @@ export const colors: ThemeColors = {
   chromeHue: "blue",
   accentHue: "kale",
 };
+
+console.log("colors", colors);
