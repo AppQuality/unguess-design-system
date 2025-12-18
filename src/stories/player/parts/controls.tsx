@@ -24,7 +24,8 @@ export const ControlsWrapper = styled.div<WrapperProps>`
   padding: ${({ theme }) => theme.space.xxs} 0;
   background-color: ${({ theme }) => theme.palette.grey[100]};
   height: 80px;
-  ${({ isPlaying }) => isPlaying && "display: none;"}
+  ${({ isPlaying, hideWhenPlaying }) =>
+    isPlaying && hideWhenPlaying && "display: none;"}
   z-index: 2;
 `;
 
@@ -93,6 +94,8 @@ export const Controls = ({
   const [cutStart, setCutStart] = useState<number>(0);
 
   const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
+
+  const hideWhenPlaying = !showControls && playerType === "video";
 
   useEffect(() => {
     setMarks(bookmarks);
@@ -213,7 +216,8 @@ export const Controls = ({
   return (
     <ControlsWrapper
       showControls={showControls}
-      {...(!showControls && { isPlaying: context.isPlaying })}
+      hideWhenPlaying={hideWhenPlaying}
+      {...(hideWhenPlaying && { isPlaying: context.isPlaying })}
     >
       <ProgressContainer
         onMouseEnter={onMouseEvent}

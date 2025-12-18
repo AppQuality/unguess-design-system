@@ -26,13 +26,11 @@ export const Container = styled.div<WrapperProps>`
   ${({ isLoaded }) => !isLoaded && `pointer-events: none;`}
 
   &.audio-player-mode {
-    height: 74px;
+    height: 90px;
+    background-color: transparent;
 
     .player-container video {
       visibility: hidden;
-
-      width: 0;
-      height: 0;
     }
   }
 
