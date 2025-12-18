@@ -1,5 +1,4 @@
 import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
-import { ButtonArgs } from "../buttons/button/_types";
 import { cardCmponentStyle } from "../cards/index";
 import { AlertArgs } from "../notifications/alerts";
 import { colors } from "./colors";
@@ -334,12 +333,12 @@ export const components = {
     disabled,
     isBright,
     isAccent,
-    isPrimary,
+    $isPrimary,
     isBasic,
-  }: ButtonArgs) => {
+  }: any) => {
     return {
       ...(isAccent &&
-        !isPrimary &&
+        !$isPrimary &&
         !disabled &&
         !isBasic && {
           borderColor: getColor(colors.accentHue, 700),
@@ -369,7 +368,7 @@ export const components = {
           },
         }),
       ...(isAccent &&
-        isPrimary &&
+        $isPrimary &&
         !disabled && {
           backgroundColor: getColor(colors.accentHue, 600),
           color: "white",
