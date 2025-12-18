@@ -22,7 +22,7 @@ export const colors: ThemeColors = {
         successEmphasis: "successHue.600",
         warningEmphasis: "warningHue.600",
         dangerEmphasis: "dangerHue.600",
-        disabled: "neutralHue.300",
+        disabled: "neutralHue.200",
       },
       foreground: {
         default: "grey.800",
@@ -39,7 +39,7 @@ export const colors: ThemeColors = {
       },
       background: {
         ...DEFAULT_THEME.colors.variables.light.background,
-        disabled: "neutralHue.200",
+        disabled: "neutralHue.100",
       },
     },
   },

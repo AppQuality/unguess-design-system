@@ -1,4 +1,4 @@
-import { Field, Label } from "@zendeskgarden/react-dropdowns";
+import { Field } from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import { ReactComponent as GridAddIcon } from "../../assets/icons/plus.svg";
 import { Combobox } from "../combobox";
@@ -37,7 +37,7 @@ export const MultiSelect = ({
 
   return (
     <Field>
-      <Label hidden>{i18n?.label ?? "Multiselect"}</Label>
+      <Field.Label hidden>{i18n?.label ?? "Multiselect"}</Field.Label>
       <Combobox
         {...props}
         onBlur={onBlur}
