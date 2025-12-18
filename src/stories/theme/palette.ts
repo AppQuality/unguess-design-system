@@ -7,9 +7,9 @@ import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 
 export const palette = {
   ...DEFAULT_THEME.palette, // we are overwriting this but want to keep the original palette component as reference
-  "black": "#000000",
-  "white": "#FFFFFF",
-  "grey": {
+  black: "#000000",
+  white: "#FFFFFF",
+  grey: {
     "100": "#f8f9f9",
     "200": "#e9ebed",
     "300": "#d8dcde",
@@ -17,9 +17,9 @@ export const palette = {
     "500": "#87929d",
     "600": "#68737d",
     "700": "#49545c",
-    "800": "#2f3941"
+    "800": "#2f3941",
   },
-  "blue": {
+  blue: {
     "50": "#F0F3F5",
     "100": "#E6EBEE",
     "200": "#B0C2CB",
@@ -30,7 +30,8 @@ export const palette = {
     "700": "#00293E",
     "800": "#001825",
   },
-  "red": { // previously mattone
+  red: {
+    // previously mattone
     "100": "#FBEAEB",
     "200": "#F2C1C3",
     "300": "#E9979B",
@@ -41,7 +42,8 @@ export const palette = {
     "800": "#A8262C",
     "900": "#932127",
   },
-  "yellow": { // previously gubbio
+  yellow: {
+    // previously gubbio
     "100": "#FFF7EE",
     "200": "#FFE7C9",
     "300": "#FFD7A4",
@@ -52,7 +54,7 @@ export const palette = {
     "800": "#845418",
     "900": "#734A15",
   },
-  "green": {
+  green: {
     "10": "#EBF5F2",
     "50": "#B3E8D9",
     "100": "#80D9C0",
@@ -64,7 +66,8 @@ export const palette = {
     "700": "#006B4D",
     "800": "#005940",
   },
-  "azure": { // previously royal blue
+  azure: {
+    // previously royal blue
     "100": "#E3F2F9",
     "200": "#BBDDF2",
     "300": "#92C9EB",
@@ -75,7 +78,8 @@ export const palette = {
     "800": "#105287",
     "900": "#0E4776",
   },
-  "kale": { // previously water
+  kale: {
+    // previously water
     "100": "#D4FFF7",
     "200": "#ABEBDF",
     "300": "#6FD1BE",
@@ -83,67 +87,69 @@ export const palette = {
     "700": "#206E6A",
     "800": "#0C4D5E",
   },
-  "pink": {
+  pink: {
     "600": "#d81e57",
     "700": "#c31a53",
     "800": "#ae1550",
     "900": "#8A0C49",
   },
-  "crimson": {
+  crimson: {
     "200": "#e69b96",
     "300": "#d9776f",
     "400": "#e05b4b",
     "500": "#e34f32",
   },
-  "fuschia": {
+  fuschia: {
     "400": "#d653c2",
     "600": "#a81897",
-    "M400": "#cf62a8",
-    "M600": "#a8458c",
+    M400: "#cf62a8",
+    M600: "#a8458c",
   },
-  "lemon": {
+  lemon: {
     "400": "#ddda49",
     "500": "#F4D977",
     "600": "#d7c21f",
     "700": "#D6AD13",
   },
-  "teal": { // previously darkPine
+  teal: {
+    // previously darkPine
     "400": "#28adaa",
     "500": "#029e99",
     "600": "#02908b",
     "700": "#02807a",
   },
-  "royal": {
+  royal: {
     "600": "#3c3695",
     "700": "#342c8a",
     "800": "#2d227e",
     "900": "#1F0F69",
   },
-  "purple": {
+  purple: {
     "200": "#b5a5fe",
     "300": "#957fff",
     "400": "#7761fe",
     "500": "#5847f6",
   },
-  "lime": {
-    "400": '#43b324',
-    "600": '#2e8200',
-    "M400": '#519e2d',
-    "M600": '#47782c'
+  lime: {
+    "400": "#43b324",
+    "600": "#2e8200",
+    M400: "#519e2d",
+    M600: "#47782c",
   },
-  "mint": {
-    "400": '#00a656',
-    "600": '#058541',
-    "M400": '#299c66',
-    "M600": '#2e8057'
+  mint: {
+    "400": "#00a656",
+    "500": "#00a656",
+    "600": "#058541",
+    M400: "#299c66",
+    M600: "#2e8057",
   },
-  "orange": {
+  orange: {
     "400": "#de701d",
     "600": "#bf5000",
-    "M400": "#d4772c",
-    "M600": "#b35827",
+    M400: "#d4772c",
+    M600: "#b35827",
   },
-  "talk": {
+  talk: {
     "0": "#FFFDF9",
     "50": "#FDF8E6",
     "100": "#FCF3D3",
@@ -155,5 +161,5 @@ export const palette = {
     "700": "#D1AF32",
     "800": "#B39527",
     "900": "#957B1D",
-  }
+  },
 };

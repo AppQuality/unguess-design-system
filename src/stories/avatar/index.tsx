@@ -8,18 +8,26 @@ import { AvatarArgs } from "./_types";
 const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
   text-transform: uppercase;
 
+  &:before {
+    box-shadow: none;
+  }
+  box-shadow: ${(props) =>
+    props.isSystem ? `0 0 0 2px ${getColor("mint", 400)}` : "none"};
+
+  figcaption {
+    box-shadow: 0 0 0 2px #fff;
+  }
   ${(props) =>
     props.avatarType &&
     props.avatarType !== "image" &&
     `background: ${props.backgroundColor || theme.gradients.dark};`}
-
   ${(props) =>
     props.avatarType &&
     props.avatarType === "system" &&
     `
       box-shadow: 0 0 0 2px ${getColor(theme.colors.primaryHue, 600)};
       background: ${props.backgroundColor || theme.palette.white};
-    `}
+    `};
 `;
 
 /**
