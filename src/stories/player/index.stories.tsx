@@ -134,6 +134,13 @@ Basic.args = {
   ...defaultArgs,
 };
 
+export const AudioPlayer = Template.bind({});
+AudioPlayer.args = {
+  ...defaultArgs,
+  playerType: "audio",
+  url: "https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3",
+};
+
 export const AutoPip = TemplateWithParagraphs.bind({});
 AutoPip.args = {
   ...defaultArgs,
@@ -151,6 +158,32 @@ Streaming.args = {
   url: "https://mediaconvert-test-output-bk.s3.eu-west-1.amazonaws.com/db00e97cfb85971e3fa71b7735142e07ab2d1ebf_1605195177.m3u8",
   start: 10,
   end: 20,
+};
+
+export const AudioPlayerWithBookmarks = TemplateWithCutter.bind({});
+AudioPlayerWithBookmarks.args = {
+  ...AudioPlayer.args,
+  url: "https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3",
+  playerType: "audio",
+  bookmarks: [
+    {
+      id: 1,
+      start: 5,
+      end: 10,
+      hue: theme.colors.successHue,
+      tooltipContent: <Tag> Bookmark 1</Tag>,
+    },
+    {
+      id: 2,
+      start: 15,
+      end: 20,
+      hue: theme.colors.dangerHue,
+      tooltipContent: <Tag> Bookmark 2</Tag>,
+    },
+  ],
+  handleBookmarkUpdate: (bookmark: IBookmark) => {
+    console.log("Bookmark updated", bookmark);
+  },
 };
 
 export const WithBookmarks = TemplateWithCutter.bind({});

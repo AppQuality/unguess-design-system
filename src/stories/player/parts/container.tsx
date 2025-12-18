@@ -6,11 +6,14 @@ import { VideoStyle } from "./video";
 
 export const Container = styled.div<WrapperProps>`
   position: relative;
-  ${({ showControls }) => !showControls ? `
+  ${({ showControls }) =>
+    !showControls
+      ? `
     display: flex;
     flex-direction: column;
     justify-content: center;
-  `: `
+  `
+      : `
     margin-bottom: 80px;
   `}
   height: 100%;
@@ -21,6 +24,17 @@ export const Container = styled.div<WrapperProps>`
 
   ${VideoStyle}
   ${({ isLoaded }) => !isLoaded && `pointer-events: none;`}
+
+  &.audio-player-mode {
+    height: 74px;
+
+    .player-container video {
+      visibility: hidden;
+
+      width: 0;
+      height: 0;
+    }
+  }
 
   &:hover {
     ${ControlsWrapper},
