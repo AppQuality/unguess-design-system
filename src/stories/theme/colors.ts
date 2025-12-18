@@ -12,7 +12,7 @@ export const colors: ThemeColors = {
     light: {
       ...DEFAULT_THEME.colors.variables.light,
       border: {
-        default: "neutralHue.300",
+        default: "neutralHue.200",
         emphasis: "neutralHue.600",
         subtle: "neutralHue.200",
         success: "successHue.300",
@@ -48,5 +48,3 @@ export const colors: ThemeColors = {
   chromeHue: "blue",
   accentHue: "kale",
 };
-
-console.log("colors", colors);

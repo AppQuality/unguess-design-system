@@ -9,7 +9,6 @@ import { components } from "./components";
 import { fontWeights } from "./fontWeights";
 import { gradients } from "./gradients";
 import { palette } from "./palette";
-import { boxShadow } from "./utils";
 
 const theme = {
   ...DEFAULT_THEME,
@@ -39,7 +38,10 @@ const theme = {
   components: components,
   shadows: {
     ...DEFAULT_THEME.shadows,
-    boxShadow: boxShadow,
+    boxShadow: () => `rgba(0, 58, 87, 0.15) 0px 20px 30px 0px`,
+    lg: () => `rgba(0, 58, 87, 0.15) 0px 20px 30px 0px`,
+    md: () => `rgba(0, 58, 87, 0.15) 0px 20px 30px 0px`,
+    sm: () => `rgba(0, 58, 87, 0.15) 0px 20px 30px 0px`,
   },
   levels: {
     back: -1,
@@ -48,5 +50,4 @@ const theme = {
     modal: 200,
   },
 };
-
 export { ThemeProvider, getColor, retrieveComponentStyles, theme };

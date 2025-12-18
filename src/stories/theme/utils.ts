@@ -31,15 +31,6 @@ export const hex2rgba = (hex: string, alpha = 1) => {
   return `rgba(${r},${g},${b},${alpha})`;
 };
 
-export const boxShadow = (theme: DefaultTheme) => {
-  const { space, shadows, palette } = theme;
-  const offsetY = `${space.base}px`;
-  const blurRadius = `${space.base * 2}px`;
-  const shadowColor = getColor(palette.grey, 800, unguessTheme, 0.15);
-
-  return shadows.lg(offsetY, blurRadius, shadowColor as string);
-};
-
 export const isMac = () => {
   const parser = new UAParser();
   const os = parser.getOS().name;
