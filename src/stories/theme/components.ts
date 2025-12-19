@@ -411,8 +411,20 @@ export const components = {
       },
     };
   },
-  "buttons.button": ({ $isPrimary, isAccent, isDisabled, ...props }: any) => {
+  "buttons.anchor": () => {
     return {
+      textDecoration: "none",
+    };
+  },
+  "buttons.button": ({
+    $isPrimary,
+    isAccent,
+    isDisabled,
+    $isLink,
+    ...props
+  }: any) => {
+    return {
+      textDecoration: "none",
       ...(isAccent && {
         backgroundColor: "#fff",
         color: getColor(colors.accentHue, 600),
