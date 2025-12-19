@@ -438,10 +438,6 @@ export const components = {
           },
         }),
       }),
-      "&:focus-visible": {
-        outlineColor: "inherit",
-        boxShadow: `none`,
-      },
     };
   },
 };
