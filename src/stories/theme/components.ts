@@ -412,9 +412,8 @@ export const components = {
     };
   },
   "buttons.button": ({ $isPrimary, isAccent, isDisabled, ...props }: any) => {
-    if (isDisabled) return;
-    if (isAccent) {
-      return {
+    return {
+      ...(isAccent && {
         backgroundColor: "#fff",
         color: getColor(colors.accentHue, 600),
         borderColor: getColor(colors.accentHue, 600),
@@ -426,7 +425,11 @@ export const components = {
             borderColor: getColor(colors.accentHue, 700),
           },
         }),
-      };
-    }
+      }),
+      "&:focus-visible": {
+        outlineColor: "inherit",
+        boxShadow: `none`,
+      },
+    };
   },
 };
