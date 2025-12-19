@@ -30,7 +30,7 @@ export const colors: ThemeColors = {
         onEmphasis: "palette.white",
         primary: "primaryHue.600",
         success: "successHue.600",
-        warning: "warningHue.600",
+        warning: "warningHue.700",
         danger: "dangerHue.600",
         successEmphasis: "successHue.900",
         warningEmphasis: "warningHue.900",
