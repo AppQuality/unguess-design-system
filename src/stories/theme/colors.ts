@@ -25,7 +25,7 @@ export const colors: ThemeColors = {
         disabled: "neutralHue.200",
       },
       foreground: {
-        default: "grey.700",
+        default: "grey.800",
         subtle: "neutralHue.600",
         onEmphasis: "palette.white",
         primary: "primaryHue.600",
