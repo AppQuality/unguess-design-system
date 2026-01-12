@@ -1,3 +1,23 @@
+# v4.0.56 (Mon Jan 12 2026)
+
+#### 🐛 Bug Fix
+
+- Update zendesk version [#568](https://github.com/AppQuality/unguess-design-system/pull/568) ([@d-beezee](https://github.com/d-beezee))
+- Update dependencies [#566](https://github.com/AppQuality/unguess-design-system/pull/566) ([@d-beezee](https://github.com/d-beezee))
+- Fix npm [#565](https://github.com/AppQuality/unguess-design-system/pull/565) ([@iDome89](https://github.com/iDome89) [@marcbon](https://github.com/marcbon))
+- fix: Add permissions section to release workflow for OIDC support [#563](https://github.com/AppQuality/unguess-design-system/pull/563) ([@iDome89](https://github.com/iDome89))
+- Fix global alert style [#564](https://github.com/AppQuality/unguess-design-system/pull/564) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- FIX GlobalAlert styles [#562](https://github.com/AppQuality/unguess-design-system/pull/562) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 4
+
+- [@d-beezee](https://github.com/d-beezee)
+- [@iDome89](https://github.com/iDome89)
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.0.55 (Wed Nov 26 2025)
 
 #### 🐛 Bug Fix
