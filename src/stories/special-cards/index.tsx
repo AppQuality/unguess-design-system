@@ -22,7 +22,7 @@ const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
     !isFloating &&
     `
       &:hover {
-         box-shadow: ${theme.shadows.boxShadow()};
+         box-shadow: ${theme.shadows.card()};
       }`}
 
   ${({ isDisabled }) =>

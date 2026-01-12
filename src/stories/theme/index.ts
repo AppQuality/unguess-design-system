@@ -40,6 +40,7 @@ const theme = {
     ...DEFAULT_THEME.shadows,
     boxShadow: () => `rgba(0, 58, 87, 0.15) 0px 20px 30px 0px`,
     lg: () => `rgba(0, 58, 87, 0.15) 0px 20px 30px 0px`,
+    card: () => ` ${palette.grey[800]}26 0px 4px 8px 0px`,
   },
   levels: {
     back: -1,
