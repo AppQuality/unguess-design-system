@@ -47,7 +47,7 @@ export const CustomMention = Mention.extend({
     let outputText = "unkown";
 
     if (user) {
-      outputText = `${this.options.suggestion.char}${user.name}`;
+      outputText = `${this.options.suggestion.char || "@"}${user.name}`;
     }
 
     return [
@@ -55,7 +55,7 @@ export const CustomMention = Mention.extend({
       mergeAttributes(
         { "data-type": this.name },
         this.options.HTMLAttributes,
-        HTMLAttributes,
+        HTMLAttributes
       ),
       outputText,
     ];
