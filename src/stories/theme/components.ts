@@ -429,6 +429,10 @@ export const components = {
         backgroundColor: "#fff",
         color: getColor(colors.accentHue, 600),
         borderColor: getColor(colors.accentHue, 600),
+        "&:hover": {
+          color: getColor(colors.accentHue, 800),
+          borderColor: getColor(colors.accentHue, 800),
+        },
         ...($isPrimary && {
           backgroundColor: getColor(colors.accentHue, 600),
           color: "#fff",
