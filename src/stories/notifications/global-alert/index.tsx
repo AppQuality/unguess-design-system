@@ -39,7 +39,7 @@ const StyledGlobalAlert = styled(ZendeskGlobalAlert)<
     };
     const backgroundColorShade = {
       success: 700,
-      warning: 100,
+      warning: 400,
       error: 600,
       info: 100,
       accent: 100,
@@ -64,6 +64,15 @@ const StyledGlobalAlert = styled(ZendeskGlobalAlert)<
       theme,
     })};`;
   }}
+
+  ${({ overrideType }) =>
+    overrideType &&
+    ["primary", "accent"].includes(overrideType) &&
+    `
+  [data-garden-id="notifications.global_alert.icon"]  {
+  display: none;
+}
+  `}
 
   .global-alert-icon {
     flex-shrink: 0;
