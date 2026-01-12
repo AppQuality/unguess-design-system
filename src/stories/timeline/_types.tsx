@@ -1,8 +1,8 @@
 import {
-  ITimelineProps,
   ITimelineItemProps,
+  ITimelineProps,
 } from "@zendeskgarden/react-accordions";
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 
 export interface TimelineArgs extends ITimelineProps {
   /** Applies alternate styling */
@@ -13,7 +13,7 @@ export interface TimelineArgs extends ITimelineProps {
 
 export interface TimelineItemArgs extends ITimelineItemProps {
   /** Replaces the dot with an icon */
-  icon?: ReactNode;
+  icon?: ReactElement;
   /** Provides surface color for an icon placed on a non-white background */
   surfaceColor?: string;
 }

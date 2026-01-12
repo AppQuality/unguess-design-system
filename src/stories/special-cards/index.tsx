@@ -1,13 +1,13 @@
 import { Well as ZendeskWell } from "@zendeskgarden/react-notifications";
-import { SpecialCardProps } from "./_types";
+import { componentStyles } from "@zendeskgarden/react-theming";
 import styled from "styled-components";
+import { CARD_COMPONENT_ID } from "../cards";
+import { SpecialCardProps } from "./_types";
+import { CardBody } from "./styled/Body";
+import { CardFooter } from "./styled/footer";
+import { CardHeader } from "./styled/header";
 import { CardMeta } from "./styled/meta";
 import { CardThumbnail } from "./styled/thumbnail";
-import { CardHeader } from "./styled/header";
-import { CardFooter } from "./styled/footer";
-import { CardBody } from "./styled/Body";
-import { CARD_COMPONENT_ID } from "../cards";
-import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 
 const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
@@ -22,7 +22,7 @@ const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
     !isFloating &&
     `
       &:hover {
-         box-shadow: ${theme.shadows.boxShadow(theme)};
+         box-shadow: ${theme.shadows.card()};
       }`}
 
   ${({ isDisabled }) =>
@@ -31,7 +31,8 @@ const UgContentCard = styled(ZendeskWell)<SpecialCardProps>`
     pointer-events: none;
     opacity: 0.7;
     `}
-    ${(props) => retrieveComponentStyles(CARD_COMPONENT_ID, props)};
+    ${(props) =>
+    componentStyles({ theme: props.theme, componentId: CARD_COMPONENT_ID })};
 `;
 
 /**

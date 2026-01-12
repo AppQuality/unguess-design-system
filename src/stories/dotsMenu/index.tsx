@@ -1,4 +1,4 @@
-import { Field, Item, Menu } from "@zendeskgarden/react-dropdowns.next";
+import { Field, Item, Menu } from "@zendeskgarden/react-dropdowns";
 import styled from "styled-components";
 import { ReactComponent as DotsIcon } from "../../assets/icons/dots-icon.svg";
 import { IDotsMenu } from "./_types";

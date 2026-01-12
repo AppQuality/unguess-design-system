@@ -12,7 +12,20 @@ export interface MenuArgs extends IMenuProps {
   /**
    * Adjusts the placement of the menu
    */
-  placement?: 'auto' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'end' | 'end-top' | 'end-bottom' | 'start' | 'start-top' | 'start-bottom';
+  placement?:
+    | "auto"
+    | "top"
+    | "top-start"
+    | "top-end"
+    | "bottom"
+    | "bottom-start"
+    | "bottom-end"
+    | "end"
+    | "end-top"
+    | "end-bottom"
+    | "start"
+    | "start-top"
+    | "start-bottom";
   /**
    * Animates the menu
    */
@@ -33,17 +46,16 @@ export interface MenuArgs extends IMenuProps {
 
 export interface PreviousItemArgs extends IItemProps {
   /** Sets the value that is returned upon selection */
-  value?: any;
+  value: any;
   /** Indicates that the element is not interactive */
   disabled?: boolean;
   /** Applies danger styling */
   isDanger?: boolean;
 }
 
-
 export interface NextItemArgs extends IItemProps {
   /** Sets the value that is returned upon selection */
-  value?: any;
+  value: any;
   /** Indicates that the element is not interactive */
   disabled?: boolean;
   /** Applies danger styling */

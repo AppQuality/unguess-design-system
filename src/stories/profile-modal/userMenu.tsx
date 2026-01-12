@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { UserMenuArgs } from "./_types";
-import { ReactComponent as ExitIcon } from "../../assets/icons/exit.svg";
-import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
-import { ReactComponent as LockIcon } from "../../assets/icons/lock-locked-fill.svg";
-import { ReactComponent as UserIcon } from "../../assets/icons/user-fill.svg";
-import { MenuItem, MenuItemBody } from "./components/menuItem";
 import styled from "styled-components";
+import { ReactComponent as ExitIcon } from "../../assets/icons/exit.svg";
+import { ReactComponent as LockIcon } from "../../assets/icons/lock-locked-fill.svg";
+import { ReactComponent as ThumbsUp } from "../../assets/icons/thumbs-up.svg";
+import { ReactComponent as UserIcon } from "../../assets/icons/user-fill.svg";
+import { theme } from "../theme";
+import { MD } from "../typography/typescale";
+import { UserMenuArgs } from "./_types";
+import { MenuItem, MenuItemBody } from "./components/menuItem";
+import { Separator } from "./components/Separator";
+import { UserContainer } from "./components/UserContainer";
 import { HelpItem } from "./items/helpMenuItem";
 import { LanguageItem } from "./items/languageMenuItem";
-import { theme } from "../theme";
-import { Separator } from "../dropdowns/menu";
-import { MD } from "../typography/typescale";
-import { UserContainer } from "./components/UserContainer";
 
 const StyledList = styled.ul`
   padding: 0;
@@ -35,6 +35,7 @@ export const UserMenu = (props: UserMenuArgs) => {
         {item === "" && props.onFeedbackClick && <Separator />}
         {props.onFeedbackClick && (
           <MenuItem
+            value={"feedback"}
             selectedItem={item}
             icon={<ThumbsUp />}
             setActive={() =>
@@ -54,6 +55,7 @@ export const UserMenu = (props: UserMenuArgs) => {
         {item === "" && <Separator />}
 
         <MenuItem
+          value={"profile"}
           selectedItem={item}
           icon={<UserIcon color={theme.palette.blue[600]} />}
           setActive={() => props?.profile?.onClick()}
@@ -88,6 +90,7 @@ export const UserMenu = (props: UserMenuArgs) => {
           />
         }
         <MenuItem
+          value={"privacy"}
           selectedItem={item}
           icon={<LockIcon color={theme.palette.blue[600]} />}
           setActive={() => {
@@ -106,6 +109,7 @@ export const UserMenu = (props: UserMenuArgs) => {
         </MenuItem>
 
         <MenuItem
+          value={"logout"}
           selectedItem={item}
           icon={<ExitIcon color={theme.palette.red[600]} />}
           setActive={() => props.onLogout()}

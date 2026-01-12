@@ -1,6 +1,4 @@
-import {
-  OptionValue,
-} from "@zendeskgarden/react-dropdowns.next";
+import { OptionValue } from "@zendeskgarden/react-dropdowns";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
 import { Combobox, ComboboxProps } from "../../combobox";
@@ -62,7 +60,6 @@ const Autocomplete = ({
   const debouncedInputValue = useDebounce(inputValue, 300);
 
   useEffect(() => setOption(options), [options]);
-
 
   // update options isHidden property based on inputValue
   const matchingOptions = useMemo(
@@ -151,28 +148,31 @@ const Autocomplete = ({
           No results found
         </SelectOption>
       )}
-      {isCreatable 
-        && debouncedInputValue 
-        && !matchingOptions.find(
-          (item) => item.label?.toLowerCase() === debouncedInputValue.toLowerCase()
-        )
-        && (
-        <SelectOption
-          id="create-new-option"
-          label={debouncedInputValue}
-          type="add"
-          value={debouncedInputValue}
-          title={debouncedInputValue}
-          onClickCapture={async (e) => {
-            if (typeof onCreateNewOption === "function") {
-              const newOption = await onCreateNewOption(e.currentTarget.title);
-              if (newOption) setOption((pre) => [...pre, newOption]);
-            }
-          }}
-        >
-          {`Add "${debouncedInputValue}"`}
-        </SelectOption>
-      )}
+      {isCreatable &&
+        debouncedInputValue &&
+        !matchingOptions.find(
+          (item) =>
+            "label" in item &&
+            item.label?.toLowerCase() === debouncedInputValue.toLowerCase()
+        ) && (
+          <SelectOption
+            id="create-new-option"
+            label={debouncedInputValue}
+            type="add"
+            value={debouncedInputValue}
+            title={debouncedInputValue}
+            onClickCapture={async (e) => {
+              if (typeof onCreateNewOption === "function") {
+                const newOption = await onCreateNewOption(
+                  e.currentTarget.title
+                );
+                if (newOption) setOption((pre) => [...pre, newOption]);
+              }
+            }}
+          >
+            {`Add "${debouncedInputValue}"`}
+          </SelectOption>
+        )}
     </Combobox>
   );
 };

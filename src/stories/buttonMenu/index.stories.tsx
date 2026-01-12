@@ -7,7 +7,7 @@ import { IconButton } from "../buttons/icon-button";
 
 type Args = React.ComponentProps<typeof ButtonMenu>;
 
-const meta = {
+const meta: Meta<Args> = {
   title: "Molecules/ButtonMenu",
   component: ButtonMenu,
   args: {
@@ -25,10 +25,10 @@ const meta = {
       </ButtonMenu>
     );
   },
-} satisfies Meta<Args>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ButtonMenu>;
 
 export const Default: Story = {
   args: {

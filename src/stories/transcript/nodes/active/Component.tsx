@@ -14,6 +14,7 @@ export const Component = ({
   return (
     <NodeViewWrapper as="div" style={{ display: "inline" }}>
       <ActiveWrapper>
+        {/* @ts-ignore */}
         <NodeViewContent as="span" className="content is-editable" />
       </ActiveWrapper>
     </NodeViewWrapper>

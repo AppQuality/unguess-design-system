@@ -1,9 +1,9 @@
-import { Col as ZendeskCol } from "@zendeskgarden/react-grid";
-import { ColArgs } from "./_types";
+import { Grid as ZendeskGrid } from "@zendeskgarden/react-grid";
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { ColArgs } from "./_types";
 
-const StyledCol = styled(ZendeskCol)`
+const StyledCol = styled(ZendeskGrid.Col)`
   margin-bottom: ${theme.space.lg};
 
   @media screen and (max-width: ${theme.breakpoints.sm}) {

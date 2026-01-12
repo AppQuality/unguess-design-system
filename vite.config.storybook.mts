@@ -33,7 +33,6 @@ export default defineConfig(({ mode }) => {
       libInjectCss(),
       dts({
         include: ["src"],
-        ...(mode === "development" ? {} : { rollupTypes: true }),
       }),
     ],
   };

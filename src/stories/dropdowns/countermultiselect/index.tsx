@@ -1,4 +1,4 @@
-import { Combobox, Field, Label } from "@zendeskgarden/react-dropdowns.next";
+import { Combobox, Field, Label } from "@zendeskgarden/react-dropdowns";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { SelectOption } from "../../selectOption";
@@ -21,6 +21,14 @@ const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean }>`
         color: white;
      }
     }
+
+
+    [data-garden-container-id="containers.combobox"]:hover ,
+    [data-garden-container-id="containers.combobox"]:focus-within {
+     svg[data-garden-id="dropdowns.combobox.input_icon"] {
+        color: white;
+     }
+    }
  `}
 `;
 
@@ -32,7 +40,7 @@ const CounterMultiselect = ({
   isCompact,
 }: CounterMultiselectArgs) => {
   const [selectedItems, setSelectedItems] = useState(
-    options.filter((o) => o.selected),
+    options.filter((o) => o.selected)
   );
   const [inputValue, setInputValue] = useState("");
   const [matchingOptions, setMatchingOptions] = useState(options);
@@ -44,8 +52,8 @@ const CounterMultiselect = ({
           option.label
             .trim()
             .toLowerCase()
-            .indexOf(inputValue.trim().toLowerCase()) !== -1,
-      ),
+            .indexOf(inputValue.trim().toLowerCase()) !== -1
+      )
     );
   }, [inputValue, options]);
 
@@ -70,7 +78,7 @@ const CounterMultiselect = ({
               ? i18n?.counterText
                 ? i18n.counterText(selectedItems.length)
                 : `Items (${selectedItems.length})`
-              : (i18n?.noItems ?? "No items");
+              : i18n?.noItems ?? "No items";
           }}
           isMultiselectable
           onChange={({ type, selectionValue, inputValue }) => {
@@ -81,7 +89,7 @@ const CounterMultiselect = ({
               onChange
             ) {
               const newOptions = options.filter((o) =>
-                selectionValue.includes(o.itemId.toString()),
+                selectionValue.includes(o.itemId.toString())
               );
               onChange(newOptions);
               setSelectedItems(newOptions);
@@ -102,11 +110,11 @@ const CounterMultiselect = ({
               }}
               isHidden={
                 !matchingOptions.some(
-                  (matchingOption) => matchingOption.itemId === option.itemId,
+                  (matchingOption) => matchingOption.itemId === option.itemId
                 )
               }
               isSelected={selectedItems.some(
-                (selectedItem) => selectedItem.itemId === option.itemId,
+                (selectedItem) => selectedItem.itemId === option.itemId
               )}
             />
           ))}

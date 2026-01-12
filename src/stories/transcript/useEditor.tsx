@@ -1,4 +1,4 @@
-import SearchAndReplace from "@sereneinserenade/tiptap-search-and-replace";
+import SearchAndReplace from "@memfoldai/tiptap-search-and-replace";
 import Document from "@tiptap/extension-document";
 import Text from "@tiptap/extension-text";
 import { Extension, useEditor as useTiptapEditor } from "@tiptap/react";

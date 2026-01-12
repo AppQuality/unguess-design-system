@@ -1,25 +1,33 @@
 import { Avatar as ZendeskAvatar } from "@zendeskgarden/react-avatars";
-import { theme } from "../theme";
 import styled from "styled-components";
-import { AvatarArgs } from "./_types";
+import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import InternalAvatar from "./InternalAvatar";
+import { AvatarArgs } from "./_types";
 
 const UgAvatar = styled(ZendeskAvatar)<AvatarArgs>`
   text-transform: uppercase;
 
+  &:before {
+    box-shadow: none;
+  }
+  box-shadow: ${(props) =>
+    props.isSystem ? `0 0 0 2px ${getColor("mint", 400)}` : "none"};
+
+  figcaption {
+    box-shadow: 0 0 0 2px #fff;
+  }
   ${(props) =>
     props.avatarType &&
     props.avatarType !== "image" &&
     `background: ${props.backgroundColor || theme.gradients.dark};`}
-
   ${(props) =>
     props.avatarType &&
     props.avatarType === "system" &&
     `
       box-shadow: 0 0 0 2px ${getColor(theme.colors.primaryHue, 600)};
       background: ${props.backgroundColor || theme.palette.white};
-    `}
+    `};
 `;
 
 /**
@@ -41,6 +49,7 @@ const Avatar = ({ isSystem, badge, ...props }: AvatarArgs) => {
   return (
     <UgAvatar
       {...props}
+      backgroundColor={undefined}
       badge={fixedBadge}
       isSystem={props.avatarType === "system" || isSystem}
       children={wrapChildren(props.avatarType || "text")}

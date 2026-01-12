@@ -16,7 +16,7 @@ import { ReactComponent as UserGroupIcon } from "../../assets/icons/user-group-s
 interface TimelineItemArgs {
   title: string;
   description?: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 }
 
 interface TimelineStoryProps extends TimelineArgs {

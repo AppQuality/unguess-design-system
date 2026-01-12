@@ -8,7 +8,7 @@ export interface ProfileModalArgs extends ModalArgs {
 
 export interface MenuItemProps extends NextItemArgs {
   selectedItem?: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
   content?: any;
   setActive: (item: string) => void;
 }

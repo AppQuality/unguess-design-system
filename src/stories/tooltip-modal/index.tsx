@@ -1,9 +1,9 @@
-import { TooltipModalArgs } from "./_types";
-import { TooltipModal as ZendeskTooltipModal } from "@zendeskgarden/react-modals";
+import { TooltipDialog as ZendeskTooltipModal } from "@zendeskgarden/react-modals";
 import styled from "styled-components";
+import { TooltipModalArgs } from "./_types";
 
 const StyledTooltipModal = styled(ZendeskTooltipModal)`
-   border-radius: ${({ theme }) => theme.borderRadii.md};
+  border-radius: ${({ theme }) => theme.borderRadii.md};
 `;
 
 /**
@@ -14,8 +14,9 @@ const StyledTooltipModal = styled(ZendeskTooltipModal)`
     - To provide a focus loop when actions need to be inside a tooltip
  */
 
-
-const TooltipModal = (props: TooltipModalArgs) => <StyledTooltipModal {...props} />;
+const TooltipModal = (props: TooltipModalArgs) => (
+  <StyledTooltipModal {...props} />
+);
 
 TooltipModal.Title = StyledTooltipModal.Title;
 TooltipModal.Body = StyledTooltipModal.Body;

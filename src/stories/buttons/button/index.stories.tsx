@@ -9,7 +9,7 @@ type Args = React.ComponentProps<typeof Button> & {
   withEndIcon?: boolean;
 };
 
-const meta = {
+const meta: Meta<Args> = {
   title: "Atoms/Buttons/Button",
   component: Button,
 
@@ -35,7 +35,7 @@ const meta = {
       </Button>
     );
   },
-} satisfies Meta<Args>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

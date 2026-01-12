@@ -1,4 +1,4 @@
-import { ITooltipModalProps } from "@zendeskgarden/react-modals";
+import { ITooltipDialogProps } from "@zendeskgarden/react-modals";
 type Placement =
   | "auto"
   | "top"
@@ -14,7 +14,7 @@ type Placement =
   | "start-top"
   | "start-bottom";
 
-export interface TooltipModalArgs extends ITooltipModalProps {
+export interface TooltipModalArgs extends ITooltipDialogProps {
   /**
    * Positions the modal relative to the provided `HTMLElement`
    */

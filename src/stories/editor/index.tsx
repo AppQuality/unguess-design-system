@@ -1,29 +1,29 @@
 import {
-  useEditor,
-  EditorContent,
-  Editor as TipTapEditor,
   Content,
+  Editor as TipTapEditor,
+  EditorContent,
+  useEditor,
 } from "@tiptap/react";
 import styled from "styled-components";
 
-import Typography from "@tiptap/extension-typography";
-import Link from "@tiptap/extension-link";
-import StarterKit from "@tiptap/starter-kit";
-import Placeholder from "@tiptap/extension-placeholder";
 import CharacterCount from "@tiptap/extension-character-count";
+import Link from "@tiptap/extension-link";
+import Placeholder from "@tiptap/extension-placeholder";
+import Typography from "@tiptap/extension-typography";
+import StarterKit from "@tiptap/starter-kit";
 
-import { EditorArgs } from "./_types";
+import Dropcursor from "@tiptap/extension-dropcursor";
+import { FauxInput } from "@zendeskgarden/react-forms";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
   useState,
 } from "react";
-import { FloatingMenu } from "./floatingMenu";
-import { EditorHeader } from "./editorHeader";
-import { EditorFooter } from "./editorFooter";
-import { FauxInput } from "@zendeskgarden/react-forms";
 import { editorStyle } from "../shared/editorStyle";
-import Dropcursor from "@tiptap/extension-dropcursor";
+import { EditorFooter } from "./editorFooter";
+import { EditorHeader } from "./editorHeader";
+import { FloatingMenu } from "./floatingMenu";
+import { EditorArgs } from "./_types";
 
 const EditorContainer = styled(FauxInput)<EditorArgs>`
   ${({ editable }) =>
@@ -137,7 +137,7 @@ const Editor = ({
         <>
           <EditorHeader title={headerTitle} validation={props.validation} />
           {hasInlineMenu && (
-            <FloatingMenu editor={ed} tippyOptions={{ ...bubbleOptions }} />
+            <FloatingMenu editor={ed} options={{ ...bubbleOptions }} />
           )}
         </>
       )}

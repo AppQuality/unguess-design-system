@@ -1,4 +1,4 @@
-import { Item, Menu } from "@zendeskgarden/react-dropdowns.next";
+import { Item, Menu } from "@zendeskgarden/react-dropdowns";
 import { ButtonMenuProps } from "./_types";
 
 const ButtonMenu = ({
