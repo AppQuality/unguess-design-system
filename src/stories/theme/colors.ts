@@ -40,6 +40,7 @@ export const colors: ThemeColors = {
       background: {
         ...DEFAULT_THEME.colors.variables.light.background,
         disabled: "neutralHue.100",
+        emphasis: "neutralHue.500",
       },
     },
   },
