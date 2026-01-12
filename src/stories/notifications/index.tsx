@@ -1,15 +1,15 @@
+import { Anchor } from "@zendeskgarden/react-buttons";
 import {
   Notification as ZendeskNotification,
   ToastProvider as ZendeskToastProvider,
   useToast as ZendeskUseToast,
 } from "@zendeskgarden/react-notifications";
-import { NotificationArgs, ToastProviderArgs } from "./_types";
-import styled from "styled-components";
-import { Anchor } from "@zendeskgarden/react-buttons";
-import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
-import { Title } from "../title";
-import { Close } from "../close";
+import { componentStyles } from "@zendeskgarden/react-theming";
 import { PropsWithChildren } from "react";
+import styled from "styled-components";
+import { Close } from "../close";
+import { Title } from "../title";
+import { NotificationArgs, ToastProviderArgs } from "./_types";
 
 const NOTIFICATION_COMPONENT_ID = "notifications.notification";
 const CLOSE_COMPONENT_ID = "notifications.notification.close";
@@ -21,7 +21,11 @@ const UgClose = styled(Close).attrs<{
 }>((props) => ({
   "data-custom-id": props["data-custom-id"] ?? CLOSE_ICON_COMPONENT_ID,
 }))`
-  ${(props) => retrieveComponentStyles(CLOSE_ICON_COMPONENT_ID, props)};
+  ${(props) =>
+    componentStyles({
+      theme: props.theme,
+      componentId: CLOSE_ICON_COMPONENT_ID,
+    })};
 `;
 
 const UgAnchor = styled(Anchor).attrs<{
@@ -32,18 +36,20 @@ const UgAnchor = styled(Anchor).attrs<{
   type: NotificationArgs["type"];
   isPrimary?: boolean;
 }>`
-  ${(props) => retrieveComponentStyles(CLOSE_COMPONENT_ID, props)};
+  ${(props) =>
+    componentStyles({ theme: props.theme, componentId: CLOSE_COMPONENT_ID })};
 `;
 
 const UgTitle = styled(Title).attrs<{
-  "data-custom-id"?: string
+  "data-custom-id"?: string;
 }>((props) => ({
   "data-custom-id": props["data-custom-id"] ?? TITLE_COMPONENT_ID,
 }))<{
   type: NotificationArgs["type"];
   isPrimary?: boolean;
 }>`
-  ${(props) => retrieveComponentStyles(TITLE_COMPONENT_ID, props)};
+  ${(props) =>
+    componentStyles({ theme: props.theme, componentId: TITLE_COMPONENT_ID })};
 `;
 
 const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
@@ -58,7 +64,11 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
     margin-left: ${({ theme }) => theme.space.md};
   }
 
-  ${(props) => retrieveComponentStyles(NOTIFICATION_COMPONENT_ID, props)};
+  ${(props) =>
+    componentStyles({
+      theme: props.theme,
+      componentId: NOTIFICATION_COMPONENT_ID,
+    })};
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
@@ -71,7 +81,9 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
       display: none;
     }
 
-    ${({ closeText, theme }) => !closeText && `
+    ${({ closeText, theme }) =>
+      !closeText &&
+      `
       a[data-custom-id="notifications.notification.close"] {
         margin: 0;
         position: absolute;
