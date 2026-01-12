@@ -21,6 +21,14 @@ const StyledComboBox = styled(Combobox)<{ isPrimary?: boolean }>`
         color: white;
      }
     }
+
+
+    [data-garden-container-id="containers.combobox"]:hover ,
+    [data-garden-container-id="containers.combobox"]:focus-within {
+     svg[data-garden-id="dropdowns.combobox.input_icon"] {
+        color: white;
+     }
+    }
  `}
 `;
 
