@@ -4,7 +4,7 @@ import { Avatar } from "../../avatar";
 import { IconButton } from "../../buttons/icon-button";
 import { theme } from "../../theme";
 import { Header } from "../header";
-import { HeaderItem, HeaderItemIcon } from "../header/header-item";
+import { HeaderItem } from "../header/header-item";
 import { AppHeaderArgs } from "./_types";
 import { HeaderSkeleton } from "./skeleton";
 
@@ -37,19 +37,17 @@ const AppHeader = ({
     >
       {args.hasChangelog && args.changelogItem && (
         <HeaderItem style={{ marginRight: "-" + theme.space.xs }}>
-          <HeaderItemIcon>{args.changelogItem}</HeaderItemIcon>
+          {args.changelogItem}
         </HeaderItem>
       )}
 
       <HeaderItem isRound onClick={args.onProfileModalToggle}>
-        <HeaderItemIcon>
-          <>
-            <Avatar {...avatar} />
-            <ChevronButton size="small" isRotated={args.isProfileModalOpen}>
-              <ChevronIcon />
-            </ChevronButton>
-          </>
-        </HeaderItemIcon>
+        <>
+          <Avatar {...avatar} />
+          <ChevronButton size="small" isRotated={args.isProfileModalOpen}>
+            <ChevronIcon />
+          </ChevronButton>
+        </>
       </HeaderItem>
     </Header>
   );
