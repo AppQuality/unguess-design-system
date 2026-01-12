@@ -1,16 +1,16 @@
+import {
+  Body as ZendeskBody,
+  Caption as ZendeskCaption,
+  Cell as ZendeskCell,
+  Head as ZendeskHead,
+  HeaderCell as ZendeskHeaderCell,
+  HeaderRow as ZendeskHeaderRow,
+  Row as ZendeskRow,
+  SortableCell as ZendeskSortableCell,
+  Table as ZendeskTable,
+} from "@zendeskgarden/react-tables";
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
-import {
-  Table as ZendeskTable,
-  Head as ZendeskHead,
-  HeaderRow as ZendeskHeaderRow,
-  HeaderCell as ZendeskHeaderCell,
-  Body as ZendeskBody,
-  Row as ZendeskRow,
-  Cell as ZendeskCell,
-  Caption as ZendeskCaption,
-  SortableCell as ZendeskSortableCell,
-} from "@zendeskgarden/react-tables";
 
 import {
   CellArgs,
@@ -24,6 +24,7 @@ const UgTable = styled(ZendeskTable)`
   border: 1px solid ${({ theme }) => theme.palette.grey[300]};
   border-collapse: separate !important;
   border-radius: ${({ theme }) => theme.borderRadii.lg};
+  overflow: hidden;
 `;
 
 const UgHeaderRow = styled(ZendeskHeaderRow)`
@@ -80,13 +81,13 @@ const SortableCell = (props: SortableCellArgs) => (
 );
 
 export {
-  Table,
-  Head,
-  HeaderRow,
-  HeaderCell,
   Body,
-  Row,
-  Cell,
   Caption,
-  SortableCell
+  Cell,
+  Head,
+  HeaderCell,
+  HeaderRow,
+  Row,
+  SortableCell,
+  Table,
 };
