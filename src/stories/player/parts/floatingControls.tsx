@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { WrapperProps } from "../_types";
 import { IconButton } from "../../buttons/icon-button";
+import { WrapperProps } from "../_types";
 import { ReactComponent as PlayIconComponent } from "../assets/play-icon.svg";
 
 export const FloatingContainer = styled.div<WrapperProps>`
@@ -11,7 +11,8 @@ export const FloatingContainer = styled.div<WrapperProps>`
   right: 0;
   z-index: 1;
   ${({ isPlaying }) => isPlaying && "display: none;"}
-  ${({ showControls }) => showControls ? "height: 100%" : "height: calc(100% - 80px)"};
+  ${({ showControls }) =>
+    showControls ? "height: 100%" : "height: calc(100% - 80px)"};
 `;
 
 const PlayIcon = styled(PlayIconComponent)``;
@@ -22,8 +23,7 @@ const BigButton = styled(IconButton)`
   width: 80px;
   height: 80px;
 
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
-  
+  box-shadow: ${({ theme }) => theme.shadows.boxShadow()};
 
   ${PlayIcon} {
     width: 60%;
@@ -46,7 +46,11 @@ export const FloatingControls = (props: {
   const { isPlaying, showControls, onClick } = props;
 
   return (
-    <FloatingContainer isPlaying={isPlaying} showControls={showControls} onClick={onClick}>
+    <FloatingContainer
+      isPlaying={isPlaying}
+      showControls={showControls}
+      onClick={onClick}
+    >
       <ButtonsContainer>
         {!isPlaying && (
           <BigButton isPrimary size={"large"}>

@@ -2,7 +2,6 @@ import { Tooltip as ZendeskTooltip } from "@zendeskgarden/react-tooltips";
 import { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { theme as globalTheme } from "../theme";
-import { getColor } from "../theme/utils";
 import { TooltipArgs } from "./_types";
 
 /**
@@ -24,12 +23,7 @@ const TooltipComponent = (props: TooltipArgs) => {
 };
 
 const StyledTooltip = styled(TooltipComponent)`
-  box-shadow: ${({ theme }) =>
-    theme.shadows.lg(
-      `${theme.space.base * 3}px`,
-      `${theme.space.base * 5}px`,
-      getColor("neutralHue", 600, theme, 0.15)!,
-    )};
+  box-shadow: ${({ theme }) => theme.shadows.lg()};
 
   ${({ maxWidth }) =>
     maxWidth &&
