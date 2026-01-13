@@ -95,7 +95,6 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             />
           )
         )}
-
         <Video.Player className="player-container" />
         <ProgressContextProvider>
           <Controls
