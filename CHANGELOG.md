@@ -1,3 +1,15 @@
+# v4.0.57 (Tue Jan 13 2026)
+
+#### 🐛 Bug Fix
+
+- fix: Refactor box-shadow usage across components for consistency and … [#569](https://github.com/AppQuality/unguess-design-system/pull/569) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.56 (Mon Jan 12 2026)
 
 #### 🐛 Bug Fix
