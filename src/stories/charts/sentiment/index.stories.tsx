@@ -1,15 +1,15 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { SentimentChart } from ".";
-import { SentimentChartProps } from "./_types";
-import { data } from "./_data";
-import { theme } from "../../theme";
 import styled from "styled-components";
+import { SentimentChart } from ".";
 import { ContainerCard } from "../../cards";
-import { LG, MD } from "../../typography/typescale";
+import { Col } from "../../grid/col";
 import { Grid } from "../../grid/grid";
 import { Row } from "../../grid/row";
-import { Col } from "../../grid/col";
+import { theme } from "../../theme";
 import { Span } from "../../typography/span";
+import { LG, MD } from "../../typography/typescale";
+import { data } from "./_data";
+import { SentimentChartProps } from "./_types";
 
 const Label = styled.p`
   color: ${({ theme }) => theme.palette.blue[600]};
@@ -32,7 +32,7 @@ const Tooltip = styled.div`
   border: 1px solid ${({ theme }) => theme.palette.grey[300]};
   border-radius: ${({ theme }) => theme.borderRadii.md};
   padding: ${({ theme }) => theme.space.sm};
-  box-shadow: ${theme.shadows.boxShadow(theme)};
+  box-shadow: ${theme.shadows.boxShadow()};
   max-width: 270px;
   white-space: normal;
 `;
@@ -69,7 +69,10 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
       <br />
       <Grid>
         <Row>
-          <Col xs="1" style={{ display: "flex", alignItems: "center", margin: 0 }}>
+          <Col
+            xs="1"
+            style={{ display: "flex", alignItems: "center", margin: 0 }}
+          >
             <VerticalLabel>Vertical Label</VerticalLabel>
           </Col>
           <Col xs="11" style={{ margin: 0 }}>
@@ -79,7 +82,13 @@ const Template: StoryFn<SentimentChartProps> = (args) => (
         <Row>
           <Col xs="1" style={{ margin: 0 }}></Col>
           <Col xs="11" style={{ margin: 0 }}>
-            <div style={{ width: data.data.length * 150, maxWidth: "100%", marginTop: theme.space.md }}>
+            <div
+              style={{
+                width: data.data.length * 150,
+                maxWidth: "100%",
+                marginTop: theme.space.md,
+              }}
+            >
               <HorizontalLabel>Horizontal Label</HorizontalLabel>
             </div>
           </Col>
@@ -101,16 +110,23 @@ WithCustomTooltip.args = {
     return (
       <Tooltip>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {data?.icon}<Span isBold style={{ marginLeft: theme.space.xs, color: theme.palette.grey[600] }}>{cluster}</Span>
+          {data?.icon}
+          <Span
+            isBold
+            style={{
+              marginLeft: theme.space.xs,
+              color: theme.palette.grey[600],
+            }}
+          >
+            {cluster}
+          </Span>
         </div>
         {data?.customData && (
-          <MD style={{ marginTop: theme.space.xs }}>
-            {data?.customData}
-          </MD>
+          <MD style={{ marginTop: theme.space.xs }}>{data?.customData}</MD>
         )}
       </Tooltip>
-    )
-  }
+    );
+  },
 };
 
 export default {

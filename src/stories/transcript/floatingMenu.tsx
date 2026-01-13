@@ -11,7 +11,7 @@ type ShouldShowProps = Parameters<
 >[0];
 
 const MenuContainer = styled.div`
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
+  box-shadow: ${({ theme }) => theme.shadows.boxShadow()};
   display: flex;
 `;
 

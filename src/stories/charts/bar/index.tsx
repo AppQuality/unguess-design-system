@@ -1,19 +1,19 @@
 import { ResponsiveBar } from "@nivo/bar";
-import { BarChartProps } from "./_types";
+import { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 import {
   CHARTS_COLOR_SCHEME_CATEGORICAL,
   DEFAULT_CHARTS_THEME,
 } from "../../theme/charts";
-import { ChartContainer } from "../ChartContainer";
-import styled, { ThemeContext } from "styled-components";
 import { MD } from "../../typography/typescale";
-import { useContext } from "react";
+import { ChartContainer } from "../ChartContainer";
 import Legend from "../Legend";
+import { BarChartProps } from "./_types";
 
 const Tooltip = styled.div`
   padding: ${({ theme }) => theme.space.base * 3}px;
   background: ${({ theme }) => theme.palette.white};
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
+  box-shadow: ${({ theme }) => theme.shadows.boxShadow()};
   max-width: 216px;
 `;
 

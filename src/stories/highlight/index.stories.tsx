@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useCallback, useState } from "react";
+import { styled } from "styled-components";
 import { Highlight } from ".";
 import useDebounce from "../../hooks/useDebounce";
 import { Col } from "../grid/col";
@@ -7,15 +8,14 @@ import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
 import { Player } from "../player";
 import { Tabs } from "../tabs";
+import { Tag } from "../tags";
 import { theme } from "../theme";
 import { getColor } from "../theme/utils";
 import { HighlightArgs, Observation, WordProps } from "./_types";
 import { Transcript } from "./demo-parts/transcript-base";
 import { TDiarization } from "./demo-parts/transcript-diarization";
 import { TParagraph } from "./demo-parts/transcript-paragraph";
-import { Tag } from "../tags";
 import { TSentiment } from "./demo-parts/transcript-sentiment";
-import { styled } from "styled-components";
 
 const StyledTag = styled(Tag)`
   user-select: none;
@@ -399,7 +399,8 @@ const Template: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
     to: number;
     text: string;
   }) => {
-    const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    const hue =
+      "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
     setObservations([
       ...observations,
       {
@@ -437,7 +438,7 @@ const Template: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
           onSelectionButtonClick: (part) => {
             onSelectionButtonClick(part);
             handleAddObservation(part);
-          }
+          },
         })}
       >
         {args.words.map((item, index) => (
@@ -458,7 +459,10 @@ const Template: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
   );
 };
 
-const VideoTemplate: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) => {
+const VideoTemplate: StoryFn<StoryArgs> = ({
+  onSelectionButtonClick,
+  ...args
+}) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   const handleRef = useCallback((video: HTMLVideoElement) => {
@@ -485,7 +489,8 @@ const VideoTemplate: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) 
     to: number;
     text: string;
   }) => {
-    const hue = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    const hue =
+      "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
     setObservations([
       ...observations,
       {
@@ -510,7 +515,7 @@ const VideoTemplate: StoryFn<StoryArgs> = ({ onSelectionButtonClick, ...args }) 
                 onSelectionButtonClick: (part) => {
                   onSelectionButtonClick(part);
                   handleAddObservation(part);
-                }
+                },
               })}
             >
               {args.words.map((item, index) => (
@@ -571,7 +576,7 @@ WithTooltip.args = {
           </StyledTag>
         ))}
       </TagsWrapper>
-    )
+    ),
   })),
 };
 
@@ -683,7 +688,7 @@ export default {
       control: {
         type: "color",
         presetColors: [
-          theme.colors.foreground,
+          theme.colors.neutralHue,
           getColor(theme.colors.primaryHue, 600),
           getColor(theme.colors.successHue, 700),
           getColor(theme.colors.warningHue, 700),

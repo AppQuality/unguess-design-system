@@ -38,7 +38,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
   ...args
 }) => {
   const [observations, setObservations] = useState<IBookmark[]>(
-    bookmarks || [],
+    bookmarks || []
   );
   const [start, setStart] = useState<number | undefined>(undefined);
 
@@ -61,7 +61,7 @@ const TemplateWithCutter: StoryFn<PlayerStoryArgs> = ({
       ]);
       setStart(undefined);
     },
-    [observations, start],
+    [observations, start]
   );
 
   return (
@@ -106,7 +106,7 @@ const TemplateWithButtonForPip: StoryFn<PlayerStoryArgs> = (args) => {
     (isPipFromPlayer: boolean) => {
       setIsPip(isPipFromPlayer);
     },
-    [setIsPip],
+    [setIsPip]
   );
   return (
     <Container id="player.story.container">
@@ -171,7 +171,7 @@ WithBookmarks.args = {
       id: 3,
       start: 25,
       end: 38,
-      hue: theme.colors.foreground,
+      hue: theme.colors.neutralHue,
       tooltipContent: <Tag>20s - 28s (click me)</Tag>,
       onClick: () => {
         alert("you clicked me! 😳");

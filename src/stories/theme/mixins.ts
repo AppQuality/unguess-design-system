@@ -27,7 +27,7 @@ export const cardStyle = css`
   overflow: hidden;
 
   &:hover {
-    box-shadow: ${({ theme }) => theme.shadows.boxShadow(theme)};
+    box-shadow: ${({ theme }) => theme.shadows.boxShadow()};
   }
 
   cursor: pointer;

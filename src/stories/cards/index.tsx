@@ -1,16 +1,16 @@
 import { Well as ZendeskWell } from "@zendeskgarden/react-notifications";
-import { CardProps, ContainerCardProps } from "./_types";
+import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
 import styled from "styled-components";
 import { palette } from "../theme/palette";
-import { retrieveComponentStyles } from "@zendeskgarden/react-theming";
+import { CardProps, ContainerCardProps } from "./_types";
 
 export const CARD_COMPONENT_ID = "cards.card";
 
 export const cardCmponentStyle = {
   [CARD_COMPONENT_ID]: {
     border: `1px solid ${palette.grey["200"]};`,
-  }
-}
+  },
+};
 
 const UgCard = styled(ZendeskWell)`
   border-radius: ${({ theme }) => theme.borderRadii.lg};
@@ -21,7 +21,7 @@ const UgCard = styled(ZendeskWell)`
     !isFloating &&
     `
       &:hover {
-         box-shadow: ${theme.shadows.boxShadow(theme)};
+         box-shadow: ${theme.shadows.boxShadow()};
       }`}
   ${(props) => retrieveComponentStyles(CARD_COMPONENT_ID, props)};
 `;
@@ -45,6 +45,8 @@ const UgContainerCard = styled(ZendeskWell)`
   ${(props) => retrieveComponentStyles(CARD_COMPONENT_ID, props)};
 `;
 
-const ContainerCard = (props: ContainerCardProps) => <UgContainerCard {...props} />;
+const ContainerCard = (props: ContainerCardProps) => (
+  <UgContainerCard {...props} />
+);
 
 export { Card, ContainerCard };
