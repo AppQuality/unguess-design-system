@@ -24,11 +24,9 @@ import { PlayerShortCut } from "./shortcuts";
  */
 const Player = forwardRef<HTMLVideoElement, PlayerArgs>(
   ({ playerType = "video", ...props }, forwardRef) => (
-    <div className={playerType === "audio" ? "audio-player-mode" : ""}>
-      <Video src={props.url} {...props}>
-        <PlayerCore playerType={playerType} {...props} ref={forwardRef} />
-      </Video>
-    </div>
+    <Video src={props.url} {...props}>
+      <PlayerCore playerType={playerType} {...props} ref={forwardRef} />
+    </Video>
   )
 );
 const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
