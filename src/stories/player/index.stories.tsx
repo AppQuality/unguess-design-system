@@ -28,7 +28,7 @@ const Template: StoryFn<PlayerStoryArgs> = (args) => (
 const TemplateWithContext: StoryFn<PlayerStoryArgs> = (args) => (
   <Container id="player.story.container">
     <PlayerProvider {...args}>
-      <PlayerProvider.Core url={args.url} />
+      <PlayerProvider.Core playerType="video" url={args.url} />
     </PlayerProvider>
   </Container>
 );
@@ -238,9 +238,7 @@ WithBookmarks.args = {
 };
 
 export const WithContext = TemplateWithContext.bind({});
-WithContext.args = {
-  ...defaultArgs,
-};
+WithContext.args = { ...defaultArgs };
 
 export default {
   title: "Organisms/Player",
