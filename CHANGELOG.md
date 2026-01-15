@@ -1,3 +1,15 @@
+# v4.0.59 (Thu Jan 15 2026)
+
+#### 🐛 Bug Fix
+
+- Remove order property from NavAccordionItem styling [#571](https://github.com/AppQuality/unguess-design-system/pull/571) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.58 (Thu Jan 15 2026)
 
 #### 🐛 Bug Fix
