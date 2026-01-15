@@ -1,3 +1,15 @@
+# v4.0.58 (Thu Jan 15 2026)
+
+#### 🐛 Bug Fix
+
+- fix: Add styled-components as a peer dependency in package.json and p… [#570](https://github.com/AppQuality/unguess-design-system/pull/570) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.57 (Tue Jan 13 2026)
 
 #### 🐛 Bug Fix
