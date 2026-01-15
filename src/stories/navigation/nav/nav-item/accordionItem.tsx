@@ -11,7 +11,6 @@ import { NavItemArgs } from "./_types";
 const NavAccordionItem = styled(Accordion)<AccordionArgs & NavItemArgs>`
   ${sidebarNavItemExpanded}
   ${(props) => !props.isExpanded && sidebarNavItemHidden}
-  order: 1;
   margin: ${({ theme }) => theme.space.xs} 0;
   padding-left: 8.5px;
   .panelContainer {
