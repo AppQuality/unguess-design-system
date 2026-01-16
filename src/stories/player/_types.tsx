@@ -2,6 +2,7 @@ import { HTMLAttributes, ReactNode } from "react";
 
 export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   url: string;
+  playerType?: "video" | "audio";
   start?: number;
   end?: number;
   pipMode?: "auto" | (() => boolean) | boolean;
@@ -41,6 +42,7 @@ export interface WrapperProps {
   isPlaying?: boolean;
   isLoaded?: boolean;
   showControls?: boolean;
+  hideWhenPlaying?: boolean;
 }
 
 type VideoTag = {

@@ -22,16 +22,24 @@ import { PlayerShortCut } from "./shortcuts";
  * Used for this:
     - To display a video 
  */
-const Player = forwardRef<HTMLVideoElement, PlayerArgs>((props, forwardRef) => (
-  <Video src={props.url} {...props}>
-    <PlayerCore ref={forwardRef} {...props} />
-  </Video>
-));
-
+const Player = forwardRef<HTMLVideoElement, PlayerArgs>(
+  ({ playerType = "video", ...props }, forwardRef) => (
+    <Video src={props.url} {...props}>
+      <PlayerCore playerType={playerType} {...props} ref={forwardRef} />
+    </Video>
+  )
+);
 const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
   (props, forwardRef) => {
     const { context, togglePlay, setIsPlaying } = useVideoContext();
-    const { onCutHandler, bookmarks, isCutting, pipMode, onPipChange } = props;
+    const {
+      onCutHandler,
+      bookmarks,
+      isCutting,
+      pipMode,
+      onPipChange,
+      playerType = "video",
+    } = props;
     const videoRef = context.player?.ref.current;
     const isLoaded = !!videoRef;
     const containerRef = useRef<HTMLDivElement>(null);
@@ -46,7 +54,11 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
       videoRef,
       onShortcut: props.onShortcut,
     });
-    usePictureInPicture(videoRef, pipMode, onPipChange);
+    usePictureInPicture(
+      videoRef,
+      playerType === "audio" ? false : pipMode,
+      onPipChange
+    );
 
     useEffect(() => {
       if (videoRef) {
@@ -69,14 +81,17 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
         isLoaded={isLoaded}
         isPlaying={context.isPlaying}
         ref={containerRef}
+        className={playerType === "audio" ? "audio-player-mode" : ""}
       >
         {!isLoaded ? (
           <VideoSpinner />
         ) : (
-          <FloatingControls
-            isPlaying={context.isPlaying}
-            onClick={togglePlay}
-          />
+          props.playerType === "video" && (
+            <FloatingControls
+              isPlaying={context.isPlaying}
+              onClick={togglePlay}
+            />
+          )
         )}
         <Video.Player className="player-container" />
         <ProgressContextProvider>
@@ -87,11 +102,12 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             isCutting={isCutting}
             onBookMarkUpdated={props.handleBookmarkUpdate}
             i18n={props.i18n}
+            playerType={playerType}
           />
         </ProgressContextProvider>
       </Container>
     );
-  },
+  }
 );
 
 const PlayerProvider = (props: PropsWithChildren<PlayerArgs>) => (
