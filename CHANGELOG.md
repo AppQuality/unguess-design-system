@@ -1,3 +1,15 @@
+# v4.0.60 (Fri Jan 16 2026)
+
+#### 🐛 Bug Fix
+
+- Fix styled component issue [#572](https://github.com/AppQuality/unguess-design-system/pull/572) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.59 (Thu Jan 15 2026)
 
 #### 🐛 Bug Fix
