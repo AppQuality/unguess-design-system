@@ -5,12 +5,16 @@ import { SkeletonArgs } from "./_types";
 const UgSkeleton = styled(ZendeskSkeleton)`
   border-radius: ${(props) => props.theme.borderRadii.xxl};
   ${(props) =>
-    props.isLight ?
-    `
+    props.isLight
+      ? `
     &:before {
-      background-image: linear-gradient(45deg, transparent, ${props.theme.palette.grey[200]}, transparent);
+      background-image: linear-gradient(45deg, transparent, ${props.theme.palette.grey[100]}, transparent);
     }
-  ` : `
+  `
+      : `
+    &:before {
+      background-image: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.6), transparent)
+    }
     background-color: ${props.theme.palette.grey[200]};
   `}
 `;
