@@ -371,7 +371,8 @@ export const components = {
   "buttons.button": ({
     $isPrimary,
     isAccent,
-    isDisabled,
+    disabled,
+    $isBasic,
     $isLink,
     ...props
   }: any) => {
@@ -393,7 +394,22 @@ export const components = {
             borderColor: getColor(colors.accentHue, 700),
           },
         }),
+        ...($isBasic && {
+          backgroundColor: "transparent",
+          borderColor: "none",
+          "&:hover": {
+            borderColor: "none",
+          },
+        }),
+      }),
+      ...(disabled && {
+        borderColor: "none",
+        backgroundColor: palette.grey[200] + "!important",
+        "&:hover": {
+          borderColor: "none",
+        },
       }),
     };
   },
+
 };
