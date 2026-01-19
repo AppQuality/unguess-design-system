@@ -1,3 +1,17 @@
+# v4.0.61 (Mon Jan 19 2026)
+
+#### 🐛 Bug Fix
+
+- update-ui-node-24 [#574](https://github.com/AppQuality/unguess-design-system/pull/574) ([@iDome89](https://github.com/iDome89) [@d-beezee](https://github.com/d-beezee))
+- UI updates node 24 [#573](https://github.com/AppQuality/unguess-design-system/pull/573) ([@iDome89](https://github.com/iDome89) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- [@iDome89](https://github.com/iDome89)
+
+---
+
 # v4.0.60 (Fri Jan 16 2026)
 
 #### 🐛 Bug Fix
