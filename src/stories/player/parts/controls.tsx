@@ -24,7 +24,8 @@ export const ControlsWrapper = styled.div<WrapperProps>`
   padding: ${({ theme }) => theme.space.xxs} 0;
   background-color: ${({ theme }) => theme.palette.grey[100]};
   height: 80px;
-  ${({ isPlaying }) => isPlaying && "display: none;"}
+  ${({ isPlaying, hideWhenPlaying }) =>
+    isPlaying && hideWhenPlaying && "display: none;"}
   z-index: 2;
 `;
 
@@ -71,6 +72,7 @@ export const Controls = ({
   onBookMarkUpdated,
   i18n,
   showControls = false,
+  playerType = "video",
 }: {
   container: HTMLDivElement | null;
   onCutHandler?: (time: number) => void;
@@ -79,6 +81,7 @@ export const Controls = ({
   onBookMarkUpdated?: (bookmark: IBookmark) => void;
   i18n?: PlayerI18n;
   showControls?: boolean;
+  playerType?: "video" | "audio";
 }) => {
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
@@ -91,6 +94,8 @@ export const Controls = ({
   const [cutStart, setCutStart] = useState<number>(0);
 
   const { reset, isGrabbing, activeBookmark, fromEnd } = useProgressContext();
+
+  const hideWhenPlaying = !showControls && playerType === "video";
 
   useEffect(() => {
     setMarks(bookmarks);
@@ -114,7 +119,7 @@ export const Controls = ({
 
       return 0;
     },
-    [progressRef, duration],
+    [progressRef, duration]
   );
 
   const getProgress = useCallback(
@@ -125,7 +130,7 @@ export const Controls = ({
 
       return (current / duration) * 100;
     },
-    [context.part.start, duration],
+    [context.part.start, duration]
   );
 
   const handleSkipAhead = useCallback(
@@ -134,12 +139,7 @@ export const Controls = ({
       setCurrentTime(time);
       setProgress(getProgress(time));
     },
-    [
-      getVideoPositionFromEvent,
-      context.part.start,
-      setCurrentTime,
-      getProgress,
-    ],
+    [getVideoPositionFromEvent, context.part.start, setCurrentTime, getProgress]
   );
 
   const onMouseEvent = (e: MouseEvent<HTMLDivElement>) => {
@@ -166,7 +166,7 @@ export const Controls = ({
       if (!activeBookmark || !marks) return;
 
       const currentObsIndex = marks.findIndex(
-        (mark) => mark.id === activeBookmark.id,
+        (mark) => mark.id === activeBookmark.id
       );
       const value = (newX / clientW) * duration + context.part.start;
 
@@ -183,7 +183,7 @@ export const Controls = ({
       setMarks(newMarks);
       setUpdatedMark(updatedMark);
     },
-    [activeBookmark, context.part.start, duration, fromEnd, marks],
+    [activeBookmark, context.part.start, duration, fromEnd, marks]
   );
 
   useEffect(() => {
@@ -216,7 +216,8 @@ export const Controls = ({
   return (
     <ControlsWrapper
       showControls={showControls}
-      {...(!showControls && { isPlaying: context.isPlaying })}
+      hideWhenPlaying={hideWhenPlaying}
+      {...(hideWhenPlaying && { isPlaying: context.isPlaying })}
     >
       <ProgressContainer
         onMouseEnter={onMouseEvent}
@@ -253,7 +254,7 @@ export const Controls = ({
             isCutting={isCutting}
             i18n={i18n}
           />
-          <FullScreenButton container={container} />
+          {playerType === "video" && <FullScreenButton container={container} />}
         </StyledDiv>
       </ControlsBar>
     </ControlsWrapper>

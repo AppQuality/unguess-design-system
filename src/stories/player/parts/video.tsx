@@ -19,4 +19,12 @@ export const VideoStyle = css`
       max-width: 100%;
     }
   }
+
+  &.audio-player-mode {
+    .player-container video {
+      display: none;
+    }
+
+    height: auto;
+  }
 `;
