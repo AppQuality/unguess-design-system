@@ -1,3 +1,15 @@
+# v4.0.62 (Mon Jan 19 2026)
+
+#### 🐛 Bug Fix
+
+- fix: add hover and active styles for danger dropdown menu items [#575](https://github.com/AppQuality/unguess-design-system/pull/575) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.61 (Mon Jan 19 2026)
 
 #### 🐛 Bug Fix
