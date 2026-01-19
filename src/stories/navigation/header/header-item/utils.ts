@@ -1,4 +1,4 @@
-import { getValueAndUnit } from 'polished';
+import { getValueAndUnit } from "polished";
 import { DefaultTheme } from "styled-components";
 
 /**
@@ -12,7 +12,7 @@ import { DefaultTheme } from "styled-components";
 const getLineHeight = (height: string | number, fontSize: string | number) => {
   const [heightValue, heightUnit] = getValueAndUnit(height.toString());
   const [fontSizeValue, fontSizeUnit] = getValueAndUnit(fontSize.toString());
-  const PIXELS = 'px';
+  const PIXELS = "px";
 
   if (heightUnit && heightUnit !== PIXELS) {
     throw new Error(`Unexpected \`height\` with '${heightUnit}' units.`);
@@ -23,10 +23,10 @@ const getLineHeight = (height: string | number, fontSize: string | number) => {
   }
 
   return (heightValue as number) / (fontSizeValue as number);
-}
+};
 
-export const getNavWidth = (props: DefaultTheme) => {
-    return `${props.theme.space.base * 15}px`;
-  };
+export const getNavWidth = ({ theme }: { theme: DefaultTheme }) => {
+  return `${theme.space.base * 15}px`;
+};
 
 export { getLineHeight };

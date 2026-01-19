@@ -6,11 +6,12 @@ import { theme } from "../../theme";
 
 const UgHeader = styled(ZendeskHeader)`
     height: ${theme.components.chrome.header.height};
+    box-shadow: ${theme.shadows.headerShadow()};
 `;
 
 
 /**
- * An Header is a visual way to display general information. 
+ * An Header is a visual way to display general information.
  * This can include navList Items, modal, profile settings.
  */
 const Header = (props: HeaderArgs) => <UgHeader {...props}/>;

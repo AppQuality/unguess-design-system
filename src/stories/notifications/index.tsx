@@ -8,6 +8,7 @@ import { componentStyles } from "@zendeskgarden/react-theming";
 import { PropsWithChildren } from "react";
 import styled from "styled-components";
 import { Close } from "../close";
+import { getColor } from "../theme/utils";
 import { Title } from "../title";
 import { NotificationArgs, ToastProviderArgs } from "./_types";
 
@@ -64,12 +65,33 @@ const UgNotification = styled(ZendeskNotification)<NotificationArgs>`
     margin-left: ${({ theme }) => theme.space.md};
   }
 
-  ${(props) =>
-    componentStyles({
-      theme: props.theme,
-      componentId: NOTIFICATION_COMPONENT_ID,
-    })};
+  ${(props) => {
+    const { type, isPrimary, theme } = props;
+    if (!isPrimary) return;
 
+    const backgroundColor =
+      type === "success"
+        ? getColor(theme.colors.successHue, 700)
+        : type === "warning"
+          ? getColor(theme.colors.warningHue, 700)
+          : type === "error"
+            ? getColor(theme.colors.dangerHue, 700)
+            : type === "info"
+              ? getColor(theme.colors.infoHue, 700)
+              : theme.palette.grey[100];
+
+    return `
+      background-color: ${backgroundColor};
+      [data-garden-id="notifications.title"],
+      [data-custom-id="notifications.notification.close"],
+      svg {
+          color: ${theme.palette.white};
+      }
+      
+      
+
+    `;
+  }}};
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
     padding: ${({ theme }) => theme.space.md};

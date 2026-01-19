@@ -1,15 +1,19 @@
-
-import { forwardRef, useEffect, useImperativeHandle, useState, useRef } from "react";
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
-import { Card } from "../../cards";
-import { Button } from "../../buttons/button";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { styled } from "styled-components";
-import { ChatEditorArgs, SuggestedUser } from "../_types";
-import { MD, SM } from "../../typography/typescale";
-import { theme } from "../../theme";
+import { Button } from "../../buttons/button";
 import { ButtonArgs } from "../../buttons/button/_types";
+import { Card } from "../../cards";
+import { theme } from "../../theme";
 import { getColor } from "../../theme/utils";
-
+import { MD, SM } from "../../typography/typescale";
+import { ChatEditorArgs, SuggestedUser } from "../_types";
 
 export type MentionListRef = {
   onKeyDown: NonNullable<
@@ -35,26 +39,22 @@ const List = styled.div`
   overflow-y: auto;
 `;
 
-const Item = styled(Button) <ButtonArgs & { isActive?: boolean }>`
+const Item = styled(Button)<ButtonArgs & { isActive?: boolean }>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  border: none;
 
   ${({ isActive }) =>
     isActive &&
     `
-    background-color: ${getColor(
-      theme.colors.primaryHue,
-      600,
-      undefined,
-      0.2
-    )};
+    background-color: ${getColor(theme.colors.primaryHue, 600, undefined, 0.2)};
   `}
 `;
 const EmptyList = styled.div`
   max-height: 100px;
-  max-width:280px;
+  max-width: 280px;
   padding: ${({ theme }) => `${theme.space.xxs} ${theme.space.md}`};
 `;
 
@@ -85,7 +85,7 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
 
     const upHandler = () => {
       setSelectedIndex(
-        (selectedIndex + props.items.length - 1) % props.items.length
+        (selectedIndex + props.items.length - 1) % props.items.length,
       );
     };
 
@@ -147,16 +147,18 @@ export const MentionList = forwardRef<MentionListRef, MentionListProps>(
                     </MD>
                     <SM style={{ color: theme.palette.grey[600] }}>
                       {item.email}
-                      </SM>
+                    </SM>
                   </Item>
                 </div>
               ))
             ) : (
-              <EmptyMention content={i18n?.mention?.noResults ?? "No results"} />
+              <EmptyMention
+                content={i18n?.mention?.noResults ?? "No results"}
+              />
             )}
           </List>
         </StyledCard>
       </div>
     );
-  }
+  },
 );

@@ -171,55 +171,7 @@ export const components = {
       }),
     };
   },
-  "notifications.notification": ({
-    type,
-    isPrimary,
-  }: {
-    type: string;
-    isPrimary: boolean;
-  }) => {
-    const svgCss = {
-      marginTop: "-1px",
-    };
 
-    return {
-      ...(type === "success" &&
-        isPrimary && {
-          backgroundColor: getColor(colors.successHue, 700),
-          svg: {
-            ...svgCss,
-            color: palette.white,
-          },
-        }),
-      ...(type === "warning" &&
-        isPrimary && {
-          backgroundColor: getColor(colors.warningHue, 700),
-          svg: {
-            ...svgCss,
-            color: palette.white,
-          },
-        }),
-      ...(type === "error" &&
-        isPrimary && {
-          backgroundColor: getColor(colors.dangerHue, 700),
-          svg: {
-            ...svgCss,
-            color: palette.white,
-          },
-        }),
-      ...(type === "info" &&
-        isPrimary && {
-          backgroundColor: getColor(colors.infoHue, 700),
-          svg: {
-            ...svgCss,
-            color: palette.white,
-          },
-        }),
-      ...(!isPrimary && {
-        svg: svgCss,
-      }),
-    };
-  },
   "notifications.notification.close": ({
     type,
     isPrimary,
@@ -419,7 +371,8 @@ export const components = {
   "buttons.button": ({
     $isPrimary,
     isAccent,
-    isDisabled,
+    disabled,
+    $isBasic,
     $isLink,
     ...props
   }: any) => {
@@ -441,7 +394,22 @@ export const components = {
             borderColor: getColor(colors.accentHue, 700),
           },
         }),
+        ...($isBasic && {
+          backgroundColor: "transparent",
+          borderColor: "none",
+          "&:hover": {
+            borderColor: "none",
+          },
+        }),
+      }),
+      ...(disabled && {
+        borderColor: "none",
+        backgroundColor: palette.grey[200] + "!important",
+        "&:hover": {
+          borderColor: "none",
+        },
       }),
     };
   },
+
 };

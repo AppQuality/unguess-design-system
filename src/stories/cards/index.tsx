@@ -21,7 +21,7 @@ const UgCard = styled(ZendeskWell)`
     !isFloating &&
     `
       &:hover {
-         box-shadow: ${theme.shadows.boxShadow()};
+         box-shadow: ${theme.shadows.card()};
       }`}
   ${(props) => retrieveComponentStyles(CARD_COMPONENT_ID, props)};
 `;
