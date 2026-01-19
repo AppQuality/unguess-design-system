@@ -220,6 +220,20 @@ export const components = {
       height: "auto",
     };
   },
+  "dropdowns.menu.item": ({ $type, ...props }: any) => {
+    if ($type === "danger") {
+      return {
+        color: getColor(colors.dangerHue, 700),
+        "&:hover": {
+          boxShadow: `inset 3px 0 ${getColor(colors.dangerHue, 700)}`,
+          backgroundColor: getColor(colors.dangerHue, 100),
+        },
+        "&:active": {
+          backgroundColor: getColor(colors.dangerHue, 200),
+        },
+      };
+    }
+  },
   "notifications.notification.title": ({
     type,
     isPrimary,
@@ -411,5 +425,4 @@ export const components = {
       }),
     };
   },
-
 };
