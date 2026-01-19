@@ -1,3 +1,17 @@
+# v4.0.63 (Mon Jan 19 2026)
+
+#### 🐛 Bug Fix
+
+- Add audio player [#576](https://github.com/AppQuality/unguess-design-system/pull/576) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee))
+- UN-2222: update player to handle audio files [#567](https://github.com/AppQuality/unguess-design-system/pull/567) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.62 (Mon Jan 19 2026)
 
 #### 🐛 Bug Fix
