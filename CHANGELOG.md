@@ -1,3 +1,16 @@
+# v4.0.64 (Thu Feb 12 2026)
+
+#### 🐛 Bug Fix
+
+- Fix autocomplete validation [#579](https://github.com/AppQuality/unguess-design-system/pull/579) ([@cannarocks](https://github.com/cannarocks))
+- Improve regex handling for input validation in Autocomplete component [#578](https://github.com/AppQuality/unguess-design-system/pull/578) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.63 (Mon Jan 19 2026)
 
 #### 🐛 Bug Fix
