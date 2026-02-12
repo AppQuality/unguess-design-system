@@ -31,7 +31,9 @@ function flatOptions(options: AutocompleteProps["options"]) {
 // utility function to check visibility based on the input value in the input field
 function isHidden(option: IOption, inputValue?: string) {
   if (!inputValue) return false;
-  const regex = new RegExp(inputValue, "giu");
+  // Escape special regex characters
+  const escapedInputValue = inputValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp(escapedInputValue, "i");
   return !option.label?.match(regex);
 }
 
@@ -95,13 +97,9 @@ const Autocomplete = ({
       }
 
       if (event.type === "input:change" && event.inputValue !== undefined) {
-        const sanitizedInputValue = event.inputValue.replace(
-          /[.*+?^${}()|[\]\\]/giu,
-          "\\$&"
-        );
-        setInputValue(sanitizedInputValue);
+        setInputValue(event.inputValue);
         if (typeof onInputChange === "function")
-          onInputChange(sanitizedInputValue);
+          onInputChange(event.inputValue);
       }
       if (
         (event.type === "option:click" ||
