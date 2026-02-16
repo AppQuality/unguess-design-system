@@ -59,6 +59,7 @@ export * from "./stories/dropdowns/option";
 export * from "./stories/dropdowns/select";
 // --- Editor ---
 export * from "./stories/editor";
+export type { EditorRef } from "./stories/editor";
 // --- Forms ---
 export * from "./stories/forms/checkbox";
 export * from "./stories/forms/checkbox/cards";
