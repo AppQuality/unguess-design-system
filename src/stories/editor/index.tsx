@@ -18,12 +18,14 @@ import {
   KeyboardEvent as ReactKeyboardEvent,
   PropsWithChildren,
   useState,
+  forwardRef,
+  useImperativeHandle,
 } from "react";
 import { editorStyle } from "../shared/editorStyle";
 import { EditorFooter } from "./editorFooter";
 import { EditorHeader } from "./editorHeader";
 import { FloatingMenu } from "./floatingMenu";
-import { EditorArgs } from "./_types";
+import { EditorArgs, EditorRef } from "./_types";
 
 const EditorContainer = styled(FauxInput)<EditorArgs>`
   ${({ editable }) =>
@@ -31,7 +33,7 @@ const EditorContainer = styled(FauxInput)<EditorArgs>`
     `
       border: none;
       outline: none;
-      
+
     `}
 
   .ProseMirror {
@@ -55,24 +57,27 @@ const EditorContainer = styled(FauxInput)<EditorArgs>`
 `;
 
 /**
- * Editor is a wrapper around TipTap/ProseMirror 
+ * Editor is a wrapper around TipTap/ProseMirror
  * <br>
  * It's a rich text WYSIWYG editors.
  * <hr>
  * Used for this:
     - To allow text customization with markup supports
     - To develop collaborative text editing
-   
+
    Not for this:
     - Simple text input, use textarea instead.
  */
-const Editor = ({
+
+
+
+const Editor = forwardRef<EditorRef, PropsWithChildren<EditorArgs>>(({
   onSave,
   headerTitle,
   footerSaveText,
   placeholderOptions,
   ...props
-}: PropsWithChildren<EditorArgs>) => {
+}, ref) => {
   const {
     children,
     hasInlineMenu,
@@ -124,6 +129,10 @@ const Editor = ({
     ...props,
   });
 
+  useImperativeHandle(ref, () => ({
+    getEditor: () => ed,
+  }), [ed]);
+
   if (!ed) {
     return null;
   }
@@ -147,6 +156,7 @@ const Editor = ({
       )}
     </EditorContainer>
   );
-};
+});
 
 export { Editor };
+export type { EditorRef };
