@@ -22,3 +22,7 @@ export interface EditorHeaderArgs {
 }
 
 export interface FloatingMenuArgs extends Partial<BubbleMenuProps> {}
+
+export interface EditorRef {
+  getEditor : () => Editor | null;
+}
