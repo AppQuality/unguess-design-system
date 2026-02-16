@@ -4,7 +4,9 @@ import { Editor } from ".";
 import { Col } from "../grid/col";
 import { Grid } from "../grid/grid";
 import { Row } from "../grid/row";
-import { EditorArgs } from "./_types";
+import { EditorArgs, EditorRef } from "./_types";
+import { useRef } from "react";
+import { Button } from "@zendeskgarden/react-buttons";
 
 interface EditorStoryArgs extends EditorArgs {
   children?: any;
@@ -100,6 +102,35 @@ NoSaveShortcut.args = {
   ...defaultArgs,
   children: `<p>Hey, try to change the validation here. Our editor will change the theme color accordingly.</p>`,
   disableSaveShortcut: true,
+};
+
+export const WithRef: Story<EditorStoryArgs> = (args) => {
+  const editorRef = useRef<EditorRef>(null);
+  return (
+    <Grid>
+      <Row>
+        <Col xs={12} sm={6}>
+          <Editor ref={editorRef} {...args}>{args.children}</Editor>
+          <Button onClick={() => {
+            const editor = editorRef.current?.getEditor();
+            if (editor) {
+              alert("Editor content: " + editor.getHTML());
+            }
+          }} style={{ marginTop: "16px" }}>
+            Get Editor Content
+          </Button>
+          <Button onClick={() => {
+            const editor = editorRef.current?.getEditor();
+            if (editor) {
+              editor.chain().focus().toggleBold().run();
+            }
+          }} style={{ marginTop: "16px", marginLeft: "8px" }}>
+            Toggle Bold
+          </Button>
+        </Col>
+      </Row>
+    </Grid>
+  );
 };
 
 export default {
