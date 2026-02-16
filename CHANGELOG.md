@@ -1,3 +1,15 @@
+# v4.0.66 (Mon Feb 16 2026)
+
+#### 🐛 Bug Fix
+
+- Include editor ref type [#583](https://github.com/AppQuality/unguess-design-system/pull/583) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.65 (Mon Feb 16 2026)
 
 #### 🐛 Bug Fix
