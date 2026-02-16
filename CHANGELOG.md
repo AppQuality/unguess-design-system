@@ -1,3 +1,17 @@
+# v4.0.65 (Mon Feb 16 2026)
+
+#### 🐛 Bug Fix
+
+- release-20260216 [#582](https://github.com/AppQuality/unguess-design-system/pull/582) ([@iDome89](https://github.com/iDome89) [@Kariamos](https://github.com/Kariamos))
+- feat: Add EditorRef interface and implement ref forwarding in Editor component [#581](https://github.com/AppQuality/unguess-design-system/pull/581) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.64 (Thu Feb 12 2026)
 
 #### 🐛 Bug Fix
