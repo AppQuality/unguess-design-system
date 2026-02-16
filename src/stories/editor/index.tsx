@@ -71,6 +71,7 @@ const Editor = ({
   headerTitle,
   footerSaveText,
   placeholderOptions,
+  showCommandBar,
   ...props
 }: PropsWithChildren<EditorArgs>) => {
   const {
@@ -143,7 +144,11 @@ const Editor = ({
       )}
       <EditorContent editor={ed} onKeyDown={onKeyDown} />
       {!disableSaveShortcut && isEditable && (
-        <EditorFooter saveText={footerSaveText} />
+        <EditorFooter
+          editor={ed}
+          showCommandBar={showCommandBar}
+          saveText={footerSaveText}
+        />
       )}
     </EditorContainer>
   );

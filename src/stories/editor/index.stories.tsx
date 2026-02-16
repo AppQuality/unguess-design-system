@@ -102,6 +102,13 @@ NoSaveShortcut.args = {
   disableSaveShortcut: true,
 };
 
+export const WithCommandBar = Template.bind({});
+WithCommandBar.args = {
+  ...defaultArgs,
+  children: `<p>Hey, try to change the validation here. Our editor will change the theme color accordingly.</p>`,
+  showCommandBar: true,
+};
+
 export default {
   title: "Organisms/Editor",
   component: Editor,

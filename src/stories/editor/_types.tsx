@@ -10,10 +10,17 @@ export interface EditorArgs extends Partial<EditorOptions> {
   bubbleOptions?: any;
   headerTitle?: string;
   footerSaveText?: string;
+  showCommandBar?: boolean;
   /** Applies validation state styling */
   validation?: validationStatus;
   onSave?: (editor: Editor) => void;
   disableSaveShortcut?: boolean;
+  i18n?: {
+    menu?: {
+      bold?: string;
+      italic?: string;
+    };
+  };
 }
 
 export interface EditorHeaderArgs {
