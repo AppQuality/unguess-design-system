@@ -1,3 +1,17 @@
+# v4.0.67 (Wed Feb 18 2026)
+
+#### 🐛 Bug Fix
+
+- release-2026-02-18 [#585](https://github.com/AppQuality/unguess-design-system/pull/585) ([@cannarocks](https://github.com/cannarocks) [@Kariamos](https://github.com/Kariamos))
+- Enhance Editor interface with type-safe chained commands [#584](https://github.com/AppQuality/unguess-design-system/pull/584) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.66 (Mon Feb 16 2026)
 
 #### 🐛 Bug Fix
