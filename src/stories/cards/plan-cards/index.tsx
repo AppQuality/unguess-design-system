@@ -10,13 +10,16 @@ import { PlanTag } from "./parts/tag";
 import { TitleComponent } from "./parts/Title";
 import { CampaignCardSkeleton } from "./skeleton";
 
+// To change the color of the plan title inside the plan card.
 const getTitleColor = (status?: IPlanStatus) => {
   switch (status) {
     case "Submitted":
     case "Paying":
       return theme.palette.grey[800];
     case "AwaitingApproval":
+      return theme.palette.yellow[700];
     case "OpsCheck":
+      return theme.palette.grey[800];
     case "AwaitingPayment":
       return theme.palette.yellow[700];
     default:
@@ -27,13 +30,16 @@ const getTitleColor = (status?: IPlanStatus) => {
 const PlanCard = ({ status, i18n, children, ...props }: PlanCardsProps) => {
   if (props.isLoading) return <CampaignCardSkeleton />;
 
+  // To change the icon above the plan title inside the plan card.
   const Icon = (() => {
     switch (status) {
       case "Submitted":
       case "Paying":
         return <SubmittedIcon />;
       case "AwaitingApproval":
+        return <WaitingIcon />;
       case "OpsCheck":
+        return <SubmittedIcon />;
       case "AwaitingPayment":
         return <WaitingIcon />;
       default:
@@ -69,4 +75,3 @@ PlanCard.Title = TitleComponent;
 
 export { PlanCard };
 export type { IPlanStatus };
-
