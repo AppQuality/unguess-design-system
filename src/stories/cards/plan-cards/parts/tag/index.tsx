@@ -13,14 +13,16 @@ export interface IPlanTagProps {
 }
 /**
  * Almost duplicated getTitleColor switch cause design requires slightly different colors
- * for the status tag.
+ * for the status tag inside the plan card.
  */
 const getTagColor = (status?: IPlanStatus) => {
   switch (status) {
     case "Submitted":
-      return theme.palette.grey[800];
+      return theme.palette.grey[600];
     case "AwaitingApproval":
+      return theme.palette.yellow[700];
     case "OpsCheck":
+      return theme.palette.grey[600];
     case "AwaitingPayment":
       return theme.palette.yellow[700];
     case "Accepted":
@@ -28,7 +30,7 @@ const getTagColor = (status?: IPlanStatus) => {
     case "PurchasedPlan":
       return theme.palette.azure[600];
     case "Paying":
-      return theme.palette.grey[600];
+      return theme.palette.grey[700];
     default:
       return theme.palette.azure[800];
   }
@@ -42,7 +44,9 @@ export const PlanTag = ({ status, statusLabel }: IPlanTagProps) => {
       case "Submitted":
         return <SubmittedStatusIcon />;
       case "AwaitingApproval":
+        return <WaitingStatusIcon />;
       case "OpsCheck":
+        return <SubmittedStatusIcon />;
       case "AwaitingPayment":
         return <WaitingStatusIcon />;
       case "Accepted":
