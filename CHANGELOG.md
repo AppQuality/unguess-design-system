@@ -1,3 +1,16 @@
+# v4.0.68 (Wed Feb 25 2026)
+
+#### 🐛 Bug Fix
+
+- updated plan card component [#587](https://github.com/AppQuality/unguess-design-system/pull/587) ([@Kariamos](https://github.com/Kariamos))
+- UN-2266 update card plan [#586](https://github.com/AppQuality/unguess-design-system/pull/586) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 1
+
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.67 (Wed Feb 18 2026)
 
 #### 🐛 Bug Fix
