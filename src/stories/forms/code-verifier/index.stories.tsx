@@ -1,6 +1,7 @@
 import { Meta as ComponentMeta, StoryFn as Story } from "@storybook/react";
+import { useRef, useState } from "react";
 import { CodeVerifier } from ".";
-import { CodeVerifierArgs } from "./_types";
+import { CodeVerifierArgs, CodeVerifierRef } from "./_types";
 
 const defaultArgs: CodeVerifierArgs = {
   length: 6,
@@ -27,6 +28,12 @@ FourDigits.args = {
   length: 4,
 };
 
+export const AutoFocus = Template.bind({});
+AutoFocus.args = {
+  ...defaultArgs,
+  autoFocus: true,
+};
+
 export const Success = Template.bind({});
 Success.args = {
   ...defaultArgs,
@@ -51,6 +58,47 @@ Disabled.args = {
   disabled: true,
 };
 
+export const Controlled: Story<CodeVerifierArgs> = (args) => {
+  const [value, setValue] = useState("123456");
+  return (
+    <div>
+      <CodeVerifier {...args} value={value} onChange={setValue} />
+      <div style={{ marginTop: 16 }}>
+        <button type="button" onClick={() => setValue("")}>
+          Clear externally
+        </button>
+        <button type="button" onClick={() => setValue("654321")} style={{ marginLeft: 8 }}>
+          Set to 654321
+        </button>
+        <p style={{ marginTop: 8 }}>Current value: &quot;{value}&quot;</p>
+      </div>
+    </div>
+  );
+};
+Controlled.args = {
+  ...defaultArgs,
+};
+
+export const WithImperativeReset: Story<CodeVerifierArgs> = (args) => {
+  const ref = useRef<CodeVerifierRef>(null);
+  return (
+    <div>
+      <CodeVerifier {...args} ref={ref} />
+      <div style={{ marginTop: 16 }}>
+        <button type="button" onClick={() => ref.current?.reset()}>
+          Reset
+        </button>
+        <button type="button" onClick={() => ref.current?.focus()} style={{ marginLeft: 8 }}>
+          Focus
+        </button>
+      </div>
+    </div>
+  );
+};
+WithImperativeReset.args = {
+  ...defaultArgs,
+};
+
 export default {
   title: "Molecules/Forms/CodeVerifier",
   component: CodeVerifier,
@@ -65,6 +113,9 @@ export default {
     validation: {
       control: "select",
       options: [undefined, "success", "warning", "error"],
+    },
+    autoFocus: {
+      control: "boolean",
     },
     onComplete: { action: "onComplete" },
     onChange: { action: "onChange" },
