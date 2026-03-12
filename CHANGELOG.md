@@ -1,3 +1,16 @@
+# v4.0.69 (Thu Mar 12 2026)
+
+#### 🐛 Bug Fix
+
+- Added CodeVerifier component [#589](https://github.com/AppQuality/unguess-design-system/pull/589) ([@iDome89](https://github.com/iDome89))
+- feat: Add CodeVerifier component with validation and input handling [#588](https://github.com/AppQuality/unguess-design-system/pull/588) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 1
+
+- [@iDome89](https://github.com/iDome89)
+
+---
+
 # v4.0.68 (Wed Feb 25 2026)
 
 #### 🐛 Bug Fix
