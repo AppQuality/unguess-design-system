@@ -1,3 +1,16 @@
+# v4.0.70 (Thu Apr 02 2026)
+
+#### 🐛 Bug Fix
+
+- Improve focus visibility in CodeVerifier component styles [#592](https://github.com/AppQuality/unguess-design-system/pull/592) ([@Kariamos](https://github.com/Kariamos))
+- fix: Adjust border and box-shadow styles in CodeVerifier component [#591](https://github.com/AppQuality/unguess-design-system/pull/591) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 1
+
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.0.69 (Thu Mar 12 2026)
 
 #### 🐛 Bug Fix
