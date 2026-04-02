@@ -38,17 +38,21 @@ const Box = styled.input<{
   font-size: 20px;
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   font-family: ${({ theme }) => theme.fonts.system};
-  border: 2px solid ${({ theme }) => theme.palette.grey[300]};
+  border: 1px solid ${({ theme }) => theme.palette.grey[300]};
   border-radius: ${({ theme }) => theme.borderRadii.lg};
   outline: none;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   color: ${({ theme }) => theme.palette.grey[800]};
   background: ${({ theme }) => theme.palette.white};
   caret-color: ${({ theme }) => theme.palette.blue[600]};
 
   &:focus {
     border-color: ${({ theme }) => theme.palette.blue[600]};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.palette.blue[100]};
+    box-shadow:
+      0 0 0 1px ${({ theme }) => theme.palette.white},
+      0 0 0 3px ${({ theme }) => theme.palette.blue[600]};
   }
 
   &:disabled {
@@ -73,7 +77,7 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
       onComplete,
       onChange,
     },
-    ref
+    ref,
   ) => {
     const isControlled = value !== undefined;
 
@@ -82,11 +86,11 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
         if (val === undefined) return Array(length).fill("");
         return Array.from({ length }, (_, i) => val[i]?.toUpperCase() ?? "");
       },
-      [length]
+      [length],
     );
 
     const [internalValues, setInternalValues] = useState<string[]>(
-      parseValue(value)
+      parseValue(value),
     );
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -142,7 +146,7 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
         if (type === "numeric") return /^\d$/.test(char);
         return /^[a-zA-Z0-9]$/.test(char);
       },
-      [type]
+      [type],
     );
 
     const updateValues = useCallback(
@@ -156,7 +160,7 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
           onComplete?.(code);
         }
       },
-      [length, onChange, onComplete, isControlled]
+      [length, onChange, onComplete, isControlled],
     );
 
     const handleChange = useCallback(
@@ -202,7 +206,7 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
           inputRefs.current[index + 1]?.focus();
         }
       },
-      [values, isValidChar, updateValues, length]
+      [values, isValidChar, updateValues, length],
     );
 
     const handleKeyDown = useCallback(
@@ -231,7 +235,7 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
           inputRefs.current[index + 1]?.focus();
         }
       },
-      [values, updateValues, length]
+      [values, updateValues, length],
     );
 
     const handlePaste = useCallback(
@@ -239,15 +243,12 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
         e.preventDefault();
         const target = e.target as HTMLInputElement;
         const startIndexRaw = inputRefs.current.findIndex(
-          (input) => input === target
+          (input) => input === target,
         );
         const startIndex = startIndexRaw === -1 ? 0 : startIndexRaw;
         const maxChars = Math.max(0, length - startIndex);
         const pasted = e.clipboardData.getData("text/plain").trim();
-        const chars = pasted
-          .split("")
-          .filter(isValidChar)
-          .slice(0, maxChars);
+        const chars = pasted.split("").filter(isValidChar).slice(0, maxChars);
         if (chars.length === 0) return;
 
         const newValues = [...values];
@@ -262,15 +263,12 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
         const nextIndex = Math.min(startIndex + chars.length, length - 1);
         inputRefs.current[nextIndex]?.focus();
       },
-      [values, isValidChar, length, updateValues]
+      [values, isValidChar, length, updateValues],
     );
 
-    const handleFocus = useCallback(
-      (e: React.FocusEvent<HTMLInputElement>) => {
-        e.target.select();
-      },
-      []
-    );
+    const handleFocus = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
+      e.target.select();
+    }, []);
 
     const ariaPrefix = type === "numeric" ? "Digit" : "Character";
 
@@ -298,7 +296,7 @@ const CodeVerifier = forwardRef<CodeVerifierRef, CodeVerifierArgs>(
         ))}
       </Wrapper>
     );
-  }
+  },
 );
 
 CodeVerifier.displayName = "CodeVerifier";
