@@ -42,6 +42,7 @@ export interface EditorArgs extends Partial<EditorOptions> {
   validation?: validationStatus;
   onSave?: (editor: Editor) => void;
   disableSaveShortcut?: boolean;
+  contentType?: "json" | "markdown";
 }
 
 export interface EditorHeaderArgs {
