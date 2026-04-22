@@ -1,3 +1,17 @@
+# v4.0.71 (Wed Apr 22 2026)
+
+#### 🐛 Bug Fix
+
+- Add markdown to editor [#593](https://github.com/AppQuality/unguess-design-system/pull/593) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+- Update @tiptap dependencies and add Markdown support to Editor component [#590](https://github.com/AppQuality/unguess-design-system/pull/590) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.70 (Thu Apr 02 2026)
 
 #### 🐛 Bug Fix
