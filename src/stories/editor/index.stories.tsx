@@ -48,6 +48,20 @@ Default.parameters = {
   },
 };
 
+export const Markdown = Template.bind({});
+Markdown.args = {
+  ...defaultArgs,
+  contentType: "markdown",
+  children: `# Hello Markdown!\n\nThis editor supports **Markdown** content. You can use _italics_, **bold**, \`code\`, and more!`,
+};
+
+Markdown.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/JF7Zu04vp7pJu9Anoen5ww/UNGUESS-%7C-Express-Bug-Hunting?node-id=2%3A4847",
+  },
+};
+
 export const Placeholder = Template.bind({});
 Placeholder.args = {
   ...defaultArgs,
@@ -110,21 +124,29 @@ export const WithRef: Story<EditorStoryArgs> = (args) => {
     <Grid>
       <Row>
         <Col xs={12} sm={6}>
-          <Editor ref={editorRef} {...args}>{args.children}</Editor>
-          <Button onClick={() => {
-            const editor = editorRef.current?.getEditor();
-            if (editor) {
-              alert("Editor content: " + editor.getHTML());
-            }
-          }} style={{ marginTop: "16px" }}>
+          <Editor ref={editorRef} {...args}>
+            {args.children}
+          </Editor>
+          <Button
+            onClick={() => {
+              const editor = editorRef.current?.getEditor();
+              if (editor) {
+                alert("Editor content: " + editor.getHTML());
+              }
+            }}
+            style={{ marginTop: "16px" }}
+          >
             Get Editor Content
           </Button>
-          <Button onClick={() => {
-            const editor = editorRef.current?.getEditor();
-            if (editor) {
-              editor.chain().focus().toggleBold().run();
-            }
-          }} style={{ marginTop: "16px", marginLeft: "8px" }}>
+          <Button
+            onClick={() => {
+              const editor = editorRef.current?.getEditor();
+              if (editor) {
+                editor.chain().focus().toggleBold().run();
+              }
+            }}
+            style={{ marginTop: "16px", marginLeft: "8px" }}
+          >
             Toggle Bold
           </Button>
         </Col>

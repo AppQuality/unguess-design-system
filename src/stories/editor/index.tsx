@@ -11,6 +11,7 @@ import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
 import Typography from "@tiptap/extension-typography";
 import StarterKit from "@tiptap/starter-kit";
+import { Markdown } from "@tiptap/markdown";
 
 import Dropcursor from "@tiptap/extension-dropcursor";
 import { FauxInput } from "@zendeskgarden/react-forms";
@@ -69,94 +70,98 @@ const EditorContainer = styled(FauxInput)<EditorArgs>`
     - Simple text input, use textarea instead.
  */
 
+const Editor = forwardRef<EditorRef, PropsWithChildren<EditorArgs>>(
+  (
+    { onSave, headerTitle, footerSaveText, placeholderOptions, ...props },
+    ref,
+  ) => {
+    const {
+      children,
+      hasInlineMenu,
+      bubbleOptions,
+      editable,
+      disableSaveShortcut,
+      contentType,
+    } = props;
 
+    const isEditable = editable !== undefined ? editable : true;
 
-const Editor = forwardRef<EditorRef, PropsWithChildren<EditorArgs>>(({
-  onSave,
-  headerTitle,
-  footerSaveText,
-  placeholderOptions,
-  ...props
-}, ref) => {
-  const {
-    children,
-    hasInlineMenu,
-    bubbleOptions,
-    editable,
-    disableSaveShortcut,
-  } = props;
+    const [activeEditor, setActiveEditor] = useState<TipTapEditor | null>();
 
-  const isEditable = editable !== undefined ? editable : true;
+    const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+        if (onSave && activeEditor) onSave(activeEditor);
+      }
+    };
 
-  const [activeEditor, setActiveEditor] = useState<TipTapEditor | null>();
-
-  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-      if (onSave && activeEditor) onSave(activeEditor);
-    }
-  };
-
-  const ed = useEditor({
-    extensions: [
-      Typography,
-      Link,
-      StarterKit,
-      Dropcursor,
-      Placeholder.configure({
-        placeholder: ({ node }) => {
-          if (node.type.name === "heading") {
-            return "What’s the title?";
-          }
-
-          return "Can you add some further context?";
-        },
-        ...placeholderOptions,
-      }),
-      CharacterCount,
-    ],
-    content: (children as Content) || "",
-    editorProps: props.disableSaveShortcut
-      ? {}
-      : {
-          handleKeyDown: (view, event: KeyboardEvent) => {
-            if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-              return true;
+    const ed = useEditor({
+      extensions: [
+        Typography,
+        Link,
+        StarterKit,
+        Dropcursor,
+        Placeholder.configure({
+          placeholder: ({ node }) => {
+            if (node.type.name === "heading") {
+              return "What’s the title?";
             }
 
-            return false;
+            return "Can you add some further context?";
           },
-        },
-    ...props,
-  });
+          ...placeholderOptions,
+        }),
+        CharacterCount,
+        Markdown,
+      ],
+      content: (children as Content) || "",
+      contentType: contentType || "json",
+      editorProps: props.disableSaveShortcut
+        ? {}
+        : {
+            handleKeyDown: (view, event: KeyboardEvent) => {
+              if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+                return true;
+              }
 
-  useImperativeHandle(ref, () => ({
-    getEditor: () => ed,
-  }), [ed]);
+              return false;
+            },
+          },
+      ...props,
+    });
 
-  if (!ed) {
-    return null;
-  }
+    useImperativeHandle(
+      ref,
+      () => ({
+        getEditor: () => ed,
+      }),
+      [ed],
+    );
 
-  // Add here because we want to keep also the listener from the props.
-  ed.on("update", ({ editor }) => setActiveEditor(editor as TipTapEditor));
+    if (!ed) {
+      return null;
+    }
 
-  return (
-    <EditorContainer editable={isEditable} validation={props.validation}>
-      {isEditable && (
-        <>
-          <EditorHeader title={headerTitle} validation={props.validation} />
-          {hasInlineMenu && (
-            <FloatingMenu editor={ed} options={{ ...bubbleOptions }} />
-          )}
-        </>
-      )}
-      <EditorContent editor={ed} onKeyDown={onKeyDown} />
-      {!disableSaveShortcut && isEditable && (
-        <EditorFooter saveText={footerSaveText} />
-      )}
-    </EditorContainer>
-  );
-});
+    // Add here because we want to keep also the listener from the props.
+    ed.on("update", ({ editor }) => setActiveEditor(editor as TipTapEditor));
+
+    return (
+      <EditorContainer editable={isEditable} validation={props.validation}>
+        {isEditable && (
+          <>
+            <EditorHeader title={headerTitle} validation={props.validation} />
+            {hasInlineMenu && (
+              <FloatingMenu editor={ed} options={{ ...bubbleOptions }} />
+            )}
+          </>
+        )}
+        <EditorContent editor={ed} onKeyDown={onKeyDown} />
+        {!disableSaveShortcut && isEditable && (
+          <EditorFooter saveText={footerSaveText} />
+        )}
+      </EditorContainer>
+    );
+  },
+);
 
 export { Editor };
 export type { EditorRef };
