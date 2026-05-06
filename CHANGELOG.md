@@ -1,3 +1,15 @@
+# v4.0.72 (Wed May 06 2026)
+
+#### 🐛 Bug Fix
+
+- fix: update downshift version and add overrides in package.json [#594](https://github.com/AppQuality/unguess-design-system/pull/594) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
 # v4.0.71 (Wed Apr 22 2026)
 
 #### 🐛 Bug Fix
