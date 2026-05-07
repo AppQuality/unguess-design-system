@@ -76,6 +76,8 @@ export const Component = ({
           id: o.attrs["id"],
           title: o.attrs["title"],
           color: o.attrs["color"],
+          creatorType: o.attrs["creatorType"],
+          end: o.attrs["end"],
         }))}
       >
         {/* @ts-ignore */}

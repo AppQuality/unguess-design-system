@@ -26,6 +26,9 @@ export const Observation = Node.create({
       title: {
         default: "",
       },
+      creatorType: {
+        default: undefined,
+      },
     };
   },
 
@@ -40,7 +43,17 @@ export const Observation = Node.create({
   addCommands() {
     return {
       addObservation:
-        ({ id, title, color }: { id: number; title: string; color?: string }) =>
+        ({
+          id,
+          title,
+          color,
+          creatorType,
+        }: {
+          id: number;
+          title: string;
+          color?: string;
+          creatorType?: "human" | "ai";
+        }) =>
         ({ tr, state, view }) => {
           const { from, to } = state.selection;
           let firstWord: PMNode, lastWord: PMNode;
@@ -61,6 +74,7 @@ export const Observation = Node.create({
                   id,
                   title,
                   color,
+                  creatorType,
                 },
                 node.content
               );

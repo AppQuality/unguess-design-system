@@ -76,6 +76,7 @@ Default.args = {
       end: 5.2799997,
       text: "My observation",
       color: "#ff0000",
+      creatorType: "human",
     },
     {
       id: 2,
@@ -83,6 +84,7 @@ Default.args = {
       start: 4.56,
       end: 10.175,
       text: "My other observation",
+      creatorType: "ai",
     },
   ],
   onAddObservation: (editor) =>
@@ -231,6 +233,7 @@ WithSentiment.args = {
       end: 5.2799997,
       text: "My observation",
       color: "#ff0000",
+      creatorType: "human",
     },
     {
       id: 2,
@@ -238,6 +241,7 @@ WithSentiment.args = {
       start: 4.56,
       end: 10.175,
       text: "My other observation",
+      creatorType: "ai",
     },
   ],
   onAddObservation: (editor) =>
@@ -278,6 +282,7 @@ WithCustomTheme.args = {
       end: 5.2799997,
       color: "#ff0000",
       text: "My observation",
+      creatorType: "human",
     },
     {
       id: 2,
@@ -286,6 +291,7 @@ WithCustomTheme.args = {
       end: 10.175,
       color: "#00ff00",
       text: "My other observation",
+      creatorType: "ai",
     },
   ],
   onAddObservation: (editor) => {
