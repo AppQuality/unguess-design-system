@@ -32,7 +32,7 @@ export type ObservationType = {
   end: number;
   text: string;
   color?: `#${string}`;
-  creatorType: "human" | "ai";
+  creatorType?: "human" | "ai";
 };
 
 export class ContentParser {
