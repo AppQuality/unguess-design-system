@@ -16,7 +16,14 @@ const DefaultObservationWrapper = ({
   title: string;
   color: string;
   children: ReactNode;
-  observations: { start: number; id: number; title: string; color: string }[];
+  observations: {
+    start: number;
+    id: number;
+    title: string;
+    color: string;
+    creatorType?: "human" | "ai";
+    end?: number;
+  }[];
 }) => {
   const background = color + "50";
   return (
