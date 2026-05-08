@@ -27,7 +27,7 @@ export const Observation = Node.create({
         default: "",
       },
       creatorType: {
-        default: undefined,
+        default: null,
       },
     };
   },
