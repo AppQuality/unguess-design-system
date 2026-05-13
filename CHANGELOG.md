@@ -1,3 +1,19 @@
+# v4.1.0 (Wed May 13 2026)
+
+#### 🚀 Enhancement
+
+- Enhance Observation model with creatorType and end attributes [#595](https://github.com/AppQuality/unguess-design-system/pull/595) ([@iacopolea](https://github.com/iacopolea))
+
+#### 🐛 Bug Fix
+
+- new release [#596](https://github.com/AppQuality/unguess-design-system/pull/596) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.0.72 (Wed May 06 2026)
 
 #### 🐛 Bug Fix
