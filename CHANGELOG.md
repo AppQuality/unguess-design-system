@@ -1,3 +1,201 @@
+# v4.1.0 (Wed May 13 2026)
+
+#### 🚀 Enhancement
+
+- Enhance Observation model with creatorType and end attributes [#595](https://github.com/AppQuality/unguess-design-system/pull/595) ([@iacopolea](https://github.com/iacopolea))
+
+#### 🐛 Bug Fix
+
+- new release [#596](https://github.com/AppQuality/unguess-design-system/pull/596) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
+# v4.0.72 (Wed May 06 2026)
+
+#### 🐛 Bug Fix
+
+- fix: update downshift version and add overrides in package.json [#594](https://github.com/AppQuality/unguess-design-system/pull/594) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v4.0.71 (Wed Apr 22 2026)
+
+#### 🐛 Bug Fix
+
+- Add markdown to editor [#593](https://github.com/AppQuality/unguess-design-system/pull/593) ([@cannarocks](https://github.com/cannarocks) [@d-beezee](https://github.com/d-beezee))
+- Update @tiptap dependencies and add Markdown support to Editor component [#590](https://github.com/AppQuality/unguess-design-system/pull/590) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v4.0.70 (Thu Apr 02 2026)
+
+#### 🐛 Bug Fix
+
+- Improve focus visibility in CodeVerifier component styles [#592](https://github.com/AppQuality/unguess-design-system/pull/592) ([@Kariamos](https://github.com/Kariamos))
+- fix: Adjust border and box-shadow styles in CodeVerifier component [#591](https://github.com/AppQuality/unguess-design-system/pull/591) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 1
+
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
+# v4.0.69 (Thu Mar 12 2026)
+
+#### 🐛 Bug Fix
+
+- Added CodeVerifier component [#589](https://github.com/AppQuality/unguess-design-system/pull/589) ([@iDome89](https://github.com/iDome89))
+- feat: Add CodeVerifier component with validation and input handling [#588](https://github.com/AppQuality/unguess-design-system/pull/588) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 1
+
+- [@iDome89](https://github.com/iDome89)
+
+---
+
+# v4.0.68 (Wed Feb 25 2026)
+
+#### 🐛 Bug Fix
+
+- updated plan card component [#587](https://github.com/AppQuality/unguess-design-system/pull/587) ([@Kariamos](https://github.com/Kariamos))
+- UN-2266 update card plan [#586](https://github.com/AppQuality/unguess-design-system/pull/586) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 1
+
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
+# v4.0.67 (Wed Feb 18 2026)
+
+#### 🐛 Bug Fix
+
+- release-2026-02-18 [#585](https://github.com/AppQuality/unguess-design-system/pull/585) ([@cannarocks](https://github.com/cannarocks) [@Kariamos](https://github.com/Kariamos))
+- Enhance Editor interface with type-safe chained commands [#584](https://github.com/AppQuality/unguess-design-system/pull/584) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 2
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
+# v4.0.66 (Mon Feb 16 2026)
+
+#### 🐛 Bug Fix
+
+- Include editor ref type [#583](https://github.com/AppQuality/unguess-design-system/pull/583) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v4.0.65 (Mon Feb 16 2026)
+
+#### 🐛 Bug Fix
+
+- release-20260216 [#582](https://github.com/AppQuality/unguess-design-system/pull/582) ([@iDome89](https://github.com/iDome89) [@Kariamos](https://github.com/Kariamos))
+- feat: Add EditorRef interface and implement ref forwarding in Editor component [#581](https://github.com/AppQuality/unguess-design-system/pull/581) ([@iDome89](https://github.com/iDome89))
+
+#### Authors: 2
+
+- [@iDome89](https://github.com/iDome89)
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
+# v4.0.64 (Thu Feb 12 2026)
+
+#### 🐛 Bug Fix
+
+- Fix autocomplete validation [#579](https://github.com/AppQuality/unguess-design-system/pull/579) ([@cannarocks](https://github.com/cannarocks))
+- Improve regex handling for input validation in Autocomplete component [#578](https://github.com/AppQuality/unguess-design-system/pull/578) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
+# v4.0.63 (Mon Jan 19 2026)
+
+#### 🐛 Bug Fix
+
+- Add audio player [#576](https://github.com/AppQuality/unguess-design-system/pull/576) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee))
+- UN-2222: update player to handle audio files [#567](https://github.com/AppQuality/unguess-design-system/pull/567) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
+# v4.0.62 (Mon Jan 19 2026)
+
+#### 🐛 Bug Fix
+
+- fix: add hover and active styles for danger dropdown menu items [#575](https://github.com/AppQuality/unguess-design-system/pull/575) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v4.0.61 (Mon Jan 19 2026)
+
+#### 🐛 Bug Fix
+
+- update-ui-node-24 [#574](https://github.com/AppQuality/unguess-design-system/pull/574) ([@iDome89](https://github.com/iDome89) [@d-beezee](https://github.com/d-beezee))
+- UI updates node 24 [#573](https://github.com/AppQuality/unguess-design-system/pull/573) ([@iDome89](https://github.com/iDome89) [@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- [@iDome89](https://github.com/iDome89)
+
+---
+
+# v4.0.60 (Fri Jan 16 2026)
+
+#### 🐛 Bug Fix
+
+- Fix styled component issue [#572](https://github.com/AppQuality/unguess-design-system/pull/572) ([@d-beezee](https://github.com/d-beezee))
+
+#### Authors: 1
+
+- [@d-beezee](https://github.com/d-beezee)
+
+---
+
+# v4.0.59 (Thu Jan 15 2026)
+
+#### 🐛 Bug Fix
+
+- Remove order property from NavAccordionItem styling [#571](https://github.com/AppQuality/unguess-design-system/pull/571) ([@cannarocks](https://github.com/cannarocks))
+
+#### Authors: 1
+
+- Luca Cannarozzo ([@cannarocks](https://github.com/cannarocks))
+
+---
+
 # v4.0.58 (Thu Jan 15 2026)
 
 #### 🐛 Bug Fix
