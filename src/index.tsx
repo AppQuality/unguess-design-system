@@ -64,6 +64,7 @@ export type { EditorRef } from "./stories/editor";
 export * from "./stories/forms/checkbox";
 export * from "./stories/forms/checkbox/cards";
 export * from "./stories/forms/code-verifier";
+export * from "./stories/forms/file";
 export * from "./stories/forms/field";
 export * from "./stories/forms/input";
 export * from "./stories/forms/input-toggle";
