@@ -14,9 +14,8 @@ const StyledButton = styled(Button)`
 
 // Disabled buttons don't fire mouse events, so the Tooltip needs
 // a non-disabled wrapper to trigger on hover
-const TooltipTrigger = styled.span`
-  display: inline-block;
-`;
+// we create a styled div with a specific id to append the tooltip to, so that it doesn't get cut off by the player container
+const TooltipTrigger = styled.div.attrs({ id: "cutter-tooltip-trigger" })``;
 
 export const Cutter = ({
   onCutHandler,
@@ -69,8 +68,10 @@ export const Cutter = ({
 
   if (!tooltipText) return button;
 
+  const appendTo = document.getElementById("cutter-tooltip-trigger") || undefined;
+
   return (
-    <Tooltip type="light" size="medium" maxWidth="unset" content={tooltipText}>
+    <Tooltip type="light" size="medium" maxWidth="unset" content={tooltipText} appendToNode={appendTo}>
       <TooltipTrigger>{button}</TooltipTrigger>
     </Tooltip>
   );
