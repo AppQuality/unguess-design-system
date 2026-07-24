@@ -6,21 +6,30 @@ import { Tooltip } from "../../tooltip";
 import { Span } from "../../typography/span";
 import { PlayerI18n } from "../_types";
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
-import { PlayerShortCut } from "../shortcuts";
 
 // Prevent button from breaking on smaller screens
 const StyledButton = styled(Button)`
   overflow: visible;
 `;
 
+// Disabled buttons don't fire mouse events, so the Tooltip needs
+// a non-disabled wrapper to trigger on hover
+const TooltipTrigger = styled.span`
+  display: inline-block;
+`;
+
 export const Cutter = ({
   onCutHandler,
   isCutting,
   i18n,
+  disable = false,
+  tooltipText,
 }: {
   onCutHandler?: (time: number) => void;
   isCutting?: boolean;
   i18n?: PlayerI18n;
+  disable?: boolean;
+  tooltipText?: string;
 }) => {
   const { context } = useVideoContext();
 
@@ -28,43 +37,41 @@ export const Cutter = ({
 
   if (!onCutHandler) return null;
 
-  return (
-    <Tooltip
-      type="light"
-      size="medium"
-      maxWidth="unset"
-      content={
-        <PlayerShortCut type="observation">
-          {i18n?.observations || "Start/stop new observation"}
-        </PlayerShortCut>
-      }
+  const button = (
+    <StyledButton
+      isPrimary
+      isAccent={!isCutting}
+      disabled={disable}
+      onClick={(e) => {
+        if (videoRef) {
+          onCutHandler(videoRef.currentTime);
+        }
+        e.stopPropagation();
+      }}
     >
-      <StyledButton
-        isPrimary
-        isAccent={!isCutting}
-        onClick={(e) => {
-          if (videoRef) {
-            onCutHandler(videoRef.currentTime);
-          }
-          e.stopPropagation();
-        }}
-      >
-        {isCutting ? (
-          <>
-            <Button.StartIcon>
-              <TagIcon />
-            </Button.StartIcon>
-            <Span>{i18n?.onHighlight || "End observation"}</Span>
-          </>
-        ) : (
-          <>
-            <Button.StartIcon>
-              <PlusIcon />
-            </Button.StartIcon>
-            <Span>{i18n?.beforeHighlight || "Start observation"}</Span>
-          </>
-        )}
-      </StyledButton>
+      {isCutting ? (
+        <>
+          <Button.StartIcon>
+            <TagIcon />
+          </Button.StartIcon>
+          <Span>{i18n?.onHighlight || "End observation"}</Span>
+        </>
+      ) : (
+        <>
+          <Button.StartIcon>
+            <PlusIcon />
+          </Button.StartIcon>
+          <Span>{i18n?.beforeHighlight || "Start observation"}</Span>
+        </>
+      )}
+    </StyledButton>
+  );
+
+  if (!tooltipText) return button;
+
+  return (
+    <Tooltip type="light" size="medium" maxWidth="unset" content={tooltipText}>
+      <TooltipTrigger>{button}</TooltipTrigger>
     </Tooltip>
   );
 };
