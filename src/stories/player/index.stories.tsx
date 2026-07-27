@@ -237,6 +237,13 @@ WithBookmarks.args = {
   },
 };
 
+export const CutterDisabled = TemplateWithCutter.bind({});
+CutterDisabled.args = {
+  ...AudioPlayerWithBookmarks.args,
+  disableCutter: true,
+  cutterTooltipText: "Available once the transcript is ready",
+};
+
 export const WithContext = TemplateWithContext.bind({});
 WithContext.args = { ...defaultArgs };
 

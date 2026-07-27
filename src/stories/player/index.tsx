@@ -39,6 +39,8 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
       pipMode,
       onPipChange,
       playerType = "video",
+      disableCutter,
+      cutterTooltipText,
     } = props;
     const videoRef = context.player?.ref.current;
     const isLoaded = !!videoRef;
@@ -103,6 +105,8 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             onBookMarkUpdated={props.handleBookmarkUpdate}
             i18n={props.i18n}
             playerType={playerType}
+            disableCutter={disableCutter}
+            cutterTooltipText={cutterTooltipText}
           />
         </ProgressContextProvider>
       </Container>
