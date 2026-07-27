@@ -73,6 +73,8 @@ export const Controls = ({
   i18n,
   showControls = false,
   playerType = "video",
+  disableCutter,
+  cutterTooltipText,
 }: {
   container: HTMLDivElement | null;
   onCutHandler?: (time: number) => void;
@@ -82,6 +84,8 @@ export const Controls = ({
   i18n?: PlayerI18n;
   showControls?: boolean;
   playerType?: "video" | "audio";
+  disableCutter?: boolean;
+  cutterTooltipText?: string;
 }) => {
   const [progress, setProgress] = useState<number>(0);
   const [tooltipMargin, setTooltipMargin] = useState<number>(0);
@@ -253,6 +257,8 @@ export const Controls = ({
             onCutHandler={onCutHandler}
             isCutting={isCutting}
             i18n={i18n}
+            disable={disableCutter}
+            tooltipText={cutterTooltipText}
           />
           {playerType === "video" && <FullScreenButton container={container} />}
         </StyledDiv>

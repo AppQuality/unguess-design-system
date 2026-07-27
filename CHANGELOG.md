@@ -1,3 +1,17 @@
+# v4.1.1 (Mon Jun 15 2026)
+
+#### 🐛 Bug Fix
+
+- release 20260615 [#598](https://github.com/AppQuality/unguess-design-system/pull/598) ([@iacopolea](https://github.com/iacopolea) [@marcbon](https://github.com/marcbon))
+- feat: update version to 4.1.1-canary and add File component to forms [#597](https://github.com/AppQuality/unguess-design-system/pull/597) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.1.0 (Wed May 13 2026)
 
 #### 🚀 Enhancement
