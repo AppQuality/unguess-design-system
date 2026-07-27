@@ -1,3 +1,19 @@
+# v4.1.3 (Mon Jul 27 2026)
+
+#### 🐛 Bug Fix
+
+- Improved observation button for video player [#601](https://github.com/AppQuality/unguess-design-system/pull/601) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@marcbon](https://github.com/marcbon))
+- feat(player): add disable and tooltip support to Cutter button [#599](https://github.com/AppQuality/unguess-design-system/pull/599) ([@marcbon](https://github.com/marcbon) [@github-actions[bot]](https://github.com/github-actions[bot]) [@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Cutter-props-v2 [#600](https://github.com/AppQuality/unguess-design-system/pull/600) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 3
+
+- [@github-actions[bot]](https://github.com/github-actions[bot])
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.1.1 (Mon Jun 15 2026)
 
 #### 🐛 Bug Fix
