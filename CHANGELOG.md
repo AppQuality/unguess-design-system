@@ -1,3 +1,17 @@
+# v4.1.4 (Tue Jul 28 2026)
+
+#### 🐛 Bug Fix
+
+- Improved cutter button video player [#603](https://github.com/AppQuality/unguess-design-system/pull/603) ([@sinatragianpaolo](https://github.com/sinatragianpaolo) [@marcbon](https://github.com/marcbon))
+- fix(player): unify observations tooltip and disable shortcut when Cutter is disabled [#602](https://github.com/AppQuality/unguess-design-system/pull/602) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 2
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.1.3 (Mon Jul 27 2026)
 
 #### 🐛 Bug Fix
