@@ -15,7 +15,6 @@ export interface PlayerArgs extends HTMLAttributes<HTMLVideoElement> {
   showControls?: boolean;
   onShortcut?: (type: string) => void;
   disableCutter?: boolean;
-  cutterTooltipText?: string;
 }
 
 export interface PlayerI18n {

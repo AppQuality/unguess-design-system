@@ -6,6 +6,7 @@ import { Tooltip } from "../../tooltip";
 import { Span } from "../../typography/span";
 import { PlayerI18n } from "../_types";
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
+import { PlayerShortCut } from "../shortcuts";
 
 // Prevent button from breaking on smaller screens
 const StyledButton = styled(Button)`
@@ -22,13 +23,11 @@ export const Cutter = ({
   isCutting,
   i18n,
   disable = false,
-  tooltipText,
 }: {
   onCutHandler?: (time: number) => void;
   isCutting?: boolean;
   i18n?: PlayerI18n;
   disable?: boolean;
-  tooltipText?: string;
 }) => {
   const { context } = useVideoContext();
 
@@ -66,12 +65,20 @@ export const Cutter = ({
     </StyledButton>
   );
 
-  if (!tooltipText) return button;
-
   const appendTo = document.getElementById("cutter-tooltip-trigger") || undefined;
 
   return (
-    <Tooltip type="light" size="medium" maxWidth="unset" content={tooltipText} appendToNode={appendTo}>
+    <Tooltip
+      type="light"
+      size="medium"
+      maxWidth="unset"
+      appendToNode={appendTo}
+      content={
+        <PlayerShortCut type="observation">
+          {i18n?.observations || "Start/stop new observation"}
+        </PlayerShortCut>
+      }
+    >
       <TooltipTrigger>{button}</TooltipTrigger>
     </Tooltip>
   );

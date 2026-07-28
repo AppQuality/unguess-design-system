@@ -40,7 +40,6 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
       onPipChange,
       playerType = "video",
       disableCutter,
-      cutterTooltipText,
     } = props;
     const videoRef = context.player?.ref.current;
     const isLoaded = !!videoRef;
@@ -106,7 +105,6 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
             i18n={props.i18n}
             playerType={playerType}
             disableCutter={disableCutter}
-            cutterTooltipText={cutterTooltipText}
           />
         </ProgressContextProvider>
       </Container>
