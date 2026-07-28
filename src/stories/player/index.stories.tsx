@@ -241,7 +241,7 @@ export const CutterDisabled = TemplateWithCutter.bind({});
 CutterDisabled.args = {
   ...AudioPlayerWithBookmarks.args,
   disableCutter: true,
-  cutterTooltipText: "Available once the transcript is ready",
+  i18n: { observationsDisable: "Available once the transcript is ready" },
 };
 
 export const WithContext = TemplateWithContext.bind({});
@@ -255,6 +255,9 @@ export default {
       name: "Video URL",
       description: "The url of the video to play",
       control: "text",
+    },
+    i18n: {
+      control: "object",
     },
   },
   parameters: {
