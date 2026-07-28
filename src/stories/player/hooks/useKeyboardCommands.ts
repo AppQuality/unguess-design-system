@@ -4,11 +4,13 @@ type KeyboardCommandsHook = ({
   setIsPlaying,
   onCutHandler,
   videoRef,
+  disableCutter,
 }: {
   setIsPlaying: (isPlaying: boolean) => void;
   onCutHandler?: (time: number) => void;
   onShortcut?: (type: string) => void;
   videoRef?: HTMLVideoElement | null;
+  disableCutter?: boolean;
 }) => void;
 
 export const useKeyboardCommands: KeyboardCommandsHook = ({
@@ -16,6 +18,7 @@ export const useKeyboardCommands: KeyboardCommandsHook = ({
   onCutHandler,
   onShortcut,
   videoRef,
+  disableCutter,
 }) => {
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -50,7 +53,7 @@ export const useKeyboardCommands: KeyboardCommandsHook = ({
         videoRef.volume = videoRef.muted ? 0 : 1;
         onShortcut?.("mute");
       }
-      if (e.code === "KeyS") {
+      if (e.code === "KeyS" && !disableCutter) {
         onCutHandler?.(videoRef.currentTime);
         e.stopPropagation();
         onShortcut?.("start/stop_observation");
@@ -60,5 +63,5 @@ export const useKeyboardCommands: KeyboardCommandsHook = ({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [videoRef, onCutHandler]);
+  }, [videoRef, onCutHandler, disableCutter]);
 };

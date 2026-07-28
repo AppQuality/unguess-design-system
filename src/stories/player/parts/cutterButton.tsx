@@ -74,9 +74,13 @@ export const Cutter = ({
       maxWidth="unset"
       appendToNode={appendTo}
       content={
-        <PlayerShortCut type="observation">
-          {i18n?.observations || "Start/stop new observation"}
-        </PlayerShortCut>
+        disable ? (
+          i18n?.observations || "Start/stop new observation"
+        ) : (
+          <PlayerShortCut type="observation">
+            {i18n?.observations || "Start/stop new observation"}
+          </PlayerShortCut>
+        )
       }
     >
       <TooltipTrigger>{button}</TooltipTrigger>

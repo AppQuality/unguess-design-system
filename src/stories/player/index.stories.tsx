@@ -256,6 +256,9 @@ export default {
       description: "The url of the video to play",
       control: "text",
     },
+    i18n: {
+      control: "object",
+    },
   },
   parameters: {
     chromatic: { delay: 300 },

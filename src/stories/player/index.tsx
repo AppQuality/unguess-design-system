@@ -54,6 +54,7 @@ const PlayerCore = forwardRef<HTMLVideoElement, PlayerArgs>(
       onCutHandler,
       videoRef,
       onShortcut: props.onShortcut,
+      disableCutter,
     });
     usePictureInPicture(
       videoRef,
