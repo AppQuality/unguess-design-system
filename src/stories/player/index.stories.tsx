@@ -241,7 +241,7 @@ export const CutterDisabled = TemplateWithCutter.bind({});
 CutterDisabled.args = {
   ...AudioPlayerWithBookmarks.args,
   disableCutter: true,
-  i18n: { observations: "Available once the transcript is ready" },
+  i18n: { observationsDisable: "Available once the transcript is ready" },
 };
 
 export const WithContext = TemplateWithContext.bind({});

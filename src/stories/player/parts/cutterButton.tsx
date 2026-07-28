@@ -65,6 +65,8 @@ export const Cutter = ({
     </StyledButton>
   );
 
+  if (disable && !i18n?.observationsDisable) return button;
+
   const appendTo = document.getElementById("cutter-tooltip-trigger") || undefined;
 
   return (
@@ -75,7 +77,7 @@ export const Cutter = ({
       appendToNode={appendTo}
       content={
         disable ? (
-          i18n?.observations || "Start/stop new observation"
+          i18n?.observationsDisable
         ) : (
           <PlayerShortCut type="observation">
             {i18n?.observations || "Start/stop new observation"}

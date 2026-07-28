@@ -23,6 +23,7 @@ export interface PlayerI18n {
   playpause?: string;
   mute?: string;
   observations?: string;
+  observationsDisable?: string;
   forward?: string;
   backward?: string;
 }
