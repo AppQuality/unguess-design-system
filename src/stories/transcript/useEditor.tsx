@@ -1,8 +1,8 @@
-import SearchAndReplace from "@memfoldai/tiptap-search-and-replace";
 import Document from "@tiptap/extension-document";
 import Text from "@tiptap/extension-text";
 import { Extension, useEditor as useTiptapEditor } from "@tiptap/react";
 import { useEffect } from "react";
+import { Search } from "./extensions/search";
 import { Theme } from "./extensions/theme";
 import {
   ContentParser,
@@ -58,7 +58,7 @@ export const useEditor = (
         Text,
         themeExtension ? themeExtension : Theme.configure(),
         Word,
-        SearchAndReplace.configure(),
+        Search.configure(),
         Active({
           onSetCurrentTime,
         }),
