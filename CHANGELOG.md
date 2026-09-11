@@ -1,3 +1,16 @@
+# v4.1.5 (Fri Sep 11 2026)
+
+#### 🐛 Bug Fix
+
+- Improve transcript with search [#605](https://github.com/AppQuality/unguess-design-system/pull/605) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- UN-3000 feat(transcript): fix multi-word search + match count / navigation [#604](https://github.com/AppQuality/unguess-design-system/pull/604) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 1
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+---
+
 # v4.1.4 (Tue Jul 28 2026)
 
 #### 🐛 Bug Fix
