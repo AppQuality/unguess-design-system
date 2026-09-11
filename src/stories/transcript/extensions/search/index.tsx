@@ -63,6 +63,7 @@ const buildRegex = (term: string): RegExp | null => {
 interface ProcessedSearches {
   decorationsToReturn: DecorationSet;
   results: Range[];
+  resultIndex: number;
 }
 
 const processSearches = (
@@ -72,7 +73,7 @@ const processSearches = (
   resultIndex: number,
 ): ProcessedSearches => {
   if (!regex) {
-    return { decorationsToReturn: DecorationSet.empty, results: [] };
+    return { decorationsToReturn: DecorationSet.empty, results: [], resultIndex: 0 };
   }
 
   const results: Range[] = [];
@@ -132,6 +133,7 @@ const processSearches = (
   return {
     decorationsToReturn: DecorationSet.create(doc, decorations),
     results,
+    resultIndex: safeIndex,
   };
 };
 
@@ -160,9 +162,9 @@ export const Search = Extension.create<SearchOptions, SearchStorage>({
     const bump =
       (mutate: (storage: SearchStorage) => void) =>
       ({ editor, tr, dispatch }: { editor: any; tr: any; dispatch?: any }) => {
+        if (!dispatch) return true;
         mutate(editor.storage.searchAndReplace as SearchStorage);
-        // storage writes need an explicit dispatch to trigger recomputation
-        if (dispatch) dispatch(tr);
+        dispatch(tr);
         return true;
       };
 
@@ -216,18 +218,17 @@ export const Search = Extension.create<SearchOptions, SearchStorage>({
             storage.lastTerm = storage.searchTerm;
             storage.lastIndex = storage.resultIndex;
 
-            const { decorationsToReturn, results } = processSearches(
-              tr.doc,
-              buildRegex(storage.searchTerm),
-              searchResultClass,
-              storage.resultIndex,
-            );
+            const { decorationsToReturn, results, resultIndex } =
+              processSearches(
+                tr.doc,
+                buildRegex(storage.searchTerm),
+                searchResultClass,
+                storage.resultIndex,
+              );
 
             storage.results = results;
-            if (storage.resultIndex >= results.length) {
-              storage.resultIndex = 0;
-              storage.lastIndex = 0;
-            }
+            storage.resultIndex = resultIndex;
+            storage.lastIndex = resultIndex;
 
             return decorationsToReturn;
           },
