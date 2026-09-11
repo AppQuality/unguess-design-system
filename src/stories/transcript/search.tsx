@@ -1,6 +1,7 @@
 import { Editor, useEditorState } from "@tiptap/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
+import { ReactComponent as XIcon } from "@zendeskgarden/svg-icons/src/16/x-stroke.svg";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search-stroke.svg";
 import useDebounce from "../../hooks/useDebounce";
 import { MediaInput } from "../forms/mediaInput";
@@ -18,6 +19,21 @@ const MatchesLabel = styled.span`
 
   b {
     font-weight: ${({ theme }) => theme.fontWeights.semibold};
+  }
+`;
+
+const ClearButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: ${({ theme }) => theme.palette.grey[600]};
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.palette.grey[800]};
   }
 `;
 
@@ -81,13 +97,29 @@ const Search = ({
     [editor, hasQuery, total, scrollToCurrentMatch],
   );
 
+  const handleClear = useCallback(() => {
+    setSearch("");
+  }, []);
+
   return (
     <Wrapper>
       <MediaInput
         isCompact
         placeholder={placeholder ?? "Search transcript... press ⏎"}
         type="text"
+        value={search}
         start={<SearchIcon />}
+        end={
+          search ? (
+            <ClearButton
+              type="button"
+              aria-label="Clear search"
+              onClick={handleClear}
+            >
+              <XIcon />
+            </ClearButton>
+          ) : undefined
+        }
         onChange={(e) => {
           setSearch(e.target.value);
         }}
