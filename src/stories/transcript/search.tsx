@@ -1,5 +1,5 @@
 import { Editor, useEditorState } from "@tiptap/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search-stroke.svg";
 import useDebounce from "../../hooks/useDebounce";
@@ -50,27 +50,48 @@ const Search = ({
       e.storage.searchAndReplace?.results.length ?? 0,
   });
 
-  // Keep the first match in view as the user refines the query.
+  const hasQuery = debouncedValue.trim().length > 0;
+
+  // Enter scrolls to the first match, then advances to the next on every
+  // further press, instead of jumping the page while the user is typing.
+  const hasNavigatedRef = useRef(false);
+
   useEffect(() => {
-    if (!total) return;
+    hasNavigatedRef.current = false;
+  }, [debouncedValue]);
+
+  const scrollToCurrentMatch = useCallback(() => {
     const current = editor.view.dom.querySelector<HTMLElement>(
       ".search-result-current",
     );
     current?.scrollIntoView({ block: "center", behavior: "smooth" });
-  }, [editor, total, debouncedValue]);
+  }, [editor]);
 
-  const hasQuery = debouncedValue.trim().length > 0;
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key !== "Enter" || !hasQuery || !total) return;
+      e.preventDefault();
+      if (hasNavigatedRef.current) {
+        editor.commands.nextSearchResult();
+      } else {
+        hasNavigatedRef.current = true;
+      }
+      scrollToCurrentMatch();
+    },
+    [editor, hasQuery, total, scrollToCurrentMatch],
+  );
 
   return (
     <Wrapper>
       <MediaInput
         isCompact
-        placeholder={placeholder ?? "Search"}
+        placeholder={placeholder ?? "Search transcript... press ⏎"}
         type="text"
         start={<SearchIcon />}
         onChange={(e) => {
           setSearch(e.target.value);
         }}
+        onKeyDown={handleKeyDown}
       />
       {hasQuery ? (
         <MatchesLabel>
