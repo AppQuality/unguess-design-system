@@ -4,24 +4,15 @@ import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { Decoration, DecorationSet } from "@tiptap/pm/view";
 
 /**
- * Transcript keyword search.
+ * Multi-word keyword search for the transcript editor.
  *
- * The transcript renders every word as its own inline node, each holding a text
- * node that already carries a trailing space (see getParsedContent). The stock
- * `@memfoldai/tiptap-search-and-replace` starts a fresh text buffer at every
- * non-text node, so each buffer ends up being a single word: any query that
- * contains a space then matches nothing ("mi piace" -> 0 results, while "mi"
- * and "piace" on their own -> results).
+ * Words are separate inline nodes, so matching rebuilds one string per
+ * textblock with a char -> position map and matches against that. Query
+ * whitespace matches one or more whitespace characters; matches never cross
+ * a block boundary.
  *
- * This extension rebuilds one continuous string per textblock, paired with a
- * char -> ProseMirror-position map, matches against that string and maps the
- * ranges back. Matches never cross a block boundary. Whitespace inside the
- * query is matched as "one or more whitespace", so "mi piace" also matches a
- * double space or a line break between the two words.
- *
- * It also exposes the current match index and total count (via storage) plus
- * next/previous commands, so the UI can show "3/12" and let the user jump
- * between matches.
+ * Match index/count live in storage, with next/previous commands to move
+ * between results.
  */
 
 declare module "@tiptap/core" {
@@ -170,8 +161,7 @@ export const Search = Extension.create<SearchOptions, SearchStorage>({
       (mutate: (storage: SearchStorage) => void) =>
       ({ editor, tr, dispatch }: { editor: any; tr: any; dispatch?: any }) => {
         mutate(editor.storage.searchAndReplace as SearchStorage);
-        // Setting storage does not create a transaction on its own; dispatch an
-        // empty one so the decoration plugin recomputes right away.
+        // storage writes need an explicit dispatch to trigger recomputation
         if (dispatch) dispatch(tr);
         return true;
       };
