@@ -4,15 +4,16 @@ import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { Decoration, DecorationSet } from "@tiptap/pm/view";
 
 /**
- * Multi-word keyword search for the transcript editor.
+ * Ricerca di parole chiave multi-parola per l'editor del transcript.
  *
- * Words are separate inline nodes, so matching rebuilds one string per
- * textblock with a char -> position map and matches against that. Query
- * whitespace matches one or more whitespace characters; matches never cross
- * a block boundary.
+ * Le parole sono nodi inline separati, quindi la ricerca ricostruisce una
+ * stringa per ogni textblock con una mappa carattere -> posizione nel
+ * documento ProseMirror ("@tiptap/pm/model") e cerca i match su quella stringa. Gli spazi nella
+ * query fanno match con uno o più caratteri di spaziatura; i match non
+ * attraversano mai un confine tra blocchi.
  *
- * Match index/count live in storage, with next/previous commands to move
- * between results.
+ * Indice/conteggio dei match vivono nello storage, con comandi next/previous
+ * per spostarsi tra i risultati.
  */
 
 declare module "@tiptap/core" {
@@ -68,63 +69,71 @@ interface ProcessedSearches {
 
 const processSearches = (
   doc: PMNode,
-  regex: RegExp | null,
+  searchRegex: RegExp | null,
   searchResultClass: string,
-  resultIndex: number,
+  requestedIndex: number,
 ): ProcessedSearches => {
-  if (!regex) {
+  if (!searchRegex) {
     return { decorationsToReturn: DecorationSet.empty, results: [], resultIndex: 0 };
   }
 
-  const results: Range[] = [];
+  const matches: Range[] = [];
 
-  doc.descendants((block, blockPos) => {
-    if (!block.isTextblock) return true;
+  // Ogni textblock viene scansionato come un'unica stringa, perché un match
+  // può estendersi su più nodi inline (es. parole separate).
+  doc.descendants((textBlock, blockStartPos) => {
+    if (!textBlock.isTextblock) return true;
 
-    let text = "";
-    const posMap: number[] = []; // posMap[i] = PM position before char i
+    let blockText = "";
+    // charToPos[i] = posizione nel documento ProseMirror di blockText[i]
+    const charToPos: number[] = [];
 
-    block.descendants((child, childPos) => {
-      if (child.isText && child.text) {
-        const base = blockPos + 1 + childPos;
-        for (let i = 0; i < child.text.length; i += 1) {
-          text += child.text[i];
-          posMap.push(base + i);
+    // per ogni nodo di testo, accumula i suoi caratteri in blockText e
+    // registra in charToPos la posizione ProseMirror di ciascun carattere
+    textBlock.descendants((node, nodeOffset) => {
+      if (node.isText && node.text) {
+        const nodeStartPos = blockStartPos + 1 + nodeOffset;
+        for (let i = 0; i < node.text.length; i += 1) {
+          blockText += node.text[i];
+          charToPos.push(nodeStartPos + i);
         }
       }
       return true;
     });
 
-    if (text) {
-      regex.lastIndex = 0;
-      let match = regex.exec(text);
+    // esegue la regex su blockText e converte ogni match trovato in un
+    // range di posizioni ProseMirror tramite charToPos
+    if (blockText) {
+      searchRegex.lastIndex = 0;
+      let match = searchRegex.exec(blockText);
       while (match !== null) {
-        const matched = match[0];
-        if (matched && matched.trim()) {
-          const from = posMap[match.index];
-          const to = posMap[match.index + matched.length - 1];
+        const matchedText = match[0];
+        if (matchedText && matchedText.trim()) {
+          const from = charToPos[match.index];
+          const to = charToPos[match.index + matchedText.length - 1];
           if (from !== undefined && to !== undefined) {
-            results.push({ from, to: to + 1 });
+            matches.push({ from, to: to + 1 });
           }
         }
-        // guard against zero-length matches locking the loop
-        if (regex.lastIndex === match.index) regex.lastIndex += 1;
-        match = regex.exec(text);
+        // evita un loop infinito sui match di lunghezza zero
+        if (searchRegex.lastIndex === match.index) searchRegex.lastIndex += 1;
+        match = searchRegex.exec(blockText);
       }
     }
 
-    return false; // a match never spans across blocks
+    return false; // un match non si estende mai su più blocchi
   });
 
-  const safeIndex =
-    results.length === 0
+  // normalizza/avvolge l'indice richiesto in una posizione di match valida
+  const currentIndex =
+    matches.length === 0
       ? 0
-      : ((resultIndex % results.length) + results.length) % results.length;
+      : ((requestedIndex % matches.length) + matches.length) % matches.length;
 
-  const decorations = results.map((range, i) =>
+  const decorations = matches.map((range, i) =>
     Decoration.inline(range.from, range.to, {
       class:
-        i === safeIndex
+        i === currentIndex
           ? `${searchResultClass} ${searchResultClass}-current`
           : searchResultClass,
     }),
@@ -132,8 +141,8 @@ const processSearches = (
 
   return {
     decorationsToReturn: DecorationSet.create(doc, decorations),
-    results,
-    resultIndex: safeIndex,
+    results: matches,
+    resultIndex: currentIndex,
   };
 };
 
