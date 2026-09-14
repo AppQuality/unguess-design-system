@@ -74,7 +74,11 @@ const processSearches = (
   requestedIndex: number,
 ): ProcessedSearches => {
   if (!searchRegex) {
-    return { decorationsToReturn: DecorationSet.empty, results: [], resultIndex: 0 };
+    return {
+      decorationsToReturn: DecorationSet.empty,
+      results: [],
+      resultIndex: 0,
+    };
   }
 
   const matches: Range[] = [];
@@ -106,7 +110,11 @@ const processSearches = (
     if (blockText) {
       searchRegex.lastIndex = 0;
       let match = searchRegex.exec(blockText);
-      while (match !== null) {
+
+      let iterations = 0;
+      const maxIterations = blockText.length + 1;
+      while (match !== null && iterations < maxIterations) {
+        iterations++;
         const matchedText = match[0];
         if (matchedText && matchedText.trim()) {
           const from = charToPos[match.index];
