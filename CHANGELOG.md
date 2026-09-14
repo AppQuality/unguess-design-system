@@ -1,3 +1,16 @@
+# v4.1.6 (Mon Sep 14 2026)
+
+#### 🐛 Bug Fix
+
+- UN-3000 [#607](https://github.com/AppQuality/unguess-design-system/pull/607) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- UN-3000 fix(transcript): search dispatch fix, Enter-scroll, clear btn [#606](https://github.com/AppQuality/unguess-design-system/pull/606) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 1
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+---
+
 # v4.1.5 (Fri Sep 11 2026)
 
 #### 🐛 Bug Fix
