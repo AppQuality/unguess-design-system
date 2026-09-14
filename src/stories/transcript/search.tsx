@@ -105,7 +105,7 @@ const Search = ({
     <Wrapper>
       <MediaInput
         isCompact
-        placeholder={placeholder ?? "Search transcript... press ⏎"}
+        placeholder={placeholder ?? "Search... press ⏎"}
         type="text"
         value={search}
         start={<SearchIcon />}
