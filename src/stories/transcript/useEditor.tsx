@@ -1,7 +1,12 @@
 import Document from "@tiptap/extension-document";
 import Text from "@tiptap/extension-text";
 import { Extension, useEditor as useTiptapEditor } from "@tiptap/react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import {
+  ObservationClickPayload,
+  ObservationRange,
+  ObservationResize,
+} from "./extensions/observationResize";
 import { Search } from "./extensions/search";
 import { Theme } from "./extensions/theme";
 import {
@@ -28,6 +33,10 @@ export const useEditor = (
     isEditable,
     numberOfSpeakers,
     sentiments,
+    editingObservationId,
+    onObservationRangeChange,
+    onObservationRangeCommit,
+    onObservationClick,
   }: {
     content?: ParagraphType[];
     observations?: ObservationType[];
@@ -38,9 +47,24 @@ export const useEditor = (
     isEditable?: boolean;
     numberOfSpeakers?: number;
     sentiments?: SentimentType[];
+    /** observation che mostra le maniglie per il ridimensionamento */
+    editingObservationId?: number | null;
+    onObservationRangeChange?: (range: ObservationRange) => void;
+    onObservationRangeCommit?: (range: ObservationRange) => void;
+    /** click su una parola evidenziata, per scegliere l'observation da modificare */
+    onObservationClick?: (payload: ObservationClickPayload) => void;
   },
   deps?: React.DependencyList
 ) => {
+  // l'editor viene creato una sola volta per deps: le callback passano da ref
+  // per non usare closure vecchie
+  const onRangeChangeRef = useRef(onObservationRangeChange);
+  onRangeChangeRef.current = onObservationRangeChange;
+  const onRangeCommitRef = useRef(onObservationRangeCommit);
+  onRangeCommitRef.current = onObservationRangeCommit;
+  const onObservationClickRef = useRef(onObservationClick);
+  onObservationClickRef.current = onObservationClick;
+
   const parser = new ContentParser({
     observations,
     translations,
@@ -63,6 +87,12 @@ export const useEditor = (
           onSetCurrentTime,
         }),
         Observation,
+        ObservationResize.configure({
+          onRangeChange: (range) => onRangeChangeRef.current?.(range),
+          onRangeCommit: (range) => onRangeCommitRef.current?.(range),
+          onObservationClick: (payload) =>
+            onObservationClickRef.current?.(payload),
+        }),
       ],
       editorProps: {
         handlePaste: () => true,
@@ -94,6 +124,11 @@ export const useEditor = (
 
     ed.commands.updateCurrentActive({ currentWord });
   }, [currentTime, content, ed]);
+
+  useEffect(() => {
+    if (!ed || ed.isDestroyed) return;
+    ed.commands.setEditingObservation(editingObservationId ?? null);
+  }, [editingObservationId, ed]);
 
   return ed;
 };
