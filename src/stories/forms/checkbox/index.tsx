@@ -1,7 +1,11 @@
 import { ICheckboxProps, Checkbox as ZendeskCheckbox } from "@zendeskgarden/react-forms";
 import styled from "styled-components";
 
-const UgCheckbox = styled(ZendeskCheckbox)``;
+const UgCheckbox = styled(ZendeskCheckbox)`
+  &&:disabled ~ label::before {
+    background-color: ${({ theme }) => theme.palette.grey[300]};
+  }
+`;
 
 /**
    * A Checkbox lets users select and unselect options from a list.

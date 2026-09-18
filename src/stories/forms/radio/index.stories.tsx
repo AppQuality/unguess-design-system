@@ -30,6 +30,18 @@ Checked.args = {
   checked: true,
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  checked: false,
+  disabled: true,
+};
+
+export const DisabledChecked = Template.bind({});
+DisabledChecked.args = {
+  checked: true,
+  disabled: true,
+};
+
 export default {
   title: "Molecules/Forms/Radio",
   component: Radio,
