@@ -17,6 +17,11 @@ const meta = {
         type: "boolean",
       },
     },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
     withLabel: {
       control: {
         type: "boolean",
@@ -54,5 +59,20 @@ export const Default: Story = {
 export const WithLabel: Story = {
   args: {
     withLabel: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    withLabel: true,
+    disabled: true,
+  },
+};
+
+export const DisabledChecked: Story = {
+  args: {
+    withLabel: true,
+    disabled: true,
+    checked: true,
   },
 };

@@ -2,7 +2,11 @@ import { Radio as ZendeskRadio } from "@zendeskgarden/react-forms";
 import { RadioArgs } from "./_types";
 import styled from "styled-components";
 
-const UgRadio = styled(ZendeskRadio)``;
+const UgRadio = styled(ZendeskRadio)`
+  &&:disabled ~ label::before {
+    background-color: ${({ theme }) => theme.palette.grey[300]};
+  }
+`;
 
 /**
    * Radio buttons let users choose a single option among two or more mutually exclusive options.
