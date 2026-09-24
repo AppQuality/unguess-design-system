@@ -8,6 +8,7 @@ import { ReactComponent as PlayIcon } from "../../assets/icons/play-fill.svg";
 import { IconButton } from "../buttons/icon-button";
 import { Tag } from "../tags";
 import { Tooltip } from "../tooltip";
+import { ObservationRange } from "./extensions/observationResize";
 import { Theme } from "./extensions/theme";
 import {
   ObservationType,
@@ -413,6 +414,79 @@ WithCustomTheme.args = {
       }
     `,
   }),
+};
+
+const ResizableObservationTemplate: StoryFn<StoryArgs> = (args) => {
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [liveRange, setLiveRange] = useState<ObservationRange>();
+  const [committedRange, setCommittedRange] = useState<ObservationRange>();
+  const editor = Transcript.useEditor({
+    content: args.content,
+    observations: args.observations,
+    editingObservationId: editingId,
+    onObservationRangeChange: setLiveRange,
+    onObservationRangeCommit: setCommittedRange,
+    // click su un highlight: seleziona la più corta, un altro click sulla
+    // stessa parola passa alla successiva sovrapposta
+    onObservationClick: ({ observations }) =>
+      setEditingId((current) => {
+        const index = observations.findIndex((o) => o.id === current);
+        if (index === -1) return observations[0].id;
+        return observations[(index + 1) % observations.length].id;
+      }),
+  });
+
+  if (!editor) return <></>;
+
+  return (
+    <>
+      <div>
+        Editing: {editingId ?? "none"}{" "}
+        <button onClick={() => setEditingId(null)} disabled={editingId === null}>
+          Stop editing
+        </button>
+      </div>
+      <pre>
+        Live: {JSON.stringify(liveRange)}
+        {"\n"}
+        Committed: {JSON.stringify(committedRange)}
+      </pre>
+      <Transcript.FloatingMenu
+        editor={editor}
+        onClick={(ed) => {
+          const id = Math.floor(Math.random() * 1000) + 100;
+          ed.commands.addObservation({ id, title: "New observation" });
+          // come setOpenAccordion(res.id) nell'app
+          setEditingId(id);
+        }}
+      />
+      <Transcript editor={editor} />
+    </>
+  );
+};
+
+export const ResizableObservation = ResizableObservationTemplate.bind({});
+ResizableObservation.args = {
+  content: paragraphs,
+  observations: [
+    {
+      id: 1,
+      type: "title",
+      start: 1.1999999,
+      end: 5.2799997,
+      text: "My observation",
+      color: "#ff0000",
+      creatorType: "human",
+    },
+    {
+      id: 2,
+      type: "title",
+      start: 4.56,
+      end: 10.175,
+      text: "My other observation",
+      creatorType: "ai",
+    },
+  ],
 };
 
 export default {
