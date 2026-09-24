@@ -1,3 +1,17 @@
+# v4.1.7 (Thu Sep 24 2026)
+
+#### 🐛 Bug Fix
+
+- Add disabled state for cb and radio [#610](https://github.com/AppQuality/unguess-design-system/pull/610) ([@Kariamos](https://github.com/Kariamos) [@d-beezee](https://github.com/d-beezee))
+- UN-2424: improve checkbox and radio buttons visibility when disabled [#609](https://github.com/AppQuality/unguess-design-system/pull/609) ([@Kariamos](https://github.com/Kariamos))
+
+#### Authors: 2
+
+- [@d-beezee](https://github.com/d-beezee)
+- Marco ([@Kariamos](https://github.com/Kariamos))
+
+---
+
 # v4.1.6 (Mon Sep 14 2026)
 
 #### 🐛 Bug Fix
