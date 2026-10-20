@@ -40,6 +40,63 @@ const EditorWrapper = styled.div`
     padding: 0;
     min-height: 0;
   }
+
+  .transcript-observation-handle {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 1.2em;
+    vertical-align: text-bottom;
+    cursor: col-resize;
+    touch-action: none;
+    user-select: none;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -1px;
+      width: 2px;
+      background: ${({ theme }) => theme.palette.blue[600]};
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: ${({ theme }) => theme.palette.blue[600]};
+    }
+  }
+
+  .transcript-observation-handle-start::after {
+    top: -6px;
+  }
+
+  .transcript-observation-handle-end::after {
+    bottom: -6px;
+  }
+
+  .transcript-observation-handle-hit-area {
+    position: absolute;
+    top: -8px;
+    bottom: -8px;
+    left: -8px;
+    width: 16px;
+  }
+
+  .is-resizing-observation {
+    cursor: col-resize;
+    user-select: none;
+
+    .transcript-observation-handle {
+      pointer-events: none;
+    }
+  }
 `;
 
 const AIDisclaimer = styled.p`
@@ -92,3 +149,8 @@ Transcript.Search = Search;
 Transcript.FloatingMenu = FloatingMenu;
 
 export { Theme, Transcript };
+export type {
+  ObservationClickPayload,
+  ObservationInfo,
+  ObservationRange,
+} from "./extensions/observationResize";

@@ -12,6 +12,8 @@ const DefaultObservationWrapper = ({
   color,
   children,
   observations,
+  isDimmed,
+  isResizing,
 }: {
   title: string;
   color: string;
@@ -24,11 +26,20 @@ const DefaultObservationWrapper = ({
     creatorType?: "human" | "ai";
     end?: number;
   }[];
+  /** questa è l'observation in modifica */
+  isEditing?: boolean;
+  /** c'è un'observation in modifica, ma non è questa */
+  isDimmed?: boolean;
+  /** è in corso il trascinamento di una maniglia */
+  isResizing?: boolean;
 }) => {
-  const background = color + "50";
+  // niente opacity: con observation annidate si moltiplicherebbe
+  const background = color + (isDimmed ? "15" : "50");
   return (
     <span data-title={title} style={{ background }}>
       <Tooltip
+        // durante il trascinamento il tooltip coprirebbe le parole
+        isVisible={isResizing ? false : undefined}
         content={observations.map((o) => (
           <div
             onClick={() => {

@@ -1,7 +1,13 @@
 import { NodeType } from "@tiptap/pm/model";
 import { EditorState } from "@tiptap/pm/state";
-import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
+import {
+  Editor,
+  NodeViewContent,
+  NodeViewWrapper,
+  useEditorState,
+} from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
+import { observationResizePluginKey } from "../../extensions/observationResize";
 import { getTheme } from "../../extensions/theme";
 
 function findNodePosition(doc: PMNode, targetNode: PMNode): number | null {
@@ -54,8 +60,23 @@ export const Component = ({
   const themeExtension = getTheme(editor);
   const ObservationWrapper = themeExtension.options.observationWrapper;
 
+  // re-render quando cambia l'observation in modifica, anche senza modifiche
+  // al documento
+  const editingId = useEditorState({
+    editor,
+    selector: ({ editor: e }) =>
+      observationResizePluginKey.getState(e.state)?.editingId ?? null,
+  });
+  const isResizing = useEditorState({
+    editor,
+    selector: ({ editor: e }) =>
+      observationResizePluginKey.getState(e.state)?.isResizing ?? false,
+  });
+
   const nodePos = findNodePosition(editor.state.doc, node);
   if (!nodePos) return null;
+
+  const isEditing = editingId !== null && node.attrs["id"] === editingId;
 
   const ancestors = findAllAncestorsOfType(
     editor.state,
@@ -71,6 +92,9 @@ export const Component = ({
       <ObservationWrapper
         title={node.attrs["title"]}
         color={node.attrs["color"]}
+        isEditing={isEditing}
+        isDimmed={editingId !== null && !isEditing}
+        isResizing={isResizing}
         observations={observationsNodes.map((o) => ({
           start: o.attrs["start"],
           id: o.attrs["id"],
