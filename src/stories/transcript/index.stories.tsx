@@ -74,7 +74,7 @@ Default.args = {
       type: "title",
       start: 1.1999999,
       end: 5.2799997,
-      text: "My observation",
+      text: "My highlight",
       color: "#ff0000",
       creatorType: "human",
     },
@@ -83,7 +83,7 @@ Default.args = {
       type: "title",
       start: 4.56,
       end: 10.175,
-      text: "My other observation",
+      text: "My other highlight",
       creatorType: "ai",
     },
   ],
@@ -130,6 +130,9 @@ const RunningTemplate: StoryFn<{}> = (args) => {
             id: Math.floor(Math.random() * 1000),
             title: "title",
           });
+        }}
+        i18n={{
+          floatingCreateLabel: "Custom Label",
         }}
       />
       <Transcript {...args} editor={editor} />
@@ -231,7 +234,7 @@ WithSentiment.args = {
       type: "title",
       start: 1.1999999,
       end: 5.2799997,
-      text: "My observation",
+      text: "My highlight",
       color: "#ff0000",
       creatorType: "human",
     },
@@ -240,7 +243,7 @@ WithSentiment.args = {
       type: "title",
       start: 4.56,
       end: 10.175,
-      text: "My other observation",
+      text: "My other highlight",
       creatorType: "ai",
     },
   ],
@@ -281,7 +284,7 @@ WithCustomTheme.args = {
       start: 1.1999999,
       end: 5.2799997,
       color: "#ff0000",
-      text: "My observation",
+      text: "My highlight",
       creatorType: "human",
     },
     {
@@ -290,7 +293,7 @@ WithCustomTheme.args = {
       start: 4.56,
       end: 10.175,
       color: "#00ff00",
-      text: "My other observation",
+      text: "My other highlight",
       creatorType: "ai",
     },
   ],
