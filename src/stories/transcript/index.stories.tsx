@@ -131,6 +131,9 @@ const RunningTemplate: StoryFn<{}> = (args) => {
             title: "title",
           });
         }}
+        i18n={{
+          floatingCreateObsLabel: "Custom Label",
+        }}
       />
       <Transcript {...args} editor={editor} />
     </>

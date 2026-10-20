@@ -15,11 +15,16 @@ const MenuContainer = styled.div`
   display: flex;
 `;
 
+export interface FloatingMenuI18n {
+  floatingCreateObsLabel?: string;
+};
+
 export const FloatingMenu = (props: {
   editor: Editor;
   onClick: (editor: Editor, words: { start: number; end: number }) => void;
+  i18n?: FloatingMenuI18n;
 }) => {
-  const { editor, onClick } = props;
+  const { editor, onClick, i18n } = props;
 
   const shouldShow = (props: ShouldShowProps): boolean => {
     // At least a word selected?", props.from !== props.to);
@@ -54,7 +59,7 @@ export const FloatingMenu = (props: {
           <Button.StartIcon>
             <TagIcon />
           </Button.StartIcon>
-          Create Observation
+          {i18n?.floatingCreateObsLabel ?? "Create Highlight"}
         </Button>
       </MenuContainer>
     </BubbleMenu>
