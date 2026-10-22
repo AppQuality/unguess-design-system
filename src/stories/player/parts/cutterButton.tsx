@@ -52,14 +52,14 @@ export const Cutter = ({
           <Button.StartIcon>
             <TagIcon />
           </Button.StartIcon>
-          <Span>{i18n?.onHighlight || "End observation"}</Span>
+          <Span>{i18n?.onHighlight || "End highlight"}</Span>
         </>
       ) : (
         <>
           <Button.StartIcon>
             <PlusIcon />
           </Button.StartIcon>
-          <Span>{i18n?.beforeHighlight || "Start observation"}</Span>
+            <Span>{i18n?.beforeHighlight || "Start highlight"}</Span>
         </>
       )}
     </StyledButton>
@@ -80,7 +80,7 @@ export const Cutter = ({
           i18n?.observationsDisable
         ) : (
           <PlayerShortCut type="observation">
-            {i18n?.observations || "Start/stop new observation"}
+            {i18n?.observations || "Start/stop new highlight"}
           </PlayerShortCut>
         )
       }
