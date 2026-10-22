@@ -1,3 +1,17 @@
+# v4.1.8 (Thu Oct 22 2026)
+
+#### 🐛 Bug Fix
+
+- expose create obs floating button custom label for transcript [#613](https://github.com/AppQuality/unguess-design-system/pull/613) ([@marcbon](https://github.com/marcbon) [@iacopolea](https://github.com/iacopolea))
+- feat(transcript): expose floating create obs label + fix old naming [#612](https://github.com/AppQuality/unguess-design-system/pull/612) ([@marcbon](https://github.com/marcbon))
+
+#### Authors: 2
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+- Marco Bonomo ([@marcbon](https://github.com/marcbon))
+
+---
+
 # v4.1.7 (Thu Sep 24 2026)
 
 #### 🐛 Bug Fix
