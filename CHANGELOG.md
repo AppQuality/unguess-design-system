@@ -1,3 +1,16 @@
+# v4.1.9 (Tue Nov 03 2026)
+
+#### 🐛 Bug Fix
+
+- UN-3227: Update the transcript in place instead of rebuilding the editor [#619](https://github.com/AppQuality/unguess-design-system/pull/619) ([@iacopolea](https://github.com/iacopolea))
+- UN-3227: Update the transcript in place instead of rebuilding the editor [#618](https://github.com/AppQuality/unguess-design-system/pull/618) ([@iacopolea](https://github.com/iacopolea))
+
+#### Authors: 1
+
+- Iacopo Leardini ([@iacopolea](https://github.com/iacopolea))
+
+---
+
 # v4.1.8 (Thu Oct 22 2026)
 
 #### 🐛 Bug Fix
