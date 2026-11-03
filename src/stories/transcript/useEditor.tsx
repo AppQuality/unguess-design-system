@@ -1,7 +1,7 @@
 import Document from "@tiptap/extension-document";
 import Text from "@tiptap/extension-text";
 import { Extension, useEditor as useTiptapEditor } from "@tiptap/react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Search } from "./extensions/search";
 import { Theme } from "./extensions/theme";
 import {
@@ -72,9 +72,8 @@ export const useEditor = (
     deps
   );
 
-  useEffect(() => {
+  const setActiveWord = (editor: NonNullable<typeof ed>) => {
     if (!currentTime) return;
-    if (!ed) return;
 
     const currentParagraph = content?.find((paragraph) =>
       paragraph.words.some(
@@ -92,7 +91,44 @@ export const useEditor = (
 
     if (!currentWord) return;
 
-    ed.commands.updateCurrentActive({ currentWord });
+    editor.commands.updateCurrentActive({ currentWord });
+  };
+
+  // The editor is not rebuilt when the inputs change: swapping its DOM shrinks
+  // the page for a moment and the browser clamps the scroll position of the
+  // consumer. The document is replaced in place instead, and ProseMirror only
+  // re-renders the words that actually changed. The small inputs are compared
+  // by value so a consumer passing fresh literals on every render does not
+  // replace the document (and drop the selection) every time.
+  const inputsSignature = JSON.stringify([
+    observations,
+    translations,
+    sentiments,
+    numberOfSpeakers,
+  ]);
+  const applied = useRef<{
+    editor: typeof ed;
+    content: typeof content;
+    signature: string;
+  } | null>(null);
+  useEffect(() => {
+    if (!ed || ed.isDestroyed) return;
+    const previous = applied.current;
+    applied.current = { editor: ed, content, signature: inputsSignature };
+    // A new editor is created with the current content already.
+    if (!previous || previous.editor !== ed) return;
+    if (previous.content === content && previous.signature === inputsSignature)
+      return;
+    if (!parsedContent) return;
+
+    ed.commands.setContent(parsedContent, { emitUpdate: false });
+    // The active word lives in the document, so it is lost with the content.
+    setActiveWord(ed);
+  }, [ed, content, inputsSignature]);
+
+  useEffect(() => {
+    if (!ed) return;
+    setActiveWord(ed);
   }, [currentTime, content, ed]);
 
   return ed;
