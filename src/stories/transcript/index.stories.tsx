@@ -94,6 +94,80 @@ Default.args = {
     }),
 };
 
+const UpdatingObservationsTemplate: StoryFn<StoryArgs> = (args) => {
+  const [observations, setObservations] = useState<ObservationType[]>([
+    {
+      id: 1,
+      type: "title",
+      start: 1.1999999,
+      end: 5.2799997,
+      text: "My highlight",
+      color: "#ff0000",
+    },
+  ]);
+  const [currentTime, setCurrentTime] = useState(0);
+  const editor = Transcript.useEditor({
+    currentTime,
+    content: args.content,
+    observations,
+    numberOfSpeakers: 1,
+  });
+
+  useEffect(() => {
+    const interval = setInterval(
+      () => setCurrentTime((time) => time + 300),
+      300
+    );
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!editor) return <></>;
+
+  return (
+    <>
+      Time: {currentTime}
+      <button
+        onClick={() =>
+          setObservations((current) => [
+            ...current,
+            {
+              id: current.length + 1,
+              type: "title",
+              start: 10.175,
+              end: 14.5,
+              text: "Added later",
+              color: "#0000ff",
+            },
+          ])
+        }
+      >
+        Add
+      </button>
+      <button
+        onClick={() =>
+          setObservations((current) =>
+            current.map((observation) => ({
+              ...observation,
+              color: observation.color === "#ff0000" ? "#008000" : "#ff0000",
+            }))
+          )
+        }
+      >
+        Change color
+      </button>
+      <button onClick={() => setObservations((current) => current.slice(1))}>
+        Remove first
+      </button>
+      <Transcript {...args} editor={editor} />
+    </>
+  );
+};
+
+export const UpdatingObservations = UpdatingObservationsTemplate.bind({});
+UpdatingObservations.args = {
+  content: paragraphs,
+};
+
 const RunningTemplate: StoryFn<{}> = (args) => {
   const [currentTime, setCurrentTime] = useState(0);
   const intervalTime = 300;

@@ -4,20 +4,6 @@ import { Editor, NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { Node as PMNode } from "prosemirror-model";
 import { getTheme } from "../../extensions/theme";
 
-function findNodePosition(doc: PMNode, targetNode: PMNode): number | null {
-  let foundPos: number | null = null;
-
-  doc.descendants((node, pos) => {
-    if (node === targetNode) {
-      foundPos = pos;
-      return false; // Interrompe la ricerca
-    }
-    return true;
-  });
-
-  return foundPos;
-}
-
 function findAllAncestorsOfType(
   state: EditorState,
   pos: number,
@@ -47,21 +33,27 @@ function findAllAncestorsOfType(
 export const Component = ({
   node,
   editor,
+  getPos,
 }: {
   node: PMNode;
   editor: Editor;
+  getPos: () => number | undefined;
 }) => {
   const themeExtension = getTheme(editor);
   const ObservationWrapper = themeExtension.options.observationWrapper;
 
-  const nodePos = findNodePosition(editor.state.doc, node);
-  if (!nodePos) return null;
-
-  const ancestors = findAllAncestorsOfType(
-    editor.state,
-    nodePos,
-    editor.state.schema.nodes.Observation
-  );
+  // The position comes from the node view, not from looking the node up in the
+  // current document: when the document is replaced in place the lookup can
+  // fail for a render, and a missing node would drop the words it wraps.
+  const nodePos = getPos();
+  const ancestors =
+    nodePos !== undefined && nodePos <= editor.state.doc.content.size
+      ? findAllAncestorsOfType(
+          editor.state,
+          nodePos,
+          editor.state.schema.nodes.Observation
+        )
+      : [];
 
   const observationsNodes = ancestors.length ? [node, ...ancestors] : [node];
 
