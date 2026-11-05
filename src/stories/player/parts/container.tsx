@@ -34,10 +34,17 @@ export const Container = styled.div<WrapperProps>`
     }
   }
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     ${ControlsWrapper},
     ${FloatingContainer} {
       display: block;
+    }
+  }
+
+  &:hover {
+    ${ControlsWrapper},
+    ${FloatingContainer} {
       cursor: pointer;
     }
 
