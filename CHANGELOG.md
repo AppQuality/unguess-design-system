@@ -1,3 +1,16 @@
+# v4.1.10 (Thu Nov 05 2026)
+
+#### 🐛 Bug Fix
+
+- UN-3424 - bux fix - focus on media player tools [#621](https://github.com/AppQuality/unguess-design-system/pull/621) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+- UN-3424: Keep the player controls visible while a control has the focus [#620](https://github.com/AppQuality/unguess-design-system/pull/620) ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+#### Authors: 1
+
+- Gianpaolo Sinatra ([@sinatragianpaolo](https://github.com/sinatragianpaolo))
+
+---
+
 # v4.1.9 (Tue Nov 03 2026)
 
 #### 🐛 Bug Fix
